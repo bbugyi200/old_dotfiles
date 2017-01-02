@@ -32,6 +32,8 @@ Plugin 'jamessan/vim-gnupg'
 
 Plugin 'jez/vim-superman'
 
+Plugin 'shime/vim-livedown'
+
 
 " ------------------------------ Airline Status Bar Configs -------------------
 
