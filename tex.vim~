@@ -1,2 +1,0 @@
-nmap <F9> :w<CR>:!pdflatex "%"<CR>
-imap <F9> <Esc>:w<CR>:!pdflatex "%"<CR>
