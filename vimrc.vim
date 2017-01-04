@@ -1,14 +1,20 @@
+" ----------------------------------------------------------------------------
+" ---------------------------- PLUGINS ---------------------------------------
 source $CONFIG/plugins.vim
-set clipboard=unnamedplus
 
-" -------- GVim/Vim Specific Configs ------------
+filetype plugin indent on
+filetype plugin on
+
+" ---------------------- GVim/Vim Specific Configs ---------------------------
 if has("gui_running")
     colo desert
     cd $HOME
 else
     set background=dark
 endif
-" -----------------------------------------------
+
+" --------------------------- SETS AND LETS ----------------------------------
+set clipboard=unnamedplus
 
 set number
 set colorcolumn=80
@@ -20,14 +26,6 @@ set shiftwidth=4
 set expandtab
 set nocompatible
 
-" Sets LaTeX as default for .tex files
-let g:tex_flavor = "latex"
-
-filetype plugin indent on
-filetype plugin on
-syntax on
-
-
 " Allows me to use the mouse
 set mouse=a
 " An attempt to fix the issue where mouse-clicks cause random output to screen
@@ -36,8 +34,27 @@ set ttymouse=sgr
 " Allows me to highlight using a colon (:)
 set iskeyword+=:
 
+" Sets LaTeX as default for .tex files
+let g:tex_flavor = "latex"
+
 " The <Leader> key can be used for extra mappings
 let mapleader = ","
+
+
+
+
+" ---------------------------- SYNTAX ----------------------------------------
+syntax on
+
+" Enables syntax highlighting to work properly for certain filetypes
+au BufRead,BufNewFile *.nasm set filetype=nasm
+au BufRead,BufNewFile *.txt set filetype=txt
+
+" Used to make syntax highlighting more readable when using Linux
+" transparent terminal
+highlight Constant ctermfg=lightmagenta 
+
+
 
 """""""""""""""""""""
 "  Search Settings  "
@@ -119,12 +136,5 @@ autocmd BufRead,BufNewFile *.html set colorcolumn=
 " Automatic rewriting of .vimrc
  autocmd! bufwritepost .vimrc source %
 
-" Enables syntax highlighting to work properly for certain filetypes
-au BufRead,BufNewFile *.nasm set filetype=nasm
-au BufRead,BufNewFile *.txt set filetype=txt
-
-" Used to make syntax highlighting more readable when using Linux
-" transparent terminal
-highlight Constant ctermfg=lightmagenta 
 " --------------------- END:: Portable Configurations --------------------------
 
