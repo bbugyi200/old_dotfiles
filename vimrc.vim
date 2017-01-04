@@ -27,19 +27,13 @@ filetype plugin indent on
 filetype plugin on
 syntax on
 
-" Automatic rewriting of .vimrc
- autocmd! bufwritepost .vimrc source %
-
-" Enables syntax highlighting to work properly for nasm files
-au BufRead,BufNewFile *.nasm set filetype=nasm
-au BufRead,BufNewFile *.txt set filetype=txt
 
 " Allows me to use the mouse
 set mouse=a
 " An attempt to fix the issue where mouse-clicks cause random output to screen
 set ttymouse=sgr
 
-" Allows me to highlight todo:
+" Allows me to highlight using a colon (:)
 set iskeyword+=:
 
 " The <Leader> key can be used for extra mappings
@@ -59,6 +53,10 @@ set smartcase
 
 " noremap <silent><Leader>/ :nohls<CR>
 """"""""""""""""""""" 
+
+" ----------------------------------------------------------------------------
+" ------------------------------ KEY MAPPINGS --------------------------------
+" ----------------------------------------------------------------------------
 
 " Allows space to work in Normal-Mode
 nnoremap <space> i<space><esc>
@@ -102,6 +100,13 @@ nnoremap k gk
 " Sets tmux pane to the current directory
 nnoremap <Leader><F12> :call VimuxRunCommand("cd " .expand("%:p:h") ."&& clear")<CR>
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+" ----------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
+
 " Turns spellcheck on for certain file extensions
 " 2nd line disables the colorcolumn
 autocmd BufRead,BufNewFile *.txt setlocal spell spelllang=en_us
@@ -110,6 +115,13 @@ autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.md set colorcolumn=
 autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.html set colorcolumn=
+
+" Automatic rewriting of .vimrc
+ autocmd! bufwritepost .vimrc source %
+
+" Enables syntax highlighting to work properly for certain filetypes
+au BufRead,BufNewFile *.nasm set filetype=nasm
+au BufRead,BufNewFile *.txt set filetype=txt
 
 " Used to make syntax highlighting more readable when using Linux
 " transparent terminal

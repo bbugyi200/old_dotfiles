@@ -8,9 +8,8 @@ endif
 
 syn cluster txtContains add=Todo,BeginWS
 
-" Clear formatting for whitespace at beginning of line
+" Clear formatting
 syn match BeginWS "^\s\+"
-
 syn match EndP ")"
 
 " Title
@@ -38,8 +37,7 @@ syn region Comment start="\/\*" end="\*\/" contains=@txtContains,@NoSpell
 " Highlights
 " 'keepend' prevents contains items from extending the outer item
 syn keyword Todo TODO NOTE FIXME
-syn region Todo start="\([A-Z]\{2,\}:\|:\):" end="::" contains=@NoSpell,@txtContains keepend
-syn region ErrorMsg start="\([A-Z]\{2,\}:\|:\);" end=";:" contains=@NoSpell,@txtContains keepend
+syn region Todo start="\([A-Z]\{2,\}:\|:\):" end="$" contains=@NoSpell oneline
 
 " HiLinks 
 " Define the default highlighting. For version 5.7 and earlier: only when not done already For
