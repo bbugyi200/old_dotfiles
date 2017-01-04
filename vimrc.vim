@@ -40,8 +40,13 @@ let g:tex_flavor = "latex"
 " The <Leader> key can be used for extra mappings
 let mapleader = ","
 
+" Search Settings
+set incsearch
+set ignorecase
+set smartcase
 
-
+" Sets minimum size of active split (by percentage)
+let &winheight = &lines * 7 / 10
 
 " ---------------------------- SYNTAX ----------------------------------------
 syntax on
@@ -53,23 +58,6 @@ au BufRead,BufNewFile *.txt set filetype=txt
 " Used to make syntax highlighting more readable when using Linux
 " transparent terminal
 highlight Constant ctermfg=lightmagenta 
-
-
-
-"""""""""""""""""""""
-"  Search Settings  "
-
-" incsearch = incremental searching when using '/'"
-" ignorecase + smartcase = ignore the case unless there is an uppercase "
-" :nohls = clears highlights "
-
-" set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-" noremap <silent><Leader>/ :nohls<CR>
-""""""""""""""""""""" 
 
 " ----------------------------------------------------------------------------
 " ------------------------------ KEY MAPPINGS --------------------------------
@@ -99,8 +87,6 @@ nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
 
-" Sets minimum size of active split (by percentage)
-let &winheight = &lines * 7 / 10
 """"""""""""""""""""""""""""""
 
 " Will execute the 'Run' command which varies based on the file type
@@ -120,9 +106,7 @@ nnoremap <Leader><F12> :call VimuxRunCommand("cd " .expand("%:p:h") ."&& clear")
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-" ----------------------------------------------------------------------------
-" ----------------------------------------------------------------------------
-" ----------------------------------------------------------------------------
+" ------------------------------ AUTOS ---------------------------------------
 
 " Turns spellcheck on for certain file extensions
 " 2nd line disables the colorcolumn
@@ -135,6 +119,3 @@ autocmd BufRead,BufNewFile *.html set colorcolumn=
 
 " Automatic rewriting of .vimrc
  autocmd! bufwritepost .vimrc source %
-
-" --------------------- END:: Portable Configurations --------------------------
-
