@@ -48,6 +48,10 @@ set smartcase
 " Sets minimum size of active split (by percentage)
 let &winheight = &lines * 7 / 10
 
+" Improves tab completion from normal mode
+set wildmenu
+set wildmode=full
+
 " ---------------------------- SYNTAX ----------------------------------------
 syntax on
 
@@ -59,9 +63,7 @@ au BufRead,BufNewFile *.txt set filetype=txt
 " transparent terminal
 highlight Constant ctermfg=lightmagenta 
 
-" ----------------------------------------------------------------------------
 " ------------------------------ KEY MAPPINGS --------------------------------
-" ----------------------------------------------------------------------------
 
 " Allows space to work in Normal-Mode
 nnoremap <space> i<space><esc>
