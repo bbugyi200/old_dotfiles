@@ -8,7 +8,12 @@ alias ta="tmux -2 attach"
 
 alias sql="rlwrap sqlite3"
 
-alias hgrep="cat ~/Dropbox/logs/* | grep "
+alias hview="vim ~/Dropbox/logs/bash-history.log"
+
+function hgrep() {
+    cat ~/Dropbox/logs/bash-history.log | tr -s ' '| cut -d' ' -f 4- | nl | grep -e "$1"
+}
+
 
 # ------------------------------- POWERLINE ----------------------------------
 export TERM="screen-256color"
@@ -30,4 +35,10 @@ vman() {
 # -------------------------- ETERNAL BASH HISTORY ----------------------------
 
 # https://spin.atomicobject.com/2016/05/28/log-bash-history/
-export PROMPT_COMMAND+='if [ "$(id -u)" -ne 0 ]; then echo "$(hostname) | $(date "+%Y-%m-%d.%H:%M:%S") | $(pwd) | $(history 1 | cut -c 8-)" >> ~/Dropbox/logs/bash-history.log; fi'
+function log_bash_history() { 
+    if [ "$(id -u)" -ne 0 ]; 
+    then printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(pwd | sed 's/\/home\/bryan/~/' | cut -c -55)" "$(history 1 | cut -c 8-)" >> ~/Dropbox/logs/bash-history.log;
+    fi; 
+}
+
+export PROMPT_COMMAND="log_bash_history; $PROMPT_COMMAND"
