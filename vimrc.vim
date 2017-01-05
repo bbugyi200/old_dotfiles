@@ -13,7 +13,7 @@ else
     set background=dark
 endif
 
-" --------------------------- SETS AND LETS ----------------------------------
+" -------------------------------- SETS --------------------------------------
 set clipboard=unnamedplus
 
 set number
@@ -34,23 +34,28 @@ set ttymouse=sgr
 " Allows me to highlight using a colon (:)
 set iskeyword+=:
 
+" Search Settings
+set incsearch
+set ignorecase
+set smartcase
+
+" Improves tab completion from normal mode
+set wildmenu
+set wildmode=full
+
+" Increase command history limit
+set history=200
+
+" --------------------------------- LETS -------------------------------------
+
 " Sets LaTeX as default for .tex files
 let g:tex_flavor = "latex"
 
 " The <Leader> key can be used for extra mappings
 let mapleader = ","
 
-" Search Settings
-set incsearch
-set ignorecase
-set smartcase
-
 " Sets minimum size of active split (by percentage)
 let &winheight = &lines * 7 / 10
-
-" Improves tab completion from normal mode
-set wildmenu
-set wildmode=full
 
 " ---------------------------- SYNTAX ----------------------------------------
 syntax on
@@ -107,6 +112,10 @@ nnoremap <Leader><F12> :call VimuxRunCommand("cd " .expand("%:p:h") ."&& clear")
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
+
+" Used to recall commands from history
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 " ------------------------------ AUTOS ---------------------------------------
 
