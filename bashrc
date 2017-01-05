@@ -1,14 +1,23 @@
+# ----------------------------------------------------------------------------
+# I set this so the crontab would use vim for editing
+export EDITOR=$(which vim)
+
+# ---------------------------- ALIASES ---------------------------------------
 alias tm="tmux -2"
 alias ta="tmux -2 attach"
 
 alias sql="rlwrap sqlite3"
 
+alias hgrep="cat ~/Dropbox/logs/* | grep "
+
+# ------------------------------- POWERLINE ----------------------------------
 export TERM="screen-256color"
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . $POWERLINE_DIRECTORY/powerline/bindings/bash/powerline.sh
 
+# ------------------------------- VMAN ---------------------------------------
 # Enables vman command from the terminal
 vman() {
   vim -c "SuperMan $*"
@@ -18,23 +27,7 @@ vman() {
   fi
 }
 
-# I set this so the crontab would use vim for editing
-export EDITOR=$(which vim)
+# -------------------------- ETERNAL BASH HISTORY ----------------------------
 
-# Eternal bash history.
-# ---------------------
-# Undocumented feature which sets the size to "unlimited".
-# http://stackoverflow.com/questions/9457233/unlimited-bash-history
-export HISTFILESIZE=1000000000
-export HISTSIZE=1000000000
-export HISTTIMEFORMAT="[%F %T] "
-# Change the file location because certain bash sessions truncate .bash_history file upon close.
-# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
-export HISTFILE=~/.bash_eternal_history
-# Force prompt to write history after every command.
-# 
-# This also ensures that commands placed in a tmux session are reserved
-# in history. 
-# 
-# http://superuser.com/questions/20900/bash-history-loss
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# https://spin.atomicobject.com/2016/05/28/log-bash-history/
+export PROMPT_COMMAND+='if [ "$(id -u)" -ne 0 ]; then echo "$(hostname) | $(date "+%Y-%m-%d.%H:%M:%S") | $(pwd) | $(history 1 | cut -c 8-)" >> ~/Dropbox/logs/bash-history.log; fi'
