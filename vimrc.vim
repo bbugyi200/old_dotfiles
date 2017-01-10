@@ -20,7 +20,7 @@ set number
 set colorcolumn=80
 set autoindent
 set backspace=2
-set autochdir
+" set autochdir
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -81,7 +81,7 @@ noremap <Leader>e :quit<CR>
 noremap <Leader>s :w<CR>
 
 " Makes enter key work right in Normal mode
-nmap <CR> o<Esc>
+nnoremap <CR> o<Esc>
 
 nmap <C-N> :NERDTree<CR><S-B>
 nmap <Leader>z :ZoomWin<CR>
@@ -130,3 +130,7 @@ autocmd BufRead,BufNewFile *.html set colorcolumn=
 
 " Automatic rewriting of .vimrc
  autocmd! bufwritepost .vimrc source %
+
+" http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
+autocmd CmdwinEnter * nnoremap <CR> <CR>
+autocmd BufReadPost quickfix nnoremap <CR> <CR>

@@ -2,7 +2,7 @@
 # I set this so the crontab would use vim for editing
 export EDITOR=$(which vim)
 
-# ---------------------------- ALIASES ---------------------------------------
+# ----------------------------------- ALIASES --------------------------------
 alias tm="tmux -2"
 alias ta="tmux -2 attach"
 
@@ -10,10 +10,20 @@ alias sql="rlwrap sqlite3"
 
 alias hview="vim ~/Dropbox/logs/bash-history.log"
 
+# -------------------------------- FUNCTIONS ---------------------------------
+function sbreak() {
+    if [ "$1" == '--clear' ]
+    then 
+        cp ~/Dropbox/notes/sbreak/template.txt ~/Dropbox/notes/sbreak/sbreak.txt
+    fi
+
+    vim ~/Dropbox/notes/sbreak/sbreak.txt
+}
+
+
 function hgrep() {
     cat ~/Dropbox/logs/bash-history.log | tr -s ' '| cut -d' ' -f 4- | nl | grep -e "$1"
 }
-
 
 # ------------------------------- POWERLINE ----------------------------------
 export TERM="screen-256color"

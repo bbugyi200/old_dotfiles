@@ -6,7 +6,7 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syn cluster txtContains add=Todo,BeginWS
+syn cluster txtContains add=Todo,BeginWS,Underlined
 
 " Clear formatting
 syn match BeginWS "^\s\+"
@@ -16,10 +16,10 @@ syn match EndP ")"
 syn region StatusLine start="###" end="###$" contains=@NoSpell oneline
 
 " Section
-syn match Statement "^[A-Z][A-Z () 0-9 / # -]*[A-Z0-9)]$" contains=@NoSpell
+syn match Statement "^[A-Z][A-Z () 0-9 / \[\] : # -]*[A-Z0-9)\]]$" contains=@txtContains,@NoSpell
 
 " Subsection
-syn region Function start="\s\{3\}[A-Za-z]" end="$" contains=@NoSpell oneline
+syn region Function start="\s\{2\}[A-Za-z]" end="$" contains=@NoSpell oneline
 
 " Subsubsection
 syn region Type start="^\s*===" end="===$" contains=@NoSpell oneline
