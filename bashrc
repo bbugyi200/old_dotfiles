@@ -3,14 +3,29 @@
 export EDITOR=$(which vim)
 
 # ----------------------------------- ALIASES --------------------------------
-alias tm="tmux -2"
-alias ta="tmux -2 attach"
-
 alias sql="rlwrap sqlite3"
 
 alias hview="vim ~/Dropbox/logs/bash-history.log"
 
 # -------------------------------- FUNCTIONS ---------------------------------
+function tm() {
+    if [ $# -eq 0 ]
+    then
+        tmux -2
+    else
+        tmux -2 new -s $1
+    fi
+}
+
+function ta() {
+    if [ $# -eq 0 ]
+    then 
+        tmux -2 attach
+    else
+        tmux -2 attach -t $1
+    fi
+}
+
 function sbreak() {
     if [ "$1" == '--clear' ]
     then 

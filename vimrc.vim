@@ -53,6 +53,7 @@ let g:tex_flavor = "latex"
 
 " The <Leader> key can be used for extra mappings
 let mapleader = ","
+noremap \ ,
 
 " Sets minimum size of active split (by percentage)
 let &winheight = &lines * 7 / 10

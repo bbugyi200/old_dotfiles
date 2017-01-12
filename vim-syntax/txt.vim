@@ -19,7 +19,7 @@ syn region StatusLine start="###" end="###$" contains=@NoSpell oneline
 syn match Statement "^[A-Z][A-Z () 0-9 / \[\] : # -]*[A-Z0-9)\]]$" contains=@txtContains,@NoSpell
 
 " Subsection
-syn region Function start="\s\{2\}[A-Za-z]" end="$" contains=@NoSpell oneline
+syn region Function start="^\s\{2\}[A-Za-z]" end="$" contains=@NoSpell oneline
 
 " Subsubsection
 syn region Type start="^\s*===" end="===$" contains=@NoSpell oneline
