@@ -5,8 +5,6 @@ export EDITOR=$(which vim)
 # ----------------------------------- ALIASES --------------------------------
 alias sql="rlwrap sqlite3"
 
-alias hview="vim ~/Dropbox/logs/bash-history.log"
-
 alias budget="cd ~/Dropbox/Budget/ && ./IntelliBudget > /dev/null & disown"
 
 # -------------------------------- FUNCTIONS ---------------------------------
@@ -42,7 +40,6 @@ function getPWD() {
     echo $(pwd | sed 's/\/home\/bryan/~/' | cut -c -55) 
 }
 
-
 function hgrep() {
     if [ "$1" == '--local' -o "$1" == '-L' ]
     then
@@ -51,6 +48,16 @@ function hgrep() {
         cat ~/Dropbox/logs/bash-history.log | tr -s ' ' | cut -d' ' -f 4- | nl | grep -e "$1"
     fi
 }
+
+function hview() {
+    if [ $# -eq 0 ]
+    then 
+        vim ~/Dropbox/logs/bash-history.log
+    else
+        vim +$1 ~/Dropbox/logs/bash-history.log
+    fi
+}
+
 
 # ------------------------------- POWERLINE ----------------------------------
 export TERM="screen-256color"
