@@ -5,6 +5,8 @@ source $CONFIG/plugins.vim
 filetype plugin indent on
 filetype plugin on
 
+runtime macros/matchit.vim
+
 " ---------------------- GVim/Vim Specific Configs ---------------------------
 if has("gui_running")
     colo desert
@@ -26,6 +28,9 @@ set shiftwidth=4
 set expandtab
 set nocompatible
 
+set exrc
+set secure
+
 " Allows me to use the mouse
 set mouse=a
 " An attempt to fix the issue where mouse-clicks cause random output to screen
@@ -46,6 +51,9 @@ set wildmode=full
 " Increase command history limit
 set history=200
 
+" Always show one line above/below cursor
+set scrolloff=1
+
 " --------------------------------- LETS -------------------------------------
 
 " Sets LaTeX as default for .tex files
@@ -56,7 +64,8 @@ let mapleader = ","
 noremap \ ,
 
 " Sets minimum size of active split (by percentage)
-let &winheight = &lines * 7 / 10
+" let &winwidth = &columns * 55 / 100
+let &winheight = &lines * 6 / 10
 
 " ---------------------------- SYNTAX ----------------------------------------
 syntax on

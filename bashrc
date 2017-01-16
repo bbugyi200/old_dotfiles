@@ -7,6 +7,8 @@ alias sql="rlwrap sqlite3"
 
 alias hview="vim ~/Dropbox/logs/bash-history.log"
 
+alias budget="cd ~/Dropbox/Budget/ && ./IntelliBudget > /dev/null & disown"
+
 # -------------------------------- FUNCTIONS ---------------------------------
 function tm() {
     if [ $# -eq 0 ]
@@ -36,8 +38,18 @@ function sbreak() {
 }
 
 
+function getPWD() {
+    echo $(pwd | sed 's/\/home\/bryan/~/' | cut -c -55) 
+}
+
+
 function hgrep() {
-    cat ~/Dropbox/logs/bash-history.log | tr -s ' '| cut -d' ' -f 4- | nl | grep -e "$1"
+    if [ "$1" == '--local' -o "$1" == '-L' ]
+    then
+        cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -e " $(getPWD) " | tr -s ' '| cut -d' ' -f 2,6- | grep -e "$2"
+    else
+        cat ~/Dropbox/logs/bash-history.log | tr -s ' ' | cut -d' ' -f 4- | nl | grep -e "$1"
+    fi
 }
 
 # ------------------------------- POWERLINE ----------------------------------
@@ -62,7 +74,7 @@ vman() {
 # https://spin.atomicobject.com/2016/05/28/log-bash-history/
 function log_bash_history() { 
     if [ "$(id -u)" -ne 0 ]; 
-    then printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(pwd | sed 's/\/home\/bryan/~/' | cut -c -55)" "$(history 1 | cut -c 8-)" >> ~/Dropbox/logs/bash-history.log;
+    then printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(getPWD)" "$(history 1 | cut -c 8-)" >> ~/Dropbox/logs/bash-history.log;
     fi; 
 }
 

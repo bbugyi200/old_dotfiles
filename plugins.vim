@@ -36,6 +36,8 @@ Plugin 'shime/vim-livedown'
 
 Plugin 'tpope/vim-unimpaired'
 
+Plugin 'tpope/vim-fugitive'
+
 
 " ------------------------------ Airline Status Bar Configs -------------------
 

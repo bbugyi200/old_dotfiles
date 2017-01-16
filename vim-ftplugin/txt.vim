@@ -1,5 +1,11 @@
-" Automatic wrap
+" Sets width to wrap at
 set tw=93
+
+" Disables Automatic Wrap
+setlocal formatoptions-=t
+
+" Does not allow automatic wrap in the middle of word
+setlocal linebreak
 
 " Enables * and - to be treated like bullets by autowrap
 setlocal comments=fb:-,fb:*
