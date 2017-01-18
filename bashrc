@@ -37,15 +37,18 @@ function sbreak() {
 
 
 function getPWD() {
-    echo $(pwd | sed 's/\/home\/bryan/~/' | cut -c -55) 
+    echo $(pwd | sed 's/\/home\/[Bb]ryan/~/' | cut -c -55) 
 }
 
 function hgrep() {
     if [ "$1" == '--local' -o "$1" == '-L' ]
     then
-        cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -e " $(getPWD) " | tr -s ' '| cut -d' ' -f 2,6- | grep -e "$2"
+        cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -e " $(getPWD) " | grep -e "$(hostname)" | tr -s ' '| cut -d' ' -f 2,6- | grep -e "$2"
+    elif [ "$1" == '--verbose' -o "$1" == '-V' ]
+    then
+        cat ~/Dropbox/logs/bash-history.log | nl | grep -e "$2"
     else
-        cat ~/Dropbox/logs/bash-history.log | tr -s ' ' | cut -d' ' -f 4- | nl | grep -e "$1"
+        cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -e "$(hostname)" | tr -s ' ' | cut -d' ' -f 2,6- | grep -e "$1"
     fi
 }
 

@@ -64,7 +64,7 @@ let mapleader = ","
 noremap \ ,
 
 " Sets minimum size of active split (by percentage)
-" let &winwidth = &columns * 55 / 100
+" let &winwidth = &columns * 6 / 10
 let &winheight = &lines * 6 / 10
 
 " ---------------------------- SYNTAX ----------------------------------------
@@ -116,6 +116,8 @@ imap <F8> <Esc><F8>
 " Improve up/down movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " Sets tmux pane to the current directory
 nnoremap <Leader><F12> :call VimuxRunCommand("cd " .expand("%:p:h") ."&& clear")<CR>
