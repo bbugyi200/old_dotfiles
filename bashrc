@@ -7,6 +7,8 @@ alias sql="rlwrap sqlite3"
 
 alias budget="cd ~/Dropbox/Budget/ && ./IntelliBudget > /dev/null & disown"
 
+alias mutt-edu="mutt -e 'source ~/.mutt/bryan_bugyi.mymail.rcbc'"
+
 # -------------------------------- FUNCTIONS ---------------------------------
 function tm() {
     if [ $1 == 'ls' ]

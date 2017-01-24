@@ -1,6 +1,10 @@
 " ----------------------------------------------------------------------------
 " ---------------------------- PLUGINS ---------------------------------------
-source $CONFIG/plugins.vim
+if filereadable($CONFIG . "/plugins.vim")
+    source $CONFIG/plugins.vim
+else
+    source ~/Dropbox/config/plugins.vim
+endif
 
 filetype plugin indent on
 filetype plugin on
@@ -129,6 +133,9 @@ cmap w!! w !sudo tee > /dev/null %
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
+" mapping to wrap paragraph
+nnoremap <Leader>g gqap
+
 " ------------------------------ AUTOS ---------------------------------------
 
 " Turns spellcheck on for certain file extensions
@@ -146,3 +153,9 @@ autocmd BufRead,BufNewFile *.html set colorcolumn=
 " http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
 autocmd CmdwinEnter * nnoremap <CR> <CR>
 autocmd BufReadPost quickfix nnoremap <CR> <CR>
+
+" Detects mutt filetypes
+augroup filetypedetect
+  " Mail
+  autocmd BufRead,BufNewFile *mutt-*              setfiletype mail
+augroup END

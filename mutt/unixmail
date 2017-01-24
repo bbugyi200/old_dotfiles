@@ -1,0 +1,3 @@
+set my_accnt = "Unix Mail - Bryan"
+set folder=/var/spool/mail
+set mbox=+daedalus
