@@ -9,7 +9,10 @@ alias budget="cd ~/Dropbox/Budget/ && ./IntelliBudget > /dev/null & disown"
 
 # -------------------------------- FUNCTIONS ---------------------------------
 function tm() {
-    if [ $# -eq 0 ]
+    if [ $1 == 'ls' ]
+    then 
+        tmux ls
+    elif [ $# -eq 0 ]
     then
         tmux -2
     else

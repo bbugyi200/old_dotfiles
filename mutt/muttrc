@@ -1,0 +1,60 @@
+###############################################################################
+
+# source ~/.mutt/bryan_bugyi.mymail.rcbc
+source ~/.mutt/bryanbugyi34.gmail
+
+################################ SETS #########################################
+set realname = "Bryan"
+
+##LOCAL FOLDERS FOR CACHED HEADERS AND CERTIFICATES
+set header_cache =~/.muttextras/cache/headers
+set message_cachedir =~/.muttextras/cache/bodies
+set certificate_file =~/.muttextras/certificates
+
+##SECURING
+set move = no  #Stop asking to "move read messages to mbox"!
+set imap_keepalive = 900
+
+##Sort by newest conversation first.
+set sort = reverse-threads
+set sort_aux = last-date-received
+
+##Set editor to create new email
+set edit_headers
+set editor="vim +"
+
+set alias_file        = '~/.mutt/aliases'
+set display_filter    = '~/.mutt/aliases.sh'
+source $alias_file
+
+
+set fast_reply=yes        # when replying, don't prompt for address
+set include=yes           # include original text on reply?
+set confirmappend=no      # Makes folder moves faster.
+set pager_stop            # don't go to next message at end of message
+
+mailboxes imaps://bryanbugyi34@imap.gmail.com:993/ imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/
+
+################################## MACROS #####################################
+macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
+macro index,pager A "<save-message>=[Gmail]/All <enter>" "Archive"
+macro index,pager R "<save-message>=References <enter>" "Reference"
+macro index,pager D "<save-message>=[Gmail]/Trash <enter>" "Delete"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+
+################################## BINDINGS ###################################
+bind index G imap-fetch-mail
+
+############################## COLORS #########################################
+# menu and status bar. I like the black/white default, but you may like e.g.
+color status black white
+ 
+#current highlit message: blue background
+color indicator default blue
+ 
+#Color messages based on basic state, for new, old, and to-be-deleted
+#  Notes: neither new nor old (saved to mbox): white
+#         one for mailing lists is useful, if you use them
+color index brightyellow black ~N
+color index yellow black ~O
+color index red black ~D

@@ -40,6 +40,9 @@ syn region Comment start="\/\*" end="\*\/" contains=@txtContains,@NoSpell
 syn keyword Todo TODO NOTE FIXME
 syn region Todo start="\([A-Z]\{2,\}:\|:\):" end="$" contains=@NoSpell oneline
 
+syn region Todo start="<" end=">" oneline
+syn region ErrorMsg start="{" end="}" oneline
+
 " HiLinks 
 " Define the default highlighting. For version 5.7 and earlier: only when not done already For
 " version 5.8 and later: only when an item doesn't have highlighting yet
