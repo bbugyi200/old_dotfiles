@@ -1,5 +1,8 @@
 ###############################################################################
 
+
+source "gpg2 -d ~/.my-pwds.gpg |"
+
 # source ~/.mutt/bryan_bugyi.mymail.rcbc
 source ~/.mutt/bryanbugyi34.gmail
 

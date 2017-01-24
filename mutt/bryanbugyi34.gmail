@@ -1,0 +1,17 @@
+set status_format = "-%r-Mutt: bryanbugyi34@gmail [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"
+
+set from = "bryanbugyi34@gmail.com"
+set imap_user = "bryanbugyi34@gmail.com"
+set imap_pass=$my_pwd_email
+
+##REMOTE GMAIL FOLDERS
+set folder = "imaps://bryanbugyi34@imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed ="+[Google Mail]/Drafts"
+set trash = "+[Google Mail]/Trash"
+
+##SMTP Settings to sent email
+set smtp_url = "smtp://bryanbugyi34@smtp.gmail.com:587/"
+set smtp_pass=$my_pwd_email
+
+macro index <f9> '<sync-mailbox><enter-command>source ~/.mutt/bryan_bugyi.mymail.rcbc<enter><change-folder>!<enter>'
