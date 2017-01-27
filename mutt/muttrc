@@ -1,7 +1,11 @@
 ###############################################################################
 
-source "gpg2 -dq ~/Dropbox/.my-pwds.gpg |"
+alternative_order text/plain text/html
+auto_view text/html
 
+mailboxes imaps://bryanbugyi34@imap.gmail.com:993/ imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ /var/spool/mail/bryan
+
+source "gpg2 -dq ~/.my-pwds.gpg |"
 # source ~/.mutt/bryan_bugyi.mymail.rcbc
 source ~/.mutt/bryanbugyi34.gmail
 
@@ -23,7 +27,7 @@ set sort_aux = last-date-received
 
 ##Set editor to create new email
 set edit_headers
-set editor="vim +/^$"  # Opens vim to first blank line
+set editor="$EDITOR +/^$"  # Opens vim to first blank line
 
 set alias_file        = '~/.mutt/aliases'
 set display_filter    = '~/.mutt/aliases.sh'
@@ -37,13 +41,19 @@ set pager_stop            # don't go to next message at end of message
 set mail_check=10
 set nomark_old            # I don't care if message is OLD
 set delete=yes		 	  # purge deleted messages without asking
+set mailcap_path = ~/.mutt/mailcap
 
-mailboxes imaps://bryanbugyi34@imap.gmail.com:993/ imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ /var/spool/mail/bryan
 
 ################################## BINDINGS ###################################
 bind editor <space> noop
 bind index <F9> imap-fetch-mail
 bind index G last-entry
+bind index N search-opposite
+bind pager [ half-up
+bind pager ] half-down
+bind pager j next-line
+bind pager k previous-line
+
 
 ################################## MACROS #####################################
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
@@ -54,6 +64,14 @@ macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to All Mail"
 macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
 macro index gg <first-entry> "Go to top email"
+
+
+############################ HOOKS ############################################
+account-hook $folder 'source ~/.mutt/status_format'
+folder-hook imaps://bryanbugyi34@imap.gmail.com:993/ 'source ~/.mutt/bryanbugyi34.gmail'
+folder-hook imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ 'source ~/.mutt/bryan_bugyi.mymail.rcbc'
+folder-hook /var/spool/mail 'source ~/.mutt/unixmail'
+
 
 ############################## COLORS #########################################
 # menu and status bar. I like the black/white default, but you may like e.g.
@@ -68,9 +86,86 @@ color indicator default blue
 color index brightyellow black ~N
 color index yellow black ~O
 color index red black ~D
+color normal white black
 
-############################ HOOKS ############################################
-account-hook $folder 'source ~/.mutt/status_format'
-folder-hook imaps://bryanbugyi34@imap.gmail.com:993/ 'source ~/.mutt/bryanbugyi34.gmail'
-folder-hook imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ 'source ~/.mutt/bryan_bugyi.mymail.rcbc'
-folder-hook /var/spool/mail 'source ~/.mutt/unixmail'
+
+# Colours for items in the index
+color index brightcyan black ~N
+# Hmm, don't like this.
+#color index brightgreen black "~N (~x byers.world)|(~x byers.x)|(~x langly.levallois123.axialys.net)|(~x the.earth.li)"
+color index brightyellow black ~F
+color index black green ~T
+color index brightred black ~D
+
+mono index bold ~N
+mono index bold ~F
+mono index bold ~T
+mono index bold ~D
+
+# Highlights inside the body of a message.
+
+# URLs
+color body brightgreen  black "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+color body brightgreen  black "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body brightgreen  black "news:[^ \">\t\r\n]*"
+mono  body bold              "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+mono  body bold              "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono  body bold              "news:[^ \">\t\r\n]*"
+
+# email addresses
+color body brightgreen black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+#mono body bold "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+# header
+color header green black "^from:"
+color header green black "^to:"
+color header green black "^cc:"
+color header green black "^date:"
+color header yellow black "^newsgroups:"
+color header yellow black "^reply-to:"
+color header brightcyan black "^subject:"
+color header red black "^x-spam-rule:"
+color header green black "^x-mailer:"
+color header yellow black "^message-id:"
+color header yellow black "^Organization:"
+color header yellow black "^Organisation:"
+color header yellow black "^User-Agent:"
+color header yellow black "^message-id: .*pine"
+color header yellow black "^X-Fnord:"
+color header yellow black "^X-WebTV-Stationery:"
+color header yellow black "^X-Message-Flag:"
+color header yellow black "^X-Spam-Status:"
+color header yellow black "^X-SpamProbe:"
+color header red black "^X-SpamProbe: SPAM"
+
+
+# Coloring quoted text - coloring the first 7 levels:
+color quoted cyan black
+color quoted1 yellow black
+color quoted2 red black
+color quoted3 green black
+color quoted4 cyan black
+color quoted5 yellow black
+color quoted6 red black
+color quoted7 green black
+
+
+# Default color definitions
+#color hdrdefault white green
+color signature brightmagenta black
+color indicator black cyan 
+color attachment black green
+color error red black
+color message white black
+color search brightwhite magenta
+color status brightyellow blue
+color tree brightblue black
+color normal white black
+color tilde green black
+color bold brightyellow black
+#color underline magenta black
+color markers brightcyan black
+# Colour definitions when on a mono screen
+mono bold bold
+mono underline underline
+mono indicator reverse

@@ -17,5 +17,4 @@ set smtp_pass=$my_pwd_email
 
 ############################## MACROS ########################################
 macro index,pager R "<save-message>=References <enter>" "Reference"
-
-# macro index <f9> '<sync-mailbox><enter-command>source ~/.mutt/bryanbugyi34.gmail<enter><change-folder>!<enter>'
+macro index <f9> '<sync-mailbox><enter-command>source ~/.mutt/bryan_bugyi.mymail.rcbc<enter><change-folder>!<enter>'

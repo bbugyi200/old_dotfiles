@@ -14,3 +14,7 @@ set trash = "+[Google Mail]/Trash"
 ##SMTP Settings to sent email
 set smtp_url = "smtps://bryan_bugyi@mymail.rcbc.edu@smtp.gmail.com:465/"
 set smtp_pass=$my_pwd_email
+
+
+############################## MACROS ########################################
+macro index <f9> '<sync-mailbox><enter-command>source ~/.mutt/bryanbugyi34.gmail<enter><change-folder>!<enter>'
