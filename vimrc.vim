@@ -85,7 +85,7 @@ highlight Constant ctermfg=lightmagenta
 " ------------------------------ KEY MAPPINGS --------------------------------
 
 " Allows space to work in Normal-Mode
-nnoremap <space> i<space><esc>
+nnoremap <space> a<space><esc>
 
 " Shortcuts for quiting vim
 noremap <Leader>e :quit<CR>
@@ -146,6 +146,7 @@ autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.md set colorcolumn=
 autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.html set colorcolumn=
+autocmd FileType mail setlocal spell spelllang=en_us
 
 " Automatic rewriting of .vimrc
  autocmd! bufwritepost .vimrc source %

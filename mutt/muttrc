@@ -6,8 +6,8 @@ auto_view text/html
 mailboxes imaps://bryanbugyi34@imap.gmail.com:993/ imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ /var/spool/mail/bryan
 
 source "gpg2 -dq ~/.my-pwds.gpg |"
-# source ~/.mutt/bryan_bugyi.mymail.rcbc
-source ~/.mutt/bryanbugyi34.gmail
+# source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc
+source ~/.mutt/hooks/bryanbugyi34.gmail
 
 ################################ SETS #########################################
 set realname = "Bryan"
@@ -27,10 +27,11 @@ set sort_aux = last-date-received
 
 ##Set editor to create new email
 set edit_headers
-set editor="$EDITOR +/^$"  # Opens vim to first blank line
+source "~/.mutt/bin/editor.sh|"
+set editor="$my_editor +/^$"  # Opens vim to first blank line
 
 set alias_file        = '~/.mutt/aliases'
-set display_filter    = '~/.mutt/aliases.sh'
+set display_filter    = '~/.mutt/bin/aliases.sh'
 source $alias_file
 
 set fast_reply=yes        # when replying, don't prompt for address
@@ -46,11 +47,13 @@ set mailcap_path = ~/.mutt/mailcap
 
 ################################## BINDINGS ###################################
 bind editor <space> noop
-bind index <F9> imap-fetch-mail
-bind index G last-entry
-bind index N search-opposite
 bind pager [ half-up
 bind pager ] half-down
+
+### Inspired by Vim ###
+bind index G last-entry
+bind pager G bottom
+bind index N search-opposite
 bind pager j next-line
 bind pager k previous-line
 
@@ -60,17 +63,20 @@ macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
 macro index,pager A "<save-message>=[Gmail]/All Mail<enter>" "Archive"
 macro index,pager D "<save-message>=[Gmail]/Trash<enter>" "Delete"
 
+### Inspired by Vim ###
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to All Mail"
 macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
 macro index gg <first-entry> "Go to top email"
+macro pager gg <top> "Go to top"
+macro index,pager ,e quit "Quit"
 
 
 ############################ HOOKS ############################################
-account-hook $folder 'source ~/.mutt/status_format'
-folder-hook imaps://bryanbugyi34@imap.gmail.com:993/ 'source ~/.mutt/bryanbugyi34.gmail'
-folder-hook imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ 'source ~/.mutt/bryan_bugyi.mymail.rcbc'
-folder-hook /var/spool/mail 'source ~/.mutt/unixmail'
+account-hook $folder 'source ~/.mutt/hooks/status_format'
+folder-hook imaps://bryanbugyi34@imap.gmail.com:993/ 'source ~/.mutt/hooks/bryanbugyi34.gmail'
+folder-hook imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ 'source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc'
+folder-hook /var/spool/mail 'source ~/.mutt/hooks/unixmail'
 
 
 ############################## COLORS #########################################
