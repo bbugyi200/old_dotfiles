@@ -12,7 +12,7 @@ set postponed ="+[Google Mail]/Drafts"
 set trash = "+[Google Mail]/Trash"
 
 ##SMTP Settings to sent email
-set smtp_url = "smtps://bryan_bugyi@mymail.rcbc.edu@smtp.gmail.com:465/"
+set smtp_url = "smtp://bryan_bugyi@mymail.rcbc.edu@smtp.gmail.com:587/"
 set smtp_pass=$my_pwd_email
 
 

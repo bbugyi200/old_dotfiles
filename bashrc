@@ -1,13 +1,10 @@
 # ----------------------------------------------------------------------------
-# I set this so the crontab would use vim for editing
-export EDITOR=$(which vim)
-
 # ----------------------------------- ALIASES --------------------------------
 alias sql="rlwrap sqlite3"
 
 alias budget="cd ~/Dropbox/Budget/ && ./IntelliBudget > /dev/null & disown"
 
-alias mutt-edu="mutt -e 'source ~/.mutt/bryan_bugyi.mymail.rcbc'"
+alias mutt-edu="mutt -e 'source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc'"
 
 # -------------------------------- FUNCTIONS ---------------------------------
 function tm() {
@@ -32,17 +29,30 @@ function ta() {
 }
 
 function sbreak() {
-    if [ "$1" == '--clear' ]
-    then 
-        cp ~/Dropbox/notes/sbreak/template.txt ~/Dropbox/notes/sbreak/sbreak.txt
+    FILE=~/Dropbox/notes/sbreak.txt
+    if [ "$1" == '--clear' -o "$1" == '-c' ]; then 
+        sed -i 's/\[X\]/\[\]/g' $FILE
+        sed -i '/([X]\?)/d' $FILE
     fi
 
-    vim ~/Dropbox/notes/sbreak/sbreak.txt
+    if [ "$2" == '--silent' -o "$2" == '-s' ]; then
+        : # NOOP
+    else
+        vim $FILE
+    fi
 }
 
 
 function getPWD() {
     echo $(pwd | sed 's/\/home\/[Bb]ryan/~/' | cut -c -55) 
+}
+
+# ETERNAL BASH HISTORY
+# https://spin.atomicobject.com/2016/05/28/log-bash-history/
+function log_bash_history() { 
+    if [ "$(id -u)" -ne 0 ]; 
+    then printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(getPWD)" "$(history 1 | cut -c 8-)" >> ~/Dropbox/logs/bash-history.log;
+    fi; 
 }
 
 function hgrep() {
@@ -66,15 +76,6 @@ function hview() {
     fi
 }
 
-
-# ------------------------------- POWERLINE ----------------------------------
-export TERM="screen-256color"
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. $POWERLINE_DIRECTORY/powerline/bindings/bash/powerline.sh
-
-# ------------------------------- VMAN ---------------------------------------
 # Enables vman command from the terminal
 vman() {
   vim -c "SuperMan $*"
@@ -84,13 +85,17 @@ vman() {
   fi
 }
 
-# -------------------------- ETERNAL BASH HISTORY ----------------------------
-
-# https://spin.atomicobject.com/2016/05/28/log-bash-history/
-function log_bash_history() { 
-    if [ "$(id -u)" -ne 0 ]; 
-    then printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(getPWD)" "$(history 1 | cut -c 8-)" >> ~/Dropbox/logs/bash-history.log;
-    fi; 
-}
+# ------------------------------ EXPORTS -------------------------------------
+# I set this so the crontab would use vim for editing
+export EDITOR=$(which vim)
 
 export PROMPT_COMMAND="log_bash_history; $PROMPT_COMMAND"
+
+# Needed for powerline to work
+export TERM="screen-256color"
+
+# ------------------------------- MISC ---------------------------------------
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. $POWERLINE_DIRECTORY/powerline/bindings/bash/powerline.sh

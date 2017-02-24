@@ -10,7 +10,7 @@ source "gpg2 -dq ~/.my-pwds.gpg |"
 source ~/.mutt/hooks/bryanbugyi34.gmail
 
 ################################ SETS #########################################
-set realname = "Bryan"
+set realname = "Bryan Bugyi"
 
 ##LOCAL FOLDERS FOR CACHED HEADERS AND CERTIFICATES
 set header_cache =~/.muttextras/cache/headers
@@ -30,8 +30,9 @@ set edit_headers
 source "~/.mutt/bin/editor.sh|"
 set editor="$my_editor +/^$"  # Opens vim to first blank line
 
-set alias_file        = '~/.mutt/aliases'
-set display_filter    = '~/.mutt/bin/aliases.sh'
+set alias_file = '~/.mutt/aliases'
+set sort_alias = alias
+# set display_filter    = '~/.mutt/bin/aliases.sh'
 source $alias_file
 
 set fast_reply=yes        # when replying, don't prompt for address
@@ -49,6 +50,8 @@ set mailcap_path = ~/.mutt/mailcap
 bind editor <space> noop
 bind pager [ half-up
 bind pager ] half-down
+
+bind index <F8> imap-fetch-mail
 
 ### Inspired by Vim ###
 bind index G last-entry

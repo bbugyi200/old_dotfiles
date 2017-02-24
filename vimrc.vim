@@ -52,6 +52,9 @@ set smartcase
 set wildmenu
 set wildmode=full
 
+" 'find' should ignore these folders
+set wildignore+=**/__pycache__/**
+
 " Increase command history limit
 set history=200
 
@@ -82,10 +85,26 @@ au BufRead,BufNewFile *.txt set filetype=txt
 " transparent terminal
 highlight Constant ctermfg=lightmagenta 
 
+" ------------------------------- FUNCTIONS ----------------------------------
+function! s:VSetSearch(cmdtype)
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+    let @s = temp
+endfunction
+
 " ------------------------------ KEY MAPPINGS --------------------------------
 
+" Preserves flags when repeating the last substitute command.
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
+" Allows for visual search
+xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+
 " Allows space to work in Normal-Mode
-nnoremap <space> a<space><esc>
+nnoremap <space> i<space><esc>
 
 " Shortcuts for quiting vim
 noremap <Leader>e :quit<CR>
