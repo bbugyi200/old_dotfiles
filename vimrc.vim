@@ -61,6 +61,9 @@ set history=200
 " Always show one line above/below cursor
 set scrolloff=1
 
+" Allows you to change buffers without first saving the current buffer
+set hidden
+
 " --------------------------------- LETS -------------------------------------
 
 " Sets LaTeX as default for .tex files
@@ -179,3 +182,5 @@ augroup filetypedetect
   " Mail
   autocmd BufRead,BufNewFile *mutt-*              setfiletype mail
 augroup END
+
+au FileType tex let b:delimitMate_quotes = "\" ' $"

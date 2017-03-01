@@ -38,6 +38,8 @@ Plugin 'tpope/vim-unimpaired'
 
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'Raimondi/delimitMate'
+
 
 " ------------------------------ Airline Status Bar Configs -------------------
 
