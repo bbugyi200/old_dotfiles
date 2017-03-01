@@ -1,4 +1,7 @@
 # ----------------------------------------------------------------------------
+# ------------------------------ SOURCES -------------------------------------
+source localAlias
+
 # ----------------------------------- ALIASES --------------------------------
 alias sql="rlwrap sqlite3"
 
@@ -56,10 +59,10 @@ function log_bash_history() {
 }
 
 function hgrep() {
-    if [ "$1" == '--local' -o "$1" == '-L' ]
+    if [ "$1" == '--local' -o "$1" == '-l' ]
     then
         cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -e " $(getPWD) " | grep -e "$(hostname)" | tr -s ' '| cut -d' ' -f 2,6- | grep -e "$2"
-    elif [ "$1" == '--verbose' -o "$1" == '-V' ]
+    elif [ "$1" == '--verbose' -o "$1" == '-v' ]
     then
         cat ~/Dropbox/logs/bash-history.log | nl | grep -e "$2"
     else
@@ -83,6 +86,21 @@ vman() {
   if [ "$?" != "0" ]; then
     echo "No manual entry for $*"
   fi
+}
+
+##############################################################################
+#  Calls LocalAlias function if unknown command starts with a capital letter #
+##############################################################################
+
+# orig_command_not_found ---> command_not_found_handle
+# http://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function
+eval "$(echo "orig_command_not_found()"; declare -f command_not_found_handle | tail -n +2)"
+command_not_found_handle() {
+    if [[ ${1:0:1} =~ [A-Z] ]]; then
+        LocalAlias $1
+    else
+        orig_command_not_found $1
+    fi
 }
 
 # ------------------------------ EXPORTS -------------------------------------
