@@ -9,6 +9,8 @@ alias budget="cd ~/Dropbox/Budget/ && ./IntelliBudget > /dev/null & disown"
 
 alias mutt-edu="mutt -e 'source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc'"
 
+alias Exp="nautilus ."
+
 # -------------------------------- FUNCTIONS ---------------------------------
 function tm() {
     if [ $1 == 'ls' ]
@@ -96,10 +98,11 @@ vman() {
 # http://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function
 eval "$(echo "orig_command_not_found()"; declare -f command_not_found_handle | tail -n +2)"
 command_not_found_handle() {
-    if [[ ${1:0:1} =~ [A-Z] ]]; then
-        LocalAlias $1
-    else
-        orig_command_not_found $1
+    GREP=$(grep -s -i "^$1" "./.localaliases") > /dev/null
+    LocalAlias $1 "$GREP"
+
+    if [ $? -eq 0 ]; then
+        orig_command_not_found "${@:1}"
     fi
 }
 
