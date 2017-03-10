@@ -27,10 +27,11 @@ set colorcolumn=80
 set autoindent
 set backspace=2
 " set autochdir
-set tabstop=4
+set tabstop=8
 set shiftwidth=4
 set expandtab
 set nocompatible
+
 
 set exrc
 set secure
@@ -63,6 +64,16 @@ set scrolloff=1
 
 " Allows you to change buffers without first saving the current buffer
 set hidden
+
+" Change default program for :grep to ack
+set grepprg=ack\ --nogroup\ --column\ $*
+set grepformat=%f:%l:%c:%m
+
+" Autocompletion will only recommend completions that match the typed case
+set infercase
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
 
 " --------------------------------- LETS -------------------------------------
 
@@ -158,6 +169,20 @@ cnoremap <C-n> <Down>
 " mapping to wrap paragraph
 nnoremap <Leader>g gqap
 
+" deletes current file and buffer
+nnoremap <C-Del> :call delete(expand('%'))<CR>
+
+" Quick Insert Movements
+inoremap II <Esc>I
+inoremap AA <Esc>A
+inoremap OO <Esc>O
+
+" Line Modifications in Insert MOde
+inoremap CC <Esc>lC
+inoremap SS <Esc>S
+inoremap DD <Esc>dd
+inoremap UU <Esc>u
+
 " ------------------------------ AUTOS ---------------------------------------
 
 " Turns spellcheck on for certain file extensions
@@ -183,4 +208,4 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile *mutt-*              setfiletype mail
 augroup END
 
-au FileType tex let b:delimitMate_quotes = "\" ' $"
+autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
