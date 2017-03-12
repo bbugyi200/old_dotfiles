@@ -183,6 +183,9 @@ inoremap SS <Esc>S
 inoremap DD <Esc>dd
 inoremap UU <Esc>u
 
+" Jump to next search match from Insert Mode
+inoremap NN <Esc>n
+
 " ------------------------------ AUTOS ---------------------------------------
 
 " Turns spellcheck on for certain file extensions
@@ -209,3 +212,5 @@ augroup filetypedetect
 augroup END
 
 autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
+
+let g:airline#extensions#tabline#enabled = 1

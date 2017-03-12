@@ -40,7 +40,7 @@ syn region Comment start="\/\*" end="\*\/" contains=@txtContains,@NoSpell
 syn keyword Todo TODO NOTE FIXME
 syn region Todo start="\([A-Z]\{2,\}:\|:\):" end="$" contains=@NoSpell oneline
 
-syn region Todo start="<" end=">" oneline
+syn region Todo start="<\[" end="\]>" oneline
 syn region ErrorMsg start="{" end="}" oneline
 
 " HiLinks 

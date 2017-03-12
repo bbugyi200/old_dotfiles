@@ -11,6 +11,10 @@ alias mutt-edu="mutt -e 'source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc'"
 
 alias Exp="nautilus ."
 
+alias tree="tree -I \"__pycache__\""
+
+alias lls="ls -1"
+
 # -------------------------------- FUNCTIONS ---------------------------------
 function tm() {
     if [ $1 == 'ls' ]
@@ -31,6 +35,23 @@ function ta() {
     else
         tmux -2 attach -t $1
     fi
+}
+
+function ccd {
+    case "$1" in
+        ww)
+            cd ~/Dropbox/college_studies/UGR/WW;;
+        config)
+            cd $CONFIG;;
+        vgt)
+            cd ~/Dropbox/Learning_Environments/Vim_Git_Tmux;;
+        flasky)
+            cd ~/My_Projects/Flasky;;
+        budget)
+            cd ~/Dropbox/Python_Projects/IntelliBudget;;
+        notes)
+            cd ~/Dropbox/notes;;
+    esac
 }
 
 function sbreak() {
@@ -90,19 +111,14 @@ vman() {
   fi
 }
 
-##############################################################################
-#  Calls LocalAlias function if unknown command starts with a capital letter #
-##############################################################################
-
 # orig_command_not_found ---> command_not_found_handle
 # http://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function
 eval "$(echo "orig_command_not_found()"; declare -f command_not_found_handle | tail -n +2)"
 command_not_found_handle() {
-    GREP=$(grep -s -i "^$1" "./.localaliases") > /dev/null
-    LocalAlias $1 "$GREP"
-
-    if [ $? -eq 0 ]; then
-        orig_command_not_found "${@:1}"
+    GREP=$(grep -s "^$1$SEP" "./.localaliases")
+    if LocalAlias $1 "$GREP" "${@:2}"; then
+        echo
+        orig_command_not_found "$1"
     fi
 }
 
@@ -120,3 +136,6 @@ powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . $POWERLINE_DIRECTORY/powerline/bindings/bash/powerline.sh
+
+#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
+stty -ixon

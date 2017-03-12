@@ -43,7 +43,9 @@ set pager_stop            # don't go to next message at end of message
 set mail_check=10
 set nomark_old            # I don't care if message is OLD
 set delete=yes		 	  # purge deleted messages without asking
-set mailcap_path = ~/.mutt/mailcap
+set mailcap_path=~/.mutt/mailcap
+
+set xterm_set_titles=yes  # Enables mutt to set terminal title
 
 
 ################################## BINDINGS ###################################
