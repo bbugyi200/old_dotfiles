@@ -76,6 +76,14 @@ macro index gg <first-entry> "Go to top email"
 macro pager gg <top> "Go to top"
 macro index,pager ,e quit "Quit"
 
+# Used to open attachment in a program that I specify
+macro attach O \
+"\
+<enter-command>unset wait_key<enter>\
+<shell-escape>rm -f /tmp/mutt-attach<enter>\
+<save-entry><kill-line>/tmp/mutt-attach<enter>\
+<shell-escape> /tmp/mutt-attach &^A\
+"
 
 ############################ HOOKS ############################################
 account-hook $folder 'source ~/.mutt/hooks/status_format'
