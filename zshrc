@@ -16,8 +16,11 @@ alias tree="tree -I \"__pycache__\""
 alias lls="ls -1"
 
 # -------------------------------- FUNCTIONS ---------------------------------
+
+precmd() { eval "$PROMPT_COMMAND" }
+
 function tm() {
-    if [ $1 == 'ls' ]
+    if [ "$1" = 'ls' ]
     then 
         tmux ls
     elif [ $# -eq 0 ]
@@ -56,12 +59,12 @@ function ccd {
 
 function sbreak() {
     FILE=~/Dropbox/notes/sbreak.txt
-    if [ "$1" == '--clear' -o "$1" == '-c' ]; then 
+    if [ "$1" = '--clear' -o "$1" = '-c' ]; then 
         sed -i 's/\[X\]/\[\]/g' $FILE
         sed -i '/([X]\?)/d' $FILE
     fi
 
-    if [ "$2" == '--silent' -o "$2" == '-s' ]; then
+    if [ "$2" = '--silent' -o "$2" = '-s' ]; then
         : # NOOP
     else
         vim $FILE
@@ -77,15 +80,15 @@ function getPWD() {
 # https://spin.atomicobject.com/2016/05/28/log-bash-history/
 function log_bash_history() { 
     if [ "$(id -u)" -ne 0 ]; 
-    then printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(getPWD)" "$(history 1 | cut -c 8-)" >> ~/Dropbox/logs/bash-history.log;
+    then printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(getPWD)" "$(fc -ln -1)" >> ~/Dropbox/logs/bash-history.log;
     fi; 
 }
 
 function hgrep() {
-    if [ "$1" == '--local' -o "$1" == '-l' ]
+    if [ "$1" = '--local' -o "$1" = '-l' ]
     then
         cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -e " $(getPWD) " | grep -e "$(hostname)" | tr -s ' '| cut -d' ' -f 2,6- | grep -e "$2"
-    elif [ "$1" == '--verbose' -o "$1" == '-v' ]
+    elif [ "$1" = '--verbose' -o "$1" = '-v' ]
     then
         cat ~/Dropbox/logs/bash-history.log | nl | grep -e "$2"
     else
@@ -113,12 +116,13 @@ vman() {
 
 # orig_command_not_found ---> command_not_found_handle
 # http://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function
-eval "$(echo "orig_command_not_found()"; declare -f command_not_found_handle | tail -n +2)"
-command_not_found_handle() {
+# eval "$(echo orig_command_not_found(); declare -f command_not_found_handler | tail -n +2)"
+command_not_found_handler() {
     GREP=$(grep -s "^$1$SEP" "./.localaliases")
     if LocalAlias $1 "$GREP" "${@:2}"; then
-        echo
-        orig_command_not_found "$1"
+          :
+#         echo
+#         orig_command_not_found "$1"
     fi
 }
 
@@ -129,13 +133,13 @@ export EDITOR=$(which vim)
 export PROMPT_COMMAND="log_bash_history; $PROMPT_COMMAND"
 
 # Needed for powerline to work
-export TERM="screen-256color"
+# export TERM="screen-256color"
 
 # ------------------------------- MISC ---------------------------------------
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. $POWERLINE_DIRECTORY/powerline/bindings/bash/powerline.sh
+# powerline-daemon -q
+# POWERLINE_BASH_CONTINUATION=1
+# POWERLINE_BASH_SELECT=1
+# . $POWERLINE_DIRECTORY/powerline/bindings/bash/powerline.sh
 
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
