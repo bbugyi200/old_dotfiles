@@ -16,5 +16,3 @@ endif
 inoremap <C-l> <esc>bi\<esc>ea<C-n>
 
 set colorcolumn=
-
-setlocal spell spelllang=en_us

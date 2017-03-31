@@ -143,6 +143,8 @@ endif
 " -----------------------------------------------------------------------------
 if $VIMID=="Home" || $VIMID=="Laptop"
 
+let g:neocomplete#enable_auto_close_preview=1
+
 " ------- UltiSnips Integration w/ Autocomplete --------------
 function! g:UltiSnips_Complete()
     call UltiSnips#ExpandSnippet()

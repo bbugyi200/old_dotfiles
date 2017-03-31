@@ -22,7 +22,7 @@ endif
 " -------------------------------- SETS --------------------------------------
 set clipboard=unnamedplus
 
-set number
+set relativenumber
 set colorcolumn=80
 set autoindent
 set backspace=2
@@ -74,6 +74,12 @@ set infercase
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
+
+set cursorline
+set cursorcolumn
+
+" Indents wraps
+set breakindent
 
 " --------------------------------- LETS -------------------------------------
 
@@ -172,10 +178,12 @@ nnoremap <Leader>g gqap
 " deletes current file and buffer
 nnoremap <C-Del> :call delete(expand('%'))<CR>
 
+nnoremap <C-s> :SyntasticToggleMode<CR>
+
 " Quick Insert Movements
 inoremap II <Esc>I
 inoremap AA <Esc>A
-inoremap OO <Esc>O
+inoremap OO <Esc>o
 
 " Line Modifications in Insert MOde
 inoremap CC <Esc>lC
@@ -190,6 +198,7 @@ inoremap NN <Esc>n
 
 " Turns spellcheck on for certain file extensions
 " 2nd line disables the colorcolumn
+autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.txt setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.txt set colorcolumn=
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
