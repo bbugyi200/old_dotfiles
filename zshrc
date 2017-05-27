@@ -6,6 +6,15 @@ source globrc
 
 # ----------------------------------- ALIASES --------------------------------
 alias -s pdf="okular"
+alias -s docx="/usr/lib/libreoffice/program/soffice.bin --writer"
+alias -s ppt="/usr/lib/libreoffice/program/soffice.bin --impress"
+alias -s png="eog"
+alias -s jpg="eog"
+alias -s jpeg="eog"
+alias -s git="git clone"
+
+alias -g @@="&> /dev/null & disown"
+alias -g X="&& exit"
 
 # -------------------------------- FUNCTIONS ---------------------------------
 

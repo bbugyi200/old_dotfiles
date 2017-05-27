@@ -32,7 +32,6 @@ set shiftwidth=4
 set expandtab
 set nocompatible
 
-
 set exrc
 set secure
 
@@ -81,6 +80,9 @@ set cursorcolumn
 " Indents wraps
 set breakindent
 
+" Disables search highlighting
+set nohlsearch
+
 " --------------------------------- LETS -------------------------------------
 
 " Sets LaTeX as default for .tex files
@@ -124,7 +126,7 @@ xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 " Allows space to work in Normal-Mode
-nnoremap <space> i<space><esc>
+nnoremap <space> a<space><esc>
 
 " Shortcuts for quiting vim
 noremap <Leader>e :quit<CR>
@@ -193,6 +195,9 @@ inoremap UU <Esc>u
 
 " Jump to next search match from Insert Mode
 inoremap NN <Esc>n
+
+" Toggles 'cursorline'
+nnoremap <Leader>l :set cursorline!<CR>
 
 " ------------------------------ AUTOS ---------------------------------------
 

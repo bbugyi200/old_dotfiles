@@ -105,7 +105,7 @@ color indicator default blue
 color index brightyellow black ~N
 color index yellow black ~O
 color index red black ~D
-color normal white black
+color normal white default
 
 
 # Colours for items in the index

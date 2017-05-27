@@ -42,6 +42,8 @@ Plugin 'Raimondi/delimitMate'
 
 Plugin 'vim-airline/vim-airline'
 
+Plugin 'davidhalter/jedi-vim'
+
 
 " ------------------------------ Airline Status Bar Configs -------------------
 
@@ -122,7 +124,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = '/path/to/python3'
+let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 " Disables certain Python Flake8 Errors
 let g:syntastic_python_checkers=['flake8']
@@ -142,6 +144,8 @@ endif
 " ------------------------ YCM/NeoComplete Configuration ----------------------
 " -----------------------------------------------------------------------------
 if $VIMID=="Home" || $VIMID=="Laptop"
+
+let g:ymc_python_library_binary_path = 'usr/bin/python3'
 
 let g:neocomplete#enable_auto_close_preview=1
 
@@ -219,7 +223,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.

@@ -1,29 +1,12 @@
 # ----------------------------------- ALIASES --------------------------------
 alias sql="rlwrap sqlite3"
-
 alias budget="cd ~/Dropbox/Budget/ && ./IntelliBudget > /dev/null & disown"
-
 alias mutt-edu="mutt -e 'source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc'"
-
-alias Exp="nautilus ."
-
 alias tree="tree -I \"__pycache__\""
-
 alias lls="ls -1"
+alias lvim='vim -c "normal \`0"'
 
 # -------------------------------- FUNCTIONS ---------------------------------
-
-function tm() {
-    if [ "$1" = 'ls' ]
-    then 
-        tmux ls
-    elif [ $# -eq 0 ]
-    then
-        tmux -2
-    else
-        tmux -2 new -s $1
-    fi
-}
 
 function ta() {
     if [ $# -eq 0 ]
@@ -50,6 +33,8 @@ function ccd {
             cd ~/Dropbox/Learning_Environments/DataScience;;
         learn)
             cd ~/Dropbox/Learning_Environments;;
+        movies)
+            cd ~/My_Projects/Movie_Data;;
     esac
 }
 
@@ -119,3 +104,6 @@ export PROMPT_COMMAND="log_bash_history; $PROMPT_COMMAND"
 # ------------------------------ MISC ----------------------------------------
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
+
+# Fixes Mutt Background Issue (stays transparent) in TMUX
+export TERM="screen-256color"
