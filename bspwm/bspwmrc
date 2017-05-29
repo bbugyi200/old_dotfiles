@@ -1,0 +1,26 @@
+#! /bin/sh
+
+panel &
+sxhkd &
+
+bspc monitor HDMI2 -d I II III IV V
+bspc monitor HDMI1 -d VI VII VIII IX X
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config click_to_focus true
+bspc config pointer_follows_monitor       true
+bspc config focus_follows_pointer         true
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc desktop -f ^1
+
+# bspc rule -a Google-chrome desktop='^8' state=floating
+# bspc rule -a Termite desktop='^2'
+# bspc rule -a mplayer2 state=floating
+# bspc rule -a Kupfer.py focus=on
+# bspc rule -a Screenkey manage=off

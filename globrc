@@ -68,12 +68,12 @@ function log_bash_history() {
 function hgrep() {
     if [ "$1" = '--local' -o "$1" = '-l' ]
     then
-        cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -e " $(getPWD) " | grep -e "$(hostname)" | tr -s ' '| cut -d' ' -f 2,6- | grep -e "$2"
+        cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -a -e " $(getPWD) " | grep -a -e "$(hostname)" | tr -s ' '| cut -d' ' -f 2,6- | grep -a -e "$2"
     elif [ "$1" = '--verbose' -o "$1" = '-v' ]
     then
-        cat ~/Dropbox/logs/bash-history.log | nl | grep -e "$2"
+        cat ~/Dropbox/logs/bash-history.log | nl | grep -a -e "$2"
     else
-        cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -e "$(hostname)" | tr -s ' ' | cut -d' ' -f 2,6- | grep -e "$1"
+        cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -a -e "$(hostname)" | tr -s ' ' | cut -d' ' -f 2,6- | grep -a -e "$1"
     fi
 }
 
@@ -99,11 +99,12 @@ vman() {
 # I set this so the crontab would use vim for editing
 export EDITOR=$(which vim)
 
-export PROMPT_COMMAND="log_bash_history; $PROMPT_COMMAND"
+export PROMPT_COMMAND="log_bash_history" 
+# Removed to fix double history log # ; $PROMPT_COMMAND"
 
 # ------------------------------ MISC ----------------------------------------
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 
 # Fixes Mutt Background Issue (stays transparent) in TMUX
-export TERM="screen-256color"
+# export TERM="screen-256color"

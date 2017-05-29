@@ -43,6 +43,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'vim-airline/vim-airline'
 
 Plugin 'davidhalter/jedi-vim'
+let g:jedi#popup_on_dot = 0
 
 
 " ------------------------------ Airline Status Bar Configs -------------------
@@ -144,9 +145,7 @@ endif
 " ------------------------ YCM/NeoComplete Configuration ----------------------
 " -----------------------------------------------------------------------------
 if $VIMID=="Home" || $VIMID=="Laptop"
-
-let g:ymc_python_library_binary_path = 'usr/bin/python3'
-
+"
 let g:neocomplete#enable_auto_close_preview=1
 
 " ------- UltiSnips Integration w/ Autocomplete --------------
@@ -189,7 +188,6 @@ hi Pmenu ctermfg=white
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:neocomplete#enable_at_startup = 1
 
 
 " -------- Recommended NeoComplete Config ---------
@@ -223,7 +221,6 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
@@ -239,6 +236,15 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " ------------- END:: Recommended Neocomplete Config ---------------
+
+" Neocomplete integration with jedi-vim plugin
+" autocmd FileType python setlocal omnifunc=jedi#completions
+" let g:jedi#completions_enabled = 0
+" let g:jedi#auto_vim_configuration = 0
+" let g:jedi#smart_auto_mappings = 0
+" let g:neocomplete#sources#omni#input_patterns.python =
+"     \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+
 
 endif
 " ------------------- END:: YCM/NeoComplete Configuration ----------------------
