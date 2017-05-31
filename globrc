@@ -2,6 +2,7 @@
 alias sql="rlwrap sqlite3"
 alias budget="cd ~/Dropbox/Budget/ && ./IntelliBudget > /dev/null & disown"
 alias mutt-edu="mutt -e 'source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc'"
+alias mutt-root='sudo mutt -f /var/spool/mail/root'
 alias tree="tree -I \"__pycache__\""
 alias lls="ls -1"
 alias lvim='vim -c "normal \`0"'
@@ -19,22 +20,14 @@ function ta() {
 
 function ccd {
     case "$1" in
-        ww)
-            cd ~/Dropbox/college_studies/UGR/WW;;
         config)
-            cd $CONFIG;;
-        flasky)
-            cd ~/My_Projects/Flasky;;
-        budget)
-            cd ~/Dropbox/Python_Projects/IntelliBudget;;
+            cd /home/bryan/Dropbox/config;;
         notes)
             cd ~/Dropbox/notes;;
-        data)
-            cd ~/Dropbox/Learning_Environments/DataScience;;
-        learn)
-            cd ~/Dropbox/Learning_Environments;;
         movies)
-            cd ~/My_Projects/Movie_Data;;
+            cd /run/media/bryan/hercules/media/Entertainment/Movies;;
+        misc)
+            cd /media/bryan/hercules/media/Misc;;
     esac
 }
 
