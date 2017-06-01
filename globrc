@@ -6,6 +6,7 @@ alias mutt-root='sudo mutt -f /var/spool/mail/root'
 alias tree="tree -I \"__pycache__\""
 alias lls="ls -1"
 alias lvim='vim -c "normal \`0"'
+alias anki='sudo anki'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
@@ -28,6 +29,8 @@ function ccd {
             cd /run/media/bryan/hercules/media/Entertainment/Movies;;
         misc)
             cd /media/bryan/hercules/media/Misc;;
+        bin)
+            cd /home/bryan/Dropbox/bin;;
     esac
 }
 
@@ -100,4 +103,4 @@ export PROMPT_COMMAND="log_bash_history"
 stty -ixon
 
 # Fixes Mutt Background Issue (stays transparent) in TMUX
-# export TERM="screen-256color"
+export TERM="screen-256color"

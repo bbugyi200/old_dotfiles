@@ -98,6 +98,9 @@ let &winheight = &lines * 6 / 10
 
 " ---------------------------- SYNTAX ----------------------------------------
 syntax on
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Enables syntax highlighting to work properly for certain filetypes
 au BufRead,BufNewFile *.nasm set filetype=nasm
@@ -227,4 +230,4 @@ augroup END
 
 autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
 
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1

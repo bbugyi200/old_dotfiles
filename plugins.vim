@@ -1,8 +1,16 @@
+" -----------------------------------------------------------------------------
 " ------------------ BEGIN:: Vundle Configurations -----------------------------
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
+" ------------------------------- POWERLINE -----------------------------------
+set rtp+=$POWERLINE_DIRECTORY/powerline/bindings/vim
+
+set laststatus=2
+set timeoutlen=1000 ttimeoutlen=10
+
 call vundle#begin()
 
 " -------------------------------------------------------------------------
@@ -40,10 +48,12 @@ Plugin 'tpope/vim-fugitive'
 
 Plugin 'Raimondi/delimitMate'
 
-Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline'
 
 Plugin 'davidhalter/jedi-vim'
 let g:jedi#popup_on_dot = 0
+
+Plugin 'altercation/vim-colors-solarized'
 
 
 " ------------------------------ Airline Status Bar Configs -------------------
@@ -51,43 +61,43 @@ let g:jedi#popup_on_dot = 0
 " The following set commands are used to fix issue with delay in Airline
 " picking up on change from Insert to Normal mode. BEWARE of possible issues
 " caused by setting timeout too low.
-set timeoutlen=1000 ttimeoutlen=10
-
-set laststatus=2
-
-" air-line
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
-" Powerline Status Bar
-set rtp+=$POWERLINE_DIRECTORY/powerline/bindings/vim/
-set t_Co=256
+" set timeoutlen=1000 ttimeoutlen=10
+" 
+" set laststatus=2
+" 
+" " air-line
+" let g:airline_powerline_fonts = 1
+" 
+" if !exists('g:airline_symbols')
+"     let g:airline_symbols = {}
+" endif
+" 
+" " unicode symbols
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.whitespace = 'Ξ'
+" 
+" " airline symbols
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ''
+" 
+" " Powerline Status Bar
+" set rtp+=$POWERLINE_DIRECTORY/powerline/bindings/vim/
+" set t_Co=256
 
 " ------------------------------ END:: Airline Status Bar Configs --------------
 
@@ -113,8 +123,6 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "$CONFIG/UltiSnips"]
 "
 
 " ------------------ Syntastic Config ----------------------
-if $VIMID=="Home" || $VIMID=="Laptop"
-
 Plugin 'scrooloose/syntastic'
 
 set statusline+=%#warningmsg#
@@ -139,12 +147,10 @@ let g:syntastic_c_check_header=1
 " Adds c++11 support to error checking logic
 let g:syntastic_cpp_compiler_options = '-std=c++11'
 
-endif
 " ----------------- END:: Syntastic Config ------------------
 
 " ------------------------ YCM/NeoComplete Configuration ----------------------
 " -----------------------------------------------------------------------------
-if $VIMID=="Home" || $VIMID=="Laptop"
 "
 let g:neocomplete#enable_auto_close_preview=1
 
@@ -246,7 +252,6 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "     \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
 
-endif
 " ------------------- END:: YCM/NeoComplete Configuration ----------------------
 " -----------------------------------------------------------------------------
 
