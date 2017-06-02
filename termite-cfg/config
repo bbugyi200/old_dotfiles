@@ -1,3 +1,6 @@
+[options]
+font = Inconsolata 10
+
 # Solarized dark color scheme
 
 [colors]

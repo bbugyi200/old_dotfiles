@@ -10,8 +10,13 @@ then
     sxhkd &
 fi
 
-bspc monitor HDMI2 -d I II III IV V
-bspc monitor HDMI1 -d VI VII VIII IX X
+if [[ $(hostname) == 'athena' ]]; then
+    bspc monitor HDMI2 -d I II III IV V
+    bspc monitor HDMI1 -d VI VII VIII IX X
+elif [[ $(hostname) == 'aphrodite' ]]; then
+    bspc monitor LVDS-1 -d I II III IV V VI VII VIII IX X
+fi
+
 
 bspc config border_width         2
 bspc config window_gap          12

@@ -15,7 +15,7 @@ alt + r
         pkill -USR1 -x sxhkd
 
 # clipmenu
-super + c
+alt + c
         clipmenu
 
 #
@@ -44,7 +44,9 @@ alt + ctrl + {l,s,p,h}
 
 # Un-hides last hidden window
 alt + ctrl m
-        bspc node $(bspc query -N -n .hidden | tail -n1) -g hidden=off
+        N=$(bspc query -N -n .hidden | tail -n1); \
+        bspc node $N -g hidden=off; \
+        bspc node -f $N
 
 #
 # focus/swap
@@ -53,6 +55,10 @@ alt + ctrl m
 # focus the node in the given direction
 alt + {h,j,k,l}
         bspc node -f {west,south,north,east}
+
+# switch monitor
+alt + backslash
+        bspc monitor -f next
 
 # swap nodes while retaining focus
 super + alt {h,j,k,l}
@@ -79,9 +85,27 @@ alt + {o,i}
         bspc node {older,newer} -f; \
         bspc wm -h on
 
-# focus or send to the given desktop
+# focus or send to the given D (without switching to that D)
 alt + {_,shift + }{1-9,0}
         bspc {desktop -f,node -d} '^{1-9,10}'
+
+alt + ctrl + {1-9,0}
+        N=$(bspc query --nodes --node focused); \
+        bspc node -d '^{1-9,10}'; \
+        bspc node -f $N
+
+# Send to monitor
+alt + ctrl + slash
+        bspc node -m next
+
+# Send to monitor and keep window focused
+alt + ctrl + backslash
+        N=$(bspc query --nodes --node focused); \
+        bspc node -m next; \
+        bspc node -f $N
+
+
+
 
 #
 # preselect
