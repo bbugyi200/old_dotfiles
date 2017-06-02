@@ -14,9 +14,17 @@ alt + space
 alt + r
         pkill -USR1 -x sxhkd
 
+# clipmenu
+super + c
+        clipmenu
+
 #
 # bspwm hotkeys
 #
+#
+## quit bspwm normally
+super + alt + Escape
+	bspc quit
 
 # close and kill
 alt + {_,shift + }w

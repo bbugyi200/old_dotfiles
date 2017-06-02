@@ -21,7 +21,7 @@ function ta() {
 
 function ccd {
     case "$1" in
-        config)
+        config|cfg)
             cd /home/bryan/Dropbox/config;;
         notes)
             cd ~/Dropbox/notes;;
@@ -31,6 +31,8 @@ function ccd {
             cd /media/bryan/hercules/media/Misc;;
         bin)
             cd /home/bryan/Dropbox/bin;;
+        *)
+            return 1
     esac
 }
 

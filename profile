@@ -8,3 +8,7 @@ export PANEL_HEIGHT=24
 export PANEL_FONT="-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
 export PANEL_WM_NAME=bspwm_panel
 export POWERLINE_DIRECTORY=/usr/lib/python3.6/site-packages
+
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -le 3 ]; then
+  exec startx
+fi
