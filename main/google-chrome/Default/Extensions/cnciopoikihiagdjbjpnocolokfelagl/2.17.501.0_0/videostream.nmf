@@ -1,0 +1,108 @@
+{
+  "files": {
+    "main.nexe": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/videostream"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/videostream"
+      }
+    },
+    "libm.so.f78e18e4": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libm.so.f78e18e4"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libm.so.f78e18e4"
+      }
+    },
+    "libstdc++.so.6": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libstdc++.so.6"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libstdc++.so.6"
+      }
+    },
+    "libpthread.so.f78e18e4": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libpthread.so.f78e18e4"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libpthread.so.f78e18e4"
+      }
+    },
+    "librt.so.f78e18e4": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/librt.so.f78e18e4"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/librt.so.f78e18e4"
+      }
+    },
+    "libx264.so.142": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libx264.so.142"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libx264.so.142"
+      }
+    },
+    "libfaac.so.0": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libfaac.so.0.0.0"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libfaac.so.0.0.0"
+      }
+    },
+   "libogg.so.0": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libogg.so.0.8.0"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libogg.so.0.8.0"
+      }
+    },
+    "libvorbisenc.so.2": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libvorbisenc.so.2.0.9"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libvorbisenc.so.2.0.9"
+      }
+    },
+    "libvorbis.so.0": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libvorbis.so.0.4.6"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libvorbis.so.0.4.6"
+      }
+    },
+    "libgcc_s.so.1": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libgcc_s.so.1"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libgcc_s.so.1"
+      }
+    },
+    "libc.so.f78e18e4": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libc.so.f78e18e4"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libc.so.f78e18e4"
+      }
+    }
+  },
+  "program": {
+    "x86-64": {
+      "url": "_platform_specific/x86-64/lib64/runnable-ld.so"
+    },
+    "x86-32": {
+      "url": "_platform_specific/x86-32/lib32/runnable-ld.so"
+    }
+  }
+}

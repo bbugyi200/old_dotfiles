@@ -1,0 +1,1 @@
+chrome.management.uninstallSelf();

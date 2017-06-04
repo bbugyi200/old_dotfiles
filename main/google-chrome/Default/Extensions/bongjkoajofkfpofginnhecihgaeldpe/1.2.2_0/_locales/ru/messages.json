@@ -1,0 +1,17 @@
+{
+   "description": {
+      "message": "Автоматически продолжает недосмотренные YouTube видео с позиции последнего просмотра"
+   },
+   "enableDebuggingOutput": {
+      "message": "Включить вывод отладочной информации на консоль"
+   },
+   "forgetAfterDays": {
+      "message": "Удалять видео старше(дней)"
+   },
+   "forgetIfSecondsLeft": {
+      "message": "Не запоминать позицию если до конца видео осталось(секунд)"
+   },
+   "optionsDescriptionHeader": {
+      "message": "Настройки Video Resumer"
+   }
+}

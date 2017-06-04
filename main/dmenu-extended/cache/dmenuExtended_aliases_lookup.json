@@ -1,0 +1,274 @@
+[
+    [
+        "compton",
+        "compton --xrender-sync-fence"
+    ],
+    [
+        "BlueDevil Wizard",
+        "bluedevil-wizard"
+    ],
+    [
+        "Okular",
+        "okular"
+    ],
+    [
+        "Reader",
+        "kpackagelauncherqml -a org.kde.mobile.okular"
+    ],
+    [
+        "Qt Assistant",
+        "assistant"
+    ],
+    [
+        "LibreOffice Base",
+        "libreoffice --base"
+    ],
+    [
+        "Avahi VNC Server Browser",
+        "bvnc"
+    ],
+    [
+        "Qt Designer",
+        "designer"
+    ],
+    [
+        "LibreOffice Impress",
+        "libreoffice --impress"
+    ],
+    [
+        "Dropbox",
+        "dropbox"
+    ],
+    [
+        "LibreOffice XSLT based filters",
+        "libreoffice"
+    ],
+    [
+        "urxvt (tabbed)",
+        "urxvt-tabbed"
+    ],
+    [
+        "systemadm",
+        "systemadm"
+    ],
+    [
+        "Plasma Windowed",
+        "plasmawindowed"
+    ],
+    [
+        "Qt4 Linguist ",
+        "linguist-qt4"
+    ],
+    [
+        "kde5-nm-connection-editor",
+        "kde5-nm-connection-editor"
+    ],
+    [
+        "GTK+ Demo",
+        "gtk3-demo"
+    ],
+    [
+        "Plasma Look And Feel Explorer",
+        "lookandfeelexplorer"
+    ],
+    [
+        "LibreOffice Draw",
+        "libreoffice --draw"
+    ],
+    [
+        "KColorSchemeEditor",
+        "kcolorschemeeditor"
+    ],
+    [
+        "Termite",
+        "termite"
+    ],
+    [
+        "Qt Linguist",
+        "linguist"
+    ],
+    [
+        "urxvt (client)",
+        "urxvtc"
+    ],
+    [
+        "Qt V4L2 test Utility",
+        "qv4l2"
+    ],
+    [
+        "Feh",
+        "feh"
+    ],
+    [
+        "Klipper",
+        "klipper"
+    ],
+    [
+        "LibreOffice Calc",
+        "libreoffice --calc"
+    ],
+    [
+        "Qt4 Designer",
+        "designer-qt4"
+    ],
+    [
+        "LibreOffice Math",
+        "libreoffice --math"
+    ],
+    [
+        "Discover",
+        "plasma-discover"
+    ],
+    [
+        "GVim",
+        "gvim -f"
+    ],
+    [
+        "Icon Browser",
+        "gtk3-icon-browser"
+    ],
+    [
+        "Konsole",
+        "konsole"
+    ],
+    [
+        "Privilege granting",
+        "gksu-properties"
+    ],
+    [
+        "Avahi Zeroconf Browser",
+        "avahi-discover"
+    ],
+    [
+        "Manage Printing",
+        "/usr/bin/xdg-open http://localhost:631/"
+    ],
+    [
+        "Cuttlefish",
+        "cuttlefish"
+    ],
+    [
+        "Terminal",
+        "gnome-terminal"
+    ],
+    [
+        "Dolphin",
+        "dolphin"
+    ],
+    [
+        "Plasma Theme Explorer",
+        "plasmathemeexplorer"
+    ],
+    [
+        "Qt4 QDbusViewer ",
+        "qdbusviewer-qt4"
+    ],
+    [
+        "KFontView",
+        "kfontview"
+    ],
+    [
+        "Google Chrome",
+        "google-chrome-stable"
+    ],
+    [
+        "LibreOffice",
+        "libreoffice"
+    ],
+    [
+        "Qt4 Assistant ",
+        "assistant-qt4"
+    ],
+    [
+        "Qt QDbusViewer ",
+        "qdbusviewer"
+    ],
+    [
+        "Plasmate",
+        "plasmate"
+    ],
+    [
+        "Qtransmission Bittorrent Client",
+        "transmission-qt"
+    ],
+    [
+        "VLC media player",
+        "vlc --started-from-file"
+    ],
+    [
+        "Widget Factory",
+        "gtk3-widget-factory"
+    ],
+    [
+        "Qt4 Config ",
+        "qtconfig-qt4"
+    ],
+    [
+        "KSysGuard",
+        "ksysguard"
+    ],
+    [
+        "System Settings",
+        "systemsettings5"
+    ],
+    [
+        "Root Terminal",
+        "gksu -l gnome-terminal"
+    ],
+    [
+        "BlueDevil Send File",
+        "bluedevil-sendfile"
+    ],
+    [
+        "KDE System Settings",
+        "systemsettings5"
+    ],
+    [
+        "Anki",
+        "anki"
+    ],
+    [
+        "Menu Editor",
+        "kmenuedit"
+    ],
+    [
+        "Info Center",
+        "kinfocenter"
+    ],
+    [
+        "Avahi SSH Server Browser",
+        "bssh"
+    ],
+    [
+        "UXTerm",
+        "uxterm"
+    ],
+    [
+        "LibreOffice Writer",
+        "libreoffice --writer"
+    ],
+    [
+        "urxvt",
+        "urxvt"
+    ],
+    [
+        "Default Sound Card",
+        "asoundconf-gtk"
+    ],
+    [
+        "XTerm",
+        "xterm"
+    ],
+    [
+        "Firefox",
+        "/usr/lib/firefox/firefox"
+    ],
+    [
+        "KTelnetService",
+        "ktelnetservice5"
+    ],
+    [
+        "KNetAttach",
+        "knetattach"
+    ]
+]

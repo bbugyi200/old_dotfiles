@@ -1,0 +1,10 @@
+{
+  "application_title": {
+    "message": "Wunderlist - To-do and Task list",
+    "description": "The title of the app."
+  },
+  "application_description": {
+    "message": "The only way to organize your life and business",
+    "description": "The description."
+  }
+}

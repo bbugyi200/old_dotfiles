@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/css/compiled.css" />
+	</head>
+	<body style="background-image:none">
+
+	<div id="pair-prompt-view" class="pair-popup dialog">
+		
+		<div class="dialog-inner">
+			<div class="dialog-header" style="webkit-app-region: drag;">
+				<h1 data-localize="pair_dialog_first_title">[pair_dialog_first_title]</h1>
+			</div>
+
+			<div class="dialog-body">
+				<p class="italics centered" data-localize="pair_dialog_first_about">[pair_dialog_first_about]</p>
+				<div style="display:flex; width:100%; justify-content:center; align-items:center">
+					<img src="/img/pair-1-desktop.png"/>				
+				</div>
+				<p class="centered"><span data-localize="pair_dialog_first_about_2">[pair_dialog_first_about_2]</span><strong><span id="pair-phone-name">placeholder</span></strong></p>
+			</div>
+
+			<div class="dialog-footer">
+				<button id="pair-prompt-view-cancel" class="button-flat button-white-blue button-small" data-localize="pair_dialog_cancel">[pair_dialog_cancel]</button>
+				<button id="goto-pair-view" class="button-raised button-indigo button-small" style="-webkit-app-region: drag;" data-localize="pair_dialog_pair">[pair_dialog_pair]</button>
+			</div>
+		</div>		
+	</div>
+	
+	<!-- Mobile pair process dialog -->
+	<div id="pair-view" class="pair-popup dialog" style="display:none;">
+		<div class="dialog-inner">
+			
+			<div class="dialog-header" style="webkit-app-region: drag;">
+				<h1 data-localize="pair_dialog_title">[pair_dialog_title]</h1>
+			</div>
+
+			<div class="dialog-body">
+				<p class="italics centered" data-localize="pair_dialog_about">[pair_dialog_about]</p>
+				<label data-localize="pair_dialog_library_title">[pair_dialog_library_title]</label>
+				<div id="pair-view-list" class="library-list">
+					
+				</div>
+				<button id="button-pair-add" class="button-small button-library button-library-add" data-localize="pair_dialog_library_add">[pair_dialog_library_add]</button>
+				<div id="subtitle-loading-pair-switch" class="subtitle-pair-switch switch-wrapper">
+					<div class="switch"></div>
+					<span data-localize="settings_subtitle_loading_label">[settings_subtitle_loading_label]</span>
+				</div>
+			</div>
+			
+			<div class="dialog-footer">
+				<!-- goes to button-raised button-blue button-small after something added to library -->				
+				<!-- <button id="pair-view-cancel" class="button-flat button-white-blue button-small" data-localize="pair_dialog_cancel">[pair_dialog_cancel]</button> -->				
+				<button id="pair-view-add-folders" class="button-flat button-disabled no-click button-small" data-localize="pair_dialog_add_folders">[pair_dialog_add_folders]</button>
+				<button id="pair-view-finish" class="button-raised button-indigo button-small" style="display:none;" data-localize="pair_dialog_finish">[pair_dialog_finish]</button>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Mobile pair process dialog -->
+	<div id="pair-complete-view" class="pair-popup dialog" style="display:none;">
+		<div class="dialog-inner">
+
+			<div class="dialog-header">
+				<h1 data-localize="pair_complete_dialog_title">[pair_complete_dialog_title]</h1>
+			</div>
+
+			<div class="dialog-body">
+				<p class="italics centered" data-localize="pair_complete_dialog_about">[pair_complete_dialog_about]</p>
+				<div style="display:flex; width:100%; justify-content:center; align-items:center">
+					<img src="/img/pairing-success-desktop.png"/>				
+				</div>
+				<p class="centered" data-localize="pair_complete_dialog_about_2">[pair_complete_dialog_about_2]</p>
+			</div>
+
+			<div class="dialog-footer">
+				<button id="pair-complete-view-finish" class="button-raised button-indigo button-small" data-localize="pair_complete_dialog_finish">[pair_complete_dialog_finish]</button>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- SCRIPTS -->
+	<script src="js/pair.min.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,1 @@
+Interfaces.TabDialogInterface=function(){return{LPTabDialog:{openDialog:new(0,Interfaces.Definition)(Interfaces.TYPE_FUNCTION)}}}();

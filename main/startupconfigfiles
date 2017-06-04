@@ -1,0 +1,42 @@
+kcminputrc Mouse cursorTheme 'breeze_cursors'
+!/home/bryan/.config/kcminputrc
+!/etc/xdg/kcminputrc
+!/home/bryan/.local/share/config/kcminputrc
+!/usr/local/share/config/kcminputrc
+!/usr/share/config/kcminputrc
+*
+kcminputrc Mouse cursorSize ''
+!/home/bryan/.config/kcminputrc
+!/etc/xdg/kcminputrc
+!/home/bryan/.local/share/config/kcminputrc
+!/usr/local/share/config/kcminputrc
+!/usr/share/config/kcminputrc
+*
+ksplashrc KSplash Theme Breeze
+!/home/bryan/.config/ksplashrc
+!/etc/xdg/ksplashrc
+!/home/bryan/.local/share/config/ksplashrc
+!/usr/local/share/config/ksplashrc
+!/usr/share/config/ksplashrc
+*
+ksplashrc KSplash Engine KSplashQML
+!/home/bryan/.config/ksplashrc
+!/etc/xdg/ksplashrc
+!/home/bryan/.local/share/config/ksplashrc
+!/usr/local/share/config/ksplashrc
+!/usr/share/config/ksplashrc
+*
+kdeglobals KScreen ScreenScaleFactors ''
+/home/bryan/.config/kdeglobals
+!/etc/xdg/kdeglobals
+!/home/bryan/.local/share/config/kdeglobals
+!/usr/local/share/config/kdeglobals
+!/usr/share/config/kdeglobals
+*
+kcmfonts General forceFontDPI 0
+!/home/bryan/.config/kcmfonts
+!/etc/xdg/kcmfonts
+!/home/bryan/.local/share/config/kcmfonts
+!/usr/local/share/config/kcmfonts
+!/usr/share/config/kcmfonts
+*

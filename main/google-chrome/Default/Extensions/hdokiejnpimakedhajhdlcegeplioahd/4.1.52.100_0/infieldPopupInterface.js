@@ -1,0 +1,1 @@
+Interfaces.InfieldPopupInterface=function(){return{lpInfield:{setArrowPosition:new(0,Interfaces.Definition)(Interfaces.TYPE_FUNCTION,{include:["contentScript"]})}}}();

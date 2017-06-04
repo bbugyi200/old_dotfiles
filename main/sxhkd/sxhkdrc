@@ -1,0 +1,120 @@
+# -----------------------------------------------------------------------------
+# ---------------------- wm independent hotkeys --------------------------------
+
+# terminal emulator
+super + x
+        termite -e 'tm Terminal'
+
+# program launcher
+alt + space
+        dmenu_extended_run
+
+# make sxhkd reload its configuration files:
+alt + r
+        pkill -USR1 -x sxhkd
+
+# clipmenu
+alt + c
+        clipmenu
+
+# screenlock
+super + l
+        lock
+
+# ---------------------------- bspwm hotkeys ----------------------------------
+
+## quit bspwm normally
+alt + super + Escape
+        bspc quit
+
+# alternate between the tiled and monocle layout
+# super + m
+#         bspc desktop -l next
+
+# close and kill
+alt + {_,shift + }w
+        bspc node -{c,k}
+
+# Expand a window by moving one of its sides outward
+alt + {Left,Down,Up,Right}
+        bspc node -z {left -20 0, bottom 0 20, top 0 -20, right 20 0}
+
+# ------------------------------ state/flags ----------------------------------
+
+# set the window state
+alt + {t,shift + t,s,shift + f}
+        bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+alt + ctrl + {l,s,p,h}
+        bspc node -g {locked,sticky,private,hidden}
+
+# Un-hides last hidden window
+alt + ctrl m
+        N=$(bspc query -N -n .hidden | tail -n1); \
+        bspc node $N -g hidden=off; \
+        bspc node -f $N
+
+# ------------------------------ focus/swap -----------------------------------
+
+# focus the node in the given direction
+# alt + {h,j,k,l}
+#         bspc node -f {west,south,north,east}
+
+# swap nodes while retaining focus
+alt + {h,j,k,l}
+        D={west,south,north,east}; \
+        M=$(bspc query --monitors --node $D); \
+        bspc node -s $D; \
+        [[ $M != $(bspc query --monitors --monitor focused) ]] && bspc node --focus last
+
+# focus the next/previous node
+alt + {n,p}
+        bspc node -f {next,prev}
+
+# focus the next/previous desktop (only if on the same monitor)
+alt + bracket{left,right}
+        bspc desktop -f {prev,next}.local
+
+# focus the older or newer node in the focus history
+alt + {o,i}
+        bspc wm -h off; \
+        bspc node {older,newer} -f; \
+        bspc wm -h on
+
+# focus or send to the given D (without switching to that D)
+alt + {_,shift + }{1-9,0}
+        bspc {desktop -f,node -d} '^{1-9,10}'
+
+alt + ctrl + {1-9,0}
+        N=$(bspc query --nodes --node focused); \
+        bspc node -d '^{1-9,10}'; \
+        bspc node -f $N
+
+# switch monitor
+# alt + slash
+#         bspc monitor -f next
+
+# Send to monitor and keep window focused
+alt + slash
+        N=$(bspc query --nodes --node focused); \
+        bspc node -m next; \
+        bspc node -f $N
+
+# Send to monitor
+alt + backslash
+        bspc node -m next
+
+# ------------------------------ preselect ------------------------------------
+
+# preselect the direction
+super + {h,j,k,l}
+        bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + {1-9}
+        bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + space
+        bspc node -p cancel

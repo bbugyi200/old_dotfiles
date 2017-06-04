@@ -1,0 +1,18 @@
+{
+   "app": {
+      "launch": {
+         "web_url": "https://www.wunderlist.com/"
+      },
+      "urls": [ "*://www.wunderlist.com/" ]
+   },
+   "default_locale": "en",
+   "description": "__MSG_application_description__",
+   "icons": {
+      "128": "wunderlist.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMklfTOjYGry7zz8t4L/KKzUM+hl92MPizsjyIGg87SsAz6yqMQR3Un+1v+rVIbqPrurcDmGvGKPlN9oYEXj2MUUxqsYUQpqkk7ws0lHBk/S6x4DcmS7UdKBTZYwSUq7vu7zwsVOnHZwYOPBc/4rJhWcZjrbSPeC889szy7r0WdQIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_application_title__",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.19.0"
+}

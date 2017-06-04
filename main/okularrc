@@ -1,0 +1,18 @@
+[Desktop Entry]
+FullScreen=false
+shouldShowMenuBarComingFromFullScreen=true
+shouldShowToolBarComingFromFullScreen=true
+
+[MainWindow]
+Height 1080=1026
+State=AAAA/wAAAAD9AAAAAAAAB2IAAAPFAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Width 1920=1890
+
+[Recent Files]
+File1[$e]=$HOME/Dropbox/Books/Programming/Python/Data/Python for Data Analysis - Wes McKinney .pdf
+File2[$e]=$HOME/Dropbox/Books/Programming/Tools/Linux Command Line and Shell Scripting - (Christine Bresnahan) - (2015).pdf
+File3[$e]=$HOME/Dropbox/Books/Math and Theory/Stats and Probability/Mathematical statistics and data analysis - (Rice).pdf
+Name1[$e]=Python for Data Analysis - Wes McKinney .pdf
+Name2[$e]=Linux Command Line and Shell Scripting - (Christine Bresnahan) - (2015).pdf
+Name3[$e]=Mathematical statistics and data analysis - (Rice).pdf

@@ -7,6 +7,7 @@ alias tree="tree -I \"__pycache__\""
 alias lls="ls -1"
 alias lvim='vim -c "normal \`0"'
 alias anki='sudo anki'
+alias wifi='sudo wifi-menu && /usr/bin/dropbox'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 

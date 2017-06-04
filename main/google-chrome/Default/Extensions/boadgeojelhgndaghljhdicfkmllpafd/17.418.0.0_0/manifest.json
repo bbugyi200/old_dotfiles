@@ -1,0 +1,13 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "background_app.js" ]
+   },
+   "default_locale": "en",
+   "description": "Google Cast",
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC3p49puSLQqWRn5jagZXIfOuY+LCUgsD4iDzqt26JAyTjTsHeN2yqOiZL8J+5g35f4G48NlGgMosDzpy8HFvVOVsnRNuKj5oMsqx7/j3GlBpBmb6vEhve9DG4YD0dBAHOy5xxyQVJMO7T+jQdH1+XAdCGZlwGtqV2sIiVgh84ZfwIDAQAB",
+   "manifest_version": 2,
+   "name": "Google Cast",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "17.418.0.0"
+}

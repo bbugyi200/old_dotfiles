@@ -1,0 +1,29 @@
+{{#tranResSummary}}
+<div class="tran-summary">
+  <div class="headword-box">
+    <span class="headword">{{meaningText}}</span>
+    <span>
+      {{#audio}}
+      <span class="audio" data-url="{{audio}}"></span>
+      {{/audio}}
+    </span>
+  </div>
+  <div class="tran-attribution">{{attribution}}</div>
+</div>
+{{/tranResSummary}}
+
+{{#hasDict}}
+<div class="section-name">Translated definitions</div>
+{{#dict}}
+<div>{{pos}}</div>
+<ul class="tran-terms">
+  {{#terms}}
+  <li>{{.}}</li>
+  {{/terms}}
+</ul>
+{{/dict}}
+{{/hasDict}}
+
+<div class="powered-by">
+  Powered by <a href="{{moreUrl}}">Google Translate</a>
+</div>

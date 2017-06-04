@@ -1,0 +1,1658 @@
+{
+   "all_firewall_failure_dialog_contact": {
+      "message": "Email the team"
+   },
+   "all_firewall_failure_dialog_dismiss": {
+      "message": "Close"
+   },
+   "all_firewall_failure_title": {
+      "message": "Sorry! Our connection is being blocked"
+   },
+   "app_already_open_bottom": {
+      "message": "(Close this tab and find that one, please!)"
+   },
+   "app_already_open_description": {
+      "message": "It looks like you have Videostream open in another tab"
+   },
+   "app_already_open_title": {
+      "message": "Oops!"
+   },
+   "app_title": {
+      "message": "Videostream"
+   },
+   "audio_selection_title": {
+      "message": "Audio Track"
+   },
+   "audio_setting_ac3": {
+      "message": "AC3"
+   },
+   "audio_setting_default": {
+      "message": "Default (Stereo)"
+   },
+   "audio_setting_pcm": {
+      "message": "PCM"
+   },
+   "authenticating": {
+      "message": "Authenticating"
+   },
+   "buffering_text": {
+      "message": "Buffering"
+   },
+   "button_already_have_premium": {
+      "message": "Already Have Premium?"
+   },
+   "button_back_30": {
+      "message": "Rewind 30 Seconds"
+   },
+   "button_forward_30": {
+      "message": "Fast-forward 30 Seconds"
+   },
+   "button_go_premium": {
+      "message": "Go Premium"
+   },
+   "button_google_wallet": {
+      "message": "Checkout with Google Wallet"
+   },
+   "button_help": {
+      "message": "Help"
+   },
+   "button_language_settings": {
+      "message": "Language Settings"
+   },
+   "button_lifetime": {
+      "message": "Lifetime ($$34.99)"
+   },
+   "button_lifetime_new": {
+      "message": "Lifetime ($$59.99)"
+   },
+   "button_lifetime_promo": {
+      "message": "Lifetime ($$24.99)"
+   },
+   "button_lifetime_promo_new": {
+      "message": "Lifetime ($$39.99)"
+   },
+   "button_lifetime_regular": {
+      "message": "Regular: $$34.99"
+   },
+   "button_lifetime_regular_new": {
+      "message": "Regular: $$59.99"
+   },
+   "button_login": {
+      "message": "\u003Cspan style='font-family:\"dobby\"; margin-right: .2em'>!\u003C/span>Log In"
+   },
+   "button_minimize": {
+      "message": "Minimize"
+   },
+   "button_monthly": {
+      "message": "Monthly ($$1.49)"
+   },
+   "button_monthly_new": {
+      "message": "Monthly ($$2.49)"
+   },
+   "button_mute": {
+      "message": "Mute"
+   },
+   "button_new_releases": {
+      "message": "\u003Cspan style='font-family:\"dobby\"; margin-right: .2em'>@\u003C/span>New Releases!"
+   },
+   "button_next": {
+      "message": "Next"
+   },
+   "button_nuke_drop": {
+      "message": "Click here to refresh Videostream\u003Cbr>if it acts differently than normal!"
+   },
+   "button_pause": {
+      "message": "Pause"
+   },
+   "button_paypal": {
+      "message": "Pay with Paypal"
+   },
+   "button_pin_to_screen": {
+      "message": "Always on top"
+   },
+   "button_play": {
+      "message": "Play"
+   },
+   "button_playlist_add_items": {
+      "message": "Add Files to Playlist"
+   },
+   "button_playlist_clear": {
+      "message": "Clear All"
+   },
+   "button_playlist_random": {
+      "message": "Shuffle"
+   },
+   "button_playlist_repeat": {
+      "message": "Repeat Mode"
+   },
+   "button_playlist_select": {
+      "message": "Switch Playlist"
+   },
+   "button_previous": {
+      "message": "Previous"
+   },
+   "button_quality_hd": {
+      "message": "hd"
+   },
+   "button_quality_high": {
+      "message": "hi"
+   },
+   "button_quality_low": {
+      "message": "low"
+   },
+   "button_quality_medium": {
+      "message": "med"
+   },
+   "button_quality_stuttering": {
+      "message": "If your video is stuttering very often try changing the quality setting below!"
+   },
+   "button_return": {
+      "message": "Return to Videostream"
+   },
+   "button_select_video": {
+      "message": "Choose a Video"
+   },
+   "button_settings": {
+      "message": "Settings"
+   },
+   "button_settings_audio": {
+      "message": "Audio"
+   },
+   "button_settings_buffering_fixes": {
+      "message": "Buffering Fixes (Beta)"
+   },
+   "button_settings_library": {
+      "message": "Media Library"
+   },
+   "button_settings_mobile": {
+      "message": "Mobile"
+   },
+   "button_settings_other": {
+      "message": "More"
+   },
+   "button_settings_playlist": {
+      "message": "Playlist"
+   },
+   "button_settings_premium": {
+      "message": "Go Premium!"
+   },
+   "button_settings_subscriptions": {
+      "message": "My Subscriptions"
+   },
+   "button_settings_subtitles": {
+      "message": "Subtitles"
+   },
+   "button_stop_video": {
+      "message": "Stop video"
+   },
+   "button_stripe": {
+      "message": "Pay with Credit Card"
+   },
+   "button_suggest_tv": {
+      "message": "Suggest a New Show"
+   },
+   "button_thank_you_page_close": {
+      "message": "Let's go back to Videostream!"
+   },
+   "button_unmute": {
+      "message": "Unmute"
+   },
+   "button_upgrade": {
+      "message": "Upgrade!"
+   },
+   "button_yearly": {
+      "message": "Yearly ($$14.99)"
+   },
+   "button_yearly_new": {
+      "message": "Yearly ($$24.99)"
+   },
+   "cancel_select_chromecast_button_title": {
+      "message": "Don't watch"
+   },
+   "cart_description_lifetime": {
+      "message": "You will be charged $1 today and you'll receive Videostream Premium forever!"
+   },
+   "cart_description_lifetime_new": {
+      "message": "You will be charged $1 today and you'll receive Videostream Premium forever!"
+   },
+   "cart_description_monthly": {
+      "message": "You will be charged $1 monthly starting today! You can cancel at anytime!"
+   },
+   "cart_description_monthly_new": {
+      "message": "You will be charged $1 monthly starting today! You can cancel at anytime!"
+   },
+   "cart_description_yearly": {
+      "message": "You will be charged $1 today and you will receive Videostream Premium for a year! You will then be charged a discounted monthly rate for every month after that."
+   },
+   "cart_description_yearly_new": {
+      "message": "You will be charged $1 today and you will receive Videostream Premium for a year! You will then be charged a discounted monthly rate for every month after that."
+   },
+   "cart_page_back": {
+      "message": "Back"
+   },
+   "cart_page_header": {
+      "message": "Checkout"
+   },
+   "cart_page_header_item": {
+      "message": "Item"
+   },
+   "cart_page_header_price": {
+      "message": "Price"
+   },
+   "cart_page_price": {
+      "message": "$1"
+   },
+   "cart_page_title_lifetime": {
+      "message": "Videostream Premium Lifetime"
+   },
+   "cart_page_title_lifetime_new": {
+      "message": "Videostream Premium Lifetime"
+   },
+   "cart_page_title_lifetime_promo": {
+      "message": "Videostream Premium Lifetime - SALE"
+   },
+   "cart_page_title_lifetime_promo_new": {
+      "message": "Videostream Premium Lifetime - SALE"
+   },
+   "cart_page_title_monthly": {
+      "message": "Videostream Premium Monthly"
+   },
+   "cart_page_title_monthly_new": {
+      "message": "Videostream Premium Monthly"
+   },
+   "cart_page_title_tax": {
+      "message": "Tax"
+   },
+   "cart_page_title_yearly": {
+      "message": "Videostream Premium Yearly"
+   },
+   "cart_page_title_yearly_new": {
+      "message": "Videostream Premium Yearly"
+   },
+   "cart_page_total": {
+      "message": "Total:"
+   },
+   "cart_tos": {
+      "message": "Smart people said we have to tell you to read \u003Cb>our terms of service\u003C/b>, so read them or you can't buy this thing. \u003Cbr> (We told them you wouldn't anyway)"
+   },
+   "cast_extension_dialog_dismiss": {
+      "message": " "
+   },
+   "cast_extension_dialog_p1": {
+      "message": "Videostream needs the cast extension to talk to your TV!"
+   },
+   "cast_extension_dialog_p2": {
+      "message": "Good news, you just get it here: \u003Ca href=\"https://chrome.google.com/webstore/detail/google-cast/boadgeojelhgndaghljhdicfkmllpafd\">\u003Cbutton id=\"cast-extension-dialog-download\" class=\"button-flat button-orange not-caps in-line\">DOWNLOAD\u003C/button>\u003C/a>."
+   },
+   "cast_extension_dialog_p3": {
+      "message": "Waiting for cast extension (can take 10s)"
+   },
+   "cast_extension_failure_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "cast_extension_title": {
+      "message": "Do you have the cast extension installed?"
+   },
+   "cast_extension_unsupported_dialog_dismiss": {
+      "message": " "
+   },
+   "cast_extension_unsupported_dialog_p1": {
+      "message": "Videostream needs the Google Cast extension to talk to your Chromecast!"
+   },
+   "cast_extension_unsupported_dialog_p2": {
+      "message": "Good news, you just get it here: \u003Ca href=\"https://chrome.google.com/webstore/detail/google-cast/boadgeojelhgndaghljhdicfkmllpafd\">\u003Cbutton id=\"cast-extension-dialog-download\" class=\"button-flat button-orange not-caps in-line\">DOWNLOAD\u003C/button>\u003C/a>"
+   },
+   "cast_extension_unsupported_dialog_p3": {
+      "message": "Then reload this page :)"
+   },
+   "cast_extension_unsupported_failure_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "cast_extension_unsupported_title": {
+      "message": "Videostream currently only supports Chromecast."
+   },
+   "cast_no_receivers_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "cast_no_receivers_dialog_dismiss": {
+      "message": "CLOSE"
+   },
+   "cast_no_receivers_dialog_p1": {
+      "message": "If you do have a chromecast on your network, copy this: \u003Cstrong>\u003Cspan style=\"font-size: 18px;\" class=\"selectable\">chrome://restart\u003C/span>\u003C/strong>"
+   },
+   "cast_no_receivers_dialog_p2": {
+      "message": "And paste that into your address bar! Then hit \u003Cstrong>enter\u003C/strong> :)"
+   },
+   "cast_no_receivers_dialog_p3": {
+      "message": "\u003Ccenter>\u003Cimg src=\"/img/chrome-restart.gif\"/>\u003C/center>\u003Cbr>(if that doesn't help, reboot your router!)"
+   },
+   "cast_no_receivers_title": {
+      "message": "We can't find any Chromecasts!"
+   },
+   "cast_timeout_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "cast_timeout_dialog_dismiss": {
+      "message": "CLOSE"
+   },
+   "cast_timeout_dialog_p1": {
+      "message": "Try typing \u003Cspan class=\"selectable\">chrome://restart\u003C/span> into your address bar"
+   },
+   "cast_timeout_dialog_p2": {
+      "message": "After Chrome restarts you should be good to go. If you get this message again please contact us!"
+   },
+   "cast_timeout_dialog_p3": {
+      "message": "Sorry!! :("
+   },
+   "cast_timeout_title": {
+      "message": "We're having trouble talking to your Chromecast!"
+   },
+   "change_log_dialog_dismiss_button": {
+      "message": "Close"
+   },
+   "change_log_dialog_email_button": {
+      "message": "Questions? Email us!"
+   },
+   "change_log_title_text": {
+      "message": "Videostream Updated"
+   },
+   "chat_fake_respond": {
+      "message": "Type here to chat with Matt :)"
+   },
+   "chat_fake_text": {
+      "message": "\u003Cstrong>Matt:\u003C/strong> Let me know what's up with Videostream if you have anything go wrong! I'm here to help :)"
+   },
+   "chat_hidden_message": {
+      "message": "Chat hidden for 2 weeks - you can still access the chat from the HELP menu :)"
+   },
+   "chat_request_accept_button": {
+      "message": "ACCEPT AND CHAT WITH US"
+   },
+   "chat_request_body": {
+      "message": "from Videostream wants to live chat with you!\u003Cbr>(No this isn't a robot)"
+   },
+   "chat_request_body_2": {
+      "message": "If you have any problems or issues with the app (or just want to tell us how great it is) this is your chance to let us know!\u003Cbr>\u003Cbr>One of the creators of Videostream is standing by to take your feedback be it good or bad! Press accept below to get connected :)"
+   },
+   "chat_request_dismiss_button": {
+      "message": "I DON'T WANT TO CHAT"
+   },
+   "chat_subtitle": {
+      "message": "Talk to us NOW, \u003Cstrong>LIVE!\u003C/strong>"
+   },
+   "chat_title": {
+      "message": "Having problems!?"
+   },
+   "checking_premium": {
+      "message": "Checking for Premium :)"
+   },
+   "choose_device_subtitle": {
+      "message": "Select the device you are streaming to:"
+   },
+   "choose_device_title": {
+      "message": "Welcome to Videostream!"
+   },
+   "chromium_nacl_missing_plugin_dialog_contact": {
+      "message": "Email the team (team@getvideostream.com)"
+   },
+   "chromium_nacl_missing_plugin_dialog_dismiss": {
+      "message": "CLOSE"
+   },
+   "chromium_nacl_missing_plugin_dialog_p1": {
+      "message": "Your Chromium build doesn't run Google's NaCl! \u003Cbr>\u003Cul>\u003Cli>Try \u003Ca href=\"https://www.google.com/intl/en-US/chrome/browser/desktop/index.html\">\u003Cstrong>Google Chrome\u003C/strong>\u003C/a>\u003C/li>\u003Cli>If your Linux distro isn't supported by Chrome, find a chromium build with NaCl built in.\u003C/li>\u003Cli>If you think you have NaCl, make sure \"Native Client\" is enabled in \u003Cspan class=\"selectable\">\u003Cstrong>chrome://plugins\u003C/strong>\u003C/span>. Reboot afterwards!\u003C/li>\u003C/ul>"
+   },
+   "chromium_nacl_missing_plugin_title": {
+      "message": "Native Client (NaCl) plugin is missing!"
+   },
+   "close_button_title": {
+      "message": "Close"
+   },
+   "continue_watching": {
+      "message": "Continue Watching"
+   },
+   "continue_watching_dialog_dismiss": {
+      "message": "CLOSE"
+   },
+   "continue_watching_dialog_p1": {
+      "message": "Continue Watching will allow you to resume videos you partially watched - soon the section will also show you next episodes in any series you are watching!"
+   },
+   "continue_watching_dialog_p2": {
+      "message": "The history is not saved past 5 videos, and you can delete them individually or stop history from being recorded by turning off this feature \u003Cspan class=\"fake-anchor\" id=\"toggle-continue-watching-prompt\">HERE\u003C/span>"
+   },
+   "continue_watching_title": {
+      "message": "Continue Watching"
+   },
+   "dialog_get_extension_dismiss": {
+      "message": "No Thanks"
+   },
+   "dialog_get_extension_launch": {
+      "message": "Add Now (opens new tab)"
+   },
+   "dialog_get_extension_p1": {
+      "message": "Get our shortcut extension to add a button right into chrome! You can also add it from our help menu (top right) later if you'd like!"
+   },
+   "dialog_get_extension_p2": {
+      "message": "\u003Ccenter>\u003Cimg src='/img/get-extension.png'>\u003C/img>\u003C/center>"
+   },
+   "dialog_get_extension_title": {
+      "message": "Want to open Videostream Easily?"
+   },
+   "drag_and_drop_error_content": {
+      "message": "Videostream doesn't support drag-and-drop (sorry!). \u003Cbr/>Use the \"Choose a Video\" button to begin streaming to your Chromecast!"
+   },
+   "drag_and_drop_error_dialog_dismiss_button": {
+      "message": "Got it!"
+   },
+   "drag_and_drop_error_title": {
+      "message": "Uh-oh! Drag-and-drop doesn't work!"
+   },
+   "dropzone_main_heading": {
+      "message": "Drop your files here to play them!"
+   },
+   "dropzone_main_subheading": {
+      "message": "Folders will be added to your playlist"
+   },
+   "dropzone_playlist_heading": {
+      "message": "Drop files and folders to add them to your playlist!"
+   },
+   "dvd_file_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "dvd_file_dialog_dismiss": {
+      "message": "CLOSE"
+   },
+   "dvd_file_dialog_p1": {
+      "message": "Try loading the \u003Cb>VOB\u003C/b> file instead of the \u003Cb>IFO\u003C/b> or \u003Cb>BUP\u003C/b> file."
+   },
+   "dvd_file_dialog_p2": {
+      "message": "If you know this is the correct file, we can \u003Cbutton class=\"button-flat button-orange not-caps in-line\">\u003Cspan id='dvd-file-dialog-force-play'>try anyway\u003C/span>\u003C/button>."
+   },
+   "dvd_file_dialog_p3": {
+      "message": "Let us know if we were wrong and you were right!! It happens..."
+   },
+   "dvd_file_dialog_p4": {
+      "message": " "
+   },
+   "dvd_file_title": {
+      "message": "We think you're attempting to play the wrong file!"
+   },
+   "email_request_dismiss_button": {
+      "message": "No Thanks"
+   },
+   "email_request_submit_button": {
+      "message": "Submit"
+   },
+   "email_request_text_1": {
+      "message": "Want early access to the latest and greatest from Videostream? \u003Cbr/>\u003Cbr/>Enter your email below to get an invite to the Videostream beta testers program:"
+   },
+   "email_request_text_2": {
+      "message": "Videostream is made by 6 guys in Canada and sometimes we like to ask questions about how we’re doing. \u003Cbr/>\u003Cbr/>Enter your email if you’d be cool with that, we’ll never mass email!"
+   },
+   "email_request_text_3": {
+      "message": "Want to help make Videostream better? Enter your email below and we'll contact you about upcoming features and idea to get your input!"
+   },
+   "email_request_title": {
+      "message": "Help out the Videostream team!"
+   },
+   "external_sub_too_large": {
+      "message": "The subtitle you loaded is too big! We can only load subtitles smaller than 1MB."
+   },
+   "firewall_failure_dialog_contact": {
+      "message": "CONTACT TEAM VIDEOSTREAM"
+   },
+   "firewall_failure_dialog_dismiss": {
+      "message": "HOW TO FIX THIS"
+   },
+   "firewall_failure_dialog_p1": {
+      "message": "Firewalls sometimes stop us from talking to your Chromecast, or your wifi network may be set to public!\u003Cbr/> Don’t worry though, we can help you to let us through. We promise to make it super easy!"
+   },
+   "firewall_failure_dialog_p2": {
+      "message": "Windows? Try this Utility. Download it, run it. It will open, and then almost immediately close when it's finished!"
+   },
+   "firewall_failure_dialog_p3": {
+      "message": "\u003Ca href=\"https://github.com/GetVideostream/VideostreamPortFix/releases/download/1.0.5/VideostreamNetworkRepair.exe\">\u003Cbutton id=\"firewall-failure-dialog-download\" class=\"button-flat button-orange not-caps in-line\">DOWNLOAD\u003C/button>\u003C/a> \u003Cbutton id=\"firewall-failure-dialog-retry\" class=\"button-flat button-orange not-caps in-line\">TRY AGAIN\u003C/button>"
+   },
+   "firewall_failure_title": {
+      "message": "Uh Oh! It looks like your firewall is blocking Videostream :( "
+   },
+   "global_failure_dialog_contact": {
+      "message": "FINE I’LL HELP"
+   },
+   "global_failure_dialog_dismiss": {
+      "message": "NO, RELOAD VIDEOSTREAM"
+   },
+   "global_failure_dialog_p1": {
+      "message": "We totally messed something up, can you help us fix it?? Just hit the contact button below and we’ll send ourselves information about the problem. Let us know what happened!"
+   },
+   "global_failure_dialog_p2": {
+      "message": " "
+   },
+   "global_failure_dialog_p3": {
+      "message": " "
+   },
+   "global_failure_title": {
+      "message": "OUR BAD! Something went wrong."
+   },
+   "google_login_back_button": {
+      "message": "Go Back"
+   },
+   "google_login_page_help_text": {
+      "message": "If this message persists, you may need to log in to Google Chrome again. You can find instructions on how to do that \u003Ca target=\"_blank\" href=\"http://community.getvideostream.com/topic/54\">\u003Cbutton class=\"button-flat button-orange not-caps in-line\">here\u003C/button>\u003C/a>.\u003Cbr/>If that doesn't work, you can email us at: \u003Ca target=\"_blank\" href=\"mailto:team@getvideostream.com\">\u003Cbutton class=\"button-flat button-orange not-caps in-line\">team@getvideostream.com\u003C/button>\u003C/a>"
+   },
+   "google_login_page_loading_text": {
+      "message": "Attempting to connect to your Google Account"
+   },
+   "google_wallet_back_button": {
+      "message": "Go Back"
+   },
+   "google_wallet_page_help_text": {
+      "message": "If this message persists, you may need to log in to Google Chrome again. You can find instructions on how to do that \u003Ca target=\"_blank\" href=\"http://community.getvideostream.com/topic/54\">\u003Cbutton class=\"button-flat button-orange not-caps in-line\">here\u003C/button>\u003C/a>.\u003Cbr/>If that doesn't work, you can email us at: \u003Ca target=\"_blank\" href=\"mailto:team@getvideostream.com\">\u003Cbutton class=\"button-flat button-orange not-caps in-line\">team@getvideostream.com\u003C/button>\u003C/a>"
+   },
+   "google_wallet_page_loading_text": {
+      "message": "Attempting to contact Google Wallet"
+   },
+   "help_dialog_chromeos_contact": {
+      "message": "LET ME KNOW"
+   },
+   "help_dialog_chromeos_dismiss": {
+      "message": "TAKE ME TO THE GUIDE"
+   },
+   "help_dialog_chromeos_p1": {
+      "message": "We’re really sorry but right now Google has a bug that makes it almost impossible for Videostream to work on Chromebooks or other ChromeOS devices :’("
+   },
+   "help_dialog_chromeos_p2": {
+      "message": "We have an experimental guide on getting us to work you can check out, otherwise we can let you know when Google fixes their problem."
+   },
+   "help_dialog_chromeos_p3": {
+      "message": " "
+   },
+   "help_dialog_chromeos_title": {
+      "message": "We think you’re using ChromeOS! "
+   },
+   "help_dialog_drop_dismiss": {
+      "message": "Dismiss"
+   },
+   "help_dialog_drop_p1": {
+      "message": "If you were trying to play a video and it unexpectedly stopped, follow these steps to fix it (if everything seems to be working normally then you can ignore this message):"
+   },
+   "help_dialog_drop_p2": {
+      "message": "1) Reboot your Chormecast\u003Cbr>2) Reboot your router\u003Cbr>3) Reboot your computer\u003Cbr>(This fixes the bug 100% of the time in our experience) "
+   },
+   "help_dialog_drop_p3": {
+      "message": "* We're really sorry about this bug! It's actually caused by the Chromecast itself and isn't something we can fix ourselves! You can \u003Ca href='https://productforums.google.com/forum/#!topic/chromecast/oRTZVuvzXMY' target=\"blank\">help google fix the bug here\u003C/a>"
+   },
+   "help_dialog_drop_title": {
+      "message": "You may have just encountered an bug!"
+   },
+   "invalid_file_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "invalid_file_dialog_dismiss": {
+      "message": "CLOSE"
+   },
+   "invalid_file_dialog_p1": {
+      "message": "The file you’ve tried to load doesn’t look like something we can play! If you want, we can \u003Cbutton class=\"button-flat button-orange not-caps in-line\">\u003Cspan id='invalid-file-dialog-force-play'>try anyway\u003C/span>\u003C/button>."
+   },
+   "invalid_file_dialog_p2": {
+      "message": "Let us know if we were wrong and you were right!! It happens..."
+   },
+   "invalid_file_dialog_p3": {
+      "message": " "
+   },
+   "invalid_file_title": {
+      "message": "Oops!! We don’t think that’s a video or a song!"
+   },
+   "linux_firewall_failure_dialog_p1": {
+      "message": "Oh hello Linux user! Try running these commands to open the ports (TCP 5556 and 5558) we need:\u003Cbr>\u003Cbr>\u003Cspan class=\"selectable\">sudo /sbin/iptables -A INPUT -p tcp --dport 5556 -j ACCEPT\u003Cbr>sudo /sbin/iptables -A INPUT -p tcp --dport 5558 -j ACCEPT\u003C/span>\u003Cbr>\u003Cbr>Then hit \"try again\" - If that doesn’t help, shoot us an email, just attach the logs we generate :)"
+   },
+   "linux_firewall_failure_dialog_tryagain": {
+      "message": "Click here to try again after running those commands"
+   },
+   "loader_card_antivirus_cancel": {
+      "message": "Cancel"
+   },
+   "loader_card_antivirus_dialog_p1": {
+      "message": "Do you have anything installed like McAfee, Norton, Avast, AVG, Malwarebytes, Bitdefender, Windows Security Essentials, ESET, Kaspersky, etc.?"
+   },
+   "loader_card_antivirus_dialog_p2": {
+      "message": "You may need to add an exception for \"chrome.exe\" in your antivirus client then restart your computer!"
+   },
+   "loader_card_antivirus_dialog_p3": {
+      "message": "Email us if you need any help! We're \u003Cspan class=\"selectable\">team@getvideostream.com\u003C/span> :)"
+   },
+   "loader_card_antivirus_header": {
+      "message": "It looks like your antivirus is blocking Videostream :("
+   },
+   "loader_card_chromecast_timeout_header": {
+      "message": "Oh fiddlesticks! We need a reload!"
+   },
+   "loader_card_chromecast_timeout_p1": {
+      "message": "Sorry! We hit an error. Click below to reload Videostream!"
+   },
+   "loader_card_chromecast_timeout_p2": {
+      "message": "If this keeps happening, let me know by emailing \u003Cspan class=\"selectable\">matt@getvideostream.com\u003C/span> - tell me what's up!"
+   },
+   "loader_card_chromecast_timeout_restart": {
+      "message": "Reload Videostream"
+   },
+   "loader_card_dvd_cancel": {
+      "message": "Cancel"
+   },
+   "loader_card_dvd_header": {
+      "message": "Are you trying to play a DVD?"
+   },
+   "loader_card_dvd_p1": {
+      "message": "Try picking the \u003Cb>VOB\u003C/b> file \u003Cb>instead\u003C/b> of the \u003Cb>IFO\u003C/b> or \u003Cb>BUP\u003C/b> file."
+   },
+   "loader_card_dvd_p2": {
+      "message": "If you know this is the correct file, you can try anyway (click below)."
+   },
+   "loader_card_dvd_p3": {
+      "message": "Note that not all DVD files can play in Videostream!"
+   },
+   "loader_card_dvd_try_anyways": {
+      "message": "Try Anyway"
+   },
+   "loader_card_firewall_cancel": {
+      "message": "Cancel"
+   },
+   "loader_card_firewall_header": {
+      "message": "It looks like your firewall is blocking Videostream :("
+   },
+   "loader_card_firewall_restart": {
+      "message": "Reload and Try Again"
+   },
+   "loader_card_incompatible_file_cancel": {
+      "message": "Cancel Playback"
+   },
+   "loader_card_incompatible_file_header": {
+      "message": "Oops!! We don’t think that’s a video or a song!"
+   },
+   "loader_card_incompatible_file_p1": {
+      "message": "The file you’ve tried to load doesn’t look like something we can play! If you want, we can try to play it anyway."
+   },
+   "loader_card_incompatible_file_try_anyways": {
+      "message": "Try Anyway"
+   },
+   "loader_card_linux_firewall_failure_dialog_p1": {
+      "message": "Oh hello Linux user! Try running these commands to open the ports (TCP 5556 and 5558) we need:\u003Cbr>\u003Cbr>\u003Cspan class=\"selectable\">sudo /sbin/iptables -A INPUT -p tcp --dport 5556 -j ACCEPT\u003Cbr>sudo /sbin/iptables -A INPUT -p tcp --dport 5558 -j ACCEPT\u003C/span>\u003Cbr>\u003Cbr>Then hit \"try again\" - If that doesn’t help, shoot us an email at \u003Cspan class=\"selectable\">team@getvideostream.com\u003C/span> :)"
+   },
+   "loader_card_mac_firewall_failure_dialog_howto": {
+      "message": "How to allow Chrome (\"allow specific connections\")"
+   },
+   "loader_card_mac_firewall_failure_dialog_p1": {
+      "message": "Your firewall is probably blocking Videostream! Try allowing Chrome through your Mac firewall - After that click \"try again\" below :) \u003Cbr>\u003Cbr>If you've fixed this before, hit the reload button (and double check your firewall settings)! Email us at \u003Cspan class=\"selectable\">team@getvideostream.com\u003C/span> for help!"
+   },
+   "loader_card_no_chromecast_cancel": {
+      "message": "Cancel"
+   },
+   "loader_card_no_chromecast_header": {
+      "message": "We can't find any chromecasts on your network!"
+   },
+   "loader_card_no_chromecast_p1": {
+      "message": "Make sure you're connected to the same network as your Chromecast :)"
+   },
+   "loader_card_no_chromecast_p2": {
+      "message": "If you \u003Cstrong>do\u003C/strong> have a chromecast try restarting your router, your chromecast, and then Google Chrome!"
+   },
+   "loader_card_no_chromecast_restart": {
+      "message": "Restart Chrome"
+   },
+   "loader_card_no_chromecast_spinner": {
+      "message": "Searching for Chromecasts..."
+   },
+   "loader_card_no_network_cancel": {
+      "message": "Cancel"
+   },
+   "loader_card_no_network_header": {
+      "message": "We can't find an Internet connection!"
+   },
+   "loader_card_no_network_p1": {
+      "message": "Make sure that you're connected to wifi or wired internet! Did your cat pull out a cable?"
+   },
+   "loader_card_no_network_p2": {
+      "message": "This popup will close when we connect!"
+   },
+   "loader_card_no_network_spinner": {
+      "message": "Searching for internet connection..."
+   },
+   "loader_card_windows_10_firewall_failure_dialog_p1": {
+      "message": "Did you recently upgrade to Windows 10? Don't panic! Simply download and run the utility below and it'll patch up your firewall so Videostream can run again! :)"
+   },
+   "loader_card_windows_10_firewall_failure_dialog_p2": {
+      "message": "Firewalls sometimes stop us from talking to your Chromecast, or your wifi network may be set to public!\u003Cbr/> Don’t worry though, we can help you to let us through. We promise to make it super easy!"
+   },
+   "loader_card_windows_10_firewall_failure_dialog_p3": {
+      "message": "\u003Cstrong>Try this utility. Download it and run it\u003C/strong> (for techies it opens TCP 5556 and 5558). After it runs or if you think you're seeing this popup by mistake, hit the \u003Cstrong>reload and try again\u003C/strong> button below!"
+   },
+   "loader_card_windows_10_firewall_failure_dialog_p4": {
+      "message": "\u003Ca href=\"https://github.com/GetVideostream/VideostreamPortFix/releases/download/1.0.5/VideostreamNetworkRepair.exe\">\u003Cbutton id=\"windows-firewall-failure-dialog-download\" class=\"button-flat button-orange button-small\">Click here to download\u003C/button>\u003C/a>"
+   },
+   "loader_card_windows_firewall_failure_dialog_p1": {
+      "message": "Firewalls sometimes stop us from talking to your Chromecast, or your wifi network may be set to public!\u003Cbr/> Don’t worry though, we can help you to let us through. We promise to make it super easy!"
+   },
+   "loader_card_windows_firewall_failure_dialog_p2": {
+      "message": "\u003Cstrong>Try this utility. Download it and run it\u003C/strong> (for techies it opens TCP 5556 and 5558). After it runs or if you think you're seeing this popup by mistake, hit the \u003Cstrong>reload and try again\u003C/strong> button below!"
+   },
+   "loader_card_windows_firewall_failure_dialog_p3": {
+      "message": "\u003Ca href=\"https://github.com/GetVideostream/VideostreamPortFix/releases/download/1.0.5/VideostreamNetworkRepair.exe\">\u003Cbutton id=\"windows-firewall-failure-dialog-download\" class=\"button-flat button-orange button-small\">Click here to download\u003C/button>\u003C/a>"
+   },
+   "loader_overlay_reload": {
+      "message": "Video not loading? Click here to reload Videostream"
+   },
+   "loading_prompt": {
+      "message": "Loading"
+   },
+   "login_dialog_dismiss": {
+      "message": "Not Now"
+   },
+   "login_dialog_p1": {
+      "message": "By logging in, we'll be able to send you information on new releases, trending videos, and new seasons of shows! Over time we'll try to personalize this for you. We promise not to email you every day like stupid companies do. We hate that.\u003Cbr>\u003Cbr>Just hit 'Log In' below and accept the permission!"
+   },
+   "login_title": {
+      "message": "Log in to Videostream"
+   },
+   "look_at": {
+      "message": "Look at this fancypants with"
+   },
+   "mac_firewall_failure_dialog_howto": {
+      "message": "How to allow Chrome (\"allow specific connections\")"
+   },
+   "mac_firewall_failure_dialog_p1": {
+      "message": "Your firewall is probably blocking Videostream! Try allowing Chrome through your Mac firewall - After that click \"try again\" below :) \u003Cbr>\u003Cbr>If that doesn’t help, email us and we’ll give you a hand!"
+   },
+   "mac_firewall_failure_dialog_tryagain": {
+      "message": "Click here afterwards"
+   },
+   "main_view_made_by": {
+      "message": "\u003Ca href=\"https://twitter.com/GetVideostream\">@GetVideostream\u003C/a> \u003Cspan>is made with love by:\u003C/span>\u003Cbr/>\u003Ca href=\"https://twitter.com/ThatMattGardner\">@ThatMattGardner\u003C/a>, \u003Ca href=\"https://twitter.com/joebruggeman\">@joebruggeman\u003C/a>, \u003Ca href=\"https://twitter.com/pdeljanov\">@pdeljanov\u003C/a>, \u003Ca href=\"https://twitter.com/grahamkennery\">@grahamkennery\u003C/a>, \u003Ca href=\"https://twitter.com/jmooreit\">@jmooreit\u003C/a>"
+   },
+   "more_subtitle_options_span": {
+      "message": "for more subtitle options!"
+   },
+   "nacl_antivirus_failure_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "nacl_antivirus_failure_dialog_dismiss": {
+      "message": "HOW TO FIX THIS"
+   },
+   "nacl_antivirus_failure_dialog_p1": {
+      "message": "Antivirus software stops us from converting your videos into a format your Chromecast can read, only some of your videos will play!"
+   },
+   "nacl_antivirus_failure_dialog_p2": {
+      "message": "The video you’ve picked won’t work, but we have some easy steps you can follow to let your antivirus know we’re safe!"
+   },
+   "nacl_antivirus_failure_dialog_p3": {
+      "message": " "
+   },
+   "nacl_antivirus_failure_title": {
+      "message": "Sorry! We’re having trouble with your antivirus"
+   },
+   "nacl_missing_plugin_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "nacl_missing_plugin_dialog_dismiss": {
+      "message": "HOW TO FIX THIS"
+   },
+   "nacl_missing_plugin_dialog_p1": {
+      "message": "If you're running Chromium, try Google Chrome! Most Chromium installs don't include Native Client support!"
+   },
+   "nacl_missing_plugin_dialog_p2": {
+      "message": "If you don't what what we're talking about, contact us :)"
+   },
+   "nacl_missing_plugin_dialog_p3": {
+      "message": " "
+   },
+   "nacl_missing_plugin_title": {
+      "message": "Native Client is missing!"
+   },
+   "new": {
+      "message": "Updated!"
+   },
+   "new_nacl_missing_plugin_dialog_contact": {
+      "message": "Email the team (team@getvideostream.com)"
+   },
+   "new_nacl_missing_plugin_dialog_dismiss": {
+      "message": "Close"
+   },
+   "new_nacl_missing_plugin_dialog_p1": {
+      "message": "1)Type \"\u003Cstrong>chrome://plugins\u003C/strong>\u003C/span>\" into your address bar \u003Cbr>\u003Cbr>2)Find \"Native Client\" and click enable\u003Cbr>\u003Cbr>3)Type \"chrome://restart\" into your address bar"
+   },
+   "new_nacl_missing_plugin_title": {
+      "message": "Chrome has a plugin disabled!"
+   },
+   "no_continue_watching": {
+      "message": "Your recently watched videos will show up here, up to 5 are kept in history - You can remove individual items."
+   },
+   "no_recent_downloads": {
+      "message": "Your recent downloads will show up here - You can remove individual items. \n"
+   },
+   "or_label": {
+      "message": "or"
+   },
+   "pair_complete_dialog_about": {
+      "message": "Great! You're all done. We're quickly finding your videos, they will appear on\u003Cbr>your phone as we find them - this can take a few minutes"
+   },
+   "pair_complete_dialog_about_2": {
+      "message": "You can \u003Cstrong>add and remove\u003C/strong> folders from your media library\u003Cbr>from the Videostream settings menu!"
+   },
+   "pair_complete_dialog_finish": {
+      "message": "Okay"
+   },
+   "pair_complete_dialog_title": {
+      "message": "Pairing and Media Library Set Up Complete!"
+   },
+   "pair_dialog_about": {
+      "message": "Select folders where you store your videos. You'll be able to search these\u003Cbr>from the Videostream mobile app :)"
+   },
+   "pair_dialog_add_folders": {
+      "message": "Add Folders to Continue"
+   },
+   "pair_dialog_cancel": {
+      "message": "Cancel"
+   },
+   "pair_dialog_finish": {
+      "message": "Done Adding Folders"
+   },
+   "pair_dialog_first_about": {
+      "message": "To browse your videos using your phone you need to pair them together! On the next page, you will let us know where you keep your media so we can see it."
+   },
+   "pair_dialog_first_about_2": {
+      "message": "Pairing with: "
+   },
+   "pair_dialog_first_title": {
+      "message": "Pair a Phone"
+   },
+   "pair_dialog_library_add": {
+      "message": "Add a Folder"
+   },
+   "pair_dialog_library_title": {
+      "message": "Folders in Media Library"
+   },
+   "pair_dialog_pair": {
+      "message": "Pair \u003Cspan id=\"pair-phone-name2\">placeholder\u003C/span> now"
+   },
+   "pair_dialog_title": {
+      "message": "Pair a Phone - Set up Media Library"
+   },
+   "pitch_page_beta_app_description": {
+      "message": "We make other apps too! We'll entertain you in new ways on your Chromecast!"
+   },
+   "pitch_page_beta_app_title": {
+      "message": "Beta App Access"
+   },
+   "pitch_page_hover_overlay": {
+      "message": "Click to see demo"
+   },
+   "pitch_page_library_description": {
+      "message": "pitch_page_library_description"
+   },
+   "pitch_page_library_title": {
+      "message": "pitch_page_library_title"
+   },
+   "pitch_page_no_ads_description": {
+      "message": "Ad-phobic? No worries! Premium means you'll never see an ad!"
+   },
+   "pitch_page_no_ads_title": {
+      "message": "No Ads on Anything!"
+   },
+   "pitch_page_notification_app_description": {
+      "message": "Get notifications to your Android phone when a download is done!"
+   },
+   "pitch_page_notification_app_title": {
+      "message": "Download Notifications"
+   },
+   "pitch_page_playlist_support_description": {
+      "message": "Create a playlist that saves when you close Videostream - mp3 supported!"
+   },
+   "pitch_page_playlist_support_title": {
+      "message": "Playlist Support"
+   },
+   "pitch_page_smartphone_support_description": {
+      "message": "Control Videostream and browse your videos right from your Android phone!"
+   },
+   "pitch_page_smartphone_support_title": {
+      "message": "Android Supreme"
+   },
+   "pitch_page_subtitles_plus_description": {
+      "message": "Custom subtitle settings and more!"
+   },
+   "pitch_page_subtitles_plus_title": {
+      "message": "Subtitles +"
+   },
+   "pitch_page_support_us_description": {
+      "message": "Your subscription lets us eat two square meals a day! We love you!"
+   },
+   "pitch_page_support_us_title": {
+      "message": "Support Our Team"
+   },
+   "playback_controls_close_button": {
+      "message": "Stop Movie"
+   },
+   "playlist_title": {
+      "message": "My Playlist"
+   },
+   "playlist_title_placeholder": {
+      "message": "Click here to rename me!"
+   },
+   "post_portfix_firewall_failure_title": {
+      "message": "Do you have your own antivirus or firewall?"
+   },
+   "premflow_https_text": {
+      "message": "Page secured with HTTPS/SSL. Any Credit Card data is sent encrypted using HTTPS to Stripe. Any Google Authentication is anonymized prior to any communication with our server for Premium user identification."
+   },
+   "premflow_https_title": {
+      "message": "VideostreamHTTPS"
+   },
+   "premflow_lifetime_plan": {
+      "message": "Lifetime"
+   },
+   "premflow_lifetime_promo_subtag": {
+      "message": "SALE!!! A deal so good it's sold at Costco!"
+   },
+   "premflow_lifetime_promo_subtag_yearly": {
+      "message": "SALE!!! You don’t need a Groupon for this deal!"
+   },
+   "premflow_lifetime_sale_tag": {
+      "message": "30% OFF SALE!"
+   },
+   "premflow_lifetime_subtag": {
+      "message": "Save 46% over monthly Premium!"
+   },
+   "premflow_lifetime_subtag_yearly": {
+      "message": "Save 34% over yearly Premium!"
+   },
+   "premflow_monthly_plan": {
+      "message": "Monthly"
+   },
+   "premflow_monthly_subtag": {
+      "message": "Playlists, our love, and more for the cost of a coffee!"
+   },
+   "premflow_or": {
+      "message": "or"
+   },
+   "premflow_payments_headline": {
+      "message": "Videostream Premium"
+   },
+   "premflow_payments_subheading": {
+      "message": "It’s like Videostream but Premium-y!"
+   },
+   "premflow_paypal": {
+      "message": "Pay with PayPal"
+   },
+   "premflow_pitch_h1": {
+      "message": "Premium... For people who like "
+   },
+   "premflow_pitch_h3": {
+      "message": "Just select your plan, pay, and you've got Premium! Yeah, we don't make you create an account ;)"
+   },
+   "premflow_stripe": {
+      "message": "Pay with Stripe"
+   },
+   "premflow_yearly_plan": {
+      "message": "Yearly"
+   },
+   "premflow_yearly_subtag": {
+      "message": "Save 20% over monthly Premium!"
+   },
+   "premium": {
+      "message": "premium"
+   },
+   "premium_choose_a_plan": {
+      "message": "Choose a plan and be awesome:"
+   },
+   "premium_pitch_description": {
+      "message": "Videostream Premium is what helps our team afford to eat. :)\u003Cbr/>For \u003Ca href=\"https://www.youtube.com/watch?v=8WxFOmEVmcQ&feature=youtu.be\" target=\"_blank\">\u003Cspan class=\"blue-text\">a buck forty-nine \u003C/span>\u003C/a> a month you get:"
+   },
+   "premium_pitch_title": {
+      "message": "Videostream Premium"
+   },
+   "premium_playlist_notify_dialog_p1": {
+      "message": "Did you know about Videostream Premium? It will give you full access to control playlists and build your own. Plus it lets us \u003Cstrong>work full time\u003C/strong> on Videostream and keep it \u003Cstrong>ad-free!\u003C/strong>"
+   },
+   "premium_playlist_notify_dialog_p2": {
+      "message": "It costs about the same as a movie ticket each year and comes with awesome features we're always adding to:"
+   },
+   "premium_playlist_notify_dialog_p3": {
+      "message": " "
+   },
+   "premium_playlist_notify_go_premium": {
+      "message": "See More Features!"
+   },
+   "premium_playlist_notify_no_thanks": {
+      "message": "Not Right Now"
+   },
+   "premium_playlist_notify_title": {
+      "message": "Get your own Playlist with Videostream Premium!"
+   },
+   "quality_change_question_dialog_content": {
+      "message": "Hey there! Videostream is currently testing \"Adaptive\" quality. This means we're going to automatically select the best quality to allow your video to play without buffering, sounds cool, eh?\u003Cbr/>\u003Cbr/> Anyway, it looks like you just turned it off, why's that? Did you hit a snag? Send me (Graham) an email and let me know why! \u003Ca href=\"mailto:graham@getvideostream.com\">graham@getvideostream.com\u003C/a>"
+   },
+   "quality_change_question_dialog_dismiss": {
+      "message": "Close"
+   },
+   "quality_change_question_dialog_title": {
+      "message": "Want to give feedback?"
+   },
+   "quality_preset_240p": {
+      "message": "240p"
+   },
+   "quality_preset_360p": {
+      "message": "360p"
+   },
+   "quality_preset_480p": {
+      "message": "480p"
+   },
+   "quality_preset_576p": {
+      "message": "576p"
+   },
+   "quality_preset_720p": {
+      "message": "720p"
+   },
+   "quality_preset_adaptive": {
+      "message": "Auto"
+   },
+   "quality_preset_hint_incompatible_p1": {
+      "message": "Videostream converts videos so the Chromecast can play them!"
+   },
+   "quality_preset_hint_incompatible_p2": {
+      "message": "We've detected that your computer can't handle the conversion of this file."
+   },
+   "quality_preset_hint_incompatible_p3": {
+      "message": "There ARE videos your computer can play! :) Try getting a \u003Cb>lower quality mp4 format\u003C/b> copy of this video instead!"
+   },
+   "quality_preset_hint_lower_quality": {
+      "message": "Videostream converts videos so the Chromecast can play them! Your computer may be a bit slow converting this video, \u003Cb>try lowering the quality to fix buffering.\u003C/b>"
+   },
+   "quality_preset_info": {
+      "message": "Videostream is automatically adjusting the quality of this video based on your computer's performance and current network conditions. This may take a minute or two!"
+   },
+   "quality_preset_original": {
+      "message": "Original"
+   },
+   "quality_preset_recommended": {
+      "message": "Recommended"
+   },
+   "recently_downloaded": {
+      "message": "Recent Downloads"
+   },
+   "recently_downloaded_dialog_p1": {
+      "message": "Recent Downloads will allow you to watch videos you have downloaded recently.  To set up this feature, click \u003Cspan class=\"fake-anchor\" id=\"set-up-recently-downloaded-prompt\">HERE\u003C/span>"
+   },
+   "recently_downloaded_dialog_p2": {
+      "message": "The history is not displayed past 5 videos, and you can delete them individually or stop history from being shown by turning off this feature \u003Cspan class=\"fake-anchor\" id=\"toggle-recently-downloaded-prompt\">HERE\u003C/span>"
+   },
+   "recently_downloaded_title": {
+      "message": "Recent Downloads"
+   },
+   "remote_subs_download_failed": {
+      "message": "There was a problem downloading that subtitle :("
+   },
+   "remote_subs_error": {
+      "message": "We couldn't load any subtitles from OpenSubtitles.org automatically :("
+   },
+   "remote_subs_not_found": {
+      "message": "We couldn't find any subtitles on OpenSubtitles.org for this video :("
+   },
+   "restart_chrome_how_to_cancel": {
+      "message": "Back"
+   },
+   "restart_chrome_how_to_header": {
+      "message": "How to properly restart Chrome:"
+   },
+   "restart_chrome_how_to_p1": {
+      "message": "Copy this: \u003Cstrong>\u003Cspan style=\"font-size: 18px;\" class=\"selectable\">chrome://restart\u003C/span>\u003C/strong>"
+   },
+   "restart_chrome_how_to_p2": {
+      "message": "And paste that into your address bar! Then hit \u003Cstrong>enter\u003C/strong> :)"
+   },
+   "restart_chrome_how_to_p3": {
+      "message": "\u003Ccenter>\u003Cimg src=\"/img/chrome-restart.gif\"/>\u003C/center>"
+   },
+   "resume_ask_disable": {
+      "message": "*Turn off this pop up permanently from  \u003Cspan style='font-family:\"dobby\"; top: 2px; position: relative;'>G\u003C/span>\u003Cstrong> settings -> 'more'\u003C/strong>"
+   },
+   "resume_ask_or": {
+      "message": "or"
+   },
+   "resume_ask_resume_button": {
+      "message": "Resume Video (\u003Cstrong>\u003Cspan id='automatic-countdown'>5\u003C/span>\u003C/strong>)"
+   },
+   "resume_ask_start_over_button": {
+      "message": "Start from the beginning"
+   },
+   "resume_ask_subheader": {
+      "message": "Last time you left off at \u003Cstrong>\u003Cspan id='left-off-at'>0:0:00\u003C/span>\u003C/strong>"
+   },
+   "resume_ask_title": {
+      "message": "You previously watched this video!"
+   },
+   "sale": {
+      "message": "Sale!"
+   },
+   "select_chromecast_1": {
+      "message": "\u003Cstrong>Can't find the Chromecast\u003C/strong> you want? Try this!"
+   },
+   "select_chromecast_2": {
+      "message": "\u003Cli>Type \u003Cspan class=\"selectable\">chrome://restart\u003C/span> into your url bar\u003C/li>\u003Cli>Reboot your router and Chromecast (unplug/plug back in)\u003C/li>"
+   },
+   "select_chromecast_3": {
+      "message": "If that doesn’t work, email us at \u003Cspan class=\"selectable\">team@getvideostream.com\u003C/span> and we’ll help :)"
+   },
+   "select_chromecast_click_extension": {
+      "message": "Click the cast extension :)"
+   },
+   "select_chromecast_overlay_header": {
+      "message": "Please select your Chromecast to start watching"
+   },
+   "select_chromecast_overlay_header_no_receivers": {
+      "message": "Do you have a Chromecast on your network?"
+   },
+   "select_chromecast_overlay_text": {
+      "message": "Select your Chromecast from the Google Cast extension ( \u003Cimg src=\"/img/select-chromecast-cast-icon.png\" width=\"16\"/> ) in the \u003Cb>top right\u003C/b> of your Chrome browser."
+   },
+   "select_chromecast_overlay_text_no_receivers": {
+      "message": "Make sure you're connected to the same WiFi as your Chromecast. If you still don't see it, sometimes restarting Chrome (type chrome://restart into your address bar) will fix the problem!"
+   },
+   "select_chromecast_text": {
+      "message": "Select a Chromecast"
+   },
+   "settings_about_content": {
+      "message": "Parts of Videostream use components from the \u003Ca href=\"http://www.ffmpeg.org/\">FFMPEG\u003C/a> and \u003Ca href=\"http://www.videolan.org/developers/x264.html\">x264\u003C/a> projects and are available under conditions of the \u003Ca href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt\">GPL\u003C/a>"
+   },
+   "settings_about_label": {
+      "message": "About"
+   },
+   "settings_analytics_opt_in_label": {
+      "message": "Help us by sending usage statistics?"
+   },
+   "settings_audio_label": {
+      "message": "Audio Profile"
+   },
+   "settings_button_cancel_paypal": {
+      "message": "Cancel Subscription"
+   },
+   "settings_button_cancel_stripe": {
+      "message": "Cancel Subscription"
+   },
+   "settings_close_button": {
+      "message": "Close"
+   },
+   "settings_computer_name_label": {
+      "message": "Computer Name"
+   },
+   "settings_contact_content": {
+      "message": "Videostream is made by your 5 faithful developers - always feel free to contact us at \u003Ca href=\"mailto:team@getvideostream.com\">team@getvideostream.com\u003C/a>! Or tweet us \u003Ca href=\"https://twitter.com/intent/tweet?screen_name=getvideostream&text=You%20boys%20are%20super%20cool!\">@getvideostream\u003C/a>!"
+   },
+   "settings_contact_us": {
+      "message": "Contact the Team!"
+   },
+   "settings_content_screenshot_opt_in_label": {
+      "message": "Show video screenshot as background?"
+   },
+   "settings_content_suggestions_opt_in_label": {
+      "message": "Display 'Continue Watching' section? (clears and disables history when disabled)"
+   },
+   "settings_default_audio_language": {
+      "message": "Preferred Audio Language"
+   },
+   "settings_default_subtitle_language": {
+      "message": "Preferred Subtitle Language"
+   },
+   "settings_dialog_audio_title": {
+      "message": "- Audio"
+   },
+   "settings_dialog_back_button": {
+      "message": "Back"
+   },
+   "settings_dialog_buffering_fixes_title": {
+      "message": "- Buffering Fixes (Beta)"
+   },
+   "settings_dialog_library_title": {
+      "message": "- Media Library"
+   },
+   "settings_dialog_main_title": {
+      "message": ""
+   },
+   "settings_dialog_mobile_title": {
+      "message": "- Mobile"
+   },
+   "settings_dialog_other_title": {
+      "message": "- More"
+   },
+   "settings_dialog_playlist_title": {
+      "message": "- Playlist"
+   },
+   "settings_dialog_subscriptions_title": {
+      "message": "- Subscriptions"
+   },
+   "settings_dialog_subtitles_title": {
+      "message": "- Subtitles"
+   },
+   "settings_dialog_title": {
+      "message": "Settings"
+   },
+   "settings_library_about": {
+      "message": "Select the folders where you store your videos. Videostream will allow you to browse and play these videos from your phone if you have the android app. We'll also auto-load subtitles from these folders and watch them for recent downloads!"
+   },
+   "settings_library_about_with_app": {
+      "message": "Select the folders where you store your videos. Videostream will allow you to browse and play these videos from your phone if you have the android app. We'll also auto-load subtitles from these folders and watch them for recent downloads!"
+   },
+   "settings_library_add": {
+      "message": "Add New Folder"
+   },
+   "settings_library_title": {
+      "message": "Folders in Media Library"
+   },
+   "settings_mobile_library": {
+      "message": "Set up browsing/playing for android"
+   },
+   "settings_mobile_library_title": {
+      "message": "Remote computer browsing"
+   },
+   "settings_opt_in_header": {
+      "message": "Videostream Feature Controls"
+   },
+   "settings_paypal": {
+      "message": "Subscribed via Paypal"
+   },
+   "settings_paypal_content": {
+      "message": "Subscription cancelled on $1"
+   },
+   "settings_playlist_about": {
+      "message": "Add and remove your playlists here!"
+   },
+   "settings_playlist_add": {
+      "message": "Add New Playlist"
+   },
+   "settings_playlist_enable_label": {
+      "message": "Enable Playlist Mode"
+   },
+   "settings_playlist_title": {
+      "message": "Saved Playlists"
+   },
+   "settings_recently_downloaded_opt_in_label": {
+      "message": "Display 'Recent Downloads' section?"
+   },
+   "settings_resume_opt_in_label": {
+      "message": "Show pop up to resume videos where you left off?"
+   },
+   "settings_splash_content_images_opt_in_label": {
+      "message": "Show content suggestions on TV?\u003Cbr>(Note these are not paid ads! May need computer restart to take effect)"
+   },
+   "settings_stripe": {
+      "message": "Subscribed via Credit Card"
+   },
+   "settings_stripe_content": {
+      "message": "Subscription cancelled on $1"
+   },
+   "settings_subscription_content": {
+      "message": "If you are currently subscribed to Videostream on either a monthly or yearly basis, you can cancel by doing the following:"
+   },
+   "settings_subtitle_color_header": {
+      "message": "Color"
+   },
+   "settings_subtitle_encoding_header": {
+      "message": "Subtitle File Encoding"
+   },
+   "settings_subtitle_library": {
+      "message": "Set up auto-loading subtitles"
+   },
+   "settings_subtitle_loading_label": {
+      "message": "Enable automatic display of subtitles"
+   },
+   "settings_subtitle_position_header": {
+      "message": "Position"
+   },
+   "settings_subtitle_remote_label": {
+      "message": "Load subtitles from OpenSubtitles.org"
+   },
+   "settings_subtitle_size_header": {
+      "message": "Size"
+   },
+   "settings_subtitle_style_header": {
+      "message": "Subtitle Styles"
+   },
+   "settings_superfast_enable_label": {
+      "message": "Video Compression"
+   },
+   "simplified_help_chat": {
+      "message": "Live Chat!"
+   },
+   "simplified_help_dialog_contact": {
+      "message": "Click to Email the team (team@getvideostream.com)"
+   },
+   "simplified_help_dialog_dismiss": {
+      "message": "Close"
+   },
+   "simplified_help_firewall": {
+      "message": "Can't fix Firewall"
+   },
+   "simplified_help_loading": {
+      "message": "Stuck on \"Loading\""
+   },
+   "simplified_help_main_dialog_title": {
+      "message": "What's the problem?"
+   },
+   "simplified_help_open": {
+      "message": "Opening Videostream"
+   },
+   "simplified_help_other": {
+      "message": "Other"
+   },
+   "simplified_help_other_dialog_title": {
+      "message": "Get in touch with us!"
+   },
+   "simplified_help_other_firewall_2": {
+      "message": "Have you run the \u003Ca href=\"https://github.com/GetVideostream/VideostreamPortFix/releases/download/1.0.5/VideostreamNetworkRepair.exe\">port fixer\u003C/a>? For every firewall your computer runs you may need to open TCP ports 5556 and 5558! Send us an email if you want help with that :)"
+   },
+   "simplified_help_other_firewall_3": {
+      "message": "See our \u003Ca href=\"http://community.getvideostream.com/topic/6/\">antivirus and firewall guides here\u003C/a> to see how to fix this in yours! - Note that many antiviruses run their own firewall (such as AVG, Avast, McAffee, Malwarebytes etc.)."
+   },
+   "simplified_help_other_loading_1": {
+      "message": "If the app is stuck on loading/buffering, one of these three steps usually helps:"
+   },
+   "simplified_help_other_loading_2": {
+      "message": "\u003Cli>Type \u003Cspan class=\"selectable\">chrome://restart\u003C/span> into your address bar\u003C/li>\u003Cli>Reboot your router and Chromecast (unplug and plug back in)\u003C/li>"
+   },
+   "simplified_help_other_loading_3": {
+      "message": "If this doesn’t help definitely email us! Don’t forget to attach the log file we generate :)"
+   },
+   "simplified_help_other_open_1": {
+      "message": "Get our shortcut extension to add a button right into chrome!"
+   },
+   "simplified_help_other_open_2": {
+      "message": "\u003Ccenter>\u003Cimg src='/img/get-extension.png'>\u003C/img>\u003C/center>"
+   },
+   "simplified_help_other_open_3": {
+      "message": "\u003Ca href='https://chrome.google.com/webstore/detail/vs-launcher/cmhicdplfejcchpmimlnohfadpimciaa'>\u003Cbutton class='button-flat button-indigo button-small'>Click here to add the shortcut to Chrome\u003C/button>\u003C/a>"
+   },
+   "simplified_help_other_other_contact": {
+      "message": "Super sorry if none of our other sections helped!\u003Cbr>\u003Cbr>Check the community forums at \u003Ca href=\"http://community.getvideostream.com/category/13/support-help\">\u003Cbutton class=\"button-flat button-orange not-caps in-line space-down\">community.getvideostream.com\u003C/button>\u003C/a> or please email us so we can help! Just make sure to attach the log file we generate when you click “email” (\u003Cspan class=\"selectable\">team@getvideostream.com\u003C/span>) below :)\u003Cbr>\u003Cbr>\u003Cbr>Bonus Tip: did you know you can \u003Cstrong>open Videostream\u003C/strong> by searching your Start Menu or Spotlight? You can add a shortcut on your desktop!"
+   },
+   "simplified_help_other_phone_2": {
+      "message": "If your phone cannot find Videostream it may be your firewall blocking the two from talking to eachother! Try our \u003Ca href=\"https://github.com/GetVideostream/VideostreamPortFix/releases/download/1.0.5/VideostreamNetworkRepair.exe\">port fixer app\u003C/a> to fix this."
+   },
+   "simplified_help_other_phone_3": {
+      "message": "See our antivirus and \u003Ca href=\"http://community.getvideostream.com/topic/6/\">firewall guides here\u003C/a> to see how to fix this in yours! - Note that many antiviruses run their own firewall (such as AVG, Avast, McAffee, Malwarebytes etc.). Email us if you need help :)"
+   },
+   "simplified_help_other_stutter_1": {
+      "message": "Apologies! If you’re experiencing frequent pauses and do not usually try these steps:"
+   },
+   "simplified_help_other_stutter_2": {
+      "message": "\u003Cli>Type \u003Cspan class=\"selectable\">chrome://restart\u003C/span> into your address bar\u003C/li>\u003Cli>Reboot your router and Chromecast (unplug and plug back in)\u003C/li>"
+   },
+   "simplified_help_other_stutter_3": {
+      "message": "If this doesn’t help, or this is a frequent issue please email us! Attach the log file we generate :)"
+   },
+   "simplified_help_other_tabcast_2": {
+      "message": "\u003Cli>Don't use the the chrome app launcher to open Videostream (see below)\u003Cbr>\u003Cbr>\u003Cimg src=\"/img/app-launcher.png\"/>\u003C/li>\u003Cli>Try using the app menu within Chrome instead!\u003Cbr>\u003Cbr>\u003Cimg src=\"/img/app-web.png\"/>\u003C/li>"
+   },
+   "simplified_help_other_tabcast_3": {
+      "message": "If that doesn’t fix the problem, please email us so we can help you out! Make sure you attach the log file we create :)"
+   },
+   "simplified_help_phone": {
+      "message": "Mobile app can't find Videostream"
+   },
+   "simplified_help_stuttering": {
+      "message": "Frequent Buffering"
+   },
+   "simplified_help_tabcast": {
+      "message": "Chrome is Casting the tab"
+   },
+   "stretch_aspect_ratio": {
+      "message": "Stretch Aspect Ratio"
+   },
+   "stripe_pay_button_lifetime": {
+      "message": "Pay $1"
+   },
+   "stripe_pay_button_lifetime_new": {
+      "message": "Pay $1"
+   },
+   "stripe_pay_button_monthly": {
+      "message": "Pay $1 per Month"
+   },
+   "stripe_pay_button_monthly_new": {
+      "message": "Pay $1 per Month"
+   },
+   "stripe_pay_button_yearly": {
+      "message": "Pay $1 per Year"
+   },
+   "stripe_pay_button_yearly_new": {
+      "message": "Pay $1 per Year"
+   },
+   "stuttering_cpu_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "stuttering_cpu_dialog_dismiss": {
+      "message": "OKAY"
+   },
+   "stuttering_cpu_dialog_p1": {
+      "message": "Sorry! We think your computer’s “cpu” can’t convert the video to the right format fast enough. Don’t worry though, you can change your quality options in the control bar!"
+   },
+   "stuttering_cpu_dialog_p2": {
+      "message": "Also, mp4 videos tend to play great all the time!"
+   },
+   "stuttering_cpu_dialog_p3": {
+      "message": " "
+   },
+   "stuttering_cpu_title": {
+      "message": "Is your video pausing often??"
+   },
+   "stuttering_network_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "stuttering_network_dialog_dismiss": {
+      "message": "OKAY"
+   },
+   "stuttering_network_dialog_p1": {
+      "message": "Sorry! We think your wifi router can’t keep up with this video. Don’t worry though, you can change your quality options to help in the control bar!"
+   },
+   "stuttering_network_dialog_p2": {
+      "message": "Also, mp4 videos tend to play great all the time!"
+   },
+   "stuttering_network_dialog_p3": {
+      "message": " "
+   },
+   "stuttering_network_title": {
+      "message": "Is your video pausing often??"
+   },
+   "subtitle_selection_title": {
+      "message": "Subtitles"
+   },
+   "subtitles_advanced_premium_only": {
+      "message": "Advanced subtitles are available with Videostream Premium :)"
+   },
+   "subtitles_styles_cant_override": {
+      "message": "We can't override the styles from your subtitles!"
+   },
+   "suggest_playlist_switch_notify_cancel": {
+      "message": "Cancel"
+   },
+   "suggest_playlist_switch_notify_ok": {
+      "message": "Switch Playlists"
+   },
+   "suggest_playlist_switch_notify_p1": {
+      "message": "Our suggestion playlist doesn't support full playlist controls."
+   },
+   "suggest_playlist_switch_notify_p2": {
+      "message": "But! you can have as much fun as you want with your own playlist."
+   },
+   "suggest_playlist_switch_notify_p3": {
+      "message": "Do you want to switch playlists?"
+   },
+   "suggest_playlist_switch_notify_title": {
+      "message": "Exiting Suggestions!"
+   },
+   "summary_description_lifetime": {
+      "message": "You will be charged today and receive Videostream Premium forever!"
+   },
+   "summary_description_lifetime_promo": {
+      "message": "You will be charged today and receive Videostream Premium forever!"
+   },
+   "summary_description_monthly": {
+      "message": "You will be charged monthly starting today! You can cancel at anytime!"
+   },
+   "summary_description_yearly": {
+      "message": "You will be charged today and receive Videostream Premium for a year!\u003Cbr/>You will then be charged a discounted monthly rate for every month after that."
+   },
+   "summary_error_message": {
+      "message": "Uh oh, something went wrong! Click \"Nevermind\", check your credit card details and try again!"
+   },
+   "summary_header": {
+      "message": "Your Premium Summary"
+   },
+   "summary_header_item": {
+      "message": "Plan"
+   },
+   "summary_header_price": {
+      "message": "Price"
+   },
+   "summary_price": {
+      "message": "$1"
+   },
+   "summary_title_lifetime": {
+      "message": "Videostream Premium Lifetime"
+   },
+   "summary_title_lifetime_promo": {
+      "message": "Videostream Premium Lifetime - SALE"
+   },
+   "summary_title_monthly": {
+      "message": "Videostream Premium Monthly Recurring Payment"
+   },
+   "summary_title_tax": {
+      "message": "Tax"
+   },
+   "summary_title_yearly": {
+      "message": "Videostream Premium Yearly Recurring Payment"
+   },
+   "summary_tos": {
+      "message": "Smart people said we have to tell you to read \u003Cb>our terms of service\u003C/b>, so read them or you can't buy this thing."
+   },
+   "summary_total": {
+      "message": "Total:"
+   },
+   "superfast_description": {
+      "message": "If you think your router is worse than your computer, you should turn this on. It uses less network bandwith but requires a more powerful computer."
+   },
+   "superfast_enable_label": {
+      "message": "Enable Video Compression"
+   },
+   "survey_dialog_dismiss": {
+      "message": "No Thanks"
+   },
+   "survey_dialog_submit": {
+      "message": "Submit"
+   },
+   "text_playing_on": {
+      "message": "Playing on"
+   },
+   "thank_you_page_paragraph_1": {
+      "message": "Awesome, intelligent, awe-inspiring, beautiful, magnificent, stunning, wonderful, breathtaking, impressive, majestic, mind-blowing, striking, amazing, astonishing, stupefying, rockin, sexy, fantastic, magically-delicious... and you probably smell pretty darn good, too."
+   },
+   "thank_you_page_paragraph_2": {
+      "message": "We couldn't keep doing this without people like you! Enjoy the music, bask in your own glory, and watch as we keep making Videostream better for you every day!\u003Cbr>\u003Cbr>\u003Cb>Did we mention we love you?\u003C/b> Let's grow old together!"
+   },
+   "thank_you_page_subheader": {
+      "message": "You just went Premium! That makes you:"
+   },
+   "thank_you_page_title": {
+      "message": "Thanks a bazillion!!!!"
+   },
+   "track_add_external_subtitle_track": {
+      "message": "Add External Subtitle File"
+   },
+   "track_selection_close_button": {
+      "message": "Close"
+   },
+   "track_selection_dialog_title": {
+      "message": "Language Settings"
+   },
+   "track_selection_none_selected": {
+      "message": "None"
+   },
+   "track_selection_optgroup_external": {
+      "message": "External Subtitles"
+   },
+   "track_selection_optgroup_internal": {
+      "message": "Internal Subtitles"
+   },
+   "track_selection_optgroup_remote": {
+      "message": "Subtitles from OpenSubtitles.org (Premium Only)"
+   },
+   "unable_to_load_file_dialog_dismiss": {
+      "message": "Close"
+   },
+   "unable_to_load_file_dialog_p1": {
+      "message": "Videostream failed to load this file. Check to see if it exists."
+   },
+   "unable_to_load_file_dialog_title": {
+      "message": "Unable to load file"
+   },
+   "unsupported_external_sub_message": {
+      "message": "We can't display that subtitle format on a Chromecast :(\u003Cbr>Right now you can use: srt, subrip, ass, ssa, sub, smi, sami and vtt"
+   },
+   "unsupported_internal_sub_message": {
+      "message": "This video has a subtitle format we can't display on a Chromecast :(\u003Cbr>Videostream supports these internal formats:\u003Cbr>srt, subrip, ass, ssa and webvtt"
+   },
+   "user_login": {
+      "message": "Login Now"
+   },
+   "video_adaptive": {
+      "message": "Adaptive"
+   },
+   "video_quality": {
+      "message": "Quality"
+   },
+   "video_quality_original_short": {
+      "message": "Orig."
+   },
+   "want_to_survey_no": {
+      "message": "No Thanks"
+   },
+   "want_to_survey_subtext": {
+      "message": "Please answer truthfully! :)"
+   },
+   "want_to_survey_text": {
+      "message": "Would you like to complete a quick survey to help our team out?"
+   },
+   "want_to_survey_yes": {
+      "message": "Yes I Would!"
+   },
+   "wifi_failure_dialog_contact": {
+      "message": "CONTACT US (team@getvideostream.com)"
+   },
+   "wifi_failure_dialog_dismiss": {
+      "message": "Close"
+   },
+   "wifi_failure_dialog_p1": {
+      "message": "This popup will close when you’re connected - Make sure it’s on!"
+   },
+   "wifi_failure_dialog_p2": {
+      "message": "If the popup never goes away \u003Cbutton class=\"kill-switch button-flat button-orange not-caps in-line\" data-kill-switch=\"wifi\">click here\u003C/button> to reload Videostream and try again."
+   },
+   "wifi_failure_dialog_p3": {
+      "message": " "
+   },
+   "wifi_failure_title": {
+      "message": "Waiting for wifi connection…"
+   },
+   "windows_firewall_failure_dialog_p1": {
+      "message": "Firewalls sometimes stop us from talking to your Chromecast, or your wifi network may be set to public!\u003Cbr/> Don’t worry though, we can help you to let us through. We promise to make it super easy!"
+   },
+   "windows_firewall_failure_dialog_p2": {
+      "message": "Try this utility. Download it, run it. It will open, and then almost immediately close when it's finished!"
+   },
+   "windows_firewall_failure_dialog_p3": {
+      "message": "\u003Ca href=\"https://github.com/GetVideostream/VideostreamPortFix/releases/download/1.0.5/VideostreamNetworkRepair.exe\">\u003Cbutton id=\"windows-firewall-failure-dialog-download\" class=\"button-flat button-orange not-caps in-line\">DOWNLOAD\u003C/button>\u003C/a> \u003Cbutton id=\"windows-firewall-failure-dialog-retry\" class=\"button-flat button-orange not-caps in-line\">TRY AGAIN\u003C/button>"
+   },
+   "windows_firewall_failure_title": {
+      "message": "Uh Oh! It looks like your firewall is blocking Videostream :( "
+   },
+   "yearly_poke_text": {
+      "message": "a yearly subscription costs less than a trip to the movies ;)"
+   },
+   "yearly_poke_text_new": {
+      "message": "a yearly subscription costs less than a trip to the movies for two ;)"
+   }
+}

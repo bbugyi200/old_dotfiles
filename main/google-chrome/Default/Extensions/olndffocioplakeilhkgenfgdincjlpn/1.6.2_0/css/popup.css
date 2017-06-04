@@ -1,0 +1,97 @@
+html {
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-width: 550px;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial, helvetica, san-serif;
+  font-size: 0.8em;
+}
+ul {
+  list-style: none outside;
+  margin: 0;
+  padding: 0;
+}
+a,
+a:hover,
+a:visited,
+a:focus {
+  display: block;
+  overflow: hidden;
+  padding: 0.4em 0.5em;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #15C;
+  outline: 0;
+  background-position: 0.5em 0.4em;
+  background-repeat: no-repeat;
+  transition: all 0.1s linear;
+}
+a:hover,
+a:focus {
+  background-color: #EEEEEE;
+}
+h2 {
+  margin: 0.3em 0 0.2em 0;
+  padding: 0 0.3em;
+  font-size: 0.8em;
+  font-weight: normal;
+  border-bottom: solid 1px #EEEEEE;
+  color: #999999;
+}
+#groups {
+  display: block;
+  max-height: 540px;
+  padding: 0.2em;
+  box-sizing: border-box;
+  overflow: auto;
+}
+#groups a {
+  display: table;
+  width: 100%;
+  border-radius: 0.3em;
+}
+#groups a > * {
+  display: table-cell;
+  vertical-align: top;
+}
+#groups a .title {
+  width: 100%;
+  padding: 0 0.9em;
+}
+#groups a .delete {
+  padding: 0;
+  text-shadow: #FFF 0 1px;
+  vertical-align: middle;
+  opacity: 0;
+  visibility: hidden;
+}
+#groups a:hover .delete,
+#groups a:focus .delete {
+  color: #15C;
+  opacity: 1;
+  visibility: visible;
+}
+#groups img {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  outline: 0;
+}
+footer a#manager {
+  padding: 0.6em;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  border-top: solid 1px #CCCCCC;
+  border-radius: 0 0 0.3em 0.3em;
+  text-shadow: #FFF 0 1px 0;
+  color: #999;
+}
+footer a#manager:hover {
+  color: #15C;
+}

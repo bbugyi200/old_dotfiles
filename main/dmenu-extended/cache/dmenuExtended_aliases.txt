@@ -1,0 +1,68 @@
+compton
+BlueDevil Wizard
+Okular
+Reader
+Qt Assistant
+LibreOffice Base
+Avahi VNC Server Browser
+Qt Designer
+LibreOffice Impress
+Dropbox
+LibreOffice XSLT based filters
+urxvt (tabbed)
+systemadm
+Plasma Windowed
+Qt4 Linguist 
+kde5-nm-connection-editor
+GTK+ Demo
+Plasma Look And Feel Explorer
+LibreOffice Draw
+KColorSchemeEditor
+Termite
+Qt Linguist
+urxvt (client)
+Qt V4L2 test Utility
+Feh
+Klipper
+LibreOffice Calc
+Qt4 Designer
+LibreOffice Math
+Discover
+GVim
+Icon Browser
+Konsole
+Privilege granting
+Avahi Zeroconf Browser
+Manage Printing
+Cuttlefish
+Terminal
+Dolphin
+Plasma Theme Explorer
+Qt4 QDbusViewer 
+KFontView
+Google Chrome
+LibreOffice
+Qt4 Assistant 
+Qt QDbusViewer 
+Plasmate
+Qtransmission Bittorrent Client
+VLC media player
+Widget Factory
+Qt4 Config 
+KSysGuard
+System Settings
+Root Terminal
+BlueDevil Send File
+KDE System Settings
+Anki
+Menu Editor
+Info Center
+Avahi SSH Server Browser
+UXTerm
+LibreOffice Writer
+urxvt
+Default Sound Card
+XTerm
+Firefox
+KTelnetService
+KNetAttach

@@ -1,0 +1,179 @@
+{
+   "Apply": {
+      "message": "Apply"
+   },
+   "AreYouSureYouWantToCloseSelectedTabs": {
+      "message": "Are you sure you want to close selected tabs?"
+   },
+   "Behavior": {
+      "message": "Behavior"
+   },
+   "BehaviorSettings": {
+      "message": "Behavior Settings"
+   },
+   "Cancel": {
+      "message": "Cancel"
+   },
+   "Capture": {
+      "message": "Capture"
+   },
+   "CaseSensitiveSearch": {
+      "message": "Case-sensitive Search"
+   },
+   "CloseA": {
+      "message": "Close"
+   },
+   "CloseSelectedTabs": {
+      "message": "Close selected tabs"
+   },
+   "CloseTabs": {
+      "message": "Close tabs"
+   },
+   "CollectSelectedTabsIntoASingleWindow": {
+      "message": "Collect selected tabs into a single window"
+   },
+   "ConfirmCapturesImages": {
+      "message": "Confirm Capture Images"
+   },
+   "ConfirmCloseTabs": {
+      "message": "Confirm Close Tabs"
+   },
+   "Deselect": {
+      "message": "Deselect"
+   },
+   "DeselectAllTabs": {
+      "message": "Deselect all tabs"
+   },
+   "DeselectTheTabsIncludeASpecificSubstring": {
+      "message": "Deselect the tabs include a specific substring"
+   },
+   "Disabled": {
+      "message": "Disabled"
+   },
+   "Enabled": {
+      "message": "Enabled"
+   },
+   "GetAllTabs": {
+      "message": "Get All Tabs"
+   },
+   "GetSelectedTabsCaptures": {
+      "message": "Get the capture image of selected tabs"
+   },
+   "InjectCode": {
+      "message": "Inject Code"
+   },
+   "InjectCodeToTheContentOfSelectedTabs": {
+      "message": "Inject code to the content of selected tabs"
+   },
+   "InputCodeHere": {
+      "message": "Input code here."
+   },
+   "InputTextHere": {
+      "message": "Input text here."
+   },
+   "InputWordsHere": {
+      "message": "Input words here."
+   },
+   "InsertATextToTheTitleOfSelectedTabs": {
+      "message": "Insert a text to the title of selected tabs."
+   },
+   "ItWillTakeALittleTime": {
+      "message": "It will take a little time."
+   },
+   "Keyboard": {
+      "message": "Keyboard"
+   },
+   "KeyboardSettings": {
+      "message": "Keyboard Settings"
+   },
+   "NextResult": {
+      "message": "Next result"
+   },
+   "Note": {
+      "message": "Note"
+   },
+   "OpenAllCaptureImages": {
+      "message": "Open All Capture images"
+   },
+   "OpenThePopupWindowOnStartingGoogleChrome": {
+      "message": "Enable to open the popup window on starting Google Chrome"
+   },
+   "Operate": {
+      "message": "Operate"
+   },
+   "OtherSettings": {
+      "message": "Others"
+   },
+   "PleaseTypeKeysCTRLSHIFTF": {
+      "message": "Please type keys. (e.g., CTRL + SHIFT + F)"
+   },
+   "PrevResult": {
+      "message": "Prev result"
+   },
+   "QuickOption": {
+      "message": "Quick Option"
+   },
+   "RecentSearch": {
+      "message": "Recent Search"
+   },
+   "SearchInputHint": {
+      "message": "Press Enter key to search."
+   },
+   "SearchPlusSettings": {
+      "message": "Search Plus Settings"
+   },
+   "SearchSettings": {
+      "message": "Search Settings"
+   },
+   "Select": {
+      "message": "Select"
+   },
+   "SelectAllTabs": {
+      "message": "Select all tabs"
+   },
+   "SelectTheTabsIncludeASpecificSubstring": {
+      "message": "Select the tabs include a specific substring"
+   },
+   "Settings": {
+      "message": "Settings"
+   },
+   "ShortcutToOpenThePopupWindow": {
+      "message": "Shortcut to open the popup window"
+   },
+   "SortBy": {
+      "message": "Sort by"
+   },
+   "SortByDefaultOrder": {
+      "message": "Sort by Default Order"
+   },
+   "SortByOpenedTime": {
+      "message": "Sort by Opened Time"
+   },
+   "SortByTitle": {
+      "message": "Sort by Title"
+   },
+   "SortByURL": {
+      "message": "Sort by URL"
+   },
+   "TheSettingsAreSavedAutomatically": {
+      "message": "The settings are saved automatically :)"
+   },
+   "Title": {
+      "message": "Title"
+   },
+   "ToTheBeginningOfTitle": {
+      "message": "to the beginning of title"
+   },
+   "ToTheEndOfTitle": {
+      "message": "to the end of title"
+   },
+   "extDesc": {
+      "message": "The Search Plus can find the tabs you're looking for from all opened tabs."
+   },
+   "extName": {
+      "message": "Search Plus"
+   },
+   "lang": {
+      "message": "en"
+   }
+}

@@ -1,2 +1,3 @@
-text/html;  /usr/bin/google-chrome %s >/dev/null 2>&1; needsterminal
-text/html;  elinks -dump %s; nametemplate=%s.html; copiousoutput
+*/*; xdg-open "%s"
+# text/html;  /usr/bin/google-chrome %s >/dev/null 2>&1; needsterminal
+# text/html;  elinks -dump %s; nametemplate=%s.html; copiousoutput

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="common.min.css">
+    <link rel="stylesheet" type="text/css" href="browser_action.min.css">
+  </head>
+  <body>
+    <div id="form">
+      <input type="text" id="query-field"><button id="define-btn" class="btn btn-primary" value="Define">Define</button>
+    </div>
+
+    <div id="usage-tip" style="display: block;"></div>
+    <div id="status-box" style="display: none;">
+      <div id="status-msg"></div>
+      <a id="status-search-link" style="display: none;" href="#"></a>
+    </div>
+
+    <div id="meaning" style="display: none;"></div>
+
+    <div class="footer">
+      &copy; <span id="year"></span> Google -
+      <a id="options-link" href="options.html">Extension Options</a>
+    </div>
+    <script type="text/javascript" src="browser_action.min.js"></script>
+    <script type="text/javascript" src="ga.js"></script>
+  </body>
+</html>

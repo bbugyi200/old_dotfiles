@@ -1,0 +1,29 @@
+body {
+  font-family: arial, helvetica, san-serif;
+  font-size: 0.8em;
+  color: #333333;
+}
+h1 {
+  border-bottom: solid 1px #EEEEEE;
+}
+label {
+  display: inline-block;
+  width: 160px;
+  margin-right: 10px;
+  text-align: right;
+}
+.field + * {
+  margin-top: 15px;
+}
+menu {
+  margin: 0;
+  padding: 10px 0;
+  border-top: solid 1px #EEEEEE;
+}
+input,
+select {
+  margin: 0;
+}
+button {
+  padding: 0.5em 1em;
+}

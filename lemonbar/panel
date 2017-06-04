@@ -10,19 +10,81 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-Battery() {
-    while true; do
-        echo -e "B\uf240$(acpi --battery | cut -d, -f2)"
-        sleep 1
-    done
-}
+. panel_config
+
 
 bspc config top_padding $PANEL_HEIGHT
 bspc subscribe report > "$PANEL_FIFO" &
-Battery > "$PANEL_FIFO" &
 clock -sf 'S%A, %B %d %Y   %I:%M%p' > "$PANEL_FIFO" &
 
-. panel_colors
+cnt_dbox=${upd_dbox}
+if [[ "$(hostname)" == "athena" ]]; then
+    cnt_pia=${upd_pia}
+    cnt_batt=-3456000
+    cnt_wifi=-3456000
+elif [[ "$(hostname)" == "aphrodite" ]]; then
+    cnt_pia=-3456000
+    cnt_batt=${upd_batt}
+    cnt_wifi=${upd_wifi}
+fi
+
+
+while true; do
+    # Battery
+    if [ $((cnt_batt++)) -ge ${upd_batt} ]; then
+        BP=$(acpi --battery | cut -d, -f2)
+        if [ ${BP%?} -ge 70 ]; then
+            COLOR_BATT="$GREEN"
+            ICON_BATT="\uf240"
+        elif [ ${BP%?} -ge 35 ]; then
+            COLOR_BATT="$YELLOW"
+            ICON_BATT="\uf242"
+        else
+            COLOR_BATT="$RED"
+            ICON_BATT="\uf243"
+        fi
+
+        if [[ "$(acpi --battery)" != *"Discharging"* ]]; then
+            BOLT="\uf0e7 "
+        else
+            BOLT=""
+        fi
+        echo -e "B%{F$COLOR_BATT}$BOLT$ICON_BATT$BP" > "$PANEL_FIFO"
+        cnt_batt=0
+    fi
+
+    # Dropbox
+    if [ $((cnt_dbox++)) -ge ${upd_dbox} ]; then
+        if [[ -n "$(pgrep dropbox)" ]]; then
+            echo -e "D\uf16b" > "$PANEL_FIFO"
+            sleep 1
+        else
+            echo "D" > "$PANEL_FIFO"
+        fi
+        cnt_dbox=0
+    fi
+
+    # PIA
+    if [ $((cnt_pia++)) -ge ${upd_pia} ]; then
+        if [[ -n "$(pgrep openvpn)" ]]; then
+            echo -e "P\uf17b" > "$PANEL_FIFO"
+        else
+            echo "P" > "$PANEL_FIFO"
+        fi
+        cnt_pia=0
+    fi
+
+    # Wifi \uf1eb
+    if [ $((cnt_wifi++)) -ge ${upd_wifi} ]; then
+        if [[ "$(ip link show wlo1)" == *"UP"* ]]; then
+            echo -e "X\uf118" > "$PANEL_FIFO"
+        else
+            echo -e "X\uf119" > "$PANEL_FIFO"
+        fi
+        cnt_wifi=0
+    fi
+    sleep 1
+done &
 
 panel_bar < "$PANEL_FIFO" | lemonbar -a 32 -n "$PANEL_WM_NAME" -g x$PANEL_HEIGHT -f "$PANEL_FONT" -f "Font Awesome" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
 

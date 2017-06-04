@@ -1,0 +1,19 @@
+{
+   "browser_action": {
+      "default_icon": "icon48.png",
+      "default_popup": "popup.html"
+   },
+   "description": "A list of recent bookmarks in descending order, grouped by the day they were added.",
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "48": "icon48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5YcELno98ocExR5ohONnWB5gQlosrLRNsQ/RWBGeewp0n71Fma/6quUU9Iar3w9C4Ce6MpWK1Te2mg7R8zUvR0TBxPHUse79lDpUTUl9Oq97Cr6d4gh9T13mVBDvYtfExzcFNCNRyZhhdCa9dT9ok0GzVSPqaEJ74SaCrUKT/wQIDAQAB",
+   "manifest_version": 2,
+   "name": "Recent Bookmarks",
+   "options_page": "options.html",
+   "permissions": [ "bookmarks", "chrome://favicon/" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.6.2"
+}

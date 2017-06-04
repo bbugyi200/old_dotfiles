@@ -1,0 +1,26 @@
+2017/06/04-02:29:08.020 1691 Reusing MANIFEST /home/bryan/.config/google-chrome/Default/Local Extension Settings/gighmmpiobklfepjocnamgkkbiglidom/MANIFEST-000001
+2017/06/04-02:29:08.020 1691 Recovering log #1052
+2017/06/04-02:29:08.022 1691 Reusing old log /home/bryan/.config/google-chrome/Default/Local Extension Settings/gighmmpiobklfepjocnamgkkbiglidom/001052.log 
+2017/06/04-02:30:09.371 2078 Level-0 table #1056: started
+2017/06/04-02:30:09.407 2078 Level-0 table #1056: 2528166 bytes OK
+2017/06/04-02:30:09.410 2078 Delete type=0 #1052
+2017/06/04-02:30:09.411 2078 Compacting 4@0 + 2@1 files
+2017/06/04-02:30:09.452 2078 Generated table #1057@0: 1 keys, 2527869 bytes
+2017/06/04-02:30:09.463 2078 Generated table #1058@0: 4 keys, 393 bytes
+2017/06/04-02:30:09.463 2078 Compacted 4@0 + 2@1 files => 2528262 bytes
+2017/06/04-02:30:09.466 2078 compacted to: files[ 0 2 1 0 0 0 0 ]
+2017/06/04-02:30:09.466 2078 Delete type=2 #1053
+2017/06/04-02:30:09.466 2078 Delete type=2 #1046
+2017/06/04-02:30:09.466 2078 Delete type=2 #1045
+2017/06/04-02:30:09.467 2078 Delete type=2 #1056
+2017/06/04-02:30:09.467 2078 Delete type=2 #1048
+2017/06/04-02:30:09.467 2078 Delete type=2 #1051
+2017/06/04-02:41:27.612 2078 Level-0 table #1060: started
+2017/06/04-02:41:27.647 2078 Level-0 table #1060: 2527869 bytes OK
+2017/06/04-02:41:27.655 2078 Delete type=0 #1055
+2017/06/04-03:30:09.488 2078 Level-0 table #1062: started
+2017/06/04-03:30:09.524 2078 Level-0 table #1062: 2528419 bytes OK
+2017/06/04-03:30:09.527 2078 Delete type=0 #1059
+2017/06/04-03:33:34.007 2078 Level-0 table #1064: started
+2017/06/04-03:33:34.049 2078 Level-0 table #1064: 2527861 bytes OK
+2017/06/04-03:33:34.054 2078 Delete type=0 #1061

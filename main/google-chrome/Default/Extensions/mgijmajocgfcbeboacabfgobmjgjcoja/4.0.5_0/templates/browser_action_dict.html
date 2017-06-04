@@ -1,0 +1,81 @@
+{{#entries}}
+{{! <!-- TODO: Maybe render subentries, e.g. for "pan out". --> }}
+{{^subentries}}
+<div class="entry">
+  <div class="headword-box">
+    <span class="headword">
+      {{#syllabifiedHeadword}}{{syllabifiedHeadword}}{{/syllabifiedHeadword}}
+      {{^syllabifiedHeadword}}{{headword}}{{/syllabifiedHeadword}}
+    </span>
+    <span>
+      {{#phonetics}}{{#text}}
+      <span class="phonetics-text">{{text}}</span>
+      {{/text}}{{/phonetics}}
+    </span>
+    <span>
+      {{#phonetics}}{{#drEyeAudio}}
+      <span class="audio" data-url="{{makeAudioUrl}}"></span>
+      {{/drEyeAudio}}{{/phonetics}}
+    </span>
+  </div>
+  {{#senseFamilies}}
+  <div class="sense-family">
+    <div class="poss">
+      {{#partsOfSpeechs}}
+      <span class="pos">{{value}}</span>
+      {{/partsOfSpeechs}}
+    </div>
+    <div class="morph-units">
+      {{#morphUnits}}
+      <span class="description">{{formType.description}}</span>
+      <span class="word-form">{{wordForm}}</span>
+      {{/morphUnits}}
+    </div>
+    <ol class="senses">
+      {{#senses}}
+      <li class="sense">
+        <div>{{definition.text}}</div>
+        <div>
+          {{! <!-- Only show sense syns if there are no subsenses. --> }}
+          {{^subsenses}}
+          {{#thesaurusEntries}} {{#synonyms}} {{#nyms}}
+          <span class="nym"><a class="nym-link" href="#">{{nym}}</a></span>
+          {{/nyms}} {{/synonyms}} {{/thesaurusEntries}}
+          {{/subsenses}}
+        </div>
+        <ul class="subsenses">
+          {{#subsenses}}
+          <li class="subsense">
+            <div class="definition">{{definition.text}}</div>
+          </li>
+          <div class="syns">
+            {{#showOnlyOnce}}
+            {{#thesaurusEntries}} {{#synonyms}} {{#nyms}}
+            <span class="nym"><a class="nym-link" href="#">{{nym}}</a></span>
+            {{/nyms}} {{/synonyms}} {{/thesaurusEntries}}
+            {{/showOnlyOnce}}
+          </div>
+          {{/subsenses}}
+        </ul>
+      </li>
+      {{/senses}}
+    </ol>
+  </div>
+  {{/senseFamilies}}
+</div>
+{{/subentries}}
+{{/entries}}
+
+{{#hasWebDefinitions}}
+<div class="section-name">Web definitions</div>
+{{#webDefinitions}}
+<div>
+  <div>{{definition}}</div>
+  <div><a href="{{sourceUrl}}">{{sourceUrl}}</a></div>
+</div>
+{{/webDefinitions}}
+{{/hasWebDefinitions}}
+
+<div class="powered-by">
+  Powered by <a href="{{moreUrl}}">Google Dictionary</a>
+</div>

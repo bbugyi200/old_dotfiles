@@ -1,0 +1,21 @@
+body {
+    font-family: Tahoma, sans-serif;
+}
+
+header {
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+img {
+    vertical-align: middle;
+}
+
+h1 {
+    display: inline;
+}
+
+label {
+    display: block;
+}

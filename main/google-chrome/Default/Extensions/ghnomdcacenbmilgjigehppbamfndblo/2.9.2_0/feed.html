@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="jquery-ui.css" />
+  <link rel="stylesheet" type="text/css" href="overlay.css" />
+  <script type="text/javascript" src="jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="jquery-ui.min.js"></script>
+  <script type="text/javascript" src="jquery.tools.min.js"></script>
+  <script type="text/javascript" src="htmlparser.js"></script>
+  <script type="text/javascript" src="camelhump.js"></script>
+  <script type="text/javascript" src="list.js"> </script>
+  <script type="text/javascript" src="temp_cache.js"> </script>
+  <script type="text/javascript" src="i18n_data.js"></script>
+  <script type="text/javascript" src="jed.js"></script>
+  <script type="text/javascript" src="chrome.js"></script>
+  <script type="text/javascript" src="overlay.js"></script>
+  <script type="text/javascript" src="get_asins.js"></script>
+  <script type="text/javascript" src="wishlist.js"></script>
+  <title data-i18n="title">The Camelizer</title>
+</head>
+<body id="body">
+  <div id="iconTip" class="tipContainer" style="display:none;">
+    <div class="tooltip" style="padding: 6px 12px 2px 8px;" data-i18n="camel_icon_tip" data-i18n-version_number="2.9.2"></div>
+    <div class="tooltip_stem"></div>
+  </div>
+    
+    
+  <div id="confirmBox" style="display:none;">
+    <div id="confirmMessage"></div>
+    <input type="submit" data-i18n-attr-value="t_ok" id="confirmOK" name="confirmOK"/>
+    <input type="submit" data-i18n-attr-value="t_cancel" id="confirmCancel" name="confirmCancel" />
+  </div>
+
+  <div id="camelizerContentBox">
+    <div id="camelizerDisplayList" style="display:none;">
+      <h3 data-i18n="products_heading"></h3>
+      <div id="listsContainer"></div>
+    </div>
+    <div id="camelizerNoProduct" style="display:none;">
+      <a href="#" data-i18n="t_you_need_to_choose_a_product_from_a_href_the_list_of_products_on_this_page_a"></a>
+    </div>
+    <div id="camelizerDisplayNotSupported" style="display: none;">
+      <div id="camelizerNotSupportedText" data-i18n="t_this_site_or_page_is_not_supported_by_the_camelizer">
+      </div>
+      <br />
+      <span data-i18n="t_this_is_because_it_is_either_not_a_supported_retailer_site_or_because_this_page_uses_https"></span>
+    </div>
+    <div id="camelizerDisplayError" style="display: none;">
+      <div id="camelizerErrorText" data-i18n="t_an_error_has_occurred">
+      </div>
+    </div>
+    <div id="camelizerDisplayProductNotFound" style="display: none;">
+      <div id="camelizerProductNotFoundText" data-i18n="t_product_not_found_we_will_attempt_to_find_it_and_add_it_to_our_database_so_please_check_again_later">
+      </div>
+    </div>
+    <div id="camelizerDisplayLoading" style="display: none;">
+      <span id="camelizerLoadingText" data-i18n="t_loading">
+      </span>
+      <img id="camelizerLoadingThrob" src="loading.gif" alt="Loading"/>
+    </div>
+    <div id="pleaseSigninToAmazon" style="display:none;">
+      <a href="#" target="_blank" id="signinToAmazonLink" class="no_url_tracking" data-i18n="t_please_sign_in_to_amazon_first"></a>
+    </div>
+    <div id="noWishlists" style="display:none;">
+      <span data-i18n="t_it_looks_like_you_don_t_have_any_amazon_wishlists"></span>
+      <br />
+      <span data-i18n="t_create_a_wishlist_and_then_you_can_import_it"></span>
+    </div>
+    <div id="wishlistImporter" style="display:none;">
+      <h3>Add Your Wishlists</h3>
+      <div style="padding:0 0 6px 0;" data-i18n="t_add_your_amazon_wishlist_to_your_camel_account"></div>
+      <div id="no_wishlists" style="display:none;" data-i18n="t_sorry_we_couldn_t_find_your_wishlists_please_make"></div>
+      <div id="wishlistImportSuccessMessage" style="display:none;" class="flash notice" data-i18n="t_your_wishlist_has_been_queued_processing_we_ll_not"></div>
+      <div id="wishlistsImportSuccessMessage" style="display:none;" class="flash notice" data-i18n="t_your_wishlists_have_been_queued_for_processing"></div>
+      <div id="wishlistErrors" class="flash" style="display:none;">
+        <div id="wishlistDeleteError" style="display:none;" data-i18n="t_there_was_an_error_deleting_your_imported_wishlist"></div>
+        <div id="makeSharedError" style="display:none;" data-i18n="t_there_was_an_error_changing_privacy_your_wishlist"></div>
+        <div id="wishlistPriceTypeError" style="display:none;" data-i18n="t_please_choose_at_least_one_price_type"></div>
+        <div id="wishlistSelectedError" style="display:none;" data-i18n="t_please_choose_least_one_wishlist_already_imported"></div>
+        <div id="wishlistImportError" style="display:none;" data-i18n="t_there_was_an_error_importing_your_wishlists"></div>
+        <div id="relativeValueError" style="display:none;" data-i18n="t_please_enter_a_valid_relative_value"></div>
+        <div id="wishlistCustomError" style="display:none;"></div>
+      </div>
+      <form id="wishlists_form">
+      <table id="wishlists_table">
+        <tbody>
+          <tr>
+            <td class="th" data-i18n="t_wishlists"></td>
+            <td>
+              <table id="wishlists"></table>
+            </td>
+          </tr>
+          <tr>
+            <td class="th" data-i18n="t_price_types"></td>
+            <td id="wishlistPriceTypes">
+              <div data-i18n="t_create_price_watches_these_price_types_please_choo"></div>
+              <label for="wl_price_type_amazon">
+                <span data-i18n="t_amazon"></span>
+                <input type="checkbox" name="price_types[]" value="price_amazon" checked="checked" id="wl_price_type_amazon" />
+              </label>
+              <label for="wl_price_type_new">
+                <span data-i18n="t_3rd_party_new"></span>
+                <input type="checkbox" name="price_types[]" value="price_new" id="wl_price_type_new" />
+              </label>
+              <label for="wl_price_type_used">
+                <span data-i18n="t_3rd_party_used"></span>
+                <input type="checkbox" name="price_types[]" value="price_used" id="wl_price_type_used" />
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td class="th" data-i18n="t_desired_price"></td>
+            <td>
+              <span data-i18n="t_set_the_desired_price_to_the"></span>
+              <select id="relative_to" name="relative_to">
+                <option value="current_price" data-i18n="t_current_price">Current Price</option>
+                <option value="lowest_price" data-i18n="t_lowest_price">Lowest Price</option>
+                <option value="static_price" data-i18n="t_static_price">Static Price</option>
+              </select>
+              <select id="operation" name="operation" style="">
+                <option value="-1" selected="selected">-</option>
+                <option value="1">+</option>
+              </select>
+              <span class="currency_symbol" style="float:none;"></span>
+              <input type="text" name="relative_val" value="0.01" style="width: 40px; text-align: right;" id="relative_value">
+              <div class="note" data-i18n="t_prices_are_set_relative_selected_price_measure_cur"></div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <input type="submit" id="wishlist_submit" class="wishlist_submit" data-i18n-attr-value="t_add_wishlist" style="display:none; float:left;"/>
+              <input type="submit" id="wishlists_submit" class="wishlist_submit" data-i18n-attr-value="t_add_wishlists" style="display:none; float: left;"/>
+              <div id="wishlistFormThrobber" style="display:none; float:left; ">
+                <img src="loading.gif" alt="Saving" />
+                <span data-i18n="t_saving"></span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </form>
+            
+    </div>
+    
+    <div id="emailTip" class="tipContainer" style="display:none;">
+      <div class="tooltip" style="padding: 6px 12px 6px 8px;">
+        <span data-i18n="t_camelcamelcamel_users_don_t_enter_their_email_addr"></span>
+        <br />
+        <a href="" class="loginLink" target="_blank" id="emailToolTipLoginLink" data-i18n="t_log_in"></a> -
+        <a href="" class="signupLink" target="_blank" id="emailToolTipSignupLink" data-i18n="t_sign_up"></a>
+      </div>
+      <div class="tooltip_stem"></div>
+    </div>
+
+    <div id="tooltip" class="tipContainer">
+      <div class="tooltip">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="t_amazon_price_discount"></th>
+              <th>
+                -<span class='currency_symbol'>$</span><span id="discount_minimum">0.01</span>
+              </th>
+              <th>-10%</th>
+              <th>-25%</th>
+              <th>-50%</th>
+              <th>-75%</th>
+              <th>-90%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="t_set_desired_price"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tooltip_stem"></div>
+    </div>
+
+    <div id="camelizerDisplayChart" style="display:none;">
+      <div id="chartHolder">
+        <img id="camelizerChart" alt=""/>
+        <div id="legend">
+          <form id="priceWatchForm">
+            <div id="nullPriceText" style="display:none;" data-i18n="t_not_in_stock"></div>
+            <div id="watchFormErrors" class="flash" style="display:none;">
+              <div id="watchFormNumberError" style="display:none;" data-i18n="t_please_enter_a_valid_number"></div>
+              <div id="watchFormPriceError" style="display:none;" data-i18n="t_please_enter_a_watch_price_below_the_current_price"></div>
+              <div id="watchFormEmailError" style="display:none;" data-i18n="t_please_enter_your_email_address"></div>
+              <div id="watchFormSaveError" style="display:none;" data-i18n="t_there_was_an_error_saving_your_price_watches"></div>
+            </div>
+            <img src="loading.gif" id="legend_throbber" class="throbber" alt="loading" style="visibility:hidden;" />
+            <table>
+              <thead>
+                <tr>
+                  <th style="padding-left: 2px;">
+                    <img src="graph.png" style="float:left; margin-right: 2px; display:none;" id="graph_icon" alt="chart" />
+                    <span data-i18n="t_price_type"></span>
+                  </th>
+                  <th data-i18n="t_lowest"></th>
+                  <th data-i18n="t_highest"></th>
+                  <th data-i18n="t_current"></th>
+                  <th class='desired' data-i18n="t_desired"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="legend_price_amazon" class="odd legend_row">
+                  <td>
+                    <label for="pt_amazon">
+                      <input type="checkbox" name="cpf" value="amazon" id="pt_amazon" />
+                      <span class="swatch new"></span>
+                      Amazon
+                    </label>
+                  </td>
+                  <td id="price_amazon_low"></td>
+                  <td id="price_amazon_high"></td>
+                  <td id="price_amazon_current"></td>
+                  <td class='desired'>
+                    <span class="currency_symbol"></span>
+                    <input class="price" type="text" name="price_amazon" value="" tabindex="1"/>
+                    <img src="delete.png" class="delete" style="display:none;" data-i18n-attr-title="t_delete" alt="delete"/>
+                  </td>
+                </tr>
+                <tr id="legend_price_new" class="legend_row">
+                  <td>
+                    <label for="pt_new">
+                      <input type="checkbox" name="cpf" value="new" id="pt_new" />
+                      <span class="swatch third_party"></span>
+                      <span data-i18n="t_3rd_party_new"></span>
+                    </label>
+                  </td>
+                  <td id="price_new_low"></td>
+                  <td id="price_new_high"></td>
+                  <td id="price_new_current"></td>
+                  <td class='desired'>
+                    <span class="currency_symbol"></span>
+                    <input class="price" type="text" name="price_new" value="" tabindex="2"/>
+                    <img src="delete.png" class="delete" style="display:none;" data-i18n-attr-title="t_delete" alt="delete"/>
+                  </td>
+                </tr>
+                <tr id="legend_price_used" class="odd legend_row">
+                  <td>
+                    <label for="pt_used">
+                      <input type="checkbox" name="cpf" value="used" id="pt_used" />
+                      <span class="swatch used"></span>
+                      <span data-i18n="t_3rd_party_used"></span>
+                    </label>
+                  </td>
+                  <td id="price_used_low"></td>
+                  <td id="price_used_high"></td>
+                  <td id="price_used_current"></td>
+                  <td class='desired'>
+                    <span class="currency_symbol"></span>
+                    <input class="price" type="text" name="price_used" value="" tabindex="3"/>
+                    <img src="delete.png" class="delete" style="display:none;" data-i18n-attr-title="t_delete" alt="delete"/>
+                  </td>
+                </tr>
+                <tr id="legend_price_sale" class="odd legend_row">
+                  <td>
+                    <span class="swatch new"></span>
+                    <span data-i18n="t_sale_price"></span>
+                  </td>
+                  <td id="price_sale_low"></td>
+                  <td id="price_sale_high"></td>
+                  <td id="price_sale_current"></td>
+                  <td class='desired'>
+                    <span class="currency_symbol"></span>
+                    <input class="price" type="text" name="price_sale" value="" tabindex="4"/>
+                    <img src="delete.png" class="delete" style="display:none;" data-i18n-attr-title="t_delete" alt="delete"/>
+                  </td>
+                </tr>
+                <tr id="legend_price_newegg" class="odd legend_row">
+                  <td>
+                    <span class="swatch new"></span>
+                    <span data-i18n="t_newegg_price"></span>
+                  </td>
+                  <td id="price_newegg_low"></td>
+                  <td id="price_newegg_high"></td>
+                  <td id="price_newegg_current"></td>
+                  <td class='desired'>
+                    <span class="currency_symbol"></span>
+                    <input class="price" type="text" name="price_newegg" value="" tabindex="4"/>
+                    <img src="delete.png" class="delete" style="display:none;" data-i18n-attr-title="t_delete" alt="delete"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="5" style="padding-right:0;">
+                    <div class="watchEmail" style="display:none;">
+                      <span data-i18n="t_email_address"></span>
+                      &nbsp;
+                      <input type="text" name="email" id="emailPriceWatch" value="" tabindex="5">
+                    </div>
+                    <div id="watchNote" style="display:none;" data-i18n="t_enter_your_desired_prices_we_ll_notify_when_they_a"></div>
+                    <input type="submit" data-i18n-attr-value="t_create_price_watches" id="create_price_watches"/>
+                    <input type="submit" data-i18n-attr-value="t_update_price_watches" style="display:none;" id="update_price_watches"/>
+                    <input type="submit" data-i18n-attr-value="t_create_price_watch" id="create_price_watch"/>
+                    <input type="submit" data-i18n-attr-value="t_update_price_watch" style="display:none;" id="update_price_watch"/>
+                    <div id="watchSaving" style="display:none;">
+                      <img src="loading.gif" alt="Saving" />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+
+
+      <div id="camelizerUrlParent">
+        
+        <form id="camelizerForm">
+          
+          <div class="controlbox" style="width:200px">
+            <h4>
+              <span data-i18n="t_date_range"></span>
+              <img src="loading.gif" id="loadthrob_tp" class="throbber" style="visibility: hidden;" alt="loading" />
+            </h4>
+            <div id="camelizer_radio"> 
+              <input type="radio" id="toggle_tp_1" name="tp" value="1m" />
+              <label for="toggle_tp_1" data-i18n-attr-title="t_view_data_for_the_last_month" data-i18n="t_1m"></label>
+              <input type="radio" id="toggle_tp_2" name="tp" value="3m" />
+              <label for="toggle_tp_2" data-i18n-attr-title="t_view_data_for_the_last_3_months" data-i18n="t_3m"></label>
+              <input type="radio" id="toggle_tp_3" name="tp" value="6m" />
+              <label for="toggle_tp_3" data-i18n-attr-title="t_view_data_for_the_last_6_months" data-i18n="t_6m"></label>
+              <input type="radio" id="toggle_tp_4" name="tp" value="1y" />
+              <label for="toggle_tp_4" data-i18n-attr-title="t_view_data_for_the_last_year" data-i18n="t_1y"></label>
+              <input type="radio" id="toggle_tp_5" name="tp" value="all" />
+              <label for="toggle_tp_5" data-i18n-attr-title="t_view_all_data" data-i18n="t_all"></label>
+            </div>
+          </div>
+        
+  
+          <div class="controlbox cb_checkboxes" style="width: 176px;">
+            <h4>
+              <span data-i18n="t_chart_options"></span>
+              <img src="loading.gif" id="loadthrob_lt4" class="throbber" style="visibility: hidden;" alt="loading">
+            </h4>
+            <label for="close_up_view">
+              <input type="checkbox" name="close_up_view" id="close_up_view" value="1" />
+              <span class="label" data-i18n="t_close_up_view"></span>
+            </label>
+            <label for="remove_extreme_values">
+              <input type="checkbox" name="fo" id="remove_extreme_values" value="1" />
+              <span class="label" data-i18n="t_remove_extreme_values"></span>
+            </label>
+          </div>
+  
+          <div id="productPageLinks" class="controlbox cb_checkboxes" style="margin-right: 0;">
+            <h4>
+              <span data-i18n="t_helpful_links"></span>
+              <img src="loading.gif" class="throbber" style="visibility: hidden;" alt="loading" />
+            </h4>
+            <div id="camelProductPageLink">
+              <a href="#" target="_blank" data-i18n="t_view_product_on_3camels"></a>
+            </div>
+            <div id="productPageLink">
+              <a href="#" target="_blank" id="footerProductPageLink" class='no_url_tracking'></a>
+            </div>
+          </div>
+
+        </form>
+      </div>
+        
+    </div>
+  </div>
+    
+  <div id="footer">
+    <ul class="tabs">
+      <li id="camelizerChartLink">
+        <a href="#" data-i18n="t_chart"></a>
+      </li>
+      <li id="camelizerListLink">
+        <a href="#" data-i18n="t_products_on_this_page"></a>
+      </li>
+      <li id="addWishlistLink" style="display:none;">
+        <a href="#" data-i18n="t_wishlists"></a>
+      </li>
+    </ul>
+    <div id="footerOther">
+      <span class="float" id="camelizerAbout"><a href="https://camelcamelcamel.com/contact" id="iconLink" target="_blank"><img src="camelizer_black.png" style="width:16px; height:16px; opacity: 0.25; margin-top: 1px;" alt="camel icon" /></a></span>
+      <span class="float signupLogin" style="display:none;">
+        <a href="" class="signupLink" target="_blank" id="footerSignupLink" data-i18n="t_sign_up"></a>
+      </span>
+      <span class="float signupLogin" style="display:none;">
+        <a href="" class="loginLink" target="_blank" id="footerLoginLink" data-i18n="t_log_in"></a>
+      </span>
+      <span class="float" id="loggedInAs" style="display:none;"></span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Interfaces.ExtensionLoginDropdownInterface=function(){var n=Interfaces.Definition,e=Interfaces.TYPE_FUNCTION;return{ExtensionDropdown:{open:new n(e),reset:new n(e)}}}();

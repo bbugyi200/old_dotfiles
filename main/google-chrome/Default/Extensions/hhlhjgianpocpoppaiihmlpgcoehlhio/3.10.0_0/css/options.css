@@ -1,0 +1,110 @@
+    
+body {
+/*    font-family: "Lucida Grande", sans-serif;*/
+    color: #777
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /*font-family: "Open Sans", Arial, "Lucida Grande", sans-serif;*/
+/*    font-weight: 600;*/
+    color: #000
+}
+
+input[type="color"] {
+    cursor: pointer;   
+}
+
+.token {
+    margin: 0 0 8px 12px;
+    font-size: 24pt !important;
+ /*   padding: 10px 0 10px 0.3em !important;*/
+    cursor: pointer;
+	border-radius: 0.5em !important;
+
+      display: inline-block;
+}
+
+/*
+.token > .close {
+    margin-right: 12px;
+}
+*/
+
+.token .shortcut {
+    font-size: 14pt;
+}
+
+.token > .number {
+    background: white;
+    padding: 0 0.4em;
+    color: grey;
+    border-radius: 1em !important;
+}
+
+.token > a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#ex1Slider .slider-selection {
+    background: #BABABA;
+}
+
+
+
+.pages {
+    margin-top: 10px;
+}
+
+.pages_empty {
+    color: #ddd
+}
+
+.page > .close {
+    float: none;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.row-buttons {
+    margin-top: 2em;
+}
+
+.cc {
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 1px;
+    background-color: #eee;
+    width: 65%;
+}
+
+#about h4 {
+    margin-top: 2em;
+}
+
+.version {
+    margin-bottom: 1em;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}

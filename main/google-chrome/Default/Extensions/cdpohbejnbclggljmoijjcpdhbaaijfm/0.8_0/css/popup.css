@@ -1,0 +1,293 @@
+﻿body, #outer_wrapper
+{
+    min-width: 500px;
+    min-height: 500px;
+}
+#outer_wrapper 
+{
+    overflow-y: scroll;
+}
+body, #outer_wrapper
+{
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-user-select: none;
+    background: url('../img/bg.png');
+}
+#outer_wrapper
+{
+    margin-bottom:40px;
+}
+body, .table .title > a
+{
+    color: #666;
+}
+#mynav1
+{
+    font-family: Arial;
+}
+#mynav1 > .navbar-inner
+{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 1px solid #99F;
+}
+#ext_brand
+{
+    color: #FFF;
+    font-weight: bold;
+    text-shadow: 0px 0px 20px rgba(255,255,255,.25);
+    margin-top: 2px;
+}
+#search_input
+{
+    font: Georgia;
+}
+.searchbox
+{
+    white-space: normal;
+    word-spacing: -0.5em;
+}
+#view1 > div
+{
+    float: left;
+}
+#stage1
+{
+    width: 20%;
+}
+#stage2
+{
+    width: 80%;
+}
+#stage2 > table
+{
+    width: 100%;
+}
+.table .head
+{
+    font-size: 14px;
+}
+.table .number
+{
+    width: 5%;
+    font-size: 8px;
+}
+.table .title
+{
+    width: 95%;
+    word-break: break-all;
+}
+.table .title > a
+{
+    text-decoration: none;
+}
+#stage2
+{
+    cursor: default;
+}
+#result > tr
+{
+    cursor: pointer;
+}
+#result > tr > td
+{
+    border-color: #EEE;
+}
+.typeahead
+{
+    width: 300px;
+    overflow-x:hidden;
+}
+#stage1 hr
+{
+    margin: 9px 0px;
+}
+#stage1 .btn-group, #stage1 .btn-mini
+{
+    height: 24px;
+}
+#stage1 .btn-group, #stage1 .btn-mini, #stage1 .dropdown-menu, #stage1 hr
+{
+    width: 90%;
+}
+#stage1 .dropdown-menu.operate-menu
+{
+    width: 300px;
+}
+.tooltip > div
+{
+    background: #600;
+    font-weight: bold;
+}
+.tooltip-arrow
+{
+    display: none;
+}
+.popover-inner
+{
+    word-break: break-all;
+}
+.pager
+{
+    font-weight: bold;
+}
+#copyright
+{
+    line-height: 24px;
+    text-align: center;
+    margin: 8px 0;
+}
+.btn-group
+{
+    margin-bottom: 16px;
+}
+.modal-backdrop
+{
+    z-index: 10000;
+    border-radius: 4px;
+}
+.mymodal
+{
+    z-index: 10001;
+    width: 300px;
+    margin: 0px;
+    margin-left: -150px;
+    margin-top: -100px;
+    left: 50%;
+    top: 50%;
+}
+.toright 
+{
+    float:right;
+}
+#show_history 
+{
+    left:0;
+}
+#show_history_ul li
+{
+    width:160px;
+    z-index:10000;
+}
+.operate-menu 
+{
+    left:0;
+}
+#stage3 
+{
+    padding-bottom: 160px;
+}
+#captures_album_backdrop
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    background:#000;
+    opacity:0.8;
+    z-index:10001;
+}
+#captures_album_nav
+{
+    position:relative;
+    top:-2px;
+    width:100%;
+    height:2px;
+    background:#000;
+}
+#album_nav_bar 
+{
+    position:relative;
+    top:0px;
+    left:0px;
+    width:88px;
+    height:2px;
+    background:-webkit-gradient(linear, left top, right top, from(rgba(255,204,0,0.7)), to(rgba(255,104,0,0.5)));
+}
+#captures_album 
+{
+    position:absolute;
+    left:0px;
+    top:50%;
+    margin-top:-120px;
+    width:100%;
+    height:240px;
+    z-index:10002;
+    overflow:visible;
+    background:-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.7)), to(rgba(255,255,255,0.5)));
+}
+#captures_album_controller 
+{
+    width:80%;
+    height:68px;
+    background:-webkit-gradient(linear, left top, left bottom, from(rgba(30,30,30,0.7)), to(rgba(0,0,0,0.5)));
+    border-radius:6px;
+    border:2px solid #333;
+    position:absolute;
+    right:0;
+    bottom:-34px;
+    z-index:10003;
+}
+#captures_album_controller button 
+{
+    position:relative;
+    float:left;
+    top:50%;
+    margin-top:-20px;
+    margin-left: 12px;
+    font-weight:bold;
+    height: 40px;
+}
+#captures_open_all
+{
+}
+#captures_album_close 
+{
+}
+#captures_album_inner 
+{
+    position:relative;
+}
+#captures_album_inner > div
+{        
+    float:left;
+    width:200px;
+    height:240px;
+}
+#captures_album_inner > div > img 
+{
+    margin:0 auto;
+    display:block;
+    position:relative;
+    top:50%;
+    box-shadow: 0px 0px 10px rgba(150,150,255,.80);
+    border-radius:3px;
+    border:1px solid #FFF;
+    cursor:pointer;
+    max-width:198px;
+    max-height:198px;
+
+#captures_pic_backdrop
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    background:#000;
+    z-index:10003;
+}
+#captures_pic 
+{
+    position:absolute;
+    width:100%;
+    left:0px;
+    top:0px;
+    z-index:10004;
+}
+#captures_album > img
+{
+}

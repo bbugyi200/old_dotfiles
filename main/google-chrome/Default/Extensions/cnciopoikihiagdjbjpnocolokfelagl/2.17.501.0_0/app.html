@@ -1,0 +1,2010 @@
+<html>
+
+<head>
+    <title>Videostream</title>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="/css/compiled.css" />
+</head>
+
+<body class="get-email-details">
+    <div id="desktop-view" class="desktop-view">
+        <div class="header-fade"></div>
+        <!-- Header view -->
+        <div id="header-view" class="header-view">
+            <!-- premium-blue-button"> -->
+            <div class="left-column">
+                <div class="blue-premium-wrapper" style="display:none">
+                    <button id="button-go-premium-blue" class='button-blue-premium button-flat button-small button-indigo not-caps'>
+                        <span style="font-family:Dobby; margin-right:4px; padding-top:1px">Z </span> Go Premium!
+                    </button>
+                    <div class="sale-tag-blue" id="blue-sale" style="display: none;">On Sale!</div>
+                </div>
+                <div class="left">
+                    <img class="header-logo" src="/img/monochrome.png" />
+                    <div class="premium-header">
+                        <span class="premium-text look-at" data-localize="look_at">[look_at]</span>
+                        <h1 class="huge" data-localize="app_title">[app_title]</h1>
+                        <span class="premium-text premium-right" data-localize="premium">[premium]</span>
+                    </div>
+                    <h1 class="huge" id="not-premium-header" data-localize="app_title">[app_title]</h1>
+                </div>
+            </div>
+            <div class="right">
+                <div id="iOS-app-wrapper" class="android-app-wrapper">
+                    <a href="http://getvideostream.com/ios" target="blank">
+                        <button id="get-ios-remote" class="android-remote button-flat button-clear button-medium"><img src="/img/iOS.png" /></button>
+                    </a>
+                    <div class="new-tag" style="display:none;" data-localize="new">[new]</div>
+                </div>
+                <div id="android-app-wrapper" class="android-app-wrapper">
+                    <a href="https://play.google.com/store/apps/details?id=com.videostream.Mobile&referrer=utm_source%3DDesktopApp" target="blank">
+                        <button id="get-android-remote" class="android-remote button-flat button-clear button-medium"><img src="/img/google-play.png" /></button>
+                    </a>
+                    <div class="new-tag" style="display:none;" data-localize="new">[new]</div>
+                </div>
+                <div id="go-premium-wrapper" class="go-premium-wrapper">
+                    <button id="button-go-premium" class="button-flat button-clear button-medium lower-case" data-localize="button_go_premium">[button_go_premium]</button>
+                    <div class="sale-tag" style="display:none;" data-localize="sale">[sale]</div>
+                </div>
+                <div id="upgrade-wrapper" class="upgrade-wrapper">
+				    <button id="button-upgrade" class="button-flat button-clear button-medium lower-case" data-localize="button_upgrade">[button_upgrade]</button>
+                    <div class="sale-tag-upgrade" style="display:none;" data-localize="sale">[sale]</div>
+                </div>
+                <button id="button-help" class="button-flat button-clear button-medium lower-case" data-localize="button_help">[button_help]</button>
+                <button id="button-settings" class="button-flat button-clear button-medium dobby dobby-settings" data-localize-title="button_settings" title="[button_settings]"></button>
+                <button id="button-cast" class="button-flat button-clear button-medium" style="display:none;"><img src="img/cast-disconnected.png" class="disconnected" style="display:none;"><img src="img/cast-connected.png" class="connected" style="display:none;"></button>
+            </div>
+        </div>
+        <div id="pager-view" class="pager-view">
+            <!-- Drag and drop overlay -->
+            <div id="dropzone-main" class="dropzone shadow">
+                <div class="dropzone-body">
+                    <h1 data-localize="dropzone_main_heading">[dropzone_main_heading]</h1>
+                    <p data-localize="dropzone_main_subheading">[dropzone_main_subheading]</p>
+                </div>
+            </div>
+            <!-- MAIN VIEW - CHOOSE A VIDEO -->
+            <div id="main-view" class="main-view gone">
+                <div class="file-select-view">
+                    <div class='topmargin'>
+                        <button id="button-select-video" class="button-raised button-large button-indigo not-caps" data-localize="button_select_video">[button_select_video]</button>
+                    </div>
+                    <div class='topmargin'>
+                        <div class='funkmaster-flex'>
+                            <div id="iOS-app-wrapper" class="android-app-wrapper">
+                                <a href="http://getvideostream.com/ios" target="blank">
+                                    <button id="get-ios-remote" class="android-remote button-flat button-clear button-medium"><img src="/img/iOS.png" /></button>
+                                </a>
+                                <div class="new-tag" style="display:none;" data-localize="new">[new]</div>
+                            </div>
+                            <div id="android-app-wrapper" class="android-app-wrapper">
+                                <a href="https://play.google.com/store/apps/details?id=com.videostream.Mobile&referrer=utm_source%3DDesktopApp" target="blank">
+                                    <button id="get-android-remote" class="android-remote button-flat button-clear button-medium"><img src="/img/google-play.png" /></button>
+                                </a>
+                                <div class="new-tag" style="display:none;" data-localize="new">[new]</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="made-by" data-localize="main_view_made_by" style="opacity:0">
+                    [main_view_made_by]
+                </div>
+                <div class="watch-wrapper">
+                    <div class="watch-bar-title">
+                        <span class="downloads" style="display: flex;flex-direction:row;width:166px;" id="recently-downloaded-title">
+                        <div style = "border-top-right-radius: 0px;" class="tabheaderpadded" id="recent-downloads-text" data-localize="recently_downloaded" >Recent Downloads</div>
+                        <div id="loading-wheel-recently-downloaded" class="refreshingbutton"><img class="image rotating" src="/img/refreshing.png"></div>
+                        <div id="refresh-button-recently-downloaded" class="refreshbuttonhoverable"><div><img class="image" src="/img/refresh.png"></div></div>
+                        </span>
+                        <span class="tabheaderpadded selected " data-localize="continue_watching" id="continue-watching-title" style="display: block !important;width:150px;margin: auto;text-align: center;">[continue_watching]</span>
+                        <button style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;width: 31px; display: block;" class="infobutton" id="open-tab-information-dialog">?</button>
+                    </div>
+                    <div class="watch-bar z-2 active" id="continue-watching">
+                        <div class="no-item-wrapper" id="no-items" style="display:none;">
+                            <div class="title-wrapper">
+                                <span class="no-items" data-localize="no_continue_watching">[no_continue_watching]</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="watch-bar z-2 inactive" id="recently-downloaded">
+                        <div class="no-item-wrapper" id="no-items-downloaded">
+                            <div class="title-wrapper">
+                                <span class="no-items" data-localize="no_recent_downloads">[no_recent_downloads]</span>
+                                <br>
+                                <span><button id="recently-downloaded-setup" class="button-small button-orange not-caps button-special" style="padding: none">Choose video folders</button></span>
+                            </div>
+                        </div>
+                        <div class="no-item-wrapper" id="no-nacl">
+                            <div class="title-wrapper">
+                                <span><b>Oh Dear!</b>  Looks like your native client is not enabled :(  If you are running Chromium, please install Chrome from <b><a class="fake-anchor" href = "https://www.google.com/intl/en-US/chrome/browser/desktop/index.html">this link.</a></b>  Otherwise, go to <b>chrome://plugins</b> and enable it.  Make sure to restart your browser with <b>chrome://restart</b> afterwards!</span>
+                            </div>
+                        </div>
+                                                 <div class="no-item-wrapper" id="videos-are-loading">
+                            <div class="title-wrapper">
+                                <span>Looking for Videos...</span>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <!-- Playback View -->
+            <div id="playback-view" class="playback-view gone">
+                <div class="playback-wrapper">
+                    <div class="playback-header">
+                        <div class="playback-header-inner">
+                            <h1 id="video-title" class="video-title">Video title</h1>
+                            <h2 id="video-subtitle" class="video-subtitle">Video title</h2>
+                            <h3><span data-localize="text_playing_on">[text_playing_on]</span> <span id="chromecast-name" class="chromecast-name"></span></h3>
+                        </div>
+                        <div class="playback-header-unplayable">
+                            <div class="playback-header-unplayable-message">
+                                <p data-localize="quality_preset_hint_incompatible_p1">[quality_preset_hint_incompatible_p1]</p>
+                                <p data-localize="quality_preset_hint_incompatible_p2">[quality_preset_hint_incompatible_p2]</p>
+                                <p data-localize="quality_preset_hint_incompatible_p3">[quality_preset_hint_incompatible_p3]</p>
+                            </div>
+                        </div>
+                        <div class="playback-header-buffering">
+                            <div class="buffering-spinner">
+                                <div class="loading">
+                                    <div class="loading-bar"></div>
+                                    <div class="loading-bar"></div>
+                                    <div class="loading-bar"></div>
+                                    <div class="loading-bar"></div>
+                                </div>
+                            </div>
+                            <div class="buffering-text" data-localize="buffering_text">[buffering_text]</div>
+                        </div>
+                        <div class="playback-time">
+                            <div id="time-elapsed">0:00</div>
+                            <div id="time-duration">0:00</div>
+                        </div>
+                    </div>
+                    <div class="playback-seeker">
+                        <div id="seeker-progress" class="seeker">
+                            <div class="seeker-progress"></div>
+                            <div class="seeker-clicker"></div>
+                            <div class="seeker-thumb"></div>
+                        </div>
+                    </div>
+                    <div class="button-quality-stuttering not-caps">
+                        <span class="warning" style="margin-right:0.3em;">!</span>
+                        <span data-localize="button_quality_stuttering">[button_quality_stuttering]</span>
+                    </div>
+                    <div class="quality-preset-stutter-warning not-caps">
+                        <span class="warning transparent" style="margin-right:0.3em;">!</span>
+                        <span data-localize="quality_preset_hint_lower_quality">[quality_preset_hint_lower_quality]</span>
+                    </div>
+                    <div class="playback-controls">
+                        <div class="playback-controls-left">
+                            <button id="button-previous" class="button-flat button-grey button-medium dobby dobby-previous" data-localize-title="button_previous" title="[button_previous]"></button>
+                            <button id="button-back-30" class="button-flat button-grey button-large dobby dobby-backward" data-localize-title="button_back_30" title="[button_back_30]"></button>
+                            <button id="button-play" class="button-flat button-grey button-huge dobby dobby-play" data-localize-title="button_play" title="[button_play]"></button>
+                            <button id="button-pause" class="button-flat button-grey button-huge dobby dobby-pause" data-localize-title="button_pause" title="[button_pause]"></button>
+                            <button id="button-forward-30" class="button-flat button-grey button-large dobby dobby-forward" data-localize-title="button_forward_30" title="[button_forward_30]"></button>
+                            <button id="button-next" class="button-flat button-grey button-medium dobby dobby-next" data-localize-title="button_next" title="[button_next]"></button>
+                        </div>
+                        <div class="playback-controls-right">
+                            <div id="button-adaptive" class="button-adaptive button-flat button-grey-faded button-large" style="display:none;">
+                                <div class="toggle">
+                                    <div class="state"></div><span class="text" data-localize="video_adaptive">[video_adaptive]</span></div>
+                            </div>
+                            <div id="button-quality" class="button-quality button-flat button-grey-faded button-large">
+                                <div id="button-quality-tooltip" class="tooltip-wrapper">
+                                    <span class="tooltip-trigger"></span>
+                                    <div class="tooltip"><span data-localize="quality_preset_info">[quality_preset_info]</span></div>
+                                </div>
+                                <span id="button-quality-label-default" class="quality small" data-localize="video_quality">[video_quality]</span>
+                                <span id="button-quality-label" class="quality" data-localize="video_quality_original">[video_quality_original]</span>
+                                <div id="button-quality-dropdown" class="button-quality-dropdown z-4"></div>
+                                <div class="stuttering-arrow"></div>
+                                <div class="quality-preset-stutter-warning-arrow"></div>
+                            </div>
+                            <button id="button-scale" class="button-scale button-flat button-grey-faded button-large dobby dobby-stretch" data-localize-title="stretch_aspect_ratio" title="[stretch_aspect_ratio]"></button>
+                            <button id="button-language-settings" class="button-flat button-grey-faded button-large dobby dobby-speech-bubble" data-localize-title="button_language_settings" title="[button_language_settings]"></button>
+                            <button id="button-mute" class="button-flat button-grey-faded button-large dobby dobby-volume-medium" data-localize-title="button_mute" title="[button_mute]"></button>
+                            <button id="button-unmute" class="button-flat button-grey-faded button-large dobby dobby-volume-muted" data-localize-title="button_unmute" title="[button_unmute]"></button>
+                            <div class="playback-volume-seeker">
+                                <div id="seeker-volume" class="seeker">
+                                    <div class="seeker-progress"></div>
+                                    <div class="seeker-clicker"></div>
+                                    <div class="seeker-thumb"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="playback-blocker">
+                        <div class="playback-center">
+                            <!-- <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                               <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                            </svg> -->
+                            <span data-localize="loading_prompt">[loading_prompt]</span>
+                        </div>
+                    </div>
+                    <button id="playback-controls-close-button" class="close-button button-medium button-clear button-flat dobby dobby-x" data-localize-title="playback_controls_close_button" title="[playback_controls_close_button]"></button>
+                </div>
+            </div>
+            <div id="nuke-field" class="nuke-transport">
+                <button id="nuke-button-main" class="button-raised button-small button-orange not-caps kill-switch" data-kill-switch="static">
+                    <span style="font-family: Dobby; font-size: 1.5em;">p</span>
+                </button>
+                <span data-localize="button_nuke_drop" class="nuke-text">[button_nuke_drop]</span>
+            </div>
+        </div>
+        <!-- Contact -->
+        <div id="contact-view" class="contact-view z-3 murdered">
+            <button id="contact-close-button" class="close-button button-small button-clear button-flat dobby dobby-x" title="Close help chat"></button>
+            <h1 data-localize="chat_title">[chat_title]</h1>
+            <h2 data-localize="chat_subtitle">[chat_subtitle]</h2>
+            <a href="http://getvideostream.com/chat-with-us.html" target="blank">
+                <div class="main-chat-box">
+                    <span data-localize="chat_fake_text">[chat_fake_text]</span>
+                </div>
+                <div class="type-chat-box">
+                    <span data-localize="chat_fake_respond">[chat_fake_respond]</span>
+                </div>
+            </a>
+        </div>
+        <div id="contact-hidden-message" class="contact-hidden-message">
+            <span data-localize="chat_hidden_message">[chat_hidden_message]</span>
+        </div>
+        <!-- Playlist -->
+        <div id="playlist-view" class="playlist-view z-3">
+            <div id="dropzone-playlist" class="dropzone">
+                <div class="dropzone-body">
+                    <h1 data-localize="dropzone_playlist_heading">[dropzone_playlist_heading]</h1>
+                </div>
+            </div>
+            <div class="playlist-header">
+                <input id="playlist-title" class="playlist-title" type="text" data-localize-placeholder="playlist_title_placeholder" placeholder="[playlist_title_placeholder]"></input>
+                <button id="button-playlist-repeat" class="button-flat button-small button-white-grey dobby dobby-repeat" data-localize-title="button_playlist_repeat" title="[button_playlist_repeat]"></button>
+                <button id="button-playlist-shuffle" class="button-flat button-small button-white-grey dobby dobby-random" data-localize-title="button_playlist_random" title="[button_playlist_random]"></button>
+                <button id="button-playlist-clear-all" class="button-flat button-smalltext button-white-grey lower-case" data-localize="button_playlist_clear">[button_playlist_clear]</button>
+            </div>
+            <div class="playlist-body">
+                <!-- <div class="playlist-item">
+                    <div class="playlist-item-left">
+                        <div class="playlist-image"></div>
+                    </div>
+                    <div class="playlist-item-right">
+                        <div class="playlist-item-title">
+                            Somethign somethign songingeowangweaohgw wgeoin gewiangowea
+                        </div>
+
+                        <button class="playlist-item-remove-button button-flat button-clear button-small dobby dobby-x"></button>
+                    </div>
+                </div>
+-->
+            </div>
+            <button id="button-playlist-select" class="button-playlist-select button-fab-raised button-indigo button-large dobby dobby-list" data-localize-title="button_playlist_select" title="[button_playlist_select]"></button>
+            <button id="button-playlist-add-item" class="button-playlist-add-item button-fab-raised button-indigo button-large dobby dobby-add" data-localize-title="button_playlist_add_items" title="[button_playlist_add_items]"></button>
+        </div>
+    </div>
+    <!-- Loader overlay -->
+    <div id="loader-overlay" class="loader-overlay">
+        <div class="loader-back-arrow loader-cancel" id="loader-back-arrow">M <span></span></div>
+        <div id="loader" class="loader">
+            <!-- Cards -->
+            <div class="loader-card-wrapper">
+                <div class="spinner-and-placeholder probing-file" id="placeholder">
+                    <div class="spinner-wrapper">
+                        <div class='demo'>
+                            <div class='circle'>
+                                <div class='inner'></div>
+                            </div>
+                            <div class='circle'>
+                                <div class='inner'></div>
+                            </div>
+                            <div class='circle'>
+                                <div class='inner'></div>
+                            </div>
+                            <div class='circle'>
+                                <div class='inner'></div>
+                            </div>
+                            <div class='circle'>
+                                <div class='inner'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="placeholder probing">
+                        <!-- Loading placeholder -->
+                        <div class="loader-card-placeholder-header">
+                            <span>LOADING</span>
+                        </div>
+                        <div class="loader-card-placeholder">
+                            <h1 class="loading-text-0">Funny loading messages here.</h1>
+                            <h1 class="loading-text-1">Funny loading messages here.</h1>
+                            <h1 class="loading-text-2">Funny loading messages here.</h1>
+                        </div>
+                    </div>
+                    <div class="placeholder loading">
+                        <!-- Loading placeholder -->
+                        <div class="loader-card-placeholder-header">
+                            <span>LOADING</span>
+                        </div>
+                        <div class="loader-card-placeholder">
+                            <h1 class="loading-text-3">Funny loading messages here.</h1>
+                            <h1 class="loading-text-4">Funny loading messages here.</h1>
+                            <h1 class="loading-text-5">Funny loading messages here.</h1>
+                        </div>
+                    </div>
+                    <div class="placeholder chromecast">
+                        <!-- Select Chromecast placeholder -->
+                        <div class="loader-card-placeholder-header">
+                            <span>Select a Chromecast</span>
+                        </div>
+                        <div class="loader-card-placeholder">
+                            <h1>Use the cast extension (top right)</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Incompatible File Card -->
+                <div id="loader-card-incompatible-file" class="loader-card z-3">
+                    <div class="loader-card-header">
+                        <h1 data-localize="loader_card_incompatible_file_header">[loader_card_header_incompatible_file_header]</h1>
+                    </div>
+                    <div class="loader-card-body">
+                        <p id="loader_card_incompatible_file_filename"></p>
+                        <p data-localize="loader_card_incompatible_file_p1">[loader_card_incompatible_file_p1]</p>
+                    </div>
+                    <div class="loader-card-footer">
+                        <button id="loader-card-incompatible-file-try-anyways" class="button-flat button-blue button-small loader-force" data-localize="loader_card_incompatible_file_try_anyways">[loader_card_incompatible_file_try_anyways]</button>
+                        <button id="loader-card-incompatible-file-cancel" class="button-flat button-white-blue button-small loader-cancel" data-localize="loader_card_incompatible_file_cancel">[loader_card_incompatible_file_cancel]</button>
+                    </div>
+                </div>
+                <!-- DVD File -->
+                <div id="loader-card-dvd" class="loader-card z-3">
+                    <div class="loader-card-header">
+                        <h1 data-localize="loader_card_dvd_header">[loader_card_dvd_header]</h1>
+                    </div>
+                    <div class="loader-card-body">
+                        <p data-localize="loader_card_dvd_p1">[loader_card_dvd_p1]</p>
+                        <p data-localize="loader_card_dvd_p2">[loader_card_dvd_p2]</p>
+                        <p data-localize="loader_card_dvd_p3">[loader_card_dvd_p3]</p>
+                    </div>
+                    <div class="loader-card-footer">
+                        <button id="loader-card-dvd-try-anyways" class="button-flat button-blue button-small loader-force" data-localize="loader_card_dvd_try_anyways">[loader_card_dvd_try_anyways]</button>
+                        <button id="loader-card-dvd-cancel" class="button-flat button-white-blue button-small loader-cancel" data-localize="loader_card_dvd_cancel">[loader_card_dvd_cancel]</button>
+                    </div>
+                </div>
+                <!-- No CC card -->
+                <div id="loader-card-no-chromecast" class="loader-card z-3">
+                    <div class="loader-card-header">
+                        <h1 data-localize="loader_card_no_chromecast_header">[loader_card_no_chromecast_header]</h1>
+                    </div>
+                    <div class="loader-card-body">
+                        <p>
+                            <div class="search">
+                                <div class="flipper">
+                                    <div class="front"></div>
+                                    <div class="back"></div>
+                                </div>
+                            </div>
+                            <span data-localize="loader_card_no_chromecast_spinner">[loader_card_no_chromecast_spinner]</span>
+                        </p>
+                        <p data-localize="loader_card_no_chromecast_p1">[loader_card_no_chromecast_p1]</p>
+                        <p data-localize="loader_card_no_chromecast_p2">[loader_card_no_chromecast_p2]</p>
+                    </div>
+                    <div class="loader-card-footer">
+                        <button id="loader-card-no-chromecast-restart" style="width: 200px;" class="button-flat button-blue button-small loader-restart loader-locked-button" data-localize="loader_card_no_chromecast_restart">[loader_card_no_chromecast_restart]</button>
+                        <button id="loader-card-no-chromecast-cancel" class="button-flat button-white-blue button-small loader-cancel" data-localize="loader_card_no_chromecast_cancel">[loader_card_no_chromecast_cancel]</button>
+                    </div>
+                </div>
+                <!-- Firewall Card -->
+                <div id="loader-card-firewall" class="loader-card z-3">
+                    <div class="loader-card-header">
+                        <h1 data-localize="loader_card_firewall_header">[loader_card_firewall_header]</h1>
+                    </div>
+                    <div id="loader-card-firewall-body-windows-10" class="loader-card-body">
+                        <p data-localize="loader_card_windows_10_firewall_failure_dialog_p1">[loader_card_windows_10_firewall_failure_dialog_p1]</p>
+                        <p data-localize="loader_card_windows_10_firewall_failure_dialog_p2">[loader_card_windows_10_firewall_failure_dialog_p2]</p>
+                        <p data-localize="loader_card_windows_10_firewall_failure_dialog_p3">[loader_card_windows_10_firewall_failure_dialog_p3]</p>
+                        <p data-localize="loader_card_windows_10_firewall_failure_dialog_p4">[loader_card_windows_10_firewall_failure_dialog_p4]</p>
+                    </div>
+                    <div id="loader-card-firewall-body-windows" class="loader-card-body">
+                        <p data-localize="loader_card_windows_firewall_failure_dialog_p1">[loader_card_windows_firewall_failure_dialog_p1]</p>
+                        <p data-localize="loader_card_windows_firewall_failure_dialog_p2">[loader_card_windows_firewall_failure_dialog_p2]</p>
+                        <p data-localize="loader_card_windows_firewall_failure_dialog_p3">[loader_card_windows_firewall_failure_dialog_p3]</p>
+                    </div>
+                    <div id="loader-card-firewall-body-mac" class="loader-card-body">
+                        <p data-localize="loader_card_mac_firewall_failure_dialog_p1">[loader_card_mac_firewall_failure_dialog_p1]</p>
+                        <a href="http://support.apple.com/en-ca/HT201642">
+                            <button class="button-flat button-orange not-caps button-small" data-localize="loader_card_mac_firewall_failure_dialog_howto">[loader_card_mac_firewall_failure_dialog_howto]</button>
+                        </a>
+                    </div>
+                    <div id="loader-card-firewall-body-linux" class="loader-card-body">
+                        <p data-localize="loader_card_linux_firewall_failure_dialog_p1">[loader_card_linux_firewall_failure_dialog_p1]</p>
+                    </div>
+                    <div class="loader-card-footer">
+                        <button id="loader-card-firewall-restart" style="width: 240px;" class="button-flat button-blue button-small kill-switch loader-locked-button" data-localize="loader_card_firewall_restart" data-kill-switch="firewall">[loader_card_firewall_restart]</button>
+                        <button id="loader-card-firewall-cancel" class="button-flat button-white-blue button-small loader-cancel" data-localize="loader_card_firewall_cancel">[loader_card_firewall_cancel]</button>
+                    </div>
+                </div>
+                <!-- No Network Card -->
+                <div id="loader-card-no-network" class="loader-card z-3">
+                    <div class="loader-card-header">
+                        <h1 data-localize="loader_card_no_network_header">[loader_card_no_network_header]</h1>
+                    </div>
+                    <div class="loader-card-body">
+                        <p>
+                            <div class="search">
+                                <div class="flipper">
+                                    <div class="front"></div>
+                                    <div class="back"></div>
+                                </div>
+                            </div>
+                            <span data-localize="loader_card_no_network_spinner">[loader_card_no_network_spinner]</span>
+                        </p>
+                        <p data-localize="loader_card_no_network_p1">[loader_card_no_network_p1]</p>
+                        <p data-localize="loader_card_no_network_p2">[loader_card_no_network_p2]</p>
+                    </div>
+                    <div class="loader-card-footer">
+                        <button id="loader-card-no-network-cancel" class="button-flat button-white-blue button-small loader-cancel" data-localize="loader_card_no_network_cancel">[loader_card_no_network_cancel]</button>
+                    </div>
+                </div>
+                <!-- Chromecast Timeout -->
+                <div id="loader-card-chromecast-timeout" class="loader-card z-3">
+                    <div class="loader-card-header">
+                        <h1 data-localize="loader_card_chromecast_timeout_header">[loader_card_chromecast_timeout_header]</h1>
+                    </div>
+                    <div class="loader-card-body">
+                        <p data-localize="loader_card_chromecast_timeout_p1">[loader_card_chromecast_timeout_p1]</p>
+                        <p data-localize="loader_card_chromecast_timeout_p2">[loader_card_chromecast_timeout_p2]</p>
+                    </div>
+                    <div class="loader-card-footer">
+                        <button id="loader-card-chromecast-timeout-restart" class="button-flat button-blue button-small kill-switch" data-localize="loader_card_chromecast_timeout_restart" data-kill-switch="chromecast-timeout">[loader_card_chromecast_timeout_restart]</button>
+                    </div>
+                </div>
+                <!-- Antivirus Error -->
+                <div id="loader-card-antivirus" class="loader-card z-3">
+                    <div class="loader-card-header">
+                        <h1 data-localize="loader_card_antivirus_header">[loader_card_antivirus_header]</h1>
+                    </div>
+                    <div id="loader-card-antivirus-body-windows" class="loader-card-body">
+                        <p data-localize="loader_card_antivirus_dialog_p1">[loader_card_antivirus_dialog_p1]</p>
+                        <p data-localize="loader_card_antivirus_dialog_p2">[loader_card_antivirus_dialog_p2]</p>
+                        <p data-localize="loader_card_antivirus_dialog_p3">[loader_card_antivirus_dialog_p3]</p>
+                    </div>
+                    <div class="loader-card-footer">
+                        <button id="loader-card-antivirus-cancel" class="button-flat button-white-blue button-small loader-cancel" data-localize="loader_card_antivirus_cancel">[loader_card_antivirus_cancel]</button>
+                    </div>
+                </div>
+                <!-- How to restart chrome -->
+                <div id="restart-chrome-how-to" class="loader-card restart-chrome z-3">
+                    <div class="loader-card-header">
+                        <h1 data-localize="restart_chrome_how_to_header">[restart_chrome_how_to_header]</h1>
+                    </div>
+                    <div class="loader-card-body">
+                        <p id="restart_chrome_how_to_filename"></p>
+                        <p data-localize="restart_chrome_how_to_p1">[restart_chrome_how_to_p1]</p>
+                        <p data-localize="restart_chrome_how_to_p2">[restart_chrome_how_to_p2]</p>
+                        <p data-localize="restart_chrome_how_to_p3">[restart_chrome_how_to_p3]</p>
+                    </div>
+                    <div class="loader-card-footer">
+                        <button id="restart-chrome-how-to-cancel" class="button-flat button-white-blue button-small loader-hide" data-localize="restart_chrome_how_to_cancel">[restart_chrome_how_to_cancel]</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Reload Button -->
+            <div class="loader-footer">
+                <button id="loader-overlay-nuke" class="button-white button-flat button-small kill-switch" data-localize="loader_overlay_reload" data-kill-switch="overlay">[loader_overlay_reload]</button>
+            </div>
+        </div>
+    </div>
+    <div id="select-chromecast-view" class="select-chromecast-view">
+		<div class="media-router">
+			<img class="right-arrow" src="/img/media-router-right-arrow.png">
+            <img class="left-arrow" src="/img/media-router-left-arrow.png">
+		</div>
+		<div class="cast-extension">
+			<img src="/img/select-chromecast-arrow.png"/>
+			<span data-localize="select_chromecast_text">[select_chromecast_text]</span>
+			<div class="select-chromecast-bottom">
+				<img src="/img/select-chromecast-cast-icon.png"/>
+				<span data-localize="select_chromecast_click_extension">[select_chromecast_click_extension]</span>
+			</div>
+		</div>
+	</div>
+    <!-- Settings dialog -->
+    <div id="settings-dialog" class="dialog settings-dialog">
+        <div class="dialog-inner dialog-large">
+            <div class="dialog-header">
+                <div class="settings-dialog-header-left">
+                    <button id="button-settings-back" class="button-flat button-small button-white dobby dobby-back" data-localize-title="settings_dialog_back_button" title="[settings_dialog_back_button]"></button>
+                    <h1>
+                        <span data-localize="settings_dialog_title">[settings_dialog_title]</span>
+                        <span id="settings-dialog-main-title" data-localize="settings_dialog_main_title" class="gone"></span>
+                        <span id="settings-dialog-audio-title" data-localize="settings_dialog_audio_title" class="gone">[settings_dialog_audio_title]</span>
+                        <span id="settings-dialog-subtitles-title" data-localize="settings_dialog_subtitles_title" class="gone">[settings_dialog_subtitles_title]</span>
+                        <span id="settings-dialog-playlist-title" data-localize="settings_dialog_playlist_title" class="gone">[settings_dialog_playlist_title]</span>
+                        <span id="settings-dialog-other-title" data-localize="settings_dialog_other_title" class="gone">[settings_dialog_other_title]</span>
+                        <span id="settings-dialog-mobile-title" data-localize="settings_dialog_mobile_title" class="gone">[settings_dialog_mobile_title]</span>
+                        <span id="settings-dialog-library-title" data-localize="settings_dialog_library_title" class="gone">[settings_dialog_library_title]</span>
+                        <span id="settings-dialog-subscriptions-stripe-title" data-localize="settings_dialog_subscriptions_title" class="gone">[settings_dialog_subscriptions_title]</span>
+                        <span id="settings-dialog-subscriptions-paypal-title" data-localize="settings_dialog_subscriptions_title" class="gone">[settings_dialog_subscriptions_title]</span>
+                        <span id="settings-dialog-buffering-fixes-title" data-localize="settings_dialog_buffering_fixes_title" class="gone">[settings_dialog_buffering_fixes_title]</span>
+                    </h1>
+                </div>
+                <button id="button-settings-close-2" class="button-flat button-small button-white dobby dobby-x" data-localize-title="settings_close_button" title="[settings_close_button]"></button>
+            </div>
+            <div class="dialog-body">
+                <div id="settings-page-main" class="settings-page settings-page-main">
+                    <div id="button-settings-navigate-audio" class="settings-icon">
+                        <img src="/img/settings-audio.png" />
+                        <span data-localize="button_settings_audio">[button_settings_audio]</span>
+                    </div>
+                    <div id="button-settings-navigate-subtitles" class="settings-icon">
+                        <img src="/img/settings-subtitles.png" />
+                        <span data-localize="button_settings_subtitles">[button_settings_subtitles]</span>
+                    </div>
+                    <div id="button-settings-navigate-playlist" class="settings-icon">
+                        <img src="/img/settings-playlist.png" />
+                        <span data-localize="button_settings_playlist">[button_settings_playlist]</span>
+                    </div>
+                    <div id="button-settings-navigate-playlist-locked" class="settings-icon disabled">
+                        <img src="/img/settings-playlist-locked.png" />
+                        <span data-localize="button_settings_playlist">[button_settings_playlist]</span>
+                    </div>
+                    <div id="button-settings-navigate-mobile" class="settings-icon">
+                        <img src="/img/settings-mobile.png" />
+                        <span data-localize="button_settings_mobile">[button_settings_mobile]</span>
+                    </div>
+                    <div id="button-settings-navigate-library" class="settings-icon">
+                        <img src="/img/settings-library.png" />
+                        <span data-localize="button_settings_library">[button_settings_library]</span>
+                    </div>
+                    <div id="button-settings-navigate-premium" class="settings-icon">
+                        <img src="/img/settings-premium.png" />
+                        <span data-localize="button_settings_premium">[button_settings_premium]</span>
+                    </div>
+                    <div id="button-settings-navigate-subscriptions-stripe" class="settings-icon" style="display:none;">
+                        <img src="/img/settings-premium.png" />
+                        <span data-localize="button_settings_subscriptions">[button_settings_subscriptions]</span>
+                    </div>
+                    <div id="button-settings-navigate-subscriptions-paypal" class="settings-icon" style="display:none;">
+                        <img src="/img/settings-premium.png" />
+                        <span data-localize="button_settings_subscriptions">[button_settings_subscriptions]</span>
+                    </div>
+                    <div id="button-settings-navigate-buffering-fixes" class="settings-icon" style="display:none;">
+                        <img src="/img/help-stutter.png" />
+                        <span data-localize="button_settings_buffering_fixes">[button_settings_buffering_fixes]</span>
+                    </div>
+                    <div id="button-settings-navigate-other" class="settings-icon">
+                        <img src="/img/settings-other.png" />
+                        <span data-localize="button_settings_other">[button_settings_other]</span>
+                    </div>
+                </div>
+                <div id="settings-page-audio" class="settings-page gone">
+                    <label data-localize="settings_audio_label">[settings_audio_label]</label>
+                    <div id="audio-button-group" class="radio-button-group">
+                        <div class="radio-button-wrapper" value="ac3" style="display:none;">
+                            <div class="radio-button"></div>
+                            <span data-localize="audio_setting_ac3">[audio_setting_ac3]</span>
+                        </div>
+                        <div class="radio-button-wrapper" value="aac">
+                            <div class="radio-button"></div>
+                            <span data-localize="audio_setting_pcm">[audio_setting_pcm]</span>
+                        </div>
+                        <div class="radio-button-wrapper" value="disabled">
+                            <div class="radio-button"></div>
+                            <span data-localize="audio_setting_default">[audio_setting_default]</span>
+                        </div>
+                    </div>
+                    <label data-localize="settings_default_audio_language">[settings_default_audio_language]</label>
+                    <select id="audio-default-language">
+                        <option value="ab">Abkhazian</option>
+                        <option value="aa">Afar</option>
+                        <option value="af">Afrikaans</option>
+                        <option value="sq">Albanian</option>
+                        <option value="am">Amharic</option>
+                        <option value="ar">Arabic</option>
+                        <option value="an">Aragonese</option>
+                        <option value="hy">Armenian</option>
+                        <option value="as">Assamese</option>
+                        <option value="ae">Avestan</option>
+                        <option value="ay">Aymara</option>
+                        <option value="az">Azerbaijani</option>
+                        <option value="ba">Bashkir</option>
+                        <option value="eu">Basque</option>
+                        <option value="be">Belarusian</option>
+                        <option value="bn">Bengali</option>
+                        <option value="bh">Bihari</option>
+                        <option value="bi">Bislama</option>
+                        <option value="bs">Bosnian</option>
+                        <option value="br">Breton</option>
+                        <option value="bg">Bulgarian</option>
+                        <option value="my">Burmese</option>
+                        <option value="ca">Catalan</option>
+                        <option value="ch">Chamorro</option>
+                        <option value="ce">Chechen</option>
+                        <option value="zh">Chinese</option>
+                        <option value="cu">Church Slavic, Slavonic, Old Bulgarian</option>
+                        <option value="cv">Chuvash</option>
+                        <option value="kw">Cornish</option>
+                        <option value="co">Corsican</option>
+                        <option value="hr">Croatian</option>
+                        <option value="cs">Czech</option>
+                        <option value="da">Danish</option>
+                        <option value="dv">Divehi, Dhivehi, Maldivian</option>
+                        <option value="nl">Dutch</option>
+                        <option value="dz">Dzongkha</option>
+                        <option value="en">English</option>
+                        <option value="eo">Esperanto</option>
+                        <option value="et">Estonian</option>
+                        <option value="fo">Faroese</option>
+                        <option value="fj">Fijian</option>
+                        <option value="fi">Finnish</option>
+                        <option value="fr">French</option>
+                        <option value="gd">Gaelic, Scottish Gaelic</option>
+                        <option value="gl">Galician</option>
+                        <option value="ka">Georgian</option>
+                        <option value="de">German</option>
+                        <option value="el">Greek (Modern)</option>
+                        <option value="gn">Guarani</option>
+                        <option value="gu">Gujarati</option>
+                        <option value="ht">Haitian, Haitian Creole</option>
+                        <option value="ha">Hausa</option>
+                        <option value="he">Hebrew</option>
+                        <option value="hz">Herero</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ho">Hiri Motu</option>
+                        <option value="hu">Hungarian</option>
+                        <option value="is">Icelandic</option>
+                        <option value="io">Ido</option>
+                        <option value="id">Indonesian</option>
+                        <option value="ia">Interlingua (International Auxiliary Language Association)</option>
+                        <option value="ie">Interlingue</option>
+                        <option value="iu">Inuktitut</option>
+                        <option value="ik">Inupiaq</option>
+                        <option value="ga">Irish</option>
+                        <option value="it">Italian</option>
+                        <option value="ja">Japanese</option>
+                        <option value="jv">Javanese</option>
+                        <option value="kl">Kalaallisut</option>
+                        <option value="kn">Kannada</option>
+                        <option value="ks">Kashmiri</option>
+                        <option value="kk">Kazakh</option>
+                        <option value="km">Khmer</option>
+                        <option value="ki">Kikuyu, Gikuyu</option>
+                        <option value="rw">Kinyarwanda</option>
+                        <option value="ky">Kirghiz</option>
+                        <option value="kv">Komi</option>
+                        <option value="ko">Korean</option>
+                        <option value="kj">Kuanyama, Kwanyama</option>
+                        <option value="ku">Kurdish</option>
+                        <option value="lo">Lao</option>
+                        <option value="la">Latin</option>
+                        <option value="lv">Latvian</option>
+                        <option value="li">Limburgan, Limburger, Limburgish</option>
+                        <option value="ln">Lingala</option>
+                        <option value="lt">Lithuanian</option>
+                        <option value="lb">Luxembourgish, Letzeburgesch</option>
+                        <option value="mk">Macedonian</option>
+                        <option value="mg">Malagasy</option>
+                        <option value="ms">Malay</option>
+                        <option value="ml">Malayalam</option>
+                        <option value="mt">Maltese</option>
+                        <option value="ma">Manipuri</option>
+                        <option value="gv">Manx</option>
+                        <option value="mi">Maori</option>
+                        <option value="mr">Marathi</option>
+                        <option value="mh">Marshallese</option>
+                        <option value="mo">Moldavian</option>
+                        <option value="mn">Mongolian</option>
+                        <option value="me">Montenegrin</option>
+                        <option value="na">Nauru</option>
+                        <option value="nv">Navaho (Navajo)</option>
+                        <option value="nd">Ndebele (North)</option>
+                        <option value="nr">Ndebele (South)</option>
+                        <option value="ng">Ndonga</option>
+                        <option value="ne">Nepali</option>
+                        <option value="se">Northern Sami</option>
+                        <option value="no">Norwegian</option>
+                        <option value="nb">Norwegian Bokmal</option>
+                        <option value="nn">Norwegian Nynorsk</option>
+                        <option value="ny">Nyanja (Chichewa), Chewa</option>
+                        <option value="oc">Occitan (post 1500), Provencal</option>
+                        <option value="or">Oriya</option>
+                        <option value="om">Oromo</option>
+                        <option value="os">Ossetian, Ossetic</option>
+                        <option value="pi">Pali</option>
+                        <option value="pa">Panjabi</option>
+                        <option value="fa">Persian</option>
+                        <option value="pl">Polish</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="pb">Portuguese (Brazil)</option>
+                        <option value="ps">Pushto</option>
+                        <option value="qu">Quechua</option>
+                        <option value="rm">Raeto-Romance</option>
+                        <option value="ro">Romanian</option>
+                        <option value="rn">Rundi</option>
+                        <option value="ru">Russian</option>
+                        <option value="sm">Samoan</option>
+                        <option value="sg">Sango</option>
+                        <option value="sa">Sanskrit</option>
+                        <option value="sc">Sardinian</option>
+                        <option value="sr">Serbian</option>
+                        <option value="sn">Shona</option>
+                        <option value="ii">Sichuan Yi</option>
+                        <option value="sd">Sindhi</option>
+                        <option value="si">Sinhala, Sinhalese</option>
+                        <option value="sk">Slovak</option>
+                        <option value="sl">Slovenian</option>
+                        <option value="so">Somali</option>
+                        <option value="st">Sotho (Southern)</option>
+                        <option value="es">Spanish, Castilian</option>
+                        <option value="su">Sundanese</option>
+                        <option value="sw">Swahili</option>
+                        <option value="ss">Swati</option>
+                        <option value="sv">Swedish</option>
+                        <option value="sy">Syriac</option>
+                        <option value="tl">Tagalog</option>
+                        <option value="ty">Tahitian</option>
+                        <option value="tg">Tajik</option>
+                        <option value="ta">Tamil</option>
+                        <option value="tt">Tatar</option>
+                        <option value="te">Telugu</option>
+                        <option value="th">Thai</option>
+                        <option value="bo">Tibetan</option>
+                        <option value="ti">Tigrinya</option>
+                        <option value="to">Tonga (Tonga Islands)</option>
+                        <option value="ts">Tsonga</option>
+                        <option value="tn">Tswana</option>
+                        <option value="tr">Turkish</option>
+                        <option value="tk">Turkmen</option>
+                        <option value="tw">Twi</option>
+                        <option value="ug">Uighur</option>
+                        <option value="uk">Ukrainian</option>
+                        <option value="ur">Urdu</option>
+                        <option value="uz">Uzbek</option>
+                        <option value="vi">Vietnamese</option>
+                        <option value="vo">Volapuk</option>
+                        <option value="wa">Walloon</option>
+                        <option value="cy">Welsh</option>
+                        <option value="fy">Western Frisian</option>
+                        <option value="wo">Wolof</option>
+                        <option value="xh">Xhosa</option>
+                        <option value="yi">Yiddish</option>
+                        <option value="yo">Yoruba</option>
+                        <option value="za">Zhuang, Chuang</option>
+                        <option value="zu">Zulu</option>
+                    </select>
+                </div>
+                <div id="settings-page-subtitles" class="settings-page gone">
+                    <div class="subtitles-advanced-settings">
+                        <label data-localize="settings_subtitle_style_header">[settings_subtitle_style_header]</label>
+                        <div class="subtitles-setting-category-wrapper">
+                            <!-- Subtitle size -->
+                            <label data-localize="settings_subtitle_size_header">[settings_subtitle_size_header]</label>
+                            <div id="subtitle-size-button-group" class="radio-button-group">
+                                <div class="radio-button-wrapper" value="tiny">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-size-tiny-example">Aa</span>
+                                </div>
+                                <div class="radio-button-wrapper" value="small">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-size-small-example">Aa</span>
+                                </div>
+                                <div class="radio-button-wrapper" value="medium">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-size-medium-example">Aa</span>
+                                </div>
+                                <div class="radio-button-wrapper" value="large">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-size-large-example">Aa</span>
+                                </div>
+                                <div class="radio-button-wrapper" value="extra-large">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-size-extra-large-example">Aa</span>
+                                </div>
+                                <div class="radio-button-wrapper" value="humongous">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-size-humongous-example">Aa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subtitles-setting-category-wrapper">
+                            <!-- Subtitle Color -->
+                            <label data-localize="settings_subtitle_color_header">[settings_subtitle_color_header]</label>
+                            <div id="subtitle-color-button-group" class="radio-button-group">
+                                <div class="radio-button-wrapper" value="1">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-color-1-example">Aa</span>
+                                </div>
+                                <div class="radio-button-wrapper" value="2">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-color-2-example">Aa</span>
+                                </div>
+                                <div class="radio-button-wrapper" value="3">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-color-3-example">Aa</span>
+                                </div>
+                                <div class="radio-button-wrapper" value="4">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-color-4-example">Aa</span>
+                                </div>
+                                <div class="radio-button-wrapper" value="5">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-color-5-example">Aa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subtitles-setting-category-wrapper">
+                            <!-- Subtitle Position -->
+                            <label data-localize="settings_subtitle_position_header">[settings_subtitle_position_header]</label>
+                            <div id="subtitle-position-button-group" class="radio-button-group">
+                                <div class="radio-button-wrapper" value="bottom">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-position-bottom-example"></span>
+                                    <img src="/img/subtitle-position-bottom.png" />
+                                </div>
+                                <div class="radio-button-wrapper" value="bottom-overscan">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-position-bottom-overscan-example"></span>
+                                    <img src="/img/subtitle-position-bottom-overscan.png" />
+                                </div>
+                                <div class="radio-button-wrapper" value="top-overscan">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-position-top-overscan-example"></span>
+                                    <img src="/img/subtitle-position-top-overscan.png" />
+                                </div>
+                                <div class="radio-button-wrapper" value="extra-top">
+                                    <div class="radio-button">
+                                    </div>
+                                    <span class="radio-button-position-extra-top-example"></span>
+                                    <img src="/img/subtitle-position-top.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subtitles-advanced-standard-blocker">
+                            <div data-localize="subtitles_advanced_premium_only">[subtitles_advanced_premium_only]</div>
+                        </div>
+                        <div class="subtitles-advanced-ssa-blocker">
+                            <div data-localize="subtitles_styles_cant_override">[subtitles_styles_cant_override]</div>
+                        </div>
+                    </div>
+                    <div class="settings-flex">
+                        <div>
+                            <label data-localize="settings_default_subtitle_language">[settings_default_subtitle_language]</label>
+                            <select class="tight" id="subtitle-default-language">
+                                <option value="ab">Abkhazian</option>
+                                <option value="aa">Afar</option>
+                                <option value="af">Afrikaans</option>
+                                <option value="sq">Albanian</option>
+                                <option value="am">Amharic</option>
+                                <option value="ar">Arabic</option>
+                                <option value="an">Aragonese</option>
+                                <option value="hy">Armenian</option>
+                                <option value="as">Assamese</option>
+                                <option value="ae">Avestan</option>
+                                <option value="ay">Aymara</option>
+                                <option value="az">Azerbaijani</option>
+                                <option value="ba">Bashkir</option>
+                                <option value="eu">Basque</option>
+                                <option value="be">Belarusian</option>
+                                <option value="bn">Bengali</option>
+                                <option value="bh">Bihari</option>
+                                <option value="bi">Bislama</option>
+                                <option value="bs">Bosnian</option>
+                                <option value="br">Breton</option>
+                                <option value="bg">Bulgarian</option>
+                                <option value="my">Burmese</option>
+                                <option value="ca">Catalan</option>
+                                <option value="ch">Chamorro</option>
+                                <option value="ce">Chechen</option>
+                                <option value="zh">Chinese</option>
+                                <option value="cu">Church Slavic, Slavonic, Old Bulgarian</option>
+                                <option value="cv">Chuvash</option>
+                                <option value="kw">Cornish</option>
+                                <option value="co">Corsican</option>
+                                <option value="hr">Croatian</option>
+                                <option value="cs">Czech</option>
+                                <option value="da">Danish</option>
+                                <option value="dv">Divehi, Dhivehi, Maldivian</option>
+                                <option value="nl">Dutch</option>
+                                <option value="dz">Dzongkha</option>
+                                <option value="en">English</option>
+                                <option value="eo">Esperanto</option>
+                                <option value="et">Estonian</option>
+                                <option value="fo">Faroese</option>
+                                <option value="fj">Fijian</option>
+                                <option value="fi">Finnish</option>
+                                <option value="fr">French</option>
+                                <option value="gd">Gaelic, Scottish Gaelic</option>
+                                <option value="gl">Galician</option>
+                                <option value="ka">Georgian</option>
+                                <option value="de">German</option>
+                                <option value="el">Greek (Modern)</option>
+                                <option value="gn">Guarani</option>
+                                <option value="gu">Gujarati</option>
+                                <option value="ht">Haitian, Haitian Creole</option>
+                                <option value="ha">Hausa</option>
+                                <option value="he">Hebrew</option>
+                                <option value="hz">Herero</option>
+                                <option value="hi">Hindi</option>
+                                <option value="ho">Hiri Motu</option>
+                                <option value="hu">Hungarian</option>
+                                <option value="is">Icelandic</option>
+                                <option value="io">Ido</option>
+                                <option value="id">Indonesian</option>
+                                <option value="ia">Interlingua (IALA)</option>
+                                <option value="ie">Interlingue</option>
+                                <option value="iu">Inuktitut</option>
+                                <option value="ik">Inupiaq</option>
+                                <option value="ga">Irish</option>
+                                <option value="it">Italian</option>
+                                <option value="ja">Japanese</option>
+                                <option value="jv">Javanese</option>
+                                <option value="kl">Kalaallisut</option>
+                                <option value="kn">Kannada</option>
+                                <option value="ks">Kashmiri</option>
+                                <option value="kk">Kazakh</option>
+                                <option value="km">Khmer</option>
+                                <option value="ki">Kikuyu, Gikuyu</option>
+                                <option value="rw">Kinyarwanda</option>
+                                <option value="ky">Kirghiz</option>
+                                <option value="kv">Komi</option>
+                                <option value="ko">Korean</option>
+                                <option value="kj">Kuanyama, Kwanyama</option>
+                                <option value="ku">Kurdish</option>
+                                <option value="lo">Lao</option>
+                                <option value="la">Latin</option>
+                                <option value="lv">Latvian</option>
+                                <option value="li">Limburgan, Limburger, Limburgish</option>
+                                <option value="ln">Lingala</option>
+                                <option value="lt">Lithuanian</option>
+                                <option value="lb">Luxembourgish, Letzeburgesch</option>
+                                <option value="mk">Macedonian</option>
+                                <option value="mg">Malagasy</option>
+                                <option value="ms">Malay</option>
+                                <option value="ml">Malayalam</option>
+                                <option value="mt">Maltese</option>
+                                <option value="ma">Manipuri</option>
+                                <option value="gv">Manx</option>
+                                <option value="mi">Maori</option>
+                                <option value="mr">Marathi</option>
+                                <option value="mh">Marshallese</option>
+                                <option value="mo">Moldavian</option>
+                                <option value="mn">Mongolian</option>
+                                <option value="me">Montenegrin</option>
+                                <option value="na">Nauru</option>
+                                <option value="nv">Navaho (Navajo)</option>
+                                <option value="nd">Ndebele (North)</option>
+                                <option value="nr">Ndebele (South)</option>
+                                <option value="ng">Ndonga</option>
+                                <option value="ne">Nepali</option>
+                                <option value="se">Northern Sami</option>
+                                <option value="no">Norwegian</option>
+                                <option value="nb">Norwegian Bokmal</option>
+                                <option value="nn">Norwegian Nynorsk</option>
+                                <option value="ny">Nyanja (Chichewa), Chewa</option>
+                                <option value="oc">Occitan (post 1500), Provencal</option>
+                                <option value="or">Oriya</option>
+                                <option value="om">Oromo</option>
+                                <option value="os">Ossetian, Ossetic</option>
+                                <option value="pi">Pali</option>
+                                <option value="pa">Panjabi</option>
+                                <option value="fa">Persian</option>
+                                <option value="pl">Polish</option>
+                                <option value="pt">Portuguese</option>
+                                <option value="pb">Portuguese (Brazil)</option>
+                                <option value="ps">Pushto</option>
+                                <option value="qu">Quechua</option>
+                                <option value="rm">Raeto-Romance</option>
+                                <option value="ro">Romanian</option>
+                                <option value="rn">Rundi</option>
+                                <option value="ru">Russian</option>
+                                <option value="sm">Samoan</option>
+                                <option value="sg">Sango</option>
+                                <option value="sa">Sanskrit</option>
+                                <option value="sc">Sardinian</option>
+                                <option value="sr">Serbian</option>
+                                <option value="sn">Shona</option>
+                                <option value="ii">Sichuan Yi</option>
+                                <option value="sd">Sindhi</option>
+                                <option value="si">Sinhala, Sinhalese</option>
+                                <option value="sk">Slovak</option>
+                                <option value="sl">Slovenian</option>
+                                <option value="so">Somali</option>
+                                <option value="st">Sotho (Southern)</option>
+                                <option value="es">Spanish, Castilian</option>
+                                <option value="su">Sundanese</option>
+                                <option value="sw">Swahili</option>
+                                <option value="ss">Swati</option>
+                                <option value="sv">Swedish</option>
+                                <option value="sy">Syriac</option>
+                                <option value="tl">Tagalog</option>
+                                <option value="ty">Tahitian</option>
+                                <option value="tg">Tajik</option>
+                                <option value="ta">Tamil</option>
+                                <option value="tt">Tatar</option>
+                                <option value="te">Telugu</option>
+                                <option value="th">Thai</option>
+                                <option value="bo">Tibetan</option>
+                                <option value="ti">Tigrinya</option>
+                                <option value="to">Tonga (Tonga Islands)</option>
+                                <option value="ts">Tsonga</option>
+                                <option value="tn">Tswana</option>
+                                <option value="tr">Turkish</option>
+                                <option value="tk">Turkmen</option>
+                                <option value="tw">Twi</option>
+                                <option value="ug">Uighur</option>
+                                <option value="uk">Ukrainian</option>
+                                <option value="ur">Urdu</option>
+                                <option value="uz">Uzbek</option>
+                                <option value="vi">Vietnamese</option>
+                                <option value="vo">Volapuk</option>
+                                <option value="wa">Walloon</option>
+                                <option value="cy">Welsh</option>
+                                <option value="fy">Western Frisian</option>
+                                <option value="wo">Wolof</option>
+                                <option value="xh">Xhosa</option>
+                                <option value="yi">Yiddish</option>
+                                <option value="yo">Yoruba</option>
+                                <option value="za">Zhuang, Chuang</option>
+                                <option value="zu">Zulu</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label data-localize="settings_subtitle_encoding_header">[settings_subtitle_encoding_header]</label>
+                            <select class="tight" id="subtitle-encoding">
+                                <optgroup label="Default">
+                                    <option value="windows-1252" selected>Windows-1252</option>
+                                </optgroup>
+                                <optgroup label="Unicode">
+                                    <option value="utf-8">Unicode (UTF-8)</option>
+                                </optgroup>
+                                <optgroup label="Arabic">
+                                    <option value="iso-8859-6">Arabic (ISO 8859-6)</option>
+                                    <option value="windows-1256">Arabic (Windows-1256)</option>
+                                </optgroup>
+                                <optgroup label="Baltic">
+                                    <option value="iso-8859-4">Baltic (ISO 8859-4)</option>
+                                    <option value="iso-8859-13">Baltic (ISO 8859-13)</option>
+                                    <option value="windows-1257">Baltic (Windows-1257)</option>
+                                </optgroup>
+                                <optgroup label="Celtic">
+                                    <option value="iso-8859-14">Celtic (ISO 8859-14)</option>
+                                </optgroup>
+                                <optgroup label="Central Europe">
+                                    <option value="iso-8859-2">Central Europe (ISO 8859-2)</option>
+                                    <option value="iso-8859-16">Central Europe (ISO 8859-16)</option>
+                                    <option value="windows-1250">Central Europe (Windows-1250)</option>
+                                </optgroup>
+                                <optgroup label="Chinese Simplified">
+                                    <option value="gbk">Chinese Simplified (GBK)</option>
+                                    <option value="gb18030">Chinese Simplified (GB18030)</option>
+                                    <option value="gb2312">Chinese Simplified (GB2312)</option>
+                                    <option value="iso-2022-cn">Chinese Simplified (ISO 2022)</option>
+                                    <option value="windows-936">Chinese Simplified (Windows-936)</option>
+                                </optgroup>
+                                <optgroup label="Chinese Traditional">
+                                    <option value="big5">Chinese Traditional (Big5)</option>
+                                </optgroup>
+                                <optgroup label="Cyrillic">
+                                    <option value="iso-8859-5">Cyrillic (ISO 8859-5)</option>
+                                    <option value="windows-1251">Cyrillic (Windows-1251)</option>
+                                    <option value="ibm855">Cyrillic (IBM855)</option>
+                                    <option value="ibm866">Cyrillic (IBM866)</option>
+                                    <option value="koi8-r">Cyrillic (KOI8-R)</option>
+                                    <option value="koi8-u">Cyrillic (KOI8-U)</option>
+                                </optgroup>
+                                <optgroup label="Greek">
+                                    <option value="iso-8859-7">Greek (ISO 8859-7)</option>
+                                    <option value="windows-1253">Greek (Windows-1253)</option>
+                                </optgroup>
+                                <optgroup label="Hebrew">
+                                    <option value="iso-8859-8">Hebrew (ISO 8859-8)</option>
+                                    <option value="windows-1255">Hebrew (Windows-1255)</option>
+                                </optgroup>
+                                <optgroup label="Japanese">
+                                    <option value="shift_jis">Japanese (Shift-JIS)</option>
+                                    <option value="iso-2022-jp">Japanese (ISO 2022)</option>
+                                    <option value="euc-jp">Japanese (EUC)</option>
+                                    <option value="windows-932">Japanese (Windows-932)</option>
+                                </optgroup>
+                                <optgroup label="Korean">
+                                    <option value="euc-kr">Korean (EUC)</option>
+                                    <option value="iso-2022-kr">Korean (ISO 2022)</option>
+                                </optgroup>
+                                <optgroup label="Nordic">
+                                    <option value="iso-8859-10">Nordic (ISO 8859-10)</option>
+                                </optgroup>
+                                <optgroup label="South Europe">
+                                    <option value="iso-8859-3">South Europe (ISO 8859-3)</option>
+                                </optgroup>
+                                <optgroup label="Taiwanese">
+                                    <option value="euc-tw">Taiwanese (EUC)</option>
+                                    <option value="x-euc-tw">Taiwanese (X-EUC)</option>
+                                </optgroup>
+                                <optgroup label="Thai">
+                                    <option value="iso-8859-11">Thai (ISO 8859-11)</option>
+                                    <option value="windows-874">Thai (Windows-874)</option>
+                                </optgroup>
+                                <optgroup label="Turkish">
+                                    <option value="iso-8859-9">Turkish (ISO 8859-9)</option>
+                                    <option value="windows-1254">Turkish (Windows-1254)</option>
+                                </optgroup>
+                                <optgroup label="Vietnamese">
+                                    <option value="windows-1258">Vietnamese (Windows-1258)</option>
+                                </optgroup>
+                                <optgroup label="Western Europe">
+                                    <option value="iso-8859-15">Western Europe (ISO 8859-15)</option>
+                                    <option value="windows-1252">Western Europe (Windows-1252)</option>
+                                    <option value="iso-8859-1">Latin (ISO 8859-1)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-flex subtitle-buttons">
+                        <button id="subtitle-library-button" class="button-raised no-title button-indigo button-small not-caps" data-localize="settings_subtitle_library">
+                            [settings_subtitle_library]
+                        </button>
+                        <div class="subtitle-switches-wrapper">
+                            <div id="subtitle-loading-switch" class="subtitle-settings-switch switch-wrapper">
+                                <div class="switch"></div>
+                                <span data-localize="settings_subtitle_loading_label">[settings_subtitle_loading_label]</span>
+                            </div>
+                            <div id="subtitle-remote-switch" class="subtitle-settings-switch switch-wrapper">
+                                <div class="switch"></div>
+                                <span data-localize="settings_subtitle_remote_label">[settings_subtitle_remote_label]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="settings-page-playlist" class="settings-page gone">
+                    <div id="playlist-enable-switch" class="settings-playlist-switch switch-wrapper">
+                        <div class="switch"></div>
+                        <span data-localize="settings_playlist_enable_label">[settings_playlist_enable_label]</span>
+                    </div>
+                    <div id="settings-playlist-selection">
+                        <p class="italics centered" data-localize="settings_playlist_about">[settings_playlist_about]</p>
+                        <label data-localize="settings_playlist_title">[settings_library_title]</label>
+                        <div id="settings-playlist-list" class="library-list">
+                        </div>
+                        <button id="button-playlist-add" class="button-small button-library button-library-add" data-localize="settings_playlist_add">[settings_playlist_add]</button>
+                    </div>
+                </div>
+                <div id="settings-page-other" class="settings-page gone">
+                    <label data-localize="settings_about_label">[settings_about_label]</label>
+                    <p data-localize="settings_about_content">[settings_about_content]</p>
+                    <label data-localize="settings_opt_in_header">[settings_opt_in_header]</label>
+                    <div id="analytics-opt-in-checkbox" class="checkbox-wrapper">
+                        <div class="checkbox"></div>
+                        <span data-localize="settings_analytics_opt_in_label">[settings_analytics_opt_in_label]</span>
+                    </div>
+                    <div id="resume-opt-in-checkbox" class="checkbox-wrapper">
+                        <div class="checkbox"></div>
+                        <span data-localize="settings_resume_opt_in_label">[settings_resume_opt_in_label]</span>
+                    </div>
+                    <div id="splash-content-images-opt-in-wrapper">
+                        <div id="splash-content-images-opt-in-checkbox" class="checkbox-wrapper">
+                            <div class="checkbox"></div>
+                            <span data-localize="settings_splash_content_images_opt_in_label">[settings_splash_content_images_opt_in_label]</span>
+                        </div>
+                    </div>
+                    <div id="content-screenshot-opt-in-wrapper">
+                        <div id="content-screenshot-opt-in-checkbox" class="checkbox-wrapper">
+                            <div class="checkbox"></div>
+                            <span data-localize="settings_content_screenshot_opt_in_label">[settings_content_screenshot_opt_in_label]</span>
+                        </div>
+                    </div>
+                    <div id="content-suggestions-opt-in-checkbox" class="checkbox-wrapper">
+                        <div class="checkbox"></div>
+                        <span data-localize="settings_content_suggestions_opt_in_label">[settings_content_suggestions_opt_in_label]</span>
+                    </div>
+                    <div id="recently-downloaded-opt-in-checkbox" class="checkbox-wrapper">
+                        <div class="checkbox"></div>
+                        <span data-localize="settings_recently_downloaded_opt_in_label">[settings_recently_downloaded_opt_in_label]</span>
+                    </div>
+                    <label data-localize="settings_contact_us">[settings_contact_us]</label>
+                    <p data-localize="settings_contact_content">[settings_contact_content]</p>
+                </div>
+                <div id="settings-page-library" class="settings-page gone">
+                    <p id="settings-about-no-app" class="italics centered" data-localize="settings_library_about">[settings_library_about]</p>
+                    <p id="settings-about-with-app" class="italics centered" data-localize="settings_library_about_with_app" style="display:none;">[settings_library_about_with_app]</p>
+                    <label data-localize="settings_library_title">[settings_library_title]</label>
+                    <div id="settings-library-list" class="library-list">
+                        <!-- <li class="folder-item">
+                            <div class="library-item-title">I:\[ www.TorrentDay.com ] - Shipping.Wars.S01E03.Bullship.HDTV.XviD-MOMENTUM</div>
+                            <div class="library-syncing">                               
+                                <div class="loader">
+                                  <div class="flipper">
+                                    <div class="front"></div>
+                                    <div class="back"></div>
+                                  </div>
+                                </div>                              
+                                <div>Scanning</div>
+                            </div>
+                            <button class="library-item-remove-button button-flat button-small button-clear-grey-alt dobby dobby-x"></button>
+                        </li> -->
+                    </div>
+                    <button id="button-library-add" class="button-small button-library button-library-add" data-localize="settings_library_add">[settings_library_add]</button>
+                    <div id="subtitle-loading-library-switch" class="subtitle-library-switch switch-wrapper">
+                        <div class="switch"></div>
+                        <span data-localize="settings_subtitle_loading_label">[settings_subtitle_loading_label]</span>
+                    </div>
+                </div>
+                <div id="settings-page-mobile" class="settings-page gone">
+                    <label data-localize="settings_computer_name_label">[settings_computer_name_label]</label>
+                    <input type="text" id="computer-name" placeholder="[settings_computer_name]" data-localize-placeholder="settings_computer_name" />
+                    <label id="mobile-library-title" data-localize="settings_mobile_library_title">[settings_mobile_library_title]</label>
+                    <button id="mobile-library-button" class="button-raised button-indigo button-small not-caps" data-localize="settings_mobile_library">[settings_mobile_library]</button>
+                </div>
+                <div id="settings-page-subscriptions-paypal" class="settings-page gone">
+                    <p data-localize="settings_subscription_content">[settings_subscription_content]</p>
+                    <label data-localize="settings_paypal">[settings_paypal]</label>
+                    <button id="button-cancel-paypal" class="button-flat button-orange button-small" data-localize="settings_button_cancel_paypal">[settings_button_cancel_paypal]</button>
+                    <p id="paypal-cancelled-text" data-localize="settings_paypal_content">[settings_paypal_content]</p>
+                </div>
+                <div id="settings-page-subscriptions-stripe" class="settings-page gone">
+                    <p data-localize="settings_subscription_content">[settings_subscription_content]</p>
+                    <label data-localize="settings_stripe">[settings_stripe]</label>
+                    <button id="button-cancel-stripe" class="button-flat button-orange button-small" data-localize="settings_button_cancel_stripe">[settings_button_cancel_stripe]</button>
+                    <p id="stripe-cancelled-text" data-localize="settings_stripe_content">[settings_stripe_content]</p>
+                </div>
+                <div id="settings-page-buffering-fixes" class="settings-page gone">
+                    <label data-localize="settings_superfast_enable_label">[settings_superfast_enable_label]</label>
+                    <div id="superfast-enable-switch" class="switch-wrapper">
+                        <div class="switch"></div>
+                        <span data-localize="superfast_enable_label">[superfast_enable_label]</span>
+                    </div>
+                    <p data-localize="superfast_description">[superfast_description]</p>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button id="button-settings-close" class="button-flat button-white-blue button-small" data-localize="settings_close_button">[settings_close_button]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Track selection dialog -->
+    <div id="track-selection-dialog" class="dialog track-selection-dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="track_selection_dialog_title">[track_selection_dialog_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <div id="audio-track-wrapper">
+                    <label data-localize="audio_selection_title">[audio_selection_title]</label>
+                    <select id="dropdown-audio-track-list">
+                    </select>
+                </div>
+                <div id="subtitle-track-wrapper">
+                    <label data-localize="subtitle_selection_title">[subtitle_selection_title]</label>
+                    <select id="dropdown-subtitle-track-list">
+                        <optgroup id="optgroup-subtitle-internal" data-localize-label="track_selection_optgroup_internal" label="[track_selection_optgroup_internal]"></optgroup>
+                        <optgroup id="optgroup-subtitle-external" data-localize-label="track_selection_optgroup_external" label="[track_selection_optgroup_external]"></optgroup>
+                        <optgroup id="optgroup-subtitle-remote" data-localize-label="track_selection_optgroup_remote" label="[track_selection_optgroup_remote]" style="display:none;"></optgroup>
+                        <option value="" data-localize="track_selection_none_selected">[track_selection_none_selected]</option>
+                    </select>
+                    <div id="unsupported-internal-sub-message" class="unsupported-sub-msg">
+                        <div class="warning">!</div>
+                        <p class="message-text" data-localize="unsupported_internal_sub_message">[unsupported_internal_sub_message]</p>
+                    </div>
+                    <div id="remote-subs-download-failed" class="unsupported-sub-msg single-line">
+                        <div class="warning">!</div>
+                        <p class="message-text" data-localize="remote_subs_download_failed">[remote_subs_download_failed]</p>
+                    </div>
+                    <div id="subtitle-options-wrapper" class="funkmaster-flex">
+                        <div id="subtitle-encoding" class="equal-spaced">
+                            <label data-localize="settings_subtitle_encoding_header">Subtitle File Encoding</label>
+                            <select id="dropdown-encoding-list" class="half-sized-select tight">
+                                <optgroup label="Default">
+                                    <option value="windows-1252" selected>Windows-1252</option>
+                                </optgroup>
+                                <optgroup label="Unicode">
+                                    <option value="utf-8">Unicode (UTF-8)</option>
+                                </optgroup>
+                                <optgroup label="Arabic">
+                                    <option value="iso-8859-6">Arabic (ISO 8859-6)</option>
+                                    <option value="windows-1256">Arabic (Windows-1256)</option>
+                                </optgroup>
+                                <optgroup label="Baltic">
+                                    <option value="iso-8859-4">Baltic (ISO 8859-4)</option>
+                                    <option value="iso-8859-13">Baltic (ISO 8859-13)</option>
+                                    <option value="windows-1257">Baltic (Windows-1257)</option>
+                                </optgroup>
+                                <optgroup label="Celtic">
+                                    <option value="iso-8859-14">Celtic (ISO 8859-14)</option>
+                                </optgroup>
+                                <optgroup label="Central Europe">
+                                    <option value="iso-8859-2">Central Europe (ISO 8859-2)</option>
+                                    <option value="iso-8859-16">Central Europe (ISO 8859-16)</option>
+                                    <option value="windows-1250">Central Europe (Windows-1250)</option>
+                                </optgroup>
+                                <optgroup label="Chinese Simplified">
+                                    <option value="gbk">Chinese Simplified (GBK)</option>
+                                    <option value="gb18030">Chinese Simplified (GB18030)</option>
+                                    <option value="gb2312">Chinese Simplified (GB2312)</option>
+                                    <option value="iso-2022-cn">Chinese Simplified (ISO 2022)</option>
+                                    <option value="windows-936">Chinese Simplified (Windows-936)</option>
+                                </optgroup>
+                                <optgroup label="Chinese Traditional">
+                                    <option value="big5">Chinese Traditional (Big5)</option>
+                                </optgroup>
+                                <optgroup label="Cyrillic">
+                                    <option value="iso-8859-5">Cyrillic (ISO 8859-5)</option>
+                                    <option value="windows-1251">Cyrillic (Windows-1251)</option>
+                                    <option value="ibm855">Cyrillic (IBM855)</option>
+                                    <option value="ibm866">Cyrillic (IBM866)</option>
+                                    <option value="koi8-r">Cyrillic (KOI8-R)</option>
+                                    <option value="koi8-u">Cyrillic (KOI8-U)</option>
+                                </optgroup>
+                                <optgroup label="Greek">
+                                    <option value="iso-8859-7">Greek (ISO 8859-7)</option>
+                                    <option value="windows-1253">Greek (Windows-1253)</option>
+                                </optgroup>
+                                <optgroup label="Hebrew">
+                                    <option value="iso-8859-8">Hebrew (ISO 8859-8)</option>
+                                    <option value="windows-1255">Hebrew (Windows-1255)</option>
+                                </optgroup>
+                                <optgroup label="Japanese">
+                                    <option value="shift_jis">Japanese (Shift-JIS)</option>
+                                    <option value="iso-2022-jp">Japanese (ISO 2022)</option>
+                                    <option value="euc-jp">Japanese (EUC)</option>
+                                    <option value="windows-932">Japanese (Windows-932)</option>
+                                </optgroup>
+                                <optgroup label="Korean">
+                                    <option value="euc-kr">Korean (EUC)</option>
+                                    <option value="iso-2022-kr">Korean (ISO 2022)</option>
+                                </optgroup>
+                                <optgroup label="Nordic">
+                                    <option value="iso-8859-10">Nordic (ISO 8859-10)</option>
+                                </optgroup>
+                                <optgroup label="South Europe">
+                                    <option value="iso-8859-3">South Europe (ISO 8859-3)</option>
+                                </optgroup>
+                                <optgroup label="Taiwanese">
+                                    <option value="euc-tw">Taiwanese (EUC)</option>
+                                    <option value="x-euc-tw">Taiwanese (X-EUC)</option>
+                                </optgroup>
+                                <optgroup label="Thai">
+                                    <option value="iso-8859-11">Thai (ISO 8859-11)</option>
+                                    <option value="windows-874">Thai (Windows-874)</option>
+                                </optgroup>
+                                <optgroup label="Turkish">
+                                    <option value="iso-8859-9">Turkish (ISO 8859-9)</option>
+                                    <option value="windows-1254">Turkish (Windows-1254)</option>
+                                </optgroup>
+                                <optgroup label="Vietnamese">
+                                    <option value="windows-1258">Vietnamese (Windows-1258)</option>
+                                </optgroup>
+                                <optgroup label="Western Europe">
+                                    <option value="iso-8859-15">Western Europe (ISO 8859-15)</option>
+                                    <option value="windows-1252">Western Europe (Windows-1252)</option>
+                                    <option value="iso-8859-1">Latin (ISO 8859-1)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div id="subtitle-offset" class="equal-spaced">
+                            <label>Subtitle Offset (seconds)</label>
+                            <input id="subtitle-offset-input" type="number" value="0.0" step="0.1">
+                        </div>
+                    </div>
+                </div>
+                <div class="funkmaster-flex">
+                    <p style="margin-right: 2em">
+                        <button id="button-add-external-subtitle-track" class="button-raised button-indigo not-caps" data-localize="track_add_external_subtitle_track">
+                            [track_add_external_subtitle_track]
+                        </button>
+                    </p>
+                    <p>
+                        <button id="button-open-media-library" class="button-raised button-indigo not-caps" data-localize="settings_subtitle_library">
+                            [settings_subtitle_library]
+                        </button>
+                    </p>
+                </div>
+                <div class="funkmaster-flex">
+                    <button id="more-subtitle-options-button" class="sub-opt-button button-small-text button-flat button-orange in-line">Click Here</button>
+                    <span id="more-subtitle-options-span" data-localize="more_subtitle_options_span">[more_subtitle_options_span]</span>
+                </div>
+                <div id="unsupported-external-sub-message" class="unsupported-sub-msg">
+                    <div class="warning">!</div>
+                    <p class="message-text" data-localize="unsupported_external_sub_message">[unsupported_external_sub_message]</p>
+                </div>
+                <div id="external-sub-too-large" class="unsupported-sub-msg">
+                    <div class="warning">!</div>
+                    <p class="message-text" data-localize="external_sub_too_large">[external_sub_too_large]</p>
+                </div>
+                <div id="remote-subs-error-message" class="unsupported-sub-msg single-line">
+                    <div class="warning">!</div>
+                    <p class="message-text" data-localize="remote_subs_error">[remote_subs_error]</p>
+                </div>
+                <div id="remote-subs-not-found-message" class="unsupported-sub-msg single-line">
+                    <div class="warning">!</div>
+                    <p class="message-text" data-localize="remote_subs_not_found">[remote_subs_not_found]</p>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button id="button-track-selection-close" class="button-flat button-white-blue button-small" data-localize="track_selection_close_button">[track_selection_close_button]</button>
+            </div>
+        </div>
+    </div>
+    <!-- main help dialog -->
+    <div id="simplified-help-dialog" class="dialog settings-dialog simplified-help-dialog help">
+        <div class="dialog-inner dialog-large">
+            <div class="dialog-header">
+                <div class="settings-dialog-header-left">
+                    <button id="simplified-help-button-back" class="button-flat button-small button-white dobby dobby-back gone" data-localize-title="settings_dialog_back_button" title="Back"></button>
+                    <h1>
+                            <span id="dialog-main-title" data-localize="simplified_help_main_dialog_title">[simplified_help_main_dialog_title]</span>
+                            <span id="dialog-stuttering-title" data-localize="simplified_help_stuttering" class="gone">[simplified_help_stuttering]</span>
+                            <span id="dialog-loading-title" data-localize="simplified_help_loading" class="gone">[simplified_help_loading]</span>
+                            <span id="dialog-tabcast-title" data-localize="simplified_help_tabcast" class="gone">[simplified_help_tabcast]</span>
+                            <span id="dialog-firewall-title" data-localize="simplified_help_firewall" class="gone">[simplified_help_firewall]</span>
+                            <span id="dialog-phone-title" data-localize="simplified_help_phone" class="gone">[simplified_help_phone]</span>
+                            <span id="dialog-open-title" data-localize="simplified_help_open" class="gone">[simplified_help_open]</span>
+                            <span id="dialog-other-title" data-localize="simplified_help_other_dialog_title" class="gone">[simplified_help_other_dialog_title]</span>
+                        </h1>
+                </div>
+                <button id="simplified-x" class="button-flat button-small button-white dobby dobby-x" title="Close"></button>
+            </div>
+            <div class="dialog-body">
+                <div id="main-dialog" class="settings-page settings-page-main gone">
+                    <div id="open-box" class="settings-icon">
+                        <img src="/img/help-open.png" />
+                        <span data-localize="simplified_help_open">[simplified_help_open]</span>
+                    </div>
+                    <div id="stuttering-box" class="settings-icon">
+                        <img src="/img/help-stutter.png" />
+                        <span data-localize="simplified_help_stuttering">[simplified_help_stuttering]</span>
+                    </div>
+                    <div id="infinite-loading-box" class="settings-icon">
+                        <img src="/img/help-loading.png" />
+                        <span data-localize="simplified_help_loading">[simplified_help_loading]</span>
+                    </div>
+                    <div id="tab-casting-box" class="settings-icon">
+                        <img src="/img/help-casttab.png" />
+                        <span data-localize="simplified_help_tabcast">[simplified_help_tabcast]</span>
+                    </div>
+                    <div id="firewall-box" class="settings-icon">
+                        <img src="/img/help-firewall.png" />
+                        <span data-localize="simplified_help_firewall">[simplified_help_firewall]</span>
+                    </div>
+                    <div id="phone-box" class="settings-icon">
+                        <img src="/img/help-phone.png" />
+                        <span data-localize="simplified_help_phone">[simplified_help_phone]</span>
+                    </div>
+                    <div id="other-box" class="settings-icon">
+                        <img src="/img/help-more.png" />
+                        <span data-localize="simplified_help_other">[simplified_help_other]</span>
+                    </div>
+                </div>
+                <div id="stuttering-dialog" class="settings-page gone">
+                    <p data-localize="simplified_help_other_stutter_1">[simplified_help_other_stutter_1]</p>
+                    <ul data-localize="simplified_help_other_stutter_2">[simplified_help_other_stutter_2]</ul>
+                    <p data-localize="simplified_help_other_stutter_3">[simplified_help_other_stutter_3]</p>
+                </div>
+                <div id="open-dialog" class="settings-page gone">
+                    <p data-localize="simplified_help_other_open_1">[simplified_help_other_open_1]</p>
+                    <p data-localize="simplified_help_other_open_2">[simplified_help_other_open_2]</p>
+                    <p data-localize="simplified_help_other_open_3">[simplified_help_other_open_3]</p>
+                </div>
+                <div id="loading-dialog" class="settings-page gone">
+                    <p data-localize="simplified_help_other_loading_1">[simplified_help_other_loading_1]</p>
+                    <ul data-localize="simplified_help_other_loading_2">[simplified_help_other_loading_2]</ul>
+                    <p data-localize="simplified_help_other_loading_3">[simplified_help_other_loading_3]</p>
+                </div>
+                <div id="tabcast-dialog" class="settings-page gone">
+                    <ul data-localize="simplified_help_other_tabcast_2">[simplified_help_other_tabcast_2]</ul>
+                    <p data-localize="simplified_help_other_tabcast_3">[simplified_help_other_tabcast_3]</p>
+                </div>
+                <div id="firewall-dialog" class="settings-page gone">
+                    <p data-localize="simplified_help_other_firewall_2">[simplified_help_other_firewall_2]</p>
+                    <p data-localize="simplified_help_other_firewall_3">[simplified_help_other_firewall_3]</p>
+                </div>
+                <div id="phone-dialog" class="settings-page gone">
+                    <p data-localize="simplified_help_other_phone_2">[simplified_help_other_phone_2]</p>
+                    <p data-localize="simplified_help_other_phone_3">[simplified_help_other_phone_3]</p>
+                </div>
+                <div id="other-dialog" class="settings-page gone">
+                    <p data-localize="simplified_help_other_other_contact">[simplified_help_other_other_contact]</p>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <a class="email-button" href="mailto:team@getvideostream.com">
+                    <button id="help-dialog-contact" class="button-flat button-white button-small" data-localize="simplified_help_dialog_contact">[simplified_help_dialog_contact]</button>
+                </a>
+                <button id="simplified-help-dialog-dismiss" class="button-flat button-white-blue button-small" data-localize="simplified_help_dialog_dismiss">[simplified_help_dialog_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Chromeos help dialog -->
+    <div id="help-dialog-chromeos" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="help_dialog_chromeos_title">[help_dialog_chromeos_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="help_dialog_chromeos_p1">[help_dialog_chromeos_p1]</p>
+                <p data-localize="help_dialog_chromeos_p2">[help_dialog_chromeos_p2]</p>
+                <p data-localize="help_dialog_chromeos_p3">[help_dialog_chromeos_p3]</p>
+            </div>
+            <div class="dialog-footer">
+                <a class="email-button" href="mailto:team@getvideostream.com">
+                    <button id="help-dialog-chromeos-contact" class="button-flat button-white button-small" data-localize="help_dialog_chromeos_contact">[help_dialog_chromeos_contact]</button>
+                </a>
+                <a href="http://community.getvideostream.com/topic/3/developer-post-chromeos-users-read-this">
+                    <button id="help-dialog-chromeos-dismiss" class="button-flat button-white-blue button-small" data-localize="help_dialog_chromeos_dismiss">[help_dialog_chromeos_dismiss]</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- random disconnect -->
+    <div id="help-dialog-drop" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="help_dialog_drop_title">[help_dialog_drop_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="help_dialog_drop_p1">[help_dialog_drop_p1]</p>
+                <p data-localize="help_dialog_drop_p2">[help_dialog_drop_p2]</p>
+                <p data-localize="help_dialog_drop_p3">[help_dialog_drop_p3]</p>
+            </div>
+            <div class="dialog-footer">
+                <button id="help-dialog-drop-dismiss" class="button-flat button-white-blue button-small" data-localize="help_dialog_drop_dismiss">[help_dialog_drop_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Unable to load file dialog (Continue Watching) -->
+    <div id="unable-to-load-file-dialog" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="unable_to_load_file_dialog_title">[unable_to_load_file_dialog_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p id="unable-to-load-file-dialog-path"></p>
+                <p data-localize="unable_to_load_file_dialog_p1">[unable_to_load_file_dialog_p1]</p>
+            </div>
+            <div class="dialog-footer">
+                <button id="unable-to-load-file-dialog-dismiss" class="button-flat button-white-blue button-small" data-localize="unable_to_load_file_dialog_dismiss">[unable_to_load_file_dialog_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- get extension popup -->
+    <div id="dialog-get-extension" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="dialog_get_extension_title">[dialog_get_extension_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="dialog_get_extension_p1">[dialog_get_extension_p1]</p>
+                <p id="buffering-survey-dialog-content" data-localize="dialog_get_extension_p2">[dialog_get_extension_p2]</p>
+            </div>
+            <div class="dialog-footer">
+                <a id="button-extension-install" href="https://chrome.google.com/webstore/detail/vs-launcher/cmhicdplfejcchpmimlnohfadpimciaa">
+                    <button id="buffer-survey-launch" class="button-flat button-indigo button-small" data-localize="dialog_get_extension_launch" style="margin-right:5px">[dialog_get_extension_launch]</button>
+                </a>
+                <button id="button-extension-dismiss" class="button-flat button-white-blue button-small" data-localize="dialog_get_extension_dismiss">[dialog_get_extension_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- CHROMIUM NaCl Missing Plugin Dialog -->
+    <div id="chromium-native-client-missing-plugin" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="chromium_nacl_missing_plugin_title">[chromium_nacl_missing_plugin]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="chromium_nacl_missing_plugin_dialog_p1">[chromium_nacl_missing_plugin_dialog_p1]</p>
+            </div>
+            <div class="dialog-footer">
+                <a class="email-button" href="mailto:team@getvideostream.com">
+                    <button id="chromium-nacl-missing-plugin-contact" class="button-flat button-white button-small" data-localize="chromium_nacl_missing_plugin_dialog_contact">[chromium_nacl_missing_plugin_dialog_contact]</button>
+                </a>
+                <button id="chromium-nacl-missing-plugin-dismiss" class="button-flat button-white-blue button-small" data-localize="chromium_nacl_missing_plugin_dialog_dismiss">[chromium_nacl_missing_plugin_dialog_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- NON-CHROMIUM NaCl Missing Plugin Dialog -->
+    <div id="non-chromium-native-client-missing-plugin" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="new_nacl_missing_plugin_title">[new_nacl_missing_plugin]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="new_nacl_missing_plugin_dialog_p1">[new_nacl_missing_plugin_dialog_p1]</p>
+            </div>
+            <div class="dialog-footer">
+                <a class="email-button" href="mailto:team@getvideostream.com">
+                    <button id="non-chromium-nacl-missing-plugin-contact" class="button-flat button-white button-small" data-localize="new_nacl_missing_plugin_dialog_contact">[new_nacl_missing_plugin_dialog_contact]</button>
+                </a>
+                <button id="non-chromium-nacl-missing-plugin-dismiss" class="button-flat button-white-blue button-small" data-localize="new_nacl_missing_plugin_dialog_dismiss">[new_nacl_missing_plugin_dialog_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Cast Extension download Dialog -->
+    <div id="cast-extension-dialog" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="cast_extension_title">[cast_extension_title]</h1>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="cast_extension_dialog_p1">[cast_extension_dialog_p1]</p>
+                <p data-localize="cast_extension_dialog_p2">[cast_extension_dialog_p2]</p>
+                <p>
+                    <div class="spinner-wrapper">
+                        <div class="loader">
+                            <div class="flipper">
+                                <div class="front"></div>
+                                <div class="back"></div>
+                            </div>
+                        </div>
+                        <div data-localize="cast_extension_dialog_p3">[cast_extension_dialog_p3]</div>
+                    </div>
+                </p>
+            </div>
+            <div class="dialog-footer">
+                <a class="email-button" href="mailto:team@getvideostream.com">
+                    <button id="cast-extension-failure-dialog-contact" class="button-flat button-white button-small" data-localize="cast_extension_failure_dialog_contact">[cast_extension_failure_dialog_contact]</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- User Login Dialog -->
+    <div id="login-dialog" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="login_title">[login_title]</h1>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="login_dialog_p1">[login_dialog_p1]</p>
+            </div>
+            <div class="dialog-footer">
+                <button id="login-dialog-login-button" class="button-flat button-white-blue button-small" data-localize="user_login">[user_login]</button>
+                <div id="login-blocker" class="login-blocker">
+                    <div class="searching-spinner">
+                        <div class="loading">
+                            <div class="loading-bar"></div>
+                            <div class="loading-bar"></div>
+                            <div class="loading-bar"></div>
+                            <div class="loading-bar"></div>
+                        </div>
+                    </div>
+                    <div class="checking-premium" data-localize="authenticating">[authenticating]</div>
+                </div>
+                <button id="login-dialog-dismiss" class="button-flat button-white-blue button-small" data-localize="login_dialog_dismiss">[login_dialog_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- WiFi Failure Dialog -->
+    <div id="wifi-failure-dialog" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="wifi_failure_title">[wifi_failure_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="wifi_failure_dialog_p1">[wifi_failure_dialog_p1]</p>
+                <p data-localize="wifi_failure_dialog_p2">[wifi_failure_dialog_p2]</p>
+                <p data-localize="wifi_failure_dialog_p3">[wifi_failure_dialog_p3]</p>
+            </div>
+            <div class="dialog-footer">
+                <a class="email-button" href="mailto:team@getvideostream.com">
+                    <button id="wifi-failure-dialog-contact" class="button-flat button-white button-small" data-localize="wifi_failure_dialog_contact">[wifi_failure_dialog_contact]</button>
+                </a>
+                <button id="wifi-failure-dialog-dismiss" class="button-flat button-white-blue button-small" data-localize="wifi_failure_dialog_dismiss">[wifi_failure_dialog_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Cast Timeout Dialog -->
+    <div id="cast-timeout-dialog" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="cast_timeout_title">[cast_timeout_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="cast_timeout_dialog_p1">[cast_timeout_dialog_p1]</p>
+                <p data-localize="cast_timeout_dialog_p2">[cast_timeout_dialog_p2]</p>
+                <p data-localize="cast_timeout_dialog_p3">[cast_timeout_dialog_p3]</p>
+            </div>
+            <div class="dialog-footer">
+                <a class="email-button" href="mailto:team@getvideostream.com">
+                    <button id="cast-timeout-dialog-contact" class="button-flat button-white button-small" data-localize="cast_timeout_dialog_contact">[cast_timeout_dialog_contact]</button>
+                </a>
+                <button id="cast-timeout-dialog-dismiss" class="button-flat button-white-blue button-small" data-localize="cast_timeout_dialog_dismiss">[cast_timeout_dialog_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Help with Continue Watching Dialog -->
+    <!-- Feb. 10 -->
+    <div id="tab-information-dialog" class="dialog">
+        <div id="tab-information-dialog-body" class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="continue_watching_title">[continue_watching_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="continue_watching_dialog_p1">[continue_watching_dialog_p1]</p>
+                <p data-localize="continue_watching_dialog_p2">[continue_watching_dialog_p2]</p>        <!-- <span class="fake-anchor" id="toggle-continue-watching-prompt">HERE</span> -->
+            </div>
+            <!-- <div class="dialog-header"> -->
+            <div id="recently-downloaded-dialog-header" class="dialog-header">
+                <h1 data-localize="recently_downloaded_title">[recently_downloaded_title]</h1>
+            </div>
+            <div id="recently-downloaded-dialog-body" class="dialog-body">
+                <p data-localize="recently_downloaded_dialog_p1">[recently_downloaded_dialog_p1] </p>   <!-- <span class="fake-anchor" id="set-up-recently-downloaded-prompt">HERE</span> -->
+                <p data-localize="recently_downloaded_dialog_p2">[recently_downloaded_dialog_p2]</p>    <!-- <span class="fake-anchor" id="toggle-recently-downloaded-prompt">HERE</span> -->
+            </div>
+            <!-- </div> -->
+            <div class="dialog-footer">
+                <button id="tab-information-dialog-dismiss" class="button-flat button-white-blue button-small" data-localize="continue_watching_dialog_dismiss">[continue_watching_dialog_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Switch to default playlist notification -->
+    <div id="notify-switch-playlist" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="suggest_playlist_switch_notify_title">[suggest_playlist_switch_notify_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="suggest_playlist_switch_notify_p1">[suggest_playlist_switch_notify_p1]</p>
+                <p data-localize="suggest_playlist_switch_notify_p2">[suggest_playlist_switch_notify_p2]</p>
+                <p data-localize="suggest_playlist_switch_notify_p3">[suggest_playlist_switch_notify_p3]</p>
+            </div>
+            <div class="dialog-footer">
+                <button id="switch_playlist_notify_cancel" class="button-flat button-white button-small" data-localize="suggest_playlist_switch_notify_cancel">[suggest_playlist_switch_notify_cancel]</button>
+                <button id="switch_playlist_notify_ok" class="button-flat button-white-blue button-small" data-localize="suggest_playlist_switch_notify_ok">[suggest_playlist_switch_notify_ok]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Matt's premium notification for playlists -->
+    <div id="notify-premium-playlist" class="dialog premium-test">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="premium_playlist_notify_title">[premium_playlist_notify_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body">
+                <p data-localize="premium_playlist_notify_dialog_p1">[premium_playlist_notify_dialog_p1]</p>
+                <p data-localize="premium_playlist_notify_dialog_p2">[premium_playlist_notify_dialog_p2]</p>
+                <p data-localize="premium_playlist_notify_dialog_p3">[premium_playlist_notify_dialog_p3]</p>
+                <div class="funkmaster-flex">
+                    <div id="slide">
+                        <div id="carousel-mask" class="mask">
+                            <div id="carousel-images" class="images paused">
+                                <div class="img">
+                                    <img src='/img/carousel-playlist.png' ) width="600" height="300">
+                                </div>
+                                <div class="img">
+                                    <img src='/img/carousel-subtitles.png' ) width="600" height="300">
+                                </div>
+                                <div class="img">
+                                    <img src='/img/carousel-support.png' ) width="600" height="300">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button id="premium_playlist_notify_no_thanks" class="button-flat button-white button-small" data-localize="premium_playlist_notify_no_thanks">[premium_playlist_notify_no_thanks]</button>
+                <button id="premium_playlist_notify_go_premium" class="button-flat button-white-blue button-small" data-localize="premium_playlist_notify_go_premium">[premium_playlist_notify_go_premium]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Survey Welcome Screen -->
+    <div id="do-you-want-to-build-a-survey" class="dialog survey">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 id="want-to-survey-title">Title</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body no-border">
+                <h2 data-localize="want_to_survey_text">[want_to_survey_text]</h2>
+                <div class="funkmaster-flex">
+                    <button class="button-raised button-small button-indigo not-caps" data-localize="want_to_survey_yes" id="yes-survey">[want_to_survey_yes]</button>
+                    <button class="button-raised button-small button-indigo not-caps" data-localize="want_to_survey_no" id="no-survey">[want_to_survey_no]</button>
+                </div>
+                <p class="description" data-localize="want_to_survey_subtext">[want_to_survey_subtext]</p>
+            </div>
+            <div class="dialog-footer">
+                <button id="want_to_survey_dialog_dismiss" class="button-flat button-white button-small" data-localize="survey_dialog_dismiss">[survey_dialog_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Chat request dialog -->
+    <div id="chat-request-dialog" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+            </div>
+            <div class="dialog-body no-border">
+                <div class="chat-request-wrapper">
+                    <img src="/img/chat-jason.png" class="operator jason" />
+                    <img src="/img/chat-matt.png" class="operator matt" />
+                    <img src="/img/chat-sean.png" class="operator sean" />
+                    <img src="/img/chat-graham.png" class="operator graham" />
+                    <img src="/img/chat-joe.png" class="operator joe" />
+                    <img src="/img/chat-phil.png" class="operator phil" />
+                    <img src="/img/chat-andrew.png" class="operator andrew" />
+                    <div class="chat-request-body">
+                        <div class="cr-header">
+                            <span class="operator jason">Jason</span>
+                            <span class="operator matt">Matt</span>
+                            <span class="operator sean">Sean</span>
+                            <span class="operator graham">Graham</span>
+                            <span class="operator joe">Joe</span>
+                            <span class="operator phil">Phil</span>
+                            <span class="operator andrew">Andrew</span>
+                            <span data-localize="chat_request_body">chat_request_body</span>
+                        </div>
+                        <br/>
+                        <span data-localize="chat_request_body_2">chat_request_body_2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <a href="http://getvideostream.com/chat-with-us.html">
+                    <button id="chat-request-accept" class="button-flat button-indigo button-small" data-localize="chat_request_accept_button">[chat_request_accept_button]</button>
+                </a>
+                <button id="chat-request-dismiss" class="button-flat button-white button-small" data-localize="chat_request_dismiss_button">[chat_request_dismiss_button]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Email request dialog -->
+    <div id="email-request-dialog" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h2 data-localize="email_request_title">[email_request_title]</h2>
+            </div>
+            <div class="dialog-body no-border">
+                <div class="email-request-text" data-localize="email_request_text_1">[email_request_text_1]</div>
+                <div class="email-request-text" data-localize="email_request_text_2">[email_request_text_2]</div>
+                <div class="email-request-text" data-localize="email_request_text_3">[email_request_text_3]</div>
+                <input id="email-request-text" type="text" placeholder="bruce@wayneenterprises.com" style="width: 300px; margin-top: 16px;"></input>
+            </div>
+            <div class="dialog-footer">
+                <button id="email-request-submit" class="button-flat button-white-blue button-small" data-localize="email_request_submit_button">[email_request_submit_button]</button>
+                <button id="email-request-dismiss" class="button-flat button-white button-small dismiss" data-localize="email_request_dismiss_button">[email_request_dismiss_button]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Drag and drop error dialog -->
+    <div id="drag-and-drop-error-dialog" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="drag_and_drop_error_title">[drag_and_drop_error_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body no-border">
+                <p data-localize="drag_and_drop_error_content">[drag_and_drop_error_content]</p>
+                <div style="text-align:center; padding-top:1em;">
+                    <button id="button-drag-and-drop-select-video" class="button-raised button-large button-indigo not-caps dismiss" data-localize="button_select_video">[button_select_video]</button>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button id="drag-and-drop-error-dismiss" class="button-flat button-white-blue button-small dismiss" data-localize="drag_and_drop_error_dialog_dismiss_button">[drag_and_drop_error_dialog_dismiss_button]</button>
+            </div>
+        </div>
+    </div>
+    <!-- Resume dialog -->
+    <div id="resume-ask" class="dialog resume">
+        <div class="dialog-inner">
+            <div class="dialog-header centered">
+                <h1 data-localize="resume_ask_title">[resume_ask_title]</h1>
+                <!-- <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button> -->
+            </div>
+            <div class="dialog-body">
+                <h2 style="margin-top: .2em; margin-bottom: 1.5em;" data-localize="resume_ask_subheader" class="centered">[resume_ask_subheader]</h2>
+                <div class="funkmaster-flex">
+                    <!-- set static width so button width doesn't change from 10 to 9 seconds -->
+                    <button id="resume-now-button" class="button-flat button-medium button-indigo not-caps" style="width: 220px;" data-localize="resume_ask_resume_button">[resume_ask_resume_button]</button>
+                    <span data-localize="resume_ask_or" style="padding: 12px; font-size: 18px; align-self: center;">[resume_ask_or]</span>
+                    <button id="start-over-button" class="button-flat button-medium button-orange not-caps" data-localize="resume_ask_start_over_button">[resume_ask_start_over_button]</button>
+                </div>
+            </div>
+            <div class="dialog-footer left-align">
+                <p data-localize="resume_ask_disable">[resume_ask_disable]</p>
+            </div>
+        </div>
+    </div>
+    <!-- Resume dialog - asks if you want to resume a video that was recently downloaded or start from the beginning -->
+    <div id="resume-recent-download-ask" class="dialog resume">
+        <div class="dialog-inner">
+            <div class="dialog-header centered">
+                <h1 data-localize="resume_ask_title">[resume_ask_title]</h1>
+            </div>
+            <div class="dialog-body">
+                <br>
+                <div class="funkmaster-flex">
+                    <br>
+                    <button id="recent-download-resume-now-button" class="button-flat button-medium button-indigo not-caps" style="width: 220px;" data-localize="resume_ask_resume_button">[resume_ask_resume_button]</button>
+                    <span data-localize="resume_ask_or" style="padding: 12px; font-size: 18px; align-self: center;">[resume_ask_or]</span>
+                    <button id="recent-download-start-over-button" class="button-flat button-medium button-orange not-caps" data-localize="resume_ask_start_over_button">[resume_ask_start_over_button]</button>
+                </div>
+            </div>
+            <div class="dialog-footer left-align">
+                <p data-localize="resume_ask_disable">[resume_ask_disable]</p>
+            </div>
+        </div>
+    </div>
+    <!-- Current Video Done Load Next Video Dialog -->
+    <div id="next-episode-dialog" class="dialog loadnext">
+        <div class="dialog-inner dialog-continuewatching" style="">
+            <h1 id="up-next-chromecast" class="up-next-chromecast">Up Next</h1>
+            <h2 id="title-of-next-episode" class="next-episode-title"></h2>
+            <div id="up-next-screenshot" class="up-next-screenshot">
+                <button id="start-next-episode-now" class="button-flat button-orange not-caps centered" style="padding: 15px 42px; font-size: 1.4em;">Play Episode Now</button>
+            </div>
+            <br>
+            <h3 style="margin-top:-10px;margin-bottom: -15px"><b>or</b></h2> 
+            <br>
+            <button id="cancel-next-episode" class="button-flat not-caps button-white-blue up-next-cancel">Stop Playback</button>
+        </div>
+    </div>
+    <!-- Quality change email request dialog -->
+    <div id="quality-change-question-dialog" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <h1 data-localize="quality_change_question_dialog_title">[quality_change_question_dialog_title]</h1>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="dialog-body no-border">
+                <p data-localize="quality_change_question_dialog_content">[quality_change_question_dialog_content]</p>
+            </div>
+            <div class="dialog-footer">
+                <button class="button-flat button-white-blue button-small dismiss" data-localize="quality_change_question_dialog_dismiss">[quality_change_question_dialog_dismiss]</button>
+            </div>
+        </div>
+    </div>
+    <!-- ChangeLog dialog" -->
+    <div id="change-log-dialog" class="dialog">
+        <div class="dialog-inner">
+            <div class="dialog-header">
+                <div>
+                    <h3 data-localize="change_log_title_text">[change_log_title_text]</h3>
+                    <h1></h1>
+                </div>
+                <button class="dismiss button-flat button-small button-white dobby dobby-x" data-localize-title="close_button_title" title="[close_button_title]"></button>
+            </div>
+            <div class="change-log-updated"><span class="change-log-last-updated-span"></span></div>
+            <div class="dialog-body no-border content">
+            </div>
+            <div class="dialog-footer">
+                <a class="email-button" href="mailto:team@getvideostream.com">
+                    <button id="help-dialog-contact" class="button-flat button-white button-small" data-localize="change_log_dialog_email_button">[change_log_dialog_email_button]</button>
+                </a>
+                <button class="button-flat button-white-blue button-small dismiss" data-localize="change_log_dialog_dismiss_button">[change_log_dialog_dismiss_button]</button>
+            </div>
+        </div>
+    </div>
+    <!-- SCRIPTS -->
+    <script src="js/app.min.js"></script>
+
+</body>
+
+</html>

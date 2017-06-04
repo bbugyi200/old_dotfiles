@@ -1,0 +1,1 @@
+var oneMinuteSignup=oneMinuteSignup||{};oneMinuteSignup.Tab=function(n,i){this.id=n,this.url=i};

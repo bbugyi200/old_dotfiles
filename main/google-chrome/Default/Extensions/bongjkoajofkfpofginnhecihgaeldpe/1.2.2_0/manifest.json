@@ -1,0 +1,26 @@
+{
+   "background": {
+      "scripts": [ "content/settings.js", "content/console.js", "content/chrome-storage.js", "content/tracker.js", "main.js" ]
+   },
+   "content_scripts": [ {
+      "js": [ "content/settings.js", "content/console.js", "content/yt.js" ],
+      "matches": [ "*://*.youtube.com/*" ]
+   }, {
+      "all_frames": true,
+      "js": [ "content/settings.js", "content/console.js", "content/yt.js" ],
+      "matches": [ "*://*.youtube.com/embed/*" ]
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "icons": {
+      "128": "img/icon128.png",
+      "48": "img/icon48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCyd/AkIFMmiHzpg2cjbloXkfqF9YWJe7hpVL5I/39dPftl8ph30C+i1iFtuhTv7j4B8pPu9UMx4axL50nXRslzx+Y7/TEYB/8bOk7dVhl6mtfbN2z3ORk7T1+XDtJ016IHNjLQxnrRuPF6FLTEVS5nFSymkpI2V9B/pwYg2TamawIDAQAB",
+   "manifest_version": 2,
+   "name": "Video Resumer",
+   "options_page": "content/options.html",
+   "permissions": [ "storage", "unlimitedStorage", "alarms" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.2.2"
+}
