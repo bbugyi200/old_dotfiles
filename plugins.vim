@@ -51,7 +51,6 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'vim-airline/vim-airline'
 
 Plugin 'davidhalter/jedi-vim'
-let g:jedi#popup_on_dot = 0
 
 Plugin 'altercation/vim-colors-solarized'
 
@@ -200,8 +199,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " -------- Recommended NeoComplete Config ---------
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+"
 " Disable AutoComplPop.
-
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
@@ -252,6 +251,13 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " let g:neocomplete#sources#omni#input_patterns.python =
 "     \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 0
+let g:neocomplete#force_omni_input_patterns.python = '[^. \t]\.\w*'
 
 " ------------------- END:: YCM/NeoComplete Configuration ----------------------
 " -----------------------------------------------------------------------------

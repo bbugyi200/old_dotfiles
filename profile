@@ -4,8 +4,8 @@
 # Prereq Actions: Install 'qt5ct'; Run 'qt5ct' and select icon theme
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
-export PATH=$PATH:/home/bryan/Dropbox/bin:/usr/local/bin:/home/bryan/Dropbox/config:/opt/anaconda/bin
-export PYTHONPATH=/opt/anaconda/lib/python3.6/site-packages:$PYTHONPATH
+export PATH=$PATH:/home/bryan/Dropbox/bin:/usr/local/bin:/home/bryan/Dropbox/config:/home/bryan/Dropbox/config/bin
+export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages
 export XDG_CONFIG_HOME=/home/bryan/.config
 export PANEL_FIFO=/tmp/panel-fifo
 export PANEL_HEIGHT=24

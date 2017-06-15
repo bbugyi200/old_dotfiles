@@ -19,21 +19,44 @@ alt + c
 
 # screenlock
 super + l
-        lock
+        ~/Dropbox/bin/scripts/lock
 
 super + s
     id=$(cat /tmp/scratchid);\
     bspc node $id --flag hidden;bspc node -f $id
 
-    # ---------------------------- bspwm hotkeys ----------------------------------
+# Randomly change background
+super + b
+    feh --bg-fill $(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
+
+@Print
+    scrot -s /tmp/shot.png && xclip -selection 'clipboard' -t image/png /tmp/shot.png
+
+# ---------------------------- Switch-or-Run ----------------------------------
+#
+@F1
+    switch-or-run "$(xdo id -N Termite | head -n 1) -i" "termite -e 'tm Terminal'" "1"
+
+@F2
+    switch-or-run "chrome" "google-chrome-stable" "2"
+
+@F3
+    switch-or-run "okular" "okular" "3"
+
+@F4
+    switch-or-run "anki" "anki" "4"
+
+
+
+# ---------------------------- bspwm hotkeys ----------------------------------
 
 ## quit bspwm normally
 alt + super + Escape
         bspc quit
 
 # alternate between the tiled and monocle layout
-# super + m
-#         bspc desktop -l next
+super + m
+        bspc desktop -l next
 
 # close and kill
 alt + {_,shift + }w
@@ -80,6 +103,10 @@ alt + {n,p}
 alt + bracket{left,right}
         bspc desktop -f {prev,next}.local
 
+# focus the next/previous desktop (only if on the same monitor)
+ctrl + {@Left,@Right}
+        bspc desktop -f {prev,next}.local
+
 # focus the older or newer node in the focus history
 alt + {o,i}
         bspc wm -h off; \
@@ -95,19 +122,19 @@ alt + ctrl + {1-9,0}
         bspc node -d '^{1-9,10}'; \
         bspc node -f $N
 
-# switch monitor
-# alt + slash
-#         bspc monitor -f next
+switch monitor
+alt + slash
+        bspc monitor -f next
 
 # Send to monitor and keep window focused
-alt + slash
-        N=$(bspc query --nodes --node focused); \
-        bspc node -m next; \
-        bspc node -f $N
+# alt + slash
+#         N=$(bspc query --nodes --node focused); \
+#         bspc node -m next; \
+#         bspc node -f $N
 
-# Send to monitor
-alt + backslash
-        bspc node -m next
+# # Send to monitor
+# alt + backslash
+#         bspc node -m next
 
 # ------------------------------ preselect ------------------------------------
 

@@ -3,15 +3,17 @@
 # Options
 upd_pia=5
 upd_batt=1
-upd_wifi=3
-upd_dbox=3
+upd_net=8
+upd_dbox=5
+upd_vol=1
 
 # My Colors
 GREEN="#0BF816"
 YELLOW="#EBEE27"
 RED="#FB0611"
 BLUE="#3C4BF7"
-
+WHITE="#FFFFFF"
+GREY="#D9D9D9"
 
 # Original Colors
 COLOR_DEFAULT_FG="#a7a5a5"

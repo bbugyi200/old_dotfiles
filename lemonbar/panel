@@ -18,29 +18,44 @@ bspc subscribe report > "$PANEL_FIFO" &
 clock -sf 'S%A, %B %d %Y   %I:%M%p' > "$PANEL_FIFO" &
 
 cnt_dbox=${upd_dbox}
+cnt_net=${upd_net}
+cnt_vol=$(upd_vol)
 if [[ "$(hostname)" == "athena" ]]; then
     cnt_pia=${upd_pia}
     cnt_batt=-3456000
-    cnt_wifi=-3456000
+    net_dev="enp2s0"
 elif [[ "$(hostname)" == "aphrodite" ]]; then
     cnt_pia=-3456000
     cnt_batt=${upd_batt}
-    cnt_wifi=${upd_wifi}
+    net_dev="wlo1"
 fi
 
+# One-Time Panel Flags
+ot_updt=0
 
 while true; do
+    # OS Update Checker
+    if [ $ot_updt -eq 0 ]; then
+        python ~/Dropbox/bin/python/UpdtCheck.py
+        if [ $? -ne 0 ]; then
+            echo -e "U\uf0aa  " > "$PANEL_FIFO"
+        else
+            echo "U" > "$PANEL_FIFO"
+        fi
+        ot_updt=1
+    fi
+
     # Battery
     if [ $((cnt_batt++)) -ge ${upd_batt} ]; then
         BP=$(acpi --battery | cut -d, -f2)
         if [ ${BP%?} -ge 70 ]; then
-            COLOR_BATT="$GREEN"
+            COLOR="$GREEN"
             ICON_BATT="\uf240"
         elif [ ${BP%?} -ge 35 ]; then
-            COLOR_BATT="$YELLOW"
+            COLOR="$YELLOW"
             ICON_BATT="\uf242"
         else
-            COLOR_BATT="$RED"
+            COLOR="$RED"
             ICON_BATT="\uf243"
         fi
 
@@ -49,15 +64,26 @@ while true; do
         else
             BOLT=""
         fi
-        echo -e "B%{F$COLOR_BATT}$BOLT$ICON_BATT$BP" > "$PANEL_FIFO"
+        echo -e "B%{F$COLOR}$BOLT$ICON_BATT$BP  " > "$PANEL_FIFO"
         cnt_batt=0
+    fi
+
+    # Volume
+    if [[ $((cnt_vol++)) -ge $(upd_vol) ]]; then
+        VOL=$(amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%.*$/\1/p'| uniq)
+        if [[ $VOL -eq 0 ]]; then
+            echo -e "V\uf026  " > "$PANEL_FIFO"
+        elif [[ $VOL -ge 50 ]]; then
+            echo -e "V\uf028  " > "$PANEL_FIFO"
+        else
+            echo -e "V\uf027  " > "$PANEL_FIFO"
+        fi
     fi
 
     # Dropbox
     if [ $((cnt_dbox++)) -ge ${upd_dbox} ]; then
         if [[ -n "$(pgrep dropbox)" ]]; then
-            echo -e "D\uf16b" > "$PANEL_FIFO"
-            sleep 1
+            echo -e "D%{F$BLUE}\uf16b  " > "$PANEL_FIFO"
         else
             echo "D" > "$PANEL_FIFO"
         fi
@@ -67,26 +93,33 @@ while true; do
     # PIA
     if [ $((cnt_pia++)) -ge ${upd_pia} ]; then
         if [[ -n "$(pgrep openvpn)" ]]; then
-            echo -e "P\uf17b" > "$PANEL_FIFO"
+            echo -e "P\uf17b  " > "$PANEL_FIFO"
         else
             echo "P" > "$PANEL_FIFO"
         fi
         cnt_pia=0
     fi
 
-    # Wifi \uf1eb
-    if [ $((cnt_wifi++)) -ge ${upd_wifi} ]; then
-        if [[ "$(ip link show wlo1)" == *"UP"* ]]; then
-            echo -e "X\uf118" > "$PANEL_FIFO"
+    # Network Connection
+    if [ $((cnt_net++)) -ge ${upd_net} ]; then
+        if [[ "$(ip link show $net_dev)" == *"UP"* ]]; then
+            ping -q -w 1 -c 1 google.com > /dev/null
+            if [ $? -eq 0 ]; then
+                echo -e "X\uf118  " > "$PANEL_FIFO"
+            else
+                echo -e "X\uf11a  " > "$PANEL_FIFO"
+            fi
         else
-            echo -e "X\uf119" > "$PANEL_FIFO"
+            echo -e "X\uf119  " > "$PANEL_FIFO"
         fi
-        cnt_wifi=0
+        cnt_net=0
     fi
+
     sleep 1
 done &
 
-panel_bar < "$PANEL_FIFO" | lemonbar -a 32 -n "$PANEL_WM_NAME" -g x$PANEL_HEIGHT -f "$PANEL_FONT" -f "Font Awesome" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
+# "$PANEL_FONT"
+panel_bar < "$PANEL_FIFO" | lemonbar -a 32 -n "$PANEL_WM_NAME" -g x$PANEL_HEIGHT -f "Inconsolata-8:Bold" -f "Font Awesome" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
 
 wid=$(xdo id -a "$PANEL_WM_NAME")
 tries_left=20

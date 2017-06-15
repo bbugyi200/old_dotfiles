@@ -1,20 +1,21 @@
 #! /bin/sh
 
-if ! pgrep -x /usr/local/bin/panel > /dev/null
-then
-    panel &
-fi
-
 if ! pgrep -x /usr/local/bin/sxhkd > /dev/null
 then
     sxhkd &
+fi
+
+if ! pgrep -x /usr/local/bin/panel > /dev/null
+then
+    panel &
 fi
 
 if [[ $(hostname) == 'athena' ]]; then
     bspc monitor HDMI2 -d I II III IV V
     bspc monitor HDMI1 -d VI VII VIII IX X
 elif [[ $(hostname) == 'aphrodite' ]]; then
-    bspc monitor LVDS-1 -d I II III IV V VI VII VIII IX X
+    bspc monitor LVDS1 -d I II III IV V VI VII VIII IX X
+    /home/bryan/Dropbox/bin/multimon-bspwm &
 fi
 
 
@@ -30,11 +31,21 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
+bspc config remove_unplugged_monitors true
+
 bspc desktop -f ^1
 
 bspc config focused_border_color "#f441af"
 
+# ------------------------------- RULES ---------------------------------------
 bspc rule -a scratchpad state=floating sticky=on hidden=on
-termite --class="scratchpad" -e ~/Dropbox/bin/scratch &
+termite --class="scratchpad" -e ~/Dropbox/bin/scripts/scratch &
 
-feh --bg-center /home/bryan/Dropbox/photos/backgrounds/arch_blue_bg.jpeg
+# Compton
+compton -b --config .config/compton.conf
+
+# Set Background
+python3 ~/Dropbox/bin/python/holidaybg.py
+if [[ $? -ne 0 ]]; then
+    feh --bg-fill $(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
+fi

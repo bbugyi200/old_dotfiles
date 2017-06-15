@@ -1,0 +1,10 @@
+#!/bin/bash
+intern=LVDS1
+extern=$(xrandr | grep -o -e "DVI[^ ]*")
+
+if xrandr | grep "$extern disconnected"; then
+    xrandr --output "$extern" --off --output "$intern" --auto
+else
+    xrandr --output "$intern" --primary --output "$extern" --auto --right-of "$intern"
+    sleep 1 && feh --bg-fill $(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
+fi

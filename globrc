@@ -5,9 +5,10 @@ alias mutt-edu="mutt -e 'source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc'"
 alias mutt-root='sudo mutt -f /var/spool/mail/root'
 alias tree="tree -I \"__pycache__\""
 alias lls="ls -1"
-alias lvim='vim -c "normal \`0"'
-alias anki='sudo anki'
+alias lvim='vim -c "normal \`0" -c "bdelete 1"'
 alias wifi='sudo wifi-menu && /usr/bin/dropbox'
+alias cower='cower -c'
+alias ccat='pygmentize -g'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 

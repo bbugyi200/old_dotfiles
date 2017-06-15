@@ -10,19 +10,25 @@ while read -r line ; do
     case $line in
         S*)
             # clock output
-            sys="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} ${line#?} %{B-}%{F-}"
+            sys="%{F$GREY}%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
             ;;
         B*)
-            batt="%{B$COLOR_SYS_BG} ${line#?} %{B-}%{F-}"
+            batt="%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
             ;;
         D*)
-            dbox="%{F$BLUE}%{B$COLOR_SYS_BG} ${line#?} %{B-}%{F-}"
+            dbox="%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
             ;;
         X*)
-            wifi="%{F#FFFFFF}%{B$COLOR_SYS_BG} ${line#?} %{B-}%{F-}"
+            net="%{F$WHITE}%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
             ;;
         P*)
-            pia="%{F$GREEN}%{B$COLOR_SYS_BG} ${line#?} %{B-}%{F-}"
+            pia="%{F$GREEN}%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
+            ;;
+        U*)
+            updt="%{F$RED}%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
+            ;;
+        V*)
+            vol="%{F$WHITE}%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
             ;;
         W*)
             # bspwm's state
@@ -34,7 +40,7 @@ while read -r line ; do
                 name=${item#?}
                 case $item in
                     [mM]*)
-                        [ $num_mon -lt 2 ] && shift && continue
+                        # [ $num_mon -lt 2 ] && shift && continue
                         case $item in
                             m*)
                                 # monitor
@@ -93,5 +99,5 @@ while read -r line ; do
             done
             ;;
     esac
-    printf "%s\n" "%{l}${wm}%{r}${pia}${batt}${dbox}${wifi}${sys}"
+    printf "%s\n" "%{l}${wm}%{c}${sys}%{r}${pia}${batt}${vol}${dbox}${net}${updt}"
 done
