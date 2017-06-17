@@ -141,7 +141,7 @@ noremap <Leader>s :w<CR>
 " Makes enter key work right in Normal mode
 nnoremap <CR> o<Esc>
 
-nmap <C-N> :NERDTree<CR><S-B>
+nmap <C-N> :cd %:h<CR>:NERDTree<CR><S-B>
 nmap <Leader>z :ZoomWin<CR>
 nmap <Leader>p :CtrlPMRU<CR>
 

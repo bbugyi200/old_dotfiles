@@ -1,7 +1,7 @@
 # ----------------------------------- ALIASES --------------------------------
 alias sql="rlwrap sqlite3"
 alias budget="cd ~/Dropbox/Budget/ && ./IntelliBudget > /dev/null & disown"
-alias mutt-edu="mutt -e 'source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc'"
+alias mutt-edu="mutt -e 'source ~/.mutt/hooks/bmb181@scarletmail.rutgers'"
 alias mutt-root='sudo mutt -f /var/spool/mail/root'
 alias tree="tree -I \"__pycache__\""
 alias lls="ls -1"

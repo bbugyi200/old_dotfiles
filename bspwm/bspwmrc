@@ -15,7 +15,7 @@ if [[ $(hostname) == 'athena' ]]; then
     bspc monitor HDMI1 -d VI VII VIII IX X
 elif [[ $(hostname) == 'aphrodite' ]]; then
     bspc monitor LVDS1 -d I II III IV V VI VII VIII IX X
-    /home/bryan/Dropbox/bin/multimon-bspwm &
+    /home/bryan/Dropbox/config/bin/multimon-bspwm &
 fi
 
 
@@ -47,5 +47,6 @@ compton -b --config .config/compton.conf
 # Set Background
 python3 ~/Dropbox/bin/python/holidaybg.py
 if [[ $? -ne 0 ]]; then
-    feh --bg-fill $(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
+    bg_img=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
+    background $bg_img
 fi

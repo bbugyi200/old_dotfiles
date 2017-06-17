@@ -6,5 +6,5 @@ if xrandr | grep "$extern disconnected"; then
     xrandr --output "$extern" --off --output "$intern" --auto
 else
     xrandr --output "$intern" --primary --output "$extern" --auto --right-of "$intern"
-    sleep 1 && feh --bg-fill $(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
+    sleep 1 && feh --bg-fill $(cat /home/bryan/Dropbox/photos/backgrounds/current_bg.txt)
 fi

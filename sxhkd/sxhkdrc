@@ -27,23 +27,24 @@ super + s
 
 # Randomly change background
 super + b
-    feh --bg-fill $(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
+    bg_img=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1); \
+    background $bg_img
 
 @Print
     scrot -s /tmp/shot.png && xclip -selection 'clipboard' -t image/png /tmp/shot.png
 
 # ---------------------------- Switch-or-Run ----------------------------------
 #
-@F1
-    switch-or-run "$(xdo id -N Termite | head -n 1) -i" "termite -e 'tm Terminal'" "1"
+{super,_} + @F1
+     switch-or-run "$(xdo id -N Termite | head -n 1) -i" "termite -e 'tm Terminal'" "1"
 
-@F2
+{@F2, XF86MonBrightnessDown}
     switch-or-run "chrome" "google-chrome-stable" "2"
 
-@F3
+{@F3, XF86MonBrightnessUp}
     switch-or-run "okular" "okular" "3"
 
-@F4
+{@F4, super + p}
     switch-or-run "anki" "anki" "4"
 
 
@@ -123,7 +124,7 @@ alt + ctrl + {1-9,0}
         bspc node -f $N
 
 switch monitor
-alt + slash
+alt + {slash,backslash}
         bspc monitor -f next
 
 # Send to monitor and keep window focused

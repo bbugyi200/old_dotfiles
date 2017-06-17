@@ -1,4 +1,5 @@
 application/*;  xdg-open %s
+image/*; xdg-open %s
+text/html;  google-chrome-stable %s; needsterminal
 text/html;  elinks -dump %s; nametemplate=%s.html; copiousoutput
-# text/html;  /usr/bin/google-chrome-stable %s; needsterminal
 # application/pdf;  okular %s
