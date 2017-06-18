@@ -130,9 +130,14 @@ alt + ctrl + {1-9,0}
         bspc node -d '^{1-9,10}'; \
         bspc node -f $N
 
-switch monitor
-alt + {slash,backslash}
+# switch monitor
+alt + backslash
         bspc monitor -f next
+
+# move node to next monitor
+super + backslash
+        move-to-next-monitor
+
 
 # Send to monitor and keep window focused
 # alt + slash

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+focused=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3+1}')
+if [[ $focused -le 5 ]]; then
+    D=$((focused + 5))
+else
+    D=$((focused - 5))
+fi
+bspc node -d "^$D"
+bspc desktop -f next.occupied.local
+bspc desktop -f "^$D"
