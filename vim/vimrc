@@ -11,6 +11,7 @@ filetype plugin on
 
 runtime macros/matchit.vim
 
+
 " ---------------------- GVim/Vim Specific Configs ---------------------------
 if has("gui_running")
     colo desert
@@ -82,6 +83,9 @@ set breakindent
 
 " Disables search highlighting
 set nohlsearch
+
+" Changes location of viminfo file
+set viminfo+=n~/.vim/viminfo
 
 " --------------------------------- LETS -------------------------------------
 
@@ -186,18 +190,16 @@ nnoremap <C-Del> :call delete(expand('%'))<CR>
 nnoremap <C-s> :SyntasticToggleMode<CR>
 
 " Quick Insert Movements
-inoremap II <Esc>I
-inoremap AA <Esc>A
-inoremap OO <Esc>o
+" inoremap II <Esc>I
+" inoremap AA <Esc>A
+" inoremap OO <Esc>o
 
-" Line Modifications in Insert MOde
-inoremap CC <Esc>lC
-inoremap SS <Esc>S
-inoremap DD <Esc>dd
-inoremap UU <Esc>u
+" inoremap CC <Esc>lC
+" inoremap SS <Esc>S
+" inoremap DD <Esc>dd
+" inoremap UU <Esc>u
 
-" Jump to next search match from Insert Mode
-inoremap NN <Esc>n
+" inoremap NN <Esc>n
 
 " Toggles 'cursorline'
 nnoremap <Leader>l :set cursorline!<CR>

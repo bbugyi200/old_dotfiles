@@ -19,7 +19,8 @@ clock -sf 'S%A, %B %d %Y   %I:%M%p' > "$PANEL_FIFO" &
 
 cnt_dbox=${upd_dbox}
 cnt_net=${upd_net}
-cnt_vol=$(upd_vol)
+cnt_vol=${upd_vol}
+cnt_mail=${upd_mail}
 if [[ "$(hostname)" == "athena" ]]; then
     cnt_pia=${upd_pia}
     cnt_batt=-3456000
@@ -43,6 +44,17 @@ while true; do
             echo "U" > "$PANEL_FIFO"
         fi
         ot_updt=1
+    fi
+
+    # New Mail
+    if [ $((cnt_mail++)) -ge ${upd_mail} ]; then
+        /home/bryan/Dropbox/config/bin/check_mail -q
+        if [ $? -ne 0 ]; then
+            echo -e "M%{F$WHITE}\uf003  " > "$PANEL_FIFO"
+        else
+            echo "M" > "$PANEL_FIFO"
+        fi
+        cnt_mail=0
     fi
 
     # Battery
@@ -78,6 +90,7 @@ while true; do
         else
             echo -e "V\uf027  " > "$PANEL_FIFO"
         fi
+        cnt_vol=0
     fi
 
     # Dropbox

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# https://linuxconfig.org/check-your-gmail-inbox-for-new-emails-with-bash-script
+source <(gpg2 -dq ~/.my-pwds.gpg)
+username="bmb181@scarletmail.rutgers.edu"
+password="$my_rutgers_pwd"
+subjects=$(curl -u $username:$password --silent "https://mail.google.com/mail/feed/atom" |  grep -oPm1 "(?<=<title>)[^<]+" | sed '1d')
+
+if [[ -z "$subjects" ]]; then
+    exit 0
+else
+    if [[ "$1" != '-q' ]]; then
+        echo $subjects
+    fi
+
+    exit 1
+fi

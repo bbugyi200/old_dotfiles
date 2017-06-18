@@ -30,6 +30,9 @@ while read -r line ; do
         V*)
             vol="%{F$WHITE}%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
             ;;
+        M*)
+            mail="%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
+            ;;
         W*)
             # bspwm's state
             wm=""
@@ -99,5 +102,5 @@ while read -r line ; do
             done
             ;;
     esac
-    printf "%s\n" "%{l}${wm}%{c}${sys}%{r}${pia}${batt}${vol}${dbox}${net}${updt}"
+    printf "%s\n" "%{l}${wm}%{c}${sys}%{r}${pia}${mail}${batt}${vol}${dbox}${net}${updt}"
 done

@@ -6,6 +6,7 @@ upd_batt=1
 upd_net=8
 upd_dbox=5
 upd_vol=1
+upd_mail=10
 
 # My Colors
 GREEN="#0BF816"

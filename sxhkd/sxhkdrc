@@ -33,6 +33,9 @@ super + b
 @Print
     scrot -s /tmp/shot.png && xclip -selection 'clipboard' -t image/png /tmp/shot.png
 
+super + @Print
+    scrot -s ~/Dropbox/Reference_Material/Receipts/$(date +%m-%d-%Y_%H%M%S).png
+
 # ---------------------------- Switch-or-Run ----------------------------------
 #
 {super,_} + @F1
@@ -58,6 +61,10 @@ alt + super + Escape
 # alternate between the tiled and monocle layout
 super + m
         bspc desktop -l next
+
+# switch to different node when in monocle layout
+alt + m
+        bspc node -f next.local
 
 # close and kill
 alt + {_,shift + }w

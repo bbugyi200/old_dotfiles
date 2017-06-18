@@ -5,7 +5,7 @@ auto_view text/html
 
 mailboxes imaps://bryanbugyi34@imap.gmail.com:993/ imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ imaps://bmb181@scarletmail.rutgers.edu@imap.gmail.com:993/ /var/spool/mail/bryan
 
-source "gpg2 -dq ~/.my-pwds.gpg |"
+source "gpg2 -dq ~/.my-mutt-pwds.gpg |"
 # source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc
 source ~/.mutt/hooks/bryanbugyi34.gmail
 
@@ -67,8 +67,8 @@ bind attach <return>    view-mailcap
 
 ################################## MACROS #####################################
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
-macro index,pager A "<save-message>=[Gmail]/All Mail<enter>" "Archive"
-macro index,pager D "<save-message>=[Gmail]/Trash<enter>" "Delete"
+macro index,pager D "<save-message>=[Gmail]/All Mail<enter>" "Archive"
+# macro index,pager D "<save-message>=[Gmail]/Trash<enter>" "Delete"
 
 ### Inspired by Vim ###
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
