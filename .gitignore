@@ -3,3 +3,5 @@
 *~
 mutt/aliases
 mutt/.vimrc
+vim/bundle/*
+vim/viminfo
