@@ -21,6 +21,7 @@ cnt_dbox=${upd_dbox}
 cnt_net=${upd_net}
 cnt_vol=${upd_vol}
 cnt_mail=${upd_mail}
+cnt_upd=${upd_upd}
 if [[ "$(hostname)" == "athena" ]]; then
     cnt_pia=${upd_pia}
     cnt_batt=-3456000
@@ -31,19 +32,16 @@ elif [[ "$(hostname)" == "aphrodite" ]]; then
     net_dev="wlo1"
 fi
 
-# One-Time Panel Flags
-ot_updt=0
-
 while true; do
     # OS Update Checker
-    if [ $ot_updt -eq 0 ]; then
+    if [ $((cnt_upd++)) -ge ${upd_upd} ]; then
         python ~/Dropbox/bin/python/UpdtCheck.py
         if [ $? -ne 0 ]; then
             echo -e "U\uf0aa  " > "$PANEL_FIFO"
         else
             echo "U" > "$PANEL_FIFO"
         fi
-        ot_updt=1
+        cnt_upd=0
     fi
 
     # New Mail
@@ -132,7 +130,7 @@ while true; do
 done &
 
 # "$PANEL_FONT"
-panel_bar < "$PANEL_FIFO" | lemonbar -a 32 -n "$PANEL_WM_NAME" -g x$PANEL_HEIGHT -f "Inconsolata-8:Bold" -f "Font Awesome" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
+panel_bar < "$PANEL_FIFO" | lemonbar -a 32 -n "$PANEL_WM_NAME" -g x$PANEL_HEIGHT -f "Inconsolata-12:Bold" -f "Font Awesome-12" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
 
 wid=$(xdo id -a "$PANEL_WM_NAME")
 tries_left=20

@@ -14,7 +14,7 @@ if [[ $(hostname) == 'athena' ]]; then
     bspc monitor HDMI2 -d I II III IV V
     bspc monitor HDMI1 -d VI VII VIII IX X
 elif [[ $(hostname) == 'aphrodite' ]]; then
-    bspc monitor LVDS1 -d I II III IV V VI VII VIII IX X
+    bspc monitor LVDS1 -d I II III IV V
     /home/bryan/Dropbox/config/bin/multimon-bspwm &
 fi
 
