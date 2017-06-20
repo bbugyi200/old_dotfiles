@@ -1,7 +1,7 @@
 *swp
 *swo
 *~
-mutt/aliases
-mutt/.vimrc
-vim/bundle/*
-vim/viminfo
+.mutt/aliases
+.mutt/.vimrc
+.vim/bundle/*
+.vim/viminfo
