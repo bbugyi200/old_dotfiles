@@ -1,7 +1,8 @@
 # ----------------------------------------------------------------------------
 # ------------------------------ SOURCES -------------------------------------
-source ~/Dropbox/bin/scripts/localAlias
-source globrc
+source ~/Dropbox/dotfiles/extras/oh-my-zsh
+source ~/Dropbox/scripts/localAlias
+source ~/Dropbox/dotfiles/extras/globrc
 
 # ----------------------------------- ALIASES --------------------------------
 alias -s pdf="okular"
@@ -16,6 +17,13 @@ alias -g @@="&> /dev/null & disown"
 alias -g X="&& exit"
 
 # -------------------------------- FUNCTIONS ---------------------------------
+
+tsm() { transmission-remote -l }
+tsm-watch() { watch -n 1 transmission-remote -l }
+tsm-add() { transmission-remote -a $1 }
+tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250 }
+tsm-rm() { transmission-remote -t$1 -r }
+tsm-purge() { transmission-remote -t$1 -rad }
 
 precmd() { eval "$PROMPT_COMMAND" }
 

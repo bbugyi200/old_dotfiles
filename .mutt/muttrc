@@ -47,6 +47,8 @@ set mailcap_path=~/.mutt/mailcap
 
 set xterm_set_titles=yes  # Enables mutt to set terminal title
 
+set record=""  # Disable '~/sent' file
+
 
 ################################## BINDINGS ###################################
 bind editor <space> noop

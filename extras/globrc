@@ -9,6 +9,7 @@ alias lvim='vim -c "normal \`0" -c "bdelete 1"'
 alias wifi='sudo wifi-menu && /usr/bin/dropbox'
 alias cower='cower -c'
 alias ccat='pygmentize -g'
+alias bin-stow='sudo stow -v --target=/usr/local/bin -R '
 
 # -------------------------------- FUNCTIONS ---------------------------------
 

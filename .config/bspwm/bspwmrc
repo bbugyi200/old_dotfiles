@@ -15,7 +15,7 @@ if [[ $(hostname) == 'athena' ]]; then
     bspc monitor HDMI1 -d VI VII VIII IX X
 elif [[ $(hostname) == 'aphrodite' ]]; then
     bspc monitor LVDS1 -d I II III IV V
-    /home/bryan/Dropbox/config/bin/multimon-bspwm &
+    multimon-bspwm &
 fi
 
 
@@ -39,13 +39,13 @@ bspc config focused_border_color "#f441af"
 
 # ------------------------------- RULES ---------------------------------------
 bspc rule -a scratchpad state=floating sticky=on hidden=on
-termite --class="scratchpad" -e ~/Dropbox/bin/scripts/scratch &
+termite --class="scratchpad" -e ~/Dropbox/scripts/scratch &
 
 # Compton
 compton -b --config .config/compton.conf
 
 # Set Background
-python3 ~/Dropbox/bin/python/holidaybg.py
+python3 ~/Dropbox/scripts/python/holidaybg.py
 if [[ $? -ne 0 ]]; then
     bg_img=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
     background $bg_img

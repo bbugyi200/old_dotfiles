@@ -108,7 +108,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 " Allows other directories to be searched for snippet files
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "$CONFIG/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/bryan/Dropbox/dotfiles/extra/UltiSnips"]
 
 " ---------- END:: UltiSnip Configs --------
 

@@ -2,7 +2,6 @@
 # ------------------------------ SOURCES -------------------------------------
 
 source localAlias
-export PATH=$PATH:~/Dropbox/bin:~/Dropbox/config
 source globrc
 
 

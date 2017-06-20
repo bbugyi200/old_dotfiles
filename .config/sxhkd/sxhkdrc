@@ -19,7 +19,7 @@ alt + c
 
 # screenlock
 super + l
-        ~/Dropbox/bin/scripts/lock
+        ~/Dropbox/scripts/lock
 
 super + s
     id=$(cat /tmp/scratchid);\

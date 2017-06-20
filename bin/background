@@ -1,3 +1,0 @@
-#!/bin/bash
-feh --bg-fill $1
-echo $1 > ~/Dropbox/photos/backgrounds/current_bg.txt
