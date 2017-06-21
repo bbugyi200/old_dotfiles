@@ -1,8 +1,8 @@
 # ----------------------------------------------------------------------------
 # ------------------------------ SOURCES -------------------------------------
 
-source localAlias
-source globrc
+source ~/Dropbox/dotfiles/extras/localalias
+source ~/Dropbox/dotfiles/extras/globrc
 
 
 # ------------------------------- LocalAlias ----------------------------------

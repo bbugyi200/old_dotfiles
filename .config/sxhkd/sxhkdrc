@@ -30,11 +30,16 @@ super + b
     bg_img=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1); \
     background $bg_img
 
+# clear screen
+super + k
+    tmux send-keys "clear" "Enter"
+
 @Print
     scrot -s /tmp/shot.png && xclip -selection 'clipboard' -t image/png /tmp/shot.png
 
 super + @Print
-    scrot -s ~/Dropbox/Reference_Material/Receipts/$(date +%m-%d-%Y_%H%M%S).png
+    bspc rule -a "*:*" -o state=floating; \
+    termite -e ~/Dropbox/scripts/receipt_sshot
 
 # ---------------------------- Switch-or-Run ----------------------------------
 #

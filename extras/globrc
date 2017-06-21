@@ -9,7 +9,6 @@ alias lvim='vim -c "normal \`0" -c "bdelete 1"'
 alias wifi='sudo wifi-menu && /usr/bin/dropbox'
 alias cower='cower -c'
 alias ccat='pygmentize -g'
-alias bin-stow='sudo stow -v --target=/usr/local/bin -R '
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
@@ -24,16 +23,16 @@ function ta() {
 
 function ccd {
     case "$1" in
-        config|cfg)
-            cd /home/bryan/Dropbox/config;;
+        dots|df)
+            cd /home/bryan/Dropbox/dotfiles;;
         notes)
             cd ~/Dropbox/notes;;
-        movies)
-            cd /run/media/bryan/hercules/media/Entertainment/Movies;;
+        videos)
+            cd /run/media/bryan/hercules/media/Entertainment/Videos;;
         misc)
             cd /media/bryan/hercules/media/Misc;;
-        bin)
-            cd /home/bryan/Dropbox/bin;;
+        scripts)
+            cd /home/bryan/Dropbox/scripts;;
         *)
             return 1
     esac
