@@ -5,3 +5,4 @@
 .mutt/.vimrc
 .vim/bundle/*
 .vim/viminfo
+.ipython/*

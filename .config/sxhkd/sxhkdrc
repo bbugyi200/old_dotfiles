@@ -31,7 +31,7 @@ super + b
     background $bg_img
 
 # clear screen
-super + k
+alt + e
     tmux send-keys "clear" "Enter"
 
 @Print
@@ -96,10 +96,6 @@ alt + ctrl m
         bspc node -f $N
 
 # ------------------------------ focus/swap -----------------------------------
-
-# focus the node in the given direction
-# alt + {h,j,k,l}
-#         bspc node -f {west,south,north,east}
 
 # swap nodes while retaining focus
 alt + {h,j,k,l}
