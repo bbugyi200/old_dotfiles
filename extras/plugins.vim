@@ -54,6 +54,12 @@ Plugin 'davidhalter/jedi-vim'
 
 Plugin 'altercation/vim-colors-solarized'
 
+Plugin 'artur-shaik/vim-javacomplete2'
+
+Plugin 'Rip-Rip/clang_complete'
+
+Plugin 'Shougo/echodoc.vim'
+let g:echodoc#enable_at_startup=1
 
 " ------------------------------ Airline Status Bar Configs -------------------
 
@@ -147,12 +153,17 @@ let g:syntastic_c_check_header=1
 " Adds c++11 support to error checking logic
 let g:syntastic_cpp_compiler_options = '-std=c++11'
 
+" Enables Syntastic to work with Java
+" let g:syntastic_java_checker = 'javac'
+let g:syntastic_java_javac_classpath = "./lib/*.jar\n./src"
+
 " ----------------- END:: Syntastic Config ------------------
 
 " ------------------------ YCM/NeoComplete Configuration ----------------------
 " -----------------------------------------------------------------------------
 "
-let g:neocomplete#enable_auto_close_preview=1
+" let g:neocomplete#enable_auto_close_preview=1
+set completeopt-=preview
 
 " ------- UltiSnips Integration w/ Autocomplete --------------
 function! g:UltiSnips_Complete()
@@ -228,6 +239,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -259,9 +271,27 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
 let g:neocomplete#force_omni_input_patterns.python = '[^. \t]\.\w*'
 
+" Enables clang_complete to integrate with Neocomplete
+if !exists('g:neocomplete#force_omni_input_patterns')
+	  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.c =
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+let g:neocomplete#force_omni_input_patterns.cpp =
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+let g:neocomplete#force_omni_input_patterns.objc =
+      \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
+let g:neocomplete#force_omni_input_patterns.objcpp =
+      \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_omnicppcomplete_compliance = 0
+let g:clang_make_default_keymappings = 0
+let g:clang_use_library = 1
+
 " ------------------- END:: YCM/NeoComplete Configuration ----------------------
 " -----------------------------------------------------------------------------
-
+"
 " -------------------------------------------------------------------------
 " -------------------------- END:: Complex Plugins ------------------------
 " -------------------------------------------------------------------------

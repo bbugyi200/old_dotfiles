@@ -8,10 +8,6 @@ endif
 
 syn cluster txtContains add=Todo,BeginWS,Underlined
 
-" Clear formatting
-syn match BeginWS "^\s\+"
-syn match EndP ")"
-
 " Title
 syn region StatusLine start="###" end="###$" contains=@NoSpell oneline
 

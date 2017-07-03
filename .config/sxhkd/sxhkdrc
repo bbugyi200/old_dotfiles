@@ -22,8 +22,7 @@ super + l
         ~/Dropbox/scripts/lock
 
 super + s
-    id=$(cat /tmp/scratchid);\
-    bspc node $id --flag hidden;bspc node -f $id
+    ~/Dropbox/scripts/scratch/scratch-toggle
 
 # Randomly change background
 super + b
@@ -41,21 +40,34 @@ super + @Print
     bspc rule -a "*:*" -o state=floating; \
     termite -e ~/Dropbox/scripts/receipt_sshot
 
+super + w
+    networkmanager_dmenu
+
+# Shutdown Computer
+ctrl + alt + super + {s,r}
+    {shutdown now,reboot}
+
 # ---------------------------- Switch-or-Run ----------------------------------
-#
+# ----- Terminal -----
 {super,_} + @F1
      switch-or-run "$(xdo id -N Termite | head -n 1) -i" "termite -e 'tm Terminal'" "1"
 
+alt + {super,_} + @F1
+     switch-or-run "REVERSE" "termite -e 'tm Terminal'" "6"
+
+# ----- Google Chrome -----
 {@F2, XF86MonBrightnessDown}
     switch-or-run "chrome" "google-chrome-stable" "2"
 
+alt + {@F2, XF86MonBrightnessDown}
+    switch-or-run "REVERSE" "google-chrome-stable" "7"
+
+# ----- Okular -----
 {@F3, XF86MonBrightnessUp}
     switch-or-run "okular" "okular" "3"
 
-{@F4, super + p}
-    switch-or-run "anki" "anki" "4"
-
-
+alt + {@F3, XF86MonBrightnessUp}
+    switch-or-run "REVERSE" "okular" "8"
 
 # ---------------------------- bspwm hotkeys ----------------------------------
 
@@ -100,9 +112,7 @@ alt + ctrl m
 # swap nodes while retaining focus
 alt + {h,j,k,l}
         D={west,south,north,east}; \
-        M=$(bspc query --monitors --node $D); \
-        bspc node -s $D; \
-        [[ $M != $(bspc query --monitors --monitor focused) ]] && bspc node --focus last
+        swap_nodes "$D"
 
 # focus the next/previous node
 alt + {n,p}

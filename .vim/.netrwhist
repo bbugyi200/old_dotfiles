@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/bryan/Dropbox/notes/Rutgers'
+let g:netrw_dirhist_2='/home/bryan/Dropbox/notes'
+let g:netrw_dirhist_3='/home/bryan/Dropbox'
+let g:netrw_dirhist_4='/home/bryan/Dropbox/dotfiles'
+let g:netrw_dirhist_5='/home/bryan/Dropbox/dotfiles/.vim'
+let g:netrw_dirhist_6='/home/bryan/Dropbox/dotfiles/.vim/syntax'

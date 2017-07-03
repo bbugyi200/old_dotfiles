@@ -39,7 +39,6 @@ bspc config focused_border_color "#f441af"
 
 # ------------------------------- RULES ---------------------------------------
 bspc rule -a scratchpad state=floating sticky=on hidden=on
-termite --class="scratchpad" -e ~/Dropbox/scripts/scratch &
 
 # Compton
 compton -b --config .config/compton.conf
