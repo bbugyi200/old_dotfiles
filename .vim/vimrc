@@ -23,6 +23,7 @@ endif
 " -------------------------------- SETS --------------------------------------
 set clipboard=unnamedplus
 
+set number
 set relativenumber
 set colorcolumn=80
 set autoindent
@@ -204,20 +205,11 @@ nnoremap <C-Del> :call delete(expand('%'))<CR>
 
 nnoremap <C-s> :SyntasticToggleMode<CR>
 
-" Quick Insert Movements
-" inoremap II <Esc>I
-" inoremap AA <Esc>A
-" inoremap OO <Esc>o
-
-" inoremap CC <Esc>lC
-" inoremap SS <Esc>S
-" inoremap DD <Esc>dd
-" inoremap UU <Esc>u
-
-" inoremap NN <Esc>n
-
 " Toggles 'cursorline'
 nnoremap <Leader>l :set cursorline!<CR>
+
+" Omnicompletion shortcut
+inoremap <C-o> <C-x><C-o>
 
 " ------------------------------ AUTOS ---------------------------------------
 

@@ -13,9 +13,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 
-" -------------------------------------------------------------------------
-" ------------------------------ Simple Plugins ---------------------------
-" -------------------------------------------------------------------------
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -61,6 +58,14 @@ Plugin 'Rip-Rip/clang_complete'
 Plugin 'Shougo/echodoc.vim'
 let g:echodoc#enable_at_startup=1
 
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
+Plugin 'scrooloose/syntastic'
+
+Plugin 'Shougo/neocomplete.vim'
+
 " ------------------------------ Airline Status Bar Configs -------------------
 
 " The following set commands are used to fix issue with delay in Airline
@@ -105,32 +110,13 @@ let g:airline_symbols.linenr = ''
 set rtp+=$POWERLINE_DIRECTORY/powerline/bindings/vim/
 set t_Co=256
 
-" ------------------------------ END:: Airline Status Bar Configs --------------
 
-" -------- UltiSnips Configurations -------
+" ---------------------------- UltiSnips Configurations ----------------------
 "
-Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
 " Allows other directories to be searched for snippet files
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/bryan/Dropbox/dotfiles/extra/UltiSnips"]
 
-" ---------- END:: UltiSnip Configs --------
-
-" -------------------------------------------------------------------------
-" -------------------------- END:: Simple Plugins -------------------------
-" -------------------------------------------------------------------------
-
-
-" -------------------------------------------------------------------------
-" ------------------------------ Complex Plugins --------------------------
-" -------------------------------------------------------------------------
-"
-
-" ------------------ Syntastic Config ----------------------
-Plugin 'scrooloose/syntastic'
-
+" ----------------------------- Syntastic Config -----------------------------
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -157,13 +143,19 @@ let g:syntastic_cpp_compiler_options = '-std=c++11'
 " let g:syntastic_java_checker = 'javac'
 let g:syntastic_java_javac_classpath = "./lib/*.jar\n./src"
 
-" ----------------- END:: Syntastic Config ------------------
 
-" ------------------------ YCM/NeoComplete Configuration ----------------------
-" -----------------------------------------------------------------------------
+" ---------------------------- NeoComplete Configuration ----------------------
 "
 " let g:neocomplete#enable_auto_close_preview=1
 set completeopt-=preview
+
+"""""""""""""""""""""""""""""""
+"  Color Scheme of Drop-Down  "
+
+hi Pmenu ctermbg=darkgrey
+hi Pmenu ctermfg=white
+"""""""""""""""""""""""""""""""
+
 
 " ------- UltiSnips Integration w/ Autocomplete --------------
 function! g:UltiSnips_Complete()
@@ -190,22 +182,10 @@ let g:UltiSnipsListSnippets="<c-e>"
 " CONFLICT with some plugins like tpope/Endwise
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" ------------ END:: Ultisnips Integration w/ Autocomplete -----------
-
-Plugin 'Shougo/neocomplete.vim'
-
-"""""""""""""""""""""""""""""""
-"  Color Scheme of Drop-Down  "
-
-hi Pmenu ctermbg=darkgrey
-hi Pmenu ctermfg=white
-"""""""""""""""""""""""""""""""
-
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
 
 " -------- Recommended NeoComplete Config ---------
 
@@ -253,7 +233,6 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
-" ------------- END:: Recommended Neocomplete Config ---------------
 
 " Neocomplete integration with jedi-vim plugin
 " autocmd FileType python setlocal omnifunc=jedi#completions
@@ -271,31 +250,9 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
 let g:neocomplete#force_omni_input_patterns.python = '[^. \t]\.\w*'
 
-" Enables clang_complete to integrate with Neocomplete
-if !exists('g:neocomplete#force_omni_input_patterns')
-	  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.c =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-let g:neocomplete#force_omni_input_patterns.cpp =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-let g:neocomplete#force_omni_input_patterns.objc =
-      \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
-let g:neocomplete#force_omni_input_patterns.objcpp =
-      \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_omnicppcomplete_compliance = 0
-let g:clang_make_default_keymappings = 0
-let g:clang_use_library = 1
 
-" ------------------- END:: YCM/NeoComplete Configuration ----------------------
-" -----------------------------------------------------------------------------
+" -------------------- END:: Vundle Configurations -----------------------------
 "
-" -------------------------------------------------------------------------
-" -------------------------- END:: Complex Plugins ------------------------
-" -------------------------------------------------------------------------
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -310,6 +267,3 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line"""
-"
-" -------------------- END:: Vundle Configurations -----------------------------
-
