@@ -1,5 +1,5 @@
 # These are my main configuration files. 
 
-I keep my configuration files on Dropbox and then just either create a symbolic link to each folder/file from my home directory or 'source' the file into my local config (useful if you need to also apply local-only configs to a machine).
+I keep my configuration files on Dropbox and then use [stow](https://www.gnu.org/software/stow/manual/stow.html) to create symbollic links from these config files to the appropriate locations on my filesystem. This setup enables me to keep all of my dotfiles organized the way I like on my dropbox.
 
-What's the point? Well, when I need to make a change to one of my configuration files, I only need to edit it once and then all of my devices will see the change. This also makes setting up the dev environment on a new machine a walk in the park. 
+Notice that this directory mirrors a standard /home/<user> directory. This is **mandatory** in order to use [stow](https://www.gnu.org/software/stow/manual/stow.html). The exact stow commands I use to do this can be found in my [clinks](config/clinks) script.
