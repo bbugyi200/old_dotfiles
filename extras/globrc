@@ -1,12 +1,9 @@
 # ----------------------------------- ALIASES --------------------------------
 alias sql="rlwrap sqlite3"
-alias budget="cd ~/Dropbox/Budget/ && ./IntelliBudget > /dev/null & disown"
 alias mutt-edu="mutt -e 'source ~/.mutt/hooks/bmb181@scarletmail.rutgers'"
 alias mutt-root='sudo mutt -f /var/spool/mail/root'
-alias tree="tree -I \"__pycache__\""
 alias lls="ls -alF"
 alias lvim='vim -c "normal \`0" -c "bdelete 1"'
-alias wifi='sudo wifi-menu && /usr/bin/dropbox'
 alias cower='cower -c'
 alias ccat='pygmentize -g'
 alias cp='cp -i'
@@ -29,6 +26,8 @@ tsm-purge() { transmission-remote -t$1 -rad }
 pvar () { set | grep -e "^$1" }
 
 wim() { vim $(where $1) }
+
+mkcd() { mkdir -p $1 && cd $1 }
 
 function ta() {
     if [ $# -eq 0 ]

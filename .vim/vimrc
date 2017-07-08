@@ -28,10 +28,10 @@ set relativenumber
 set colorcolumn=80
 set autoindent
 set backspace=2
-" set autochdir
+set autochdir
 set tabstop=4
 set shiftwidth=4
-set expandtab
+" set expandtab
 set nocompatible
 
 set exrc
@@ -73,7 +73,7 @@ set grepformat=%f:%l:%c:%m
 " Autocompletion will only recommend completions that match the typed case
 set infercase
 
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set listchars=eol:$,tab:+\ ,trail:~,extends:>,precedes:<
 set list
 
 set cursorline

@@ -44,8 +44,8 @@ super + w
     networkmanager_dmenu
 
 # Shutdown Computer
-# ctrl + alt + super + {s,r}
-#     {shutdown now,reboot}
+ctrl + alt + super + {s,r}
+    {shutdown now,reboot}
 
 # ---------------------------- Switch-or-Run ----------------------------------
 {super,_} + @F1
@@ -58,8 +58,8 @@ super + w
     switch-or-run "okular" "okular" "3"
 
 # ------------------------------- pop-or-push ---------------------------------
-ctrl + alt + super + {c,a}
-    pop-or-push {"chrome","add"}
+ctrl + super + {c,a, t}
+    pop-or-push {"chrome","add", "termite"}
 
 
 # ---------------------------- bspwm hotkeys ----------------------------------
@@ -78,8 +78,10 @@ alt + m
 
 # close and kill
 alt + {_,shift + }w
-        bspc node -{c,k}; \
-        focus-local
+        N=$(bspc query --nodes --node focused.!hidden); \
+        [[ $(bspc query --nodes --node .!hidden | wc -l) == "1" ]] && A="strict"; \
+        focus-local "$A"; \
+        bspc node $N -{c,k}
 
 # Expand a window by moving one of its sides outward
 alt + {Left,Down,Up,Right}
