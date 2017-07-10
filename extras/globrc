@@ -8,6 +8,7 @@ alias cower='cower -c'
 alias ccat='pygmentize -g'
 alias cp='cp -i'
 alias mv='mv -i'
+alias time='/usr/bin/time'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
@@ -23,7 +24,7 @@ tsm-purge() { transmission-remote -t$1 -rad }
 
 
 # Prints the value of a variable
-pvar () { set | grep -e "^$1" }
+pvar () { set | grep -i -e "^$1" }
 
 wim() { vim $(where $1) }
 
@@ -45,7 +46,7 @@ function ccd {
         notes)
             cd ~/Dropbox/notes;;
         videos)
-            cd /run/media/bryan/hercules/media/Entertainment/Videos;;
+            cd /media/bryan/hercules/media/Entertainment/Videos;;
         misc)
             cd /media/bryan/hercules/media/Misc;;
         bin|scripts)

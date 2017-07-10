@@ -73,8 +73,8 @@ set grepformat=%f:%l:%c:%m
 " Autocompletion will only recommend completions that match the typed case
 set infercase
 
-set listchars=eol:$,tab:+\ ,trail:~,extends:>,precedes:<
-set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set nolist
 
 set cursorline
 set cursorcolumn
@@ -210,6 +210,12 @@ nnoremap <Leader>l :set cursorline!<CR>
 
 " Omnicompletion shortcut
 inoremap <C-o> <C-x><C-o>
+
+" Explore Snippets
+nnoremap <Leader>S :Explore ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/snippets<CR>
+
+" Toggles 'list'
+nnoremap <Leader>L :set list!<CR>
 
 " ------------------------------ AUTOS ---------------------------------------
 
