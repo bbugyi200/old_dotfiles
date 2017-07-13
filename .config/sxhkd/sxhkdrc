@@ -3,169 +3,172 @@
 
 # terminal emulator
 super + x
-        termite -e 'tm Terminal'
+	termite -e 'tm Terminal'
 
 # program launcher
 alt + space
-        dmenu_extended_run
+	dmenu_extended_run
 
 # make sxhkd reload its configuration files:
 alt + r
-        pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd
 
 # clipmenu
 alt + c
-        clipmenu
+	clipmenu
 
 # screenlock
 super + l
-        ~/Dropbox/scripts/lock
+	~/Dropbox/scripts/lock
 
 super + s
-    ~/Dropbox/scripts/scratch/scratch-toggle
+	~/Dropbox/scripts/scratch-toggle
 
 # Randomly change background
 super + b
-    bg_img=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1); \
-    background $bg_img
+	bg_img=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1); \
+	background $bg_img
 
 # clear screen
 alt + e
-    tmux send-keys "clear" "Enter"
+	tmux send-keys "clear" "Enter"
 
 @Print
-    scrot -s /tmp/shot.png && xclip -selection 'clipboard' -t image/png /tmp/shot.png
+	scrot -s /tmp/shot.png && xclip -selection 'clipboard' -t image/png /tmp/shot.png
 
 super + @Print
-    bspc rule -a "*:*" -o state=floating; \
-    termite -e ~/Dropbox/scripts/receipt_sshot
+	bspc rule -a "*:*" -o state=floating; \
+	termite -e ~/Dropbox/scripts/receipt_sshot
 
 super + w
-    networkmanager_dmenu
+	networkmanager_dmenu
 
 # Shutdown Computer
 ctrl + alt + super + {s,r}
-    {shutdown now,reboot}
+	{shutdown now,systemctl reboot -i}
 
 # ---------------------------- Switch-or-Run ----------------------------------
 {super,_} + @F1
-     switch-or-run "termite" "termite -e 'tm Terminal'" "1"
+	 switch-or-run "termite" "termite -e 'tm Terminal'" "1"
 
 {@F2, XF86MonBrightnessDown}
-    switch-or-run "chrome" "google-chrome-stable" "2"
+	switch-or-run "chrome" "google-chrome-stable" "2"
 
 {@F3, XF86MonBrightnessUp}
-    switch-or-run "okular" "okular" "3"
+	switch-or-run "okular" "okular" "3"
 
-# ------------------------------- pop-or-push ---------------------------------
+{@F4, super + p}
+	switch-or-run "anki" "anki" "4"
+
+# ------------------------------- window-stack ---------------------------------
 ctrl + super + {c,a, t}
-    pop-or-push {"chrome","add", "termite"}
+	window-stack {"chrome","add", "termite"}
 
 
 # ---------------------------- bspwm hotkeys ----------------------------------
 
 ## quit bspwm normally
 alt + super + Escape
-        bspc quit
+	bspc quit
 
 # alternate between the tiled and monocle layout
 super + m
-        bspc desktop -l next
+	bspc desktop -l next
 
 # switch to different node when in monocle layout
 alt + m
-        bspc node -f next.local
+	bspc node -f next.local
 
 # close and kill
 alt + {_,shift + }w
-        N=$(bspc query --nodes --node focused.!hidden); \
-        [[ $(bspc query --nodes --node .!hidden | wc -l) == "1" ]] && A="strict"; \
-        focus-local "$A"; \
-        bspc node $N -{c,k}
+	N=$(bspc query --nodes --node focused.!hidden); \
+	[[ $(bspc query --nodes --node .!hidden | wc -l) == "1" ]] && A="strict"; \
+	focus-local "$A"; \
+	bspc node $N -{c,k}
 
 # Expand a window by moving one of its sides outward
 alt + {Left,Down,Up,Right}
-        bspc node -z {left -20 0, bottom 0 20, top 0 -20, right 20 0}
+	bspc node -z {left -20 0, bottom 0 20, top 0 -20, right 20 0}
 
 # ------------------------------ state/flags ----------------------------------
 
 # set the window state
 alt + {t,shift + t,s,shift + f}
-        bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 alt + ctrl + {l,s,p,h}
-        bspc node -g {locked,sticky,private,hidden}
+	bspc node -g {locked,sticky,private,hidden}
 
 # Un-hides last hidden window
 alt + ctrl m
-        N=$(bspc query -N -n .hidden | tail -n1); \
-        bspc node $N -g hidden=off; \
-        bspc node -f $N
+	N=$(bspc query -N -n .hidden | tail -n1); \
+	bspc node $N -g hidden=off; \
+	bspc node -f $N
 
 # ------------------------------ focus/swap -----------------------------------
 
 # swap nodes while retaining focus
 alt + {h,j,k,l}
-        D={west,south,north,east}; \
-        swap_nodes "$D"
+	D={west,south,north,east}; \
+	swap_nodes "$D"
 
 # focus the next/previous node
 alt + {n,p}
-        bspc node -f {next,prev}
+	bspc node -f {next,prev}
 
 # focus the next/previous desktop (only if on the same monitor)
 alt + bracket{left,right}
-        bspc desktop -f {prev,next}.local
+	bspc desktop -f {prev,next}.local
 
 # focus the next/previous desktop (only if on the same monitor)
 ctrl + {@Left,@Right}
-        bspc desktop -f {prev,next}.local
+	bspc desktop -f {prev,next}.local
 
 # focus the older or newer node in the focus history
 alt + {o,i}
-        bspc wm -h off; \
-        bspc node {older,newer} -f; \
-        bspc wm -h on
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
 
 # focus or send to the given D (without switching to that D)
 alt + {_,shift + }{1-9,0}
-        bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} '^{1-9,10}'
 
 alt + ctrl + {1-9,0}
-        N=$(bspc query --nodes --node focused); \
-        bspc node -d '^{1-9,10}'; \
-        bspc node -f $N
+	N=$(bspc query --nodes --node focused); \
+	bspc node -d '^{1-9,10}'; \
+	bspc node -f $N
 
 # switch monitor
 alt + backslash
-        bspc monitor -f next
+	bspc monitor -f next
 
 # move node to next monitor
 super + backslash
-        move-to-next-monitor
+	move-to-next-monitor
 
 
 # Send to monitor and keep window focused
 # alt + slash
-#         N=$(bspc query --nodes --node focused); \
-#         bspc node -m next; \
-#         bspc node -f $N
+#	 N=$(bspc query --nodes --node focused); \
+#	 bspc node -m next; \
+#	 bspc node -f $N
 
 # # Send to monitor
 # alt + backslash
-#         bspc node -m next
+#	 bspc node -m next
 
 # ------------------------------ preselect ------------------------------------
 
 # preselect the direction
 super + {h,j,k,l}
-        bspc node -p {west,south,north,east}
+	bspc node -p {west,south,north,east}
 
 # preselect the ratio
 super + {1-9}
-        bspc node -o 0.{1-9}
+	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + space
-        bspc node -p cancel
+	bspc node -p cancel
