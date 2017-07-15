@@ -1,77 +1,68 @@
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " ------------------ BEGIN:: Vundle Configurations -----------------------------
 filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
-" ------------------------ POWERLINE (vanilla) -------------------------------
 call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'tpope/vim-surround'
-
-Plugin 'scrooloose/nerdTree'
-
-Plugin 'itspriddle/ZoomWin'
-
-Plugin 'kien/ctrlp.vim'
-let g:ctrlp_follow_symlinks=1
-
+" ~~~~~ tpope ~~~~~
 Plugin 'tpope/vim-commentary'
-
-Plugin 'danro/rename.vim'
-
-Plugin 'christoomey/vim-tmux-navigator'
-
-Plugin 'benmills/vimux'
-
-Plugin 'jamessan/vim-gnupg'
-
-Plugin 'jez/vim-superman'
-
-Plugin 'shime/vim-livedown'
-
 Plugin 'tpope/vim-unimpaired'
-
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
-Plugin 'Raimondi/delimitMate'
-
-Plugin 'vim-airline/vim-airline'
-
-Plugin 'davidhalter/jedi-vim'
-
-Plugin 'altercation/vim-colors-solarized'
-
-Plugin 'artur-shaik/vim-javacomplete2'
-
-Plugin 'Rip-Rip/clang_complete'
-
+" ~~~~~ Shougo ~~~~~
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/neoinclude.vim'
 Plugin 'Shougo/echodoc.vim'
-let g:echodoc#enable_at_startup=1
 
-Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
+" "~~~~~ MISC ~~~~~
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdTree'
+Plugin 'itspriddle/ZoomWin'
+Plugin 'kien/ctrlp.vim'
+Plugin 'danro/rename.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'benmills/vimux'
+Plugin 'jamessan/vim-gnupg'
+Plugin 'shime/vim-livedown'
+Plugin 'Raimondi/delimitMate'
+Plugin 'vim-airline/vim-airline'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'Rip-Rip/clang_complete'
 Plugin 'scrooloose/syntastic'
 
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
-" ------------------------------ Airline Status Bar Configs -------------------
+Plugin 'vim-utils/vim-man'
+Plugin 'jez/vim-superman'
+
+
+" -------------------- END:: Vundle Configurations -----------------------------
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" --------------------------------- CTRLP --------------------------------------
+let g:ctrlp_follow_symlinks=1
+
+" ------------------------------- EchoDoc --------------------------------------
+let g:echodoc#enable_at_startup=1
+
+" ------------------------------- Airline Status Bar Configs -------------------
 
 " The following set commands are used to fix issue with delay in Airline
 " picking up on change from Insert to Normal mode. BEWARE of possible issues
 " caused by setting timeout too low.
-"
 set timeoutlen=1000 ttimeoutlen=10
-"
+
 set laststatus=2
 
-" air-line
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
@@ -106,12 +97,12 @@ set rtp+=$POWERLINE_DIRECTORY/powerline/bindings/vim/
 set t_Co=256
 
 
-" ---------------------------- UltiSnips Configurations ----------------------
+" ------------------------------ UltiSnips Configurations ----------------------
 "
 " Allows other directories to be searched for snippet files
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/bryan/Dropbox/dotfiles/extra/UltiSnips"]
 
-" ----------------------------- Syntastic Config -----------------------------
+" ------------------------------- Syntastic Config -----------------------------
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -139,7 +130,7 @@ let g:syntastic_cpp_compiler_options = '-std=c++11'
 let g:syntastic_java_javac_classpath = "./lib/*.jar\n./src"
 
 
-" ---------------------------- NeoComplete Configuration ----------------------
+" ----------------------------- NeoComplete Configuration ----------------------
 "
 " let g:neocomplete#enable_auto_close_preview=1
 set completeopt-=preview
@@ -152,7 +143,7 @@ hi Pmenu ctermfg=white
 """""""""""""""""""""""""""""""
 
 
-" ------- UltiSnips Integration w/ Autocomplete --------------
+" ~~~~~ UltiSnips Integration w/ Autocomplete ~~~~~
 function! g:UltiSnips_Complete()
     call UltiSnips#ExpandSnippet()
     if g:ulti_expand_res == 0
@@ -175,14 +166,13 @@ let g:UltiSnipsListSnippets="<c-e>"
 " this mapping Enter key to <C-y> to chose the current highlight item
 " and close the selection list, same as other IDEs.
 " CONFLICT with some plugins like tpope/Endwise
-
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" -------- Recommended NeoComplete Config ---------
+" ~~~~~ Recommended NeoComplete Config ~~~~~
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 "
@@ -215,6 +205,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType c setlocal omnifunc=ClangComplete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -228,9 +219,3 @@ autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
 let g:neocomplete#force_omni_input_patterns.python = '[^. \t]\.\w*'
-
-" -------------------- END:: Vundle Configurations -----------------------------
-"
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required

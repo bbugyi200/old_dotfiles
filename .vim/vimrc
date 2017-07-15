@@ -208,19 +208,15 @@ nnoremap <C-s> :SyntasticToggleMode<CR>
 " Toggles 'cursorline'
 nnoremap <Leader>l :set cursorline!<CR>
 
-" Omnicompletion Shortcut
-" inoremap <C-o> <C-x><C-o>
-
-" Omnicompletion Function-Call Shortcut
-inoremap <C-l> <C-x><C-o>()<left>
-
 " Explore Shortcuts
 nnoremap <Leader>S :Explore ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/snippets<CR>
 nnoremap <Leader>F :Explore ~/Dropbox/dotfiles/.vim/ftplugin<CR>
 
+" Delete Buffers
 nnoremap <Leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 
-nnoremap <Leader>v :SuperMan <C-r><C-w><CR>
+" Man Pages
+nnoremap <Leader>m :Man 3 <C-r><C-w><CR>
 
 
 " ------------------------------ AUTOS ---------------------------------------

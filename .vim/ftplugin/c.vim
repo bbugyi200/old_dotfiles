@@ -1,2 +1,5 @@
 " Omnicompletion shortcut
-inoremap <C-(> <C-x><C-o>(
+"
+NeoIncludeMakeCache
+
+inoremap <C-o> <C-x><C-o>
