@@ -5,9 +5,9 @@ then
     sxhkd &
 fi
 
-if ! pgrep -x /usr/local/bin/panel > /dev/null
+if ! pgrep -x /usr/local/bin/init_panel.sh > /dev/null
 then
-    panel &
+    init_panel.sh &
 fi
 
 if [[ $(hostname) == 'athena' ]]; then

@@ -9,10 +9,11 @@ alias ccat='pygmentize -g'
 alias cp='cp -i'
 alias mv='mv -i'
 alias time='/usr/bin/time'
+alias soglob='source ~/Dropbox/dotfiles/extras/globrc'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
-# transmission-remote functions
+# ~~~~~ transmission-remote functions ~~~~~
 tsm() { transmission-remote -l }
 tsm-start() { transmission-daemon }
 tsm-stop() { killall -9 transmission-daemon }
@@ -22,22 +23,33 @@ tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250 }
 tsm-rm() { transmission-remote -t$1 -r }
 tsm-purge() { transmission-remote -t$1 -rad }
 
+# ~~~~~ TMUX FUNCTIONS ~~~~~
+# Initialize different tmux environments
+tm-init () { 
+	SESS="$1"; shift
+	tmux new -s "$SESS" -d
+	tmux switchc -t "$SESS"
+	"/home/bryan/Dropbox/scripts/tmux-envs/$SESS.sh" "$@"
+}
 
+# Kill current tmux session and attach to next session
+tm-kill () {
+	SESS=$(tmux display-message -p "#S")
+	tmux switchc -n
+	if [ -f "/home/bryan/Dropbox/scripts/tmux-envs/post/$SESS.sh" ]; then
+		"/home/bryan/Dropbox/scripts/tmux-envs/post/$SESS.sh" 
+	else
+		tmux kill-session -t "$SESS"
+	fi
+}
+
+# ~~~~~ MISCELLANEOUS ~~~~~
 # Prints the value of a variable
 pvar () { set | grep -i -e "^$1" }
 
 wim() { vim $(where $1) }
 
 mkcd() { mkdir -p $1 && cd $1 }
-
-function ta() {
-    if [ $# -eq 0 ]
-    then 
-        tmux -2 attach
-    else
-        tmux -2 attach -t $1
-    fi
-}
 
 function ccd {
     case "$1" in
@@ -79,35 +91,6 @@ function getPWD() {
     echo $(pwd | sed 's/\/home\/[Bb]ryan/~/' | cut -c -55) 
 }
 
-# ETERNAL BASH HISTORY
-# https://spin.atomicobject.com/2016/05/28/log-bash-history/
-function log_bash_history() { 
-    if [ "$(id -u)" -ne 0 ]; 
-    then printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(getPWD)" "$(fc -ln -1)" >> ~/Dropbox/logs/bash-history.log;
-    fi; 
-}
-
-function hgrep() {
-    if [ "$1" = '--local' -o "$1" = '-l' ]
-    then
-        cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -a -e " $(getPWD) " | grep -a -e "$(hostname)" | tr -s ' '| cut -d' ' -f 2,6- | grep -a -e "$2"
-    elif [ "$1" = '--verbose' -o "$1" = '-v' ]
-    then
-        cat ~/Dropbox/logs/bash-history.log | nl | grep -a -e "$2"
-    else
-        cat ~/Dropbox/logs/bash-history.log | nl -s ' ' | grep -a -e "$(hostname)" | tr -s ' ' | cut -d' ' -f 2,6- | grep -a -e "$1"
-    fi
-}
-
-function hview() {
-    if [ $# -eq 0 ]
-    then 
-        vim ~/Dropbox/logs/bash-history.log
-    else
-        vim +$1 ~/Dropbox/logs/bash-history.log
-    fi
-}
-
 # Enables vim :Man command from the terminal
 vman() {
 	vim -c "SuperMan $*"
@@ -115,6 +98,36 @@ vman() {
 	if [ "$?" != "0" ]; then
 		echo "No manual entry for $*"
 	fi
+}
+
+# ~~~~~ ETERNAL BASH HISTORY ~~~~~
+# https://spin.atomicobject.com/2016/05/28/log-bash-history/
+LOGFILE="/home/bryan/Dropbox/logs/$(hostname)-cmd-history.log"
+function log_bash_history() { 
+    if [ "$(id -u)" -ne 0 ]; 
+    then printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(getPWD)" "$(fc -ln -1)" >> $LOGFILE;
+    fi; 
+}
+
+function hgrep() {
+    if [ "$1" = '--local' -o "$1" = '-l' ]
+    then
+        cat $LOGFILE | nl -s ' ' | grep -a -e " $(getPWD) " | grep -a -e "$(hostname)" | tr -s ' '| cut -d' ' -f 2,6- | grep -a -e "$2"
+    elif [ "$1" = '--verbose' -o "$1" = '-v' ]
+    then
+        cat ~/Dropbox/logs/athena-cmd-history.log ~/Dropbox/logs/aphrodite-cmd-history.log | nl | grep -a -e "$2"
+    else
+        cat $LOGFILE | nl -s ' ' | grep -a -e "$(hostname)" | tr -s ' ' | cut -d' ' -f 2,6- | grep -a -e "$1"
+    fi
+}
+
+function hview() {
+    if [ $# -eq 0 ]
+    then 
+        vim $LOGFILE
+    else
+        vim +$1 $LOGFILE
+    fi
 }
 
 # ------------------------------ EXPORTS -------------------------------------

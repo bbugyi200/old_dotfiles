@@ -209,7 +209,7 @@ nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <Leader>l :set cursorline!<CR>
 
 " Explore Shortcuts
-nnoremap <Leader>S :Explore ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/snippets<CR>
+nnoremap <Leader>S :Explore ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/UltiSnips<CR>
 nnoremap <Leader>F :Explore ~/Dropbox/dotfiles/.vim/ftplugin<CR>
 
 " Delete Buffers
