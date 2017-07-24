@@ -82,9 +82,9 @@ alt + m
 # close and kill
 alt + {_,shift + }w
 	N=$(bspc query --nodes --node focused.!hidden); \
-	[[ $(bspc query --nodes --node .!hidden | wc -l) == "1" ]] && A="strict"; \
+	[[ $(bspc query --nodes --node .!floating | wc -l) == "1" ]] && A="strict"; \
 	focus-local "$A"; \
-	[[ -n $N ]] && bspc node $N -{c,k}
+	[[ -n "$N" ]] && bspc node "$N" -{c,k}
 
 # Expand a window by moving one of its sides outward
 alt + {Left,Down,Up,Right}
