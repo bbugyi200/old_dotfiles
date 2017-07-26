@@ -19,6 +19,10 @@ alias -s djvu="djview"
 alias -g @@="&> /dev/null & disown"
 alias -g X="&& exit"
 
+# -------------------------------- BINDINGS ----------------------------------
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
+
 # -------------------------------- FUNCTIONS ---------------------------------
 
 # Starts ssh-agent automatically
