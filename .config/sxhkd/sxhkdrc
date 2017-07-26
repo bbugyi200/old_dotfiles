@@ -3,7 +3,7 @@
 
 # terminal emulator
 super + x
-	termite -e 'tm Terminal'
+	termite -e 'tm-start Terminal'
 
 # program launcher
 alt + space
@@ -49,7 +49,7 @@ ctrl + alt + super + {s,r}
 
 # ---------------------------- Switch-or-Run ----------------------------------
 {super,_} + @F1
-	 switch-or-run "termite" "termite -e 'tm Terminal'" "1"
+	 switch-or-run "termite" "termite -e 'tm-start Terminal'" "1"
 
 {@F2, XF86MonBrightnessDown}
 	switch-or-run "chrome" "google-chrome-stable" "2"

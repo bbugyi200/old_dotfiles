@@ -25,11 +25,17 @@ tsm-purge() { transmission-remote -t$1 -rad }
 
 # ~~~~~ TMUX FUNCTIONS ~~~~~
 # Initialize different tmux environments
-tm-init () { 
+typeset -A default_dirs
+default_dirs[tsm]="~"
+default_dirs[panel]="/home/bryan/Dropbox/scripts/C/panel"
+default_dirs[APUE]="/home/bryan/Dropbox/My_Studies/C/APUE"
+tm () { 
 	SESS="$1"; shift
-	tmux new -s "$SESS" -d
+	tmux new -s "$SESS" -c "${default_dirs[$SESS]}" -d
 	tmux switchc -t "$SESS"
-	"/home/bryan/Dropbox/scripts/tmux-envs/$SESS.sh" "$@"
+	if [ -f "/home/bryan/Dropbox/scripts/tmux-envs/pre/$SESS.sh" ]; then
+		"/home/bryan/Dropbox/scripts/tmux-envs/pre/$SESS.sh" "$@"
+	fi
 }
 
 # Kill current tmux session and attach to next session
