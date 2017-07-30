@@ -218,4 +218,5 @@ endif
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = 0
 let g:neocomplete#force_omni_input_patterns.python = '[^. \t]\.\w*'

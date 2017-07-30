@@ -10,6 +10,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias time='/usr/bin/time'
 alias soglob='source ~/Dropbox/dotfiles/extras/globrc'
+alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
@@ -30,6 +31,11 @@ default_dirs[tsm]="~"
 default_dirs[panel]="/home/bryan/Dropbox/scripts/C/panel"
 default_dirs[APUE]="/home/bryan/Dropbox/My_Studies/C/APUE"
 tm () { 
+	if [[ "$1" == "ls" ]]; then
+		tmux ls
+		return 0
+	fi
+
 	SESS="$1"; shift
 	tmux new -s "$SESS" -c "${default_dirs[$SESS]}" -d
 	tmux switchc -t "$SESS"

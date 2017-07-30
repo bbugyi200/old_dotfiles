@@ -218,6 +218,8 @@ nnoremap <Leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 " Man Pages
 nnoremap <Leader>m :Man 3 <C-r><C-w><CR>/^[A-Z]\+<CR>gg
 
+" Omnicompletion shortcut
+inoremap <C-o> <C-x><C-o>
 
 " ------------------------------ AUTOS ---------------------------------------
 
