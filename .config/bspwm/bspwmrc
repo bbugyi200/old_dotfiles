@@ -7,8 +7,9 @@ fi
 
 if ! pgrep -x /usr/local/bin/init_panel.sh > /dev/null
 then
-    init_panel.sh &
+    setsid init_panel.sh &
 fi
+
 
 if [[ $(hostname) == 'athena' ]]; then
     bspc monitor HDMI2 -d I II III IV V

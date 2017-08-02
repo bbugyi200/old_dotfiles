@@ -11,6 +11,7 @@ alias mv='mv -i'
 alias time='/usr/bin/time'
 alias soglob='source ~/Dropbox/dotfiles/extras/globrc'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
+alias rst='killall init_panel.sh && init_panel.sh &> /dev/null & disown'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
