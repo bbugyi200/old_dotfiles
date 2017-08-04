@@ -1,0 +1,52 @@
+:open /home/bryan/Dropbox/Books/Programming/C
+:400
+:rotate
+:index
+:mode
+:change_mode
+:change_mode visual
+:bmark
+:bmark .
+:blist
+:blist .
+:blist all
+:bdelete .
+:bmark C12.7
+:blist 
+:blist C12.7
+:info
+:open O
+:open /home/bryan/Dropbox/Books/Programming/C/Advanced_Programming_in_the_UNIX_Environment_(Stevens)2.pdf
+:484
+/recall
+:hlsearch
+/from
+:copy
+:exec termite -t notes
+?thread
+:write -
+:write test.pdf
+:open /home/bryan/Dropbox/Books/Programming/C/C_Programming_Language-(Kernighan).pdf
+:!exec %
+:!notepad %
+:last
+:blist last
+:blist first
+:bmark start
+:bdelete C12.7
+/reaches a 
+/cancellation
+/the cancelability state
+:nohlsearch 
+:bmark 1
+:blist 1
+:bdelete 1
+:open /home/bryan/Dropbox/Books/Programming/C/Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
+?Figure 10.3
+?Figure 10.23
+:bmark last
+:bdelete last
+:bmark stop
+:blist start
+:blist stop
+:exec notepad %

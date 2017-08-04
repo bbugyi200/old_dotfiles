@@ -47,18 +47,22 @@ super + w
 ctrl + alt + super + {s,r}
 	{shutdown now,systemctl reboot -i}
 
+# Focus-local
+ctrl + f
+	focus-local
+
 # ---------------------------- Switch-or-Run ----------------------------------
 {super,_} + @F1
-	 switch-or-run "termite" "termite -e 'tm-init Terminal'" "1"
+	 switch-or-run "termite.Termite" "termite -e 'tm-init Terminal'" "1"
 
 {@F2, XF86MonBrightnessDown}
-	switch-or-run "chrome" "google-chrome-stable" "2"
+	switch-or-run "google-chrome.Google-chrome" "google-chrome-stable" "2"
 
 {@F3, XF86MonBrightnessUp}
-	switch-or-run "okular" "okular" "3"
+	switch-or-run "zathura.Zathura" "zathura" "3"
 
 {@F4, super + p}
-	switch-or-run "anki" "anki" "4"
+	switch-or-run "anki.Anki" "anki" "4"
 
 # ------------------------------- window-stack ---------------------------------
 ctrl + super + {c,a, t}
@@ -101,7 +105,7 @@ alt + ctrl + {l,s,p,h}
 	bspc node -g {locked,sticky,private,hidden}
 
 # Un-hides last hidden window
-alt + ctrl m
+alt + ctrl + m
 	N=$(bspc query -N -n .hidden | tail -n1); \
 	bspc node $N -g hidden=off; \
 	bspc node -f $N
@@ -119,10 +123,6 @@ alt + {n,p}
 
 # focus the next/previous desktop (only if on the same monitor)
 alt + bracket{left,right}
-	bspc desktop -f {prev,next}.local
-
-# focus the next/previous desktop (only if on the same monitor)
-ctrl + {@Left,@Right}
 	bspc desktop -f {prev,next}.local
 
 # focus the older or newer node in the focus history

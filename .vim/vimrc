@@ -221,12 +221,12 @@ nnoremap <Leader>m :Man 3 <C-r><C-w><CR>/^[A-Z]\+<CR>gg
 " Omnicompletion shortcut
 inoremap <C-o> <C-x><C-o>
 
+nnoremap <Leader>n :set relativenumber!<CR>
+
 " ------------------------------ AUTOS ---------------------------------------
 
 " Turns spellcheck on for certain file extensions
 " 2nd line disables the colorcolumn
-autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us
-autocmd BufRead,BufNewFile *.txt setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.txt set colorcolumn=
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.md set colorcolumn=
