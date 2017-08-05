@@ -18,9 +18,11 @@ alias -s djvu="djview"
 
 alias -g @@="&> /dev/null & disown"
 alias -g X="&& exit"
+alias -g ::="| grep"
 alias -g rm="rm -i"
 alias -g mv="mv -i"
 alias -g cp="cp -i"
+alias -g sys='systemctl'
 
 # -------------------------------- BINDINGS ----------------------------------
 bindkey "^P" up-line-or-search

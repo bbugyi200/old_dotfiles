@@ -16,7 +16,6 @@
 :blist C12.7
 :info
 :open O
-:open /home/bryan/Dropbox/Books/Programming/C/Advanced_Programming_in_the_UNIX_Environment_(Stevens)2.pdf
 :484
 /recall
 :hlsearch
@@ -32,21 +31,35 @@
 :last
 :blist last
 :blist first
-:bmark start
 :bdelete C12.7
 /reaches a 
 /cancellation
 /the cancelability state
-:nohlsearch 
 :bmark 1
 :blist 1
 :bdelete 1
-:open /home/bryan/Dropbox/Books/Programming/C/Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
 ?Figure 10.3
 ?Figure 10.23
 :bmark last
 :bdelete last
+:open /home/bryan/Dropbox/Books/Programming/C/Advanced_Programming_in_the_UNIX_Environment_(Stevens)2.pdf
+?pread
+:open /home/bryan/Dropbox/Books/Programming/Tools/Linux\ Command\ Line\ and\ Shell\ Scripting\ -\ (Christine\ Bresnahan)\ -\ (2015).pdf
+/thread
+?Figure 12.17
+/Chapter 12
+?Figure 12.13
+?Figure C.13
+?setsid
 :bmark stop
+:open /home/bryan/Dropbox/Books/Programming/C/Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
 :blist start
+/fork handler
 :blist stop
+:bmark start
 :exec notepad %
+:bmark sect
+:504
+/normally
+:nohlsearch 
+:open /home/bryan/Dropbox/Books/Programming/C/APUE_Test.pdf
