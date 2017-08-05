@@ -1,5 +1,7 @@
 #! /bin/sh
 
+cd /
+
 if ! pgrep -x /usr/local/bin/sxhkd > /dev/null
 then
     sxhkd &
@@ -16,7 +18,7 @@ if [[ $(hostname) == 'athena' ]]; then
     bspc monitor HDMI1 -d VI VII VIII IX X
 elif [[ $(hostname) == 'aphrodite' ]]; then
     bspc monitor LVDS1 -d I II III IV V
-    multimon-bspwm &
+    setsid multimon-bspwm &
 fi
 
 
