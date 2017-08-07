@@ -4,6 +4,7 @@
 .mutt/aliases
 .mutt/.vimrc
 .ipython/*
+.local/*
 
 .vim/*
 !.vim/vimrc

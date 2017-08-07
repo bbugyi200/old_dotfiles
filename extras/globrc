@@ -9,9 +9,12 @@ alias ccat='pygmentize -g'
 alias time='/usr/bin/time'
 alias soglob='source ~/Dropbox/dotfiles/extras/globrc'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
-alias rst='killall init_panel.sh && init_panel.sh &> /dev/null & disown'
+alias rst='killall panel-init && panel-init'
 alias ssh-athena='ssh -p 34857 bryan@173.71.68.88'
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
+alias rm="rm -i"
+alias mv="mv -i"
+alias cp="cp -i"
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
@@ -29,7 +32,7 @@ tsm-purge() { transmission-remote -t$1 -rad }
 # Initialize different tmux environments
 typeset -A default_dirs
 default_dirs[tsm]="~"
-default_dirs[panel]="/home/bryan/Dropbox/scripts/C/panel"
+default_dirs[panel]="/home/bryan/Dropbox/scripts/C/src/panel"
 default_dirs[APUE]="/home/bryan/Dropbox/My_Studies/C/APUE"
 tm () { 
 	if [[ "$1" == "ls" ]]; then

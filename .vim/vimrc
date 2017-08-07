@@ -87,6 +87,8 @@ set nohlsearch
 " Changes location of viminfo file
 set viminfo+=n~/.vim/viminfo
 
+set noshowmode
+
 " --------------------------------- LETS -------------------------------------
 
 " Sets LaTeX as default for .tex files
@@ -249,8 +251,11 @@ augroup END
 autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':.'
 let g:airline#extensions#tabline#fnamecollapse = 0
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
-set noshowmode
+
+" Appends the current working directory to PATH
+let tempPath=expand("%:p:h") . "/**"
+exec "set path+=" . tempPath

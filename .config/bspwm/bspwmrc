@@ -1,24 +1,12 @@
 #! /bin/sh
 
-cd /
-
-if ! pgrep -x /usr/local/bin/sxhkd > /dev/null
-then
-    sxhkd &
-fi
-
-if ! pgrep -x /usr/local/bin/init_panel.sh > /dev/null
-then
-    setsid init_panel.sh &
-fi
-
-
 if [[ $(hostname) == 'athena' ]]; then
     bspc monitor HDMI2 -d I II III IV V
     bspc monitor HDMI1 -d VI VII VIII IX X
 elif [[ $(hostname) == 'aphrodite' ]]; then
     bspc monitor LVDS1 -d I II III IV V
     setsid multimon-bspwm &
+	fswebcam "/home/bryan/login-sshots/%m.%d.%y-%H:%M:%S.jpg"
 fi
 
 
@@ -46,6 +34,9 @@ bspc rule -a Zathura:zathura state=tiled
 
 # Compton
 compton -b --config .config/compton.conf
+
+# strace -f /usr/local/bin/panel-init &> /home/bryan/panel-init.log
+/usr/local/bin/panel-init
 
 # Set Background
 python3 ~/Dropbox/scripts/python/holidaybg.py
