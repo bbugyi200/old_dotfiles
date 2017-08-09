@@ -5,6 +5,7 @@
 .mutt/.vimrc
 .ipython/*
 .local/*
+.xournal/*
 
 .vim/*
 !.vim/vimrc

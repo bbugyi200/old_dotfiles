@@ -53,16 +53,16 @@ alt + f
 
 # ---------------------------- Switch-or-Run ----------------------------------
 {super,_} + @F1
-	 switch-or-run termite.Termite "termite -e 'tm-init Terminal'" 1
+	 switch-or-run "termite.Termite" "termite -e 'tm-init Terminal'" 1
 
 {@F2, XF86MonBrightnessDown}
-	switch-or-run google-chrome.Google-chrome "google-chrome-stable" 2
+	switch-or-run "google-chrome.Google-chrome" "google-chrome-stable" 2
 
 {@F3, XF86MonBrightnessUp}
-	switch-or-run okular.okular "okular" 3
+	switch-or-run "okular.okular:zathura.Zathura" "okular:zathura" 3
 
 {@F4, super + p}
-	switch-or-run Anki "anki" 4
+	switch-or-run "Anki" "anki" 4
 
 # ------------------------------- window-stack ---------------------------------
 ctrl + super + {c,a, t}
