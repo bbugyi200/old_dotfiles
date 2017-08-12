@@ -12,9 +12,11 @@ alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias rst='killall panel-init && panel-init'
 alias ssh-athena='ssh -p 34857 bryan@173.71.68.88'
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
+alias sftp-athena='sftp -P 34857 bryan@173.71.68.88'
 alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"
+alias sudo='sudo '
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
@@ -30,10 +32,6 @@ tsm-purge() { transmission-remote -t$1 -rad }
 
 # ~~~~~ TMUX FUNCTIONS ~~~~~
 # Initialize different tmux environments
-typeset -A default_dirs
-default_dirs[tsm]="~"
-default_dirs[panel]="/home/bryan/Dropbox/scripts/C/src/panel"
-default_dirs[APUE]="/home/bryan/Dropbox/My_Studies/C/APUE"
 tm () { 
 	if [[ "$1" == "ls" ]]; then
 		tmux ls
@@ -41,7 +39,9 @@ tm () {
 	fi
 
 	SESS="$1"; shift
-	tmux new -s "$SESS" -c "${default_dirs[$SESS]}" -d
+	default_dir="$(/home/bryan/Dropbox/scripts/python/tmux_dir_lookup.py --get $SESS)"
+
+	tmux new -s "$SESS" -c "$default_dir" -d
 	tmux switchc -t "$SESS"
 	if [ -f "/home/bryan/Dropbox/scripts/tmux-envs/pre/$SESS.sh" ]; then
 		"/home/bryan/Dropbox/scripts/tmux-envs/pre/$SESS.sh" "$@"

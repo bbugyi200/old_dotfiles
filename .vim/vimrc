@@ -3,7 +3,7 @@
 if filereadable($CONFIG . "/plugins.vim")
 	source $CONFIG/plugins.vim
 else
-	source ~/Dropbox/dotfiles/extras/plugins.vim
+	source /home/bryan/Dropbox/dotfiles/extras/plugins.vim
 endif
 
 filetype plugin indent on

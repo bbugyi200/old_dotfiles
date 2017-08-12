@@ -59,7 +59,11 @@ alt + f
 	switch-or-run "google-chrome.Google-chrome" "google-chrome-stable" 2
 
 {@F3, XF86MonBrightnessUp}
-	switch-or-run "okular.okular:zathura.Zathura" "okular:zathura" 3
+	switch-or-run "zathura.Zathura" "zathura" 3
+	# switch-or-run "okular.okular:zathura.Zathura" "okular:zathura" 3
+
+# shift + @F3
+# 	switch-or-run "zathura.Zathura" "zathura" 3
 
 {@F4, super + p}
 	switch-or-run "Anki" "anki" 4

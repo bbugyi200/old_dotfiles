@@ -1,8 +1,8 @@
 # ----------------------------------------------------------------------------
 # ------------------------------ SOURCES -------------------------------------
-source ~/Dropbox/dotfiles/extras/oh-my-zsh
-source ~/Dropbox/scripts/localAlias
-source ~/Dropbox/dotfiles/extras/globrc
+source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
+source /home/bryan/Dropbox/scripts/localAlias
+source /home/bryan/Dropbox/dotfiles/extras/globrc
 
 # ----------------------------------- ALIASES --------------------------------
 alias -s pdf="okular"

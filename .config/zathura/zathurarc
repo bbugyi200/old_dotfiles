@@ -3,4 +3,5 @@ set selection-clipboard clipboard
 set window-title-basename true
 set window-title-page true
 
-map <C-n> focus_inputbar ":exec notepad %"
+map <C-n> feedkeys ":exec notepad --open %<Return>"
+map <C-p> feedkeys ":exec notepad --put %<Return>"

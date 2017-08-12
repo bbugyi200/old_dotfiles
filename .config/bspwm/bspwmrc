@@ -6,7 +6,6 @@ if [[ $(hostname) == 'athena' ]]; then
 elif [[ $(hostname) == 'aphrodite' ]]; then
     bspc monitor LVDS1 -d I II III IV V
     setsid multimon-bspwm &
-	fswebcam "/home/bryan/login-sshots/%m.%d.%y-%H:%M:%S.jpg"
 fi
 
 
