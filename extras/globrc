@@ -30,6 +30,11 @@ tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250 }
 tsm-rm() { transmission-remote -t$1 -r }
 tsm-purge() { transmission-remote -t$1 -rad }
 
+
+# ~~~~~ Hamster Functions ~~~~~
+ham-start() { hamster start "$@" && /home/bryan/Dropbox/scripts/python/panel-hamster.py }
+ham-stop() { hamster stop && /home/bryan/Dropbox/scripts/python/panel-hamster.py }
+
 # ~~~~~ TMUX FUNCTIONS ~~~~~
 # Initialize different tmux environments
 tm () { 

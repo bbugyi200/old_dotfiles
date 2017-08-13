@@ -3,5 +3,7 @@ set selection-clipboard clipboard
 set window-title-basename true
 set window-title-page true
 
+set link-zoom false
+
 map <C-n> feedkeys ":exec notepad --open %<Return>"
-map <C-p> feedkeys ":exec notepad --put %<Return>"
+map <Space> feedkeys ":exec notepad --put %<Return>"
