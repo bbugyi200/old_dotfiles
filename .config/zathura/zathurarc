@@ -6,4 +6,6 @@ set window-title-page true
 set link-zoom false
 
 map <C-n> feedkeys ":exec notepad --open %<Return>"
-map <Space> feedkeys ":exec notepad --put %<Return>"
+map <C-s> feedkeys ":exec notepad --side %<Return>"
+map <Space> feedkeys ":exec notepad --put-major %<Return>"
+map <C-Space> feedkeys ":exec notepad --put-minor %<Return>"

@@ -38,7 +38,7 @@ ham-stop() { hamster stop && /home/bryan/Dropbox/scripts/python/panel-hamster.py
 # ~~~~~ TMUX FUNCTIONS ~~~~~
 # Initialize different tmux environments
 tm () { 
-	if [[ "$1" == "ls" ]]; then
+	if [[ -z "$1" ]]; then
 		tmux ls
 		return 0
 	fi

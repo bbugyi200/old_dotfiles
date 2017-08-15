@@ -115,7 +115,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 " Disables certain Python Flake8 Errors
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E701,E702'
+let g:syntastic_python_flake8_args='--ignore=E501,E701,E702'
 
 " Forces Syntastic to check header files for errors
 " By default, Syntastic does not check .h file types

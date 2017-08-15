@@ -51,6 +51,29 @@ ctrl + alt + super + {s,r}
 alt + f
 	focus-local
 
+# Hamster Shortcuts
+super + KP_End
+	ham start apue
+
+super + KP_Down
+	ham start project
+	
+super + KP_Left
+	ham start anki
+
+super + KP_Insert
+	ham stop
+
+# Alarm Shortcuts
+super + shift + A
+	alarm
+
+super + shift + T
+	alarm 25
+
+super + shift + S
+	alarm --stop
+
 # ---------------------------- Switch-or-Run ----------------------------------
 {super,_} + @F1
 	 switch-or-run "termite.Termite" "termite -e 'tm-init Terminal'" 1

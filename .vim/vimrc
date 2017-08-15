@@ -256,6 +256,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
+
 " Appends the current working directory to PATH
 let tempPath=expand("%:p:h") . "/**"
 exec "set path+=" . tempPath
