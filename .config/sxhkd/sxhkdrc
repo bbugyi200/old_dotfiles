@@ -43,9 +43,9 @@ super + @Print
 super + w
 	networkmanager_dmenu
 
-# Shutdown Computer
+# Shutdown/Restart Computer
 ctrl + alt + super + {s,r}
-	{shutdown now,systemctl reboot -i}
+	confirm -d {"ham stop && dbox_sync && shutdown now","systemctl reboot -i"}
 
 # Focus-local
 alt + f
@@ -56,10 +56,16 @@ super + KP_End
 	ham start apue
 
 super + KP_Down
+	ham start LCLSS
+
+super + KP_Next
 	ham start project
 	
 super + KP_Left
 	ham start anki
+
+super + KP_Begin
+	ham start misc
 
 super + KP_Insert
 	ham stop
@@ -91,9 +97,15 @@ super + shift + S
 {@F4, super + p}
 	switch-or-run "Anki" "anki" 4
 
+@F5
+	switch-or-run "Tracker.Hamster" "hamster" 5
+
 # ------------------------------- window-stack ---------------------------------
-ctrl + super + {c,a, t}
-	window-stack {"chrome","add", "termite"}
+ctrl + super + {c,t}
+	window-stack {"chrome","termite"}
+
+ctrl + super + a
+	xdotool search --name anki key a
 
 
 # ---------------------------- bspwm hotkeys ----------------------------------
@@ -168,7 +180,7 @@ alt + ctrl + {1-9,0}
 	bspc node -f $N
 
 # switch monitor
-alt + backslash
+alt + {slash,backslash}
 	bspc monitor -f next
 
 # move node to next monitor

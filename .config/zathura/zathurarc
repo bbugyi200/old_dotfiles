@@ -7,5 +7,19 @@ set link-zoom false
 
 map <C-n> feedkeys ":exec notepad --open %<Return>"
 map <C-s> feedkeys ":exec notepad --side %<Return>"
-map <Space> feedkeys ":exec notepad --put-major %<Return>"
-map <C-Space> feedkeys ":exec notepad --put-minor %<Return>"
+map <Space> feedkeys ":exec notepad --put=major %<Return>"
+map <S-Space> feedkeys ":exec notepad -N --put=major %<Return>"
+map <C-Space> feedkeys ":exec notepad --put=minor %<Return>"
+map <C-S-Space> feedkeys ":exec notepad -N --put=minor %<Return>"
+map b feedkeys ":bmark stop<Return>"
+
+
+map <C-y> focus_inputbar ":exec xdotool key y"
+
+unmap [index] <Tab>
+map [index] <C-t> toggle_index
+map [index] <Tab> feedkeys "<C-t><C-y><Return>"
+
+unmap [index] <Return>
+map [index] <C-n> navigate_index select
+map [index] <Return> feedkeys "<C-n><C-y><Return>"

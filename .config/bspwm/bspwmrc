@@ -5,7 +5,7 @@ if [[ $(hostname) == 'athena' ]]; then
     bspc monitor HDMI1 -d VI VII VIII IX X
 elif [[ $(hostname) == 'aphrodite' ]]; then
     bspc monitor LVDS1 -d I II III IV V
-    setsid multimon-bspwm &
+    multimon
 fi
 
 
@@ -30,6 +30,8 @@ bspc config focused_border_color "#f441af"
 # ------------------------------- RULES ---------------------------------------
 bspc rule -a scratchpad state=floating sticky=on hidden=on
 bspc rule -a Zathura:zathura state=tiled
+bspc rule -a Pinentry:pinentry state=floating
+bspc rule -a Vlc:vlc desktop="^5" follow=true
 
 # Compton
 compton -b --config .config/compton.conf
@@ -40,6 +42,6 @@ compton -b --config .config/compton.conf
 # Set Background
 python3 ~/Dropbox/scripts/python/holidaybg.py
 if [[ $? -ne 0 ]]; then
-    bg_img=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
-    background $bg_img
+    landscape_bg_img=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
 fi
+background $landscape_bg_img
