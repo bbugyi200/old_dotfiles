@@ -45,7 +45,7 @@ super + w
 
 # Shutdown/Restart Computer
 ctrl + alt + super + {s,r}
-	confirm -d {"ham stop && dbox_sync && shutdown now","systemctl reboot -i"}
+	confirm -d {"ham stop && lockfile -f /tmp/dbox.icon -c dbox_sync && shutdown now","systemctl reboot -i"}
 
 # Focus-local
 alt + f

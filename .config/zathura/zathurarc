@@ -10,7 +10,8 @@ map <C-s> feedkeys ":exec notepad --side %<Return>"
 map <Space> feedkeys ":exec notepad --put=major %<Return>"
 map <S-Space> feedkeys ":exec notepad -N --put=major %<Return>"
 map <C-Space> feedkeys ":exec notepad --put=minor %<Return>"
-map <C-S-Space> feedkeys ":exec notepad -N --put=minor %<Return>"
+map <A-d> feedkeys ":exec notepad --undo %<Return>"
+
 map b feedkeys ":bmark stop<Return>"
 
 
