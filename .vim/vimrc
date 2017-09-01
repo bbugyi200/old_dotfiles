@@ -91,6 +91,10 @@ set noshowmode
 
 " --------------------------------- LETS -------------------------------------
 
+" Appends the current working directory to PATH
+let tempPath=expand("%:p:h") . "/**"
+exec "set path+=" . tempPath
+
 " Sets LaTeX as default for .tex files
 let g:tex_flavor = "latex"
 
@@ -216,13 +220,15 @@ nnoremap <Leader>F :Explore ~/Dropbox/dotfiles/.vim/ftplugin<CR>
 " Delete Buffers
 nnoremap <Leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 
-" Man Pages
-nnoremap <Leader>m :Man 3 <C-r><C-w><CR>/^[A-Z]\+<CR>gg
-
 " Omnicompletion shortcut
 inoremap <C-o> <C-x><C-o>
 
 nnoremap <Leader>n :set relativenumber!<CR>
+
+imap <C-h> <Esc><C-h>
+imap <C-l> <Esc><C-l>
+imap <C-j> <Esc><C-j>
+imap <C-k> <Esc><C-k>
 
 " ------------------------------ AUTOS ---------------------------------------
 
@@ -256,7 +262,18 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
+" Disables auto-comments on newlines
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Appends the current working directory to PATH
-let tempPath=expand("%:p:h") . "/**"
-exec "set path+=" . tempPath
+" ------------------------- Functions and Commands ---------------------------
+
+" Redraws screen after silent command
+command! -nargs=1 Silent
+\   execute 'silent !' . <q-args>
+\ | execute 'redraw!'
+
+let g:S = 0  "result in global variable S
+function! Sum(number)
+  let g:S = g:S + a:number
+  return a:number
+endfunction

@@ -3,24 +3,33 @@ set selection-clipboard clipboard
 set window-title-basename true
 set window-title-page true
 
+
 set link-zoom false
 
 map <C-n> feedkeys ":exec notepad --open %<Return>"
-map <C-s> feedkeys ":exec notepad --side %<Return>"
+map <C-s> feedkeys ":exec notepad --open -b %<Return>"
 map <Space> feedkeys ":exec notepad --put=major %<Return>"
-map <S-Space> feedkeys ":exec notepad -N --put=major %<Return>"
+map <S-Space> feedkeys ":exec notepad --cut=prefix --put=major %<Return>"
 map <C-Space> feedkeys ":exec notepad --put=minor %<Return>"
+map <Return> feedkeys ":exec notepad --dmenu --put=major %<Return>"
+map <C-Return> feedkeys ":exec notepad --dmenu --put=minor %<Return>"
 map <A-d> feedkeys ":exec notepad --undo %<Return>"
 
-map b feedkeys ":bmark stop<Return>"
+
+map bb focus_inputbar ":bmark "
+map bs feedkeys ":bmark stop<Return>"
+map bt feedkeys ":bmark TOC<Return>"
+map bl feedkeys ":blist "
+map gs feedkeys ":blist stop<Return>"
+map gt feedkeys ":blist TOC<Return>"
 
 
 map <C-y> focus_inputbar ":exec xdotool key y"
 
 unmap [index] <Tab>
 map [index] <C-t> toggle_index
-map [index] <Tab> feedkeys "<C-t><C-y><Return>"
+map [index] <Tab> feedkeys "<C-t><C-y><C-y><C-y><C-y><C-y><C-y><Return>"
 
 unmap [index] <Return>
 map [index] <C-n> navigate_index select
-map [index] <Return> feedkeys "<C-n><C-y><Return>"
+map [index] <Return> feedkeys "<C-n><C-y><C-y><C-y><C-y><C-y><Return>"

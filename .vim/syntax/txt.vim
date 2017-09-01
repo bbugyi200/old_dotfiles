@@ -22,7 +22,7 @@ syn region Function start="^\s\{2\}[A-Za-z]" end="$" contains=@NoSpell oneline
 syn region Type start="^\s*===" end="===$" contains=@NoSpell oneline
 
 " Bullets
-syn match ModeMsg "^\s*\([*-]\|[A-Za-z0-9]\.\)" contains=@NoSpell
+" syn match ModeMsg "^\s*\([*-]\|[A-Za-z0-9]\.\)" contains=@NoSpell
 
 " Web Links
 syn match Underlined "http\S*" contains=@NoSpell,EndP

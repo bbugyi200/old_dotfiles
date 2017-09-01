@@ -45,27 +45,15 @@ super + w
 
 # Shutdown/Restart Computer
 ctrl + alt + super + {s,r}
-	confirm -d {"ham stop && lockfile -f /tmp/dbox.icon -c dbox_sync && shutdown now","systemctl reboot -i"}
+	confirm -d {"ham stop && lockfile -f /tmp/dbox.icon -c dbox_sync && shutdown now","ham stop && systemctl reboot -i"}
 
 # Focus-local
 alt + f
 	focus-local
 
 # Hamster Shortcuts
-super + KP_End
-	ham start apue
-
-super + KP_Down
-	ham start LCLSS
-
-super + KP_Next
-	ham start project
-	
-super + KP_Left
-	ham start anki
-
-super + KP_Begin
-	ham start misc
+super + {KP_Delete,KP_End,KP_Down,KP_Next,KP_Left,KP_Begin}
+	ham start { ,1,2,3,4,5}
 
 super + KP_Insert
 	ham stop
@@ -89,10 +77,9 @@ super + shift + S
 
 {@F3, XF86MonBrightnessUp}
 	switch-or-run "zathura.Zathura" "zathura" 3
-	# switch-or-run "okular.okular:zathura.Zathura" "okular:zathura" 3
 
-# shift + @F3
-# 	switch-or-run "zathura.Zathura" "zathura" 3
+shift + {@F3, XF86MonBrightnessUp}
+	switch-or-run "okular.okular:zathura.Zathura" "okular:zathura" 3
 
 {@F4, super + p}
 	switch-or-run "Anki" "anki" 4
@@ -184,8 +171,8 @@ alt + {slash,backslash}
 	bspc monitor -f next
 
 # move node to next monitor
-super + backslash
-	move-to-next-monitor
+super + {slash,backslash}
+	move-to-next-monitor {--no-focus, }
 
 
 # Send to monitor and keep window focused

@@ -72,27 +72,6 @@ wim() { vim $(where $1) }
 
 mkcd() { mkdir -p $1 && cd $1 }
 
-function ccd {
-    case "$1" in
-        dots|df)
-            cd /home/bryan/Dropbox/dotfiles;;
-        notes)
-            cd ~/Dropbox/notes;;
-        videos)
-            cd /media/bryan/hercules/media/Entertainment/Videos;;
-        misc)
-            cd /media/bryan/hercules/media/Misc;;
-        bin|scripts)
-            cd /home/bryan/Dropbox/scripts;;
-        horizons)
-            cd /home/bryan/Dropbox/notes/Horizons_of_Focus;;
-        learn)
-            cd /home/bryan/Dropbox/Learning_Environments;;
-        *)
-            return 1
-    esac
-}
-
 function sbreak() {
     FILE=~/Dropbox/notes/sbreak.txt
     if [ "$1" = '--clear' -o "$1" = '-c' ]; then 
