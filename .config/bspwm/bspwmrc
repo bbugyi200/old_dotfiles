@@ -32,6 +32,7 @@ bspc rule -a scratchpad state=floating sticky=on hidden=on
 bspc rule -a Zathura:zathura state=tiled
 bspc rule -a Pinentry:pinentry state=floating
 bspc rule -a Vlc:vlc desktop="^5" follow=true
+bspc rule -a Google-chrome:crx_cnciopoikihiagdjbjpnocolokfelagl desktop="^5" follow=true  # Videostream
 
 # Compton
 compton -b --config .config/compton.conf
