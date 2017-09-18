@@ -1,6 +1,6 @@
 # ----------------------------------- ALIASES --------------------------------
 alias sql="rlwrap sqlite3"
-alias mutt-edu="mutt -e 'source ~/.mutt/hooks/bmb181@scarletmail.rutgers'"
+alias mutt-gmail="mutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
 alias mutt-root='sudo mutt -f /var/spool/mail/root'
 alias lls="ls -alF"
 alias lvim='vim -c "normal \`0" -c "bdelete 1"'

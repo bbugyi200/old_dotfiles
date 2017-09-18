@@ -1,5 +1,5 @@
 application/*;  xdg-open %s
 image/*; xdg-open %s
 text/html;  google-chrome-stable %s; needsterminal
-text/html;  elinks -dump %s; nametemplate=%s.html; copiousoutput
+text/html;  w3m %s; nametemplate=%s.html; copiousoutput
 # application/pdf;  okular %s
