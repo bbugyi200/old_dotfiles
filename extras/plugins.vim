@@ -35,6 +35,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'Rip-Rip/clang_complete'
 Plugin 'scrooloose/syntastic'
+Plugin 'baskerville/vim-sxhkdrc'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
