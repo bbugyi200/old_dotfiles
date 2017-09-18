@@ -218,7 +218,7 @@ nnoremap <Leader>S :Explore ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/UltiSnip
 nnoremap <Leader>F :Explore ~/Dropbox/dotfiles/.vim/ftplugin<CR>
 
 " Delete Buffers
-nnoremap <Leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <Leader>d :bp<bar>sp<bar>bn<bar>bd<bar>bn<CR>
 
 " Omnicompletion shortcut
 inoremap <C-o> <C-x><C-o>
