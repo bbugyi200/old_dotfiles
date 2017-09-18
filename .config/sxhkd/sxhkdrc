@@ -68,6 +68,9 @@ super + shift + T
 super + shift + S
 	alarm --stop
 
+ctrl + shift + l
+	lecture_mode &
+
 # ---------------------------- Switch-or-Run ----------------------------------
 {super,_} + @F1
 	 switch-or-run "termite.Termite" "termite -e 'tm-init Terminal'" 1
