@@ -62,9 +62,6 @@ super + KP_Insert
 super + shift + A
 	alarm
 
-super + shift + T
-	alarm 25
-
 super + shift + S
 	alarm --stop
 
