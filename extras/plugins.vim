@@ -128,7 +128,7 @@ let g:syntastic_cpp_compiler_options = '-std=c++11'
 
 " Enables Syntastic to work with Java
 " let g:syntastic_java_checker = 'javac'
-let g:syntastic_java_javac_classpath = "./lib/*.jar\n./src"
+let g:syntastic_java_javac_classpath=fnamemodify(getcwd(), ':h')."/bin:".getcwd()
 
 
 " ----------------------------- NeoComplete Configuration ----------------------

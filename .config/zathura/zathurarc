@@ -2,7 +2,7 @@ set selection-clipboard clipboard
 
 set window-title-basename true
 set window-title-page true
-
+set show-recent 25
 
 set link-zoom false
 
@@ -18,9 +18,13 @@ map <A-d> feedkeys ":exec notepad --undo %<Return>"
 map bb focus_inputbar ":bmark "
 map bs feedkeys ":bmark stop<Return>"
 map bt feedkeys ":bmark TOC<Return>"
+map bq feedkeys ":bmark questions<Return>"
+map ba feedkeys ":bmark answers<Return>"
 map bl feedkeys ":blist <Tab>"
 map gs feedkeys ":blist stop<Return>"
 map gt feedkeys ":blist TOC<Return>"
+map gq feedkeys ":blist questions<Return>"
+map ga feedkeys ":blist answers<Return>"
 
 
 map <C-y> focus_inputbar ":exec xdotool key y"

@@ -33,6 +33,9 @@ bspc rule -a Zathura:zathura state=tiled
 bspc rule -a Pinentry:pinentry state=floating
 bspc rule -a Vlc:vlc desktop="^5" follow=true
 bspc rule -a Google-chrome:crx_cnciopoikihiagdjbjpnocolokfelagl desktop="^5" follow=true  # Videostream
+bspc rule -a Soffice state=tiled desktop="^10" follow=true  # libreoffice starts with this class
+bspc rule -a libreoffice state=tiled desktop="^10" follow=true
+bspc rule -a Eclipse desktop="^10" follow=true
 
 # Compton
 compton -b --config .config/compton.conf

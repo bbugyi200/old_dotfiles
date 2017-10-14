@@ -31,7 +31,7 @@ super + b
 
 # clear screen
 alt + e
-	tmux send-keys "clear" "Enter"
+	clear_screen
 
 @Print
 	scrot -s /tmp/shot.png && xclip -selection 'clipboard' -t image/png /tmp/shot.png
@@ -87,13 +87,12 @@ shift + {@F3, XF86MonBrightnessUp}
 @F5
 	switch-or-run "Tracker.Hamster" "hamster" 5
 
+{@F6, XF86AudioPrev}
+	switch-or-run "slack.Slack" "slack" 5
+
 # ------------------------------- window-stack ---------------------------------
-ctrl + super + {c,t}
-	window-stack {"chrome","termite"}
-
-ctrl + super + a
-	xdotool search --name anki key a
-
+ctrl + super + {c,t,a}
+	window-stack {"chrome","termite","anki"}
 
 # ---------------------------- bspwm hotkeys ----------------------------------
 
@@ -117,8 +116,8 @@ alt + {_,shift + }w
 	[[ -n "$N" ]] && bspc node "$N" -{c,k}
 
 # Expand a window by moving one of its sides outward
-alt + {Left,Down,Up,Right}
-	bspc node -z {left -20 0, bottom 0 20, top 0 -20, right 20 0}
+# alt + {Left,Down,Up,Right}
+#	bspc node -z {left -20 0, bottom 0 20, top 0 -20, right 20 0}
 
 # ------------------------------ state/flags ----------------------------------
 

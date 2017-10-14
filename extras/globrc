@@ -12,11 +12,14 @@ alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias rst='killall panel-init && panel-init'
 alias ssh-athena='ssh -p 34857 bryan@173.71.68.88'
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
+alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
 alias sftp-athena='sftp -P 34857 bryan@173.71.68.88'
 alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"
 alias sudo='sudo '
+alias onething='vim ~/Dropbox/notes/Onething/{body.txt,mind.txt,spirit.txt}'
+alias matlab='matlab -nojvm -nodisplay -nosplash'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
@@ -140,6 +143,15 @@ export PROMPT_COMMAND="log_bash_history"
 # ------------------------------ MISC ----------------------------------------
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
+
+if [[ -n "$VIRTUAL_ENV" ]]; then
+	source $VIRTUAL_ENV/bin/activate;
+fi
+
+if [[ -n "$TMUX" ]]; then
+	tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
+fi
+
 
 # Fixes Mutt Background Issue (stays transparent) in TMUX
 export TERM="screen-256color"
