@@ -48,9 +48,9 @@ tm () {
 
 	SESS="$1"; shift
 	default_dir="$(/home/bryan/Dropbox/scripts/python/tmux_dir_lookup.py --get $SESS)"
-
 	tmux new -s "$SESS" -c "$default_dir" -d
 	tmux switchc -t "$SESS"
+
 	if [ -f "/home/bryan/Dropbox/scripts/tmux-envs/pre/$SESS.sh" ]; then
 		"/home/bryan/Dropbox/scripts/tmux-envs/pre/$SESS.sh" "$@"
 	fi
@@ -144,14 +144,9 @@ export PROMPT_COMMAND="log_bash_history"
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 
-if [[ -n "$VIRTUAL_ENV" ]]; then
-	source $VIRTUAL_ENV/bin/activate;
+if [[ -d $(pwd)/venv ]]; then
+	source "venv/bin/activate"
 fi
-
-if [[ -n "$TMUX" ]]; then
-	tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
-fi
-
 
 # Fixes Mutt Background Issue (stays transparent) in TMUX
 export TERM="screen-256color"
