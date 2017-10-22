@@ -1,0 +1,17 @@
+set selection-clipboard clipboard
+
+set window-title-basename true
+set window-title-page true
+set show-recent 25
+
+set link-zoom false
+
+map <C-y> focus_inputbar ":exec xdotool key y"
+
+unmap [index] <Tab>
+map [index] <C-t> toggle_index
+map [index] <Tab> feedkeys "<C-t><C-y><C-y><C-y><C-y><C-y><C-y><Return>"
+
+unmap [index] <Return>
+map [index] <C-n> navigate_index select
+map [index] <Return> feedkeys "<C-n><C-y><C-y><C-y><C-y><C-y><Return>"

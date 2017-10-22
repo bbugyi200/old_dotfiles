@@ -20,6 +20,9 @@ alias cp="cp -i"
 alias sudo='sudo '
 alias onething='vim ~/Dropbox/notes/Onething/{body.txt,mind.txt,spirit.txt}'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
+alias Java='java -classpath .:../bin'
+alias Javac='javac -d ../bin'
+alias Jdb='jdb -classpath "../bin"'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 

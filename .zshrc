@@ -8,6 +8,7 @@ source /home/bryan/Dropbox/dotfiles/extras/globrc
 alias -s pdf="zathura"
 alias -s epub="okular"
 alias -s docx="/usr/lib/libreoffice/program/soffice.bin --writer"
+alias -s odt="/usr/lib/libreoffice/program/soffice.bin --writer"
 alias -s ppt="/usr/lib/libreoffice/program/soffice.bin --impress"
 alias -s png="imv"
 alias -s pcx="imv"

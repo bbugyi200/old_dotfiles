@@ -2,7 +2,7 @@
 "             \ ." cd \"" .expand("%:p:h") ."\" && pdflatex " .expand("%:t") 
 "             \ ." && clear ; tmux select-pane -t top")<CR>
 
-command! -nargs=0 Run cd %:p:h | exec ":!pdflatex " .expand('%:t')
+command! -nargs=0 Run cd %:p:h | exec ":!pdflatex -file-line-error" .expand('%:t')
 
 command! -nargs=0 Run2 call VimuxRunCommand("gnome-terminal -x okular \"" .expand("%:p:r") .".pdf\"")
 
