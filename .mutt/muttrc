@@ -69,13 +69,14 @@ bind attach <return>    view-mailcap
 
 ################################## MACROS #####################################
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
-macro index,pager D "<save-message>=[Gmail]/All Mail<enter>" "Archive"
-# macro index,pager D "<save-message>=[Gmail]/Trash<enter>" "Delete"
+macro index,pager D "<save-message>=[Gmail]/All Mail<enter>" "Delete"
+macro index,pager S "<save-message>=Saved<enter>" "Save"
 
 ### Inspired by Vim ###
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to All Mail"
-macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
+macro index go "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail (Outbox)"
+macro index gs "<change-folder>=Saved<enter>" "Go to Saved Label"
 macro index gg <first-entry> "Go to top email"
 macro pager gg <top> "Go to top"
 macro index,pager ,e quit "Quit"

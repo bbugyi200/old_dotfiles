@@ -66,7 +66,9 @@ super + shift + S
 	alarm --stop
 
 ctrl + shift + l
-	lecture_mode &
+	cd /home/bryan/Lecture_Mode; \
+	source /home/bryan/Lecture_Mode/venv/bin/activate; \
+	python /home/bryan/Lecture_Mode/main.py &
 
 # ---------------------------- Switch-or-Run ----------------------------------
 {super,_} + @F1

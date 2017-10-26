@@ -48,6 +48,7 @@ compton -b --config .config/compton.conf
 # Set Background
 python3 ~/Dropbox/scripts/python/holidaybg.py
 if [[ $? -ne 0 ]]; then
-    landscape_bg_img=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
+    BG=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1)
+	feh --bg-fill $BG
+	echo $BG > /tmp/current_bg.txt
 fi
-background $landscape_bg_img

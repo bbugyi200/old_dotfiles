@@ -239,6 +239,7 @@ autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.md set colorcolumn=
 autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.html set colorcolumn=
+autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us
 autocmd FileType mail setlocal spell spelllang=en_us
 
 " Automatic rewriting of .vimrc
