@@ -28,9 +28,7 @@ bspc desktop -f ^1
 bspc config focused_border_color "#f441af"
 
 # ------------------------------- RULES ---------------------------------------
-bspc rule -a Termite:termite desktop="^6"
-bspc rule -a Google-chrome:google-chrome desktop="^7"
-bspc rule -a Zathura:zathura desktop="^8" state=tiled
+bspc rule -a Zathura:zathura state=tiled
 bspc rule -a scratchpad state=floating sticky=on hidden=on
 bspc rule -a Pinentry:pinentry state=floating
 bspc rule -a Vlc:vlc desktop="^5" follow=true
