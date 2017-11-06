@@ -1,0 +1,7 @@
+
+xmonad.hs:17:1: warning: [-Wtabs]
+    Tab character found here, and in 84 further locations.
+    Please use spaces instead.
+   |
+17 |         [ ((mod1Mask, xK_r), broadcastMessage ReleaseResources >> restart "xmonad" True)
+   | ^^^^^^^^

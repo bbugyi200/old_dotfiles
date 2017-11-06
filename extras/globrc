@@ -23,6 +23,9 @@ alias matlab='matlab -nojvm -nodisplay -nosplash'
 alias Java='java -classpath .:../bin'
 alias Javac='javac -d ../bin'
 alias Jdb='jdb -classpath "../bin"'
+alias mirror='killall multimon && xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
+alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1 && multimon'
+alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 

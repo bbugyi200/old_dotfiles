@@ -115,6 +115,7 @@ colorscheme solarized
 " Enables syntax highlighting to work properly for certain filetypes
 au BufRead,BufNewFile *.nasm set filetype=nasm
 au BufRead,BufNewFile *.txt set filetype=txt
+au BufRead,BufNewFile *.xmobarrc set syntax=haskell
 
 " Used to make syntax highlighting more readable when using Linux
 " transparent terminal
@@ -180,11 +181,10 @@ nnoremap <C-h> <C-W><C-H>
 """"""""""""""""""""""""""""""
 
 " Will execute the 'Run' command which varies based on the file type
-nmap <F9> :w<CR>:Run<CR>
-imap <F9> <Esc><F9>
+nmap <Leader>r :w<CR>:Run<CR>
 
-nmap <F8> :w<CR>:Run2<CR>
-imap <F8> <Esc><F8>
+nmap <F9> :w<CR>:Run2<CR>
+imap <F9> <Esc><F9>
 
 " Improve up/down movement on wrapped lines
 nnoremap j gj

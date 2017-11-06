@@ -33,6 +33,10 @@ super + b
 alt + e
 	clear_screen
 
+# quit screen
+alt + q
+	quit_screen
+
 @Print
 	scrot -s /tmp/shot.png && xclip -selection 'clipboard' -t image/png /tmp/shot.png
 
