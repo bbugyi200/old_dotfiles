@@ -34,14 +34,8 @@ myAdditionalKeys =
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
 
-   -- Termite
-   , ((alt, xK_x), spawn "termite -e 'tm-init Terminal'")
-
-   -- Zathura
-   , ((alt, xK_z), spawn "zathura")
-
-   -- Chrome
-   , ((alt, xK_c), spawn "google-chrome-stable")
+   -- Toggle External Monitor
+   , ((alt, xK_m), spawn "toggle_monitor")
 
    -- Screenshot Commands
    , ((alt, xK_Print),
@@ -56,7 +50,7 @@ myAdditionalKeys =
    , ((ctrl .|. super .|. alt, xK_r),
    spawn "confirm -d 'ham stop && systemctl reboot -i'")
 
-   -- Hamster Commands
+   -- Hamster Start and Stop
    , ((super, xK_KP_Delete), spawn "ham start")
    , ((super, xK_KP_Insert), spawn "ham stop")
 
@@ -75,36 +69,58 @@ myAdditionalKeys =
 
    -- Next Screen
    , ((alt, xK_backslash), onNextNeighbour W.view)
+
+   -- Swap Screens
+   , ((alt, xK_s), swapNextScreen)
    ] ++
 
-   ------- Workspace Navigation -------
-   -- Primary Screen
-   [((alt, k), sequence_ [viewScreen 0, windows $ W.view i])
-    | (i, k) <- zip (take 5 myWorkspaces) [xK_1 .. xK_5]
+   -- Hamster Numpad Bindings
+   [((super, key), spawn $ "ham start " ++ (show i))
+    | (i, key) <- zip [1 .. 5] [xK_KP_End, xK_KP_Down, xK_KP_Page_Down, xK_KP_Left, xK_KP_Begin]
    ] ++
 
-   [((ctrl, k), sequence_ [windows $ W.shift i, viewScreen 0, windows $ W.view i])
-    | (i, k) <- zip (take 5 myWorkspaces) [xK_1 .. xK_5]
+   -- Open Applications
+   [((alt, key), raiseNextMaybe (spawn cmd) (className =? cls))
+    | (key, cmd, cls) <- zip3
+	[xK_x, xK_c, xK_z, xK_a, xK_KP_End, xK_KP_Down]
+	["termite -e 'tm-init Terminal'","google-chrome-stable","zathura","anki","hamster","slack"]
+	["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
    ] ++
 
-   -- External Screen
-   [((alt, k), sequence_ [viewScreen 1, windows $ W.view i])
-    | (i, k) <- zip (drop 5 myWorkspaces) [xK_6, xK_7, xK_8, xK_9, xK_0]
+   -- Shift, Focus
+   [((ctrl, k), sequence_ [windows $ W.shift i, windows $ W.view i])
+    | (i, k) <- zip myWorkspaces $ [xK_1 .. xK_9] ++ [xK_0]
    ] ++
 
-   [((ctrl, k), sequence_ [windows $ W.shift i, viewScreen 1, windows $ W.view i])
-    | (i, k) <- zip (drop 5 myWorkspaces) [xK_6, xK_7, xK_8, xK_9, xK_0]
-   ] ++
-
-   -- Send to Workspace without Following
+   -- Shift, No Focus
    [((super, k), windows $ W.shift i)
     | (i, k) <- zip myWorkspaces $ [xK_1 .. xK_9] ++ [xK_0]
    ]
 
+   -- View Workspace
+
+   ------- Workspace Navigation -------
+   -- -- Primary Screen
+   -- [((alt, k), sequence_ [viewScreen 0, windows $ W.view i])
+   --  | (i, k) <- zip (take 5 myWorkspaces) [xK_1 .. xK_5]
+   -- ] ++
+
+   -- [((ctrl, k), sequence_ [windows $ W.shift i, viewScreen 0, windows $ W.view i])
+   --  | (i, k) <- zip (take 5 myWorkspaces) [xK_1 .. xK_5]
+   -- ] ++
+
+   -- -- External Screen
+   -- [((alt, k), sequence_ [viewScreen 1, windows $ W.view i])
+   --  | (i, k) <- zip (drop 5 myWorkspaces) [xK_6, xK_7, xK_8, xK_9, xK_0]
+   -- ] ++
+
+   -- [((ctrl, k), sequence_ [windows $ W.shift i, viewScreen 1, windows $ W.view i])
+   --  | (i, k) <- zip (drop 5 myWorkspaces) [xK_6, xK_7, xK_8, xK_9, xK_0]
+   -- ] ++
 
 -------------------------------- Misc Configs ---------------------------------
 myTerminal = "termite -e 'tm-init Terminal'"
-myModMask = alt
+myModMask = mod1Mask
 
 myFocusFollowsMouse = False
 myClickJustFocuses = False
@@ -116,7 +132,7 @@ xmobarEscape = concatMap doubleLts
         doubleLts x   = [x]
 
 myWorkspaces :: [String]
-myWorkspaces = clickable . (map xmobarEscape) $ ["term:1","web:2","pdf:3","4","5","term:6","web:7","pdf:8","9","0"]
+myWorkspaces = clickable . (map xmobarEscape) $ ["TERM:I","WEB:II","WEB:III","PDF:IV","PDF:V","VI","VI","VII","IX","X"]
   where                                                                       
          clickable l = [ "<action=xdotool key alt+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
                              (i,ws) <- zip [1..10] l,                                        
@@ -151,12 +167,12 @@ main = do
 		  , logHook 			= dynamicLogWithPP xmobarPP
 			{ ppOutput 			= hPutStrLn xmproc
 			, ppOrder           = \(ws:l:t:_)   -> [ws]
-			, ppCurrent 		= xmobarColor "yellow" "" . wrap "[" "]"
+			, ppCurrent 		= xmobarColor "white" "" . wrap "[" "]"
 			, ppHidden			= xmobarColor "white" ""
 			, ppHiddenNoWindows = xmobarColor "darkgrey" ""
 			, ppWsSep			= "    "
 			, ppTitle   		= xmobarColor "green"  "" . shorten 40
-			, ppVisible 		= xmobarColor "yellow" "" . wrap "(" ")"
+			, ppVisible 		= xmobarColor "white" "" . wrap "(" ")"
 			, ppUrgent  		= xmobarColor "red" "yellow"
 			} >> ewmhDesktopsLogHook
 	  } `additionalKeys` myAdditionalKeys
