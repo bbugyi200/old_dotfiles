@@ -125,7 +125,13 @@ myModMask = mod1Mask
 myFocusFollowsMouse = False
 myClickJustFocuses = False
 
+-- Colors --
+yellow = "#F8FB27"
+red = "#FF1300"
+------------
+
 myBorderWidth = 5
+myFocusedBorderColor = red
 
 xmobarEscape = concatMap doubleLts
   where doubleLts '<' = "<<"
@@ -158,6 +164,7 @@ main = do
 		  terminal				= myTerminal
 		  , modMask				= myModMask
 		  , borderWidth			= myBorderWidth
+		  , focusedBorderColor	= myFocusedBorderColor
 		  , focusFollowsMouse 	= myFocusFollowsMouse
 		  , clickJustFocuses  	= myClickJustFocuses
 		  , workspaces			= myWorkspaces
@@ -167,7 +174,7 @@ main = do
 		  , logHook 			= dynamicLogWithPP xmobarPP
 			{ ppOutput 			= hPutStrLn xmproc
 			, ppOrder           = \(ws:l:t:_)   -> [ws]
-			, ppCurrent 		= xmobarColor "white" "" . wrap "[" "]"
+			, ppCurrent 		= xmobarColor "yellow" "" . wrap "[" "]"
 			, ppHidden			= xmobarColor "white" ""
 			, ppHiddenNoWindows = xmobarColor "darkgrey" ""
 			, ppWsSep			= "    "

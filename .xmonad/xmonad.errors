@@ -1,7 +1,0 @@
-
-xmonad.hs:85:1: warning: [-Wtabs]
-    Tab character found here, and in 106 further locations.
-    Please use spaces instead.
-   |
-85 |         [xK_x, xK_c, xK_z, xK_a, xK_KP_End, xK_KP_Down]
-   | ^^^^^^^^
