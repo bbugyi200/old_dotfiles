@@ -168,8 +168,12 @@ noremap <Leader>s :w<CR>
 nnoremap <CR> o<Esc>
 
 nmap <C-N> :cd %:h<CR>:NERDTree<CR><S-B>
-nmap <Leader>z :ZoomWin<CR>
 nmap <Leader>p :CtrlPMRU<CR>
+
+nmap <Leader>z :ZoomWin<CR>
+
+nmap <C-g> :Gstatus<CR>
+
 
 """"""""""""""""""""""""""""""
 "  Split and Tab Settings  "
