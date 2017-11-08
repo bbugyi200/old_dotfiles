@@ -18,6 +18,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
 
 import qualified XMonad.StackSet as W
+import qualified Data.Map as M
 
 ------------------------------- Key Bindings ----------------------------------
 alt = mod1Mask
@@ -25,8 +26,8 @@ ctrl = controlMask
 shift = shiftMask
 super = mod4Mask
 
-myAdditionalKeys =
-   [ ((alt, xK_r), spawn "xmonad --recompile; xmonad --restart")
+myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+   [ ((alt, xK_r), spawn "xmonad --recompile && xmonad --restart")
 
    -- Close Focused Window
    , ((alt, xK_w), kill)
@@ -72,51 +73,35 @@ myAdditionalKeys =
 
    -- Swap Screens
    , ((alt, xK_s), swapNextScreen)
-   ] ++
-
-   -- Hamster Numpad Bindings
-   [((super, key), spawn $ "ham start " ++ (show i))
-    | (i, key) <- zip [1 .. 5] [xK_KP_End, xK_KP_Down, xK_KP_Page_Down, xK_KP_Left, xK_KP_Begin]
-   ] ++
-
-   -- Open Applications
-   [((alt, key), raiseNextMaybe (spawn cmd) (className =? cls))
-    | (key, cmd, cls) <- zip3
-	[xK_x, xK_c, xK_z, xK_a, xK_KP_End, xK_KP_Down]
-	["termite -e 'tm-init Terminal'","google-chrome-stable","zathura","anki","hamster","slack"]
-	["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
-   ] ++
-
-   -- Shift, Focus
-   [((ctrl, k), sequence_ [windows $ W.shift i, windows $ W.view i])
-    | (i, k) <- zip myWorkspaces $ [xK_1 .. xK_9] ++ [xK_0]
-   ] ++
-
-   -- Shift, No Focus
-   [((super, k), windows $ W.shift i)
-    | (i, k) <- zip myWorkspaces $ [xK_1 .. xK_9] ++ [xK_0]
    ]
 
+   -- Hamster Numpad Bindings
+   ++ [((super, key), spawn $ "ham start " ++ (show i))
+       | (i, key) <- zip [1 .. 5] [xK_KP_End, xK_KP_Down, xK_KP_Page_Down, xK_KP_Left, xK_KP_Begin]
+      ]
+
+   -- Open Applications
+   ++ [((alt, key), raiseNextMaybe (spawn cmd) (className =? cls))
+       | (key, cmd, cls) <- zip3
+	   [xK_x, xK_c, xK_z, xK_a, xK_KP_End, xK_KP_Down]
+	   ["termite -e 'tm-init Terminal'","google-chrome-stable","zathura","anki","hamster","slack"]
+	   ["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
+      ]
+
+   -- Shift, Focus
+   ++ [((ctrl, k), sequence_ [windows $ W.shift i, windows $ W.view i])
+       | (i, k) <- zip myWorkspaces $ [xK_1 .. xK_9] ++ [xK_0]
+      ]
+
+   -- Shift, No Focus
+   ++ [((super, k), windows $ W.shift i)
+       | (i, k) <- zip myWorkspaces $ [xK_1 .. xK_9] ++ [xK_0]
+      ]
+
    -- View Workspace
-
-   ------- Workspace Navigation -------
-   -- -- Primary Screen
-   -- [((alt, k), sequence_ [viewScreen 0, windows $ W.view i])
-   --  | (i, k) <- zip (take 5 myWorkspaces) [xK_1 .. xK_5]
-   -- ] ++
-
-   -- [((ctrl, k), sequence_ [windows $ W.shift i, viewScreen 0, windows $ W.view i])
-   --  | (i, k) <- zip (take 5 myWorkspaces) [xK_1 .. xK_5]
-   -- ] ++
-
-   -- -- External Screen
-   -- [((alt, k), sequence_ [viewScreen 1, windows $ W.view i])
-   --  | (i, k) <- zip (drop 5 myWorkspaces) [xK_6, xK_7, xK_8, xK_9, xK_0]
-   -- ] ++
-
-   -- [((ctrl, k), sequence_ [windows $ W.shift i, viewScreen 1, windows $ W.view i])
-   --  | (i, k) <- zip (drop 5 myWorkspaces) [xK_6, xK_7, xK_8, xK_9, xK_0]
-   -- ] ++
+   ++ [((alt, k), windows $ W.view i)
+       | (i, k) <- zip (myWorkspaces) $ [xK_1 .. xK_9] ++ [xK_0]
+      ]
 
 -------------------------------- Misc Configs ---------------------------------
 myTerminal = "termite -e 'tm-init Terminal'"
@@ -162,6 +147,7 @@ main = do
 	xmonad $ desktopConfig
 		{
 		  terminal				= myTerminal
+		  , keys				= myKeys
 		  , modMask				= myModMask
 		  , borderWidth			= myBorderWidth
 		  , focusedBorderColor	= myFocusedBorderColor
@@ -174,7 +160,7 @@ main = do
 		  , logHook 			= dynamicLogWithPP xmobarPP
 			{ ppOutput 			= hPutStrLn xmproc
 			, ppOrder           = \(ws:l:t:_)   -> [ws]
-			, ppCurrent 		= xmobarColor "yellow" "" . wrap "[" "]"
+			, ppCurrent 		= xmobarColor "white" "" . wrap "[" "]"
 			, ppHidden			= xmobarColor "white" ""
 			, ppHiddenNoWindows = xmobarColor "darkgrey" ""
 			, ppWsSep			= "    "
@@ -182,5 +168,5 @@ main = do
 			, ppVisible 		= xmobarColor "white" "" . wrap "(" ")"
 			, ppUrgent  		= xmobarColor "red" "yellow"
 			} >> ewmhDesktopsLogHook
-	  } `additionalKeys` myAdditionalKeys
+	  }
 
