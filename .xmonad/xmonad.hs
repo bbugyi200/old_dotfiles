@@ -26,7 +26,7 @@ ctrl = controlMask
 shift = shiftMask
 super = mod4Mask
 
-myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+myAdditionalKeys = 
    [ ((alt, xK_r), spawn "xmonad --recompile && xmonad --restart")
 
    -- Close Focused Window
@@ -147,7 +147,6 @@ main = do
 	xmonad $ desktopConfig
 		{
 		  terminal				= myTerminal
-		  , keys				= myKeys
 		  , modMask				= myModMask
 		  , borderWidth			= myBorderWidth
 		  , focusedBorderColor	= myFocusedBorderColor
@@ -168,5 +167,5 @@ main = do
 			, ppVisible 		= xmobarColor "white" "" . wrap "(" ")"
 			, ppUrgent  		= xmobarColor "red" "yellow"
 			} >> ewmhDesktopsLogHook
-	  }
+	  } `additionalKeys` myAdditionalKeys
 
