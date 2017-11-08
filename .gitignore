@@ -7,6 +7,9 @@
 .local/*
 .xournal/*
 
+.xmonad/*
+!.xmonad/xmonad.hs
+
 .vim/*
 !.vim/vimrc
 !.vim/ftplugin/
