@@ -19,7 +19,6 @@ import XMonad.Actions.CycleWS
 import Data.Maybe (isNothing)
 
 import qualified XMonad.StackSet as W
-import qualified Data.Map as M
 
 ---------------------------------- Functions ----------------------------------
 isEmpty :: String -> X Bool
@@ -42,11 +41,11 @@ myAdditionalKeys = [
    -- Restarts XMonad
      ((alt, xK_r), spawn "xmonad --recompile && xmonad --restart")
 
-   -- Close Focused Window
-   , ((alt, xK_w), spawn "wmctrl -c :ACTIVE: && xdotool key ctrl+alt+shift+n")
-
    -- If current window empty, move to NonEmpty window
    , ((ctrl .|. alt .|. shift, xK_n), changeWSifCurrEmpty)
+
+   -- Close Focused Window
+   , ((alt, xK_w), spawn "WNAME=`xdotool getwindowfocus getwindowname` && wmctrl -c :ACTIVE: && changeWSifCurrEmpty $WNAME")
 
    -- Prev Hidden NonEmpty Workspace
    , ((alt, xK_bracketleft), moveTo Prev HiddenNonEmptyWS)
@@ -66,10 +65,11 @@ myAdditionalKeys = [
 
    , ((super, xK_Print), spawn "receipt_sshot")
 
-   -- Shutdown and Restart
+   -- Shutdown
    , ((ctrl .|. super .|. alt, xK_s),
    spawn "confirm -d 'ham stop && dbox_sync && shutdown now'")
 
+   -- Restart
    , ((ctrl .|. super .|. alt, xK_r),
    spawn "confirm -d 'ham stop && systemctl reboot -i'")
 
@@ -77,7 +77,7 @@ myAdditionalKeys = [
    , ((super, xK_KP_Delete), spawn "ham start")
    , ((super, xK_KP_Insert), spawn "ham stop")
 
-   -- Tmux Commands
+   -- Clear Screen and Quit Screen
    , ((alt, xK_e), spawn "clear_screen")
    , ((alt, xK_q), spawn "quit_screen")
 
@@ -91,7 +91,8 @@ myAdditionalKeys = [
    , ((alt, xK_f), windows $ W.focusUp)
 
    -- Next Screen
-   , ((alt, xK_backslash), onNextNeighbour W.view)
+   , ((alt, xK_backslash), nextScreen)
+   , ((alt, xK_Tab), nextScreen)
 
    -- Swap Screens
    , ((alt, xK_s), sequence_ [swapNextScreen, spawn "xdotool key ctrl+shift+alt+n"])
@@ -102,7 +103,7 @@ myAdditionalKeys = [
        | (i, key) <- zip [1 .. 5] [xK_KP_End, xK_KP_Down, xK_KP_Page_Down, xK_KP_Left, xK_KP_Begin]
       ]
 
-   -- Open Applications
+   -- Launch Applications
    ++ [((alt, key), raiseNextMaybe (spawn cmd) (className =? cls))
        | (key, cmd, cls) <- zip3
 	   [xK_x, xK_c, xK_z, xK_a, xK_KP_End, xK_KP_Down]
@@ -170,6 +171,7 @@ myManageHook = composeAll
 main = do
 	xmproc <- spawnPipe "xmobar /home/bryan/.xmobarrc"
 	spawn "init-bg"
+	spawn "compton -b --config .config/compton.conf"
 	xmonad $ ewmh desktopConfig
 		{
 		  terminal				= myTerminal
@@ -194,4 +196,3 @@ main = do
 			, ppUrgent  		= xmobarColor "red" "yellow"
 			} >> ewmhDesktopsLogHook <+> dynamicLogXinerama
 	  } `additionalKeys` myAdditionalKeys
-
