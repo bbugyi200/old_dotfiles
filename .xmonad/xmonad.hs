@@ -45,7 +45,7 @@ myAdditionalKeys = [
    , ((ctrl .|. alt .|. shift, xK_n), changeWSifCurrEmpty)
 
    -- Close Focused Window
-   , ((alt, xK_w), spawn "WNAME=`xdotool getwindowfocus getwindowname` && wmctrl -c :ACTIVE: && changeWSifCurrEmpty $WNAME")
+   , ((alt, xK_w), spawn "close-window")
 
    -- Prev Hidden NonEmpty Workspace
    , ((alt, xK_bracketleft), moveTo Prev HiddenNonEmptyWS)
