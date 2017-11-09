@@ -31,16 +31,19 @@ changeWSifTEmpty t = whenX (isEmpty t) $ moveTo Next HiddenNonEmptyWS
 changeWSifCurrEmpty = gets (W.currentTag . windowset) >>= changeWSifTEmpty
 
 ------------------------------- Key Bindings ----------------------------------
+
+-- Masks
 alt = mod1Mask
 ctrl = controlMask
 shift = shiftMask
 super = mod4Mask
 
-myAdditionalKeys = 
-   [ ((alt, xK_r), spawn "xmonad --recompile && xmonad --restart")
+myAdditionalKeys = [ 
+   -- Restarts XMonad
+     ((alt, xK_r), spawn "xmonad --recompile && xmonad --restart")
 
    -- Close Focused Window
-   , ((alt, xK_w), spawn "xkill -id `xprop -root _NET_ACTIVE_WINDOW | cut -d\\# -f2` && xdotool key ctrl+alt+shift+n")
+   , ((alt, xK_w), spawn "wmctrl -c :ACTIVE: && xdotool key ctrl+alt+shift+n")
 
    -- If current window empty, move to NonEmpty window
    , ((ctrl .|. alt .|. shift, xK_n), changeWSifCurrEmpty)
@@ -107,12 +110,16 @@ myAdditionalKeys =
 	   ["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
       ]
 
-   -- Shift, Focus
+   ++ [((super, key), sequence_ [nextScreen, spawn cmd])
+       | (key,cmd) <- zip [xK_c,xK_z] ["wmctrl -s 2 && google-chrome-stable","wmctrl -s 4 && zathura"]
+	  ]
+
+   -- Shift; Focus
    ++ [((ctrl, k), sequence_ [windows $ W.shift i, windows $ W.view i])
        | (i, k) <- zip myWorkspaces $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
-   -- Shift, No Focus
+   -- Shift; No Focus
    ++ [((super, k), windows $ W.shift i)
        | (i, k) <- zip myWorkspaces $ [xK_1 .. xK_9] ++ [xK_0]
       ]
