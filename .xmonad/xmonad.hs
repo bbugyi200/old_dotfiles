@@ -16,9 +16,19 @@ import XMonad.Layout.IndependentScreens
 import XMonad.Util.WorkspaceCompare
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
+import Data.Maybe (isNothing)
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
+
+---------------------------------- Functions ----------------------------------
+isEmpty :: String -> X Bool
+isEmpty t = gets $ elem t . map W.tag
+           . filter (isNothing . W.stack)
+           . W.workspaces . windowset
+
+changeWSifTEmpty t = whenX (isEmpty t) $ moveTo Next HiddenNonEmptyWS
+changeWSifCurrEmpty = gets (W.currentTag . windowset) >>= changeWSifTEmpty
 
 ------------------------------- Key Bindings ----------------------------------
 alt = mod1Mask
@@ -30,7 +40,16 @@ myAdditionalKeys =
    [ ((alt, xK_r), spawn "xmonad --recompile && xmonad --restart")
 
    -- Close Focused Window
-   , ((alt, xK_w), kill)
+   , ((alt, xK_w), spawn "xkill -id `xprop -root _NET_ACTIVE_WINDOW | cut -d\\# -f2` && xdotool key ctrl+alt+shift+n")
+
+   -- If current window empty, move to NonEmpty window
+   , ((ctrl .|. alt .|. shift, xK_n), changeWSifCurrEmpty)
+
+   -- Prev Hidden NonEmpty Workspace
+   , ((alt, xK_bracketleft), moveTo Prev HiddenNonEmptyWS)
+
+   -- Next Hidden NonEmpty Workspace
+   , ((alt, xK_bracketright), moveTo Next HiddenNonEmptyWS)
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
@@ -72,7 +91,7 @@ myAdditionalKeys =
    , ((alt, xK_backslash), onNextNeighbour W.view)
 
    -- Swap Screens
-   , ((alt, xK_s), swapNextScreen)
+   , ((alt, xK_s), sequence_ [swapNextScreen, spawn "xdotool key ctrl+shift+alt+n"])
    ]
 
    -- Hamster Numpad Bindings
@@ -84,7 +103,7 @@ myAdditionalKeys =
    ++ [((alt, key), raiseNextMaybe (spawn cmd) (className =? cls))
        | (key, cmd, cls) <- zip3
 	   [xK_x, xK_c, xK_z, xK_a, xK_KP_End, xK_KP_Down]
-	   ["termite -e 'tm-init Terminal'","google-chrome-stable","zathura","anki","hamster","slack"]
+	   ["wmctrl -s 0  && termite -e 'tm-init Terminal'","wmctrl -s 1 && google-chrome-stable","wmctrl -s 3 && zathura","wmctrl -s 5 && anki","hamster","slack"]
 	   ["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
       ]
 
@@ -123,7 +142,7 @@ xmobarEscape = concatMap doubleLts
         doubleLts x   = [x]
 
 myWorkspaces :: [String]
-myWorkspaces = clickable . (map xmobarEscape) $ ["TERM:I","WEB:II","WEB:III","PDF:IV","PDF:V","VI","VI","VII","IX","X"]
+myWorkspaces = clickable . (map xmobarEscape) $ ["1:TERM","2:WEB","3:WEB","4:PDF","5:PDF","6:ANKI","7","8","9","0"]
   where                                                                       
          clickable l = [ "<action=xdotool key alt+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
                              (i,ws) <- zip [1..10] l,                                        
@@ -144,7 +163,7 @@ myManageHook = composeAll
 main = do
 	xmproc <- spawnPipe "xmobar /home/bryan/.xmobarrc"
 	spawn "init-bg"
-	xmonad $ desktopConfig
+	xmonad $ ewmh desktopConfig
 		{
 		  terminal				= myTerminal
 		  , modMask				= myModMask
@@ -159,13 +178,13 @@ main = do
 		  , logHook 			= dynamicLogWithPP xmobarPP
 			{ ppOutput 			= hPutStrLn xmproc
 			, ppOrder           = \(ws:l:t:_)   -> [ws]
-			, ppCurrent 		= xmobarColor "white" "" . wrap "[" "]"
+			, ppCurrent 		= xmobarColor "yellow" "" . wrap "[" "]"
 			, ppHidden			= xmobarColor "white" ""
 			, ppHiddenNoWindows = xmobarColor "darkgrey" ""
 			, ppWsSep			= "    "
 			, ppTitle   		= xmobarColor "green"  "" . shorten 40
-			, ppVisible 		= xmobarColor "white" "" . wrap "(" ")"
+			, ppVisible 		= xmobarColor "yellow" ""
 			, ppUrgent  		= xmobarColor "red" "yellow"
-			} >> ewmhDesktopsLogHook
+			} >> ewmhDesktopsLogHook <+> dynamicLogXinerama
 	  } `additionalKeys` myAdditionalKeys
 
