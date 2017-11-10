@@ -41,6 +41,9 @@ myAdditionalKeys = [
    -- Restarts XMonad
      ((alt, xK_r), spawn "xmonad --recompile && xmonad --restart")
 
+   -- Next Layout
+   , ((super, xK_space), sendMessage NextLayout)
+
    -- If current window empty, move to NonEmpty window
    , ((ctrl .|. alt .|. shift, xK_n), changeWSifCurrEmpty)
 
@@ -111,8 +114,9 @@ myAdditionalKeys = [
 	   ["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
       ]
 
+   -- Raise or Run Second Instance of an Application
    ++ [((super, key), sequence_ [nextScreen, spawn cmd])
-       | (key,cmd) <- zip [xK_c,xK_z] ["wmctrl -s 2 && google-chrome-stable","wmctrl -s 4 && zathura"]
+       | (key,cmd) <- zip [xK_c,xK_z] ["wmctrl -s 2 && WS_is_Empty && google-chrome-stable","wmctrl -s 4 && WS_is_Empty && zathura"]
 	  ]
 
    -- Shift; Focus

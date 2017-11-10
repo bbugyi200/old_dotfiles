@@ -4,7 +4,7 @@
 
 command! -nargs=0 Run cd %:p:h | exec ":!pdflatex -file-line-error " .expand('%:t')
 
-command! -nargs=0 Run2 call VimuxRunCommand("gnome-terminal -x okular \"" .expand("%:p:r") .".pdf\"")
+command! -nargs=0 Run2 call VimuxRunCommand("(zathura \"" .expand("%:p:r") .".pdf\" &> /dev/null &) && exit")
 
 setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
 if filereadable('Makefile')

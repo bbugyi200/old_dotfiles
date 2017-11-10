@@ -186,9 +186,10 @@ nnoremap <C-h> <C-W><C-H>
 
 " Will execute the 'Run' command which varies based on the file type
 nmap <Leader>r :w<CR>:Run<CR>
+imap <Leader>r <Esc><Leader>r
 
-nmap <F9> :w<CR>:Run2<CR>
-imap <F9> <Esc><F9>
+nmap <Leader>R :w<CR>:Run2<CR>
+imap <Leader>R <Esc><Leader>R
 
 " Improve up/down movement on wrapped lines
 nnoremap j gj
