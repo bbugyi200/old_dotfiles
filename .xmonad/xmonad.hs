@@ -175,7 +175,6 @@ myManageHook = composeAll
 main = do
 	xmproc <- spawnPipe "xmobar /home/bryan/.xmobarrc"
 	spawn "init-bg"
-	spawn "compton -b --config .config/compton.conf"
 	xmonad $ ewmh desktopConfig
 		{
 		  terminal				= myTerminal
