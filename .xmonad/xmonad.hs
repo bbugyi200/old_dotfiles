@@ -63,9 +63,7 @@ myAdditionalKeys = [
    , ((alt, xK_m), spawn "toggle_monitor")
 
    -- Screenshot Commands
-   , ((alt, xK_Print),
-   spawn "scrot -s /tmp/shot.png && xclip -selection 'clipboard' -t image/png /tmp/shot.png")
-
+   , ((alt, xK_Print), spawn "sshot")
    , ((super, xK_Print), spawn "receipt_sshot")
 
    -- Shutdown
@@ -143,11 +141,12 @@ myClickJustFocuses = False
 
 -- Colors --
 yellow = "#F8FB27"
-red = "#FF1300"
+red = "#FF0000"
+blue = "#0000FF"
 ------------
 
 myBorderWidth = 5
-myFocusedBorderColor = red
+myFocusedBorderColor = blue
 
 xmobarEscape = concatMap doubleLts
   where doubleLts '<' = "<<"
@@ -175,6 +174,7 @@ myManageHook = composeAll
 main = do
 	xmproc <- spawnPipe "xmobar /home/bryan/.xmobarrc"
 	spawn "init-bg"
+	spawn "check_maint_tasks"
 	xmonad $ ewmh desktopConfig
 		{
 		  terminal				= myTerminal

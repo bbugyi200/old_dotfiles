@@ -7,6 +7,7 @@ fswebcam "/home/bryan/login-sshots/%m.%d.%y-%H:%M:%S.jpg"
 numlockx &
 # sxhkd &
 clipmenud &
+dunst &
 xbindkeys
 # exec bspwm
 exec xmonad
