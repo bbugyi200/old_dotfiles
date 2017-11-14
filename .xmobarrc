@@ -4,13 +4,7 @@ Config { font = "xft:Dina:pixelsize=13"
        , fgColor = "grey"
        , position = TopW L 100
        , lowerOnStart = True
-       , commands = [ Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
-                    , Run Memory [ "-t",		"Mem: <usedratio>%"
-								 , "--Low",	"10"
-								 , "--High",	"50"
-								 , "--normal","green"
-								 , "--high","red"] 10
-					, Run Date "%a %b %_d %H:%M" "date" 10
+       , commands = [ Run Date "%a %b %_d, %H:%M:%S" "date" 10
 					, Run DynNetwork [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
 									 , "--Low"      , "1000"       -- units: B/s
 									 , "--High"     , "5000"       -- units: B/s

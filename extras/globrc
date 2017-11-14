@@ -77,7 +77,7 @@ tm-kill () {
 # Prints the value of a variable
 pvar () { set | grep -i -e "^$1" }
 
-wim() { vim $(where $1) }
+wim() { vim $(find ~/Dropbox/scripts -name $1) }
 
 mkcd() { mkdir -p $1 && cd $1 }
 
