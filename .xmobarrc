@@ -1,4 +1,5 @@
 Config { font = "xft:Dina:pixelsize=13"
+	   , iconRoot = "/home/bryan/.xmonad/.icons"
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 100
@@ -32,11 +33,12 @@ Config { font = "xft:Dina:pixelsize=13"
                                   -- charged status
                                   , "-i"	, "<fc=#006000>Charged</fc>"
 								 ] 50
-					, Run Volume "default" "Master" ["--template", "Vol: <volume>%"] 5
+					, Run Volume "default" "Master" ["--template", "<volumebar>"] 5
 					, Run Com "poll-hamster" [] "hamster" 10
+					, Run PipeReader " :/tmp/alarm-fifo" "alarm"
                     , Run UnsafeStdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%UnsafeStdinReader% }%hamster%{ %cpu%  |  %memory%  |  %dynnetwork%  |  %battery%  |  %default:Master%  |  %date%" 
+       , template = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %battery%  |  %default:Master%  |  %date%" 
        }

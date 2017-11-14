@@ -44,6 +44,10 @@ myAdditionalKeys = [
    -- Next Layout
    , ((super, xK_space), sendMessage NextLayout)
 
+   -- Alarm
+   , ((super, xK_a), spawn "alarm-xmonad")
+   , ((super, xK_s), spawn "alarm-xmonad --stop")
+
    -- If current window empty, move to NonEmpty window
    , ((ctrl .|. alt .|. shift, xK_n), changeWSifCurrEmpty)
 
@@ -174,7 +178,7 @@ myManageHook = composeAll
 main = do
 	xmproc <- spawnPipe "xmobar /home/bryan/.xmobarrc"
 	spawn "init-bg"
-	spawn "check_maint_tasks"
+	spawn "maintCheck"
 	xmonad $ ewmh desktopConfig
 		{
 		  terminal				= myTerminal
