@@ -26,6 +26,7 @@ alias Jdb='jdb -classpath "../bin"'
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv'
+alias tree='tree -I "venv*|__pycache__*"'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 

@@ -30,7 +30,7 @@ set backspace=2
 " set autochdir
 set tabstop=4
 set shiftwidth=4
-" set expandtab
+set expandtab
 set nocompatible
 
 set exrc

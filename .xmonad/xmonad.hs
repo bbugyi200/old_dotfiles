@@ -101,6 +101,9 @@ myAdditionalKeys = [
 
    -- Swap Screens
    , ((alt, xK_s), sequence_ [swapNextScreen, spawn "xdotool key ctrl+shift+alt+n"])
+
+   -- Send WS to Next Screen
+   , ((super, xK_slash), sequence_ [swapNextScreen, toggleWS])
    ]
 
    -- Hamster Numpad Bindings
