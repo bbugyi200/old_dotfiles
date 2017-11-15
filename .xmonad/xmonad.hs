@@ -54,11 +54,13 @@ myAdditionalKeys = [
    -- Close Focused Window
    , ((alt, xK_w), spawn "close-window")
 
-   -- Prev Hidden NonEmpty Workspace
+   -- Prev/Next Hidden NonEmpty Workspace
    , ((alt, xK_bracketleft), moveTo Prev HiddenNonEmptyWS)
-
-   -- Next Hidden NonEmpty Workspace
    , ((alt, xK_bracketright), moveTo Next HiddenNonEmptyWS)
+
+   -- Prev/Next Tmux Session
+   , ((super, xK_bracketleft), spawn "tmux switchc -p")
+   , ((super, xK_bracketright), spawn "tmux switchc -n")
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
@@ -82,9 +84,10 @@ myAdditionalKeys = [
    , ((super, xK_KP_Delete), spawn "ham start")
    , ((super, xK_KP_Insert), spawn "ham stop")
 
-   -- Clear Screen and Quit Screen
+   -- Tmux Send-Screen Hacks
    , ((alt, xK_e), spawn "clear_screen")
    , ((alt, xK_q), spawn "quit_screen")
+   , ((alt, xK_k), spawn "tmux send-keys 'tm-kill' Enter")
 
    -- clipmenu
    , ((alt .|. shift, xK_c), spawn "clipmenu")

@@ -68,9 +68,9 @@ tm-kill () {
 	SESS=$(tmux display-message -p "#S")
 	tmux switchc -n
 	if [ -f "/home/bryan/Dropbox/scripts/tmux-envs/post/$SESS.sh" ]; then
-		"/home/bryan/Dropbox/scripts/tmux-envs/post/$SESS.sh" 
-	else
-		tmux kill-session -t "$SESS"
+		"/home/bryan/Dropbox/scripts/tmux-envs/post/$SESS.sh"
+    else
+        tmux kill-session -t "$SESS"
 	fi
 }
 
