@@ -58,9 +58,13 @@ myAdditionalKeys = [
    , ((alt, xK_bracketleft), moveTo Prev HiddenNonEmptyWS)
    , ((alt, xK_bracketright), moveTo Next HiddenNonEmptyWS)
 
+   -- Prev/Next Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((super, xK_bracketleft), sequence_ [nextScreen, moveTo Prev HiddenNonEmptyWS, prevScreen])
+   , ((super, xK_bracketright), sequence_ [nextScreen, moveTo Next HiddenNonEmptyWS, prevScreen])
+
    -- Prev/Next Tmux Session
-   , ((super, xK_bracketleft), spawn "tmux switchc -p")
-   , ((super, xK_bracketright), spawn "tmux switchc -n")
+   , ((alt, xK_minus), spawn "tmux switchc -p")
+   , ((alt, xK_equal), spawn "tmux switchc -n")
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
