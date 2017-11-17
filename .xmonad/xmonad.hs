@@ -63,8 +63,8 @@ myAdditionalKeys = [
    , ((super, xK_bracketright), sequence_ [nextScreen, moveTo Next HiddenNonEmptyWS, prevScreen])
 
    -- Prev/Next Tmux Session
-   , ((alt, xK_minus), spawn "tmux switchc -p")
-   , ((alt, xK_equal), spawn "tmux switchc -n")
+   , ((alt, xK_p), spawn "tmux switchc -p")
+   , ((alt, xK_n), spawn "tmux switchc -n")
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
@@ -91,7 +91,7 @@ myAdditionalKeys = [
    -- Tmux Send-Screen Hacks
    , ((alt, xK_e), spawn "clear_screen")
    , ((alt, xK_q), spawn "quit_screen")
-   , ((alt, xK_k), spawn "tmux send-keys 'tm-kill' Enter")
+   , ((alt, xK_k), spawn "kill_screen")
 
    -- clipmenu
    , ((alt .|. shift, xK_c), spawn "clipmenu")
@@ -109,8 +109,9 @@ myAdditionalKeys = [
    -- Swap Screens
    , ((alt, xK_s), sequence_ [swapNextScreen, spawn "xdotool key ctrl+shift+alt+n"])
 
-   -- Send WS to Next Screen
-   , ((super, xK_slash), sequence_ [swapNextScreen, toggleWS])
+   -- Send current WS to Next Screen
+   , ((super, xK_slash), sequence_ [swapNextScreen, toggleWS, nextScreen]) -- send focus
+   , ((super, xK_backslash), sequence_ [swapNextScreen, toggleWS]) -- don't send focus
    ]
 
    -- Hamster Numpad Bindings

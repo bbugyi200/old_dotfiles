@@ -235,6 +235,8 @@ imap <C-l> <Esc><C-l>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
 
+nmap gm :LivedownToggle<CR>
+
 " ------------------------------ AUTOS ---------------------------------------
 
 " Turns spellcheck on for certain file extensions

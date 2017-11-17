@@ -29,10 +29,9 @@ Config { font = "xft:Dina:pixelsize=13"
 								 ] 50
 					, Run Volume "default" "Master" ["--template", "<volumebar>"] 5
 					, Run Com "poll-hamster" [] "hamster" 10
-					, Run PipeReader " :/tmp/alarm-fifo" "alarm"
                     , Run UnsafeStdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %battery%  |  %default:Master%  |  %date%" 
+       , template = "%UnsafeStdinReader% }%hamster%{ %dynnetwork%  |  %battery%  |  %default:Master%  |  %date%" 
        }
