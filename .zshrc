@@ -4,6 +4,9 @@ source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
 source /home/bryan/Dropbox/scripts/localAlias
 source /home/bryan/Dropbox/dotfiles/extras/globrc
 
+# -------------------------- OH-MY-ZSH ---------------------------------------
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+
 # ----------------------------------- ALIASES --------------------------------
 alias -s pdf="zathura"
 alias -s epub="okular"

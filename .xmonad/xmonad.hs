@@ -149,7 +149,7 @@ myAdditionalKeys = [
 
 -------------------------------- Misc Configs ---------------------------------
 myTerminal = "termite -e 'tm-init Terminal'"
-myModMask = mod1Mask
+myModMask = mod4Mask
 
 myFocusFollowsMouse = False
 myClickJustFocuses = False
