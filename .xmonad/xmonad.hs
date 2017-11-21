@@ -5,6 +5,7 @@ import XMonad
 import XMonad.Actions.PhysicalScreens
 import XMonad.Actions.WindowGo
 import XMonad.Actions.SpawnOn
+import XMonad.Actions.DynamicWorkspaces
 import XMonad.Hooks.SetWMName
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
@@ -29,6 +30,12 @@ isEmpty t = gets $ elem t . map W.tag
 changeWSifTEmpty t = whenX (isEmpty t) $ moveTo Next HiddenNonEmptyWS
 changeWSifCurrEmpty = gets (W.currentTag . windowset) >>= changeWSifTEmpty
 
+zip4 [] _ _ _ = []
+zip4 _ [] _ _ = []
+zip4 _ _ [] _ = []
+zip4 _ _ _ [] = []
+zip4 (w:ws) (x:xs) (y:ys) (z:zs) = [(w,x,y,z)] ++ zip4 ws xs ys zs
+
 ------------------------------- Key Bindings ----------------------------------
 
 -- Masks
@@ -44,12 +51,15 @@ myAdditionalKeys = [
    -- Next Layout
    , ((super, xK_space), sendMessage NextLayout)
 
+   , ((super, xK_n), addWorkspace "Boom")
+   , ((super, xK_r), removeWorkspace)
+
    -- Alarm
    , ((super, xK_a), spawn "alarm-xmonad")
    , ((super, xK_s), spawn "alarm-xmonad --stop")
 
    -- If current window empty, move to NonEmpty window
-   , ((ctrl .|. alt .|. shift, xK_n), changeWSifCurrEmpty)
+   , ((ctrl .|. alt .|. shift, xK_n), removeEmptyWorkspace)
 
    -- Close Focused Window
    , ((alt, xK_w), spawn "close-window")
@@ -57,6 +67,9 @@ myAdditionalKeys = [
    -- Prev/Next Hidden NonEmpty Workspace
    , ((alt, xK_bracketleft), moveTo Prev HiddenNonEmptyWS)
    , ((alt, xK_bracketright), moveTo Next HiddenNonEmptyWS)
+
+   -- Next Empty Workspace
+   , ((alt .|. shift, xK_period), moveTo Next HiddenEmptyWS)
 
    -- Prev/Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((super, xK_bracketleft), sequence_ [nextScreen, moveTo Prev HiddenNonEmptyWS, prevScreen])
@@ -120,16 +133,20 @@ myAdditionalKeys = [
       ]
 
    -- Launch Applications
-   ++ [((alt, key), raiseNextMaybe (spawnHere cmd) (className =? cls))
-       | (key, cmd, cls) <- zip3
+   ++ [((alt, key), raiseNextMaybe (sequence_ [addWorkspace ws, (spawnOn ws $ cmd)]) (className =? cls))
+       | (key, cmd, cls, ws) <- zip4
        [xK_x, xK_c, xK_z, xK_a, xK_KP_End, xK_KP_Down]
-       ["wmctrl -s 0  && termite -e 'tm-init Terminal'","wmctrl -s 1 && google-chrome-stable","wmctrl -s 3 && zathura","wmctrl -s 5 && anki","hamster","slack"]
+       ["termite -e 'tm-init Terminal'","google-chrome-stable","zathura","anki","hamster","slack"]
        ["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
+       ["TERM","WEB","PDF","ANKI","HAMSTER","SLACK"]
       ]
 
    -- Raise or Run Second Instance of an Application
-   ++ [((super, key), sequence_ [nextScreen, spawnHere cmd])
-       | (key,cmd) <- zip [xK_c,xK_z] ["wmctrl -s 2 && WS_is_Empty && google-chrome-stable","wmctrl -s 4 && WS_is_Empty && zathura"]
+   ++ [((super, key), sequence_ [nextScreen, addWorkspace ws, spawnOn ws cmd])
+       | (key,cmd,ws) <- zip3 
+       [xK_c,xK_z]
+       ["google-chrome-stable","zathura"]
+       ["WEB2","PDF2"]
       ]
 
    -- Shift; Focus
@@ -163,16 +180,17 @@ blue = "#0000FF"
 myBorderWidth = 5
 myFocusedBorderColor = blue
 
-xmobarEscape = concatMap doubleLts
-  where doubleLts '<' = "<<"
-        doubleLts x   = [x]
+-- xmobarEscape = concatMap doubleLts
+--   where doubleLts '<' = "<<"
+--         doubleLts x   = [x]
 
 myWorkspaces :: [String]
-myWorkspaces = clickable . (map xmobarEscape) $ ["1:TERM","2:WEB","3:WEB","4:PDF","5:PDF","6:ANKI","7","8","9","0"]
-  where                                                                       
-         clickable l = [ "<action=xdotool key alt+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
-                             (i,ws) <- zip [1..10] l,                                        
-                            let n = i ]
+myWorkspaces = ["TERM","WEB"]
+-- myWorkspaces = clickable . (map xmobarEscape) $ ["1:TERM","2:WEB","3:WEB","4:PDF","5:PDF","6:ANKI","7","8","9","0"]
+--   where                                                                       
+--          clickable l = [ "<action=xdotool key alt+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
+--                              (i,ws) <- zip [1..10] l,                                        
+--                             let n = i ]
 
 myLayout = tiled ||| Mirror tiled ||| Full
   where
