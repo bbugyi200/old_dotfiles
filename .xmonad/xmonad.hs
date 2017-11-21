@@ -120,17 +120,17 @@ myAdditionalKeys = [
       ]
 
    -- Launch Applications
-   ++ [((alt, key), raiseNextMaybe (spawn cmd) (className =? cls))
+   ++ [((alt, key), raiseNextMaybe (spawnHere cmd) (className =? cls))
        | (key, cmd, cls) <- zip3
-	   [xK_x, xK_c, xK_z, xK_a, xK_KP_End, xK_KP_Down]
-	   ["wmctrl -s 0  && termite -e 'tm-init Terminal'","wmctrl -s 1 && google-chrome-stable","wmctrl -s 3 && zathura","wmctrl -s 5 && anki","hamster","slack"]
-	   ["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
+       [xK_x, xK_c, xK_z, xK_a, xK_KP_End, xK_KP_Down]
+       ["wmctrl -s 0  && termite -e 'tm-init Terminal'","wmctrl -s 1 && google-chrome-stable","wmctrl -s 3 && zathura","wmctrl -s 5 && anki","hamster","slack"]
+       ["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
       ]
 
    -- Raise or Run Second Instance of an Application
-   ++ [((super, key), sequence_ [nextScreen, spawn cmd])
+   ++ [((super, key), sequence_ [nextScreen, spawnHere cmd])
        | (key,cmd) <- zip [xK_c,xK_z] ["wmctrl -s 2 && WS_is_Empty && google-chrome-stable","wmctrl -s 4 && WS_is_Empty && zathura"]
-	  ]
+      ]
 
    -- Shift; Focus
    ++ [((ctrl, k), sequence_ [windows $ W.shift i, windows $ W.view i])
@@ -181,36 +181,41 @@ myLayout = tiled ||| Mirror tiled ||| Full
     ratio = 1/2
     delta = 3/100
 
--- Window Rules
 myManageHook = composeAll
-	[ className=? "Pinentry"		--> doFloat]
+    [ manageSpawn
+    , className=? "Pinentry"        --> doFloat]
+
+myStartupHook = ewmhDesktopsStartup
+                >> setWMName "LG3D"
+                >> spawn "init-bg"
+                >> spawn "maintCheck"
+                >> spawn "volume-xmonad"
+                >> spawn "alarm-xmonad --resume"
 
 -------------------------------- Main -----------------------------------------
 main = do
-	xmproc <- spawnPipe "xmobar /home/bryan/.xmobarrc"
-	spawn "init-bg"
-	spawn "maintCheck"
-	xmonad $ ewmh desktopConfig
-		{
-		  terminal				= myTerminal
-		  , modMask				= myModMask
-		  , borderWidth			= myBorderWidth
-		  , focusedBorderColor	= myFocusedBorderColor
-		  , focusFollowsMouse 	= myFocusFollowsMouse
-		  , clickJustFocuses  	= myClickJustFocuses
-		  , workspaces			= myWorkspaces
-		  , manageHook 			= myManageHook
-		  , layoutHook			= avoidStruts $ myLayout
-		  , startupHook			= ewmhDesktopsStartup >> setWMName "LG3D"
-		  , logHook 			= dynamicLogWithPP xmobarPP
-			{ ppOutput 			= hPutStrLn xmproc
-			, ppOrder           = \(ws:l:t:_)   -> [ws]
-			, ppCurrent 		= xmobarColor "yellow" "" . wrap "[" "]"
-			, ppHidden			= xmobarColor "white" ""
-			, ppHiddenNoWindows = xmobarColor "darkgrey" ""
-			, ppWsSep			= "    "
-			, ppTitle   		= xmobarColor "green"  "" . shorten 40
-			, ppVisible 		= xmobarColor "yellow" ""
-			, ppUrgent  		= xmobarColor "red" "yellow"
-			} >> ewmhDesktopsLogHook <+> dynamicLogXinerama
-	  } `additionalKeys` myAdditionalKeys
+    xmproc <- spawnPipe "xmobar /home/bryan/.xmobarrc"
+    xmonad $ ewmh desktopConfig
+        {
+            terminal                = myTerminal
+          , modMask                 = myModMask
+          , borderWidth             = myBorderWidth
+          , focusedBorderColor      = myFocusedBorderColor
+          , focusFollowsMouse       = myFocusFollowsMouse
+          , clickJustFocuses        = myClickJustFocuses
+          , workspaces              = myWorkspaces
+          , manageHook              = myManageHook
+          , layoutHook              = avoidStruts $ myLayout
+          , startupHook             = myStartupHook
+          , logHook                 = dynamicLogWithPP xmobarPP
+            { ppOutput                = hPutStrLn xmproc
+            , ppOrder                 = \(ws:l:t:_)   -> [ws]
+            , ppCurrent               = xmobarColor "yellow" "" . wrap "[" "]"
+            , ppHidden                = xmobarColor "white" ""
+            , ppHiddenNoWindows       = xmobarColor "darkgrey" ""
+            , ppWsSep                 = "    "
+            , ppTitle                 = xmobarColor "green"  "" . shorten 40
+            , ppVisible               = xmobarColor "yellow" ""
+            , ppUrgent                = xmobarColor "red" "yellow"
+            } >> ewmhDesktopsLogHook <+> dynamicLogXinerama
+      } `additionalKeys` myAdditionalKeys

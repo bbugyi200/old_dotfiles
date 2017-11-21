@@ -13,8 +13,8 @@ Config { font = "xft:Dina:pixelsize=13"
 									 , "--high"     , "darkred"
 									 ] 10
 					, Run Battery [ "--template" , "Batt: <acstatus>"
-								  , "--Low"      , "10"        -- units: %
-                             	  , "--High"     , "80"        -- units: %
+								  , "--Low"      , "35"        -- units: %
+                             	  , "--High"     , "70"        -- units: %
                              	  , "--low"      , "darkred"
                              	  , "--normal"   , "darkorange"
                              	  , "--high"     , "darkgreen"
@@ -27,12 +27,12 @@ Config { font = "xft:Dina:pixelsize=13"
                                   -- charged status
                                   , "-i"	, "<fc=#006000>Charged</fc>"
 								 ] 50
-					, Run Volume "default" "Master" ["--template", "<volumebar>"] 5
 					, Run Com "poll-hamster" [] "hamster" 10
+                    , Run PipeReader " :/tmp/volume-fifo" "volume"
                     , Run PipeReader " :/tmp/alarm-fifo" "alarm"
                     , Run UnsafeStdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %battery%  |  %default:Master%  |  %date%" 
+       , template = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %battery%  |  %volume%  |  %date%" 
        }
