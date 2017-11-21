@@ -18,18 +18,11 @@ import XMonad.Util.WorkspaceCompare
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
 import Data.Maybe (isNothing)
+import XMonad.Prompt
 
 import qualified XMonad.StackSet as W
 
 ---------------------------------- Functions ----------------------------------
-isEmpty :: String -> X Bool
-isEmpty t = gets $ elem t . map W.tag
-           . filter (isNothing . W.stack)
-           . W.workspaces . windowset
-
-changeWSifTEmpty t = whenX (isEmpty t) $ moveTo Next HiddenNonEmptyWS
-changeWSifCurrEmpty = gets (W.currentTag . windowset) >>= changeWSifTEmpty
-
 zip4 [] _ _ _ = []
 zip4 _ [] _ _ = []
 zip4 _ _ [] _ = []
@@ -51,15 +44,13 @@ myAdditionalKeys = [
    -- Next Layout
    , ((super, xK_space), sendMessage NextLayout)
 
-   , ((super, xK_n), addWorkspace "Boom")
+   -- Remove Current Workspace
    , ((super, xK_r), removeWorkspace)
+   , ((ctrl .|. alt .|. shift, xK_n), removeEmptyWorkspace) -- if Empty
 
    -- Alarm
    , ((super, xK_a), spawn "alarm-xmonad")
    , ((super, xK_s), spawn "alarm-xmonad --stop")
-
-   -- If current window empty, move to NonEmpty window
-   , ((ctrl .|. alt .|. shift, xK_n), removeEmptyWorkspace)
 
    -- Close Focused Window
    , ((alt, xK_w), spawn "close-window")
@@ -120,11 +111,17 @@ myAdditionalKeys = [
    , ((alt, xK_Tab), nextScreen)
 
    -- Swap Screens
-   , ((alt, xK_s), sequence_ [swapNextScreen, spawn "xdotool key ctrl+shift+alt+n"])
+   , ((alt, xK_s), sequence_ [swapNextScreen, removeEmptyWorkspace])
 
    -- Send current WS to Next Screen
    , ((super, xK_slash), sequence_ [swapNextScreen, toggleWS, nextScreen]) -- send focus
    , ((super, xK_backslash), sequence_ [swapNextScreen, toggleWS]) -- don't send focus
+
+   -- Shift current window to MISC
+   , ((ctrl, xK_m), sequence_ [addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspace, windows $ W.view "MISC"])
+
+   -- Shift current window to _______
+   , ((ctrl .|. super, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS, withWorkspaceIndex W.shift 1, removeEmptyWorkspace, withWorkspaceIndex W.view 1])
    ]
 
    -- Hamster Numpad Bindings
@@ -150,18 +147,18 @@ myAdditionalKeys = [
       ]
 
    -- Shift; Focus
-   ++ [((ctrl, k), sequence_ [windows $ W.shift i, windows $ W.view i])
-       | (i, k) <- zip myWorkspaces $ [xK_1 .. xK_9] ++ [xK_0]
+   ++ [((ctrl, k), sequence_ [withNthWorkspace W.shift i, withNthWorkspace W.view i])
+       | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
    -- Shift; No Focus
-   ++ [((super, k), windows $ W.shift i)
-       | (i, k) <- zip myWorkspaces $ [xK_1 .. xK_9] ++ [xK_0]
+   ++ [((super, k), withNthWorkspace W.shift i)
+       | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
    -- View Workspace
-   ++ [((alt, k), windows $ W.view i)
-       | (i, k) <- zip (myWorkspaces) $ [xK_1 .. xK_9] ++ [xK_0]
+   ++ [((alt, k), withNthWorkspace W.view i)
+       | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
 -------------------------------- Misc Configs ---------------------------------
@@ -182,6 +179,9 @@ myFocusedBorderColor = blue
 
 myWorkspaces :: [String]
 myWorkspaces = ["TERM","WEB"]
+
+myXPConfig :: XPConfig
+myXPConfig = def {position = Bottom}
 
 myLayout = tiled ||| Mirror tiled ||| Full
   where
