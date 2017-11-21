@@ -142,7 +142,7 @@ myAdditionalKeys = [
       ]
 
    -- Raise or Run Second Instance of an Application
-   ++ [((super, key), sequence_ [nextScreen, addWorkspace ws, spawnOn ws cmd])
+   ++ [((super, key), sequence_ [nextScreen, addWorkspace ws, spawnOn ws ("WS_is_Empty && " ++ cmd)])
        | (key,cmd,ws) <- zip3 
        [xK_c,xK_z]
        ["google-chrome-stable","zathura"]
