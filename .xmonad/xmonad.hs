@@ -69,7 +69,7 @@ myAdditionalKeys = [
    , ((alt, xK_bracketright), moveTo Next HiddenNonEmptyWS)
 
    -- Next Empty Workspace
-   , ((alt .|. shift, xK_period), moveTo Next HiddenEmptyWS)
+   , ((alt, xK_period), moveTo Next HiddenEmptyWS)
 
    -- Prev/Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((super, xK_bracketleft), sequence_ [nextScreen, moveTo Prev HiddenNonEmptyWS, prevScreen])
@@ -180,17 +180,8 @@ blue = "#0000FF"
 myBorderWidth = 5
 myFocusedBorderColor = blue
 
--- xmobarEscape = concatMap doubleLts
---   where doubleLts '<' = "<<"
---         doubleLts x   = [x]
-
 myWorkspaces :: [String]
 myWorkspaces = ["TERM","WEB"]
--- myWorkspaces = clickable . (map xmobarEscape) $ ["1:TERM","2:WEB","3:WEB","4:PDF","5:PDF","6:ANKI","7","8","9","0"]
---   where                                                                       
---          clickable l = [ "<action=xdotool key alt+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
---                              (i,ws) <- zip [1..10] l,                                        
---                             let n = i ]
 
 myLayout = tiled ||| Mirror tiled ||| Full
   where
