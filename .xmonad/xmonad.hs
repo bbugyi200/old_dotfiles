@@ -66,6 +66,9 @@ myAdditionalKeys = [
    , ((super, xK_bracketleft), sequence_ [nextScreen, moveTo Prev HiddenNonEmptyWS, prevScreen])
    , ((super, xK_bracketright), sequence_ [nextScreen, moveTo Next HiddenNonEmptyWS, prevScreen])
 
+   -- Toggle to Last Workspace
+   , ((alt, xK_o), toggleWS)
+
    -- Prev/Next Tmux Session
    , ((alt, xK_p), spawn "tmux switchc -p")
    , ((alt, xK_n), spawn "tmux switchc -n")
@@ -121,7 +124,7 @@ myAdditionalKeys = [
    , ((ctrl, xK_m), sequence_ [addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspace, windows $ W.view "MISC"])
 
    -- Shift current window to _______
-   , ((ctrl .|. super, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS, withWorkspaceIndex W.shift 1, removeEmptyWorkspace, withWorkspaceIndex W.view 1])
+   , ((ctrl .|. alt, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS, withWorkspaceIndex W.shift 1, removeEmptyWorkspace, withWorkspaceIndex W.view 1])
    ]
 
    -- Hamster Numpad Bindings
@@ -198,7 +201,7 @@ myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
                 >> spawn "init-bg"
                 >> spawn "maintCheck"
-                >> spawn "volume-xmonad"
+                >> spawn "sleep 3 && volume-xmonad"
                 >> spawn "alarm-xmonad --resume"
 
 -------------------------------- Main -----------------------------------------
