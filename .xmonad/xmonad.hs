@@ -75,6 +75,7 @@ myAdditionalKeys = [
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
+   , ((super, xK_space), sequence_ [addWorkspace "MISC", spawn "dmenu_extended_run"])
 
    -- Toggle External Monitor
    , ((alt, xK_m), spawn "toggle_monitor")
@@ -124,7 +125,10 @@ myAdditionalKeys = [
    , ((ctrl, xK_m), sequence_ [addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspace, windows $ W.view "MISC"])
 
    -- Shift current window to _______
-   , ((ctrl .|. alt, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS, withWorkspaceIndex W.shift 1, removeEmptyWorkspace, withWorkspaceIndex W.view 1])
+   , ((super .|. alt, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS, withWorkspaceIndex W.shift 1, removeEmptyWorkspace, withWorkspaceIndex W.view 1])
+
+   -- Create new WS named _______
+   , ((super, xK_n), addWorkspacePrompt myXPConfig)
    ]
 
    -- Hamster Numpad Bindings
