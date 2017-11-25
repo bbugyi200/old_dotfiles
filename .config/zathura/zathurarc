@@ -37,6 +37,8 @@ map gt feedkeys ":blist TOC<Return>"
 map gq feedkeys ":blist questions<Return>"
 map ga feedkeys ":blist answers<Return>"
 
+map o feedkeys ":exec dmenu_books<Return>"
+
 
 map <C-y> focus_inputbar ":exec xdotool key y"
 

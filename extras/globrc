@@ -27,6 +27,7 @@ alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv'
 alias tree='clear && tree -I "venv*|__pycache__*"'
+alias rstwifi='systemctl restart netctl-auto@wlo1.service'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
@@ -70,21 +71,6 @@ pvar () { set | grep -i -e "^$1" }
 wim() { vim $(find ~/Dropbox/scripts -name $1) }
 
 mkcd() { mkdir -p $1 && cd $1 }
-
-function sbreak() {
-    FILE=~/Dropbox/notes/sbreak.txt
-    if [ "$1" = '--clear' -o "$1" = '-c' ]; then 
-        sed -i 's/\[X\]/\[\]/g' $FILE
-        sed -i '/([X]\?)/d' $FILE
-    fi
-
-    if [ "$2" = '--silent' -o "$2" = '-s' ]; then
-        : # NOOP
-    else
-        vim $FILE
-    fi
-}
-
 
 function getPWD() {
     echo $(pwd | sed 's/\/home\/[Bb]ryan/~/' | cut -c -55) 

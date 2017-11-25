@@ -60,7 +60,7 @@ myAdditionalKeys = [
    , ((alt, xK_bracketright), moveTo Next HiddenNonEmptyWS)
 
    -- Next Empty Workspace
-   , ((alt, xK_period), moveTo Next HiddenEmptyWS)
+   -- , ((alt, xK_period), moveTo Next HiddenEmptyWS)
 
    -- Prev/Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((super, xK_bracketleft), sequence_ [nextScreen, moveTo Prev HiddenNonEmptyWS, prevScreen])
@@ -75,7 +75,7 @@ myAdditionalKeys = [
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
-   , ((super, xK_space), sequence_ [addWorkspace "MISC", spawn "dmenu_extended_run"])
+   , ((alt .|. super, xK_space), sequence_ [addWorkspace "MISC", spawn "dmenu_extended_run"])
 
    -- Toggle External Monitor
    , ((alt, xK_m), spawn "toggle_monitor")
@@ -170,7 +170,7 @@ myAdditionalKeys = [
 
 -------------------------------- Misc Configs ---------------------------------
 myTerminal = "termite -e 'tm-init Terminal'"
-myModMask = mod4Mask
+myModMask = mod1Mask
 
 myFocusFollowsMouse = False
 myClickJustFocuses = False
