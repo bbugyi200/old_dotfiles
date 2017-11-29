@@ -239,26 +239,25 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
+    background = "#154c00"
+    foreground = "#ffffff"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
-    #icon = /path/to/icon
+    icon = /usr/share/icons/gnome/16x16/status/messagebox_info.png
 
 [urgency_normal]
-    background = "#285577"
+    background = "#636100"
     foreground = "#ffffff"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
-    #icon = /path/to/icon
+    icon = /usr/share/icons/gnome/16x16/status/messagebox_warning.png
 
 [urgency_critical]
-    background = "#000000"
-    foreground = "#D3D3D3"
-    frame_color = "#ff0000"
+    background = "#A00000"
+    foreground = "#ffffff"
     timeout = 15
     # Icon for notifications with critical urgency, uncomment to enable
-    icon = /usr/share/icons/gnome/16x16/status/messagebox_warning.png
+    icon = /usr/share/icons/gnome/16x16/status/messagebox_critical.png
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

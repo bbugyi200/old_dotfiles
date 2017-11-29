@@ -59,9 +59,6 @@ myAdditionalKeys = [
    , ((alt, xK_bracketleft), moveTo Prev HiddenNonEmptyWS)
    , ((alt, xK_bracketright), moveTo Next HiddenNonEmptyWS)
 
-   -- Next Empty Workspace
-   -- , ((alt, xK_period), moveTo Next HiddenEmptyWS)
-
    -- Prev/Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((super, xK_bracketleft), sequence_ [nextScreen, moveTo Prev HiddenNonEmptyWS, prevScreen])
    , ((super, xK_bracketright), sequence_ [nextScreen, moveTo Next HiddenNonEmptyWS, prevScreen])
@@ -129,6 +126,9 @@ myAdditionalKeys = [
 
    -- Create new WS named _______
    , ((super, xK_n), addWorkspacePrompt myXPConfig)
+
+   -- Galculator
+   , ((0, xK_F12), spawn "galculator")
    ]
 
    -- Hamster Numpad Bindings
@@ -139,7 +139,7 @@ myAdditionalKeys = [
    -- Launch Applications
    ++ [((alt, key), raiseNextMaybe (sequence_ [addWorkspace ws, (spawnOn ws $ cmd)]) (className =? cls))
        | (key, cmd, cls, ws) <- zip4
-       [xK_x, xK_c, xK_z, xK_a, xK_KP_End, xK_KP_Down]
+       [xK_x, xK_c, xK_z, xK_a, xK_1, xK_2]
        ["termite -e 'tm-init Terminal'","google-chrome-stable","zathura","anki","hamster","slack"]
        ["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
        ["TERM","WEB","PDF","ANKI","HAMSTER","SLACK"]
@@ -158,13 +158,8 @@ myAdditionalKeys = [
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
-   -- Shift; No Focus
-   ++ [((super, k), withNthWorkspace W.shift i)
-       | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
-      ]
-
    -- View Workspace
-   ++ [((alt, k), withNthWorkspace W.view i)
+   ++ [((super, k), withNthWorkspace W.view i)
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
@@ -199,6 +194,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
 
 myManageHook = composeAll
     [ manageSpawn
+    , className=? "Galculator"      --> doFloat
     , className=? "Pinentry"        --> doFloat]
 
 myStartupHook = ewmhDesktopsStartup
