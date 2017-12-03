@@ -66,13 +66,18 @@ myAdditionalKeys = [
    -- Toggle to Last Workspace
    , ((alt, xK_o), toggleWS)
 
-   -- Prev/Next Tmux Session
-   , ((alt, xK_p), spawn "tmux switchc -p")
-   , ((alt, xK_n), spawn "tmux switchc -n")
+   -- Prev/Next Tmux Session/Window
+   , ((alt, xK_9), spawn "tmux switchc -p")
+   , ((alt, xK_0), spawn "tmux switchc -n")
+   , ((alt, xK_p), spawn "tmux next-window")
+   , ((alt, xK_n), spawn "tmux previous-window")
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
    , ((alt .|. super, xK_space), sequence_ [addWorkspace "MISC", spawn "dmenu_extended_run"])
+
+   -- Open New Book in Okular
+   , ((alt, xK_o), spawn "dmenu_books --application=okular")
 
    -- Toggle External Monitor
    , ((alt, xK_m), spawn "toggle_monitor")
@@ -126,9 +131,6 @@ myAdditionalKeys = [
 
    -- Create new WS named _______
    , ((super, xK_n), addWorkspacePrompt myXPConfig)
-
-   -- Galculator
-   , ((0, xK_F12), spawn "galculator")
    ]
 
    -- Hamster Numpad Bindings
@@ -140,8 +142,8 @@ myAdditionalKeys = [
    ++ [((alt, key), raiseNextMaybe (sequence_ [addWorkspace ws, (spawnOn ws $ cmd)]) (className =? cls))
        | (key, cmd, cls, ws) <- zip4
        [xK_x, xK_c, xK_z, xK_a, xK_1, xK_2]
-       ["termite -e 'tm-init Terminal'","google-chrome-stable","zathura","anki","hamster","slack"]
-       ["Termite","Google-chrome","Zathura","Anki","Hamster","Slack"]
+       ["termite -e 'tm-init Terminal'","google-chrome-stable","okular","anki","hamster","slack"]
+       ["Termite","Google-chrome","okular","Anki","Hamster","Slack"]
        ["TERM","WEB","PDF","ANKI","HAMSTER","SLACK"]
       ]
 
@@ -149,17 +151,17 @@ myAdditionalKeys = [
    ++ [((super, key), sequence_ [nextScreen, addWorkspace ws, spawnOn ws ("WS_is_Empty && " ++ cmd)])
        | (key,cmd,ws) <- zip3 
        [xK_c,xK_z]
-       ["google-chrome-stable","zathura"]
+       ["google-chrome-stable","okular"]
        ["WEB2","PDF2"]
       ]
 
    -- Shift; Focus
-   ++ [((ctrl, k), sequence_ [withNthWorkspace W.shift i, withNthWorkspace W.view i])
+   ++ [((super, k), sequence_ [withNthWorkspace W.shift i, withNthWorkspace W.view i])
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
    -- View Workspace
-   ++ [((super, k), withNthWorkspace W.view i)
+   ++ [((ctrl, k), withNthWorkspace W.view i)
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 

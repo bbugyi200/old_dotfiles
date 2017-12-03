@@ -1,8 +1,7 @@
 # ----------------------------------------------------------------------------
 # ------------------------------ SOURCES -------------------------------------
 source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
-source /home/bryan/Dropbox/scripts/localAlias
-source /home/bryan/Dropbox/dotfiles/extras/globrc
+source /home/bryan/Dropbox/dotfiles/.globrc
 
 # -------------------------- OH-MY-ZSH ---------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
@@ -44,6 +43,6 @@ precmd() { eval "$PROMPT_COMMAND" }
 # # orig_command_not_found ---> command_not_found_handle
 # # http://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function
 command_not_found_handler() {
-    GREP=$(grep -s "^$1$SEP" "./.localaliases")
-    LocalAlias $1 "$GREP" "${@:2}"
+    ALIAS=$1; shift
+    LocalAlias --alias=$ALIAS -- "$@"
 }

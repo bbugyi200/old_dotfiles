@@ -28,23 +28,25 @@ alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv'
 alias tree='clear && tree -I "venv*|__pycache__*"'
 alias rstwifi='systemctl restart netctl-auto@wlo1.service'
+alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt ~/Dropbox/notes/project_schedule.txt'
+alias locals='LocalAlias'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
 # ~~~~~ transmission-remote functions ~~~~~
-tsm() { transmission-remote -l }
-tsm-start() { transmission-daemon }
-tsm-stop() { killall -9 transmission-daemon }
-tsm-watch() { watch -n 1 transmission-remote -l }
-tsm-add() { transmission-remote -a $1 }
-tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250 }
-tsm-rm() { transmission-remote -t$1 -r }
-tsm-purge() { transmission-remote -t$1 -rad }
+tsm() { transmission-remote -l; }
+tsm-start() { transmission-daemon; }
+tsm-stop() { killall -9 transmission-daemon; }
+tsm-watch() { watch -n 1 transmission-remote -l; }
+tsm-add() { transmission-remote -a $1; }
+tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250; }
+tsm-rm() { transmission-remote -t$1 -r; }
+tsm-purge() { transmission-remote -t$1 -rad; }
 
 
 # ~~~~~ Hamster Functions ~~~~~
-ham-start() { hamster start "$@" && /home/bryan/Dropbox/scripts/python/panel-hamster.py }
-ham-stop() { hamster stop && /home/bryan/Dropbox/scripts/python/panel-hamster.py }
+ham-start() { hamster start "$@" && /home/bryan/Dropbox/scripts/python/panel-hamster.py; }
+ham-stop() { hamster stop && /home/bryan/Dropbox/scripts/python/panel-hamster.py; }
 
 # ~~~~~ TMUX FUNCTIONS ~~~~~
 # Initialize different tmux environments
@@ -66,11 +68,11 @@ tm () {
 
 # ~~~~~ MISCELLANEOUS ~~~~~
 # Prints the value of a variable
-pvar () { set | grep -i -e "^$1" }
+pvar () { set | grep -i -e "^$1"; }
 
-wim() { vim $(find ~/Dropbox/scripts -name $1) }
+wim() { vim $(find ~/Dropbox/scripts -name $1); }
 
-mkcd() { mkdir -p $1 && cd $1 }
+mkcd() { mkdir -p $1 && cd $1; }
 
 function getPWD() {
     echo $(pwd | sed 's/\/home\/[Bb]ryan/~/' | cut -c -55) 
