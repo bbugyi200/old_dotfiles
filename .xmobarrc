@@ -21,7 +21,7 @@ Config { font = "xft:Dina:pixelsize=13"
 
                              	  , "--" -- battery specific options
                                   -- discharging status
-                                  , "-o"	, "<left>%"
+                                  , "-o"	, "<left>% (<timeleft>)"
                                   -- AC "on" status
                                   , "-O"	, "⚡ <left>%"
                                   -- charged status

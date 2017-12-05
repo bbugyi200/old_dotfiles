@@ -44,5 +44,5 @@ precmd() { eval "$PROMPT_COMMAND" }
 # # http://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function
 command_not_found_handler() {
     ALIAS=$1; shift
-    LocalAlias --alias=$ALIAS -- "$@"
+    LocalAlias --evaluate=$ALIAS -- "$@"
 }
