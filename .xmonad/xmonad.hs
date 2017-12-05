@@ -19,6 +19,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
 import Data.Maybe (isNothing)
 import XMonad.Prompt
+import XMonad.Util.Scratchpad
 
 import qualified XMonad.StackSet as W
 
@@ -166,7 +167,7 @@ myAdditionalKeys = [
       ]
 
 -------------------------------- Misc Configs ---------------------------------
-myTerminal = "termite -e 'tm-init Terminal'"
+myTerminal = "termite"
 myModMask = mod1Mask
 
 myFocusFollowsMouse = False

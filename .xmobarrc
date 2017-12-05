@@ -5,14 +5,14 @@ Config { font = "xft:Dina:pixelsize=13"
        , position = TopW L 100
        , lowerOnStart = True
        , commands = [ Run Date "%a %b %_d, %H:%M:%S" "date" 10
-					, Run DynNetwork [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+					, Run DynNetwork [ "--template" , "<tx>kB/s|<rx>kB/s"
 									 , "--Low"      , "1000"       -- units: B/s
 									 , "--High"     , "5000"       -- units: B/s
 									 , "--low"      , "darkgreen"
 									 , "--normal"   , "darkorange"
 									 , "--high"     , "darkred"
 									 ] 10
-					, Run Battery [ "--template" , "Batt: <acstatus>"
+					, Run Battery [ "--template" , "<acstatus>"
 								  , "--Low"      , "35"        -- units: %
                              	  , "--High"     , "70"        -- units: %
                              	  , "--low"      , "darkred"
@@ -21,18 +21,19 @@ Config { font = "xft:Dina:pixelsize=13"
 
                              	  , "--" -- battery specific options
                                   -- discharging status
-                                  , "-o"	, "<left>% (<timeleft>)"
+                                  , "-o"	, "<left>%"
                                   -- AC "on" status
-                                  , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                  , "-O"	, "⚡ <left>%"
                                   -- charged status
-                                  , "-i"	, "<fc=#006000>Charged</fc>"
+                                  , "-i"	, "⚡ <left>%"
 								 ] 50
 					, Run Com "poll-hamster" [] "hamster" 10
+                    , Run Com "dbox-xmonad" [] "dropbox" 10
                     , Run PipeReader " :/tmp/volume-fifo" "volume"
                     , Run PipeReader " :/tmp/alarm-fifo" "alarm"
                     , Run UnsafeStdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %battery%  |  %volume%  |  %date%" 
+       , template = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%" 
        }
