@@ -8,7 +8,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 # ----------------------------------- ALIASES --------------------------------
 alias -s pdf="zathura"
-alias -s epub="okular"
+alias -s epub="zathura"
+alias -s djvu="zathura"
 alias -s docx="/usr/lib/libreoffice/program/soffice.bin --writer"
 alias -s odt="/usr/lib/libreoffice/program/soffice.bin --writer"
 alias -s ppt="/usr/lib/libreoffice/program/soffice.bin --impress"
@@ -17,12 +18,10 @@ alias -s pcx="imv"
 alias -s jpg="imv"
 alias -s jpeg="imv"
 alias -s git="git clone"
-alias -s djvu="djview"
 
 alias -g @@="&> /dev/null & disown"
 alias -g X="&& exit"
 alias -g ::="| grep"
-alias -g sys='systemctl'
 
 # -------------------------------- BINDINGS ----------------------------------
 bindkey "^P" up-line-or-search

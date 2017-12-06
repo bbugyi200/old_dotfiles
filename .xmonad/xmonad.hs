@@ -129,17 +129,17 @@ myAdditionalKeys = [
    , ((alt, xK_Tab), nextScreen)
 
    -- Swap Screens
-   , ((alt, xK_s), sequence_ [swapNextScreen, removeEmptyWorkspace])
+   , ((alt, xK_s), sequence_ [swapNextScreen, spawn "removeEmptyWorkspace"])
 
    -- Send current WS to Next Screen
    , ((super, xK_slash), sequence_ [swapNextScreen, toggleWS, nextScreen]) -- send focus
    , ((super, xK_backslash), sequence_ [swapNextScreen, toggleWS]) -- don't send focus
 
    -- Shift current window to MISC
-   , ((ctrl, xK_m), sequence_ [addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspace, windows $ W.view "MISC"])
+   , ((ctrl, xK_m), sequence_ [addHiddenWorkspace "MISC", windows $ W.shift "MISC", spawn "removeEmptyWorkspace", windows $ W.view "MISC"])
 
    -- Shift current window to _______
-   , ((super .|. alt, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS, withWorkspaceIndex W.shift 1, removeEmptyWorkspace, withWorkspaceIndex W.view 1])
+   , ((super .|. alt, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS, withWorkspaceIndex W.shift 1, spawn "removeEmptyWorkspace", withWorkspaceIndex W.view 1])
 
    -- Create new WS named _______
    , ((super, xK_n), addWorkspacePrompt myXPConfig)
@@ -210,7 +210,7 @@ scratchpads = [ NS "scratchpad" scratchpad (role =? "scratchpad")
                     (customFloating $ W.RationalRect l t w h)]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
-                scratchpad = "termite -r scratchpad -d ~/Dropbox/notes" 
+                scratchpad = "termite -r scratchpad --class scratchpad -d ~/Dropbox/notes" 
                 h = 0.5
                 w = 0.5
                 t = 0.4  -- Distance from top edge
@@ -247,12 +247,12 @@ main = do
           , logHook                 = dynamicLogWithPP xmobarPP
             { ppOutput                = hPutStrLn xmproc
             , ppOrder                 = \(ws:l:t:_)   -> [ws]
-            , ppCurrent               = xmobarColor "yellow" "" . wrap "[" "]"
+            , ppCurrent               = xmobarColor "yellow" "" . wrap "[" "]" . noScratchPad
             , ppHidden                = xmobarColor "white" "" . noScratchPad
             , ppHiddenNoWindows       = xmobarColor "darkgrey" "" . noScratchPad
             , ppWsSep                 = "    "
             , ppTitle                 = xmobarColor "green"  "" . shorten 40
-            , ppVisible               = xmobarColor "yellow" ""
+            , ppVisible               = xmobarColor "yellow" "" .noScratchPad
             , ppUrgent                = xmobarColor "red" "yellow"
             } >> ewmhDesktopsLogHook <+> dynamicLogXinerama
       } `additionalKeys` myAdditionalKeys

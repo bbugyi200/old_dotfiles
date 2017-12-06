@@ -9,7 +9,6 @@ alias ccat='pygmentize -g'
 alias time='/usr/bin/time'
 alias sozsh='source ~/Dropbox/dotfiles/.zshrc'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
-alias rst='killall panel-init && panel-init'
 alias ssh-athena='ssh -p 34857 bryan@173.71.68.88'
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
@@ -42,11 +41,6 @@ tsm-add() { transmission-remote -a $1; }
 tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250; }
 tsm-rm() { transmission-remote -t$1 -r; }
 tsm-purge() { transmission-remote -t$1 -rad; }
-
-
-# ~~~~~ Hamster Functions ~~~~~
-ham-start() { hamster start "$@" && /home/bryan/Dropbox/scripts/python/panel-hamster.py; }
-ham-stop() { hamster stop && /home/bryan/Dropbox/scripts/python/panel-hamster.py; }
 
 # ~~~~~ TMUX FUNCTIONS ~~~~~
 # Initialize different tmux environments
