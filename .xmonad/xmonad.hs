@@ -19,7 +19,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
 import Data.Maybe (isNothing)
 import XMonad.Prompt
-import XMonad.Util.Scratchpad
+import XMonad.Util.NamedScratchpad
 
 import qualified XMonad.StackSet as W
 
@@ -30,6 +30,14 @@ zip4 _ _ [] _ = []
 zip4 _ _ _ [] = []
 zip4 (w:ws) (x:xs) (y:ys) (z:zs) = [(w,x,y,z)] ++ zip4 ws xs ys zs
 
+-- Function that prevents cycling to workspaces available on other screens
+hiddenNotNSP :: X (WindowSpace -> Bool)
+hiddenNotNSP = do
+  hs <- gets $ map W.tag . W.hidden . windowset
+  return (\w -> (W.tag w) /= "NSP" && (W.tag w) `elem` hs)
+
+-- Used to filter out NSP from xmobar
+noScratchPad ws = if ws == "NSP" then "" else ws
 ------------------------------- Key Bindings ----------------------------------
 
 -- Masks
@@ -51,18 +59,21 @@ myAdditionalKeys = [
 
    -- Alarm
    , ((super, xK_a), spawn "alarm-xmonad")
-   , ((super, xK_s), spawn "alarm-xmonad --stop")
+   , ((super .|. shift, xK_a), spawn "alarm-xmonad --stop")
+
+   -- Scratchpad
+   , ((super, xK_s), namedScratchpadAction scratchpads "scratchpad")
 
    -- Close Focused Window
    , ((alt, xK_w), spawn "close-window")
 
    -- Prev/Next Hidden NonEmpty Workspace
-   , ((alt, xK_bracketleft), moveTo Prev HiddenNonEmptyWS)
-   , ((alt, xK_bracketright), moveTo Next HiddenNonEmptyWS)
+   , ((alt, xK_bracketleft), moveTo Prev (WSIs hiddenNotNSP))
+   , ((alt, xK_bracketright), moveTo Next (WSIs hiddenNotNSP))
 
    -- Prev/Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((super, xK_bracketleft), sequence_ [nextScreen, moveTo Prev HiddenNonEmptyWS, prevScreen])
-   , ((super, xK_bracketright), sequence_ [nextScreen, moveTo Next HiddenNonEmptyWS, prevScreen])
+   , ((super, xK_bracketleft), sequence_ [nextScreen, moveTo Prev (WSIs hiddenNotNSP), prevScreen])
+   , ((super, xK_bracketright), sequence_ [nextScreen, moveTo Next (WSIs hiddenNotNSP), prevScreen])
 
    -- Toggle to Last Workspace
    , ((alt, xK_o), toggleWS)
@@ -195,8 +206,19 @@ myLayout = tiled ||| Mirror tiled ||| Full
     ratio = 1/2
     delta = 3/100
 
+scratchpads = [ NS "scratchpad" scratchpad (role =? "scratchpad") 
+                    (customFloating $ W.RationalRect l t w h)]
+            where 
+                role = stringProperty "WM_WINDOW_ROLE"
+                scratchpad = "termite -r scratchpad -d ~/Dropbox/notes" 
+                h = 0.5
+                w = 0.5
+                t = 0.4  -- Distance from top edge
+                l = 0.25
+
 myManageHook = composeAll
     [ manageSpawn
+    , namedScratchpadManageHook scratchpads
     , className=? "Galculator"      --> doFloat
     , className=? "Pinentry"        --> doFloat]
 
@@ -226,8 +248,8 @@ main = do
             { ppOutput                = hPutStrLn xmproc
             , ppOrder                 = \(ws:l:t:_)   -> [ws]
             , ppCurrent               = xmobarColor "yellow" "" . wrap "[" "]"
-            , ppHidden                = xmobarColor "white" ""
-            , ppHiddenNoWindows       = xmobarColor "darkgrey" ""
+            , ppHidden                = xmobarColor "white" "" . noScratchPad
+            , ppHiddenNoWindows       = xmobarColor "darkgrey" "" . noScratchPad
             , ppWsSep                 = "    "
             , ppTitle                 = xmobarColor "green"  "" . shorten 40
             , ppVisible               = xmobarColor "yellow" ""
