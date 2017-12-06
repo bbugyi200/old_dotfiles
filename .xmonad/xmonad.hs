@@ -20,8 +20,10 @@ import XMonad.Actions.CycleWS
 import Data.Maybe (isNothing)
 import XMonad.Prompt
 import XMonad.Util.NamedScratchpad
+import Control.Monad (liftM)
 
 import qualified XMonad.StackSet as W
+import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 
 ---------------------------------- Functions ----------------------------------
 zip4 [] _ _ _ = []
@@ -38,6 +40,16 @@ hiddenNotNSP = do
 
 -- Used to filter out NSP from xmobar
 noScratchPad ws = if ws == "NSP" then "" else ws
+
+-- | This is a re-implementation of DW.withNthworkspace with "skipTags"
+-- added to filter out NSP.
+withNthWorkspace' :: (String -> WindowSet -> WindowSet) -> Int -> X ()
+withNthWorkspace' job wnum = do
+    sort <- DW.getSortByOrder
+    ws <- gets (map W.tag . sort . namedScratchpadFilterOutWorkspace . W.workspaces . windowset)
+    case drop wnum ws of
+        (w:_) -> windows $ job w
+        []    -> return ()
 ------------------------------- Key Bindings ----------------------------------
 
 -- Masks
@@ -76,7 +88,7 @@ myAdditionalKeys = [
    , ((super, xK_bracketright), sequence_ [nextScreen, moveTo Next (WSIs hiddenNotNSP), prevScreen])
 
    -- Toggle to Last Workspace
-   , ((alt, xK_o), toggleWS)
+   , ((super, xK_o), toggleWS' ["NSP"])
 
    -- Prev/Next Tmux Session/Window
    , ((alt, xK_9), spawn "tmux switchc -p")
@@ -132,14 +144,14 @@ myAdditionalKeys = [
    , ((alt, xK_s), sequence_ [swapNextScreen, spawn "removeEmptyWorkspace"])
 
    -- Send current WS to Next Screen
-   , ((super, xK_slash), sequence_ [swapNextScreen, toggleWS, nextScreen]) -- send focus
-   , ((super, xK_backslash), sequence_ [swapNextScreen, toggleWS]) -- don't send focus
+   , ((super, xK_slash), sequence_ [swapNextScreen, toggleWS' ["NSP"], nextScreen]) -- send focus
+   , ((super, xK_backslash), sequence_ [swapNextScreen, toggleWS' ["NSP"]]) -- don't send focus
 
    -- Shift current window to MISC
-   , ((ctrl, xK_m), sequence_ [addHiddenWorkspace "MISC", windows $ W.shift "MISC", spawn "removeEmptyWorkspace", windows $ W.view "MISC"])
+   , ((ctrl, xK_m), sequence_ [addHiddenWorkspace "MISC", windows $ W.shift "MISC", windows $ W.view "MISC", toggleWS' ["NSP"], spawn "removeEmptyWorkspace"])
 
    -- Shift current window to _______
-   , ((super .|. alt, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS, withWorkspaceIndex W.shift 1, spawn "removeEmptyWorkspace", withWorkspaceIndex W.view 1])
+   , ((super .|. alt, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS' ["NSP"], withWorkspaceIndex W.shift 1, withWorkspaceIndex W.view 1, toggleWS' ["NSP"], spawn "removeEmptyWorkspace"])
 
    -- Create new WS named _______
    , ((super, xK_n), addWorkspacePrompt myXPConfig)
@@ -168,12 +180,12 @@ myAdditionalKeys = [
       ]
 
    -- Shift; Focus
-   ++ [((super, k), sequence_ [withNthWorkspace W.shift i, withNthWorkspace W.view i])
+   ++ [((super, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
    -- View Workspace
-   ++ [((ctrl, k), withNthWorkspace W.view i)
+   ++ [((ctrl, k), withNthWorkspace' W.view i)
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
@@ -247,12 +259,13 @@ main = do
           , logHook                 = dynamicLogWithPP xmobarPP
             { ppOutput                = hPutStrLn xmproc
             , ppOrder                 = \(ws:l:t:_)   -> [ws]
-            , ppCurrent               = xmobarColor "yellow" "" . wrap "[" "]" . noScratchPad
-            , ppHidden                = xmobarColor "white" "" . noScratchPad
-            , ppHiddenNoWindows       = xmobarColor "darkgrey" "" . noScratchPad
+            , ppCurrent               = xmobarColor "yellow" "" . wrap "[" "]"
+            , ppHidden                = xmobarColor "white" ""
+            , ppHiddenNoWindows       = xmobarColor "darkgrey" ""
             , ppWsSep                 = "    "
             , ppTitle                 = xmobarColor "green"  "" . shorten 40
-            , ppVisible               = xmobarColor "yellow" "" .noScratchPad
+            , ppVisible               = xmobarColor "yellow" ""
             , ppUrgent                = xmobarColor "red" "yellow"
+            , ppSort                  = (namedScratchpadFilterOutWorkspace .) `liftM` DW.getSortByOrder
             } >> ewmhDesktopsLogHook <+> dynamicLogXinerama
       } `additionalKeys` myAdditionalKeys
