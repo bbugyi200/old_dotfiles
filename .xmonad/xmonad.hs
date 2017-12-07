@@ -98,7 +98,7 @@ myAdditionalKeys = [
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
-   , ((alt .|. super, xK_space), sequence_ [addWorkspace "MISC", spawn "dmenu_extended_run"])
+   , ((super, xK_space), sequence_ [addWorkspace "MISC", spawn "dmenu_extended_run"])
 
    -- Open New Book in Okular
    , ((alt, xK_o), spawn "dmenu_books --application=okular")
@@ -148,13 +148,10 @@ myAdditionalKeys = [
    , ((super, xK_backslash), sequence_ [swapNextScreen, toggleWS' ["NSP"]]) -- don't send focus
 
    -- Shift current window to MISC
-   , ((ctrl, xK_m), sequence_ [addHiddenWorkspace "MISC", windows $ W.shift "MISC", windows $ W.view "MISC", toggleWS' ["NSP"], spawn "removeEmptyWorkspace"])
+   , ((super, xK_m), sequence_ [addHiddenWorkspace "MISC", windows $ W.shift "MISC", windows $ W.view "MISC", toggleWS' ["NSP"], spawn "removeEmptyWorkspace"])
 
    -- Shift current window to _______
-   , ((super .|. alt, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS' ["NSP"], withWorkspaceIndex W.shift 1, withWorkspaceIndex W.view 1, toggleWS' ["NSP"], spawn "removeEmptyWorkspace"])
-
-   -- Create new WS named _______
-   , ((super, xK_n), addWorkspacePrompt myXPConfig)
+   , ((super, xK_n), sequence_ [addWorkspacePrompt myXPConfig, setWorkspaceIndex 1, toggleWS' ["NSP"], withWorkspaceIndex W.shift 1, withWorkspaceIndex W.view 1, toggleWS' ["NSP"], spawn "removeEmptyWorkspace"])
    ]
 
    -- Hamster Numpad Bindings
