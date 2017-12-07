@@ -177,7 +177,7 @@ myAdditionalKeys = [
       ]
 
    -- Shift; Focus
-   ++ [((super, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
+   ++ [((super, k), sequence_ [withNthWorkspace' W.shift i, removeEmptyWorkspace, withNthWorkspace' W.view i])
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 

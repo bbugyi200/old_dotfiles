@@ -1,0 +1,6 @@
+*.swp
+*~
+*.pyc
+venv/*
+__pycache__/*
+.localaliases
