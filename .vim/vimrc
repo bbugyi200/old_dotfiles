@@ -177,6 +177,7 @@ nmap <C-g> :Gstatus<CR>
 
 """"""""""""""""""""""""""""""
 "  Split and Tab Settings  "
+" See: http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits "
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()

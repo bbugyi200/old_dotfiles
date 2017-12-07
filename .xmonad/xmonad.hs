@@ -123,9 +123,9 @@ myAdditionalKeys = [
    , ((super, xK_KP_Insert), spawn "ham stop")
 
    -- Tmux Send-Screen Hacks
-   , ((alt, xK_e), spawn "clear_screen")
-   , ((alt, xK_q), spawn "quit_screen")
-   , ((alt, xK_k), spawn "kill_screen")
+   , ((alt, xK_e), spawn "tm-send --action=clear")
+   , ((alt, xK_q), spawn "tm-send --action=quit")
+   , ((alt, xK_k), spawn "tm-kill")
 
    -- clipmenu
    , ((alt .|. shift, xK_c), spawn "clipmenu")
