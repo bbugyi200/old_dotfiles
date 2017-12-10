@@ -228,7 +228,6 @@ scratchpads = [ NS "scratchpad" scratchpad (role =? "scratchpad")
 myManageHook = composeAll
     [ manageSpawn
     , namedScratchpadManageHook scratchpads
-    , className=? "Galculator"      --> doFloat
     , className=? "Pinentry"        --> doFloat]
 
 myStartupHook = ewmhDesktopsStartup
@@ -263,6 +262,6 @@ main = do
             , ppTitle                 = xmobarColor "green"  "" . shorten 40
             , ppVisible               = xmobarColor "yellow" ""
             , ppUrgent                = xmobarColor "red" "yellow"
-            , ppSort                  = (namedScratchpadFilterOutWorkspace .) `liftM` DW.getSortByOrder
+            , ppSort                  = (namedScratchpadFilterOutWorkspace .) `liftM` getSortByIndex
             } >> ewmhDesktopsLogHook <+> dynamicLogXinerama
       } `additionalKeys` myAdditionalKeys
