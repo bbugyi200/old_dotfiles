@@ -29,6 +29,7 @@ alias tree='clear && tree -I "venv*|__pycache__*"'
 alias rstwifi='systemctl restart netctl-auto@wlo1.service'
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt ~/Dropbox/notes/project_schedule.txt'
 alias la='LocalAlias'
+alias nlog='git log --oneline | nl -nln -v 0 | less'
 
 # -------------------------------- FUNCTIONS ---------------------------------
 

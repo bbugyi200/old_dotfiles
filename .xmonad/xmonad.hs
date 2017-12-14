@@ -172,7 +172,7 @@ myAdditionalKeys = [
    ++ [((super, key), sequence_ [nextScreen, addWorkspace ws, spawnOn ws ("WS_is_Empty && " ++ cmd)])
        | (key,cmd,ws) <- zip3 
        [xK_c,xK_z]
-       ["google-chrome-stable","okular"]
+       ["google-chrome-stable","zathura"]
        ["WEB2","PDF2"]
       ]
 
