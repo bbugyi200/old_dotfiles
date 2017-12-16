@@ -26,12 +26,6 @@ import qualified XMonad.StackSet as W
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 
 ---------------------------------- Functions ----------------------------------
-zip4 [] _ _ _ = []
-zip4 _ [] _ _ = []
-zip4 _ _ [] _ = []
-zip4 _ _ _ [] = []
-zip4 (w:ws) (x:xs) (y:ys) (z:zs) = [(w,x,y,z)] ++ zip4 ws xs ys zs
-
 -- Function that prevents cycling to workspaces available on other screens
 hiddenNotNSP :: X (WindowSpace -> Bool)
 hiddenNotNSP = do
@@ -71,7 +65,7 @@ myAdditionalKeys = [
 
    -- Alarm
    , ((super, xK_a), spawn "alarm-xmonad")
-   , ((super .|. shift, xK_a), spawn "alarm-xmonad --stop && sleep 1 && xdotool key ctrl+space")
+   , ((super .|. shift, xK_a), spawn "alarm-xmonad --stop && sleep 0.5 && xdotool key ctrl+space")
 
    -- Scratchpad
    , ((super, xK_s), namedScratchpadAction scratchpads "scratchpad")
@@ -166,28 +160,35 @@ myAdditionalKeys = [
       ]
 
    -- Launch Applications
-   ++ [((alt, key), raiseNextMaybe (sequence_ [addWorkspace ws, (spawnOn ws $ cmd)]) (className =? cls))
-       | (key, cmd, cls, ws) <- zip4
-       [xK_x, xK_c, xK_z, xK_a, xK_1, xK_2]
-       ["termite -e 'tm-init Terminal'","google-chrome-stable","okular","anki","hamster","slack"]
-       ["Termite","Google-chrome","okular","Anki","Hamster","Slack"]
-       ["TERM","WEB","PDF","ANKI","HAMSTER","SLACK"]
+   ++ [((alt, key), sequence_ [addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
+       | (key, cmd, ws) <- zip3
+       [xK_x, xK_c, xK_z, xK_v, xK_a, xK_1, xK_2]
+       ["termite -e 'tm-init Terminal'","google-chrome-stable","zathura","okular","anki","hamster","slack"]
+       ["TERM","WEB","ZATHURA","OKULAR","ANKI","HAMSTER","SLACK"]
       ]
 
-   -- Raise or Run Second Instance of an Application
-   ++ [((super, key), sequence_ [nextScreen, addWorkspace ws, spawnOn ws ("WS_is_Empty && " ++ cmd)])
+   -- Launch Second Applications
+   ++ [((alt .|. super, key), sequence_ [addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
+       | (key, cmd, ws) <- zip3
+       [xK_x, xK_z]
+       ["google-chrome-stable", "zathura"]
+       ["WEB'", "ZATHURA'"]
+      ]
+
+   -- Launch Second Applications (on next screen)
+   ++ [((super, key), sequence_ [nextScreen, addWorkspace ws, spawnOn ws $ "WS_is_Empty && " ++ cmd])
        | (key,cmd,ws) <- zip3 
        [xK_c,xK_z]
        ["google-chrome-stable","zathura"]
-       ["WEB2","PDF2"]
+       ["WEB'","ZATHURA'"]
       ]
 
-   -- Shift; Focus
+   -- Shift to WS; then Focus WS
    ++ [((super, k), sequence_ [withNthWorkspace' W.shift i, removeEmptyWorkspace, withNthWorkspace' W.view i])
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
-   -- View Workspace
+   -- View WS
    ++ [((ctrl, k), withNthWorkspace' W.view i)
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
