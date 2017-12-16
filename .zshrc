@@ -7,18 +7,29 @@ source /home/bryan/Dropbox/dotfiles/.globrc
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 # ----------------------------------- ALIASES --------------------------------
+# --- Suffix Aliases
+# Zathura
 alias -s pdf="zathura"
 alias -s epub="zathura"
 alias -s djvu="zathura"
+
+# LibreOffice
+alias -s doc="/usr/lib/libreoffice/program/soffice.bin --writer"
 alias -s docx="/usr/lib/libreoffice/program/soffice.bin --writer"
 alias -s odt="/usr/lib/libreoffice/program/soffice.bin --writer"
 alias -s ppt="/usr/lib/libreoffice/program/soffice.bin --impress"
+
+# Imv
 alias -s png="imv"
 alias -s pcx="imv"
 alias -s jpg="imv"
 alias -s jpeg="imv"
+
+# Miscellaneous
 alias -s git="git clone"
 
+
+# --- Global Aliases
 alias -g @@="&> /dev/null & disown"
 alias -g X="&& exit"
 alias -g ::="| grep"
