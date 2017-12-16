@@ -71,7 +71,7 @@ myAdditionalKeys = [
 
    -- Alarm
    , ((super, xK_a), spawn "alarm-xmonad")
-   , ((super .|. shift, xK_a), spawn "alarm-xmonad --stop")
+   , ((super .|. shift, xK_a), spawn "alarm-xmonad --stop && sleep 1 && xdotool key ctrl+space")
 
    -- Scratchpad
    , ((super, xK_s), namedScratchpadAction scratchpads "scratchpad")
@@ -140,8 +140,14 @@ myAdditionalKeys = [
    , ((alt, xK_backslash), nextScreen)
    , ((alt, xK_Tab), nextScreen)
 
-   -- Swap Screens
+   -- Swap
    , ((alt, xK_s), sequence_ [swapNextScreen, spawn "removeEmptyWorkspace"])
+   , ((alt, xK_h), windows W.swapUp)
+   , ((alt, xK_l), windows W.swapDown)
+
+   -- Expand or Shrink Master Area
+   , ((super, xK_j), sendMessage Shrink)
+   , ((super, xK_k), sendMessage Expand)
 
    -- Send current WS to Next Screen
    , ((super, xK_slash), sequence_ [swapNextScreen, toggleWS' ["NSP"], nextScreen]) -- send focus
