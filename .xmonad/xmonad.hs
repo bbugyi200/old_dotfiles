@@ -21,6 +21,7 @@ import Data.Maybe (isNothing)
 import XMonad.Prompt
 import XMonad.Util.NamedScratchpad
 import Control.Monad (liftM)
+import Graphics.X11.ExtraTypes.XF86
 
 import qualified XMonad.StackSet as W
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
@@ -69,6 +70,7 @@ myAdditionalKeys = [
 
    -- Scratchpad
    , ((super, xK_s), namedScratchpadAction scratchpads "scratchpad")
+   , ((0, xF86XK_Calculator), namedScratchpadAction scratchpads "calculator")
 
    -- Close Focused Window
    , ((alt, xK_w), spawn "close-window")
@@ -122,7 +124,7 @@ myAdditionalKeys = [
    , ((alt, xK_k), spawn "tm-kill")
 
    -- clipmenu
-   , ((alt .|. shift, xK_c), spawn "clipmenu")
+   , ((ctrl .|. alt, xK_c), spawn "clipmenu")
 
    -- screenlock
    , ((super, xK_l), spawn "screenlock")
@@ -223,6 +225,8 @@ myLayout = tiled ||| Mirror tiled ||| Full
     delta = 3/100
 
 scratchpads = [ NS "scratchpad" scratchpad (role =? "scratchpad") 
+                    (customFloating $ W.RationalRect l t w h)
+              , NS "calculator" "galculator" (className =? "Galculator")
                     (customFloating $ W.RationalRect l t w h)]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
@@ -235,6 +239,7 @@ scratchpads = [ NS "scratchpad" scratchpad (role =? "scratchpad")
 myManageHook = composeAll
     [ manageSpawn
     , namedScratchpadManageHook scratchpads
+    , className=? "Galculator"      --> doFloat
     , className=? "Pinentry"        --> doFloat]
 
 myStartupHook = ewmhDesktopsStartup
