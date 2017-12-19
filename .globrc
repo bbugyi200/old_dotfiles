@@ -33,7 +33,9 @@ alias gstat='git status -s'
 alias glog='git log --oneline --decorate --graph'
 alias gcach='git diff --cached'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
-gstalk() { git log -L "1:$1"; }
+alias gadd='git add'
+alias gcom='git commit'
+alias gco='git checkout'
 
 # ----- Safety
 alias rm="rm -i"
