@@ -167,23 +167,15 @@ myAdditionalKeys = [
        | (key, cmd, ws) <- zip3
        [xK_x, xK_c, xK_z, xK_v, xK_a, xK_1, xK_2]
        ["termite -e 'tm-init Terminal'","google-chrome-stable","zathura","okular","anki","hamster","slack"]
-       ["TERM","WEB","ZATHURA","OKULAR","ANKI","HAMSTER","SLACK"]
+       ["TERM","WEB","ZATH","OKULAR","ANKI","HAMSTER","SLACK"]
       ]
 
    -- Launch Second Applications
-   ++ [((alt .|. super, key), sequence_ [addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
+   ++ [((super, key), sequence_ [addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
        [xK_x, xK_z]
        ["google-chrome-stable", "zathura"]
-       ["WEB'", "ZATHURA'"]
-      ]
-
-   -- Launch Second Applications (on next screen)
-   ++ [((super, key), sequence_ [nextScreen, addWorkspace ws, spawnOn ws $ "WS_is_Empty && " ++ cmd])
-       | (key,cmd,ws) <- zip3 
-       [xK_c,xK_z]
-       ["google-chrome-stable","zathura"]
-       ["WEB'","ZATHURA'"]
+       ["WEB'", "ZATH'"]
       ]
 
    -- Shift to WS; then Focus WS
