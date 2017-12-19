@@ -58,7 +58,7 @@ myAdditionalKeys = [
      ((alt, xK_r), spawn "xmonad --recompile && xmonad --restart")
 
    -- Next Layout
-   , ((super, xK_space), sendMessage NextLayout)
+   , ((alt .|. super, xK_space), sendMessage NextLayout)
 
    -- Remove Current Workspace
    , ((super, xK_r), removeWorkspace)
@@ -71,6 +71,7 @@ myAdditionalKeys = [
    -- Scratchpad
    , ((super, xK_s), namedScratchpadAction scratchpads "scratchpad")
    , ((0, xF86XK_Calculator), namedScratchpadAction scratchpads "calculator")
+   , ((ctrl .|. super, xK_c), namedScratchpadAction scratchpads "calculator")
 
    -- Close Focused Window
    , ((alt, xK_w), spawn "close-window")
@@ -108,11 +109,11 @@ myAdditionalKeys = [
 
    -- Shutdown
    , ((ctrl .|. super .|. alt, xK_s),
-   spawn "confirm -d 'ham stop && dbox_sync && shutdown now'")
+   spawn "confirm --dmenu 'ham stop && dbox_sync && shutdown now'")
 
    -- Restart
    , ((ctrl .|. super .|. alt, xK_r),
-   spawn "confirm -d 'ham stop && systemctl reboot -i'")
+   spawn "confirm --dmenu 'ham stop && systemctl reboot -i'")
 
    -- Hamster Start and Stop
    , ((super, xK_KP_Delete), spawn "ham start")
@@ -158,7 +159,7 @@ myAdditionalKeys = [
 
    -- Hamster Numpad Bindings
    ++ [((super, key), spawn $ "ham start " ++ (show i))
-       | (i, key) <- zip [1 .. 5] [xK_KP_End, xK_KP_Down, xK_KP_Page_Down, xK_KP_Left, xK_KP_Begin]
+       | (i, key) <- zip [1..9] [xK_KP_End,xK_KP_Down,xK_KP_Page_Down,xK_KP_Left,xK_KP_Begin,xK_KP_Right,xK_KP_Home,xK_KP_Up,xK_KP_Page_Up]
       ]
 
    -- Launch Applications
