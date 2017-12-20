@@ -6,16 +6,6 @@ set show-recent 25
 
 set link-zoom false
 
-map <C-n> feedkeys ":exec notepad --open %<Return>"
-map <C-s> feedkeys ":exec notepad --open -b %<Return>"
-map <Space> feedkeys ":exec notepad --put=major %<Return>"
-map <C-Space> feedkeys ":exec notepad --put=major --cut=none %<Return>"
-map <S-Space> feedkeys ":exec notepad --put=minor %<Return>"
-map <Return> feedkeys ":exec notepad --dmenu --put=major %<Return>"
-map <S-Return> feedkeys ":exec notepad --dmenu --put=minor %<Return>"
-map <A-d> feedkeys ":exec notepad --undo %<Return>"
-
-
 map bb focus_inputbar ":bmark "
 map bs feedkeys ":bmark stop<Return>"
 map bt feedkeys ":bmark TOC<Return>"
