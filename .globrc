@@ -28,9 +28,9 @@ alias Javac='javac -d ../bin'
 alias Jdb='jdb -classpath "../bin"'
 
 # ----- Git
+alias glog='git log --oneline --decorate --graph'
 alias gnum="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias gstat='git status -s'
-alias glog='git log --oneline --decorate --graph'
 alias gcach='git diff --cached'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gadd='git add'

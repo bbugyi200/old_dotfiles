@@ -1,6 +1,10 @@
 -------------------------------------------------------------------------------
 -------------------------------- Imports --------------------------------------
 import System.IO
+import Data.Maybe (isNothing)
+import Control.Monad (liftM)
+import Graphics.X11.ExtraTypes.XF86
+
 import XMonad
 import XMonad.Actions.PhysicalScreens
 import XMonad.Actions.WindowGo
@@ -17,11 +21,8 @@ import XMonad.Layout.IndependentScreens
 import XMonad.Util.WorkspaceCompare
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
-import Data.Maybe (isNothing)
 import XMonad.Prompt
 import XMonad.Util.NamedScratchpad
-import Control.Monad (liftM)
-import Graphics.X11.ExtraTypes.XF86
 
 import qualified XMonad.StackSet as W
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
@@ -173,7 +174,7 @@ myAdditionalKeys = [
    -- Launch Second Applications
    ++ [((super, key), sequence_ [addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
-       [xK_x, xK_z]
+       [xK_c, xK_z]
        ["google-chrome-stable", "zathura"]
        ["WEB'", "ZATH'"]
       ]
