@@ -120,10 +120,12 @@ myAdditionalKeys = [
    , ((super, xK_KP_Delete), spawn "ham start")
    , ((super, xK_KP_Insert), spawn "ham stop")
 
-   -- Tmux Send-Screen Hacks
+   -- 'tmux send-keys' Hacks
    , ((alt, xK_e), spawn "tm-send --action=clear")
    , ((alt, xK_q), spawn "tm-send --action=quit")
    , ((alt, xK_k), spawn "tm-kill")
+   , ((alt, xK_h), spawn "tmux send-keys 'cd && clear' 'Enter'")
+
 
    -- clipmenu
    , ((ctrl .|. alt, xK_c), spawn "clipmenu")
@@ -131,8 +133,9 @@ myAdditionalKeys = [
    -- screenlock
    , ((super, xK_l), spawn "screenlock")
 
-   -- Focus Local
-   , ((alt, xK_f), windows $ W.focusUp)
+   -- Local WS Commands
+   , ((alt, xK_f), windows $ W.focusUp)     -- Focus
+   , ((super, xK_f), windows W.swapDown)    -- Shift
 
    -- Next Screen
    , ((alt, xK_backslash), nextScreen)
@@ -140,8 +143,6 @@ myAdditionalKeys = [
 
    -- Swap
    , ((alt, xK_s), sequence_ [swapNextScreen, spawn "removeEmptyWorkspace"])
-   , ((alt, xK_h), windows W.swapUp)
-   , ((alt, xK_l), windows W.swapDown)
 
    -- Expand or Shrink Master Area
    , ((super, xK_j), sendMessage Shrink)
