@@ -123,8 +123,11 @@ myAdditionalKeys = [
    -- 'tmux send-keys' Hacks
    , ((alt, xK_e), spawn "tm-send --action=clear")
    , ((alt, xK_q), spawn "tm-send --action=quit")
+   , ((alt, xK_h), spawn "tm-send --action='cd && clear'")
+   , ((alt, xK_minus), spawn "tm-send --action='cd .. && clear'")
+   , ((alt, xK_equal), spawn "tm-send --action='popd; clear'")
    , ((alt, xK_k), spawn "tm-kill")
-   , ((alt, xK_h), spawn "tmux send-keys 'cd && clear' 'Enter'")
+   , ((alt, xK_m), spawn "tmux new-window")
 
 
    -- clipmenu

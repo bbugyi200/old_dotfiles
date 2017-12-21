@@ -37,7 +37,6 @@ alias -g ::="| grep"
 # -------------------------------- BINDINGS ----------------------------------
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
-bindkey -s "^[-" "popd && clear\n"
 
 # -------------------------------- FUNCTIONS ---------------------------------
 
