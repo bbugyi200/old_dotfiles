@@ -35,5 +35,4 @@ Config { font = "xft:Dina:pixelsize=13"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%" 
        }
