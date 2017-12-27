@@ -31,9 +31,6 @@ hiddenNotNSP = do
   hs <- gets $ map W.tag . W.hidden . windowset
   return (\w -> (W.tag w) /= "NSP" && (W.tag w) `elem` hs)
 
--- Used to filter out NSP from xmobar
-noScratchPad ws = if ws == "NSP" then "" else ws
-
 -- | This is a re-implementation of DW.withNthworkspace with "skipTags"
 -- added to filter out NSP.
 withNthWorkspace' :: (String -> WindowSet -> WindowSet) -> Int -> X ()
@@ -45,8 +42,10 @@ withNthWorkspace' job wnum = do
         []    -> return ()
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "athena" = "--template=\"%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%\""
-getXmobarTemplate "aphrodite" = "--template=\"%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%\""
+getXmobarTemplate "athena" = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
+getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "secondary" = "%cpu%  |  %memory%}%KVAY%{"  -- KVAY: Mount Holly; KSMQ: Piscataway Township
+
 ------------------------------- Key Bindings ----------------------------------
 
 -- Masks
@@ -57,7 +56,7 @@ super = mod4Mask
 
 myAdditionalKeys = [ 
    -- Restarts XMonad
-     ((alt, xK_r), spawn "xmonad --recompile && xmonad --restart")
+     ((alt, xK_r), spawn "killall xmobar && xmonad --recompile && xmonad --restart")
 
    -- Next Layout
    , ((alt .|. super, xK_space), sendMessage NextLayout)
@@ -238,12 +237,13 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "init-bg"
                 >> spawn "sleep 3 && volume-xmonad"
                 >> spawn "alarm-xmonad --resume"
+                >> spawn ("[[ $(x11screens) -ge 2 ]] && xmobar --screen=1 --template=\"" ++ (getXmobarTemplate "secondary") ++ "\" /home/bryan/.xmobarrc")
 
 -------------------------------- Main -----------------------------------------
 main :: IO ()
 main = do
     hostname <- getHostName
-    xmproc <- spawnPipe ("xmobar " ++ getXmobarTemplate hostname ++ " /home/bryan/.xmobarrc")
+    xmproc <- spawnPipe ("xmobar --template=\"" ++ getXmobarTemplate hostname ++ "\" /home/bryan/.xmobarrc")
     xmonad $ ewmh desktopConfig
         {
             terminal                = myTerminal
