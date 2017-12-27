@@ -41,40 +41,53 @@ withNthWorkspace' job wnum = do
         (w:_) -> windows $ job w
         []    -> return ()
 
+xmobarTempFmt :: String -> String
+xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
+
 getXmobarTemplate :: String -> String
 getXmobarTemplate "athena" = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
 getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
-getXmobarTemplate "secondary" = "%cpu%  |  %memory%}%KVAY%{"  -- KVAY: Mount Holly; KSMQ: Piscataway Township
+getXmobarTemplate "secondary" = "%cpu%  |  %memory%}%KVAY%{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
 
 ------------------------------- Key Bindings ----------------------------------
 
--- Masks
+-- Modifier Masks
 alt = mod1Mask
 ctrl = controlMask
 shift = shiftMask
 super = mod4Mask
 
 myAdditionalKeys = [ 
-   -- Restarts XMonad
-     ((alt, xK_r), spawn "killall xmobar && xmonad --recompile && xmonad --restart")
+   -- Alarm
+   ((super, xK_a), spawn "alarm-xmonad")
+
+   -- clipmenu
+   , ((alt .|. super, xK_c), spawn "clipmenu")
+
+   -- Close Focused Window
+   , ((alt, xK_w), spawn "close-window")
+
+   -- Expand or Shrink Master Area
+   , ((super, xK_j), sendMessage Shrink)
+   , ((super, xK_k), sendMessage Expand)
+
+   -- Hamster Start and Stop
+   , ((super, xK_KP_Delete), spawn "ham start")
+   , ((super, xK_KP_Insert), spawn "ham stop")
+
+   -- Local WS Commands
+   , ((alt, xK_f), windows $ W.focusUp)     -- Focus
+   , ((super, xK_f), windows W.swapDown)    -- Shift
 
    -- Next Layout
    , ((alt .|. super, xK_space), sendMessage NextLayout)
 
-   -- Remove Current Workspace
-   , ((super, xK_r), DW.removeWorkspace)
-   , ((ctrl .|. alt .|. shift, xK_n), DW.removeEmptyWorkspace) -- if Empty
+   -- Next Screen
+   , ((alt, xK_backslash), CW.nextScreen)
+   , ((alt, xK_Tab), CW.nextScreen)
 
-   -- Alarm
-   , ((super, xK_a), spawn "alarm-xmonad")
-
-   -- Scratchpad
-   , ((super, xK_s), NSP.namedScratchpadAction scratchpads "scratchpad")
-   , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator")
-   , ((ctrl .|. super, xK_c), NSP.namedScratchpadAction scratchpads "calculator")
-
-   -- Close Focused Window
-   , ((alt, xK_w), spawn "close-window")
+   -- Open New Book in Okular
+   , ((alt, xK_o), spawn "dmenu_books --application=okular")
 
    -- Prev/Next Hidden NonEmpty Workspace
    , ((alt, xK_bracketleft), CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP))
@@ -84,8 +97,53 @@ myAdditionalKeys = [
    , ((super, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen])
    , ((super, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen])
 
+   -- Program Launcher
+   , ((alt, xK_space), spawn "dmenu_extended_run")
+   , ((super, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "dmenu_extended_run"])
+
+   -- Restarts XMonad
+   , ((alt, xK_r), spawn "killall xmobar; xmonad --recompile && xmonad --restart")
+
+   -- Remove Workspaces
+   , ((super, xK_r), DW.removeWorkspace)  -- Remove Current Workspace
+   , ((ctrl .|. alt .|. shift, xK_n), DW.removeEmptyWorkspace) -- if Empty
+
+   -- Screenshot Commands
+   , ((alt, xK_Print), spawn "sshot")
+   , ((super, xK_Print), spawn "receipt_sshot")
+
+   -- Scratchpad
+   , ((super, xK_s), NSP.namedScratchpadAction scratchpads "scratchpad")
+   , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator")
+   , ((ctrl .|. super, xK_c), NSP.namedScratchpadAction scratchpads "calculator")
+
+   -- screenlock
+   , ((super, xK_l), spawn "screenlock")
+
+   -- Send current WS to Next Screen
+   , ((super, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- send focus
+   , ((super, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- don't send focus
+
+   -- Shift current window to MISC
+   , ((super, xK_m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", DW.removeEmptyWorkspace, windows $ W.view "MISC"])
+
+   -- Shift current window to _______
+   , ((alt .|. super, xK_n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1, CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1, DW.removeEmptyWorkspace, DW.withWorkspaceIndex W.view 1])
+
+   -- Shutdown / Restart
+   , ((ctrl .|. super .|. alt, xK_s),
+   spawn "confirm --dmenu 'ham stop && dbox_sync && shutdown now'")
+   , ((ctrl .|. super .|. alt, xK_r),
+   spawn "confirm --dmenu 'ham stop && systemctl reboot -i'")
+
+   -- Swap
+   , ((alt, xK_s), sequence_ [CW.swapNextScreen, spawn "removeEmptyWorkspace"])
+
    -- Toggle to Last Workspace
    , ((super, xK_o), CW.toggleWS' ["NSP"])
+
+   -- Toggle External Monitor
+   , ((alt, xK_m), spawn "toggle_monitor && sleep 1 && xdotool key alt+r")
 
    -- TMUX
    , ((alt, xK_9), spawn "tmux switchc -p")
@@ -100,61 +158,6 @@ myAdditionalKeys = [
    , ((alt, xK_equal), spawn "tm-send --action='popd; clear'")
    , ((alt, xK_h), spawn "tm-send --action \
         \ 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'")
-
-   -- Program Launcher
-   , ((alt, xK_space), spawn "dmenu_extended_run")
-   , ((super, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "dmenu_extended_run"])
-
-   -- Open New Book in Okular
-   , ((alt, xK_o), spawn "dmenu_books --application=okular")
-
-   -- Toggle External Monitor
-   , ((alt, xK_m), spawn "toggle_monitor")
-
-   -- Screenshot Commands
-   , ((alt, xK_Print), spawn "sshot")
-   , ((super, xK_Print), spawn "receipt_sshot")
-
-   -- Shutdown / Restart
-   , ((ctrl .|. super .|. alt, xK_s),
-   spawn "confirm --dmenu 'ham stop && dbox_sync && shutdown now'")
-   , ((ctrl .|. super .|. alt, xK_r),
-   spawn "confirm --dmenu 'ham stop && systemctl reboot -i'")
-
-   -- Hamster Start and Stop
-   , ((super, xK_KP_Delete), spawn "ham start")
-   , ((super, xK_KP_Insert), spawn "ham stop")
-
-   -- clipmenu
-   , ((alt .|. super, xK_c), spawn "clipmenu")
-
-   -- screenlock
-   , ((super, xK_l), spawn "screenlock")
-
-   -- Local WS Commands
-   , ((alt, xK_f), windows $ W.focusUp)     -- Focus
-   , ((super, xK_f), windows W.swapDown)    -- Shift
-
-   -- Next Screen
-   , ((alt, xK_backslash), CW.nextScreen)
-   , ((alt, xK_Tab), CW.nextScreen)
-
-   -- Swap
-   , ((alt, xK_s), sequence_ [CW.swapNextScreen, spawn "removeEmptyWorkspace"])
-
-   -- Expand or Shrink Master Area
-   , ((super, xK_j), sendMessage Shrink)
-   , ((super, xK_k), sendMessage Expand)
-
-   -- Send current WS to Next Screen
-   , ((super, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- send focus
-   , ((super, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- don't send focus
-
-   -- Shift current window to MISC
-   , ((super, xK_m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", DW.removeEmptyWorkspace, windows $ W.view "MISC"])
-
-   -- Shift current window to _______
-   , ((alt .|. super, xK_n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1, CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1, DW.removeEmptyWorkspace, DW.withWorkspaceIndex W.view 1])
    ]
 
    -- Hamster Numpad Bindings
@@ -237,13 +240,13 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "init-bg"
                 >> spawn "sleep 3 && volume-xmonad"
                 >> spawn "alarm-xmonad --resume"
-                >> spawn ("[[ $(x11screens) -ge 2 ]] && xmobar --screen=1 --template=\"" ++ (getXmobarTemplate "secondary") ++ "\" /home/bryan/.xmobarrc")
+                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "secondary") ++ " --screen=1")
 
 -------------------------------- Main -----------------------------------------
 main :: IO ()
 main = do
     hostname <- getHostName
-    xmproc <- spawnPipe ("xmobar --template=\"" ++ getXmobarTemplate hostname ++ "\" /home/bryan/.xmobarrc")
+    xmproc <- spawnPipe (xmobarTempFmt $ getXmobarTemplate hostname)
     xmonad $ ewmh desktopConfig
         {
             terminal                = myTerminal
