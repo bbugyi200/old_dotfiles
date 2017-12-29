@@ -37,6 +37,7 @@ Config { font = "xft:Dina:pixelsize=13"
                     , Run Weather "KSMQ" ["--template", "PISCATAWAY TWNSHP, NJ 08854  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"] 3000
 					, Run Com "poll-hamster" [] "hamster" 10
                     , Run Com "dbox-xmonad" [] "dropbox" 10
+                    , Run Com "pia-xmonad" [] "pia" 50
                     , Run PipeReader " :/tmp/volume-fifo" "volume"
                     , Run PipeReader " :/tmp/alarm-fifo" "alarm"
                     , Run UnsafeStdinReader

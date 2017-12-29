@@ -20,6 +20,7 @@ alias -s odt="/usr/lib/libreoffice/program/soffice.bin --writer"
 alias -s ppt="/usr/lib/libreoffice/program/soffice.bin --impress"
 
 # Imv
+alias -s xbm="imv"
 alias -s png="imv"
 alias -s pcx="imv"
 alias -s jpg="imv"

@@ -120,7 +120,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 " You can disable specific warnings for <checker> by using
 " the 'g:syntastic_<ext>_<checker>_args' variable
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501,E701,E702'
+let g:syntastic_python_flake8_args='--ignore=E402,E501,E701,E702'
 
 let g:syntastic_tex_checkers=['chktex']
 let g:syntastic_tex_chktex_args='-n 1'
@@ -225,6 +225,7 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 endif
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#auto_vim_configuration = 0
+let g:jedi#auto_initialization = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = 0
 let g:neocomplete#force_omni_input_patterns.python = '[^. \t]\.\w*'

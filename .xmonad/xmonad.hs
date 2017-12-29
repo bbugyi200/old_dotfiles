@@ -45,8 +45,8 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "athena" = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
-getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%hamster%{ %alarm%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "athena" = "%UnsafeStdinReader% }%hamster%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
+getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%hamster%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "secondary" = "%cpu%  |  %memory%}%KVAY%{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
 
 ------------------------------- Key Bindings ----------------------------------
@@ -144,6 +144,9 @@ myAdditionalKeys = [
 
    -- Toggle External Monitor
    , ((alt, xK_m), spawn "toggle_monitor && sleep 1 && xdotool key alt+r")
+
+   -- Toggle PIA
+   , ((super, xK_p), spawn "PIA")
 
    -- TMUX
    , ((alt, xK_9), spawn "tmux switchc -p")

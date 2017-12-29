@@ -90,7 +90,6 @@ hview() {
 }
 
 # ----- MISCELLANEOUS
-alias sql="rlwrap sqlite3"
 alias mutt-gmail="mutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
 alias mutt-root='sudo mutt -f /var/spool/mail/root'
 alias lls="ls -alF"
@@ -110,7 +109,7 @@ tm () {
 	fi
 
 	SESS="$1"; shift
-	default_dir="$(/home/bryan/Dropbox/scripts/python/tmux_dir_lookup.py --get $SESS)"
+	default_dir="$(defaultTmuxDir --get $SESS)"
 	tmux new -s "$SESS" -c "$default_dir" -d
 	tmux switchc -t "$SESS"
 
