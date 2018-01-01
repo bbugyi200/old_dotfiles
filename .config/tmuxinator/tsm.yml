@@ -1,0 +1,16 @@
+# ~/.tmuxinator/tsm.yml
+
+root: <%= @settings["root"] %>
+name: tsm
+
+on_project_stop: killall -9 transmission-daemon; PIA stop
+
+windows:
+    - main:
+        layout: main-vertical
+        panes:
+            - stuff:
+                - tsm-start
+                - PIA start nyc
+            - other:
+                - tsm-watch

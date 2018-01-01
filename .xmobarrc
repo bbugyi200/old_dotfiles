@@ -27,12 +27,12 @@ Config { font = "xft:Dina:pixelsize=13"
                                   -- charged status
                                   , "-i"	, "⚡ <left>%"
 								 ] 50
-                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
-                     , Run Memory [ "-t", "Mem: <usedratio>%"
-                                  , "--Low",     "10"
-                                  , "--High",    "50"
-                                  , "--normal",  "green"
-                                  , "--high",    "red"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory [ "-t", "Mem: <usedratio>%"
+                                 , "--Low",     "10"
+                                 , "--High",    "50"
+                                 , "--normal",  "green"
+                                 , "--high",    "red"] 10
                     , Run Weather "KVAY" ["--template", "MOUNT HOLLY, NJ 08060  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"] 3000
                     , Run Weather "KSMQ" ["--template", "PISCATAWAY TWNSHP, NJ 08854  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"] 3000
 					, Run Com "poll-hamster" [] "hamster" 10

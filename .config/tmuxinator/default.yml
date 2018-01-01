@@ -1,0 +1,11 @@
+# ~/.config/tmuxinator/<%= name %>.yml
+
+root: <%%= @settings['root'] %>
+name: <%= name %>
+
+on_project_stop:
+
+windows:
+    - main:
+        layout: main-vertical
+        panes:

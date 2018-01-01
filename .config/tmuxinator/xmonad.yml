@@ -1,0 +1,16 @@
+# ~/.config/tmuxinator/xmonad.yml
+
+root: <%= @settings['root'] %>
+name: xmonad
+
+on_project_stop:
+
+windows:
+    - main:
+        layout: main-vertical
+        panes:
+            - vim ~/.xmonad/xmonad.hs ~/.xmobarrc /usr/share/xmonad/man/xmonad.hs
+            - tree
+            - configs:
+                - cd /home/bryan/.xmonad
+                - tree

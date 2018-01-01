@@ -30,11 +30,12 @@ alias Jdb='jdb -classpath "../bin"'
 # ----- Git
 alias glog='git log --oneline --decorate --graph'
 alias gnum="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
-alias gstat='git status -s'
+alias gstat='clear && git status'
+alias gwatch="watch -n 1 -c 'git status'"
 alias gcach='git diff --cached'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gadd='git add'
-alias gcom='git commit'
+alias gcom='git commit -v'
 alias gco='git checkout'
 
 # ----- Safety
@@ -100,23 +101,6 @@ alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv'
 alias rstwifi='systemctl restart netctl-auto@wlo1.service'
 alias la='LocalAlias'
-
-# Initialize different tmux environments
-tm () { 
-	if [[ -z "$1" ]]; then
-		tmux ls
-		return 0
-	fi
-
-	SESS="$1"; shift
-	default_dir="$(defaultTmuxDir --get $SESS)"
-	tmux new -s "$SESS" -c "$default_dir" -d
-	tmux switchc -t "$SESS"
-
-	if [ -f "/home/bryan/Dropbox/scripts/tmux-envs/pre/$SESS.sh" ]; then
-		"/home/bryan/Dropbox/scripts/tmux-envs/pre/$SESS.sh" "$@"
-	fi
-}
 
 # Prints the value of a variable
 pvar () { set | grep -i -e "^$1"; }

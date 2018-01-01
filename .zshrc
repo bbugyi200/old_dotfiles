@@ -2,6 +2,7 @@
 # ------------------------------ SOURCES -------------------------------------
 source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
 source /home/bryan/Dropbox/dotfiles/.globrc
+source /home/bryan/Dropbox/dotfiles/extras/tmuxinator.zsh
 
 # -------------------------- OH-MY-ZSH ---------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'

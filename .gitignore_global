@@ -5,3 +5,4 @@ venv/*
 __pycache__/*
 .localaliases
 .vimrc
+var/*

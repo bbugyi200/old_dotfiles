@@ -87,7 +87,7 @@ myAdditionalKeys = [
    , ((alt, xK_Tab), CW.nextScreen)
 
    -- Open New Book in Okular
-   , ((alt, xK_o), spawn "dmenu_books --application=okular")
+   , ((super, xK_o), spawn "dmenu_books --application=okular")
 
    -- Prev/Next Hidden NonEmpty Workspace
    , ((alt, xK_bracketleft), CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP))
@@ -140,7 +140,7 @@ myAdditionalKeys = [
    , ((alt, xK_s), sequence_ [CW.swapNextScreen, spawn "removeEmptyWorkspace"])
 
    -- Toggle to Last Workspace
-   , ((super, xK_o), CW.toggleWS' ["NSP"])
+   , ((alt, xK_o), CW.toggleWS' ["NSP"])
 
    -- Toggle External Monitor
    , ((alt, xK_m), spawn "toggle_monitor && sleep 1 && xdotool key alt+r")
@@ -157,8 +157,7 @@ myAdditionalKeys = [
    , ((alt, xK_k), spawn "tm-kill")
    , ((alt, xK_e), spawn "tm-send --action=clear")
    , ((alt, xK_q), spawn "tm-send --action=quit")
-   , ((alt, xK_minus), spawn "tm-send --action='clear && cd ..'")
-   , ((alt, xK_equal), spawn "tm-send --action='popd; clear'")
+   , ((alt, xK_minus), spawn "tm-send --action='popd; clear'")
    , ((alt, xK_h), spawn "tm-send --action \
         \ 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'")
    ]
@@ -178,7 +177,7 @@ myAdditionalKeys = [
       ]
 
    -- Launch Second Applications
-   ++ [((super, key), sequence_ [DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
+   ++ [((super, key), sequence_ [CW.nextScreen, DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
        [xK_c, xK_z]
        ["google-chrome-stable", "zathura"]

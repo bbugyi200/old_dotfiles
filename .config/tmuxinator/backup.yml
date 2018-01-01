@@ -1,0 +1,13 @@
+# ~/.config/tmuxinator/backup.yml
+
+root: <%= @settings['root'] %>
+name: backup
+
+on_project_stop:
+
+windows:
+    - main:
+        layout: main-vertical
+        panes:
+            - confirm 'external_backup'
+            - sudo mount /dev/sdc /media/bryan/perseus
