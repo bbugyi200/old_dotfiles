@@ -6,6 +6,12 @@ name: <%= name %>
 on_project_stop:
 
 windows:
-    - main:
+    - I:
         layout: main-vertical
         panes:
+            - master:
+                - clear
+    - II:
+        layout: main-vertical
+    - III:
+        layout: main-vertical
