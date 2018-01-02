@@ -120,7 +120,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 " You can disable specific warnings for <checker> by using
 " the 'g:syntastic_<ext>_<checker>_args' variable
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E123,E126,E128,E402,E501,E701,E702'
+let g:syntastic_python_flake8_args='--ignore=E123,E126,E127,E128,E402,E501,E701,E702'
 
 let g:syntastic_tex_checkers=['chktex']
 let g:syntastic_tex_chktex_args='-n 1'

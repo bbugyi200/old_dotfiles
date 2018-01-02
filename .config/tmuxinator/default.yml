@@ -13,5 +13,7 @@ windows:
                 - clear
     - II:
         layout: main-vertical
+        panes:
     - III:
         layout: main-vertical
+        panes:

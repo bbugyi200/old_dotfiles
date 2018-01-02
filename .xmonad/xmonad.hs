@@ -153,11 +153,12 @@ myAdditionalKeys = [
    , ((alt, xK_0), spawn "tmux switchc -n")
    , ((alt, xK_n), spawn "tmux next-window")
    , ((alt, xK_p), spawn "tmux previous-window")
-   , ((super, xK_n), spawn "tmux new-window -c $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))")
    , ((alt, xK_k), spawn "tm-kill")
    , ((alt, xK_e), spawn "tm-send --action=clear")
    , ((alt, xK_q), spawn "tm-send --action=quit")
-   , ((alt, xK_minus), spawn "tm-send --action='popd; clear'")
+   , ((alt, xK_minus), spawn "tm-send --action='pushu && popd; clear'")
+   , ((super, xK_minus), spawn "tm-send --action='clear && cd ../'")
+   , ((alt, xK_equal), spawn "tm-send --action='clear && cd $(popu)'")
    , ((alt, xK_h), spawn "tm-send --action \
         \ 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'")
    ]
@@ -179,9 +180,9 @@ myAdditionalKeys = [
    -- Launch Second Applications
    ++ [((super, key), sequence_ [CW.nextScreen, DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
-       [xK_c, xK_z]
-       ["google-chrome-stable", "zathura"]
-       ["WEB'", "ZATH'"]
+       [xK_c, xK_z, xK_v]
+       ["google-chrome-stable", "zathura", "zathura"]
+       ["WEB'", "ZATH'", "ZATH"]
       ]
 
    -- Shift to WS; then Focus WS
