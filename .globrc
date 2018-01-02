@@ -101,7 +101,13 @@ alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv'
 alias rstwifi='systemctl restart netctl-auto@wlo1.service'
 alias la='LocalAlias'
-alias pyx="python -m trace --ignore-dir $(python -c 'import os, sys; print(os.pathsep.join(sys.path[1:]))') -t"
+
+# Trace through Python program execution (python near-equivalent to 'set -x' in bash)
+pyx () {
+    target=$(which $1); [[ $target == *"not found" ]] && target=$1
+    shift
+    python -m trace --ignore-dir $(python -c 'import os, sys; print(os.pathsep.join(sys.path[1:]))') -t $target "$@"
+}
 
 # Prints the value of a variable
 pvar () { set | grep -i -e "^$1"; }
