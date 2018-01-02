@@ -22,6 +22,7 @@ import qualified XMonad.Prompt as P
 import qualified XMonad.Util.NamedScratchpad as NSP
 import qualified XMonad.Hooks.DynamicLog as DL
 import qualified XMonad.Actions.CycleWS as CW
+import qualified XMonad.Actions.WorkspaceNames as WN
 import qualified XMonad.Actions.DynamicWorkspaces as DW
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 
@@ -30,8 +31,7 @@ import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 hiddenNotNSP :: X (WindowSpace -> Bool)
 hiddenNotNSP = do
   hs <- gets $ map W.tag . W.hidden . windowset
-  ne <- return (isJust . W.stack)
-  return (\w -> (W.tag w) /= "NSP" && (W.tag w) `elem` hs && ne w)
+  return (\w -> (W.tag w) /= "NSP" && (W.tag w) `elem` hs)
 
 -- | This is a re-implementation of DW.withNthworkspace with "skipTags"
 -- added to filter out NSP.
@@ -46,27 +46,21 @@ withNthWorkspace' job wnum = do
 xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
-isEmpty :: String -> X Bool
-isEmpty t = do wsl <- gets $ W.workspaces . windowset
-               let mws = find (\ws -> W.tag ws == t) wsl
-               return $ maybe True (isNothing . W.stack) mws
-
 getXmobarTemplate :: String -> String
 getXmobarTemplate "athena" = "%UnsafeStdinReader% }%hamster%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
 getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%hamster%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "secondary" = "%cpu%  |  %memory%}%KVAY%{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
 
-removeEmptyWorkspaceAfter' = DW.removeEmptyWorkspaceAfterExcept myWorkspaces
+removeEmptyWorkspaceAfter' f = do
+    workspaceList <- gets (W.workspaces . windowset)
+    let n = length $ workspaceList
+    when (n > 3) $ DW.removeEmptyWorkspaceAfter f
+    when (n <= 3) $ f
 
 removeEmptyWorkspace' = do
-    current <- gets (W.currentTag . windowset)
-    when (current `notElem` myWorkspaces) $ DW.removeEmptyWorkspace
-
-moveIfEmpty = do
-    current <- gets (W.currentTag . windowset)
-    whenX (isEmpty current) $ CW.toggleWS' ["NSP"]
-
-moveOrRemoveEmptyWS = sequence_ [removeEmptyWorkspace', moveIfEmpty]
+    workspaceList <- gets (W.workspaces . windowset)
+    let n = length $ workspaceList
+    when (n > 3) $ DW.removeEmptyWorkspace
 
 ------------------------------- Key Bindings ----------------------------------
 
@@ -76,7 +70,7 @@ ctrl = controlMask
 shift = shiftMask
 super = mod4Mask
 
-myAdditionalKeys = [ 
+myAdditionalKeys = [
    -- Alarm
    ((super, xK_a), spawn "alarm-xmonad")
 
@@ -125,7 +119,7 @@ myAdditionalKeys = [
 
    -- Remove Workspaces
    , ((super, xK_r), DW.removeWorkspace)  -- Remove Current Workspace
-   , (( alt .|. shift, xK_n), moveOrRemoveEmptyWS) -- if Empty
+   , (( alt .|. shift, xK_n), removeEmptyWorkspace') -- if Empty
 
    -- Screenshot Commands
    , ((alt, xK_Print), spawn "sshot")
@@ -156,7 +150,7 @@ myAdditionalKeys = [
    spawn "confirm --dmenu 'ham stop && systemctl reboot -i'")
 
    -- Swap
-   , ((alt, xK_s), sequence_ [moveOrRemoveEmptyWS, CW.swapNextScreen, moveOrRemoveEmptyWS])
+   , ((alt, xK_s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace'])
 
    -- Toggle to Last Workspace
    , ((alt, xK_o), CW.toggleWS' ["NSP"])
@@ -189,7 +183,7 @@ myAdditionalKeys = [
       ]
 
    -- Launch Applications
-   ++ [((alt, key), sequence_ [removeEmptyWorkspaceAfter' $ DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
+   ++ [((alt, key), sequence_ [DW.removeEmptyWorkspaceAfter $ DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
        [xK_x, xK_c, xK_z, xK_v, xK_a, xK_1, xK_2]
        [myTerminal,"google-chrome-stable","zathura","okular","anki","hamster","slack"]
@@ -200,8 +194,8 @@ myAdditionalKeys = [
    ++ [((super, key), sequence_ [CW.nextScreen, DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
        [xK_c, xK_x, xK_z, xK_v]
-       ["google-chrome-stable", "zathura", "zathura"]
-       ["WEB'", "ZATH'", "ZATH"]
+       ["google-chrome-stable", myTerminal, "zathura", "zathura"]
+       ["WEB'", "TERM'", "ZATH'", "ZATH"]
       ]
 
    -- Shift to WS; then Focus WS
@@ -226,7 +220,7 @@ myBorderWidth = 5
 myFocusedBorderColor = blue
 
 myWorkspaces :: [String]
-myWorkspaces = ["TERM","WEB"]
+myWorkspaces = ["TERM","WEB","NSP"]
 
 myXPConfig :: P.XPConfig
 myXPConfig = def {P.position = P.Bottom}
