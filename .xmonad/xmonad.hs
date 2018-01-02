@@ -11,8 +11,9 @@ import XMonad.Layout.Spacing (smartSpacing)
 import XMonad.Util.WorkspaceCompare (getSortByIndex)
 import XMonad.Hooks.EwmhDesktops (ewmh,ewmhDesktopsLogHook,ewmhDesktopsStartup)
 
-import Data.Maybe (isNothing)
-import Control.Monad (liftM)
+import Data.Maybe (isNothing,isJust)
+import Data.List (find)
+import Control.Monad (liftM,when)
 import Graphics.X11.ExtraTypes.XF86
 import Network.HostName (getHostName)
 
@@ -29,7 +30,8 @@ import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 hiddenNotNSP :: X (WindowSpace -> Bool)
 hiddenNotNSP = do
   hs <- gets $ map W.tag . W.hidden . windowset
-  return (\w -> (W.tag w) /= "NSP" && (W.tag w) `elem` hs)
+  ne <- return (isJust . W.stack)
+  return (\w -> (W.tag w) /= "NSP" && (W.tag w) `elem` hs && ne w)
 
 -- | This is a re-implementation of DW.withNthworkspace with "skipTags"
 -- added to filter out NSP.
@@ -44,10 +46,27 @@ withNthWorkspace' job wnum = do
 xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
+isEmpty :: String -> X Bool
+isEmpty t = do wsl <- gets $ W.workspaces . windowset
+               let mws = find (\ws -> W.tag ws == t) wsl
+               return $ maybe True (isNothing . W.stack) mws
+
 getXmobarTemplate :: String -> String
 getXmobarTemplate "athena" = "%UnsafeStdinReader% }%hamster%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
 getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%hamster%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "secondary" = "%cpu%  |  %memory%}%KVAY%{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
+
+removeEmptyWorkspaceAfter' = DW.removeEmptyWorkspaceAfterExcept myWorkspaces
+
+removeEmptyWorkspace' = do
+    current <- gets (W.currentTag . windowset)
+    when (current `notElem` myWorkspaces) $ DW.removeEmptyWorkspace
+
+moveIfEmpty = do
+    current <- gets (W.currentTag . windowset)
+    whenX (isEmpty current) $ CW.toggleWS' ["NSP"]
+
+moveOrRemoveEmptyWS = sequence_ [removeEmptyWorkspace', moveIfEmpty]
 
 ------------------------------- Key Bindings ----------------------------------
 
@@ -90,12 +109,12 @@ myAdditionalKeys = [
    , ((super, xK_o), spawn "dmenu_books --application=okular")
 
    -- Prev/Next Hidden NonEmpty Workspace
-   , ((alt, xK_bracketleft), CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP))
-   , ((alt, xK_bracketright), CW.moveTo CW.Next (CW.WSIs hiddenNotNSP))
+   , ((alt, xK_bracketleft), sequence_ [removeEmptyWorkspaceAfter' $ CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)])
+   , ((alt, xK_bracketright), sequence_ [removeEmptyWorkspaceAfter' $ CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)])
 
    -- Prev/Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((super, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen])
-   , ((super, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen])
+   , ((super, xK_bracketleft), sequence_ [CW.nextScreen, removeEmptyWorkspaceAfter' $ CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen])
+   , ((super, xK_bracketright), sequence_ [CW.nextScreen, removeEmptyWorkspaceAfter' $ CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen])
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
@@ -106,7 +125,7 @@ myAdditionalKeys = [
 
    -- Remove Workspaces
    , ((super, xK_r), DW.removeWorkspace)  -- Remove Current Workspace
-   , ((ctrl .|. alt .|. shift, xK_n), DW.removeEmptyWorkspace) -- if Empty
+   , (( alt .|. shift, xK_n), moveOrRemoveEmptyWS) -- if Empty
 
    -- Screenshot Commands
    , ((alt, xK_Print), spawn "sshot")
@@ -125,10 +144,10 @@ myAdditionalKeys = [
    , ((super, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- don't send focus
 
    -- Shift current window to MISC
-   , ((super, xK_m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", DW.removeEmptyWorkspace, windows $ W.view "MISC"])
+   , ((super, xK_m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"])
 
    -- Shift current window to _______
-   , ((alt .|. super, xK_n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1, CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1, DW.removeEmptyWorkspace, DW.withWorkspaceIndex W.view 1])
+   , ((alt .|. super, xK_n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1, CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1, removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1])
 
    -- Shutdown / Restart
    , ((ctrl .|. super .|. alt, xK_s),
@@ -137,7 +156,7 @@ myAdditionalKeys = [
    spawn "confirm --dmenu 'ham stop && systemctl reboot -i'")
 
    -- Swap
-   , ((alt, xK_s), sequence_ [CW.swapNextScreen, spawn "removeEmptyWorkspace"])
+   , ((alt, xK_s), sequence_ [moveOrRemoveEmptyWS, CW.swapNextScreen, moveOrRemoveEmptyWS])
 
    -- Toggle to Last Workspace
    , ((alt, xK_o), CW.toggleWS' ["NSP"])
@@ -170,28 +189,28 @@ myAdditionalKeys = [
       ]
 
    -- Launch Applications
-   ++ [((alt, key), sequence_ [DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
+   ++ [((alt, key), sequence_ [removeEmptyWorkspaceAfter' $ DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
        [xK_x, xK_c, xK_z, xK_v, xK_a, xK_1, xK_2]
-       ["termite -e 'tm-init Terminal'","google-chrome-stable","zathura","okular","anki","hamster","slack"]
+       [myTerminal,"google-chrome-stable","zathura","okular","anki","hamster","slack"]
        ["TERM","WEB","ZATH","OKULAR","ANKI","HAMSTER","SLACK"]
       ]
 
    -- Launch Second Applications
    ++ [((super, key), sequence_ [CW.nextScreen, DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
-       [xK_c, xK_z, xK_v]
+       [xK_c, xK_x, xK_z, xK_v]
        ["google-chrome-stable", "zathura", "zathura"]
        ["WEB'", "ZATH'", "ZATH"]
       ]
 
    -- Shift to WS; then Focus WS
-   ++ [((super, k), sequence_ [withNthWorkspace' W.shift i, DW.removeEmptyWorkspace, withNthWorkspace' W.view i])
+   ++ [((super, k), sequence_ [withNthWorkspace' W.shift i, removeEmptyWorkspaceAfter' $ withNthWorkspace' W.view i])
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
 -------------------------------- Misc Configs ---------------------------------
-myTerminal = "termite"
+myTerminal = "termite -e 'tm-init Terminal'"
 myModMask = mod1Mask
 
 myFocusFollowsMouse = False

@@ -51,8 +51,8 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 fi
 
 precmd() { eval "$PROMPT_COMMAND" }
-# # orig_command_not_found ---> command_not_found_handle
-# # http://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function
+# orig_command_not_found ---> command_not_found_handle
+# http://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function
 command_not_found_handler() {
     ALIAS=$1; shift
     LocalAlias --evaluate=$ALIAS -- "$@"
