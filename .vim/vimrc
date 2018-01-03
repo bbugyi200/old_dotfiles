@@ -33,8 +33,12 @@ set shiftwidth=4
 set expandtab
 set nocompatible
 
+" Allows Local .vimrc to be loaded
 set exrc
 set secure
+
+" Enables Modeline Magic
+set modeline
 
 " Allows me to use the mouse
 set mouse=a
@@ -110,8 +114,8 @@ let &winheight = &lines * 6 / 10
 " ---------------------------- SYNTAX ----------------------------------------
 syntax on
 syntax enable
-set background=dark
 colorscheme solarized
+set background=dark
 
 " Enables syntax highlighting to work properly for certain filetypes
 au BufRead,BufNewFile *.nasm set filetype=nasm
@@ -270,6 +274,8 @@ autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.html set colorcolumn=
 autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us
 autocmd FileType mail setlocal spell spelllang=en_us
+
+autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
 
 " Automatic rewriting of .vimrc
  autocmd! bufwritepost .vimrc source %

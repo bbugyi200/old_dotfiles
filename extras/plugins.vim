@@ -36,6 +36,7 @@ Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'Rip-Rip/clang_complete'
 Plugin 'scrooloose/syntastic'
 Plugin 'baskerville/vim-sxhkdrc'
+Plugin 'embear/vim-localvimrc'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -48,6 +49,10 @@ Plugin 'jez/vim-superman'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" ------------------------------LOCALVIMRC -------------------------------------
+let g:localvimrc_sandbox=0
+let g:localvimrc_ask=0
 
 " --------------------------------- CTRLP --------------------------------------
 let g:ctrlp_follow_symlinks=1
