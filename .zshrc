@@ -1,4 +1,6 @@
 # ----------------------------------------------------------------------------
+unalias -a  # removes all aliases (useful for resourcing zshrc)
+
 # ------------------------------ SOURCES -------------------------------------
 source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
 source /home/bryan/Dropbox/dotfiles/.globrc
@@ -55,5 +57,5 @@ precmd() { eval "$PROMPT_COMMAND" }
 # http://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function
 command_not_found_handler() {
     ALIAS=$1; shift
-    LocalAlias --evaluate=$ALIAS -- "$@"
+    LocalAlias -x $ALIAS -- "$@"
 }

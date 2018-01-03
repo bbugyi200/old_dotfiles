@@ -9,7 +9,7 @@ windows:
     - I:
         layout: main-vertical
         panes:
-            - master:
+            - 0:
                 - clear
     - II:
         layout: main-vertical

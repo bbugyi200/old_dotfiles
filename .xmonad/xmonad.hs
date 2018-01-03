@@ -12,7 +12,6 @@ import XMonad.Util.WorkspaceCompare (getSortByIndex)
 import XMonad.Hooks.EwmhDesktops (ewmh,ewmhDesktopsLogHook,ewmhDesktopsStartup)
 
 import Data.Maybe (isNothing,isJust)
-import Data.List (find)
 import Control.Monad (liftM,when)
 import Graphics.X11.ExtraTypes.XF86
 import Network.HostName (getHostName)
@@ -22,7 +21,6 @@ import qualified XMonad.Prompt as P
 import qualified XMonad.Util.NamedScratchpad as NSP
 import qualified XMonad.Hooks.DynamicLog as DL
 import qualified XMonad.Actions.CycleWS as CW
-import qualified XMonad.Actions.WorkspaceNames as WN
 import qualified XMonad.Actions.DynamicWorkspaces as DW
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 
@@ -31,8 +29,7 @@ import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 hiddenNotNSP :: X (WindowSpace -> Bool)
 hiddenNotNSP = do
   hs <- gets $ map W.tag . W.hidden . windowset
-  ne <- return (isJust . W.stack)
-  return (\w -> (W.tag w) /= "NSP" && (W.tag w) `elem` hs && ne w)
+  return (\w -> (W.tag w) /= "NSP" && (W.tag w) `elem` hs)
 
 -- | This is a re-implementation of DW.withNthworkspace with "skipTags"
 -- added to filter out NSP.
@@ -113,7 +110,7 @@ myAdditionalKeys = [
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
-   , ((super, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "dmenu_extended_run"])
+   , ((super, xK_space), sequence_ [DW.removeEmptyWorkspaceAfter $ DW.addWorkspace "MISC", spawn "dmenu_extended_run"])
 
    -- Restarts XMonad
    , ((alt, xK_r), spawn "killall xmobar; xmonad --recompile && xmonad --restart")

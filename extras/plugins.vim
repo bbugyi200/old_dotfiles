@@ -38,6 +38,10 @@ Plugin 'scrooloose/syntastic'
 Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'embear/vim-localvimrc'
 
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'neovimhaskell/haskell-vim'
+
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
@@ -49,6 +53,12 @@ Plugin 'jez/vim-superman'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" ----------------------------- NECO-GHC ---------------------------------------
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:necoghc_enable_detailed_browse = 1
 
 " ------------------------------LOCALVIMRC -------------------------------------
 let g:localvimrc_sandbox=0

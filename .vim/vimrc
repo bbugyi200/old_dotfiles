@@ -121,10 +121,13 @@ set background=dark
 au BufRead,BufNewFile *.nasm set filetype=nasm
 au BufRead,BufNewFile *.txt set filetype=txt
 au BufRead,BufNewFile *.xmobarrc set syntax=haskell
+au BufRead,BufNewFile *.lshrc set syntax=zsh
 
 " Used to make syntax highlighting more readable when using Linux
 " transparent terminal
-highlight Constant ctermfg=lightmagenta 
+hi Constant ctermfg=lightmagenta 
+
+hi SpellBad cterm=underline
 
 " ------------------------------- FUNCTIONS ----------------------------------
 function! s:VSetSearch(cmdtype)
@@ -262,6 +265,9 @@ imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
 
 nmap gm :LivedownToggle<CR>
+
+" Toggle spellcheck
+nmap <Leader><Leader>s :set spell!<CR>
 
 " ------------------------------ AUTOS ---------------------------------------
 

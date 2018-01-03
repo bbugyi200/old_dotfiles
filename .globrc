@@ -28,15 +28,16 @@ alias Javac='javac -d ../bin'
 alias Jdb='jdb -classpath "../bin"'
 
 # ----- Git
-alias glog='git log --oneline --decorate --graph'
-alias gnum="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
-alias gstat='clear && git status'
-alias gwatch="watch -n 1 -c 'git status'"
-alias gcach='git diff --cached'
-alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
-alias gadd='git add'
+alias ga='git add'
 alias gcom='git commit -v'
 alias gco='git checkout'
+alias glog='git log --oneline --decorate --graph'
+alias gst='clear && git status'
+alias gcach='git diff --cached'
+alias gnum="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
+alias gwatch="watch -n 1 -c 'git status'"
+alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
+alias gfp='git commit -a --amend --no-edit && git push -f'
 
 # ----- Safety
 alias rm="rm -i"
@@ -44,11 +45,13 @@ alias mv="mv -i"
 alias cp="cp -i"
 
 # ----- Overriden Commands
+alias cat='pygmentize -g'
 alias cower='cower -c'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
 alias time='/usr/bin/time'
 alias tree='clear && tree -I "venv*|__pycache__*"'
 alias sudo='sudo '  # makes aliases visible to sudo
+alias clinks='sudo clinks'
 
 # ----- transmission-remote
 tsm() { transmission-remote -l; }
@@ -94,13 +97,17 @@ hview() {
 alias mutt-gmail="mutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
 alias mutt-root='sudo mutt -f /var/spool/mail/root'
 alias lls="ls -alF"
-alias ccat='pygmentize -g'
 alias sozsh='source ~/Dropbox/dotfiles/.zshrc'
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv'
 alias rstwifi='systemctl restart netctl-auto@wlo1.service'
-alias la='LocalAlias'
+
+unalias la 2> /dev/null  # Removes Conflicting alias:  la='ls -lAh'
+# LocalAlias Wrapper
+la () {
+    LocalAlias "$@" && [[ -f .lshrc ]] && source .lshrc
+}
 
 # Trace through Python program execution (python near-equivalent to 'set -x' in bash)
 pyx () {
@@ -127,6 +134,10 @@ stty -ixon
 
 if [[ -d $(pwd)/venv ]]; then
 	source "venv/bin/activate"
+fi
+
+if [[ -f $(pwd)/.lshrc ]]; then
+    source ".lshrc"
 fi
 
 # Fixes Mutt Background Issue (stays transparent) in TMUX
