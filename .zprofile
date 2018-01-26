@@ -10,6 +10,9 @@ export POWERLINE_DIRECTORY=/usr/lib/python3.6/site-packages
 export PANEL_FIFO=/tmp/panel-fifo
 export MATLABPATH=$HOME/.matlab
 
+# Enables executables installed with 'gem install' to run
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -le 3 ] && [ "$(id -u)" != 0 ]; then
   exec startx
 fi

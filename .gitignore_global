@@ -8,4 +8,6 @@ __pycache__/*
 .lshrc
 var/*
 .coverage
+.coveragerc
+.cache
 .stow-local-ignore

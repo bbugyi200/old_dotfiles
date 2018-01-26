@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 -------------------------------- Imports --------------------------------------
 import XMonad
-import XMonad.Actions.SpawnOn (spawnOn,manageSpawn)
+import XMonad.Actions.SpawnOn (spawnOn,spawnHere,manageSpawn)
 import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Config.Desktop (desktopConfig)
 import XMonad.Hooks.ManageDocks (avoidStruts)
@@ -101,12 +101,12 @@ myAdditionalKeys = [
    , ((super, xK_o), spawn "dmenu_books --application=okular")
 
    -- Prev/Next Hidden NonEmpty Workspace
-   , ((alt, xK_bracketleft), sequence_ [removeEmptyWorkspaceAfter' $ CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)])
-   , ((alt, xK_bracketright), sequence_ [removeEmptyWorkspaceAfter' $ CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)])
+   , ((alt, xK_bracketleft), sequence_ [CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)])
+   , ((alt, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)])
 
    -- Prev/Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((super, xK_bracketleft), sequence_ [CW.nextScreen, removeEmptyWorkspaceAfter' $ CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen])
-   , ((super, xK_bracketright), sequence_ [CW.nextScreen, removeEmptyWorkspaceAfter' $ CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen])
+   , ((super, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen])
+   , ((super, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen])
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
@@ -149,12 +149,13 @@ myAdditionalKeys = [
 
    -- Swap
    , ((alt, xK_s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace'])
+   , ((ctrl .|. alt, xK_s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen])
 
    -- Toggle to Last Workspace
    , ((alt, xK_o), CW.toggleWS' ["NSP"])
 
    -- Toggle External Monitor
-   , ((alt, xK_m), spawn "toggle_monitor && sleep 1 && xdotool key alt+r")
+   , ((alt, xK_m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart")
 
    -- Toggle PIA
    , ((super, xK_p), spawn "PIA")
@@ -168,7 +169,6 @@ myAdditionalKeys = [
    , ((alt, xK_e), spawn "tm-send --action=clear")
    , ((alt, xK_q), spawn "tm-send --action=quit")
    , ((alt, xK_minus), spawn "tm-send --action='pushu && popd; clear'")
-   , ((super, xK_minus), spawn "tm-send --action='clear && cd ../'")
    , ((alt, xK_equal), spawn "tm-send --action='clear && cd $(popu)'")
    , ((alt, xK_h), spawn "tm-send --action \
         \ 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'")
@@ -181,7 +181,7 @@ myAdditionalKeys = [
       ]
 
    -- Launch Applications
-   ++ [((alt, key), sequence_ [DW.removeEmptyWorkspaceAfter $ DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
+   ++ [((alt, key), sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
        [xK_x, xK_c, xK_z, xK_v, xK_a, xK_1, xK_2]
        [myTerminal,"google-chrome-stable","zathura","okular","anki","hamster","slack"]
@@ -197,7 +197,7 @@ myAdditionalKeys = [
       ]
 
    -- Shift to WS; then Focus WS
-   ++ [((super, k), sequence_ [withNthWorkspace' W.shift i, removeEmptyWorkspaceAfter' $ withNthWorkspace' W.view i])
+   ++ [((ctrl, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
        | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
       ]
 
@@ -246,6 +246,7 @@ myManageHook = composeAll
     [ manageSpawn
     , NSP.namedScratchpadManageHook scratchpads
     , className=? "Galculator"      --> doFloat
+    , className=? "Peek"            --> doFloat
     , className=? "Pinentry"        --> doFloat]
 
 myStartupHook = ewmhDesktopsStartup

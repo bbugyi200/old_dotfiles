@@ -37,9 +37,10 @@ Plugin 'Rip-Rip/clang_complete'
 Plugin 'scrooloose/syntastic'
 Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'embear/vim-localvimrc'
+Plugin 'dyng/ctrlsf.vim'
 
 Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
+" Plugin 'eagletmt/neco-ghc'  " Disabled until ghc-mod is fixed for Arch
 Plugin 'neovimhaskell/haskell-vim'
 
 Plugin 'SirVer/ultisnips'
@@ -54,11 +55,29 @@ Plugin 'jez/vim-superman'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" ------------------------- JEDI-VIM -------------------------------------------
+" Add the virtualenv's site-packages to vim path
+if has('python')
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+endif
+
 " ----------------------------- NECO-GHC ---------------------------------------
 " Disable haskell-vim omnifunc
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:necoghc_enable_detailed_browse = 1
+
+" ----------------------------- HASKELL-VIM ------------------------------------
+let g:haskell_indent_disable=1
 
 " ------------------------------LOCALVIMRC -------------------------------------
 let g:localvimrc_sandbox=0
@@ -66,6 +85,17 @@ let g:localvimrc_ask=0
 
 " --------------------------------- CTRLP --------------------------------------
 let g:ctrlp_follow_symlinks=1
+
+" Setup some default ignores
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|coverage|venv|var)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+
+" Use the nearest .git directory as the cwd
+" This makes a lot of sense if you are working on a project that is in version
+" control. It also supports works with .svn, .hg, .bzr.
+let g:ctrlp_working_path_mode = 'r'
 
 " ------------------------------- EchoDoc --------------------------------------
 let g:echodoc#enable_at_startup=1
@@ -135,7 +165,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 " You can disable specific warnings for <checker> by using
 " the 'g:syntastic_<ext>_<checker>_args' variable
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E123,E126,E127,E128,E402,E501,E701,E702'
+let g:syntastic_python_flake8_args='--ignore=E123,E126,E127,E128,E226,E231,E402,E501,E701,E702,E731'
 
 let g:syntastic_tex_checkers=['chktex']
 let g:syntastic_tex_chktex_args='-n 1'
@@ -239,8 +269,4 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 	let g:neocomplete#force_omni_input_patterns = {}
 endif
 autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#auto_initialization = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = 0
 let g:neocomplete#force_omni_input_patterns.python = '[^. \t]\.\w*'

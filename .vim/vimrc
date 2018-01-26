@@ -23,8 +23,8 @@ endif
 " -------------------------------- SETS --------------------------------------
 set clipboard=unnamedplus
 
-set number
-set colorcolumn=80
+set number relativenumber
+set colorcolumn=100
 set autoindent
 set backspace=2
 " set autochdir
@@ -122,6 +122,7 @@ au BufRead,BufNewFile *.nasm set filetype=nasm
 au BufRead,BufNewFile *.txt set filetype=txt
 au BufRead,BufNewFile *.xmobarrc set syntax=haskell
 au BufRead,BufNewFile *.lshrc set syntax=zsh
+au BufRead,BufNewFile *.conf set syntax=cfg
 
 " Used to make syntax highlighting more readable when using Linux
 " transparent terminal
@@ -163,7 +164,7 @@ xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 " Allows space to work in Normal-Mode
-nnoremap <space> i<space><esc>
+nnoremap <space> a<space><esc>
 
 " Shortcuts for quiting vim
 noremap <Leader>e :quit<CR>
@@ -248,7 +249,7 @@ nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <Leader>l :set cursorline!<CR>
 
 " Explore Shortcuts
-nnoremap <Leader>S :Explore ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/UltiSnips<CR>
+nnoremap <Leader>S :Explore ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/snippets<CR>
 nnoremap <Leader>F :Explore ~/Dropbox/dotfiles/.vim/ftplugin<CR>
 
 " Delete Buffers
@@ -270,6 +271,13 @@ nmap gm :LivedownToggle<CR>
 nmap <Leader><Leader>s :set spell!<CR>
 
 " ------------------------------ AUTOS ---------------------------------------
+
+" Use absolute numbers for insert mode and when the buffer is unfocused
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " Turns spellcheck on for certain file extensions
 " 2nd line disables the colorcolumn
