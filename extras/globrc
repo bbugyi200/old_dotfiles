@@ -1,0 +1,135 @@
+# ------------------------------------------------------------------------------
+# ------------------------- FUNCTIONS + ALIASES --------------------------------
+# ----- Vim
+alias lvim='vim -c "normal \`0" -c "bdelete 1"'
+alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
+alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/{body.txt,mind.txt,heart.txt}'
+alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt ~/Dropbox/notes/project_schedule.txt'
+alias vip="vim -c 'execute \"normal \\<c-p>\"'"
+wim() { vim $(find ~/Dropbox/scripts -type f -name $1); }
+
+# Enables vim :Man command from the terminal
+vman() {
+	vim -c "SuperMan $*"
+
+	if [ "$?" != "0" ]; then
+		echo "No manual entry for $*"
+	fi
+}
+
+# ----- SSH / FTP
+alias ssh-athena='ssh -p 34857 bryan@173.71.68.88'
+alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
+alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
+alias sftp-athena='sftp -P 34857 bryan@173.71.68.88'
+
+# ----- Java
+alias Java='java -classpath .:../bin'
+alias Javac='javac -d ../bin'
+alias Jdb='jdb -classpath "../bin"'
+
+# ----- Git
+alias gnum="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
+alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
+alias gpf='git push -f'
+
+# ----- Safety
+alias rm="rm -i"
+alias mv="mv -i"
+alias cp="cp -i"
+
+# ----- Overriden Commands
+alias cat='pygmentize -g'
+alias cower='cower -c'
+alias matlab='matlab -nojvm -nodisplay -nosplash'
+alias time='/usr/bin/time'
+alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
+alias sudo='sudo '  # makes aliases visible to sudo
+
+# ----- transmission-remote
+tsm() { transmission-remote -l; }
+tsm-start() { transmission-daemon; }
+tsm-stop() { killall -9 transmission-daemon; }
+tsm-watch() { watch -n 1 transmission-remote -l; }
+tsm-add() { transmission-remote -a $1; }
+tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250; }
+tsm-rm() { transmission-remote -t$1 -r; }
+tsm-purge() { transmission-remote -t$1 -rad; }
+
+# ----- ETERNAL BASH HISTORY
+# https://spin.atomicobject.com/2016/05/28/log-bash-history/
+LOGFILE="/home/bryan/Dropbox/logs/$(hostname)-cmd-history.log"
+log_bash_history() { 
+    if [ "$(id -u)" -ne 0 ]; then
+    printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(pwd | sed 's/\/home\/[Bb]ryan/~/' | cut -c -55)" "$(fc -ln -1)" >> $LOGFILE;
+    fi; 
+}
+
+hgrep() {
+    if [ "$1" = '--local' -o "$1" = '-l' ]
+    then
+        cat $LOGFILE | nl -s ' ' | grep -a -e " $(getPWD) " | grep -a -e "$(hostname)" | tr -s ' '| cut -d' ' -f 2,6- | grep -a -e "$2"
+    elif [ "$1" = '--verbose' -o "$1" = '-v' ]
+    then
+        cat ~/Dropbox/logs/athena-cmd-history.log ~/Dropbox/logs/aphrodite-cmd-history.log | nl | grep -a -e "$2"
+    else
+        cat $LOGFILE | nl -s ' ' | grep -a -e "$(hostname)" | tr -s ' ' | cut -d' ' -f 2,6- | grep -a -e "$1"
+    fi
+}
+
+hview() {
+    if [ $# -eq 0 ]
+    then 
+        vim $LOGFILE
+    else
+        vim +$1 $LOGFILE
+    fi
+}
+
+# ----- MISCELLANEOUS
+alias mutt-gmail="mutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
+alias mutt-root='sudo mutt -f /var/spool/mail/root'
+alias lls="ls -alF"
+alias so='source ~/Dropbox/dotfiles/.zshrc'
+alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
+alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
+alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv'
+alias rstwifi='sudo systemctl restart netctl-auto@wlo1.service'
+alias la="LocalAlias"
+alias PyDoc='LangDoc -e py -m'
+alias JavaDoc='LangDoc -e java -m'
+
+# Sleep, then run the last command
+ss () {
+    tmux send-keys "sleep 1.5 && !-2" "Enter"
+}
+
+# Trace through Python program execution (python near-equivalent to 'set -x' in bash)
+pyx () {
+    target=$(which $1); [[ $target == *"not found" ]] && target=$1
+    shift
+    python -m trace --ignore-dir $(python -c 'import os, sys; print(os.pathsep.join(sys.path[1:]))') -t $target "$@"
+}
+
+# Prints the value of a variable
+pvar () { set | grep -i -e "^$1"; }
+
+mkcd() { mkdir -p $1 && cd $1; }
+
+# ------------------------------ EXPORTS ---------------------------------------
+# I set this so the crontab would use vim for editing
+export EDITOR=$(which vim)
+
+export PROMPT_COMMAND="log_bash_history" 
+# Removed to fix double history log # ; $PROMPT_COMMAND"
+
+# ------------------------------ MISC ------------------------------------------
+#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
+stty -ixon
+
+if [[ -d $(pwd)/venv ]]; then
+	source "venv/bin/activate"
+fi
+
+# Fixes Mutt Background Issue (stays transparent) in TMUX
+export TERM="screen-256color"

@@ -270,3 +270,5 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 endif
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:neocomplete#force_omni_input_patterns.python = '[^. \t]\.\w*'
+let g:jedi#show_call_signatures = 0
+let g:jedi#auto_initialization = 0

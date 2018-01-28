@@ -270,6 +270,11 @@ nmap gm :LivedownToggle<CR>
 " Toggle spellcheck
 nmap <Leader><Leader>s :set spell!<CR>
 
+" Pulls Up Documentation for Module/Function Under Cursor
+nnoremap <Leader>D yiW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
+nnoremap <Leader>$D yW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
+command! -nargs=1 Doc execute "Silent LangDoc --ext=" . expand('%:e') . " -m <args>"
+
 " ------------------------------ AUTOS ---------------------------------------
 
 " Use absolute numbers for insert mode and when the buffer is unfocused

@@ -29,6 +29,7 @@ alias -s jpeg="imv"
 
 # Miscellaneous
 alias -s git="git clone"
+alias -s html="google-chrome-stable"
 
 
 # --- Global Aliases
