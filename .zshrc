@@ -1,8 +1,8 @@
 # ----------------------------------------------------------------------------
 # ------------------------------ SOURCES -------------------------------------
 source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
-source /home/bryan/Dropbox/dotfiles/extras/globrc
 source /home/bryan/Dropbox/dotfiles/extras/tmuxinator.zsh
+source /home/bryan/Dropbox/dotfiles/extras/globrc
 
 # -------------------------- OH-MY-ZSH ---------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
@@ -50,6 +50,9 @@ fi
 if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(<~/.ssh-agent-thing)" > /dev/null
 fi
+
+# Needed for Eternal Command History
+precmd() { eval "$PROMPT_COMMAND" }
 
 command_not_found_handler() {
     WORD=$1; shift

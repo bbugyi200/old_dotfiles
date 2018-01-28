@@ -61,7 +61,7 @@ tsm-purge() { transmission-remote -t$1 -rad; }
 LOGFILE="/home/bryan/Dropbox/logs/$(hostname)-cmd-history.log"
 log_bash_history() { 
     if [ "$(id -u)" -ne 0 ]; then
-    printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(pwd | sed 's/\/home\/[Bb]ryan/~/' | cut -c -55)" "$(fc -ln -1)" >> $LOGFILE;
+        printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(pwd | sed 's/\/home\/[Bb]ryan/~/' | cut -c -55)" "$(fc -ln -1)" >> $LOGFILE;
     fi; 
 }
 
