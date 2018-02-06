@@ -55,6 +55,10 @@ Plugin 'jez/vim-superman'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" ------------------------- CTRLSF ---------------------------------------------
+let g:ctrlsf_regex_pattern = 1
+let g:ctrlsf_default_root = 'project'
+
 " ------------------------- JEDI-VIM -------------------------------------------
 " Add the virtualenv's site-packages to vim path
 if has('python')
@@ -146,7 +150,8 @@ set t_Co=256
 " ------------------------------ UltiSnips Configurations ----------------------
 "
 " Allows other directories to be searched for snippet files
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/bryan/Dropbox/dotfiles/extra/UltiSnips"]
+" let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/bryan/Dropbox/dotfiles/extra/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " ------------------------------- Syntastic Config -----------------------------
 let g:Tex_IgnoredWarnings =

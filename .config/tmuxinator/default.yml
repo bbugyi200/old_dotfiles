@@ -10,7 +10,7 @@ windows:
         layout: main-vertical
         panes:
             - 0:
-                - clear
+                - tree
     - II:
         layout: main-vertical
         panes:

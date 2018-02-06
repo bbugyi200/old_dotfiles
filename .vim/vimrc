@@ -183,6 +183,8 @@ nmap <Leader>z :ZoomWin<CR>
 
 nmap <C-g> :Gstatus<CR>
 
+nmap <Leader>f :CtrlSF 
+
 
 """"""""""""""""""""""""""""""
 "  Split and Tab Settings  "
@@ -249,8 +251,8 @@ nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <Leader>l :set cursorline!<CR>
 
 " Explore Shortcuts
-nnoremap <Leader>S :Explore ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/snippets<CR>
-nnoremap <Leader>F :Explore ~/Dropbox/dotfiles/.vim/ftplugin<CR>
+nnoremap <Leader>S :e ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/UltiSnips/<C-R>=expand('%:e')<CR>.snippets<CR>
+nnoremap <Leader>F :e ~/Dropbox/dotfiles/.vim/ftplugin/<C-R>=expand('%:e')<CR>.vim<CR>
 
 " Delete Buffers
 nnoremap <Leader>d :bp<bar>sp<bar>bn<bar>bd<bar>bn<CR>
@@ -271,8 +273,8 @@ nmap gm :LivedownToggle<CR>
 nmap <Leader><Leader>s :set spell!<CR>
 
 " Pulls Up Documentation for Module/Function Under Cursor
-nnoremap <Leader>D yiW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
-nnoremap <Leader>$D yW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
+nnoremap <Leader>l yiW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
+nnoremap <Leader>L yW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
 command! -nargs=1 Doc execute "Silent LangDoc --ext=" . expand('%:e') . " -m <args>"
 
 " ------------------------------ AUTOS ---------------------------------------

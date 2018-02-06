@@ -94,10 +94,21 @@ alias so='source ~/Dropbox/dotfiles/.zshrc'
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv'
+alias delshots='confirm "find /home/bryan/Dropbox/logs/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias rstwifi='sudo systemctl restart netctl-auto@wlo1.service'
 alias la="LocalAlias"
 alias PyDoc='LangDoc -e py -m'
 alias JavaDoc='LangDoc -e java -m'
+alias w='which'  # Overrides '/usr/bin/w'
+alias gccx='gcc -Wall -Werror -fsanitize=address'
+
+# Clone New Package from the AUR
+aur() {
+    mkdir /tmp/builds
+    cd /tmp/builds
+    git clone $(xclip -o)
+    tmux send-keys "cd /tmp/builds && tree" "Enter"
+}
 
 # Sleep, then run the last command
 ss () {

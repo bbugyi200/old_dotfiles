@@ -2,13 +2,14 @@
 *~
 *.pyc
 venv/*
+bin/*
 __pycache__/*
 .localaliases
 .lvimrc
 .lshrc
 var/*
 .coverage
-**/coverage/*
+coverage/*
 .coveragerc
 .cache
 .stow-local-ignore

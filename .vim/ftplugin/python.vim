@@ -7,5 +7,3 @@ else
                     \ ." python <args>", 1)
     nmap <F8> :w<CR>:Run -i<CR> 
 endif
-
-nnoremap <Leader>L :NeoCompleteLock<CR>

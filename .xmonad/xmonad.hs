@@ -91,7 +91,7 @@ myAdditionalKeys = [
    , ((super, xK_f), windows W.swapDown)    -- Shift
 
    -- Next Layout
-   , ((alt .|. super, xK_space), sendMessage NextLayout)
+   , ((alt .|. super, xK_space), sendMessage NextLayout)  -- Toggles Fullscreen
 
    -- Next Screen
    , ((alt, xK_backslash), CW.nextScreen)
