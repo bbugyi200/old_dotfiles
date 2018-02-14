@@ -57,9 +57,8 @@ set smartcase
 set wildmenu
 set wildmode=full
 
-" 'find' should ignore these folders
-set wildignore+=**/__pycache__/**
-set wildignore+=**/venv/**
+" 'find'/ctrlp should ignore these folders
+set wildignore+=*/__pycache__/*,*/.git/*,*/bin/*,*/venv/*
 
 " Increase command history limit
 set history=200
@@ -255,7 +254,7 @@ nnoremap <Leader>S :e ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/UltiSnips/<C-R
 nnoremap <Leader>F :e ~/Dropbox/dotfiles/.vim/ftplugin/<C-R>=expand('%:e')<CR>.vim<CR>
 
 " Delete Buffers
-nnoremap <Leader>d :bp<bar>sp<bar>bn<bar>bd<bar>bn<CR>
+nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
 
 " Omnicompletion shortcut
 inoremap <C-o> <C-x><C-o>

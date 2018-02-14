@@ -110,7 +110,7 @@ myAdditionalKeys = [
 
    -- Program Launcher
    , ((alt, xK_space), spawn "dmenu_extended_run")
-   , ((super, xK_space), sequence_ [DW.removeEmptyWorkspaceAfter $ DW.addWorkspace "MISC", spawn "dmenu_extended_run"])
+   , ((super, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "dmenu_extended_run"])
 
    -- Restarts XMonad
    , ((alt, xK_r), spawn "killall xmobar; xmonad --recompile && xmonad --restart")
@@ -183,7 +183,7 @@ myAdditionalKeys = [
    -- Launch Applications
    ++ [((alt, key), sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
-       [xK_x, xK_c, xK_z, xK_v, xK_a, xK_1, xK_2]
+       [xK_x, xK_c, xK_z, xK_v, xK_1, xK_2, xK_3]
        [myTerminal,"google-chrome-stable","zathura","okular","anki","hamster","slack"]
        ["TERM","WEB","ZATH","OKULAR","ANKI","HAMSTER","SLACK"]
       ]

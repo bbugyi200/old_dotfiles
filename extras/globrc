@@ -17,34 +17,41 @@ vman() {
 	fi
 }
 
+
 # ----- SSH / FTP
 alias ssh-athena='ssh -p 34857 bryan@173.71.68.88'
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
+alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias sftp-athena='sftp -P 34857 bryan@173.71.68.88'
+
 
 # ----- Java
 alias Java='java -classpath .:../bin'
 alias Javac='javac -d ../bin'
 alias Jdb='jdb -classpath "../bin"'
 
+
 # ----- Git
 alias gnum="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gpf='git push -f'
 
-# ----- Safety
+
+# ----- Remove/Overwrite Files Safely
 alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"
 
+
 # ----- Overriden Commands
-alias cat='pygmentize -g'
+alias ccat='pygmentize -g'
 alias cower='cower -c'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
 alias time='/usr/bin/time'
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
 alias sudo='sudo '  # makes aliases visible to sudo
+
 
 # ----- transmission-remote
 tsm() { transmission-remote -l; }
@@ -55,6 +62,7 @@ tsm-add() { transmission-remote -a $1; }
 tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250; }
 tsm-rm() { transmission-remote -t$1 -r; }
 tsm-purge() { transmission-remote -t$1 -rad; }
+
 
 # ----- ETERNAL BASH HISTORY
 # https://spin.atomicobject.com/2016/05/28/log-bash-history/
@@ -86,6 +94,14 @@ hview() {
     fi
 }
 
+
+# ----- LangDoc
+alias PyDoc='LangDoc -e py -m'
+alias JavaDoc='LangDoc -e java -m'
+alias CDoc='LangDoc -e c -m'
+alias Doc='LangDoc -e sh -m'
+
+
 # ----- MISCELLANEOUS
 alias mutt-gmail="mutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
 alias mutt-root='sudo mutt -f /var/spool/mail/root'
@@ -93,19 +109,17 @@ alias lls="ls -alF"
 alias so='source ~/Dropbox/dotfiles/.zshrc'
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
-alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv'
 alias delshots='confirm "find /home/bryan/Dropbox/logs/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
+alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 alias rstwifi='sudo systemctl restart netctl-auto@wlo1.service'
 alias la="LocalAlias"
-alias PyDoc='LangDoc -e py -m'
-alias JavaDoc='LangDoc -e java -m'
 alias w='which'  # Overrides '/usr/bin/w'
 alias gccx='gcc -Wall -Werror -fsanitize=address'
+alias cow='mkcd /tmp/builds && cower -vud && buildall'
 
 # Clone New Package from the AUR
-aur() {
-    mkdir /tmp/builds
-    cd /tmp/builds
+clonepack() {
+    mkcd /tmp/builds
     git clone $(xclip -o)
     tmux send-keys "cd /tmp/builds && tree" "Enter"
 }
@@ -125,7 +139,9 @@ pyx () {
 # Prints the value of a variable
 pvar () { set | grep -i -e "^$1"; }
 
+# Create and CD to New Directory
 mkcd() { mkdir -p $1 && cd $1; }
+
 
 # ------------------------------ EXPORTS ---------------------------------------
 # I set this so the crontab would use vim for editing
@@ -133,6 +149,7 @@ export EDITOR=$(which vim)
 
 export PROMPT_COMMAND="log_bash_history" 
 # Removed to fix double history log # ; $PROMPT_COMMAND"
+
 
 # ------------------------------ MISC ------------------------------------------
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
