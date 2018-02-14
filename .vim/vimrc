@@ -20,6 +20,7 @@ else
 	set background=dark
 endif
 
+
 " -------------------------------- SETS --------------------------------------
 set clipboard=unnamedplus
 
@@ -93,8 +94,8 @@ set viminfo+=n~/.vim/viminfo
 
 set noshowmode
 
-" --------------------------------- LETS -------------------------------------
 
+" --------------------------------- LETS -------------------------------------
 " Appends the current working directory to PATH
 let tempPath=expand("%:p:h") . "/**"
 exec "set path+=" . tempPath
@@ -109,6 +110,7 @@ noremap \ ,
 " Sets minimum size of active split (by percentage)
 " let &winwidth = &columns * 6 / 10
 let &winheight = &lines * 6 / 10
+
 
 " ---------------------------- SYNTAX ----------------------------------------
 syntax on
@@ -129,31 +131,8 @@ hi Constant ctermfg=lightmagenta
 
 hi SpellBad cterm=underline
 
-" ------------------------------- FUNCTIONS ----------------------------------
-function! s:VSetSearch(cmdtype)
-	let temp = @s
-	norm! gv"sy
-	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
-	let @s = temp
-endfunction
-
-" Automatically creates directory if it does not already exist
-" https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
-function s:MkNonExDir(file, buf)
-	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-		let dir=fnamemodify(a:file, ':h')
-		if !isdirectory(dir)
-			call mkdir(dir, 'p')
-		endif
-	endif
-endfunction
-augroup BWCCreateDir
-	autocmd!
-	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
 
 " ------------------------------ KEY MAPPINGS --------------------------------
-
 " Preserves flags when repeating the last substitute command.
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
@@ -184,37 +163,8 @@ nmap <C-g> :Gstatus<CR>
 nmap <Leader>f :CtrlSF 
 
 " Swap highlighted word with last word in buffer
-vnoremap <C-X> <Esc>`.``gvP``P
-
-""""""""""""""""""""""""""""""
-"  Split and Tab Settings  "
-" See: http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits "
-if exists('$TMUX')
-  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-    let previous_winnr = winnr()
-    silent! execute "wincmd " . a:wincmd
-    if previous_winnr == winnr()
-      call system("tmux select-pane -" . a:tmuxdir)
-      redraw!
-    endif
-  endfunction
-
-  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
-
-  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
-else
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
-endif
-
-""""""""""""""""""""""""""""""
+vnoremap <Leader>x <Esc>`.``gvP``P
+nmap <Leader>x ve<Leader>x
 
 " Will execute the 'Run' command which varies based on the file type
 nmap <Leader>r :w<CR>:Run<CR>
@@ -250,22 +200,18 @@ nnoremap <C-s> :SyntasticToggleMode<CR>
 " Toggles 'cursorline'
 nnoremap <Leader>l :set cursorline!<CR>
 
-" Explore Shortcuts
+" Edit Snippet File
 nnoremap <Leader>S :e ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/UltiSnips/<C-R>=expand('%:e')<CR>.snippets<CR>
+" Edit ftplugin File
 nnoremap <Leader>F :e ~/Dropbox/dotfiles/.vim/ftplugin/<C-R>=expand('%:e')<CR>.vim<CR>
 
-" Delete Buffers
+" Delete Buffer
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
 
 " Omnicompletion shortcut
 inoremap <C-o> <C-x><C-o>
 
 nnoremap <Leader>n :set relativenumber!<CR>
-
-imap <C-h> <Esc><C-h>
-imap <C-l> <Esc><C-l>
-imap <C-j> <Esc><C-j>
-imap <C-k> <Esc><C-k>
 
 nmap gm :LivedownToggle<CR>
 
@@ -276,6 +222,40 @@ nmap <Leader><Leader>s :set spell!<CR>
 nnoremap <Leader>l yiW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
 nnoremap <Leader>L yW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
 command! -nargs=1 Doc execute "Silent LangDoc --ext=" . expand('%:e') . " -m <args>"
+
+imap <C-h> <Esc><C-h>
+imap <C-l> <Esc><C-l>
+imap <C-j> <Esc><C-j>
+imap <C-k> <Esc><C-k>
+
+
+" -------------------------- SPLIT AND TAB SETTINGS --------------------------
+" See: http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits "
+if exists('$TMUX')
+  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+    let previous_winnr = winnr()
+    silent! execute "wincmd " . a:wincmd
+    if previous_winnr == winnr()
+      call system("tmux select-pane -" . a:tmuxdir)
+      redraw!
+    endif
+  endfunction
+
+  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
+
+  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+else
+  map <C-h> <C-w>h
+  map <C-j> <C-w>j
+  map <C-k> <C-w>k
+  map <C-l> <C-w>l
+endif
+
 
 " ------------------------------ AUTOS ---------------------------------------
 
@@ -322,7 +302,8 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " Disables auto-comments on newlines
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" ------------------------- Functions and Commands ---------------------------
+
+" ------------------------- FUNCTIONS AND COMMANDS ---------------------------
 
 " Redraws screen after silent command
 command! -nargs=1 Silent
@@ -334,3 +315,25 @@ function! Sum(number)
   let g:S = g:S + a:number
   return a:number
 endfunction
+
+function! s:VSetSearch(cmdtype)
+	let temp = @s
+	norm! gv"sy
+	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+	let @s = temp
+endfunction
+
+" Automatically creates directory if it does not already exist
+" https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
+function s:MkNonExDir(file, buf)
+	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+		let dir=fnamemodify(a:file, ':h')
+		if !isdirectory(dir)
+			call mkdir(dir, 'p')
+		endif
+	endif
+endfunction
+augroup BWCCreateDir
+	autocmd!
+	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
