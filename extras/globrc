@@ -19,11 +19,11 @@ vman() {
 
 
 # ----- SSH / FTP
-alias ssh-athena='ssh -p 34857 bryan@173.71.68.88'
+alias ssh-athena="ssh -p $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
-alias sftp-athena='sftp -P 34857 bryan@173.71.68.88'
+alias sftp-athena="sftp -P $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
 
 
 # ----- Java
@@ -102,6 +102,25 @@ alias CDoc='LangDoc -e c -m'
 alias Doc='LangDoc -e sh -m'
 
 
+# ----- Package Installs/Updates
+alias ucow='mkcd /tmp/builds && cower -vud && buildall'
+
+# Clone New Package from the AUR
+icow() {
+    mkcd /tmp/builds
+    cower -d $1
+    tmux send-keys "cd /tmp/builds/$1 && tree" "Enter"
+}
+
+get() {
+    if pacman -Ss "^$1\$" &> /dev/null; then
+        sudo pacman -S $1
+    else
+        icow $1
+    fi
+}
+
+
 # ----- MISCELLANEOUS
 alias mutt-gmail="mutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
 alias mutt-root='sudo mutt -f /var/spool/mail/root'
@@ -114,15 +133,7 @@ alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +
 alias rstwifi='sudo systemctl restart netctl-auto@wlo1.service'
 alias la="LocalAlias"
 alias w='which'  # Overrides '/usr/bin/w'
-alias gccx='gcc -Wall -Werror -fsanitize=address'
-alias cow='mkcd /tmp/builds && cower -vud && buildall'
-
-# Clone New Package from the AUR
-clonepack() {
-    mkcd /tmp/builds
-    git clone $(xclip -o)
-    tmux send-keys "cd /tmp/builds && tree" "Enter"
-}
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # Sleep, then run the last command
 ss () {
@@ -161,3 +172,5 @@ fi
 
 # Fixes Mutt Background Issue (stays transparent) in TMUX
 export TERM="screen-256color"
+
+# vim: set syntax=zsh:

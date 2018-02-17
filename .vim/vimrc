@@ -23,12 +23,10 @@ endif
 
 " -------------------------------- SETS --------------------------------------
 set clipboard=unnamedplus
-
 set number relativenumber
 set colorcolumn=100
 set autoindent
 set backspace=2
-" set autochdir
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -92,6 +90,7 @@ set nohlsearch
 " Changes location of viminfo file
 set viminfo+=n~/.vim/viminfo
 
+" Needed for 'echodoc' plugin
 set noshowmode
 
 
@@ -197,9 +196,6 @@ nnoremap <C-Del> :call delete(expand('%'))<CR>
 
 nnoremap <C-s> :SyntasticToggleMode<CR>
 
-" Toggles 'cursorline'
-nnoremap <Leader>l :set cursorline!<CR>
-
 " Edit Snippet File
 nnoremap <Leader>S :e ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/UltiSnips/<C-R>=expand('%:e')<CR>.snippets<CR>
 " Edit ftplugin File
@@ -211,12 +207,8 @@ nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
 " Omnicompletion shortcut
 inoremap <C-o> <C-x><C-o>
 
-nnoremap <Leader>n :set relativenumber!<CR>
-
+" Toggles LiveDown for Markdown (e.g. README.md)
 nmap gm :LivedownToggle<CR>
-
-" Toggle spellcheck
-nmap <Leader><Leader>s :set spell!<CR>
 
 " Pulls Up Documentation for Module/Function Under Cursor
 nnoremap <Leader>l yiW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>

@@ -75,6 +75,7 @@ EOF
 endif
 
 let g:jedi#show_call_signatures = 0
+let g:jedi#goto_command = "gd"
 
 " ----------------------------- NECO-GHC ---------------------------------------
 " Disable haskell-vim omnifunc
