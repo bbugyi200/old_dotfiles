@@ -139,7 +139,7 @@ myAdditionalKeys = [
    , ((super, xK_m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"])
 
    -- Shift current window to _______
-   , ((alt .|. super, xK_n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1, CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1, removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1])
+   , ((ctrl, xK_0), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1, CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1, removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1])
 
    -- Shutdown / Restart
    , ((ctrl .|. super .|. alt, xK_s),
@@ -198,7 +198,7 @@ myAdditionalKeys = [
 
    -- Shift to WS; then Focus WS
    ++ [((ctrl, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
-       | (i, k) <- zip [0..9] $ [xK_1 .. xK_9] ++ [xK_0]
+       | (i, k) <- zip [0..8] $ [xK_1 .. xK_9]
       ]
 
 -------------------------------- Misc Configs ---------------------------------
@@ -284,6 +284,6 @@ main = do
             , DL.ppTitle                 = DL.xmobarColor "green"  "" . DL.shorten 40
             , DL.ppVisible               = DL.xmobarColor "yellow" ""
             , DL.ppUrgent                = DL.xmobarColor "red" "yellow"
-            , DL.ppSort                  = (NSP.namedScratchpadFilterOutWorkspace .) `liftM` getSortByIndex
+            , DL.ppSort                  = (NSP.namedScratchpadFilterOutWorkspace .) `liftM` DW.getSortByOrder
             } >> ewmhDesktopsLogHook <+> DL.dynamicLogXinerama
       } `additionalKeys` myAdditionalKeys

@@ -103,20 +103,21 @@ alias Doc='LangDoc -e sh -m'
 
 
 # ----- Package Installs/Updates
-alias ucow='mkcd /tmp/builds && cower -vud && buildall'
-
-# Clone New Package from the AUR
-icow() {
-    mkcd /tmp/builds
-    cower -d $1
-    tmux send-keys "cd /tmp/builds/$1 && tree" "Enter"
-}
+alias update='confirm "sudo pacman -Syu"; confirm "mkcd /tmp/builds && cower -vud && buildall"'
 
 get() {
     if pacman -Ss "^$1\$" &> /dev/null; then
         sudo pacman -S $1
     else
-        icow $1
+        echo "Package not found in official repositories!"
+        if cower -s "^$1\$" &> /dev/null; then
+            mkcd /tmp/builds
+            cower -d $1
+            tmux send-keys "cd $1 && tree" "Enter"
+        else
+            echo "Package not found in AUR!"
+            return 1
+        fi
     fi
 }
 
@@ -133,7 +134,6 @@ alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +
 alias rstwifi='sudo systemctl restart netctl-auto@wlo1.service'
 alias la="LocalAlias"
 alias w='which'  # Overrides '/usr/bin/w'
-alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # Sleep, then run the last command
 ss () {
