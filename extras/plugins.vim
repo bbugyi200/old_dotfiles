@@ -76,6 +76,7 @@ endif
 
 let g:jedi#show_call_signatures = 0
 let g:jedi#goto_command = "gd"
+let g:jedi#goto_assignments_command = ""
 
 " ----------------------------- NECO-GHC ---------------------------------------
 " Disable haskell-vim omnifunc
@@ -149,6 +150,12 @@ let g:airline_symbols.linenr = ''
 set rtp+=$POWERLINE_DIRECTORY/powerline/bindings/vim/
 set t_Co=256
 
+" Airline Tabline Options
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamecollapse = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ------------------------------ UltiSnips Configurations ----------------------
 "
