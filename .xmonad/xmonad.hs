@@ -28,8 +28,9 @@ import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 -- Function that prevents cycling to workspaces available on other screens
 hiddenNotNSP :: X (WindowSpace -> Bool)
 hiddenNotNSP = do
-  hs <- gets $ map W.tag . W.hidden . windowset
-  return (\w -> (W.tag w) /= "NSP" && (W.tag w) `elem` hs)
+  sort <- DW.getSortByOrder
+  hs <- gets (map W.tag . sort . NSP.namedScratchpadFilterOutWorkspace . W.hidden . windowset)
+  return (\w -> (W.tag w) `elem` hs)
 
 -- | This is a re-implementation of DW.withNthworkspace with "skipTags"
 -- added to filter out NSP.
