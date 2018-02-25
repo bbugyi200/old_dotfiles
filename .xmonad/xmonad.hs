@@ -74,7 +74,7 @@ myAdditionalKeys = [
    ((super, xK_a), spawn "alarm-xmonad")
 
    -- clipmenu
-   , ((alt .|. super, xK_c), spawn "clipmenu")
+   , ((alt, xK_b), spawn "clipmenu")
 
    -- Close Focused Window
    , ((alt, xK_w), spawn "close-window")

@@ -204,6 +204,10 @@ nnoremap <Leader>F :e ~/Dropbox/dotfiles/.vim/ftplugin/<C-R>=expand('%:e')<CR>.v
 " Delete Buffer
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
 
+" Vertical Buffer
+nmap <Leader>v :vert sb
+imap <Leader>v <Esc><Leader>v
+
 " Omnicompletion shortcut
 inoremap <C-o> <C-x><C-o>
 

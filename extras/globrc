@@ -63,6 +63,8 @@ tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250; }
 tsm-rm() { transmission-remote -t$1 -r; }
 tsm-purge() { transmission-remote -t$1 -rad; }
 
+rip() { nohup torrent "$@" &> /dev/null & disown }
+
 
 # ----- ETERNAL BASH HISTORY
 # https://spin.atomicobject.com/2016/05/28/log-bash-history/
