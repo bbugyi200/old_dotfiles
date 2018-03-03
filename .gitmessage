@@ -7,10 +7,11 @@
 # |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
 
 # Type can be 
-#    Add      (new feature)
+#    Add      (add feature)
+#    Rem      (remove feature)
+#    Mod      (modifying/refactoring production code)
 #    Fix      (bug fix)
-#    Refactor (refactoring production code)
-#    Style    (formatting, missing semi colons, etc; no code change)
+#    Sty      (formatting, missing semi colons, etc; no code change)
 #    Docs     (changes to documentation)
 #    Test     (adding or refactoring tests; no production code change)
 # --------------------
