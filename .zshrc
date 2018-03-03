@@ -58,3 +58,5 @@ command_not_found_handler() {
     WORD=$1; shift
     LocalAlias -x $WORD -- "$@"
 }
+
+compdef __git_branch_names gmd

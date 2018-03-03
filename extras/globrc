@@ -1,12 +1,25 @@
 # ------------------------------------------------------------------------------
 # ------------------------- FUNCTIONS + ALIASES --------------------------------
 # ----- Vim
-alias lvim='vim -c "normal \`0" -c "bdelete 1"'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/{body.txt,mind.txt,heart.txt}'
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt ~/Dropbox/notes/project_schedule.txt'
 alias vip="vim -c 'execute \"normal \\<c-p>\"'"
+alias lim='vim -c "normal \`0" -c "bdelete 1"'
 wim() { vim $(find ~/Dropbox/scripts -type f -name $1); }
+
+mim() {
+    if [[ -z "$1" ]]; then
+        echo "usage: mim <mark>"
+        return 1
+    fi
+    if [[ "/bin/zsh" == $SHELL ]]; then
+        MARK=${1:u}
+    elif [[ "/bin/bash" == $SHELL ]]; then
+        MARK=${1^^}
+    fi
+    vim -c "normal \`$MARK" -c "bdelete 1"
+}
 
 # Enables vim :Man command from the terminal
 vman() {
@@ -36,12 +49,8 @@ alias Jdb='jdb -classpath "../bin"'
 alias gnum="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gpf='git push -f'
-
-
-# ----- Remove/Overwrite Files Safely
-alias rm="rm -i"
-alias mv="mv -i"
-alias cp="cp -i"
+gmd() { git merge $1 && confirm "git branch -D $1 && git push --delete origin $1"; }
+gcB() { git checkout -b $1 && git push --set-upstream origin $1; }
 
 
 # ----- Overriden Commands
@@ -51,6 +60,11 @@ alias matlab='matlab -nojvm -nodisplay -nosplash'
 alias time='/usr/bin/time'
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
 alias sudo='sudo '  # makes aliases visible to sudo
+
+# Remove/Overwrite Files Safely
+alias rm="rm -i"
+alias mv="mv -i"
+alias cp="cp -i"
 
 
 # ----- transmission-remote
@@ -105,7 +119,7 @@ alias Doc='LangDoc -e sh -m'
 
 
 # ----- Package Installs/Updates
-alias update='confirm "sudo pacman -Syu"; confirm "mkcd /tmp/builds && cower -vud && buildall"'
+alias update='confirm "sudo pacman -Syu"; confirm "mkdir /tmp/builds && cd /tmp/builds && cower -vud && buildall"'
 
 get() {
     if pacman -Ss "^$1\$" &> /dev/null; then
@@ -135,7 +149,11 @@ alias delshots='confirm "find /home/bryan/Dropbox/logs/aphrodite-motion -name \"
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 alias rstwifi='sudo systemctl restart netctl-auto@wlo1.service'
 alias la="LocalAlias"
-alias w='which'  # Overrides '/usr/bin/w'
+
+# Overrides '/usr/bin/w'
+w() {
+    which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n" && la $1)
+}
 
 # Sleep, then run the last command
 ss () {
@@ -175,4 +193,4 @@ fi
 # Fixes Mutt Background Issue (stays transparent) in TMUX
 export TERM="screen-256color"
 
-# vim: set syntax=zsh:
+# vim: set filetype=zsh:
