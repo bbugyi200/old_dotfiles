@@ -10,6 +10,8 @@
 .xmonad/*
 !.xmonad/xmonad.hs
 
+.weechat/*
+
 .vim/*
 !.vim/vimrc
 !.vim/ftplugin/
