@@ -10,6 +10,7 @@ import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Layout.Spacing (smartSpacing)
 import XMonad.Util.WorkspaceCompare (getSortByIndex)
 import XMonad.Hooks.EwmhDesktops (ewmh,ewmhDesktopsLogHook,ewmhDesktopsStartup)
+import XMonad.Hooks.ManageHelpers (doRectFloat)
 
 import Data.Maybe (isNothing,isJust)
 import Control.Monad (liftM,when)
@@ -185,7 +186,7 @@ myAdditionalKeys = [
    ++ [((alt, key), sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
        [xK_x, xK_c, xK_z, xK_v, xK_1, xK_2, xK_3]
-       [myTerminal,"google-chrome-stable","zathura","okular","anki","hamster","slack"]
+       [myTerminal,"qutebrowser","zathura","okular","anki","hamster","slack"]
        ["TERM","WEB","ZATH","OKULAR","ANKI","HAMSTER","SLACK"]
       ]
 
@@ -193,7 +194,7 @@ myAdditionalKeys = [
    ++ [((super, key), sequence_ [CW.nextScreen, DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
        [xK_c, xK_x, xK_z, xK_v]
-       ["google-chrome-stable", myTerminal, "zathura", "zathura"]
+       ["qutebrowser", myTerminal, "zathura", "zathura"]
        ["WEB'", "TERM'", "ZATH'", "ZATH"]
       ]
 
@@ -204,7 +205,7 @@ myAdditionalKeys = [
 
 -------------------------------- Misc Configs ---------------------------------
 myTerminal = "termite -e 'tm-init Terminal'"
-myModMask = mod1Mask
+myModMask = mod4Mask
 
 myFocusFollowsMouse = False
 myClickJustFocuses = False
@@ -248,7 +249,14 @@ myManageHook = composeAll
     , NSP.namedScratchpadManageHook scratchpads
     , className=? "Galculator"      --> doFloat
     , className=? "Peek"            --> doFloat
-    , className=? "Pinentry"        --> doFloat]
+    , className=? "Pinentry"        --> doFloat
+    , className=? "qute-editor"     --> doRectFloat (W.RationalRect x y w h)
+    , className=? "qb-pass"         --> doRectFloat (W.RationalRect x y w h)]
+    where
+        x = 0.3
+        y = 0.4
+        w = 0.3
+        h = 0.15
 
 myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
