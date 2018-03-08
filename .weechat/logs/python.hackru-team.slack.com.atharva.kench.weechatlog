@@ -1,0 +1,62 @@
+2018-03-04 11:51:34		getting channel history...
+2018-03-04 11:51:48		[11:51]
+2018-01-26 15:18:40	bryan.bugyi	Hey Atharva. I saw you fixed that punctuation issue. Nice job. 
+2018-01-26 15:18:40		
+2018-01-26 15:18:40		Can you push to the `develop` branch instead of the `master` branch going forward though? The `develop` branch is 30 some commits ahead of `master` so we want to make sure that your fix works right when integrating into all that other work. 
+2018-01-26 15:19:06	atharva.kench	Oh sorry, i didn't realize, I'll fix it when I get home 
+2018-01-26 15:20:00	bryan.bugyi	No worries. I'm checking it out now, so might be fixed by the time you get back. Good job on the bug fix. 
+2018-01-26 15:20:34	atharva.kench	Cool, thanks 
+2018-01-26 15:21:02	atharva.kench	Also I looked at the other code today too, it looks a lot shorter and cleaner compared to last semester lol 
+2018-01-26 15:22:03	bryan.bugyi	Yeah, a lot of the changes were just to clean up the codebase and add tests. Not too much extra functionality was actually added. [:+1:1] 
+2018-01-26 17:26:03	bryan.bugyi	So yours wasn't working for some reason. It looks like the period was not included as punctuation. I added it, but the string still wasn't getting split right because it was splitting on `|` instead of spaces (and spaces were not replaced with `|`). I pushed a solution for this that uses `string.punctuation` instead of a manually crafted list (a little easier). 
+2018-01-26 17:26:03		
+2018-01-26 17:26:03		I did not, however, filter out common words like you were doing, so I just left the `data.py` file out. This won't affect punctuation. You should be able to use `nltk.corpus.stopwords` instead of manually crafting your own btw.
+2018-01-26 17:26:03		
+2018-01-26 17:26:03		Try to make sure to test your solution before you push to `develop`. Also, definitely make sure to run `./runtests.py` before you push to make sure your changes didn't break anything.  (edited)
+2018-01-26 17:27:36	atharva.kench	Oh right i might have forgotten to add the spaces and period to the stop chars set. Something happened while pushing so I had to retype it 
+2018-01-26 17:30:22	bryan.bugyi	Gotcha. No problem. You should checkout the `string` library when you get a chance. There are all types of useful sets in there (sets of uppercase/lowercase letters, alphanumeric, numeric, punctuation, etc).
+2018-01-26 17:30:22		
+2018-01-26 17:30:22		If you need even more than this, the `nltk` third-party library is super powerful.  (edited)
+2018-01-26 17:31:04	atharva.kench	Oh ok thx! I'll look into it 
+2018-02-01 22:57:16	bryan.bugyi	Hey man. Any chance you can send me the error output your getting when you try to run `runtests.py`? I'd like to look into that more. 
+2018-02-01 23:06:59	atharva.kench	Yeah sure, give me a sec 
+2018-02-01 23:10:47	atharva.kench	(venv) super@super-UX330UAK:~/repos/SlackRU$ python3 runtests.py 
+2018-02-01 23:10:47		test_help_cmd (test_slackbot.TestSlackBot) ... ERROR
+2018-02-01 23:10:47		test_mentors_cmd (test_slackbot.TestSlackBot) ... ok
+2018-02-01 23:10:47		test_mentorAccept (test_views.TestViews) ... ERROR
+2018-02-01 23:10:47		test_mentorDecline (test_views.TestViews) ... ok
+2018-02-01 23:10:47		test_message_action (test_views.TestViews) ... ok
+2018-02-01 23:10:47		
+2018-02-01 23:10:47		======================================================================
+2018-02-01 23:10:47		ERROR: test_help_cmd (test_slackbot.TestSlackBot)
+2018-02-01 23:10:47		----------------------------------------------------------------------
+2018-02-01 23:10:47		Traceback (most recent call last):
+2018-02-01 23:10:47		  File "/home/super/repos/SlackRU/slackru/tests/test_slackbot.py", line 23, in test_help_cmd
+2018-02-01 23:10:47		    slack_client.api_call.assert_called_once()
+2018-02-01 23:10:47		  File "/usr/lib/python3.5/unittest/mock.py", line 583, in __getattr__
+2018-02-01 23:10:47		    raise AttributeError(name)
+2018-02-01 23:10:47		AttributeError: assert_called_once
+2018-02-01 23:10:47		
+2018-02-01 23:10:47		======================================================================
+2018-02-01 23:10:47		ERROR: test_mentorAccept (test_views.TestViews)
+2018-02-01 23:10:47		----------------------------------------------------------------------
+2018-02-01 23:10:47		Traceback (most recent call last):
+2018-02-01 23:10:47		  File "/home/super/repos/SlackRU/slackru/tests/test_views.py", line 35, in test_mentorAccept
+2018-02-01 23:10:47		    slack_client.api_call.assert_called()
+2018-02-01 23:10:47		  File "/usr/lib/python3.5/unittest/mock.py", line 583, in __getattr__
+2018-02-01 23:10:47		    raise AttributeError(name)
+2018-02-01 23:10:47		AttributeError: assert_called
+2018-02-01 23:10:47		
+2018-02-01 23:10:47		----------------------------------------------------------------------
+2018-02-01 23:10:47		Ran 5 tests in 3.413s
+2018-02-01 23:10:47		
+2018-02-01 23:10:47		FAILED (errors=2) 
+2018-02-01 23:37:39	bryan.bugyi	Just figured it out. It really is because you are using 3.5, which is ridiculous. Those methods just came out in 3.6. I’m going to change it. It’s too bleeding edge for my taste lol 
+2018-02-02 00:45:00	bryan.bugyi	Should be fixed now. Let me know if its not. 
+2018-02-02 09:15:51	atharva.kench	wow lmao 
+2018-02-02 09:16:24	atharva.kench	yup the tests are working now :+1: 
+2018-02-02 16:07:28	bryan.bugyi	Hey Atharva. Make sure not to push binary files to GitHub (in the case of python, these are the `.pyc` files stored in the `__pycache__` directories). They don't cause any big problems, but are unnecessary clutter and they will slow down the `git pull` and `git push` commands. I'm not sure how you even pushed those `__pycache__` directories anyway. They are in the repo's `.gitignore` file, so they should have been ignored unless explicitly added.
+2018-02-02 16:07:28		
+2018-02-02 16:07:28		I already removed them. Just letting you know for the future. :slightly_smiling_face:  (edited)
+2018-02-02 16:07:31	bryan.bugyi	¯\_(ツ)_/¯ 
+2018-02-02 16:35:19	atharva.kench	Oh ok, yeah I'm not sure how I did that lol 

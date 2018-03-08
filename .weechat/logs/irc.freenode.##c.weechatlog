@@ -1,0 +1,217 @@
+2018-03-04 14:16:54	⚡	Topic for ##C is "C Programming | PASTE (>3 lines): http://ideone.com/ | WIKI: http://www.iso-9899.info/ | BOOKS: http://www.iso-9899.info/wiki/Books | C2X Charter: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2086.htm | C11 is the current C standard: http://iso-9899.info/wiki/The_Standard | Off-topic: ##c-offtopic | Test your C knowledge in #cjeopardy"
+2018-03-04 14:16:54	⚡	Topic set by e (e@enucs/spy.edk) on Fri, 16 Feb 2018 19:20:41
+2018-03-04 14:16:54	⚡	Channel ##C: 1000 nicks (1 op, 0 voices, 999 normals)
+2018-03-04 14:16:54	⚡	PvNotice(ChanServ): Welcome to ##c! We engage in C programming discussions at all levels of expertise; don't hesitate to ask your question. If applicable, please prepare a testcase and paste it at http://ideone.com. We don't know about C++ (##c++) or C# (##csharp).
+2018-03-04 14:16:54	⚡	URL for ##c: http://www.iso-9899.info/
+2018-03-04 14:16:56	⚡	Channel created on Sun, 26 Nov 2006 01:42:39
+2018-03-04 14:19:40	▷	izabera checks if amazon still sells books on c
+2018-03-04 14:20:09	izabera	looks like they do and surely such books do explain sscanf
+2018-03-04 14:20:16	shack	lol
+2018-03-04 14:22:12	gl	20:03:08 < temp_trisquel> I want to build computer from scratch. I don't know how to read from file so user must input each command.
+2018-03-04 14:22:16	gl	very funny statement
+2018-03-04 14:26:43	superguest	sccan(buf, "%c %lx", &type, &vaddr);; is my current sscanf, what is a string format that I can use to pick up just 'vaddr', obviating the need for 'type'
+2018-03-04 14:26:44	superguest	?
+2018-03-04 14:30:13	⚡	Mode ##C [-b *!~quassel@2605:6000:*] by candide
+2018-03-04 14:58:05	⚡	dyln is now known as dxg
+2018-03-04 15:09:10	⚡	Topic for ##C is "C Programming | PASTE (>3 lines): http://ideone.com/ | WIKI: http://www.iso-9899.info/ | BOOKS: http://www.iso-9899.info/wiki/Books | C2X Charter: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2086.htm | C11 is the current C standard: http://iso-9899.info/wiki/The_Standard | Off-topic: ##c-offtopic | Test your C knowledge in #cjeopardy"
+2018-03-04 15:09:11	⚡	Topic set by e (e@enucs/spy.edk) on Fri, 16 Feb 2018 19:20:41
+2018-03-04 15:09:11	⚡	Channel ##C: 998 nicks (1 op, 0 voices, 997 normals)
+2018-03-04 15:09:11	⚡	PvNotice(ChanServ): Welcome to ##c! We engage in C programming discussions at all levels of expertise; don't hesitate to ask your question. If applicable, please prepare a testcase and paste it at http://ideone.com. We don't know about C++ (##c++) or C# (##csharp).
+2018-03-04 15:09:11	⚡	URL for ##c: http://www.iso-9899.info/
+2018-03-04 15:09:20	⚡	Channel created on Sun, 26 Nov 2006 01:42:39
+2018-03-04 15:35:17	jackarius86	hi, i am struggling to make a large string of A's for fuzzing, whats the easiest way to do this? does it involve writing a for loop, or is there an in-built function which does the job easier?
+2018-03-04 15:36:28	abff	perl
+2018-03-04 15:36:35	abff	bash
+2018-03-04 15:37:33	d3x0r	a for loop or memset
+2018-03-04 15:38:14	fpop	#include <stdio.h>
+2018-03-04 15:38:15	fpop	 
+2018-03-04 15:38:17	fpop	 int main (void)
+2018-03-04 15:38:19	fpop	 {
+2018-03-04 15:38:21	pragma-	yay
+2018-03-04 15:38:21	fpop	     for( ; ; ) {
+2018-03-04 15:38:23	fpop	         printf("skid u cant code.\n\n");
+2018-03-04 15:38:25	fpop	         }
+2018-03-04 15:38:27	fpop	         return 0;
+2018-03-04 15:38:27	@candide	fpop: Please stop abusing the enter key. Feel free to type longer messages and to take a moment to think of anything else to say before you hit that enter key.
+2018-03-04 15:38:29	fpop	}y
+2018-03-04 15:38:31	fpop	?? maybe ??
+2018-03-04 15:38:31	⚡	Mode ##C [+b *!~fpop@2a03:1b20:3:f011::12de] by candide
+2018-03-04 15:38:42	pragma-	hm.
+2018-03-04 15:38:51	pragma-	i dont feel like candide was aggressive enough.
+2018-03-04 15:39:44	⚡	Mode ##C [-b *!~fpop@2a03:1b20:3:f011::12de] by candide
+2018-03-04 15:39:49	k	i agree. that was ridiculous.
+2018-03-04 15:42:09	jackarius86	fpop, well done you excel in bullying people who know less about the C programming language than you
+2018-03-04 15:42:48	d0st	hi
+2018-03-04 15:52:20	beardedmouse	Hi guys! Trying to solve this pointer dilema. https://pastebin.com/Rj5bpqvP Is my test code. I want it to work like https://pastebin.com/p69Dmyyh
+2018-03-04 15:52:31	beardedmouse	My problem is the pointers : (
+2018-03-04 15:54:15	Stragus	beardedmouse: Test() is passed a pointer with an undefined address, it assigns some malloc'ed address to that pointer argument, but that argument is not the variable you see in main(). It's another pointer
+2018-03-04 15:54:50	Stragus	You could simply return that pointer from Test().  char *Test() { ...; return pointer; }   pointer = Test();
+2018-03-04 15:58:36	beardedmouse	Stragus, So I would need to allocate it in main before passing it to the function? Or Pass in a **? Because I tried to do a pointer to a pointer but I wasn't getting expected results either. I can't get my assumptions about the pointers right. (Sorry for the delay in response. Trying write my thoughts out in an understandable fashion)
+2018-03-04 16:00:18	Stragus	beardedmouse: You could malloc() in main() and pass the pointer. You could pass a pointer to the pointer, and store a value in main()'s pointer in your Test(). You could return the malloc'ed pointer
+2018-03-04 16:00:50	Stragus	Pick one, perhaps the one you understand least?
+2018-03-04 16:00:57	beardedmouse	I'm starting to lean toward the return option. Seems easiest
+2018-03-04 16:01:21	Stragus	Sure, it's convenient and typical. Functions that allocate something returns the pointer of that thing, and NULL on error
+2018-03-04 16:02:28	beardedmouse	I tried making char **pointer in main and passing that into Test() but something always complains on compile. Starting to spend more time on it than really worth.
+2018-03-04 16:02:40	beardedmouse	Thanks for the help Stragus.
+2018-03-04 16:03:00	Stragus	Paste your attempt at that
+2018-03-04 16:03:08	butterthebuddha	How do shells expose environment variables to processes like make?
+2018-03-04 16:03:54	butterthebuddha	Rephrase: how do I expose data to child processes?
+2018-03-04 16:04:24	Stragus	Child processes inherent environent variables
+2018-03-04 16:04:44	Stragus	Although using arguments would be more typical than envvars
+2018-03-04 16:04:55	butterthebuddha	Stragus: How do I set/get my own environment variables?
+2018-03-04 16:05:47	Stragus	setenv()
+2018-03-04 16:05:58	Stragus	And getenv()
+2018-03-04 16:07:53	butterthebuddha	Stragus: sweet, thanks
+2018-03-04 16:08:21	beardedmouse	I tried something like this, but it seems awkward to me (seg fault) https://pastebin.com/qKCtShs0 .
+2018-03-04 16:09:45	Stragus	Line 14, you assign a char* to a char**, your compiler should tell you that's wrong even before you try to run it
+2018-03-04 16:09:54	beardedmouse	I'm passing the address of the pointer from main into Test() then setting it's value with calloc() but then using it's value in the sprintf() . Not confident
+2018-03-04 16:10:03	Stragus	You were close though.  *pointer = malloc();
+2018-03-04 16:11:21	beardedmouse	I didn't have -Wall -Wextra on and it didn't complain. Should have that on all the time
+2018-03-04 16:11:30	butterthebuddha	Stragus: that isn't a compiler error, is it?
+2018-03-04 16:11:48	beardedmouse	Oh so I was trying to modify the actual address of the pointer created in main and not the value it's pointing to.
+2018-03-04 16:12:17	Stragus	butterthebuddha: Any sane compiler will emit a warning, but it's not technically an error
+2018-03-04 16:12:18	butterthebuddha	beardedmouse: No, you were modifying a copy of the pointer that points to the string in main
+2018-03-04 16:12:45	butterthebuddha	beardedmouse: you didn't affect the actual string in any way on line 14
+2018-03-04 16:12:48	beardedmouse	In the last attempt  I pasted/
+2018-03-04 16:12:51	beardedmouse	?*
+2018-03-04 16:12:56	butterthebuddha	Yep
+2018-03-04 16:13:43	beardedmouse	Right right, yea I was working on the address passed from main. When I should have been working on the value it points to.
+2018-03-04 16:13:44	Stragus	You want:  *pointer = calloc(...);
+2018-03-04 16:14:01	butterthebuddha	Stragus: fair enough
+2018-03-04 16:14:24	beardedmouse	Thanks guys!
+2018-03-04 16:23:46	VLetrmx	hello
+2018-03-04 16:29:13	azarus	Read the first 2 chapters of the K. N. King book, quite nice, I must say :D
+2018-03-04 16:30:01	pnbeast	What did those chapters say, azarus?
+2018-03-04 16:30:18	azarus	stuff and things related to C
+2018-03-04 16:30:44	pnbeast	Did they, now?  Hmm.
+2018-03-04 16:30:44	r3kz	lol
+2018-03-04 16:31:29	azarus	Not quite sure what you're getting on about, but yup.
+2018-03-04 17:09:00	klock	i believe him
+2018-03-04 18:03:45	foo_	Hi.
+2018-03-04 18:07:39	twkm	moo.
+2018-03-04 18:08:25	pragma-	where's the beef?
+2018-03-04 18:08:36	k	where's the dick
+2018-03-04 18:08:40	k	wrong channel
+2018-03-04 18:11:05	sjohnson	haha
+2018-03-04 18:14:26	izabera	does INT_MAX have to be a power of 2 -1?
+2018-03-04 18:15:55	pragma-	nothing has to be anything. it's all arbitrary.
+2018-03-04 18:20:24	k	the only explicit restriction that i know of is that it must be greater than or equal to 32767
+2018-03-04 18:20:52	k	but it's logically implied that it must be a power of 2 - 1 by the description of integer types
+2018-03-04 18:21:27	k	but only for signed char specifically, i think
+2018-03-04 18:24:01	k	actually no, it should always be a power of 2 - 1
+2018-03-04 18:24:13	pragma-	so a power of 1 then
+2018-03-04 18:25:05	k	i guess it's a little tricky because of padding and trap representations
+2018-03-04 18:25:09	k	so i don't actually know tbh
+2018-03-04 18:25:22	pragma-	it's probably the way it is because of the way it is.
+2018-03-04 18:32:12	foo_	If the return statement returns a value of a different type from the declared one, how is the implicit conversion performed? Is it equivalent to using a cast like this "return (declared return type)value;"?
+2018-03-04 18:34:02	Stragus	foo_: Yes, it's converted implicitely like any other expression
+2018-03-04 18:34:51	foo_	Stragus: You mean like any other expression on the right side of an assignment operator?
+2018-03-04 18:35:04	Stragus	Yes
+2018-03-04 18:35:14	Stragus	(or a function argument, etc.)
+2018-03-04 18:35:24	foo_	Well, that depends.
+2018-03-04 18:35:41	foo_	(The function argument thingy.)
+2018-03-04 18:36:02	twkm	with a prototype in scope?  nope, exactly the same.
+2018-03-04 18:36:11	foo_	Has that been mentioned?
+2018-03-04 18:36:33	twkm	had function arguments?
+2018-03-04 18:36:52	foo_	Yes.
+2018-03-04 18:36:53	Stragus	Implicit function prototypes are gone since C99
+2018-03-04 18:41:59	foo_	In C89, why does the compiler have to know the return type of the function; i.e., why does encountering a different return type (from int) in a function's prototype that comes after its use affect anything?
+2018-03-04 18:44:07	izabera	because implementations may use different ways to return different types
+2018-03-04 18:44:15	twkm	and the compiler is single pass.
+2018-03-04 18:44:41	Stragus	foo_: Different return types are passed differently, just like different argument types are passed differently
+2018-03-04 18:48:21	foo_	I don't get any of that. That sounds very ambiguous.
+2018-03-04 18:48:38	foo_	Stragus: Are you talking about those implicit conversions that need to take place after the value is returned?
+2018-03-04 18:49:03	izabera	foo_: what system are you using?
+2018-03-04 18:49:15	Stragus	Implementation-specific details: different return types can be returned in different registers or on the stack, as defined by the ABI
+2018-03-04 18:49:17	izabera	something like a x86_64?
+2018-03-04 18:49:36	izabera	something like a mac?
+2018-03-04 18:49:43	foo_	Hm, I see.
+2018-03-04 18:49:56	foo_	izabera: The former, I think.
+2018-03-04 18:50:23	izabera	ok, your system has special registers for floating point values
+2018-03-04 18:50:24	Stragus	On your x86_64, integer return values go in %rax, float values are returned in %xmm0, etc.
+2018-03-04 18:51:59	foo_	I see, I see, thank you.
+2018-03-04 18:55:49	Chloe	what's a sane way for a library to handle errors? Is there only errno, or is there something which allows more complex errors to be communicated?
+2018-03-04 18:56:16	twkm	make your own thing for it.  a struct perhaps.
+2018-03-04 19:02:24	izabera	one common way is to take     type1 f(type2 arg)   and turn it into      int f(type1 *ret, type2 arg)
+2018-03-04 19:03:06	izabera	and return an error code
+2018-03-04 19:03:37	twkm	aye, at least that's your own int rather than presuming to use errno.
+2018-03-04 19:05:35	supernovah	For some reason with an #ifdef #error #else #error #endif - I'm getting both errors coming out of the compiler - how is that possible?
+2018-03-04 19:07:49	Pleune	There could be a typo/error breaking the else
+2018-03-04 19:09:41	supernovah	https://repl.it/repls/NaughtySurprisedDisk
+2018-03-04 19:09:58	supernovah	I get both errors, but the online compiler doesn't...
+2018-03-04 19:10:44	twkm	you have a mistake, perhaps in perception.
+2018-03-04 19:11:49	supernovah	twkm: huh?
+2018-03-04 19:13:09	Pleune	I didn't know you could have a space after the '#'
+2018-03-04 19:13:31	twkm	or before.
+2018-03-04 19:13:49	supernovah	Does before work?>
+2018-03-04 19:14:02	twkm	in ancient times the first character of the file had to be # to get cpp to be used at all.
+2018-03-04 19:14:07	supernovah	twkm: can you explain what you mean about my problems with perception?
+2018-03-04 19:14:17	supernovah	I didn't think I was asking a philosophical question...
+2018-03-04 19:15:30	twkm	perhaps you are doing something that makes the compiler run twice.
+2018-03-04 19:16:09	supernovah	twkm: what could achieve that?
+2018-03-04 19:16:33	supernovah	twkm: oh actually I think you're right... Eclipse sees the define in main.c, before main.h include
+2018-03-04 19:16:41	supernovah	And the compiler doesn't, which is technically correct
+2018-03-04 19:16:59	supernovah	And the errors are not both from the compiler probably, but I can't tell
+2018-03-04 19:17:02	twkm	use of make with a fucked up description to it of what to do, use of a script and accedentally have the same line repeated, ... using an ide...
+2018-03-04 19:17:17	twkm	ah-ha!
+2018-03-04 19:17:28	twkm	sounds like you found it.
+2018-03-04 19:17:31	supernovah	gg
+2018-03-04 19:19:22	foo_	Stragus: And what about function parameters, why does the compiler need the types of the parameters? I don't think the arguments are put into registers? I tried it and it does work, but if I don't put the prototype before the function is used, the value received is wrong. Is this because arguments have to be converted before they're left on the stack to be used as parameters?
+2018-03-04 19:19:58	twkm	so that the type of the value passed can be converted to the type expected.
+2018-03-04 19:20:13	twkm	bleh, stack.
+2018-03-04 19:20:36	foo_	twkm: Okay, I think what I said is in accord with what you said.
+2018-03-04 19:20:50	twkm	excellent.
+2018-03-04 19:22:07	foo_	twkm: If I remember correctly (and that was a few years ago), arguments are pushed onto the stack before the function call. Are they not? I'm not sure how you'd handle recursion otherwise.
+2018-03-04 19:22:57	foo_	I know this channel is about C, but I was asking about the compiler... so maybe this isn't the right channel for that.
+2018-03-04 19:23:23	twkm	tired of assembly to teach c, but say it is as you say, where are you going?
+2018-03-04 19:23:28	doppel	i would say they're pushed onto the stack as part of the function call, the function call being the entire set of things needed to be done including the actual call itself
+2018-03-04 19:24:00	foo_	doppel: I was referring to the actual "call" directive or whatever.
+2018-03-04 19:24:05	doppel	but in here we're more about the standard rather than its implementation
+2018-03-04 19:24:11	twkm	push an int, function expects a long, oops!
+2018-03-04 19:24:36	twkm	function pop'd too much, not yer screwed.
+2018-03-04 19:24:44	twkm	err, now yer.
+2018-03-04 19:24:47	foo_	Right.
+2018-03-04 19:25:06	doppel	anyway, as twkm said, the compiler needs to know so it can know what types to convert to if the types are different, otherwise it defaults to what are called "default argument promotions"
+2018-03-04 19:25:29	foo_	Yeah, I know.
+2018-03-04 19:25:36	foo_	But I was asking about why.
+2018-03-04 19:25:58	doppel	...
+2018-03-04 19:26:09	foo_	(And I got it now.)
+2018-03-04 19:26:50	twkm	not being "two pass" it can't "go back" and do the right thing.
+2018-03-04 19:46:03	⚡	fstd_ is now known as fstd
+2018-03-04 20:47:31	▷	maxxe going wild about C
+2018-03-04 21:01:18	moose	I have an init function for one of my structs. This struct contains a handle I need to pass around to the kernel to get other values that I will then store in this struct. My code stores the handle in the struct then accesses the field in the struct each time I pass it around. Others have criticized my code and said store it in a local variable instead and pass it around, only initializing the struct in
+2018-03-04 21:01:24	moose	declared order at the end of the init function.
+2018-03-04 21:02:04	moose	I'd show the code, but you know, my employer doesn't like that. Anyway, is there really a reason beyond calling it an optimization to do that, or should I just write code the way I want and do it consistently?
+2018-03-04 21:07:32	Xgc	moose: Which storage class / duration to use depends on the requirement.  You didn't provide a clear requirement.  You simply indicated you store something here and others suggest there, with no specific detail.
+2018-03-04 21:15:14	⚡	Topic for ##C is "C Programming | PASTE (>3 lines): http://ideone.com/ | WIKI: http://www.iso-9899.info/ | BOOKS: http://www.iso-9899.info/wiki/Books | C2X Charter: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2086.htm | C11 is the current C standard: http://iso-9899.info/wiki/The_Standard | Off-topic: ##c-offtopic | Test your C knowledge in #cjeopardy"
+2018-03-04 21:15:14	⚡	Topic set by e (e@enucs/spy.edk) on Fri, 16 Feb 2018 19:20:45
+2018-03-04 21:15:14	⚡	Channel ##C: 984 nicks (1 op, 0 voices, 983 normals)
+2018-03-04 21:15:14	⚡	PvNotice(ChanServ): Welcome to ##c! We engage in C programming discussions at all levels of expertise; don't hesitate to ask your question. If applicable, please prepare a testcase and paste it at http://ideone.com. We don't know about C++ (##c++) or C# (##csharp).
+2018-03-04 21:15:14	⚡	URL for ##c: http://www.iso-9899.info/
+2018-03-04 21:15:25	⚡	Channel created on Sun, 26 Nov 2006 01:42:39
+2018-03-04 21:19:28	Xgc	moose: The difference is logically not important, if the values are maintained properly. Whether you hold a handle or a pointer is immaterial if either is sufficient.  The compiler might not be able to help if it can't know the handle value is the same for each access.
+2018-03-04 21:20:26	moose	The problem isn't whether or not we use a handle or pointer, it's the part about caching it locally or accessing it indirectly in the struct we're initializing
+2018-03-04 21:20:34	Xgc	moose: Don't optimize prematurely.  You can always test both methods and then make a decision.
+2018-03-04 21:20:39	moose	Exactly.
+2018-03-04 21:20:55	moose	I'm not changing it because it feels like a tiny optimization.
+2018-03-04 21:21:05	moose	Tracking more variables makes code harder to read IMO
+2018-03-04 21:21:58	Xgc	moose: Well, you're either going to track a pointer (yourself) or a handle.  There's no practical difference.
+2018-03-04 21:23:01	Xgc	moose: You should be able to use that handle for everything.  If not, you would need to track both a pointer and a handle if you store the handle outside the structure.
+2018-03-04 21:23:48	Xgc	moose: Think about how a FILE* handle behaves.
+2018-03-04 21:24:06	Xgc	moose: or a file descriptor.
+2018-03-04 21:24:10	moose	Xgc: Lemme write you an example of what I am taking about :)
+2018-03-04 21:24:24	moose	It's simpler than you're thinking, I think
+2018-03-04 21:25:36	moose	Xgc: https://pastebin.com/tnUSDarR
+2018-03-04 21:34:27	Xgc	moose: If this has become a large question that needs to be resolved, decide what measure should be used to decide, then perform the measurement.  Remember, what you find may be platform dependent.
+2018-03-04 21:35:06	moose	The bottom line is, it really does not matter then. It's all about the profiling. If it's a hot path, fix it.
+2018-03-04 21:35:17	Xgc	moose: Remember, everything has a cost.
+2018-03-04 21:35:58	Xgc	moose: Use of automatic storage has a cost.
+2018-03-04 21:36:19	Xgc	moose: x->handle has a cost.
+2018-03-04 21:37:08	Xgc	Until you decide you care about the cost, forget it.  If you care, measure.
+2018-03-04 21:38:04	Xgc	But measurement might not be simple.
+2018-03-04 23:35:50	⚡	Topic for ##C is "C Programming | PASTE (>3 lines): http://ideone.com/ | WIKI: http://www.iso-9899.info/ | BOOKS: http://www.iso-9899.info/wiki/Books | C2X Charter: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2086.htm | C11 is the current C standard: http://iso-9899.info/wiki/The_Standard | Off-topic: ##c-offtopic | Test your C knowledge in #cjeopardy"
+2018-03-04 23:35:50	⚡	Topic set by e (e@enucs/spy.edk) on Fri, 16 Feb 2018 19:20:41
+2018-03-04 23:35:50	⚡	Channel ##C: 979 nicks (1 op, 0 voices, 978 normals)
+2018-03-04 23:35:50	⚡	PvNotice(ChanServ): Welcome to ##c! We engage in C programming discussions at all levels of expertise; don't hesitate to ask your question. If applicable, please prepare a testcase and paste it at http://ideone.com. We don't know about C++ (##c++) or C# (##csharp).
+2018-03-04 23:35:50	⚡	URL for ##c: http://www.iso-9899.info/
+2018-03-04 23:36:02	⚡	Channel created on Sun, 26 Nov 2006 01:42:39

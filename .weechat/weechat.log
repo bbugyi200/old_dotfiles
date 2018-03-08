@@ -1,0 +1,35 @@
+[2018-03-07 16:27:59] WeeChat 2.0.1 (compiled on Jan  3 2018 08:05:45)
+[2018-03-07 16:27:59] Reading configuration file sec.conf
+[2018-03-07 16:27:59] Reading configuration file weechat.conf
+[2018-03-07 16:27:59] Reading configuration file plugins.conf
+[2018-03-07 16:27:59] Reading configuration file charset.conf
+[2018-03-07 16:27:59] Reading configuration file logger.conf
+[2018-03-07 16:27:59] Reading configuration file exec.conf
+[2018-03-07 16:27:59] Reading configuration file trigger.conf
+[2018-03-07 16:27:59] Reading configuration file aspell.conf
+[2018-03-07 16:27:59] Reading configuration file alias.conf
+[2018-03-07 16:27:59] Reading configuration file buflist.conf
+[2018-03-07 16:27:59] Reading configuration file fifo.conf
+[2018-03-07 16:27:59] Reading configuration file xfer.conf
+[2018-03-07 16:27:59] Reading configuration file irc.conf
+[2018-03-07 16:27:59] Reading configuration file relay.conf
+[2018-03-07 16:27:59] Reading configuration file iset.conf
+[2018-03-07 16:27:59] Reading configuration file autosort.conf
+[2018-03-07 16:27:59] Writing configuration file autosort.conf
+[2018-03-07 16:27:59] Reading configuration file script.conf
+[2018-03-07 16:27:59] Reading configuration file fset.conf
+[2018-03-07 16:27:59] irc: connecting to server chat.freenode.net/6667...
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 16:28:17] Writing configuration file irc.conf
+[2018-03-07 23:51:48] Writing configuration file irc.conf
+[2018-03-07 23:51:51] Writing configuration file irc.conf
+[2018-03-07 23:52:27] Writing configuration file irc.conf

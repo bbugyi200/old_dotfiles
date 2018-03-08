@@ -1,0 +1,15 @@
+2018-03-03 20:15:21	-->	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has joined ##machinelearning
+2018-03-03 20:15:21	--	Topic for ##machinelearning is "Machine Learning | Rules: No small talk. Technical talk only. No public logging. Offtopic chat only in ##ml-ot and deployment chat in ##ml-deploy | About: https://j.mp/ChannelGitHub | Related: ##AGI ##it-group #keras ##nlp #nupic #pydata #scikit-learn ##statistics #tensorflow"
+2018-03-03 20:15:21	--	Topic set by RandIter on Thu, 21 Dec 2017 13:51:47
+2018-03-03 20:15:21	--	Channel ##machinelearning: 396 nicks (4 ops, 3 voices, 389 normals)
+2018-03-03 20:15:23	--	Channel created on Sun, 03 Jan 2010 14:26:39
+2018-03-03 20:24:49	<--	unixpickle (~alex@c-24-5-87-159.hsd1.ca.comcast.net) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2018-03-03 22:16:22	-->	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has joined ##machinelearning
+2018-03-03 22:16:22	--	Topic for ##machinelearning is "Machine Learning | Rules: No small talk. Technical talk only. No public logging. Offtopic chat only in ##ml-ot and deployment chat in ##ml-deploy | About: https://j.mp/ChannelGitHub | Related: ##AGI ##it-group #keras ##nlp #nupic #pydata #scikit-learn ##statistics #tensorflow"
+2018-03-03 22:16:22	--	Topic set by RandIter on Thu, 21 Dec 2017 13:51:47
+2018-03-03 22:16:22	--	Channel ##machinelearning: 391 nicks (4 ops, 3 voices, 384 normals)
+2018-03-03 22:16:24	--	Channel created on Sun, 03 Jan 2010 14:26:39
+2018-03-03 22:16:30	aoeu	The worst part is having to manually encode nominal features... i can't believe it's not done automatically
+2018-03-03 22:16:33	@RandIter	Also look at tpot and automl
+2018-03-03 22:16:54	@RandIter	lol I actually enjoy doing it manually.
+2018-03-03 22:17:07	@RandIter	old school, I guess

@@ -1,0 +1,41 @@
+2018-03-04 11:51:34		getting channel history...
+2018-03-04 11:51:49		[11:51]
+2018-01-15 13:21:09	bryan.bugyi	Hey Hari. You looking for an internship this summer? 
+2018-01-15 13:24:07	bryan.bugyi	Ever heard of Google's foobar challenge? Apparently, they use it to recruit developers. A few days ago when I was searching Google for something, I got offered to take it. I just completed the first two challenges and was given a single-use link to give to a friend that will let them take the foobar challenge too. I figured you would do well on it so, if your interested, just let me know and it's yours. 
+2018-01-15 14:22:44	Hari	Not even a question! Yeah, I'm interested. 
+2018-01-15 14:26:28	Hari	Thanks for thinking of me man! 
+2018-01-15 20:03:49	bryan.bugyi	No problem. Here's the link: https://goo.gl/rX2JmM
+2018-01-15 20:03:49		
+2018-01-15 20:03:49		Hopefully it works. I haven't tried it cause I didn't want it to think that I was the friend. 
+2018-01-15 20:05:30	bryan.bugyi	Good luck. I'm stuck on the second part of the third challenge now. It's killing me. 
+2018-01-15 20:06:26	Hari	Lmao game on 
+2018-01-15 20:06:54	Hari	Yeah im boutta start putting some hours into thja 
+2018-01-15 20:06:55	Hari	Thia 
+2018-01-15 20:06:57	Hari	This 
+2018-01-15 20:11:47	bryan.bugyi	LOL. How long it takes will obviously vary, but just to give you something to reference: It took me a little under and hour to complete the first one, and then it took me probably closer to 3 hours to complete the second one. Then probably another hour or two to complete the first part of the third one (there's three parts to this one), and now I have no idea how many hours on the second part. Its failing on one test case out of 5 but it won't show me which one :angry: 
+2018-01-15 20:22:55	Hari	Lmao havent looked yet but this is why I got into CS - to find problems that would fuck me up like this 
+2018-01-15 20:23:08	Hari	Get hyped to find that case 
+2018-01-16 00:51:06	Hari	just finished the first one 
+2018-01-16 00:51:08	Hari	light 
+2018-01-16 00:51:26	Hari	gonna do next couple tomorrow 
+2018-01-16 01:51:04	bryan.bugyi	Yeah. I literally just finished the second part of the 3rd one. Out of curiosity was the first one for you the prime number generation one where you had to concatenate a lot of the first primes into a string? Just curious as to whether or not they gave you a different one so we can't cheat. 
+2018-01-16 13:11:19	Hari	no we can't cheat 
+2018-01-16 13:11:36	Hari	it was different for me 
+2018-01-16 13:11:45	Hari	convert a -> z, b -< y etc 
+2018-01-31 15:47:38	Hari	yo so I was just curious 
+2018-01-31 15:47:45	Hari	how'd you get your audio manager working with xmonad? 
+2018-01-31 15:48:31	Hari	my "solution" was "exec alsactl" in the xinitrc... tryna think if there's a way to put that somewhere I can't inadvertently fuck with it 
+2018-01-31 18:00:12	bryan.bugyi	You could always spawn it in your Xmonad startupHook 
+2018-01-31 18:00:29	bryan.bugyi	I don’t think I had to mess around to get audio working tho to be honest. 
+2018-01-31 18:01:24	Hari	nah I don't use xmonad I just use I3 
+2018-01-31 18:01:29	Hari	but yeah I did the samething 
+2018-01-31 18:01:34	Hari	I spawned it in my config file 
+2018-01-31 18:01:47	Hari	I don't want it as part of my WM tho I want it as part of ubuntu 
+2018-01-31 18:01:54	Hari	(in my case) 
+2018-01-31 18:03:07	bryan.bugyi	Ahhh ok. I just assumed. Yeah, I’ve got a lot of stuff spawning in my startupHook and in my xinitrc. I haven’t heard of a better place to put that stuff. 
+2018-01-31 18:03:30	Hari	check out .Xinitrc 
+2018-01-31 18:03:38	Hari	I just moved it to there after a whiel 
+2018-01-31 20:18:06	bryan.bugyi	Yeah. That's what I meant by xinitrc. Unless the capital X makes a difference..  (edited)
+2018-01-31 20:18:27	bryan.bugyi	¯\_(ツ)_/¯ 
+2018-02-08 21:10:59	Hari	Lmaooo nag 
+2018-02-08 21:11:01	Hari	Nah 

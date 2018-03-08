@@ -1,0 +1,1352 @@
+2018-03-06 03:12:25	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-06 03:12:25	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-06 03:12:25	⚡	Channel #gentoo: 1128 nicks (3 ops, 62 voices, 1063 normals)
+2018-03-06 03:12:25	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-06 03:12:25	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-06 03:12:27	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-06 03:14:55	Triffid_Hunter	anyone know why my postup() and predown() functions in /etc/conf.d/net aren't being called?
+2018-03-06 03:22:19	kingkong1ok	?
+2018-03-06 03:32:04	p|q	i'm getting install-xattr: getxattr() failed: No data available when trying to emerge boost-build. I'm on XFS. any thoughts?
+2018-03-06 03:33:30	p|q	I also have CONFIG_XFS_POSIX_ACL=y in /proc/config.gz
+2018-03-06 03:54:15	stobix	is there any reason to still have qtcore-4 installed?
+2018-03-06 03:56:08	bitlord	stobix, depends, if you have it installed, most likely something still depends on it. Not all software is ported to qt5, I heard gentoo dev/s work on removing it, but it will take some time.
+2018-03-06 03:57:21	⚡	mel is now known as Guest94665
+2018-03-06 04:04:30	thebigj	I am getting errors while building kernal. https://dpaste.de/1vyd/raw
+2018-03-06 04:05:04	thebigj	https://dpaste.de/EjfC/raw Getting these errors
+2018-03-06 04:05:35	thebigj	Can anyone help me?
+2018-03-06 04:07:06	thebigj	Actually, I was building these and in between laptop got restarted.
+2018-03-06 04:07:33	thebigj	I have very less experience of compiling kernels and these errors looks strage to me.
+2018-03-06 04:07:41	thebigj	Any guidence will help. Thanks!
+2018-03-06 11:22:11	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-06 11:22:11	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-06 11:22:11	⚡	Channel #gentoo: 1157 nicks (3 ops, 63 voices, 1091 normals)
+2018-03-06 11:22:12	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-06 11:22:12	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-06 11:22:12	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-06 11:24:09	dmp450	iamben: still failing
+2018-03-06 11:25:36	dmp450	portage seems to remove the jdk file
+2018-03-06 11:26:30	+iamben	dmp450: can you run "ls -l" on the full path and filename and share the result? eg output similar to    -rw-r--r-- 1 root root 189815615 Dec 20 15:53 /usr/portage/distfiles/jdk-8u162-linux-x64.tar.gz
+2018-03-06 11:26:51	+iamben	if the file's checksum is wrong, it may assume corrupted download and move it
+2018-03-06 11:27:00	dmp450	-rw-r--r-- 1 portage portage 189815615 Mar  6 10:26 /usr/portage/distfiles/jdk-8u162-linux-x64.tar.gz
+2018-03-06 11:28:12	+iamben	that looks fine to me, if portage is moving the file then i think it should tell why
+2018-03-06 11:28:25	dmp450	in build.log?
+2018-03-06 11:29:10	+iamben	yes
+2018-03-06 11:29:18	+iamben	or right in the terminal where you ran emerge
+2018-03-06 11:29:42	⚡	Mode #gentoo [+v GurliGebis] by ChanServ
+2018-03-06 11:29:58	dmp450	Weird. I ran it under wgetpaste to share my output and it emerged fine.
+2018-03-06 11:30:17	⚡	_chaky_ is now known as chaky
+2018-03-06 11:30:32	dmp450	Oh well haha
+2018-03-06 11:31:01	dmp450	Thanks for the help!
+2018-03-06 11:38:19	nfk	[13:23] <DeviantPeer> LazyGnoll: does anyone use kdepim 5? <-- i used to but then uni did something to their configurations and now basically web client is all that works for email
+2018-03-06 11:47:01	abraxxas	hey all, got a short question. im using xfce and its terminal for quite a while now, but i want to spice things up a bit. what terminals do you use in your environment, if i may ask? :D
+2018-03-06 11:48:46	F0rkBomb	urxvt is super fast
+2018-03-06 11:49:19	F0rkBomb	You can even setup a daemon to make it even faster
+2018-03-06 11:49:50	nfk	[13:27] <ant_> which is the most lightweight? <---  if you mean low on resources, in all seriousness, why do you care - sddm for example takes up between 3 and 15 MB of RAM (depending on how much of it is shared between other processes such as the X server itself) and presumably marginally less if you have 32 bit pointers (you are all about lightweight, right?); dependency wise, there's some ugly stuff out there, sddm looks decent but it has a dependency on Qt
+2018-03-06 11:49:51	nfk	so it will be either one to few pretty small compiles or probably 50-80% of Qt stack - depends on what you are using.
+2018-03-06 11:50:17	bitlord	abraxxas, xfce4-terminal is pretty good, especially latest versions (few releases now)
+2018-03-06 11:51:47	abraxxas	bitlord, is this the terminal that is shipped with xfce4?
+2018-03-06 11:51:50	Alaric`	Hi folks, I have an odd USE puzzle ...  I'm attempting to build www-client/palemoon from https://github.com/deu/palemoon-overlay, and something that I cannot identify is focing USE=gtk3 off even if I explicitly USE=gtk3 ebuild ...
+2018-03-06 11:52:08	Alaric`	Anyone have any ideas what could possibly be doing it?
+2018-03-06 11:52:26	Alaric`	s/focing/forcing/
+2018-03-06 11:52:37	bitlord	abraxxas, it's part of xfce project, not sure what you have installed, if you run xfce4-terminal it should open it, if you have it installed
+2018-03-06 11:54:02	abraxxas	bitlord, okay ill try it out ty
+2018-03-06 11:54:29	+iamben	Alaric`: https://github.com/deu/palemoon-overlay/blob/master/profiles/package.use.mask
+2018-03-06 11:54:44	deu	Alaric`: gtk3 support is really broken on pale moon, hence the use is marked. if you REALLY want to enable it you could unmask it
+2018-03-06 11:54:56	drunk_foxx	hi guys, I was trying to compile rtl8723de wifi driver for 4.15.7-r1 kernel and got the following error after "make": https://is.gd/B9wLdd as I understand from this error message and issues on github, this driver would not compile for that kernel version unless it's modified in some way as the new kernel does not support init_timer function now, having timer_setup instead (whatever that means, I am not experienced in C).
+2018-03-06 11:55:22	drunk_foxx	so could anyone give me an idea of how do I "patch" this for the new kernel? or maybe help with with that
+2018-03-06 11:55:33	nfk	BL4DE, with all seriousness, if you're going to be full tinfoil, just go with some kind of MAC scheme. tomoyo is easy to setup, as is smack, allegedly. Gentoo also has selinux but i have never understood that nsa witchcraft. Then there's apparmor that's also badly integrated (last time i checked on gentoo) with some services like systemd and lxd but looking at its permission syntax made my eyes bleed.
+2018-03-06 11:56:28	Alaric`	deu -- ah, so.  No wonder I couldn't enable it.  :)
+2018-03-06 11:56:44	deu	yep. I really don't recommend doing so
+2018-03-06 11:57:10	Alaric`	Where do I look to *see* that a USE is masked?  Because I was utterly baffled as to what was forcing it off
+2018-03-06 11:57:26	+iamben	Alaric`: you'll see (-gtk3) in the emerge -pv output
+2018-03-06 11:57:34	deu	masked USE flags should appear between parenthesis
+2018-03-06 11:57:38	deu	yeah that
+2018-03-06 11:58:01	+iamben	as far as locating the particular mask file entry in the profile, that's not an exact science
+2018-03-06 11:58:13	Alaric`	aaaaaaaah
+2018-03-06 11:58:25	+iamben	pretty simple in an overlay like this but more complicated if it's masked somewhere in the huge /usr/portage/profiles/ profile stack
+2018-03-06 11:58:27	deu	though if it's from an overlay, it'll probably be there
+2018-03-06 11:58:27	Alaric`	I saw that but never realized that I didn't know what it meant
+2018-03-06 11:58:34	nfk	[18:48] <F0rkBomb> urxvt is super fast <-- not true, konsole is the only really fast terminal emulator, urxvt might not be the slowest but all except konsole will in my experience be observably slow to print many lines which can become a problem when processes behind those lines are required to complete printing before the next one can begin
+2018-03-06 12:00:57	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-06 12:00:57	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-06 12:00:57	⚡	Channel #gentoo: 1161 nicks (3 ops, 64 voices, 1094 normals)
+2018-03-06 12:00:58	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-06 12:00:58	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-06 12:00:58	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-06 12:00:58	nfk	ant_, oh and I forgot one of the most important bits, those 3-15 MB taken up by SDDM - they will almost certainly be swapped out if necessary as the sddm process has CPU time of 0.0s in almost 9h period, meaning its code is not actually being run, which makes it available for swapping out, provided that that bit of memory is not locked (not sure if sddm's is locked or not)
+2018-03-06 12:01:22	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-06 12:01:22	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:27
+2018-03-06 12:01:22	⚡	Channel #gentoo: 1161 nicks (3 ops, 64 voices, 1094 normals)
+2018-03-06 12:01:24	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-06 12:01:24	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-06 12:01:24	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-06 12:01:51	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-06 12:01:51	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-06 12:01:51	⚡	Channel #gentoo: 1161 nicks (3 ops, 64 voices, 1094 normals)
+2018-03-06 12:01:52	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-06 12:01:52	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-06 12:01:52	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-06 12:02:27	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-06 12:02:27	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:27
+2018-03-06 12:02:27	⚡	Channel #gentoo: 1160 nicks (3 ops, 64 voices, 1093 normals)
+2018-03-06 12:02:28	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-06 12:02:28	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-06 12:02:28	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-06 12:03:06	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-06 12:03:06	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-06 12:03:06	⚡	Channel #gentoo: 1160 nicks (3 ops, 64 voices, 1093 normals)
+2018-03-06 12:03:07	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-06 12:03:07	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-06 12:03:07	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-06 19:01:10	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-06 19:01:10	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-06 19:01:10	⚡	Channel #gentoo: 1129 nicks (3 ops, 60 voices, 1066 normals)
+2018-03-06 19:01:10	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-06 19:01:10	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-06 19:01:12	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-06 19:01:39	nordmike3	djdunn: Yes, I download them manualy by wget.
+2018-03-06 19:08:38	yhorm	how to check when I last synced to the tree?
+2018-03-06 19:08:44	djdunn	i have something masked but i dont remember why
+2018-03-06 19:09:57	mrwater	Anyone have working acpi brightness controls without manually configuring it? Particularly on a thinkpad?
+2018-03-06 19:12:41	nordmike3	yhorm: One of /usr/portage/metadata/timestamp* files should be right one.
+2018-03-06 19:22:07	+grknight	mrwater: if you install acpilight, then you get a tool that most brightness keys will interact with
+2018-03-06 19:22:16	+grknight	(at least in xorg)
+2018-03-06 19:26:30	mrwater	+grknight: Ok, thanks. I was wondering why they didn't have something like that in the Thinkpad Special Keys page on the wiki
+2018-03-06 19:27:54	+grknight	mrwater: it replaces the xbacklight command which is strictly for xorg (and only certain drivers at that)
+2018-03-06 19:31:04	mrwater	+grknight should a acpid restart and xorg restart allow me to then use the backlight keys? Or should I do a reboot?
+2018-03-06 19:31:58	mrwater	Actually hang on, I'll just test that out
+2018-03-06 19:34:39	mrwater	Nope. The answer is no
+2018-03-06 19:45:06	jcmdln	mrwater: try setting your screen brightness with xbacklight, you may need to bind the keys manually if it works via cli
+2018-03-06 19:48:38	nordmike3	Had to download python-exec-2.0.2 manualy too.
+2018-03-06 19:51:48	manjaroi3	does gentoo have an gui installer on the live dvd? i havent used gentoo in like 10 years and i want to go back
+2018-03-06 19:52:24	+wraeth	no, there's no gui installer. the supported installation method is via the Handbook -> https://wiki.gentoo.org/wiki/Handbook:Main_Page
+2018-03-06 19:52:47	TinyTimmyTokyo	from the minimal cd, is there a way to get the current temperature of the CPU? I want to see if thermal throttling is why this install is being so slow
+2018-03-06 19:52:50	+wraeth	the livedvd is a gui environment, but the installation itself is still done via console
+2018-03-06 19:52:53	manjaroi3	ok yeah i installed it years ago i just wondered if they updated to that
+2018-03-06 19:52:57	manjaroi3	i love gentoo
+2018-03-06 19:53:27	TinyTimmyTokyo	i have a hunch that it could be, because the cooling system in this laptop doesn't seem to be well-designed at all
+2018-03-06 19:53:34	jcmdln	looks like the gui installer was dropped some time ago. installing Gentoo is a highly manual process
+2018-03-06 19:53:37	⚡	manjaroi3 is now known as Zilla
+2018-03-06 19:53:49	TinyTimmyTokyo	it's not significantly harder than arch's, though
+2018-03-06 19:53:56	TinyTimmyTokyo	basically, if you can install arch, you can install gentoo
+2018-03-06 19:54:26	Zilla	i can install gentoo, just alot of work lol
+2018-03-06 19:54:38	Zilla	i do love gentoo tho, its fun to do when ur in the mood
+2018-03-06 19:55:14	Zilla	i installed gentoo on like 4 machines many years ago.
+2018-03-06 19:56:26	mrwater	jcmdln Thanks for the recommendation, I think I'm going to try to go without both and do the brightness controls from scratch. I mean, the acpi events show up and the wiki tells you how to use them but I wanted to see if there was a more native solution before I tried that
+2018-03-06 19:57:13	mrwater	TinyTimmyTokyo You sure? I seem to remember arch having an ncurses installer x) And that was 7 years ago
+2018-03-06 19:57:17	jcmdln	After a few installs over the years I wrote a shell script to install my ideal Gentoo
+2018-03-06 19:57:25	TinyTimmyTokyo	mrwater: arch doesn't have an installer either
+2018-03-06 19:57:59	jcmdln	arch used to have an installer but it was dropped due to lack of support
+2018-03-06 19:58:17	mrwater	Whoa, no kidding
+2018-03-06 19:58:22	mrwater	Just looked it up
+2018-03-06 19:58:44	jcmdln	I think there's still an unofficial one floating around their wiki
+2018-03-06 19:59:44	mrwater	The difference being, of course, that if you want to install Gentoo you'll need a lot of time on your hands, especially at first
+2018-03-06 20:00:49	jcmdln	true, there's a bit of investment needed to read the handbook
+2018-03-06 20:02:16	mrwater	I did not know that, and now I'm just trying to get a system with brightness controls and a working urxvt setup so that I can write
+2018-03-06 20:02:29	mrwater	Oh crap, I just realized I have to emerge latex. Fantastic
+2018-03-06 20:03:36	jcmdln	hmm, I use xbacklight with i3 and manually bind my brightness keys
+2018-03-06 20:03:48	Zilla	i installed blackarch and that has a really nice installer for arch
+2018-03-06 20:04:05	+grknight	jcmdln: acpilight replaces xbacklight as the original xbacklight does not work on all drivers
+2018-03-06 20:04:19	Zilla	and im running manjaro was awesome installer gui super easy
+2018-03-06 20:04:55	+grknight	Zilla: it's not possible to have an installer in Gentoo as every install is different.  possibly down to the package options
+2018-03-06 20:07:23	Zilla	but gentoo is so fun
+2018-03-06 20:07:45	Zilla	yeah i remember tho a while ago gentoo has some sort of installer
+2018-03-06 20:08:02	Zilla	like someone said tho they discontinued it
+2018-03-06 20:08:44	+wraeth	Zilla: it's because the installation of gentoo is so customisable/varied that creating an automated installer will either be detrimental or excessively complex
+2018-03-06 20:08:52	+kurly	in #gentoo linux support, we support gentoo as installed by the handbook
+2018-03-06 20:10:14	Zilla	wraeth: yeah i hear ya, i just was wondering if they had something alittle easier to do because i wanted to install gentoo tonight but i dont have time right now to set it up so ill have to wait
+2018-03-06 20:11:05	jcmdln	probably best to map out your package.use, make.conf, and other portage files first
+2018-03-06 20:13:23	BenLand100	After years of Living With The Issue™ I've finally discovered that the 'headphone' channel in alsa has to be unmuted and turned up to hear sound from my internal speakers - the 'speaker' channel appears to do nothing at all (headphones when plugged in use 'headphone' channel also, speakers auto mute, 'speaker' channel still does nothing) - but when I unplug headphones something auto mutes the 'headphone' channel! how can I stop this?
+2018-03-06 20:14:20	BenLand100	(using pulseaudio if it matters)
+2018-03-06 20:16:10	nordmike	I've updated portage to 2.2.26 finally. But it can't import modules now.
+2018-03-06 20:21:36	⚡	qpdb is now known as Guest95131
+2018-03-06 20:21:36	⚡	qpdb_ is now known as qpdb
+2018-03-06 20:23:07	nordmike	for both python2.7 and python3.4.
+2018-03-06 20:25:57	korans	setxattr is failing while merging http://bpaste.net/show/e17bdbaa625b
+2018-03-06 20:28:36	⚡	fstd_ is now known as fstd
+2018-03-06 20:36:52	R0b0t1	Can anyone help me figure out when FAN_MODIFY_DIR was added to the kernel and when it might be in a Gentoo supported kernel?
+2018-03-06 20:41:27	mrwater	https://patchwork.kernel.org/patch/9622265
+2018-03-06 20:41:54	nordmike	from portage.exception import IsADirectory
+2018-03-06 20:42:02	nordmike	importerror cannot import name IsADirectory
+2018-03-06 20:43:05	nordmike	It's the error occured when I run emerge.
+2018-03-06 20:43:06	mrwater	sry, I should have said that's for R0b0t1
+2018-03-06 20:44:44	mrwater	Seems like March 13, 2017. According to the kernel archives that was kernel 4.10.10 or so
+2018-03-06 20:48:49	+grknight	nordmike: that should be in expansion.py
+2018-03-06 20:49:32	+grknight	exception.py even
+2018-03-06 20:50:06	⚡	pwnfooj1 is now known as pwnfooj
+2018-03-06 20:50:47	+grknight	nordmike: that should exist in /usr/lib64/python2.7/site-packages/portage/exception.py
+2018-03-06 20:50:50	+kurly	R0b0t1: http://cateee.net/lkddb/web-lkddb/
+2018-03-06 20:51:03	+grknight	or just /usr/lib on sparc (likely)
+2018-03-06 20:53:26	Alaric`	this has been a frustratingly non-productive day.
+2018-03-06 20:57:17	nordmike	grknight: Yes, it's there.
+2018-03-06 20:57:33	nordmike	And it has class IsADirectory.
+2018-03-06 20:58:33	kamiyaa	Is /proc and /sys suppose to be empty when the computer is turned off?
+2018-03-06 20:58:57	korans	any ideas on how too fix this or why it's failing http://bpaste.net/show/127fd5bff54e you see the final install ine if rna from my prompt it doesn't fail
+2018-03-06 20:59:15	korans	*line *ran
+2018-03-06 21:00:04	R0b0t1	kamiyaa: They are populated at runtime
+2018-03-06 21:00:08	kerframil	kamiyaa: they don't need to be emptied because they are pseudo-filesystems. they contain only what the kernel makes them appear to contain at runtime.
+2018-03-06 21:00:17	artaslove	sooo.... if I'm just getting around to switching to a 17.0 profile now should I just abandon all hope? ;)
+2018-03-06 21:00:19	R0b0t1	There's no physical file (as far as I am aware) backing the things in either of those places
+2018-03-06 21:00:33	R0b0t1	In /dev, there are things, but they are not really files
+2018-03-06 21:00:36	kamiyaa	Okay, i was just migrating my gentoo to another ssd today
+2018-03-06 21:00:44	kamiyaa	And it copied a bunch of proc and sys stuff
+2018-03-06 21:01:00	kamiyaa	Its the same with dev?
+2018-03-06 21:01:14	kerframil	you shouldn't do that. but with /dev, it gets a bit more interesting.
+2018-03-06 21:01:25	earendil	modern /dev is autocreated on the fly
+2018-03-06 21:01:29	nordmike	grknight: When I run env-update it writes "importerror no module env_update"
+2018-03-06 21:01:42	kerframil	on a normal gentoo system, the /dev directory on the root filesystem does - and should - contain a limited set of device nodes, even though they are not used in practice
+2018-03-06 21:01:50	kamiyaa	kerframil: do what?
+2018-03-06 21:01:55	earendil	but way back in the day, and still in some cases, you can have a /dev populated by persistent files/block devices/etc.
+2018-03-06 21:02:03	earendil	(everyone on a unix box is a file, more or less)
+2018-03-06 21:02:11	+grknight	nordmike: that sounds very much like a python issue
+2018-03-06 21:02:15	kerframil	kamiyaa: copy the contents of a mounted /proc and /sys to their respective directories on a target root filesystem. doing so makes so sense.
+2018-03-06 21:02:29	R0b0t1	mrwater: kurly: I had found that, but from the patch date and this (https://kernelnewbies.org/LinuxVersions) it looks like my kernel should support that API yet it does not
+2018-03-06 21:02:43	earendil	you wouldn't want to copy a running (e)udev filestructure into another /dev
+2018-03-06 21:02:48	kerframil	kamiyaa: either copy while the filesystem are offline or do something like `mkdir /mnt/root, mount -o bind / /mnt/root`, then copy from /mnt/root instead.
+2018-03-06 21:02:51	R0b0t1	FAN_MODIFY_DIR is unset after including sys/fanotify.h
+2018-03-06 21:02:58	kamiyaa	kerframil: whoops xD, i just did a rsync -avz / newssd
+2018-03-06 21:03:08	R0b0t1	grep -R of /usr/src/linux turns up nothing
+2018-03-06 21:03:09	kerframil	kamiyaa: that way, you get a view of the contents of the filesystem backing / only
+2018-03-06 21:03:36	kamiyaa	Yea, I shouldve booted into a live cd
+2018-03-06 21:03:48	mrwater	R0b0t1: ah, ok, understood
+2018-03-06 21:05:23	kamiyaa	kerframil: thanks
+2018-03-06 21:07:48	mrwater	Has anybody installed xfce4 just by doing xfce4-panel and xfwm4 like it says on the wiki? I'm getting "failed to connect to the D-Bus session bus" every time I try to run xfce4-panel
+2018-03-06 21:08:32	jcmdln	if you have dbus installed try 'dbus-launch xfce4-panel'
+2018-03-06 21:10:00	⚡	Mode #gentoo [+v sobhan] by ChanServ
+2018-03-06 21:10:03	jcmdln	that should help confirm that it will actually load
+2018-03-06 21:12:44	mrwater	jcmdln Yep, that worked, thanks
+2018-03-06 21:13:51	jcmdln	you could modify /etc/conf.d/xdm to do this in the future
+2018-03-06 21:15:08	⚡	Supersonic112 is now known as Supersonic
+2018-03-06 21:15:36	jcmdln	oh wait, that's for the display manager :p
+2018-03-06 21:16:24	jcmdln	should be in /usr/share/xsessions/
+2018-03-06 21:16:26	nordmike	Sur3: Why could I get permission denied error running emerge from /root/portage-*/?
+2018-03-06 21:18:02	tdr	 nordmike because your emerge may be running as user "portage"
+2018-03-06 21:18:37	tdr	kind of an odd place to keep your portage btw
+2018-03-06 21:22:28	atsuko	is the best way to go about editing sxiv source before installing it to do `ebuild $(equery w sxiv) fetch unpack`
+2018-03-06 21:22:37	atsuko	and then `ebuild $(equery w sxiv) compile install qmerge` after i edit the code
+2018-03-06 21:23:10	atsuko	?
+2018-03-06 21:24:53	tdr	the sustainable way would be to write a patch file
+2018-03-06 21:26:05	atsuko	i suppose so
+2018-03-06 21:27:20	atsuko	then i can tell portage to apply the patch on each update/rebuild of sxiv, right?
+2018-03-06 21:28:13	tdr	there is a documented way to place a patch so it finds it on emerge yes
+2018-03-06 21:28:35	atsuko	neat
+2018-03-06 21:29:16	nordmike	tdr: system portage is broken.
+2018-03-06 21:30:17	nordmike	See my previous posts.
+2018-03-06 21:30:22	nordmike	> When I run env-update it writes "importerror no module env_update"
+2018-03-06 21:30:35	nordmike	e.g.
+2018-03-06 21:42:06	motherfscker	mailing lists are lame
+2018-03-06 21:43:02	+wraeth	no one is requiring you to use one
+2018-03-06 21:43:26	R0b0t1`	The people on mailing lists are very friendly motherfscker
+2018-03-06 21:43:32	R0b0t1`	This is a good thing, I am not very smart
+2018-03-06 21:44:10	motherfscker	yeah I know I just say that because I've never used one, don't understand them, and don't like email in general
+2018-03-06 21:45:37	motherfscker	I'm not even sure how one would go about submitting commits to a project through email. Can you turn git commits into a file?
+2018-03-06 21:46:14	R0b0t1`	Yes it will automatically produce something you can attach
+2018-03-06 21:46:16	+wraeth	motherfscker: yes, either by generating and attaching a patch, or by using gits built-in send-email function
+2018-03-06 21:46:41	+wraeth	your favourite search engine can elaborate further ;)
+2018-03-06 21:47:20	zergofray	hey guys. I've been using gentoo for 4 years now and there is one thing that still always frustrates me. I'm wondering if I'm doing something wrong
+2018-03-06 21:47:34	zergofray	when using languages that have their own package managers, such as pip or npm or cabal
+2018-03-06 21:47:57	zergofray	is it really reasonable to download the (usually very long out of date) gentoo versions of the packages through portage
+2018-03-06 21:48:13	zergofray	rather than get the newest versions though the specific package manager?
+2018-03-06 21:49:04	+kurly	zergofray: if you use an alternate package manager, don't do it as root
+2018-03-06 21:49:38	motherfscker	anybody here got a librem laptop? I'm getting one int he mail tomorrow.
+2018-03-06 21:49:46	motherfscker	I can't wait to install gentoo on that thing
+2018-03-06 21:50:12	+wraeth	motherfscker: sounds like something better discussed in #gentoo-chat - we try to stick pretty closely to support here :)
+2018-03-06 21:50:19	motherfscker	srry ;p
+2018-03-06 21:50:49	mrwater	TIL there's a #gentoo-chat
+2018-03-06 21:50:55	⚡	Mode #gentoo [+v Tommy[D]_] by ChanServ
+2018-03-06 21:51:45	zergofray	kurly: sure, but suppose I want to install program foo that has bar as a dependency. I downloaded bar from cabal, for example, so it is installed. When I emerge foo, and its ebuild lists bar as a dependency, why can't that dependency be tracked through cabal rather than a new copy being downloaded/compiled?
+2018-03-06 21:52:03	+wraeth	mrwater: technically it's an unofficial (community-managed) channel, but there's https://www.gentoo.org/get-involved/irc-channels/all-channels.html that lists most of the others
+2018-03-06 21:52:07	zergofray	It sounds to me like this would be a great feature
+2018-03-06 21:52:11	+kurly	zergofray: because you shouldn't be using an alternate package manager as root; portage manages portage packages
+2018-03-06 21:52:30	+kurly	zergofray: it's also a *LOT* more difficult than you might think, or it might already exist
+2018-03-06 21:52:35	zergofray	kurly: so I'm stuck with either duplicated packages or out-of-date packages?
+2018-03-06 21:52:47	▷	kurly shrugs
+2018-03-06 21:53:13	stiltr	You could always help the maintainers with updated ebuilds
+2018-03-06 21:53:17	+wraeth	zergofray: you can file a bug for a version bump, or bump the ebuild yourself if you're so inclined
+2018-03-06 21:53:45	zergofray	wraeth: I know, I've done that in the past, but it feels like an uphill battle
+2018-03-06 21:53:51	zergofray	What benefit is there to doing it this way?
+2018-03-06 21:54:03	+kurly	"it"?
+2018-03-06 21:54:05	zergofray	Would there be any interested in allowing portage to 'hook' into other package managers?
+2018-03-06 21:54:34	mrwater	+wraeth thanks, bookmark'd
+2018-03-06 21:54:51	zergofray	(ex having the ebuild for bar call 'cabal install bar' rather than download sources and build outside)
+2018-03-06 21:54:59	+wraeth	zergofray: an interesting idea. might be worth discussing in #gentoo-portage or on the gentoo-dev mailing list
+2018-03-06 21:55:19	+kurly	zergofray: it's more that this is the reality than the ideal situation; your ideas are good, but it's just not that simple. :\
+2018-03-06 21:55:22	+wraeth	zergofray: for now, though, we don't recommend bypassing portage and installing things as root outside of the package manager as it can lead to breakage
+2018-03-06 21:55:31	Irishluck83	i'm doing a world update and I get this error message on the first package: https://paste.pound-python.org/show/j85KahixEePON0PYnvZU/
+2018-03-06 21:55:54	zergofray	wraeth: do you happen to know which of those is most active?
+2018-03-06 21:56:11	zergofray	wraeth, kurly: yes. I guess I'll keep doing it this way for now
+2018-03-06 21:56:26	+kurly	Irishluck83: needs more emerge --info  (wgetpaste -I)
+2018-03-06 21:56:54	⚡	jwacalex_ is now known as jwacalex
+2018-03-06 21:56:55	+wraeth	zergofray: i'd think more about question-relevance - use #gentoo-portage for the implementation-specific and technical questions, and the gentoo-dev list more for general discussion/concepting/etc
+2018-03-06 22:00:39	Irishluck83	kurly: https://paste.pound-python.org/show/OadYwHG5zBo5Am3kEE9H/
+2018-03-06 22:04:10	+kurly	Irishluck83: MAKEOPTS of -j9 is pretty aggressive for only 8GB of RAM, but I don't see anything immediately wrong (and it's not related to your issue)
+2018-03-06 22:04:34	+kurly	Irishluck83: something is funny with sandbox; that's not good.
+2018-03-06 22:08:15	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-06 22:08:15	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-06 22:08:15	⚡	Channel #gentoo: 1128 nicks (3 ops, 60 voices, 1065 normals)
+2018-03-06 22:08:16	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-06 22:08:16	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-06 22:08:16	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-06 22:10:08	Irishluck83	i still don't understand what is making util-macros to fail. ive updated portage
+2018-03-06 22:10:41	+kurly	22:04:26 <+kurly> Irishluck83: something is funny with sandbox; that's not good.
+2018-03-06 22:11:04	Irishluck83	i saw that still don't understand it
+2018-03-06 22:21:08	Irishluck83	is there a way to correct the sandbox?
+2018-03-06 22:21:30	+kurly	does 'emerge --oneshot sandbox' work?
+2018-03-06 22:23:44	Irishluck83	checking. i looked through the link that i gave you and didn't see sandbox in there how did you figure  it was that
+2018-03-06 22:23:55	Irishluck83	sandbox is fine now
+2018-03-06 22:24:02	Irishluck83	or i should say installed
+2018-03-06 22:24:45	+kurly	Irishluck83: your original paste (the same one from yesterday) line 26
+2018-03-06 22:26:18	⚡	cdown_ is now known as cdown
+2018-03-06 22:26:19	Irishluck83	ok
+2018-03-06 22:26:27	Irishluck83	sandbox compiled fine
+2018-03-06 22:26:35	Irishluck83	going to try the world update again
+2018-03-06 22:30:45	talnet	heh
+2018-03-06 22:30:52	talnet	finally back
+2018-03-06 22:31:16	Irishluck83	nope still failing on util-macros
+2018-03-06 22:31:24	Irishluck83	i'll wait i guess
+2018-03-06 22:39:43	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-06 22:39:43	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:27
+2018-03-06 22:39:43	⚡	Channel #gentoo: 1132 nicks (3 ops, 60 voices, 1069 normals)
+2018-03-06 22:39:44	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-06 22:39:44	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-06 22:39:44	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-06 22:40:46	⚡	ncl_ is now known as ncl
+2018-03-06 22:43:00	+kurly	Irishluck83: the output of: wgetpaste -c "emerge -pvO sandbox"
+2018-03-06 22:44:42	+kurly	that's the letter O, not a zero
+2018-03-06 22:44:51	Irishluck83	ty
+2018-03-06 22:45:11	Irishluck83	https://paste.pound-python.org/show/FWuRcOAKTFPHbqKCfTux/
+2018-03-06 22:45:14	mrwater	I have x11-misc/dockbarx in package.unmask and package.keywords (with ~amd64) and it's not unmasking
+2018-03-06 22:45:48	+kurly	mrwater: it's package.accept_keywords
+2018-03-06 22:46:06	+kurly	mrwater: also that package doesn't seem to exist
+2018-03-06 22:46:16	+kurly	Irishluck83: that looks fine, hmm...
+2018-03-06 22:46:40	Irishluck83	like the first three package have the same error too
+2018-03-06 22:46:43	mrwater	kurly it's in an overlay
+2018-03-06 22:47:26	+kurly	mrwater: there are no ~amd64 versions of that software in any overlays that I'm aware of
+2018-03-06 22:48:44	+kurly	mrwater: eshowkw -O x11-misc/dockbarx
+2018-03-06 22:48:56	+kurly	mrwater: what version do you see that you are hoping to use?
+2018-03-06 22:49:48	mrwater	kurly Either version that's on the repo. Seems to be 9999 and 0.91.4
+2018-03-06 22:50:09	+wraeth	mrwater: do you mask the entire overlay in package.mask?
+2018-03-06 22:50:29	+kurly	mrwater: what problem are you trying to solve? 0.91.4 is not in ~arch, and 9999 is never keyworded in any reputable overlay
+2018-03-06 22:53:26	mrwater	kurly The problem is that it's masked and I want it unmasked. I just did the keyword thing because it worked for some people on google. The overlay is ROKO__
+2018-03-06 22:53:33	korans	can someone help I'm finding certain install lanes are causing my ebuilds to fail
+2018-03-06 22:53:49	mrwater	wraeth nope
+2018-03-06 22:54:17	korans	such as "install -m0755 /var/tmp/portage/app-admin/logcheck-1.3.15-r2/files/logcheck.cron /var/tmp/portage/app-admin/logcheck-1.3.15-r2/image//etc/cron.hourly" and "install -m0755 /var/tmp/portage/dev-db/mysql-init-scripts-2.2-r3/files/mysqld-wait-ready /var/tmp/portage/dev-db/mysql-init-scripts-2.2-r3/image//usr/libexec
+2018-03-06 22:54:37	+kurly	mrwater: wgetpaste -c "whatever you're trying to accomplish"     (with emerge's -a/--ask -> -p/--pretend)
+2018-03-06 22:54:39	korans	however other lines also perfroming install don't fail
+2018-03-06 22:54:52	korans	getting "install-xattr: setxattr() failed: Invalid argument
+2018-03-06 22:55:32	mrwater	wait wait wait
+2018-03-06 22:55:33	+kurly	korans: the bottom of a failed emerge tells you what we need
+2018-03-06 22:55:39	mrwater	I think I'm just being an idiot
+2018-03-06 22:55:45	mrwater	sec
+2018-03-06 22:55:48	korans	kurly: I've linked previously
+2018-03-06 22:55:53	korans	https://bpaste.net/show/127fd5bff54e
+2018-03-06 22:56:00	korans	kurly: its not just one emerge
+2018-03-06 22:56:11	korans	its many doexe is failing at the install line
+2018-03-06 22:56:22	korans	sometimes
+2018-03-06 22:56:57	korans	there's no relation between permissions or path
+2018-03-06 22:57:10	korans	atleast not obviously
+2018-03-06 22:57:25	korans	in addition running the failed command from my prompt doesn't fail
+2018-03-06 22:57:25	+kurly	korans: what FS doesn't support xattr? does your portage have xattr enabled?
+2018-03-06 22:58:17	korans	yes
+2018-03-06 22:58:51	mrwater	kurly Ok, I should have double-checked the overlays this was available on. The other one it's on works. I'm sorry for wasting your attention
+2018-03-06 22:59:42	+kurly	mrwater: glad you got it working
+2018-03-06 23:00:08	+wraeth	korans: is your PORTAGE_TMPDIR not on your root filesystem?
+2018-03-06 23:00:36	Case_Of	just a notice, lightning use flag on thunderbird is kind of totally useless
+2018-03-06 23:00:54	Case_Of	so i think it should be removed
+2018-03-06 23:01:21	korans	its an lxc container which I assume uses a bind mount but the underling filesystem is ext4
+2018-03-06 23:01:24	korans	wraeth: no it is
+2018-03-06 23:02:03	korans	wraeth: /var/tmpo with nothing mounted at that point or anything between that point and /
+2018-03-06 23:02:10	korans	*/var/tmp
+2018-03-06 23:02:38	+kurly	Case_Of: I think you'll find that this is the wrong venue for that sort of thing
+2018-03-06 23:03:01	Case_Of	kurly: where should i go?
+2018-03-06 23:03:12	+kurly	Case_Of: if you don't like the flag, don't use it. *shrug*
+2018-03-06 23:03:43	Case_Of	kurly: what i'm saying, is even if it enabled or disabled, it does not change anything
+2018-03-06 23:04:02	jcmdln	really? I thought that was to enable google calendar usage
+2018-03-06 23:04:03	korans	wraeth, kurly: again running the same command from my comand prompt succeeds
+2018-03-06 23:04:42	Case_Of	jcmdln: ah?
+2018-03-06 23:05:20	Case_Of	jcmdln: well it should be renamed or at least its description changed
+2018-03-06 23:05:45	+kurly	Case_Of: https://paste.pound-python.org/show/9FNOqSUwH7pjDAyXkgiE/  it does something, whether you notice it or not
+2018-03-06 23:05:47	Case_Of	jcmdln: because actually it only gives confusion
+2018-03-06 23:07:06	jcmdln	Not to be crude but I'm not sure what the confusion would be. Lightning ports? Not sure what an email client would need with them.
+2018-03-06 23:09:14	Case_Of	kurly: this should be conditioned by the use flag first for example mail-client/thunderbird/thunderbird-52.5.2.ebuild:47:	https://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
+2018-03-06 23:10:21	+kurly	Case_Of: if you think there's a bug, file a bug.  I'm not convinced.  be sure you can clearly describe the problem or it'll be closed without resolution.
+2018-03-06 23:10:46	Case_Of	i actually made a patch myself
+2018-03-06 23:11:50	Case_Of	i do not know if i want to bother myself to convince people
+2018-03-06 23:12:24	Case_Of	it's maybe not worth it
+2018-03-06 23:15:31	+kurly	Case_Of: if you think there is room for improvement in gentoo, please do file a bug.  I'm just not sure what the problem is.  Just because I'm not sure doesn't mean it's not a good idea. *shrug*
+2018-03-06 23:16:47	Bearcat	hey folks. After redline update (i think) my zsh sessions in my terminals don't seem to be able to search history. The exception to this is urxvt. What might the others be using that urxvt doesn't that probably needs to be emerged again? (or how do i do a reverse dependancy check on my terminals?)
+2018-03-06 23:16:58	Bearcat	^redline^readline
+2018-03-06 23:17:17	Case_Of	kurly: i do not say it's a bad idea, i'm just not in a mood to have to convince people that sometimes won't get what i say
+2018-03-06 23:18:13	Case_Of	Bearcat: oh i had a similar issue on another computer recently
+2018-03-06 23:18:33	Bearcat	Case_Of: How did you fix it?
+2018-03-06 23:18:42	Case_Of	i did not fixed it yet
+2018-03-06 23:18:53	Bearcat	Case_Of: well you're a big help! :"P
+2018-03-06 23:19:07	⚡	cdown_ is now known as cdown
+2018-03-06 23:19:10	Case_Of	Bearcat: at least you know it's not an isolated bug
+2018-03-06 23:19:40	Bearcat	true (and the command i was looking for was equery g [package])
+2018-03-06 23:20:09	Case_Of	ah i did not read the end of your sentence sorry
+2018-03-06 23:20:16	Case_Of	i was able to answer you
+2018-03-06 23:20:54	Bearcat	i'm not complaining, just giving feedback. I'd always assumed that the depenfancy graph worked in the other direction. Good to know.
+2018-03-06 23:21:49	Case_Of	Bearcat: ah yeah equery g for given packages dependencies and equery d for what depends on the given package
+2018-03-06 23:22:19	Bearcat	of course g gives me all ebuilds regardless of wether i have that version installed, but that's ok
+2018-03-06 23:22:39	Case_Of	Bearcat: yes equery is incomplete
+2018-03-06 23:22:58	+kurly	Bearcat: there's always the -L/--library option to revdep-rebuild, or you could look at the output of 'emerge -pvc readline'
+2018-03-06 23:23:59	Bearcat	kurly: true. right now i'm fighting with an annoying lua version conflict so rebuilds don't work so well
+2018-03-06 23:24:14	tdr	Bearcat, unmasked one?
+2018-03-06 23:24:46	Bearcat	tdr: yeah
+2018-03-06 23:25:08	tdr	Bearcat, heh empathy granted
+2018-03-06 23:25:28	Bearcat	tdr: thank you. Why are all those versions masked anyhow?
+2018-03-06 23:25:36	tdr	Bearcat, because "things" break
+2018-03-06 23:25:57	Bearcat	tdr: well so do my plates, but i don't stop serving dinner!
+2018-03-06 23:26:16	tdr	Bearcat, lua itself changed or else things with it link too specifically or something, like anything using it needs rebuilt when you touch it nowdays
+2018-03-06 23:26:31	Case_Of	Bearcat: equery l -pm lua will give you mask reasons
+2018-03-06 23:26:38	tdr	at least between the 5.1 vs 5.2 or 5.3 versions
+2018-03-06 23:27:59	⚡	Mode #gentoo [+v maffblaster] by ChanServ
+2018-03-06 23:28:39	korans	wraeth, kurly: any ideas? both files have system.posix_acl_access set where as others haven't
+2018-03-06 23:29:02	korans	by both I means one that have failed
+2018-03-06 23:30:10	Bearcat	Case_Of: i did not know that! Thank you
+2018-03-06 23:30:21	Case_Of	you're welcome
+2018-03-06 23:30:26	Bearcat	tdr: i swear, between lua and python versioning crap my sytem is a mess
+2018-03-06 23:31:23	tdr	Bearcat, those "little scripting languages" ...
+2018-03-06 23:31:37	+wraeth	korans: not sure, sorry.. grknight might have a little more of an idea when he gets back on, but then again may not..
+2018-03-06 23:31:44	Bearcat	oh for ... ! Lua 5.3 was masked back in Decelmer 2016 because someone retired ... great ...
+2018-03-06 23:31:55	Bearcat	*december
+2018-03-06 23:32:17	tdr	Bearcat, not because the package itself couldnt be maintained tho, it was dealing with what happens when versions change
+2018-03-06 23:33:20	Bearcat	so things heavily depend on it like things depend on python 2.7, but in this case lua is not slotted.
+2018-03-06 23:34:14	tdr	Bearcat, afaik it never was, even when other things were
+2018-03-06 23:34:14	+kurly	er, lua is certainly slotted
+2018-03-06 23:34:20	Bearcat	Case_Of: and by the way, the search error in zsh doesn't happen when you're in a tty or urxvt. Only certain terminals. It's really wierd. I just re-emerged vte and libvterm in case that was it, but nope!
+2018-03-06 23:34:49	Case_Of	mmmh ok
+2018-03-06 23:34:53	Bearcat	kurly: i can't have both 5.1.5 and 5.3.3 installed at the same time
+2018-03-06 23:35:01	tdr	Bearcat, emerge -vpt one of them, it might show something obvious thats a dep
+2018-03-06 23:35:14	Bearcat	kurly: which is what i need to have
+2018-03-06 23:35:31	+kurly	Bearcat: correct, :0 is blocked by :5.1, :5.2, :5.3
+2018-03-06 23:35:58	+kurly	Bearcat: similar situation with llvm:0 and other slots
+2018-03-06 23:36:28	Bearcat	tdr: thanks, but no dice.
+2018-03-06 23:36:35	Case_Of	is there a way to ask portage to not install packages files in a specific directory?
+2018-03-06 23:36:49	tdr	Case_Of, what do you mean?
+2018-03-06 23:36:50	+kurly	Case_Of: explain further
+2018-03-06 23:36:56	+wraeth	INSTALL_MASK
+2018-03-06 23:37:24	Case_Of	wraeth: thanks :)
+2018-03-06 23:37:24	tdr	Bearcat, did you meantion a readline change?
+2018-03-06 23:39:29	Case_Of	tdr kurly i should have specified in the file system
+2018-03-06 23:40:04	tdr	Case_Of, ok, wondered if you meant protecting a directory or where to store binary packages you were building
+2018-03-06 23:42:47	Case_Of	and i also should have said in make.conf of course
+2018-03-06 23:43:18	Bearcat	tdr: yes. I upgraded from 6.3_p8-r3 to 7.0_p3
+2018-03-06 23:44:14	Bearcat	but that was back on 1/04 and this is a this-week problem.
+2018-03-06 23:44:17	tdr	Bearcat, i remember that changing to either 6 or 7 was different.
+2018-03-06 23:45:31	korans	wraeth: I think I know why... I've set acl's from my host system on the files in question clearly it doesn't like them
+2018-03-06 23:45:48	Bearcat	tdr: as in I had to change configuration files?
+2018-03-06 23:46:00	tdr	its nothing something basic like util-linux (setterm or similar messed up maybe?)
+2018-03-06 23:48:30	korans	wraeth: removing my acls worked
+2018-03-06 23:48:32	Case_Of	in INSTALL_MASK does the ending slash should be added or not?
+2018-03-06 23:49:21	+kurly	Case_Of: it is described well in 'man 5 portage'
+2018-03-06 23:49:36	+kurly	err
+2018-03-06 23:49:37	Case_Of	ah i was reading man 5 make.conf
+2018-03-06 23:49:44	+kurly	yes I am wrong
+2018-03-06 23:49:56	+kurly	no trailing slash
+2018-03-06 23:50:00	Case_Of	ok
+2018-03-06 23:50:08	Case_Of	it was not said
+2018-03-06 23:50:21	+kurly	sorry
+2018-03-06 23:52:40	Bearcat	tdr: i'll figure this out evenutallyu
+2018-03-07 00:01:47	+wraeth	INSTALL_MASK is described in make.conf(5)
+2018-03-07 00:01:55	+wraeth	korans: good to hear
+2018-03-07 00:02:29	Case_Of	true but nothing is said for trailing slash in it
+2018-03-07 00:02:42	+wraeth	it's a glob pattern
+2018-03-07 00:03:13	Case_Of	ah
+2018-03-07 00:03:40	Case_Of	well i did not thought about that
+2018-03-07 00:13:31	Guest32135	hi guys, what are the advantages of using openrc over systemd?
+2018-03-07 00:13:39	mrwater	oh geez
+2018-03-07 00:14:04	+kurly	Guest32135: try #gentoo-chat or a search engine
+2018-03-07 00:14:12	Sur3	nordmike, sry was sleeping didn't "GENTOO_MIRRORS="https://dev.gentoo.org/~swift" emerge-webrsync --revert=20151120" work for your system portage to do an "emerge -u1 portage"
+2018-03-07 00:14:12	+wraeth	https://wiki.gentoo.org/wiki/Comparison_of_init_systems
+2018-03-07 00:14:18	Guest32135	thanks
+2018-03-07 00:14:19	+kurly	Guest32135: or wraeth's link :D
+2018-03-07 00:14:39	Guest32135	how many of you here are on systemd?
+2018-03-07 00:14:48	+kurly	...try #gentoo-chat
+2018-03-07 00:15:19	Guest32135	oh yes support channel, sry >.<
+2018-03-07 00:15:28	+kurly	:)
+2018-03-07 00:15:28	+wraeth	Guest32135: enough that it will remain pretty stable, generally speaking. we try to avoid opinion-type questions here, particularly about things that will likey result in a flame war :)
+2018-03-07 02:32:18	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-07 02:32:18	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-07 02:32:18	⚡	Channel #gentoo: 1116 nicks (3 ops, 60 voices, 1053 normals)
+2018-03-07 02:32:18	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-07 02:32:18	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-07 02:32:18	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-07 02:33:14	Triffid_Hunter	amitprakash: just symlink to the name it's looking for and see what happens, if the calls are compatible between versions it may Just Work
+2018-03-07 02:33:39	amitprakash	did that too, the bin fails with /usr/lib64/libsasl2.so.2: no version information available
+2018-03-07 02:33:49	Triffid_Hunter	amitprakash: ps: this is a big problem when trying to use closed source stuff on a modern up-to-date system, the steam linux runtime has a ton of similar issues
+2018-03-07 02:34:09	Triffid_Hunter	amitprakash: might have to fire up a docker container with something old and run it in there
+2018-03-07 02:35:03	amitprakash	damn
+2018-03-07 02:35:19	amitprakash	thanks a lot Triffid_Hunter .. though any way I could build the older version of the lib?
+2018-03-07 02:36:10	Triffid_Hunter	amitprakash: sure, grab an old release from their git repo or whatever rcs they use and build it yourself. best to not mix it with your system since you have only one thing that wants it and you don't want other programs getting confused
+2018-03-07 02:37:01	amitprakash	I'm going to try to get a slotted install
+2018-03-07 02:37:45	amitprakash	Triffid_Hunter, the weird thing is.. equivalent version of the package on debian based distro ship it as libsasl.so.2
+2018-03-07 02:45:00	nordmike	Sur3: Thank you, I've updated portage. But it doesn't work now.
+2018-03-07 02:45:39	nordmike	> When I run env-update it writes "importerror no module env_update"
+2018-03-07 02:46:24	Case_Of	anybody can answer?
+2018-03-07 02:47:55	Sur3	Case_Of, that link seems to be down?!
+2018-03-07 02:48:04	Case_Of	ah?
+2018-03-07 02:48:23	Case_Of	probably that paste service is having issues
+2018-03-07 02:48:25	Case_Of	one second
+2018-03-07 02:48:49	Case_Of	Sur3: https://ptpb.pw/ONRP
+2018-03-07 02:48:57	djdunn	nordmike: dispatch-conf work?
+2018-03-07 02:49:17	djdunn	nordmike: portageutils?
+2018-03-07 02:51:09	BL4DE	if I run emerge -avt =www-client/firefox-58.0.1  how will package accept keywords affect future updates of firefox? will I have to manually change the keyword when newer firefox version comes out?
+2018-03-07 02:52:23	Triffid_Hunter	BL4DE: only if you want the newer one and it's keyworded.. why not just keyword www-client/firefox if you want always the latest?
+2018-03-07 02:52:30	+perfinion	if you emerge that specific version you are asking it for that specific version, it will not update it later
+2018-03-07 02:52:44	djdunn	BL4DE: you can use just www-client/firefox instead of =www-client/firefox-58.0.1
+2018-03-07 02:53:01	Sur3	you can use ~ prefix instead of = prefix to include -r* revisions
+2018-03-07 02:53:02	BL4DE	djdunn: but it emerges firefox 52 ESR
+2018-03-07 02:53:21	djdunn	BL4DE: put www-client/firefox in /etc/portage/package.keyword
+2018-03-07 02:53:25	+perfinion	if you put that in package.accept_keywords and emerge jsut generic www-client/firefox then it update to whatever versions are keyworded
+2018-03-07 02:53:38	Case_Of	Sur3: sources probably need a patch?
+2018-03-07 02:54:08	+perfinion	yeah if you put a line without version then emerge will pick the highest it can
+2018-03-07 02:54:15	BL4DE	Triffid_Hunter: if I do that, then I have to ask how often does firefox get bumped on gentoo? maybe I should stick to firefox-bin then
+2018-03-07 02:54:28	+perfinion	BL4DE: waht are you trying to do?
+2018-03-07 02:54:47	+perfinion	BL4DE: you want specifically that version? or any 58.* version? or how?
+2018-03-07 02:54:59	+perfinion	or you always want the latest latest?
+2018-03-07 02:55:08	Triffid_Hunter	BL4DE: no idea, I've capped mine at 56 for now
+2018-03-07 02:55:57	Sur3	Case_Of, yes where did you get that ebuild? Seems to be a problem with the vala code.. Cannot convert from Gee.ArrayList<FontManager.Filter> to Gee.Collection<FontManager.Collection>
+2018-03-07 02:55:58	BL4DE	perfinion: would like current firefox version instead of 52 ESR. current is 58 (latest). not sure if this is going to become a problem compiling new version every time it get's bumped
+2018-03-07 02:56:24	Case_Of	Sur3: that's what i saw, it's from sk-overlay
+2018-03-07 02:56:36	djdunn	BL4DE: no just add it in package.keyword
+2018-03-07 02:56:38	+perfinion	BL4DE: the just put plain "www-client/firefox" in your package.accept_keywords and it'll be the latest always
+2018-03-07 02:56:57	BL4DE	thanks :)
+2018-03-07 02:57:15	+perfinion	BL4DE: if you want to wait to update it later, when you are doing emerge -avDu @world, you can always add --exclude=firefox
+2018-03-07 02:57:42	+perfinion	BL4DE: but i would not put it off too long, things like browsers always have security issues so you'll want to stay reasonably up to date
+2018-03-07 02:58:14	+perfinion	i frequently do --exclude=chromium to update everythignelse first then do chromium afterwards for example
+2018-03-07 02:58:33	djdunn	and libreoffice
+2018-03-07 02:58:43	+perfinion	i use googledocs instead :P
+2018-03-07 02:59:31	xacktm	need that ppt to pdf converter though ;(
+2018-03-07 02:59:46	+perfinion	BL4DE: also, be aware if you update firefox 52->58, you cannot go back easily, the profiles changed you'd have to delete your profile and start over
+2018-03-07 02:59:51	djdunn	powerpoints never should have been invented
+2018-03-07 03:00:44	Sur3	Case_Of, did you try running the -9999 ebuild instead, probably that bug is already fixed in git..
+2018-03-07 03:02:51	Case_Of	Sur3: like this one https://github.com/FontManager/master/commit/b39c4969a80b643ac0eabbb7ea0ae75dca76c257
+2018-03-07 03:02:55	Case_Of	?
+2018-03-07 03:03:20	Sur3	Case_Of, yes like that^^
+2018-03-07 03:03:29	djdunn	Case_Of: the 9999 ebuild builds from the git master
+2018-03-07 03:04:18	djdunn	Case_Of: or if you dont want to do that you can take that one commit and make yourself a patch
+2018-03-07 03:04:29	Case_Of	djdunn: yes i will do so
+2018-03-07 03:04:35	nordmike	djdunn: I'm not near that machine now. I think portage-utils should work and dispatch-conf should not.
+2018-03-07 03:05:33	djdunn	Case_Of: its pretty easy to add your own patches in /etc/portage/patches so portage applies them
+2018-03-07 03:05:42	Case_Of	i know
+2018-03-07 03:06:11	Case_Of	i'm playing with git to extract a patch file from that commit
+2018-03-07 03:08:59	BL4DE	"package.keywords which modifies effective KEYWORDS (rather than ACCEPT_KEYWORDS)." don't quite understand the difference between package.accept_keywords and package.keywords. man page says one overwrites the other, but otherwise?
+2018-03-07 03:09:09	Case_Of	git format-patch -1 b39c4969a80b643ac0eabbb7ea0ae75dca76c257 will do the thing
+2018-03-07 03:09:38	djdunn	BL4DE: you can make /etc/portage/package.keywords/package.accept_keywords
+2018-03-07 03:09:53	djdunn	BL4DE: or /etc/portage/package.keywords
+2018-03-07 03:10:48	djdunn	BL4DE: probably should go with package.keywords/package.accept_keywords
+2018-03-07 03:11:50	BL4DE	djdunn: thanks
+2018-03-07 03:14:15	korans	djdunn: why would you want to do that?
+2018-03-07 03:20:13	djdunn	why does xorg ignore my input devices
+2018-03-07 03:20:18	djdunn	it doesnt even try to load them
+2018-03-07 03:25:26	Takiito	I wanted to run plasma with wayland. But I only get a black screen. Could it be that I need to use the nouveau drivers instead of nvidia?
+2018-03-07 03:25:48	djdunn	Takiito: yeah i dont think nvidia drivers support wayland yet
+2018-03-07 03:25:54	djdunn	dont quote me on that tho
+2018-03-07 03:26:08	Takiito	ok :)
+2018-03-07 03:27:43	djdunn	Takiito: i dont know what its status is atm but i do remember it not being supported in the past
+2018-03-07 03:27:49	djdunn	i donno i have a amd card
+2018-03-07 03:29:02	Takiito	hmm, no it seems wayland support was added in 2016
+2018-03-07 03:29:17	Takiito	I even compiled nvidia-drivers with wayland use flag
+2018-03-07 03:29:34	Case_Of	well i'm not lucky https://ptpb.pw/m_ki
+2018-03-07 03:29:52	djdunn	Takiito: oh its probably supported then if it has the wayland use flag
+2018-03-07 03:30:28	Case_Of	djdunn: should i definitely use the 9999
+2018-03-07 03:32:54	Takiito	Oh, I found a forum post where it is stated that wayland requires the logind interface. Is it save to add USE="elogind". (I don't have systemd)
+2018-03-07 03:34:33	bouma	should it be fairly straightforward to burn an iso from the minimalcd ?
+2018-03-07 03:35:22	djdunn	Case_Of: donno
+2018-03-07 03:35:36	djdunn	Case_Of: it might not even compile, it might not work correctly
+2018-03-07 03:35:45	Case_Of	djdunn: i'm trying
+2018-03-07 03:36:00	Case_Of	djdunn: it builds fine to begin
+2018-03-07 03:36:20	djdunn	Case_Of: some developers keep a working git tree seperate from the development git tree for 9999
+2018-03-07 03:37:14	Case_Of	djdunn: not here apparently https://raw.githubusercontent.com/scriptkitties/overlay/master/media-gfx/font-manager/font-manager-9999-r2.ebuild
+2018-03-07 03:39:55	djdunn	Case_Of: thing about it is that evertime you run it it may be building a diffrent "version"
+2018-03-07 03:39:55	⚡	Mode #gentoo [+v ali_bush] by ChanServ
+2018-03-07 03:40:10	djdunn	Case_Of: depending on commit
+2018-03-07 03:40:14	Case_Of	djdunn: i know
+2018-03-07 03:40:26	Case_Of	that's an awkward situation here
+2018-03-07 03:41:06	Case_Of	djdunn: maybe i should not use this one
+2018-03-07 03:41:09	djdunn	plasma depends on evdev driver?
+2018-03-07 03:41:18	djdunn	Case_Of: try it if it doesnt work try something else
+2018-03-07 03:41:38	djdunn	Case_Of: worst that can happen is you destroy all of existance
+2018-03-07 03:42:14	Case_Of	:)
+2018-03-07 03:44:33	djdunn	im totally clueless with xorg...
+2018-03-07 03:44:43	djdunn	i thought its setup was simple
+2018-03-07 03:47:38	BL4DE	not sure about plasma but wayland does work with plasma. but last I heard 2D opengl acceleration doesn't work with proprietary drivers and KMS is a must so it won't work on legacy nvidia drivers
+2018-03-07 03:48:08	BL4DE	*wayland does work with nvidia but maybe still no opengl acceleration
+2018-03-07 03:51:06	djdunn	libinput doesnt work... evdev doesnt work...
+2018-03-07 03:55:29	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-07 03:55:29	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-07 03:55:29	⚡	Channel #gentoo: 1139 nicks (3 ops, 61 voices, 1075 normals)
+2018-03-07 03:55:30	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-07 03:55:30	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-07 03:55:30	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-07 04:00:01	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-07 04:00:01	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-07 04:00:01	⚡	Channel #gentoo: 1139 nicks (3 ops, 60 voices, 1076 normals)
+2018-03-07 04:00:01	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-07 04:00:01	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-07 04:00:01	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-07 16:15:27	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-07 16:15:27	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:24
+2018-03-07 16:15:27	⚡	Channel #gentoo: 1175 nicks (3 ops, 61 voices, 1111 normals)
+2018-03-07 16:15:27	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-07 16:15:27	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-07 16:15:27	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-07 16:17:10	djdunn	should i use evdev or libinput for plasma?
+2018-03-07 16:28:17	⚡	Topic for #gentoo is "Gentoo Linux Support | Can't speak? /j #gentoo-ops | long pastes: wgetpaste or  dpaste.com | Perl conflicts? https://goo.gl/7Miost | Be nice! https://goo.gl/gvnCii | GCC-5? https://goo.gl/Y7nQ5K | Switch to profile 17.0? https://goo.gl/Kv9vC2 | gentoo-sources downgrade to 4.9? https://goo.gl/zTcWF4 | meltdown&Spectre? https://goo.gl/YxXcm5"
+2018-03-07 16:28:17	⚡	Topic set by NeddySeagoon (~quassel@gentoo/developer/NeddySeagoon) on Sun, 07 Jan 2018 15:32:27
+2018-03-07 16:28:17	⚡	Channel #gentoo: 1170 nicks (3 ops, 60 voices, 1107 normals)
+2018-03-07 16:28:17	⚡	PvNotice(ChanServ): Welcome to #gentoo || Acceptable Usage Policy @ http://www.gentoo.org/main/en/irc.xml || Keep the language clean || Google is your friend || No bots or scripts that talk || Turn off public away messages || More than three lines to #flood or a pastebin service, no spam!
+2018-03-07 16:28:17	⚡	URL for #gentoo: http://www.gentoo.org
+2018-03-07 16:28:17	⚡	Channel created on Fri, 14 Sep 2001 23:15:36
+2018-03-07 16:33:02	djdunn	ok so i have a mouse but no keyboard in X
+2018-03-07 16:33:08	djdunn	not sure what to do
+2018-03-07 16:59:07	⚡	angerctl is now known as Namarrgon
+2018-03-07 17:05:37	+wraeth	djdunn: the keyboard works in a tty?
+2018-03-07 17:08:11	djdunn	wraeth: yes
+2018-03-07 17:08:14	⚡	xcm_ is now known as xcm
+2018-03-07 17:08:19	djdunn	wraeth: ps2 keyboard
+2018-03-07 17:08:37	+wraeth	djdunn: you have evdev in your INPUT_DEVICES?
+2018-03-07 17:08:48	djdunn	libinput
+2018-03-07 17:09:14	dgurney	use evdev
+2018-03-07 17:09:16	+wraeth	yep, that'll work too. anything ominous in your /var/log/Xorg.*.log?
+2018-03-07 17:09:52	djdunn	https://paste.pound-python.org/show/wVEwsSxrFy77G074jyPp/
+2018-03-07 17:12:03	⚡	Mode #gentoo [+v toralf] by ChanServ
+2018-03-07 17:12:07	⚡	Vasco is now known as Vasco_O
+2018-03-07 17:12:56	+wraeth	djdunn: nothing obvious, but it seems to simply not see the keyboard at all.. maybe try evdev and see if it behaves differently
+2018-03-07 17:18:23	⚡	trevor is now known as Guest11440
+2018-03-07 17:18:44	djdunn	wraeth: nope
+2018-03-07 17:18:58	djdunn	wraeth: even copied the evdev.conf from usr/share
+2018-03-07 17:19:33	+wraeth	djdunn: do you have any other xorg configs lying around?
+2018-03-07 17:19:46	djdunn	im not really using one
+2018-03-07 17:20:03	⚡	Guest11440 is now known as stiltr
+2018-03-07 17:20:10	+wraeth	figured as much (the log suggested you weren't) but wanted to check
+2018-03-07 17:20:46	+wraeth	i'm not sure - the kernel obviously has the driver, libinput/evdev seems to be working since you have the mouse, but i'm not sure why it's simply not seeing the keyboard
+2018-03-07 17:21:42	djdunn	i put in an old keyboard.conf i had but that didnt work either
+2018-03-07 17:22:19	djdunn	https://paste.pound-python.org/show/0NiEy8cs1LIspWU184wo/
+2018-03-07 17:22:33	+wraeth	djdunn: is it a standard keyboard, or some unusual fancy model?
+2018-03-07 17:22:52	djdunn	standard 102 key
+2018-03-07 17:22:59	djdunn	IBM model M
+2018-03-07 17:23:06	djdunn	cant get much more standand than that
+2018-03-07 17:23:13	+wraeth	heh, yeah..
+2018-03-07 17:23:14	djdunn	standard
+2018-03-07 17:23:37	djdunn	it used to have an AT cord but i got a ps2 cord for it years ago
+2018-03-07 17:23:43	djdunn	but its worked before with X
+2018-03-07 17:25:04	+wraeth	do you have another real ps2 (or, failing that, usb (assuming you have appropriate kernel drivers)) keyboard you can test with, to make sure it's not the cable?
+2018-03-07 17:25:06	greatemerald_mat	Is it an adapter?
+2018-03-07 17:27:17	djdunn	no its a ps2 cord that plugs into the jack on the keyboard
+2018-03-07 17:28:27	greatemerald_mat	djdunn-n8: Hm, still might suspect that the protocol is not quite PS/2 compliant or so
+2018-03-07 17:28:54	djdunn	it worked fine for years
+2018-03-07 17:29:49	djdunn	ok a usb keyboard does work
+2018-03-07 17:30:02	djdunn	but i cant keep this one...
+2018-03-07 17:30:40	+wraeth	djdunn: that's worrying. do you have another machine in which you can test the at/ps2 keyboard? preferrably one that is more "guaranteed" to work..
+2018-03-07 17:30:56	djdunn	its not linux
+2018-03-07 17:31:09	artaslove	I thought it was working, in a tty
+2018-03-07 17:31:20	djdunn	it does im tying now on it
+2018-03-07 17:31:24	+wraeth	good point
+2018-03-07 17:32:37	djdunn	im using an old kernel config that i knew worked with it
+2018-03-07 17:33:30	artaslove	hurrah, gcc 6.4.0-r1 is finally installing. 1.5 hours compile time on a crappy old Dell M4400
+2018-03-07 17:33:32	+wraeth	how long ago (or, specifically, how old package-wise) did you have it working in Xorg? perhaps a (recent?) update has caused conflict? or requires a config section to specifically look for it?
+2018-03-07 17:33:43	djdunn	less than a week
+2018-03-07 17:33:47	+wraeth	hmm
+2018-03-07 17:34:00	djdunn	this is a reinstall of that box
+2018-03-07 17:34:41	djdunn	hmm
+2018-03-07 17:34:46	djdunn	i had a keyboard.conf file in xorg.conf.d that i put there again but that dosent seem to work now
+2018-03-07 17:35:02	djdunn	wraeth: i reinstalled cause i tried to install selinux
+2018-03-07 17:35:15	djdunn	and after that thats when i noticed the keyboard didnt work
+2018-03-07 17:35:53	djdunn	then i got tired of trying to setup selinux and uninstalled selinux, then it still didnt work so i said f it and reinstalled everything from a stage 3
+2018-03-07 17:37:09	+wraeth	i wouldn't expect selinux to have affected it, particularly when you're running on a non-selinux system now..
+2018-03-07 17:37:21	+wraeth	can you try `udevadm monitor` and replug the device?
+2018-03-07 17:37:26	+wraeth	see if udev actually sees it
+2018-03-07 17:37:58	djdunn	no
+2018-03-07 17:39:09	djdunn	do i need a udev rule?
+2018-03-07 17:39:32	+wraeth	can you try the same test with the mouse, just to make sure i'm right in guessing you should see some output from udev
+2018-03-07 17:39:35	+wraeth	?
+2018-03-07 17:40:21	djdunn	all kinds of stuff
+2018-03-07 17:41:25	artaslove	um, I don't think ps/2 is hot-swappable
+2018-03-07 17:41:27	+wraeth	so it looks like udev is the culprit rather than Xorg.. do you remember if you had to create a manual udev rule? or if you updated udev between the keyboard working and not working?
+2018-03-07 17:42:09	djdunn	yeah eudev got reinstalled for selinux
+2018-03-07 17:42:14	djdunn	and i dont remember if i had a manual rule
+2018-03-07 17:42:21	djdunn	15 years ago was a long time
+2018-03-07 17:42:34	derek01	Hey guys, im trying to get network support working for a hyper-v install. Works fine for the install, but i must be missing something in the kernel.
+2018-03-07 17:42:36	djdunn	though im not sure if udev was around back then maybe hal
+2018-03-07 17:42:45	djdunn	well i remember before hal
+2018-03-07 17:42:45	+wraeth	artaslove: i honestly can't remember, but if it wasn't i'd expect the keyboard to not be working now (which, given the responses, i'm guessing isn't the case)
+2018-03-07 17:43:35	+wraeth	djdunn: maybe try downgrading (e)udev one or two versions, just to test?
+2018-03-07 17:43:54	djdunn	theres only one version of eudev in the tree
+2018-03-07 17:43:58	+wraeth	i mean, hal hasn't been around for a while, and if the keyboard was working last week...
+2018-03-07 17:44:07	djdunn	i could try udev?
+2018-03-07 17:44:14	numan	hi
+2018-03-07 17:44:31	+wraeth	djdunn: sure - (e)udev should be drop-ins for each other
+2018-03-07 17:44:31	numan	How can I solve this problem : EXT4-fs (sda3): couldn't mount as ext3 due to feature incompatibilities
+2018-03-07 17:45:12	hlmjr	numan, I'm thinking enable ext3 support in your kernel, perhaps?
+2018-03-07 17:45:33	+wraeth	derek01: `lspci -k` from the live environment (where the network is working) should tell you the kernel driver(s) being used for your pci hardware, so you can locate and enable it in your kernel
+2018-03-07 17:46:27	derek01	lemme reboot back into the livecd and see what it says again, I thought i got it all
+2018-03-07 17:46:55	djdunn	udev installed a bunch of other rules
+2018-03-07 17:48:37	djdunn	udev didnt pick it up with udevadm monitor
+2018-03-07 17:48:43	numan	but it s an ext4
+2018-03-07 17:48:50	numan	file
+2018-03-07 17:48:57	+wraeth	djdunn: did you restart udev first?
+2018-03-07 17:49:08	dgurney	numan, in that case it isn't really a problem, unless you're trying to purposefully mount it as ext3
+2018-03-07 17:49:15	djdunn	yeah restarted udev
+2018-03-07 17:50:54	+wraeth	djdunn: then i'm at a loss.. if you want to stick with eudev then i'd suggest reinstalling that now; but otherwise you might need to wait around for someone more familiar with *udevs magic :/
+2018-03-07 17:51:42	numan	i will try that
+2018-03-07 17:52:02	numan	what can happen if I copy  /proc/mounts to /etc/mtab and reboot
+2018-03-07 17:52:23	+wraeth	numan: why would you want to do that?
+2018-03-07 17:53:10	derek01	wraeth: https://paste.pound-python.org/show/df9AT0XT6Ad4igO67eiD/
+2018-03-07 17:53:23	numan	to solve the issue of reading an ext4 as ext3
+2018-03-07 17:53:26	numan	?
+2018-03-07 17:53:44	dgurney	why are you trying to do that?
+2018-03-07 17:53:46	kerframil	numan: it isn't. in fact, it's stating the exact opposite.
+2018-03-07 17:54:15	kerframil	numan: it can only mount as ext4 because the feature flags forbid any earlier version. if the message bothers you, specify rootfstype.
+2018-03-07 17:54:22	dgurney	^
+2018-03-07 17:55:29	numan	sorry how do someone specify rootfstype I am new to gentoo
+2018-03-07 17:55:37	User_	Hey I'm having a problem
+2018-03-07 17:55:48	dgurney	numan, you add it to your kernel command line
+2018-03-07 17:55:55	User_	I just ordered the librem 13 laptop and when I boot the keyboards | key shows up as a < key
+2018-03-07 17:56:15	dgurney	if you are using grub, you edit the appropriate line in /etc/default/grub and regenerate the config file
+2018-03-07 17:56:15	kerframil	numan: are you using grub-mkconfig, normally?
+2018-03-07 17:56:23	User_	I checked to see if I might have used the wrong keyboard version, and strangely enough selecting UK (which I did not purchase) fixes it... But then messes up other keys
+2018-03-07 17:57:20	numan	yes
+2018-03-07 17:57:30	numan	grub-mkconfig I use
+2018-03-07 17:57:39	numan	I am on open-rc
+2018-03-07 17:58:17	kerframil	numan: add rootfstype=ext4 to GRUB_CMDLINE_LINUX in /etc/default/grub, then re-generate with grub-mkconfig
+2018-03-07 17:59:29	derek01	booting the livecd i get eth0 just fine with a working connection. lspci shows https://paste.pound-python.org/show/df9AT0XT6Ad4igO67eiD/ and i dont think anything is network related?
+2018-03-07 18:00:02	djdunn	wraeth: well thanks, i know wore what i think the problem is now
+2018-03-07 18:00:44	numan	thanks
+2018-03-07 18:02:11	kerframil	derek01: https://wiki.gentoo.org/wiki/Hyper-V#Linux_guest_support
+2018-03-07 18:02:34	nawks	wraeth: I think I've got a eudev bug. Are you good with it?
+2018-03-07 18:06:05	⚡	Mode #gentoo [+v Chiitoo] by ChanServ
+2018-03-07 18:07:43	+wraeth	djdunn: no problem, and sorry i couldn't help more. someone else here may have better luck
+2018-03-07 18:08:11	charles__	Hi , I am trying to get ride of dmesg problem . Can anyone help s on solving : cgroup: cgroup2: unknown option "nsdelegate"
+2018-03-07 18:08:13	+wraeth	nawks: am i good with it how? i don't use evdev personally, if that's what you mean (at least, i don't think i do - may be on one or two systems i don't have access to at teh moment)
+2018-03-07 18:08:50	The_Document	15:08 -!- Mode change [+i] for user The_Document
+2018-03-07 18:08:59	nawks	wraeth: eudev/udev. I want someone to look at my logs and debug efforts
+2018-03-07 18:09:27	The_Document	I have a tar.bz2 archive which has directories like /opt/blabla and /usr/bin/blabla how do I extract the archive by sending those directories to their appropriate places?
+2018-03-07 18:09:30	nawks	it's a usb printer hotplug issue
+2018-03-07 18:09:35	+wraeth	nawks: i'll help if i can (once i get some caffeine) but there are also plenty of others in the channel who may be able to help
+2018-03-07 18:11:17	+wraeth	The_Document: first, we don't recommend manually installing things to your system unless its in /usr/local - use the package manager instead. having said that, tar has a destination option (-C) you could make use of. people in #gentoo-chat or ##linux, or a search engine, may have more info if you need it
+2018-03-07 18:11:59	The_Document	wraeth: It is a paid for cad software, they only have deb, rpm and something called custom install
+2018-03-07 18:12:28	+wraeth	The_Document: you could write an ebuild for it yourself
+2018-03-07 18:13:11	nawks	wraeth: i went through my debug efforts a few hours ago here and no one jumped in :( I'll get it together and share it with you in a little while then.
+2018-03-07 18:13:25	The_Document	wraeth: Im not a programmer
+2018-03-07 18:13:39	+wraeth	nawks: yeah, it can be frustrating, but different timezones and audiences and such..
+2018-03-07 18:14:01	azarus	The_Document: writing ebuilds is not programming
+2018-03-07 18:14:13	hlmjr	Not even kinda/sorta?
+2018-03-07 18:14:31	+wraeth	The_Document: and ebuilds for binary packages that basically just extract an archive are pretty straightforward
+2018-03-07 18:15:02	azarus	hlmjr: writing recipies for installing software doesn't count as programming for me
+2018-03-07 18:15:09	azarus	recipes*
+2018-03-07 18:16:25	The_Document	fine I will give it a shot if somebody shows me a guide
+2018-03-07 18:16:40	The_Document	I ate too many gummy bears
+2018-03-07 18:17:21	The_Document	but its not like Im going to upload the package because its paid for
+2018-03-07 18:17:42	▷	kurly tilts his head
+2018-03-07 18:18:29	nawks	ahhh, there's someone who enjoys (e)udev debugging
+2018-03-07 18:18:42	hlmjr	azarus, fair enough.
+2018-03-07 18:18:50	+wraeth	The_Document: https://devmanual.gentoo.org and the many, many examples already on your system. effectively you just need to unpack the files and copy them into ${D} (the install location). no gummy bears needed
+2018-03-07 18:23:17	The_Document	wraeth: isn't /opt is were binary packages go?
+2018-03-07 18:26:12	tdr	The_Document, they can, or to /usr/local, just don't use / or /usr
+2018-03-07 18:28:43	The_Document	I cant do the ebauild because Im pretty sure Im not allowed to upload the archive without granted permission
+2018-03-07 18:29:27	tdr	The_Document, theres no need to upload
+2018-03-07 18:29:47	tdr	The_Document, just have it in /usr/local/distfiles  and your ebuild with find it
+2018-03-07 18:30:04	+kurly	The_Document: who said anything about uploading?
+2018-03-07 18:30:30	+kurly	at least learn what is and isn't required before deciding you can't do it
+2018-03-07 18:30:48	The_Document	kurly: this SRC_URI=
+2018-03-07 18:30:58	+kurly	tdr: /usr/portage/distfiles ?
+2018-03-07 18:31:12	tdr	yeah
+2018-03-07 18:31:14	The_Document	I always rm * that directory
+2018-03-07 18:31:22	tdr	the /usr/portage/distfiles
+2018-03-07 18:31:25	+kurly	The_Document: URI doesn't have to be anywhere remote
+2018-03-07 18:31:29	+kurly	The_Document: and don't do that.
+2018-03-07 18:31:44	tdr	kurly,  mind was sidetracked cleaning a local portage
+2018-03-07 18:31:45	+kurly	The_Document: at least use eclean-dist so you're not wasting community resources downloading files you should already have
+2018-03-07 18:31:56	The_Document	kurly: oww I see
+2018-03-07 18:32:18	+kurly	The_Document: if the file is already in distfiles, SRC_URI isn't used at all
+2018-03-07 18:32:50	The_Document	does eclean-dist normally take forever to run?
+2018-03-07 18:32:51	+kurly	The_Document: also there's a concept called 'fetch restricted' ... there are non-free programs in the gentoo tree, and it's up to you to provide the distfile.  same thing for your ebuild.
+2018-03-07 18:33:29	tdr	The_Document, it can take awhile for it to calculate what an emerge -e @world would do so it knows what it would need to rebuild, so someitmes its not super quick
+2018-03-07 18:33:51	+kurly	I don't know, I don't normally watch it; it's definitely not forever because I've run it more than once in my life and it finished :P
+2018-03-07 18:33:53	The_Document	haha it said its already clean
+2018-03-07 18:34:07	The_Document	kurly: good point
+2018-03-07 18:34:16	+kurly	it even has a -f flag to protect fetch-restricted packages (like, say, the one you're talking about)
+2018-03-07 18:34:40	The_Document	if I were granted permission to upload were would it go?
+2018-03-07 18:34:53	+kurly	who said anything about uploading? :)
+2018-03-07 18:35:15	tdr	The_Document, the src uri could literally be any web address
+2018-03-07 18:41:38	The_Document	looks pretty straight forward, but Im not making an ebuild unless I can upload the trial version to some repo will ask owner for permission
+2018-03-07 18:42:58	tdr	you'd want to test it locally anyway
+2018-03-07 18:44:55	The_Document	tdr: it already complaints about tph thread package, need some useflag debugging before I even being writing the ebuild, but once I do I will likely write an ebuild anyways
+2018-03-07 18:47:19	Belxjander	where is the rule renaming "eth0" and "wlan0" into this new "wlp4s0" style come from ?
+2018-03-07 18:47:32	Belxjander	because I would like to switch it off
+2018-03-07 18:49:06	ajeddeloh	It looks like the net-dns/bind-tools package is broken for cross compilation. Specifically --with-ecdsa=[yes,no] needs to be specified when cross compiling. It looks like a patch to fix this existed in the 9.10.2 patch files but wasn't ported to 9.11.x. Relevent part of the patch https://github.com/gentoo/gentoo/commit/4a1ce23b27f5aec393ea6a1fa6e7bcc80222a0c8#diff-7b49f2e136e693ca57684d1006d79161L94
+2018-03-07 18:49:17	The_Document	Belxjander: Id like to do the same
+2018-03-07 18:49:45	+wraeth	The_Document, tdr: SRC_URI could simply be "my-package-1.2.3.tar.bz2" and use RESTRICT="FETCH" - you don't need any remote address whatsoever
+2018-03-07 18:50:02	+wraeth	*RESTRICT="fetch"
+2018-03-07 18:51:12	tdr	wraeth, neat, i wasnt aware you could use a simple file name
+2018-03-07 18:52:09	The_Document	wraeth: can it be SRC_URI="/home/blalba/dapakage" ?
+2018-03-07 18:52:40	+wraeth	Belxjander: it's udev that renames interfaces from eth* to en1something2, and there are a few options to undo it - a search on "udev predictable interface names" will help, or i believe adding "net.ifnames=0" to your kernel cmdline still prevents it
+2018-03-07 18:52:44	The_Document	wraeth: or does it automaticall look in distfiles?
+2018-03-07 18:53:17	+wraeth	The_Document: i'm not sure if a path will work, but a simple file name should, and oyu just put the file in your distfiles directory
+2018-03-07 18:53:58	+wraeth	Belxjander: https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/
+2018-03-07 18:55:01	tdr	yeah the grub way still works
+2018-03-07 18:56:45	Belxjander	wraeth: thanks for assuming I web browse on the same machine I IRC with :)
+2018-03-07 18:57:24	The_Document	what was the point of moving away from traditional net names anyway?
+2018-03-07 18:57:44	+wraeth	Belxjander: i made no such assumption - use whatever device you like. my assumption was that you have network connectivity with which you *can* browse the internet, since you're connected to it :)
+2018-03-07 18:58:16	Belxjander	The_Document: no idea...I just recall there was some udev rules that seemed to be missing for setting them which confused me as to where the rename was happening
+2018-03-07 18:58:24	+wraeth	The_Document: the eth* device naming scheme was deemed unpredictable, so one based on the logical location of the device in the system hierarchy was implemented
+2018-03-07 18:59:30	+wraeth	for example, [en][pN][sN] translates to [ethernet network][port N][slot N]
+2018-03-07 18:59:53	+wraeth	rather than "ethN" for "the Nth ethernet device found during device enumeration"
+2018-03-07 19:01:11	The_Document	wonder if it added a layer of secerity since netnames are no longer traditinally named as they use to be
+2018-03-07 19:01:37	+wraeth	potentially, but only through obscurity
+2018-03-07 19:01:42	Belxjander	weraeth: weird/...I always had a udev rule listing a MAC = ethN/wlanN arrangement I used which meant every time a particular device was present/missing the particular interface it was named was static,  so the numeric ordering was non-linear in being *installed* order and NOT "enumeration order"
+2018-03-07 19:02:20	Belxjander	Thev00d00: not really...the new names are just a little more awkward to type and show up as an enumeration list for me anyway
+2018-03-07 19:02:56	+wraeth	Belxjander: sure, explicitly defining your interface names avoids the issue, but it requires that one *does* explicitly define their interface names
+2018-03-07 19:03:00	▷	Belxjander is just annoyed the whole "it will be named this" *policy*decision* was taken from configs and pushed to code...
+2018-03-07 19:03:06	+wraeth	either way, that's what it is, that's why it is, and that's how to change it
+2018-03-07 19:04:10	+wraeth	Belxjander: also, if you have udev rules explicitly assigning your devices interface names, i would have thought that would take precedence over automatically assigned names, predictable or not..
+2018-03-07 19:05:05	tdr	Belxjander, it was not a gentoo choice to change the naming, it was done across linux
+2018-03-07 19:05:15	+wraeth	^
+2018-03-07 19:14:09	⚡	random_james is now known as random_james_awy
+2018-03-07 19:14:39	The_Document	is it common for propriatary sotware to not specify which packages they need installed
+2018-03-07 19:15:27	tdr	The_Document, usually their manual has it
+2018-03-07 19:15:34	tdr	The_Document, or somet README type file
+2018-03-07 19:17:10	+wraeth	they also often bundle dependencies rather than rely on system-provided deps
+2018-03-07 19:21:22	Epistam	Good evening
+2018-03-07 19:21:41	Epistam	I was wondering if one of you could help me reproduce a bug I'm encountering since tmux 2.6 (recently upgraded and it worked before)
+2018-03-07 19:21:52	Epistam	And help me figure out if it is indeed a bug or just me being an idiot
+2018-03-07 19:22:11	Epistam	Since an image is worth a thousand words : https://im4.ezgif.com/tmp/ezgif-4-28fbe54ca6.gif
+2018-03-07 19:22:39	Epistam	Got trouble using split-window, it looks like it doesn't work consistently with small panes when used in a script or manually
+2018-03-07 19:24:43	djdunn	anyone have any ideas why udev is not recognizing my ps2 keyboard?
+2018-03-07 19:25:49	nawks	wraeth: so here's my 'udevadm test' run on my usb printer: https://paste.pound-python.org/show/aL2Uf9gIzZjrcIBdzp2R/
+2018-03-07 19:26:37	nawks	you can see in lines 78-85 it sets the proper permissions for a printer. group 'lp' and mode 0664
+2018-03-07 19:30:38	The_Document	Im debugging the paid for app and I needed to reinstall some apps but can't https://paste.pound-python.org/show/tFhTlGJw0elKUQhEIWAk/
+2018-03-07 19:31:09	nawks	djdunn: that's not a lot to go on
+2018-03-07 19:32:27	djdunn	ps2 keyboard works in the VT's
+2018-03-07 19:32:33	djdunn	it doesnt show up in udev
+2018-03-07 19:32:53	djdunn	and doesnt show up in X, which probably has to do with not showing up in udev
+2018-03-07 19:32:59	nawks	how do you know it "doesn't show up"?
+2018-03-07 19:34:14	Kelsar	djdunn: ps2 is not a "hotplug" thing, it is there or it is not. I guess /dev/psaux is there?
+2018-03-07 19:34:29	Kelsar	djdunn: what did you set INPUT_DEVICES too?
+2018-03-07 19:34:34	nawks	The_Document: add libdrm to your emerge list of pkgs
+2018-03-07 19:34:45	djdunn	i have a /dev/psaux
+2018-03-07 19:34:48	djdunn	is that the keyboard?
+2018-03-07 19:34:55	Kelsar	djdunn: yes
+2018-03-07 19:34:58	Kelsar	if it is ps2
+2018-03-07 19:35:08	djdunn	i have input devices set as...
+2018-03-07 19:35:17	Kelsar	The_Document: seems you changed ABI flags, do world update 1st
+2018-03-07 19:35:27	djdunn	set as ="evdev"
+2018-03-07 19:35:40	Kelsar	The_Document: also you likely want to add -1 to your command
+2018-03-07 19:36:09	Kelsar	djdunn: what does xorg.log show?
+2018-03-07 19:37:37	djdunn	Kelsar: https://paste.pound-python.org/show/9uQ15IyGbTunNkfSkPEj/
+2018-03-07 19:38:30	Kelsar	djdunn: emerge --info that log says your INPUT_DEVICES is set different too
+2018-03-07 19:39:05	djdunn	https://paste.pound-python.org/show/s40tlZcFw4mWj6bkVs69/
+2018-03-07 19:40:23	Kelsar	right now it uses libinput, did you change those flags recently?
+2018-03-07 19:40:48	djdunn	ive been swapping them all around for the past 2 days
+2018-03-07 19:41:09	Kelsar	emerge -avuDN world && emerge -avc
+2018-03-07 19:41:11	Kelsar	done?
+2018-03-07 19:41:53	djdunn	yeah kde plasma seems to want both libinput and evdev
+2018-03-07 19:42:10	nawks	djdunn: ummm no, plasma doesn't care
+2018-03-07 19:42:20	Kelsar	djdunn: unlikely
+2018-03-07 19:42:33	tdr	theres a libiput flag on a kde package probably
+2018-03-07 19:42:36	The_Document	Kelsar: that was no issue, this is https://paste.pound-python.org/show/HIjqWu1Qrf3ru44ABza9/
+2018-03-07 19:42:37	djdunn	plasma-desktop depends on xf86-input-libinput
+2018-03-07 19:42:56	djdunn	set by mouse useflag thats set by the profile
+2018-03-07 19:42:57	tdr	djdunn, qlist -ICU | grep libinput
+2018-03-07 19:43:27	Kelsar	The_Document: some binary package missing a library, maybe even the 32bit one ldd on that binary should tell
+2018-03-07 19:43:47	djdunn	tdr: https://paste.pound-python.org/show/hJuwbpCgmUxfL1b7C9dR/
+2018-03-07 19:45:09	Kelsar	djdunn: indirect through wayland... makes sense sadly
+2018-03-07 19:46:03	nawks	ok, so use libinput and exclude evdev, right?
+2018-03-07 19:46:14	nawks	libinput obsoletes evdev
+2018-03-07 19:46:27	Kelsar	djdunn: Which libinput version?
+2018-03-07 19:46:43	Kelsar	nawks: nah, does not matter, you can have booth installed
+2018-03-07 19:46:52	djdunn	dev-libs/libinput-1.10.1
+2018-03-07 19:46:57	nawks	but why would you?
+2018-03-07 19:47:17	Kelsar	because not everything works correct with libinput right now
+2018-03-07 19:47:34	Kelsar	djdunn: maybe try another version
+2018-03-07 19:47:57	Kelsar	djdunn: sorry, hadn't a PS/2 Keyboard for a very long time
+2018-03-07 19:48:08	djdunn	i thought /dev/psaux was for a ps2 mouse
+2018-03-07 19:48:51	nawks	i thought /dev/psmouse was for a ps2 mouse. you should have that device too anyway
+2018-03-07 19:49:10	Kelsar	djdunn: but your keyboard works on tty, so kernel side should be fine
+2018-03-07 19:49:16	djdunn	yeah
+2018-03-07 19:49:34	djdunn	either libinput or evdev they both load the mouse, but dont even look for keyboard
+2018-03-07 19:49:50	The_Document	Kelsar: I have no idea what to do about that missing lib, I alread emerged npth and dev-libs/libpthread-stubs with 32bit support
+2018-03-07 19:50:09	Kelsar	The_Document: how did you install that package?
+2018-03-07 19:50:22	The_Document	Kelsar: its paid for software it is in /opt
+2018-03-07 19:50:56	Kelsar	Well, ask the support. ldd might tell you where it expects those libs and which version
+2018-03-07 19:51:33	djdunn	i dont see anything for the keyboard in /dev/input/by-path
+2018-03-07 19:51:50	Kelsar	afaik won't be there
+2018-03-07 19:51:57	josef64	djdunn: if you want the evdev driver, then set a Symlink in /etc/X11/xorg.conf.d/10-evdev.conf -> /usr/share/X11/xorg.conf.d/10-evdev.conf
+2018-03-07 19:52:20	nawks	The_Document: npth installs libnpth.so -- your app wants libpth.so
+2018-03-07 19:52:22	djdunn	josef64: tried that it doesnt load the keyboard
+2018-03-07 19:52:36	josef64	:-/
+2018-03-07 19:53:45	The_Document	nawks: were to find?
+2018-03-07 19:54:02	nawks	not sure. looking...
+2018-03-07 19:54:30	The_Document	trying x11-libs/liboglappth
+2018-03-07 19:55:12	nawks	doesn't sound like it
+2018-03-07 19:55:19	The_Document	didn't help unmerging
+2018-03-07 19:56:08	djdunn	this machine used to do this https://paste.pound-python.org/show/jqcdVIIGW6Jplfks9qCe/
+2018-03-07 19:56:24	djdunn	but that stopped working
+2018-03-07 19:57:03	josef64	djdunn: Hm, try the stable xorg-server --> emerge -av1 =xorg-server-1.19.5-r1 @x11-module-rebuild
+2018-03-07 19:58:39	djdunn	josef64: happens with 1.19.5 also
+2018-03-07 19:59:05	The_Document	nawks: I think they are the same thing
+2018-03-07 19:59:40	nawks	The_Document: you could try making a symlink... libpth.so --> libnpth.so
+2018-03-07 19:59:56	nawks	this is soooo old though... it might bomb
+2018-03-07 20:02:41	The_Document	nawks: lol
+2018-03-07 20:02:46	The_Document	nawks: it works after symlinking
+2018-03-07 20:03:06	nawks	w00t!
+2018-03-07 20:03:41	nawks	that's good to know
+2018-03-07 20:08:07	guest1222	hi guys, I just borked my system pretty bad. I added the gentoo-snappy overlay, went to emerge snapd, saw the notice about my profile being out of date and to upgrade to the 17.0 profile. So I did, without looking at the news notice about it. And now all of my emerges fail on the configure phase, no matter what profile I'm in.
+2018-03-07 20:08:36	The_Document	nawks: just can't activate it for some reason
+2018-03-07 20:08:40	The_Document	its a licensing issue
+2018-03-07 20:13:23	nawks	guest1222: try reselecting gcc with gcc-config, then 'ldconfig'
+2018-03-07 20:14:29	nawks	guest1222: maybe reselect binutils-config too
+2018-03-07 20:15:17	+wraeth	you should rebuild libtool after selecting a new gcc as well, at least; though there may be more required depending on the version jump (see news items)
+2018-03-07 20:15:41	dansan	Can anybody recommend a terminal emulator (for serial ports) other than minicom (which reportedly has problems with u-boot)?  A command line one woudl be ncie
+2018-03-07 20:16:18	nawks	wraeth: don't have to select a 'new' gcc. gcc-config will rewrite the needed symlinks into the new lib dir structure
+2018-03-07 20:16:38	Kelsar	dansan: screen
+2018-03-07 20:16:44	audiodef	If a package says it can't find "dot" while compiling and fails, what is it referring to that's in Portage?
+2018-03-07 20:16:57	dansan	Kelsar: wow, that does serial terminals too?
+2018-03-07 20:17:04	Kelsar	dansan: yes
+2018-03-07 20:17:15	dansan	Kelsar: awesome, thanks!
+2018-03-07 20:17:54	dansan	It could really benefit me to learn and get used to it.  I can end up with 15-20 tabs open in my (shell-prompt) terminal program
+2018-03-07 20:19:56	The_Document	now another issue: /opt/bricsys/bricscad/v17/bricscad: symbol lookup error: /opt/bricsys/bricscad/v17/libcadapp.so: undefined symbol: pth_init
+2018-03-07 20:20:45	+wraeth	The_Document: you should take it up with the software provider - being a binary package (and one not in portage) there's very little we can do
+2018-03-07 20:21:38	gyroninja	The_Document: That's from your symlink hack
+2018-03-07 20:21:42	gyroninja	(probably)
+2018-03-07 20:24:39	guest1222	nawks: I did gcc-config: [6] x86_64-pc-linux-gnu-6.4.0 *, binutils-config: only has [1] x86_64-pc-linux-gnu-2.25.1 *, and does ldconfig produce any output?
+2018-03-07 20:25:25	nawks	no it does not
+2018-03-07 20:26:07	nawks	it rebuilds /etc/ld.so.cache
+2018-03-07 20:26:42	guest1222	alright, I just tried to rebuild libtool: emerge -1avt libtool and it failed with
+2018-03-07 20:27:37	guest1222	https://pastebin.com/Qhf22MVF
+2018-03-07 20:29:13	+kurly	guest1222: get yourself a copy of wgetpaste and spare us the pastebin.com link ;)
+2018-03-07 20:29:38	guest1222	kurly: I'd love to, but I can't emerge :)
+2018-03-07 20:29:53	dansan	Kelsar: So to send an "escape" in screen, do I press "escape"? :)
+2018-03-07 20:30:01	dansan	Kelsar: Or is this something you have to configure first?
+2018-03-07 20:30:15	+kurly	guest1222: I think you're in the wrong channel, this is #gentoo
+2018-03-07 20:30:29	+wraeth	audiodef: at a guess (without seeing any output, hint hint) i'd guess it means it cant find the present working directory - did you try running emerge from within /var/tmp/portage somewhere?
+2018-03-07 20:30:34	dansan	Something in the creeky recesses of my mind says something about ctrl-k
+2018-03-07 20:30:37	+kurly	guest1222: if I had to guess, I'd say you have bad CFLAGS
+2018-03-07 20:31:01	Irishluck83	alright kurly i'm back to try to fix my emerge problem
+2018-03-07 20:31:43	guest1222	hmm, I'll try and examine my cflags
+2018-03-07 20:32:00	guest1222	what's the preferred paste service if not pastebin?
+2018-03-07 20:32:12	[Gentoo]	guest1222: comment out cflags ldflags etc in make.conf
+2018-03-07 20:32:23	nawks	guest1222: may also need '. /etc/profile' after doing gcc-config
+2018-03-07 20:32:24	[Gentoo]	quickest way to test
+2018-03-07 20:32:43	shaggymane	anyone know how to primus run WorldofWarcraft in wine? .. I cant seem to get it to work correct.. maybe my command line skills lake
+2018-03-07 20:32:46	dansan	ah hah! it's just the scape key!
+2018-03-07 20:33:44	nawks	guest1222: do you have /lib ?
+2018-03-07 20:34:06	guest1222	nawks: yes
+2018-03-07 20:34:15	+kurly	guest1222: the other problem is that we can't support gentoo derivatives in #gentoo, please refer to the channel policy
+2018-03-07 20:34:34	guest1222	kurly: that's fair. I'm pretty sure my problem is a portage problem though
+2018-03-07 20:35:25	+kurly	maybe it is; if you can reproduce it on gentoo, we can take a look
+2018-03-07 20:35:38	guest1222	sure thing
+2018-03-07 20:35:42	guest1222	I'll keep poking around
+2018-03-07 20:35:49	+kurly	yeah, I hope you get it figured out though! :)
+2018-03-07 20:35:55	guest1222	and if I can't get it to work, I'll bulldoze this install
+2018-03-07 20:36:04	⚡	qpdb is now known as Guest88501
+2018-03-07 20:36:04	⚡	qpdb_ is now known as qpdb
+2018-03-07 20:36:08	guest1222	I just checked to make sure my backups are okay
+2018-03-07 20:36:15	guest1222	so that's probably this weekend's exercise
+2018-03-07 20:37:05	nawks	guest1222: restore all your /lib/ /lib32 /lib64 and you should be able to compile again
+2018-03-07 20:37:31	guest1222	unfortunately I only have backups of my home directory, nothing in root
+2018-03-07 20:39:05	guest1222	this is what the config.log says: http://dpaste.com/1H0BZGC
+2018-03-07 20:39:47	Irishluck83	this is my out put when i try to emerge util-macros.https://paste.pound-python.org/show/0HCMSoHGWbmf0uKgLj9C/ I have reinstalled my sandbox but with now change
+2018-03-07 20:40:45	audiodef	wraeth: No, it's literally asking for a program named "dot." I did an eix dot but not sure which pkg I need to add to this ebuild as a dep to satisfy.
+2018-03-07 20:41:17	guest1222	I appreciate the help/pointers folks. I'll poke around a bit
+2018-03-07 20:41:51	+kurly	audiodef: maybe http://www.portagefilelist.de/ will be of assistance?
+2018-03-07 20:42:14	audiodef	kurly: Ah, yes, thanks, I'll check that.
+2018-03-07 20:49:47	+grknight	kurly: fwiw, pfl has had some sort of breakdown and does not show much of value right now
+2018-03-07 20:50:43	+kurly	grknight: ah, lovely
+2018-03-07 20:51:10	+grknight	even some common libraries show no results
+2018-03-07 20:52:00	+grknight	'e-file libc.so.6' returns dev-libs/intel for example
+2018-03-07 20:52:27	+grknight	which makes no sense
+2018-03-07 20:53:48	+grknight	and libstdc++.so.6 has no results
+2018-03-07 20:55:08	+kurly	audiodef: be advised that the site may not be of much value at the moment ^^
+2018-03-07 20:55:51	audiodef	kurly: Worked ok, the only binary for "dot" was in graphviz, so I'm trying that.
+2018-03-07 20:55:54	⚡	fstd_ is now known as fstd
+2018-03-07 20:56:16	+grknight	YMMV
+2018-03-07 20:56:36	nawks	audiodef: what pkg u trying to build?
+2018-03-07 20:57:19	audiodef	nawks: Rescued the media-sound/beast ebuild from defunct proaudio overlay. The pkg is actively maintained and is now a later version, so trying to track down the correct deps.
+2018-03-07 20:57:49	Bearcat	audiodef: it's not defunct! It gets updated twice a year! oh ... wait ...
+2018-03-07 20:58:07	audiodef	lulz
+2018-03-07 20:58:08	+grknight	Irishluck83: what happens if you do 'sudo -i' first, then run your emerge command?
+2018-03-07 20:58:35	Irishluck83	checking
+2018-03-07 20:58:44	⚡	User_ is now known as guytheguy
+2018-03-07 20:58:46	Irishluck83	same fail
+2018-03-07 20:59:02	guytheguy	I need some help getting my keyboard to work. I just bought a librem 13v2
+2018-03-07 20:59:02	Bearcat	audiodef: nice to meet another audio-person who uses it.
+2018-03-07 20:59:09	Irishluck83	libsandbox.so cannot be preoloaded
+2018-03-07 20:59:21	guytheguy	v4*
+2018-03-07 20:59:38	guytheguy	The | key prints a less than sign on the us keymap.
+2018-03-07 20:59:53	guytheguy	Funnily enough, it prints the correct key on the UK keymap... But then a bunch of other keys are messed up
+2018-03-07 21:00:00	audiodef	Bearcat: I scraped it from a machine it was still on, so I go through it and see what's worth saving, put those fixed ebuilds in Gentoo Studio. Some of it gets picked up by the guys doing the audio-overlay, too.
+2018-03-07 21:00:29	+grknight	Irishluck83: i'm also concerned about getting /libtool-elt.patch and permission denied;  it's as if the ROOT is changed
+2018-03-07 21:00:29	Bearcat	audiodef: what's gentoo-studio?
+2018-03-07 21:01:03	Irishluck83	i am getting that still. i don't knkow how  to fix this. ive broke google looking for a fix
+2018-03-07 21:01:30	nawks	grknight: i'm trying to figure out why eudev isn't handling a usb printer properly. when I 'udevadm test' the device it works as expected. when 'udevadm trigger' it does not, and when hotplug it does not
+2018-03-07 21:01:30	audiodef	Bearcat: gentoostudio.org, stage4 packaged audio distro based on Gentoo (read: pretty much IS Gentoo, stage4'd with rt kernel, some tweaks and audio/midi preinstalled.)
+2018-03-07 21:01:50	+grknight	nawks: udev rules are voodoo to me as well
+2018-03-07 21:02:11	Bearcat	audiodef: ahh. I've got most of that anyway, and really unless you're doing hard-core-live stuff rt kernel isn't really nessesary anymore.
+2018-03-07 21:02:15	nawks	grknight: afaik the rules are fine and this setup worked fine for years. got some regression going on
+2018-03-07 21:02:40	dongcarl	Hi all, what's the difference between the amd64-multilib and the x86-amd64-32ul isos?
+2018-03-07 21:02:50	guytheguy	omg, this is so weird.
+2018-03-07 21:02:52	cronolio	grknight: hello, what required for a persone who want to mark pages on wiki for translation ?
+2018-03-07 21:02:55	nawks	grknight: when i boot with printer up, it's fine. if i unplug and replug printer, it doesn't set perms on device properly.
+2018-03-07 21:03:04	guytheguy	So on the pre-boot screen, where I enter the kernel to use - my keyboard works
+2018-03-07 21:03:15	guytheguy	And on the post-boot screen, int he actual terminal, | = <
+2018-03-07 21:03:22	guytheguy	lmao
+2018-03-07 21:03:30	guytheguy	what
+2018-03-07 21:03:34	audiodef	Bearcat: Yep. I use rt-sources to support live stuff, not strictly necessary for mixing/mastering and most studio recording, since you can compensate for latency for that.
+2018-03-07 21:03:36	+grknight	dongcarl: the former is pure 64-bit kernel with an option to run 32-bit programs; the latter is either a 32-bit or 64-bit kernel and a 32-bit runtime
+2018-03-07 21:04:28	+grknight	guytheguy: sounds like you have an incorrect keymap specified (or accepting the default)
+2018-03-07 21:04:35	dongcarl	grknight: this is my first install, which one would be the easiest?
+2018-03-07 21:04:44	jerichowasahoax	dongcarl: amd64-multilib
+2018-03-07 21:04:52	dongcarl	jerichowasahoax: thanks!
+2018-03-07 21:04:55	Bearcat	audiodef: thanks for your work
+2018-03-07 21:05:02	+grknight	dongcarl: you want the multilib unless your machine is very old or an early Atom
+2018-03-07 21:05:08	guytheguy	That's the thing though, I ordered a U.S. keybaord from Purism... I'll check their sight to see if they recommend a particular keymap
+2018-03-07 21:05:26	+grknight	guytheguy: it's a QWERTY?
+2018-03-07 21:05:27	audiodef	Bearcat: I enjoy it. :)
+2018-03-07 21:05:43	audiodef	Anyone know what rapicorn is?
+2018-03-07 21:06:21	+wraeth	audiodef: i wasn't aware of Gentoo Stuido - will have to give it a look, thanks
+2018-03-07 21:06:25	Bearcat	audiodef: it's a rapping unicorn that shows up in your bedroom and never leaves. She only raps Vanilla Ice songs.
+2018-03-07 21:06:53	guytheguy	Is "QWERTY" a specific type of keyboard or are you asking me if my keyboard is Dvorak? Which it's not
+2018-03-07 21:06:56	audiodef	wraeth: Sure, open beta been going on for a while, so feedback welcome.
+2018-03-07 21:07:10	audiodef	Bearcat: And has a home improvement show.
+2018-03-07 21:07:22	Bearcat	audiodef: of course.
+2018-03-07 21:08:12	+grknight	guytheguy: qwerty is an easy way to refer to the top of the letter keys to figure out a layout
+2018-03-07 21:08:22	guytheguy	Yeah it's a qwerty
+2018-03-07 21:09:32	The_Document	$1200 software and they use old library names https://forum.bricsys.com/discussion/33521/issue-installing-bricsys-bricscad#latest
+2018-03-07 21:09:47	+grknight	guytheguy: then if you use openrc, /etc/conf.d/keymaps should say keymap="us" and extended_keymaps=""
+2018-03-07 21:10:19	guytheguy	Yup, and it does
+2018-03-07 21:10:52	Irishluck83	could libtool be an issue for me with my issue
+2018-03-07 21:10:58	+grknight	guytheguy: then it has to be hardware.  talk to them about it
+2018-03-07 21:11:26	guytheguy	;_; that sucks
+2018-03-07 21:11:29	cronolio	anybody is hear me?
+2018-03-07 21:11:35	koz_	I had issues with xorg-server-1.19.99.901 and had to mask it (to do with root required for running X). Has this been resolved with 1.19.99.901-r1 or should I mask that too?
+2018-03-07 21:11:41	guytheguy	But if it's the hardware why does it work when I'm booting?...
+2018-03-07 21:11:44	koz_	cronolio: I can 'is hear' you just fine.
+2018-03-07 21:11:54	cronolio	thanks
+2018-03-07 21:12:21	gyroninja	The_Document: I'm pretty sure pth != pthread
+2018-03-07 21:12:51	guytheguy	And entering a kernel?...
+2018-03-07 21:12:56	The_Document	gyroninja: hehe will modify topic
+2018-03-07 21:13:22	gyroninja	Regardless pth is ancient (last update was over 10 years ago)
+2018-03-07 21:13:35	The_Document	gyroninja: actually after my research it turns out that it is
+2018-03-07 21:13:51	The_Document	gyroninja: not only the reaserch but symlinking proved it s
+2018-03-07 21:13:59	guytheguy	@grknight
+2018-03-07 21:14:25	⚡	Supersonic112 is now known as Supersonic
+2018-03-07 21:15:43	The_Document	gyroninja: yea no kidding its modern predecesor is pthreads
+2018-03-07 21:16:28	koz_	I had issues with xorg-server-1.19.99.901 and had to mask it (to do with root required for running X). Has this been resolved with 1.19.99.901-r1 or should I mask that too?
+2018-03-07 21:16:34	+grknight	guytheguy: unless there's a special kernel driver for that keyboard, there's not much else in configuration
+2018-03-07 21:17:39	gyroninja	koz_: It's still broken according to https://bugs.gentoo.org/635102#c16
+2018-03-07 21:17:46	guytheguy	but the hardware can't be broken, can it?
+2018-03-07 21:18:19	koz_	gyroninja: So mask to be sure? How would I ask it to mask 'xorg-server-1.19.99.901 and any r of that'?
+2018-03-07 21:19:37	+kurly	koz_: the ~ symbol
+2018-03-07 21:20:02	koz_	So '~xorg-server-1.19.99.901' or 'xorg-server-1.19.99.901~'?
+2018-03-07 21:20:37	guytheguy	God, this sucks so much. I've been soe xcited to get a real linux-libre-capable laptop for so long, and now I've got one and it doesn't even have a working | key
+2018-03-07 21:22:50	The_Document	guytheguy: they exist but are pricey
+2018-03-07 21:23:13	guytheguy	I know, this dysfunctional one costed me 2.3k
+2018-03-07 21:23:22	The_Document	guytheguy: does it have coreboot too?
+2018-03-07 21:23:32	guytheguy	Yes.
+2018-03-07 21:23:35	+grknight	linux-libre is a myth IMO
+2018-03-07 21:24:08	The_Document	what a waste, just go to hp customisable laptops, select freedos as the operating system save ~$120-$180
+2018-03-07 21:27:18	nawks	guytheguy: it's borked in text console? or X gui?
+2018-03-07 21:28:46	guytheguy	nawks: I don't know how to answer that. Is the gentoo minimal live disk run under an X session?
+2018-03-07 21:28:54	guytheguy	It's not the gui ;p
+2018-03-07 21:31:30	koz_	The_Document: Wait, that's an option?
+2018-03-07 21:32:06	nawks	guytheguy: what kind of pc?
+2018-03-07 21:32:46	guytheguy	Librem 13v4, it's a laptop.
+2018-03-07 21:35:09	nawks	guytheguy: 30 sec google: https://forums.puri.sm/t/keyboard-layout-unable-to-recognize-pipe/2022
+2018-03-07 21:39:52	guytheguy	nawks: thanks dude
+2018-03-07 21:40:56	djdunn	whats the old x11 keyboard driver called?
+2018-03-07 21:41:37	+grknight	at least it's not a bricked VR headset because the company dropped the ball in an update
+2018-03-07 21:42:22	+grknight	djdunn: long ago, it was keyboard.  but that is forcefully disabled by default.  the current is libinput, the previous is/was evdev
+2018-03-07 21:42:46	djdunn	i cant get evdev or libinput to recognize my ps2 keyboard
+2018-03-07 21:43:58	+grknight	djdunn: is CONFIG_INPUT_EVDEV enabled in the kernel.  this would break xorg, but not console
+2018-03-07 21:44:25	djdunn	ohhh whats the /proc for kernel config
+2018-03-07 21:44:45	djdunn	ooo its all garbled cause its .gz
+2018-03-07 21:45:09	nawks	djdunn: zgrep -i evdev .config
+2018-03-07 21:45:24	nawks	djdunn: zgrep -i evdev /proc/config.gz
+2018-03-07 21:45:36	djdunn	CONFIG_INPUT_EVDEV=y
+2018-03-07 21:45:47	nawks	ding! we have a winner!
+2018-03-07 21:46:16	+grknight	djdunn: do you see a bunch of things under /dev/input?
+2018-03-07 21:47:20	djdunn	grknight: yes
+2018-03-07 21:47:53	djdunn	https://paste.pound-python.org/show/YMizxtWTBy8WDQo3hS8Z/
+2018-03-07 21:47:54	+grknight	please post the output of 'ls -l /dev/input/by-{id,path}'
+2018-03-07 21:48:08	djdunn	oh thats just dev/input
+2018-03-07 21:48:25	nawks	djdunn: got CONFIG_KEYBOARD_ATKBD=y ?
+2018-03-07 21:48:37	djdunn	https://paste.pound-python.org/show/YMizxtWTBy8WDQo3hS8Z/
+2018-03-07 21:49:00	+grknight	that's the same link as b4
+2018-03-07 21:49:22	djdunn	https://paste.pound-python.org/show/Qs4GHPcmYjr5lxKNm4ik/
+2018-03-07 21:49:38	djdunn	i have a usb keyboard in
+2018-03-07 21:49:46	djdunn	but its just for testing
+2018-03-07 21:49:55	djdunn	mostly because its garbage
+2018-03-07 21:50:10	nawks	djdunn: zgrep -i atkbd /proc/config.gz
+2018-03-07 21:50:31	djdunn	CONFIG_KEYBOARD_ATKBD=y
+2018-03-07 21:51:27	⚡	Mode #gentoo [+v Tommy[D]] by ChanServ
+2018-03-07 21:54:29	nawks	djdunn: you were right. /dev/psaux  is mouse. same as /dev/input/mice
+2018-03-07 21:55:04	djdunn	i dont think udev has anything to do with ps/2
+2018-03-07 21:59:05	+grknight	hmm.. /dev/input doesn't show ps/2 paths, but the devices should show there even if they don't match
+2018-03-07 21:59:26	djdunn	right
+2018-03-07 21:59:38	djdunn	it should show two keyboards
+2018-03-07 22:00:27	+grknight	one machine I have that still uses ps/2 has this in dmesg: "input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1"
+2018-03-07 22:00:51	djdunn	hmm
+2018-03-07 22:01:09	djdunn	apparantry sddm is seffaulting now
+2018-03-07 22:01:11	+grknight	afaict, that translates to event1 input
+2018-03-07 22:02:48	+grknight	yes it does.... 'ls -l /sys/class/input' says so
+2018-03-07 22:03:44	+grknight	that's much more useful than /dev/input
+2018-03-07 22:04:24	djdunn	keyboard works in vt's
+2018-03-07 22:05:04	djdunn	i need a dump vt-220 terminal
+2018-03-07 22:05:07	djdunn	dumb
+2018-03-07 22:08:19	djdunn	https://paste.pound-python.org/show/gctxTnvRrttK207L8jJ4/
+2018-03-07 22:08:27	djdunn	lrwxrwxrwx 1 root root 0 Mar  7 20:08 input2 -> ../../devices/platform/i8042/serio0/input/input2
+2018-03-07 22:08:33	djdunn	i think thats my ps2 keyboard?
+2018-03-07 22:09:11	djdunn	can i setup X to load that specifically as a keyboard?
+2018-03-07 22:11:30	nawks	djdunn: 'libinput list-devices | grep input2'
+2018-03-07 22:11:54	djdunn	nawks: nothing
+2018-03-07 22:11:59	nawks	aww
+2018-03-07 22:13:12	djdunn	libinput list-devices only shows 3 devices, my mouse, and the keyboard reciever twice, cause i think it can connect to a wireless mouse too
+2018-03-07 22:15:11	nawks	what version of libinput
+2018-03-07 22:15:20	nawks	a lot of people had issues with 1.9.1
+2018-03-07 22:15:25	djdunn	uh the ~amd64 version i think 10.0.1
+2018-03-07 22:15:40	djdunn	should i try 1.7.3?
+2018-03-07 22:15:55	djdunn	1.8.3?
+2018-03-07 22:16:18	djdunn	Available versions:  1.7.3(0/10)^t (~)1.8.3(0/10)^t 1.9.4(0/10)^t (~)1.10.0(0/10)^t (~)1.10.1(0/10)^t
+2018-03-07 22:16:49	nawks	djdunn: yeah, it's a slim chance. they actually said it was a kernel issue.
+2018-03-07 22:16:57	djdunn	oh
+2018-03-07 22:17:06	djdunn	bad kernel driver issue?
+2018-03-07 22:17:07	nawks	with laptops and touchpad/tablet input
+2018-03-07 22:17:23	nawks	you don't have touchpad/tablet stuff enabled in kernel do you?
+2018-03-07 22:17:31	djdunn	i dont think
+2018-03-07 22:17:38	nawks	yeah, that's not it
+2018-03-07 22:18:13	nawks	i saw this bug and got excited :p https://bugs.freedesktop.org/show_bug.cgi?id=103561
+2018-03-07 22:18:28	nawks	but that's not your issue
+2018-03-07 22:19:09	djdunn	i donno someone posted a comment there with a ps/2 keyboard
+2018-03-07 22:19:14	nawks	do you have /etc/X11/xorg.conf.d/40-libinput.conf existing?
+2018-03-07 22:19:18	djdunn	with libinput > 1.9
+2018-03-07 22:19:41	nawks	djdunn: yes but it was enabling kernel tablet driver that broke it
+2018-03-07 22:20:02	djdunn	maybe i have it
+2018-03-07 22:20:33	djdunn	oh it said it got fixed in 4.14
+2018-03-07 22:21:41	djdunn	i also cannot get sddm 0.16.0-rc or 0.17 to work
+2018-03-07 22:24:50	nawks	djdunn: wgetpaste -c 'libinput list-devices' please
+2018-03-07 22:25:49	djdunn	uhhh
+2018-03-07 22:25:58	djdunn	its telling me now /usr/bin/wgetpaste not found
+2018-03-07 22:26:03	djdunn	what the fork
+2018-03-07 22:26:09	nawks	lol
+2018-03-07 22:26:19	nawks	been messing with profile upgrades?
+2018-03-07 22:26:24	djdunn	whereis wgetpaste
+2018-03-07 22:26:25	djdunn	wgetpaste: /usr/bin/wgetpaste
+2018-03-07 22:26:37	djdunn	oh i see
+2018-03-07 22:26:48	djdunn	oh i see i had please copied too
+2018-03-07 22:26:54	ncl	lol
+2018-03-07 22:26:55	djdunn	https://paste.pound-python.org/show/bmpmDzLLSMqdEt3YPisI/
+2018-03-07 22:27:11	nawks	i actually worried about that 'please' as soon as i typed it
+2018-03-07 22:27:12	djdunn	the logitec is a borrowed keyboard
+2018-03-07 22:27:22	djdunn	i havnt even started drinking yet
+2018-03-07 22:27:33	nawks	i have. so don't do anything i say
+2018-03-07 22:29:28	djdunn	i hate this keyboard so much :`( i want my model m
+2018-03-07 22:32:03	nawks	have you tried building the xf86-input-keyboard driver?
+2018-03-07 22:32:29	+kurly	as has been stated previously, xf86-input-keyboard is oooooooold and long-deprecated
+2018-03-07 22:32:41	nawks	so is ps2
+2018-03-07 22:32:49	+kurly	unless you're doing something like trying to do without evdev and without libinput and without any sort of udev
+2018-03-07 22:33:03	nawks	so his libinput isn't seeing it
+2018-03-07 22:33:33	korans	where are sets like system defined ?
+2018-03-07 22:33:56	nawks	djdunn: did you find the ps2 kbd in /dev/input/ ?
+2018-03-07 22:34:36	+kurly	korans: man 5 portage  has those details and more
+2018-03-07 22:35:15	+kurly	korans: the short answer, packages defines @system
+2018-03-07 22:35:21	nawks	kurly: are you good with udevadm?
+2018-03-07 22:35:28	+kurly	korans: and @world = @system + @selected  (where @selected is /var/lib/portage/world)
+2018-03-07 22:35:34	+kurly	nawks: not at all
+2018-03-07 22:35:41	nawks	:( no one is
+2018-03-07 22:36:27	nawks	i guess i'll have to get good at it
+2018-03-07 22:37:04	djdunn	nawks: yeah i think
+2018-03-07 22:37:13	djdunn	nawks: but its not connected to a event*
+2018-03-07 22:37:43	nawks	djdunn: ah, i don't know how that event* stuff works
+2018-03-07 22:38:14	korans	well man portage says I'll need too refer to html docs which I'm downloading now. I just wanted to remove ssh which says it's required by the system set
+2018-03-07 22:38:40	+kurly	korans: what.
+2018-03-07 22:38:49	djdunn	input2 -> ../../devices/platform/i8042/serio0/input/input2
+2018-03-07 22:38:56	korans	also is it possible to build parts of a ebuild such as those which have make options for specific parts like docs
+2018-03-07 22:38:59	+kurly	korans: I already told you the answer: packages
+2018-03-07 22:39:32	djdunn	nawks thats in /sys/devices
+2018-03-07 22:39:51	nawks	djdunn: yeah but what makes it work? how does it work?
+2018-03-07 22:40:02	nawks	and what is it? lol
+2018-03-07 22:40:06	korans	kurly: I'm not sure what that means
+2018-03-07 22:40:37	korans	the file packages?
+2018-03-07 22:40:44	+kurly	korans: it's a file, yes
+2018-03-07 22:41:03	+kurly	korans: you can override entries in it using /etc/portage/profile/packages, iirc
+2018-03-07 22:42:35	djdunn	nawks: thats the ps/2 keyboard
+2018-03-07 22:42:50	⚡	Mode #gentoo [-b *!*@2600:1700:ce90:9501:3036:8114:6a48:b5c3] by gen42
+2018-03-07 22:43:18	nawks	djdunn: i was still talking about event* stuff
+2018-03-07 22:43:24	djdunn	oh
+2018-03-07 22:47:01	guytheguy	Do i even need swap? I have 16 jigaboos of ram
+2018-03-07 22:48:02	+kurly	guytheguy: assuming you mean GB, are you really *that* short of disk that you can't set a little aside?
+2018-03-07 22:48:16	guytheguy	nah
+2018-03-07 22:48:24	guytheguy	I got 512 to spare Ima just give it up
+2018-03-07 22:48:53	guytheguy	16GB of ram = 16GB of swap space right? That's about the rule?
+2018-03-07 22:49:09	+kurly	it's really up to you and your needs
+2018-03-07 22:49:30	+kurly	contrary to popular belief, swap isn't a bad thing to have
+2018-03-07 22:49:59	djdunn	nawks: xf86 magic
+2018-03-07 22:50:00	+wraeth	my rule of thumb is between 50-100% of ram, up to ~8GB, but more won't hurt (though if oyu end up using it, you probably have other things that need fixing)
+2018-03-07 22:50:29	nawks	guytheguy: even 1GB of swap becomes excruciatingly slow when much of it is actively used
+2018-03-07 22:50:37	djdunn	i have 32GB of swap and never seem to use more than 5ish MB
+2018-03-07 22:51:01	+kurly	nawks: that depends on your definition of "actively used"
+2018-03-07 22:51:13	guytheguy	I mean I have a pretty good nvme m.2 ssd so why not
+2018-03-07 22:51:33	nawks	kurly: having desktop up and emerging and filling 8GB of ram
+2018-03-07 22:51:36	guytheguy	not gonna use all the disk space anyways
+2018-03-07 22:51:51	aesycos	I use libinput for an i2c touchpad and it freezes when the laptop lid closes
+2018-03-07 22:51:56	aesycos	any ideas
+2018-03-07 22:52:05	+kurly	nawks: if you're using swap to cover for lack of RAM, yeah.  that's not the only use for swap.
+2018-03-07 22:52:06	+wraeth	don't close the lid :)
+2018-03-07 22:52:38	aesycos	lmao thank wraeth
+2018-03-07 22:52:40	nawks	for hibernation? hmmm... how long it take to copy 8GB or more of ram to HD?
+2018-03-07 22:53:43	+kurly	nawks: that's not the only use for swap either: the kernel is smarter than you think at memory management
+2018-03-07 22:54:48	nawks	aesycos: there are some scripts to disable touchpad when lid closes. not sure if they'll help your issue. depends on if it is freezing instantly or freezing because touchpad sending endless crazy input to desktop
+2018-03-07 22:55:31	aesycos	freezes instantly
+2018-03-07 22:55:41	aesycos	ive tried disable and enable with xinput
+2018-03-07 22:55:53	aesycos	didnt do squat
+2018-03-07 22:56:08	+kurly	nawks: while this page isn't swap-specific, it provides some insight into the various uses for RAM/swap:  https://www.linuxatemyram.com/
+2018-03-07 22:56:14	nawks	kurly: Swap:       2097148           0     2097148
+2018-03-07 22:58:32	nawks	kurly: it says that swap isn't used for caching (of course)
+2018-03-07 22:58:36	+kurly	nawks: not using swap isn't abnormal; using swap (appropriately) isn't abnormal
+2018-03-07 22:59:03	+kurly	nawks: https://haydenjames.io/linux-performance-almost-always-add-swap-space/ is another thing worth reading, despite the ads all over the layout
+2018-03-07 22:59:49	nawks	i know kernel is smart enough to swap out a process that has been asleep for a long time. those thing usually don't involve large amounts of mem though
+2018-03-07 23:00:09	+kurly	as always, it's something that's usually better to have and not need than need and not have
+2018-03-07 23:00:44	nawks	downside is that it can get into swap-hole instead of just ooming something
+2018-03-07 23:02:17	nawks	yes it can free a few hundred meg of ram. that's about it
+2018-03-07 23:03:06	nawks	"With swap disabled, performance issues become noticeable very fast and the OOM killer may get you!"
+2018-03-07 23:03:51	nawks	plenty I've times I've regretted that it spirals into near-freeze of endless swapping instead of oom killing
+2018-03-07 23:04:05	+kurly	k
+2018-03-07 23:04:32	nawks	eventually it does freeze, or oom finally kicks in if lucky
+2018-03-07 23:04:47	aesycos	is there anything in my kernel that might screw up my touchpad? or some log or debug msg i can check for whats going on?
+2018-03-07 23:07:00	djdunn	awesome now kde's window manager isnt loading
+2018-03-07 23:07:08	nawks	kurly: my point anyway was that one should have a GB or 2 of swap, not 8GB to match 8GB of ram. that 1:1 guideline was from days when we had 64MB of ram and having 64MB (or 128MB) of swap with it made sense
+2018-03-07 23:08:52	+kurly	nawks: I don't recall specifying a guideline. *shrug*
+2018-03-07 23:13:44	djdunn	are there kde logs anywhere?
+2018-03-07 23:15:48	nawks	djdunn: there's sddm log
+2018-03-07 23:16:18	+wraeth	if you use systemd, there may be relevant things in the journal
+2018-03-07 23:16:46	djdunn	yeah openrc here
+2018-03-07 23:16:51	djdunn	and kwin just doesnt start
+2018-03-07 23:16:59	djdunn	dont get a hey kwin crashed message either
+2018-03-07 23:17:04	+wraeth	could also try ~/.xsession-errors
+2018-03-07 23:17:11	djdunn	constant problems
+2018-03-07 23:18:25	nawks	you need good working opengl for kwin to be happy
+2018-03-07 23:18:35	djdunn	i have a good working opengl
+2018-03-07 23:20:18	djdunn	i hope so...
+2018-03-07 23:20:38	djdunn	kwin was working i restarted xdm then its not
+2018-03-07 23:21:21	djdunn	... i bet i died and went to hell
+2018-03-07 23:23:37	djdunn	yeah opengl is fine
+2018-03-07 23:24:22	nawks	djdunn: how did you break sddm?
+2018-03-07 23:25:08	nawks	maybe you just need a big 'ol emerge -e and a two-day nap
+2018-03-07 23:29:04	djdunn	nawks: sddm with elogind wont work for me higher than version 0.15
+2018-03-07 23:29:38	nawks	yeah don't build it with elogind
+2018-03-07 23:29:43	djdunn	but .15 lets me login and it loads kde, it was loading just fine but now the list 3x-4x times ive tried loging in it doesnt start kwin
+2018-03-07 23:30:25	djdunn	i just reinstalled the entire system yesterday from a stage 3
+2018-03-07 23:32:20	djdunn	ok i rebuild back to latest xorg in the tree and the latest libinput
+2018-03-07 23:32:37	djdunn	and why do i have to unplug my usb stuff and plug it back in before it works when i reboot
+2018-03-07 23:34:28	nawks	you mean it won't boot with it plugged in?
+2018-03-07 23:34:43	djdunn	it boots it works
+2018-03-07 23:35:01	djdunn	i load sddm and no keyboard and no mouse movement till i replug them
+2018-03-07 23:36:03	nawks	i don't know. maybe more evdev/libinput carp?
+2018-03-07 23:37:19	djdunn	is it wrong to say i miss hal?
+2018-03-07 23:37:45	nawks	i'm sorry dave
+2018-03-07 23:37:59	djdunn	>_<
+2018-03-07 23:38:03	djdunn	maybe its time to start drinking
+2018-03-07 23:38:51	nawks	ok, enjoy. i'm done computing too
+2018-03-07 23:38:55	nawks	nn o/
+2018-03-07 23:39:27	djdunn	im starting to think libinput is garbage
+2018-03-07 23:39:57	nawks	evdev should work
+2018-03-07 23:40:11	nawks	but it needs events too I guess
+2018-03-07 23:40:23	+kurly	djdunn: fwiw (which isn't much), I never made the switch from evdev to libinput
+2018-03-07 23:40:25	djdunn	yeah it got all tied together recently
+2018-03-07 23:40:56	nawks	prob should get tdr to go through your kernel config tomorrow
+2018-03-07 23:40:56	djdunn	atm right now i think i can get a ps2/usb connector easy
+2018-03-07 23:40:59	tdr	libinput works easy for the hardware it works will
+2018-03-07 23:41:03	tdr	well
+2018-03-07 23:41:15	nawks	ahahaha, speak of the devil!
+2018-03-07 23:41:26	djdunn	and i can deal with unplugging replugging usb every reboot which i never do
+2018-03-07 23:41:46	tdr	djdunn, which kernel are you on?
+2018-03-07 23:41:48	nawks	djdunn: udev or eudev?
+2018-03-07 23:41:52	djdunn	eudev
+2018-03-07 23:42:40	gallantz	lately it seems something is wrong with my toolchain. building most haskell packages complains about either using "-r and -pie" at the same time, some other haskell packages complain about linking with anything (the linker recommends recompiling with -fPIC)
+2018-03-07 23:42:54	+kurly	there should be no substantial difference between udev and eudev, other than what tarball they come from
+2018-03-07 23:43:00	gallantz	at first I thought it was just haskell being wonky but lately the crystal compiler is having linking issues as well
+2018-03-07 23:43:37	gallantz	it tries to link against common libraries (-lm, -phtread, -lc) and I get "skipping incompatible /usr/lib/.....so"
+2018-03-07 23:43:52	nawks	gallantz: upgraded to gcc 6 or 7?
+2018-03-07 23:44:01	nawks	and profile 17.0?
+2018-03-07 23:44:12	gallantz	Not sure if this is due to the new 17/17.1 migrations but I doubt because I was using hardened so should have had PIE on since creating this system
+2018-03-07 23:44:22	+kurly	gallantz: I can't help with haskell, but the bottom of every failed emerge tells you what to tell us, and you can use wgetpaste to do it (see the -c/-i/-I options, or just use it to paste a file!)
+2018-03-07 23:44:43	+kurly	at a minimum, 'wgetpaste -I' will show your emerge --info
+2018-03-07 23:45:08	gallantz	kurly: it even happens outside of portage. It feels like some libraries need to be rebuilt. Do you want an emerge --info paste anyway?
+2018-03-07 23:45:17	gallantz	nawks: yes. 17.1, gcc-7.3.0
+2018-03-07 23:45:20	+kurly	we can only help with stuff in portage
+2018-03-07 23:45:29	+kurly	and 17.1 is still kinda experimental
+2018-03-07 23:45:40	nawks	gallantz: some pie pic defaults flipped a few times last year, caused some confusion
+2018-03-07 23:45:45	+kurly	did you follow the news items to upgrade to 17.0 and 17.1?
+2018-03-07 23:45:45	djdunn	oh comeon :( and super mario bros supershow doesnt have the legend of zelda cartoon
+2018-03-07 23:45:50	djdunn	on nextflix
+2018-03-07 23:45:51	gallantz	kurly: definitely did
+2018-03-07 23:45:57	+kurly	gallantz: good, good.
+2018-03-07 23:46:02	+kurly	djdunn: eh, wrong channel :)
+2018-03-07 23:46:23	gallantz	nawks: is there something that needs to be rebuilt once things settle down?
+2018-03-07 23:46:29	djdunn	yeah probably
+2018-03-07 23:47:22	nawks	gallantz: any libs not built with pic/pie, obviously
+2018-03-07 23:47:45	gallantz	nawks: can I query that somehow
+2018-03-07 23:48:37	tdr	djdunn, do you want your kernel looked at?
+2018-03-07 23:48:46	gallantz	a lot of my messages are from things in glibc, but I know that was rebuilt.
+2018-03-07 23:48:56	djdunn	tdr: yeah sure
+2018-03-07 23:49:03	tdr	djdunn, what version?
+2018-03-07 23:49:12	djdunn	running 4.14.24 atm
+2018-03-07 23:49:50	tdr	djdunn, ok show me these:  wgetpaste -c "lspci -k ; lsusb ; dmesg" ; wgetpaste /usr/src/linux/.config
+2018-03-07 23:49:52	djdunn	tdr: https://paste.pound-python.org/show/AVvUfJi2ex4RZiJiRZee/
+2018-03-07 23:51:58	The_Document	not good
+2018-03-07 23:54:32	nawks	gallantz: app-admin/hardening-check
+2018-03-07 23:55:16	Tom23	Hi I need some opencl help with my Radeon HD 6670 card. I pulled down dev-libs/amdgpu-pro-opencl 17.50.511655 but it is giving me segfault libamdocl64.so did I pull in the wrong package?
+2018-03-07 23:55:36	djdunn	tdr: https://paste.pound-python.org/show/hSMCPqyXxgtlIdPsR51c/
+2018-03-07 23:56:46	djdunn	tdr: that didnt do something right
+2018-03-07 23:56:53	nawks	gallantz: maybe emerge -e is easiest if you have time. are you sure you successfully 'unsymlink-lib --finish' for 17.1 upgrade?
+2018-03-07 23:57:38	nawks	may want to check around a bit for stale libs
+2018-03-07 23:57:55	tdr	djdunn, hrm ... do you have lspci and lsusb commands?
+2018-03-07 23:58:04	gallantz	looks like hardening-check only scans ELFs not .so?
+2018-03-07 23:58:09	djdunn	yeah
+2018-03-07 23:58:12	gallantz	nawks: I did run that
+2018-03-07 23:58:12	djdunn	its there in that first link
+2018-03-07 23:58:19	djdunn	https://paste.pound-python.org/show/hSMCPqyXxgtlIdPsR51c/
+2018-03-07 23:58:26	djdunn	https://paste.pound-python.org/show/iyoyPjVasMRsk5WKPsI4/
+2018-03-07 23:58:55	gallantz	nawks: kinda wanna void running emerge -e on a dual core laptop with 1500 packages ;)
+2018-03-07 23:58:57	tdr	djdunn, ok got it https://paste.pound-python.org/show/hSMCPqyXxgtlIdPsR51c/ works
+2018-03-08 00:04:02	Tom23	I'm just looking more so for someone to point me in the right direction then to full out help me. gentoo wiki is not helping me.
+2018-03-08 00:09:34	Tom23	so no one can give me a hint as to how i should go about fixing this?
+2018-03-08 00:10:17	+kurly	your problem is unclear; wgetpaste can help fix that
+2018-03-08 00:13:21	tdr	Dj_Dexter, what kind of kb + mouse connectors do you have?
+2018-03-08 00:13:26	tdr	djdunn, ^^
+2018-03-08 00:13:50	tdr	nm, usb keyboard, logitech mouse
+2018-03-08 00:14:20	djdunn	yeah
+2018-03-08 00:14:25	djdunn	and ps2 keyboard
+2018-03-08 00:14:58	tdr	ok found one issue with ps2 so gimme a couple mins and I'll paste ya a new config
+2018-03-08 00:15:21	djdunn	problems with ps?
+2018-03-08 00:15:24	djdunn	ps/2?
+2018-03-08 00:15:42	Kietelaar	Chromium seems to be using clang now to compile instead of GCC but this doesn't seem to use distcc properly any more at least on my system, any way to fix this?
+2018-03-08 00:17:20	+kurly	Kietelaar: potential workaround, build a binary package in a chroot on another machine
+2018-03-08 00:18:03	smolboye	does anyone here run gentoo on macbook pro
+2018-03-08 00:19:14	notashark	smolboye: if they do I would love to know
+2018-03-08 00:19:45	smolboye	i mean i do
+2018-03-08 00:19:51	smolboye	but it runs p hot
+2018-03-08 00:20:04	smolboye	wanted to ask if someone runs it and its cool for them
+2018-03-08 00:20:26	smolboye	idk if its my macbook or some misconfig
+2018-03-08 00:20:32	gyroninja	smolboye: You'll probably need to be more specific with the model
+2018-03-08 00:20:43	smolboye	mbp mid 2012 13"
+2018-03-08 00:20:57	smolboye	but i dont think that should make any difference
+2018-03-08 00:21:07	smolboye	unless its a new macbook or a really old one
+2018-03-08 00:21:16	smolboye	cause all the middle ones have similar specs
+2018-03-08 00:21:53	gyroninja	I think the last few years have had really bad cooling. I could be completely wrong though as I don't pay attential to apple hardware, nor laptop hardware
+2018-03-08 00:22:07	smolboye	mine isn't new though
+2018-03-08 00:22:25	smolboye	i mean it runs cool on macOS but not on gentoo idk why
+2018-03-08 00:22:41	smolboye	would appreciate if anyone using macbook helps me
+2018-03-08 00:22:42	smolboye	:)
+2018-03-08 00:24:09	gyroninja	Maybe it is designed for downclocking the cpu for when it gets too hot
+2018-03-08 00:25:00	gyroninja	and your setup isn't currently doing it
+2018-03-08 00:27:02	smolboye	yeah im waiting for someone to turn up
+2018-03-08 00:27:26	smolboye	what are the chances of me being the only one running gentoo on a mbp 2012
+2018-03-08 00:27:27	⚡	day__ is now known as day
+2018-03-08 00:27:40	djdunn	tdr: ok
+2018-03-08 00:28:52	username234	smolboye: not great, but I haven't heard of too many users putting Gentoo on macs.
+2018-03-08 00:31:59	kerframil	smolboye: I don't use Linux on Macbooks, but make sure that the intel_pstate driver is enabled. you may also be interested in this: https://github.com/dgraziotin/mbpfan.

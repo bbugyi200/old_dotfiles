@@ -1,0 +1,63 @@
+2018-03-03 19:52:58	-->	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has joined #archlinux-unregistered
+2018-03-03 19:52:58	--	Topic for #archlinux-unregistered is "=== You need a freenode account to join #archlinux. Register by following the instructions at <http://freenode.net/kb/answer/registration>. You can get a list of people who can help you by typing `/msg chanserv access #archlinux list`, or join #freenode and ask there. The bot can give you a one-time ticket. ==="
+2018-03-03 19:52:58	--	Topic set by tigrmesh (~tigrmesh@archlinux/op/tigrmesh) on Tue, 09 Aug 2016 00:33:51
+2018-03-03 19:52:58	--	Channel #archlinux-unregistered: 429 nicks (7 ops, 0 voices, 422 normals)
+2018-03-03 19:53:00	--	Channel created on Sat, 27 Dec 2014 18:49:46
+2018-03-03 19:53:08	<--	Namarrgon (~Namarrgon@archlinux/op/namarrgon) has quit (Remote host closed the connection)
+2018-03-03 19:53:36	<--	joshuaBPMan (~user@72.12.220.132) has quit (Read error: Connection reset by peer)
+2018-03-03 19:57:22	-->	fireandbrimstone (~fireandbr@c-73-41-82-120.hsd1.ca.comcast.net) has joined #archlinux-unregistered
+2018-03-03 19:58:56	-->	Namarrgon (~Namarrgon@archlinux/op/namarrgon) has joined #archlinux-unregistered
+2018-03-03 19:58:56	--	Mode #archlinux-unregistered [+o Namarrgon] by ChanServ
+2018-03-03 19:59:37	<--	syslock (~syslock@dialin-ip-27-234.ilmenau.net) has quit (Quit: tschüß...)
+2018-03-03 19:59:42	<--	resixian (~akira@unaffiliated/resixian) has left #archlinux-unregistered (requested by EMIYA (Go back to #archlinux now.))
+2018-03-03 20:01:04	-->	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has joined #archlinux-unregistered
+2018-03-03 20:01:04	--	Topic for #archlinux-unregistered is "=== You need a freenode account to join #archlinux. Register by following the instructions at <http://freenode.net/kb/answer/registration>. You can get a list of people who can help you by typing `/msg chanserv access #archlinux list`, or join #freenode and ask there. The bot can give you a one-time ticket. ==="
+2018-03-03 20:01:04	--	Topic set by tigrmesh (~tigrmesh@archlinux/op/tigrmesh) on Tue, 09 Aug 2016 00:33:51
+2018-03-03 20:01:04	--	Channel #archlinux-unregistered: 427 nicks (7 ops, 0 voices, 420 normals)
+2018-03-03 20:01:06	--	Channel created on Sat, 27 Dec 2014 18:49:46
+2018-03-03 20:05:35	-->	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has joined #archlinux-unregistered
+2018-03-03 20:05:35	--	Topic for #archlinux-unregistered is "=== You need a freenode account to join #archlinux. Register by following the instructions at <http://freenode.net/kb/answer/registration>. You can get a list of people who can help you by typing `/msg chanserv access #archlinux list`, or join #freenode and ask there. The bot can give you a one-time ticket. ==="
+2018-03-03 20:05:35	--	Topic set by tigrmesh (~tigrmesh@archlinux/op/tigrmesh) on Tue, 09 Aug 2016 00:33:51
+2018-03-03 20:05:35	--	Channel #archlinux-unregistered: 426 nicks (7 ops, 0 voices, 419 normals)
+2018-03-03 20:05:37	--	Channel created on Sat, 27 Dec 2014 18:49:46
+2018-03-03 20:06:50	-->	PhazonicRidley (~ph@cpe-76-90-61-137.socal.res.rr.com) has joined #archlinux-unregistered
+2018-03-03 20:07:02	<--	fetter_oml (~oml@2001:a62:1438:1400:8ace:4d93:ce4c:5496) has quit (Ping timeout: 276 seconds)
+2018-03-03 20:07:16	@EMIYA	PhazonicRidley: You're not in #archlinux yet -- please log in to your freenode account first. (Type /topic for more info. If you're human, use ?invite to get a pass.)
+2018-03-03 20:07:25	@EMIYA	bbugyi200: You can /join #archlinux now.
+2018-03-03 20:07:33	<--	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has left #archlinux-unregistered (requested by EMIYA (Go back to #archlinux now.))
+2018-03-03 20:35:11	-->	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has joined #archlinux-unregistered
+2018-03-03 20:35:11	--	Topic for #archlinux-unregistered is "=== You need a freenode account to join #archlinux. Register by following the instructions at <http://freenode.net/kb/answer/registration>. You can get a list of people who can help you by typing `/msg chanserv access #archlinux list`, or join #freenode and ask there. The bot can give you a one-time ticket. ==="
+2018-03-03 20:35:11	--	Topic set by tigrmesh (~tigrmesh@archlinux/op/tigrmesh) on Tue, 09 Aug 2016 00:33:51
+2018-03-03 20:35:11	--	Channel #archlinux-unregistered: 417 nicks (7 ops, 0 voices, 410 normals)
+2018-03-03 20:35:14	--	Channel created on Sat, 27 Dec 2014 18:49:46
+2018-03-03 20:41:41	-->	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has joined #archlinux-unregistered
+2018-03-03 20:41:41	--	Topic for #archlinux-unregistered is "=== You need a freenode account to join #archlinux. Register by following the instructions at <http://freenode.net/kb/answer/registration>. You can get a list of people who can help you by typing `/msg chanserv access #archlinux list`, or join #freenode and ask there. The bot can give you a one-time ticket. ==="
+2018-03-03 20:41:41	--	Topic set by tigrmesh (~tigrmesh@archlinux/op/tigrmesh) on Tue, 09 Aug 2016 00:33:51
+2018-03-03 20:41:41	--	Channel #archlinux-unregistered: 418 nicks (7 ops, 0 voices, 411 normals)
+2018-03-03 20:41:43	--	Channel created on Sat, 27 Dec 2014 18:49:46
+2018-03-03 20:42:01	<--	germs (~germs@unaffiliated/germs) has quit (Read error: Connection reset by peer)
+2018-03-03 20:42:37	-->	germs (~germs@47.185.100.218) has joined #archlinux-unregistered
+2018-03-03 20:42:37	<--	germs (~germs@47.185.100.218) has quit (Changing host)
+2018-03-03 20:42:37	-->	germs (~germs@unaffiliated/germs) has joined #archlinux-unregistered
+2018-03-03 20:42:42	-->	Nexxer (~Nexxer@sub238-147.elpos.net) has joined #archlinux-unregistered
+2018-03-03 20:43:17	--	irc: disconnected from server
+2018-03-04 07:09:54	◥	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has joined #archlinux-unregistered
+2018-03-04 07:09:54		[07:09]
+2018-03-04 07:09:54	⚡	Topic for #archlinux-unregistered is "=== You need a freenode account to join #archlinux. Register by following the instructions at <http://freenode.net/kb/answer/registration>. You can get a list of people who can help you by typing `/msg chanserv access #archlinux list`, or join #freenode and ask there. The bot can give you a one-time ticket. ==="
+2018-03-04 07:09:54	⚡	Topic set by tigrmesh (~tigrmesh@archlinux/op/tigrmesh) on Tue, 09 Aug 2016 00:33:51
+2018-03-04 07:09:54	⚡	Channel #archlinux-unregistered: 419 nicks (7 ops, 0 voices, 412 normals)
+2018-03-04 07:09:56	⚡	Channel created on Sat, 27 Dec 2014 18:49:46
+2018-03-04 07:10:23	◥	P_C (~Thunderbi@eap141.neoplus.adsl.tpnet.pl) has joined #archlinux-unregistered
+2018-03-04 07:11:10	◣	som89_ (~som@klod.jinr.ru) has quit (Ping timeout: 240 seconds)
+2018-03-04 07:11:36	◥	alexandre9099 (~alexandre@239.24.108.93.rev.vodafone.pt) has joined #archlinux-unregistered
+2018-03-04 07:11:43	◥	John_Ivan (~John_Ivan@79.97.140.214) has joined #archlinux-unregistered
+2018-03-04 07:11:43	◣	John_Ivan (~John_Ivan@79.97.140.214) has quit (Changing host)
+2018-03-04 07:11:43	◥	John_Ivan (~John_Ivan@unaffiliated/john-ivan/x-3287162) has joined #archlinux-unregistered
+2018-03-04 07:12:19	◥	freswa (~freswa@2a01:170:109a:1:35d3:5c2e:dbd4:b9fb) has joined #archlinux-unregistered
+2018-03-04 07:14:34	◣	alexandre9099 (~alexandre@239.24.108.93.rev.vodafone.pt) has quit (Changing host)
+2018-03-04 07:14:34	◥	alexandre9099 (~alexandre@unaffiliated/alexandre9099) has joined #archlinux-unregistered
+2018-03-04 07:14:34	@EMIYA	alexandre9099: You can /join #archlinux now.
+2018-03-04 07:14:44	◣	alexandre9099 (~alexandre@unaffiliated/alexandre9099) has left #archlinux-unregistered (requested by EMIYA (Go back to #archlinux now.))
+2018-03-04 07:15:16	◥	seth (~seth@ip68-103-3-182.ks.ok.cox.net) has joined #archlinux-unregistered
+2018-03-04 07:16:26	◣	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has quit (Quit: WeeChat 2.0.1)
+2018-03-04 07:16:26	⚡	irc: disconnected from server

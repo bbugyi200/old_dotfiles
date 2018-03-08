@@ -1,0 +1,1187 @@
+2018-03-03 20:21:35	-->	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has joined ##math
+2018-03-03 20:21:35	--	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-03 20:21:35	--	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-03 20:21:35	--	Channel ##math: 884 nicks (1 op, 0 voices, 883 normals)
+2018-03-03 20:21:37	--	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-03 20:23:31	<--	Quartz1 (~Nick@2605:e000:2499:700:54ec:94d7:6990:e1df) has quit (Ping timeout: 245 seconds)
+2018-03-03 20:23:33	<--	sanct (~sanct@24-179-179-137.dhcp.stcd.mn.charter.com) has quit (Ping timeout: 256 seconds)
+2018-03-03 22:17:20	-->	bbugyi200 (~bryan@pool-173-71-69-13.cmdnnj.fios.verizon.net) has joined ##math
+2018-03-03 22:17:20	--	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-03 22:17:20	--	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-03 22:17:20	--	Channel ##math: 869 nicks (0 ops, 0 voices, 869 normals)
+2018-03-03 22:17:21	-->	Mutter (~Mutter@131.128.73.7) has joined ##math
+2018-03-03 22:17:22	--	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-03 22:17:27	<--	AprilLudgate (uid272280@gateway/web/irccloud.com/x-ldofpeiogbptvnor) has quit (Quit: Connection closed for inactivity)
+2018-03-03 22:17:41	a____ptr	im not sure how im supposed to do these?
+2018-03-04 23:38:30	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-04 23:38:30	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-04 23:38:31	⚡	Channel ##math: 876 nicks (0 ops, 0 voices, 876 normals)
+2018-03-04 23:38:31	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 00:02:24	Batzy	Hello
+2018-03-05 00:02:58	unyu	Hello.
+2018-03-05 00:03:17	LiaoTao	pong
+2018-03-05 00:03:34	collin38	syn-ack
+2018-03-05 00:06:55	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 00:06:55	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 00:06:55	⚡	Channel ##math: 870 nicks (0 ops, 0 voices, 870 normals)
+2018-03-05 00:07:05	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 00:07:45	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 00:07:45	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 00:07:45	⚡	Channel ##math: 870 nicks (0 ops, 0 voices, 870 normals)
+2018-03-05 15:07:30	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 15:07:30	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 15:07:30	⚡	Channel ##math: 909 nicks (0 ops, 0 voices, 909 normals)
+2018-03-05 15:07:40	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 15:08:09	blackk	which leads to 1 or 0 mod 4
+2018-03-05 15:08:22	neiluj	Hello. I'm trying to show that the vectors 1, sqrt(2) and sqrt(3) are linearly independent in a vector space over the rationals
+2018-03-05 15:08:32	blackk	ah
+2018-03-05 15:08:44	blackk	my favourite linear algebra problem
+2018-03-05 15:09:14	Millennial	https://math.stackexchange.com/a/1803809/326053
+2018-03-05 15:09:14	neiluj	so I want to show that the unique solution to the equation lambda*1+mu*sqrt(2)+gamma*sqrt(3)=0 is lambda=mu=gamma=0
+2018-03-05 15:09:24	Millennial	it has the benefit of being my own answer
+2018-03-05 15:09:37	neiluj	oh that's nice
+2018-03-05 15:09:42	blackk	yes you can prove it for all square root of primes
+2018-03-05 15:10:03	blackk	then you prove that R is an infinite dimensional Q vector space
+2018-03-05 15:10:16	Millennial	blackk: i don't think you need this to prove that R is an infinite dimensional Q vector space
+2018-03-05 15:10:18	Millennial	lol
+2018-03-05 15:10:23	neiluj	I was trying to show that the only two solutions over the reals were constants equal to 0 or lambda=-2, mu=1/sqrt(2)...
+2018-03-05 15:10:35	neiluj	so over Q we have a unique solution
+2018-03-05 15:10:48	newpy	oh I think I get it now
+2018-03-05 15:10:49	blackk	how do you proceed?
+2018-03-05 15:10:56	blackk	you use cardinality
+2018-03-05 15:11:21	blackk	there is a proof of that using logarithms
+2018-03-05 15:11:22	Millennial	blackk: for distinct primes p_i \in Z, it's trivial to show that log(p_i) are all linearly independent over Q
+2018-03-05 15:11:23	Millennial	yeah
+2018-03-05 15:11:32	Millennial	it's just the fundamental theorem of arithmetic
+2018-03-05 15:12:05	Millennial	but the cardinality argument is better because in fact R is a |R| dimensional Q-vector space
+2018-03-05 15:12:07	newpy	x1y2 = y1x2 just means y2/x2 = y1/x1 ie. they have the same slope relative to B
+2018-03-05 15:12:11	Millennial	which these arguments do not prove
+2018-03-05 15:12:28	neiluj	Millennial: your answer uses Galois groups
+2018-03-05 15:12:31	Millennial	neiluj: yes
+2018-03-05 15:12:39	Millennial	:o
+2018-03-05 15:12:41	neiluj	can I understand it without them?
+2018-03-05 15:12:45	Millennial	my answer? no
+2018-03-05 15:12:51	Millennial	but you can solve your problem without them
+2018-03-05 15:12:53	neiluj	your proof I mean
+2018-03-05 15:12:57	Millennial	no
+2018-03-05 15:13:13	Millennial	you need to know what the field trace is, if you know that the proof is trivial
+2018-03-05 15:13:26	neiluj	I know that!
+2018-03-05 15:13:33	Millennial	and you need to know some properties of the field trace which are a bit of a pain to prove without galois theory
+2018-03-05 15:13:41	neiluj	the trace of a matrix though
+2018-03-05 15:13:44	Millennial	like the transitivity of the field trace over field towers
+2018-03-05 15:14:02	blackk	you dont need galois theory to prove transitivity
+2018-03-05 15:14:07	Millennial	blackk: you don't need to
+2018-03-05 15:14:11	Millennial	but it's painful to do it without
+2018-03-05 15:14:16	Millennial	with galois theory it's trivial
+2018-03-05 15:14:25	⚡	HellCat is now known as Panther
+2018-03-05 15:14:26	Millennial	without, you need to write out the matrices
+2018-03-05 15:14:32	Millennial	and actually compute the trace
+2018-03-05 15:14:36	blackk	why is it painful it just two matrices
+2018-03-05 15:14:43	Millennial	blackk: but the matrices are big
+2018-03-05 15:14:45	Millennial	:(
+2018-03-05 15:14:55	⚡	Guest8947 is now known as Victor
+2018-03-05 15:14:55	blackk	Im not even sure if you need to write them down
+2018-03-05 15:15:08	neiluj	but in my particular example, I'm correct if I show that they are only two solutions for my equation over the reals hence one over the rationals?
+2018-03-05 15:15:25	Millennial	neiluj: there aren't only two solutions to c_0 + c_1 sqrt(2) + c_2 sqrt(3) = 0 over the reals
+2018-03-05 15:15:48	Millennial	there are |R| many solution triples (c_0, c_1, c_2)
+2018-03-05 15:15:50	Millennial	so you're not correct
+2018-03-05 15:15:58	neiluj	oh that's right
+2018-03-05 15:15:58	blackk	there infinite solution
+2018-03-05 15:16:08	blackk	you have several degree of freedom
+2018-03-05 15:16:11	blackk	2
+2018-03-05 15:16:23	neiluj	indeed I overlooked this
+2018-03-05 15:16:57	newpy	prove sqrt((x_1)^2 + (y_1)^2) + sqrt((x_2)^2 + (y_2)^2) = sqrt((x_1 + x_2)^2 + (y_1 + y_2)^2)
+2018-03-05 15:16:58	neiluj	I'm wondering how I could prove there is only one solution over Q
+2018-03-05 15:17:11	newpy	where x_1 * y_2 = y_1 * x_2
+2018-03-05 15:17:13	neiluj	it looks obvious to me but I can't prove it
+2018-03-05 15:17:26	blackk	I really would go for the easiest proof using logarithms
+2018-03-05 15:20:27	Millennial	newpy: square both sides, expand the squares on the RHS, you're left with sqrt((x_1 x_2)^2 + (y_1 y_2)^2 + (x_1 y_2)^2 + (x_2 y_1)^2) = x_1 x_2 + y_1 y_2
+2018-03-05 15:20:34	Millennial	now use the information you're given
+2018-03-05 15:22:32	newpy	Millenial, so if I square the RHS I see (x1 + x2)^2 + (y1 + y2)^2 -> x1^2 + 2x1x2 + x2^2 + y1^2 + 2y1y2 + y2^2
+2018-03-05 15:23:41	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 15:23:41	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 15:23:41	⚡	Channel ##math: 906 nicks (0 ops, 0 voices, 906 normals)
+2018-03-05 15:23:50	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 15:24:10	newpy	so 2*sqrt(x1^2+y1^2)*sqrt(x2^2+y2^2) = 2x1x2 + 2y1y2?
+2018-03-05 15:25:20	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 15:25:20	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 15:25:21	⚡	Channel ##math: 906 nicks (0 ops, 0 voices, 906 normals)
+2018-03-05 15:25:31	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 15:25:55	newpy	(x1^2 + y1^2)(x2^2+y2^2) = (x1x2 + y1y2)^2
+2018-03-05 15:26:36	unyu	Now expand, obviously.
+2018-03-05 15:28:04	newpy	x1^2*x2^2 + y2^2*x1^2 + y1^2*x2^2 + y1^2*y2^2 = x1^2*x2^2 + 2x1x2y1y2 + y1^2*y2^2
+2018-03-05 15:28:25	unyu	Eliminate common terms from both sides.
+2018-03-05 15:28:45	newpy	y2^2*x1^2 + y1^2*x2^2 = 2x1x2y1y2
+2018-03-05 15:28:45	unyu	And use what your original hypothesis to rewrite the left-hand side.
+2018-03-05 15:28:48	blackk	Im not sure if you two are having fun here
+2018-03-05 15:29:15	unyu	blackk: I'm giving orders, like a boss.
+2018-03-05 15:29:25	unyu	It's only mildly fun, though.
+2018-03-05 15:29:54	newpy	so b/c x1y2 = x2y1
+2018-03-05 15:30:10	newpy	the LHS = 2x the same term
+2018-03-05 15:30:22	newpy	and the RHS = 2 * the same term squared?
+2018-03-05 15:30:33	newpy	err
+2018-03-05 15:30:38	newpy	LHS = 2x th esame term squared as well
+2018-03-05 15:30:41	unyu	In the left-hand side, you have this:
+2018-03-05 15:31:04	unyu	(x1^2 * y2^2) + (y1^2 * x2^2), right?
+2018-03-05 15:31:15	newpy	if I say z = x1y2 = x2y1, then now 2z^2 = 2z^2
+2018-03-05 15:31:21	newpy	right
+2018-03-05 15:31:24	unyu	Yep.
+2018-03-05 15:31:50	newpy	so when Millenial said: "you're left with sqrt((x_1 x_2)^2 + (y_1 y_2)^2 + (x_1 y_2)^2 + (x_2 y_1)^2) = x_1 x_2 + y_1 y_2"
+2018-03-05 15:32:14	newpy	honestly this irc math is making my eyes bleed
+2018-03-05 15:32:24	newpy	which step did he skip to
+2018-03-05 15:32:27	unyu	I would've renamed the variables to a,b,c,d long ago.
+2018-03-05 15:32:39	newpy	unyu, haha I did wayyyy up when no one was replying
+2018-03-05 15:32:44	unyu	lol
+2018-03-05 15:32:52	newpy	but then reverted to x_1 etc b/c I wasn't sure if it was relevant to the problem somehow
+2018-03-05 15:32:57	blackk	oh you just used the fact that trace of sums is sums of traces
+2018-03-05 15:32:57	newpy	for people to know they were coordinates etc
+2018-03-05 15:33:07	newpy	blackk I have no idea what you mean
+2018-03-05 15:33:24	blackk	Im looking at the math.stackexchange link Millenial provided
+2018-03-05 15:33:30	newpy	oh
+2018-03-05 15:35:12	newpy	so if I want to show this is equivalent to geometric line segments, AB + BC = AC, with only the distance formula and suitably named coordinates
+2018-03-05 15:35:18	newpy	how would I go about it?
+2018-03-05 15:35:30	blackk	you changed topic?
+2018-03-05 15:35:38	newpy	it says Hint: it is convenient to let B be the origin
+2018-03-05 15:36:10	newpy	blackk: no I want to show that AB + BC = AC is equivalent to sqrt(a^2 + b^2) + sqrt(c^2 + d^2) = sqrt((a+c)^2 + (b+d)^2)
+2018-03-05 15:36:39	newpy	(I replaced x_1, y_1, x_2, y_2 with a,b,c,d like unyu said)
+2018-03-05 15:36:49	blackk	ok lets do that
+2018-03-05 15:37:00	blackk	A=(a,b), B=(0,0)
+2018-03-05 15:37:07	blackk	C=(c,d)
+2018-03-05 15:37:27	blackk	so what is AC ?
+2018-03-05 15:37:35	blackk	(c-a,d-b)
+2018-03-05 15:37:38	newpy	(c-a,d-b)
+2018-03-05 15:38:48	blackk	er
+2018-03-05 15:38:54	newpy	blackk, I know what you mean
+2018-03-05 15:38:56	newpy	AC isn't a point
+2018-03-05 15:39:00	blackk	then lets take C=(-c,-d)
+2018-03-05 15:39:04	newpy	but the x-distance and y-distance would be c-a, d-b
+2018-03-05 15:39:10	blackk	so you get it
+2018-03-05 15:39:25	newpy	k
+2018-03-05 15:40:08	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 15:40:08	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 15:40:08	⚡	Channel ##math: 901 nicks (0 ops, 0 voices, 901 normals)
+2018-03-05 15:40:15	newpy	blackk, yes which is assumed
+2018-03-05 15:40:17	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 15:40:49	newpy	so distance AB = sqrt(a^2 + b^2)
+2018-03-05 15:40:55	blackk	oh I thought you were dealing with the problem of linear independence of sqrt of primes
+2018-03-05 15:41:15	blackk	I am mixing up questioners
+2018-03-05 15:41:16	newpy	no I'm reading a history of math book and I overcomplicated it for myself I think
+2018-03-05 15:41:55	newpy	BC = sqrt(-c^2 - d^2)
+2018-03-05 15:42:10	blackk	-_-
+2018-03-05 15:42:11	blackk	no
+2018-03-05 15:42:17	blackk	you square (-c)
+2018-03-05 15:42:20	blackk	which is c^2
+2018-03-05 15:42:25	blackk	and (-d) which is d^2
+2018-03-05 15:42:35	newpy	BC = sqrt(c^2 + d^2)
+2018-03-05 15:42:39	blackk	yeah
+2018-03-05 15:43:04	blackk	afk
+2018-03-05 15:56:15	Aleric	Hello, can someone help me with this problem (not for school, I really need it ;):  Consider the map from the integers (i) to "the number of zeroes that that integer ends on when written in binary form" (f(i)). For example f(i) = 0 when i is odd, f(i) = f(i / 2) + 1 when i is even.
+2018-03-05 15:56:59	Millennial	Aleric: what's the problem
+2018-03-05 15:57:02	Aleric	Let g(i) be the sum for j=1...i of f(j).  Is there a way to write g(i) in a simple formula?
+2018-03-05 15:57:36	Aleric	What I really need, actually, is the inverse of g(i)... so, given g(i), what is i.
+2018-03-05 15:57:42	unyu	Aleric: Consider how many numbers “i” with “g(i) = k” there should be in your range.
+2018-03-05 15:58:05	unyu	For any fixed natural number “k”.
+2018-03-05 15:58:41	Aleric	i / 2^k  ?
+2018-03-05 15:59:19	unyu	Errr, sorry, I meant “with f(i) = k”.
+2018-03-05 15:59:37	Aleric	Well, that's what I tried to answer :p
+2018-03-05 16:01:22	Aleric	Hmm, more like  i / 2^(k + 1)
+2018-03-05 16:03:46	Aleric	lets say, k = 0 .. then the number of j in the range [1, i] for which f(j) = k = 0 is the number of odd numbers in that range. So, i=1 --> 1, i=2 --> 1, i=3 --> 2... So in general (i+1)/2.
+2018-03-05 16:06:11	spear2	is there something online to find closed forms of series?
+2018-03-05 16:07:05	Dodek	wolfram alpha sometimes can do it
+2018-03-05 16:07:27	Dodek	but few series have closed forms, and there's no algorithmic way to compute them anyway
+2018-03-05 16:07:44	Aleric	If k=1, then the number of j in the range [1, i] for which f(j) = k = 1, is the number of numbers that are an odd multiple of 2 in that range. So, i=1 --> 0, i=2 --> 1, i=3 --> 1, i=4 --> 1, i=5 --> 1, i=6 --> 2, i=7 --> 2, i=8 --> 2, .. etc... so yeah, every 4.  So in general (i+2)/4
+2018-03-05 16:08:14	spear2	curious about the series 1 - 1/2 + 1/4 - 1/6 + 1/8 ...
+2018-03-05 16:08:44	spear2	basically the series 1 - 1/3 + 1/5 - 1/7 + 1/9 ... = pi/4, except with even numbers instead of odd
+2018-03-05 16:09:04	spear2	~0.65342
+2018-03-05 16:09:23	Aleric	spear2: that seems related to my question
+2018-03-05 16:09:27	ringstuff	Aleric: f is sometimes called the ruler function. f(n) is (obviously) the largest k so that 2^k divides n. there is an easy way to evaluate the sum f(1) + ... + f(n), which is exactly what you're going to find
+2018-03-05 16:09:35	ringstuff	see "Legendre's formula"
+2018-03-05 16:10:34	joel135	spear2: it is related to ln(2)
+2018-03-05 16:11:20	joel135	0.653426409720027
+2018-03-05 16:12:28	ringstuff	restricted to the base 2 case, you get f(1) + ... + f(n) ( = f(n!) = ) floor(n) + floor(n/2) + ... + floor(n/2^k) + ... = n minus the sum of digits of n in base 2
+2018-03-05 16:13:35	Z-module	spear2: subtract 1 from that and divide by -2, and you are left with a famous series
+2018-03-05 16:13:57	Z-module	also, you might not have really meant the 1 term there to begin with, it doesn't "fit the pattern"
+2018-03-05 16:14:17	Aleric	Why is f(1) + ... + f(n) = f(n!) ?
+2018-03-05 16:14:17	spear2	joel135: i get 0.69314 for ln(2)
+2018-03-05 16:14:24	Aleric	isn't n! n factorial?
+2018-03-05 16:14:45	ringstuff	indeed, and f(ab) = f(a) + f(b)
+2018-03-05 16:14:58	Aleric	Ah... yeah, makes sense.
+2018-03-05 16:15:29	spear2	Z-module: true, i just did that to match the pi/4 series
+2018-03-05 16:17:00	ringstuff	Aleric: there should be a clever algorithm to look for inverses using the last expression I mentioned
+2018-03-05 16:18:29	Aleric	Thanks :), I'm going to play with this in a program (I need it for a computer program.. hence that it needs to be super simple; cause I want to be able to do the conversion in mere clock cycles)
+2018-03-05 16:20:20	spear2	Z-module: ah if i remove the 1 and start with +1/2 it's equal to (ln 2)/2
+2018-03-05 16:21:53	linux_dream	hello.  assume i have a sequence of 0's and 1's that contain some information.  my question is whether applying a function to each element such that it returns 0 or 1 at random with 50% probability erases the information of the original sequence in a worse way than if I apply the function more than 1 time in a row
+2018-03-05 16:22:54	a____ptr	Where should I look if I want to get the general "shape" of matrix rings? (Over R, say.)
+2018-03-05 16:22:54	Dodek	linux_dream: what do you mean by "applying a function"? how does the original sequence affect the result?
+2018-03-05 16:23:19	ringstuff	Aleric: in the worst case to calculate the inverse, you can perform one simple arithmetic operation and comparison for each bit in your integer
+2018-03-05 16:23:26	Dodek	a____ptr: artin-wedderburn theorem?
+2018-03-05 16:23:43	drdo	linux_dream: Well, your function has no relation to the original sequence, it's just a random sequence of bits
+2018-03-05 16:23:49	a____ptr	Oh I was more looking for general "subject" heading
+2018-03-05 16:23:50	drdo	*the output of your "function"
+2018-03-05 16:23:53	a____ptr	Thx tho
+2018-03-05 16:24:42	Dodek	a____ptr: but seems like it might not be what you want; artin-wedderburn theorem says that semisimple rings are in particular matrix rings withvery specific structure
+2018-03-05 16:24:58	linux_dream	that's what I thought drdo thanks.  then i wonder why programs that erase data on hard disk run several times in a row a program to write 0's and 1's if one time is enough to destroy all information of the original data
+2018-03-05 16:25:27	drdo	linux_dream: Probably because of physical properties of disks
+2018-03-05 16:25:48	Dodek	linux_dream: there's little reason to do it, nowadays
+2018-03-05 16:25:57	a____ptr	Dodek: yeah, I was more wondering about the overall "topology" of GL_n(R) or w/e
+2018-03-05 16:26:18	ringstuff	technically this is a subset sum problem; find 0/1 x_1 ... x_n so that (2^n - 1) x_n + (2^{n-1} - 1) x_{n-1} + ... + x_1 = y; but we have the condition that the sum is increasing as 2^n x_n + ... + 2 x_1 increases
+2018-03-05 16:26:28	a____ptr	Also I'd imagine they'd introduce me to a good number of example of topogical space too
+2018-03-05 16:26:46	Dodek	linux_dream: on some very old disks, some people claimed that you could read some of the erased bits by looking at the magnetization of the areas _around_ the actual area where the writer heads flips the bits
+2018-03-05 16:27:03	Z-module	spear2: right
+2018-03-05 16:27:27	Dodek	linux_dream: but i haven't heard of people practically extracting information that way, and in any case with extreme data density these days, it doesn't seem viable any longer anyway.
+2018-03-05 16:27:43	linux_dream	i see, thanks Dodek
+2018-03-05 16:28:14	Dodek	linux_dream: overwriting once is fine. the only problem with that it is that it won't delete data from bad sector, and maybe some weird caches
+2018-03-05 16:28:33	drdo	burn, burn it all
+2018-03-05 16:28:36	linux_dream	can the data from bad sector be recovered
+2018-03-05 16:29:05	Dodek	linux_dream: that's why most large providers have procedures, like, first overwrite disk with random data, then demagentize it with Huge Ass Magnet, and then literally shred it
+2018-03-05 16:29:19	Dodek	shredding disks is fun.
+2018-03-05 16:29:25	anybus	DBAN ftw
+2018-03-05 16:30:13	drdo	Dodek: I find it funny that they bother with the first step
+2018-03-05 16:30:57	Dodek	drdo: it's fast and easy, why wouldn't you just do it
+2018-03-05 16:31:06	Dodek	well it's less fast these days
+2018-03-05 16:31:31	Dodek	but usually you have decomissioning planned in advance, and can just do it overnight a few days prior
+2018-03-05 16:31:37	linux_dream	i would just scratch the disk all around
+2018-03-05 16:31:45	ringstuff	some companies don't even want the resultant shredded disks to be recycled
+2018-03-05 16:31:56	drdo	ringstuff: Now surely that's just silly
+2018-03-05 16:31:58	Dodek	linux_dream: that will work fine for scrubs like you an dme
+2018-03-05 16:32:32	Dodek	but good technicians would be able to put those scratched plates in special harnesses and recover _some_ data
+2018-03-05 16:32:42	ringstuff	there have been scandals about employees  selling such material for scrap against regulations
+2018-03-05 16:33:11	Dodek	there are usually policies against _reusing_ decomissioned hard drives, that is, reselling them after wiping
+2018-03-05 16:33:24	Dodek	but i haven't heard about policies against recycling scrap.
+2018-03-05 16:33:28	Z-module	"Overwrite the disk with freenote ##math logs... malefactors will gain illicit access to the disk, see this material, and run shrieking in horror..."
+2018-03-05 16:33:35	Dodek	but i wouldn't be surprised really
+2018-03-05 16:33:38	Z-module	Freenode*
+2018-03-05 16:33:47	drdo	Just melt the damn disk into a nice homogeneous liquid
+2018-03-05 16:33:54	drdo	Good luck recovering from that
+2018-03-05 16:37:13	Vince_	hello
+2018-03-05 16:37:27	drdo	hey
+2018-03-05 16:37:50	Vince_	I'm making a video game in Unreal Engines and Im stuck at a math problem. I was wondering if someone could help me out potentially :D
+2018-03-05 16:38:15	drdo	don't ask to ask
+2018-03-05 16:38:43	Vince_	So I have a spaceship that travels in a linear direction. I have a planet that has an orbit and speed.
+2018-03-05 16:39:03	Aleric	ringstuff: It's not working for me...
+2018-03-05 16:39:05	Vince_	I need to calculate what is the best optimal location for the spaceship to reach the planet
+2018-03-05 16:39:12	Vince_	in the less amount of days
+2018-03-05 16:39:55	Aleric	ringstuff: f(1) = 0, right?  It doesn't end on zeroes.
+2018-03-05 16:40:11	Aleric	f(1) = floor(1) = 1 ... so wrong already
+2018-03-05 16:41:02	Vince_	:)
+2018-03-05 16:41:15	ringstuff	Aleric: oops, the sum should start with floor(n/p)
+2018-03-05 16:41:24	Aleric	ok
+2018-03-05 16:42:02	Aleric	ok, sum of floors works now.
+2018-03-05 16:42:08	koro	Vince_: a circular orbit?
+2018-03-05 16:42:16	Vince_	yeah!
+2018-03-05 16:42:25	Vince_	easier the better :)
+2018-03-05 16:42:47	koro	so write down the formula for the distance, as a function of time
+2018-03-05 16:43:38	Vince_	sorry im an artists so my math skills arent amazing
+2018-03-05 16:43:41	Vince_	:'(
+2018-03-05 16:44:13	probs	Is there a way to prove that for all odd integers n, n^2 is always odd, as long as I can't define an odd number as 2k+1 where k is any integer?
+2018-03-05 16:44:30	Z-module	then how do you define odd?
+2018-03-05 16:44:59	koro	Vince_: wait... you want the optimal *location* of the ship?
+2018-03-05 16:45:11	Hi	Hello?
+2018-03-05 16:45:24	Z-module	If you know that a prime p divides ab iff it either divides a or divides b, then you can do it by contradicition. Say n^2 is even. So the prime 2 divides n*n.  So.....
+2018-03-05 16:45:29	⚡	Hi is now known as Guest66745
+2018-03-05 16:45:29	ringstuff	the usual definition is that a number is odd when (n^n + 1) is a multiple of n + 1
+2018-03-05 16:45:30	probs	I would know how to prove it if I were able to use that but because I'm not allowed to, I'm only able to use these 'assumptions' in my book
+2018-03-05 16:45:30	koro	Vince_: i'd say that the optimal location is ON the planet...
+2018-03-05 16:45:31	Vince_	yeah like the ship should travel to (x,y) on grid because the planet will be there in xDays
+2018-03-05 16:45:32	probs	https://imgur.com/a/f8MD8
+2018-03-05 16:46:01	Guest66745	Fuck you people
+2018-03-05 16:46:02	koro	Vince_: ah, so you have the given position of the ship and planet, and you want to know the direction and speed to travel?
+2018-03-05 16:46:07	Guest66745	No
+2018-03-05 16:46:20	probs	however I can't really see how those assumptions help me in any way so I was maybe trying to find a way to say, possibly if it's true, that any odd number multiplied by another odd number is odd
+2018-03-05 16:46:20	Guest66745	Figure it out dumbass
+2018-03-05 16:46:26	Vince_	yes! or rather the Location where the planet will be?
+2018-03-05 16:46:33	Aleric	ringstuff: the = n minus the sum of digits of n in base 2 isn't working at all though... For example... f(2) = 1. Sum of floors is (indeed) 1. digits is 2 right (binary: 10).  But 2 - 2 = 0, not 1.
+2018-03-05 16:46:35	Vince_	I guess I can find that out with the direction and speed
+2018-03-05 16:46:47	koro	Vince_: but the direction and speed *is* what you want to find?
+2018-03-05 16:47:08	koro	Vince_: you have to state what are the *given* things and what you want to find
+2018-03-05 16:47:11	ringstuff	2 = 10b, 1 + 0 = 1, Aleric
+2018-03-05 16:47:21	probs	Z-module: you get what I said?
+2018-03-05 16:47:24	Vince_	well lets say I want to make a visual dot on my game to show where the planet will be when you optimally arive at it :)
+2018-03-05 16:47:30	Vince_	(x,Y) on grid
+2018-03-05 16:47:31	Aleric	Ohhh, that sum of digits.
+2018-03-05 16:47:46	Vince_	and thanks for helping me Koro!
+2018-03-05 16:47:47	koro	Vince_: that's the easy part. The hard part is finding the optimal speed and direction
+2018-03-05 16:47:50	Z-module	probs, see what I said about a prime dividing a product
+2018-03-05 16:47:53	probs	Can you identify anything relevant to proving that in the image I posted?
+2018-03-05 16:47:53	Aleric	Yep, that works too :*)
+2018-03-05 16:47:56	probs	ok
+2018-03-05 16:48:21	Vince_	well i can just lerp the location of ship to optimal planet location over time
+2018-03-05 16:48:26	Vince_	no?
+2018-03-05 16:48:26	koro	Vince_: so i assume the ship has a maximum speed, but you can choose to travel slower?
+2018-03-05 16:48:41	Vince_	its just a fixed speed
+2018-03-05 16:48:49	Vince_	ohh i see what your saying
+2018-03-05 16:48:54	koro	oh then there aren't many options
+2018-03-05 16:49:34	Vince_	its a video game, so we can decide :)
+2018-03-05 16:49:45	Vince_	you're a game developper now
+2018-03-05 16:50:14	koro	(ಠ_ಠ)
+2018-03-05 16:50:20	Vince_	LOL
+2018-03-05 16:50:21	probs	to say x 'divides' y is equivalent to saying that y/x = an integer with no remainder, right?
+2018-03-05 16:50:45	Vince_	is it easier with 1 max speed or also being able to slow down?
+2018-03-05 16:51:06	probs	so 11 divides 66 because 66/11 = 6 with no remainder
+2018-03-05 16:51:14	koro	it depends on how serious you want this to be. Are you assumiong the ship is really far from the planet? (in comparison with the radius of the orbit)
+2018-03-05 16:51:22	koro	or close
+2018-03-05 16:51:46	Vince_	pretty far!
+2018-03-05 16:51:54	Vince_	its a whole solar system
+2018-03-05 16:52:03	Vince_	like a fast ship but not like light speed
+2018-03-05 16:52:16	Batzy	I got asked a hard question I think
+2018-03-05 16:52:37	Batzy	lim_(x,y) to (1,2) of [ln(xy^2 - 3)]/[xy^2 - 4]
+2018-03-05 16:52:40	Vince_	like simpler formula for me the better since Math isnt my strong suit haha
+2018-03-05 16:52:45	Batzy	wolfram says it's 1 but this guy said that wolfram is wrong
+2018-03-05 16:52:50	Batzy	i doubt wolfram is wrong.
+2018-03-05 16:54:29	probs	[16:45] <Z-module> If you know that a prime p divides ab iff it either divides a or divides b, then you can do it by contradicition. Say n^2 is even. So the prime 2 divides n*n.  So.....
+2018-03-05 16:54:38	probs	by contradiction you mean by modus tollens?
+2018-03-05 16:54:44	Vince_	koro are you thinking :)
+2018-03-05 16:55:22	Batzy	lol
+2018-03-05 16:55:27	Batzy	who says "modus tollens"
+2018-03-05 16:55:34	Batzy	unless they're trying to sound pompous
+2018-03-05 16:55:45	probs	or they're at a university
+2018-03-05 16:55:47	Batzy	no but seriously does anyone know this limit problem.
+2018-03-05 16:55:59	Batzy	probs: math papers dont even say modus tollens
+2018-03-05 16:56:11	probs	it's how discrete math/logic is taught
+2018-03-05 16:56:18	koro	Vince_: is it really necessary to travel in a straight line?
+2018-03-05 16:56:20	Batzy	yes it's the technical word for it
+2018-03-05 16:56:25	probs	great
+2018-03-05 16:56:30	Vince_	I think it's easier?
+2018-03-05 16:56:36	Vince_	makes more sense no?
+2018-03-05 16:56:39	koro	Vince_: you could keep pointing at the planet and change the direction as you go
+2018-03-05 16:56:46	probs	and because I'm asking a question about a discrete math problem it should be appropriate to say that
+2018-03-05 16:56:51	koro	that way going at a constant speed you'll always reach it
+2018-03-05 16:57:05	Vince_	yeah i thought about that
+2018-03-05 16:57:14	Vince_	but I cant precalculate when i'd reach it?
+2018-03-05 16:57:30	koro	oh, you want to be able to tell that
+2018-03-05 16:57:35	Vince_	yeah
+2018-03-05 16:57:47	koro	well you can in theory do this by running a simulation :P
+2018-03-05 16:57:51	Vince_	i wish i could put a picture
+2018-03-05 16:57:56	koro	i mean, it's a quick computation
+2018-03-05 16:58:04	drdo	koro: But you won't reach it in the shortest time
+2018-03-05 16:58:10	koro	no of course
+2018-03-05 16:58:21	Vince_	:O
+2018-03-05 16:58:38	Batzy	probs: just say contradiction yo
+2018-03-05 16:58:39	drdo	In fact if your ship is slower than the planet you'll never reach it (left as an exercise for the reader)
+2018-03-05 16:58:40	koro	but since it's starting from very far from the planet, the difference won't be significative
+2018-03-05 16:58:47	Batzy	I've only heard "modus ______" like twice in this channel
+2018-03-05 16:58:53	koro	drdo: good point :/
+2018-03-05 16:58:57	ringstuff	probs: you can write the argument as modus tollens or by contradiction (reductio ad absurdum)
+2018-03-05 16:59:02	koro	drdo: depending on the initial conditions
+2018-03-05 16:59:08	Vince_	I cant post pictures here can I
+2018-03-05 16:59:16	probs	thank you, I was trying to relate it to something I know, which is modus tollens
+2018-03-05 16:59:16	Batzy	So does anyone have any idea how to do this limit?
+2018-03-05 16:59:26	Vince_	well I can make my spaceship faster LOL
+2018-03-05 16:59:29	ringstuff	Z-module wrote: suppose n were even but n^2 were odd; then n*n is odd, so by Euclid's lemma n is simultaneously even and odd, contradiction
+2018-03-05 16:59:50	Vince_	even if the planet was fast, i feel like it should be able to intersect it on it's orbit at one point
+2018-03-05 16:59:51	drdo	Vince_: Then just make it so fast that the planet's speed is aproximately zero!
+2018-03-05 17:00:02	drdo	and go straight toward it
+2018-03-05 17:00:05	Vince_	haha thats not fun though
+2018-03-05 17:00:22	probs	How though does supposing n is even relate to my problem though?
+2018-03-05 17:00:27	Vince_	i want to tweak the speed so I can get about a month of travel time
+2018-03-05 17:00:34	koro	Vince_: of course you can intersect it
+2018-03-05 17:00:39	probs	I was told to prove "for all integers n, if n is odd then n^2 is odd'
+2018-03-05 17:00:51	koro	what he was saying is that if you keep "following" the planet as i suggested it may happen that you never reach it
+2018-03-05 17:01:01	Batzy	again it's lim_(x,y) to (1,2) ln(xy^2 - 3)/(xy^2 - 4)
+2018-03-05 17:01:06	probs	why should I even consider even integers?
+2018-03-05 17:01:17	Vince_	i see
+2018-03-05 17:01:18	koro	i.e, it's a bad idea
+2018-03-05 17:01:21	drdo	probs: What's an odd integer?
+2018-03-05 17:01:43	probs	an integer that can be defined as 2k+1 where k is an integer
+2018-03-05 17:01:51	Vince_	https://i.imgur.com/SXGQYDf.png
+2018-03-05 17:01:51	probs	but I'm not allowed to use that definition
+2018-03-05 17:01:55	drdo	probs: yes, but what's a more elementary definition?
+2018-03-05 17:01:56	Vince_	Here you can see the visual
+2018-03-05 17:01:56	ringstuff	probs: are you familiar with reductio ad absurdum?
+2018-03-05 17:02:17	probs	yes ringstuff
+2018-03-05 17:02:36	Z-module	probs, so what I meant was: you want "n odd ==> n^2 odd".  odd means not even.  So I should have really said "prove the contrapositive:  assume n^2 even, show n is even.  You can do it using that thing I said about a prime that divides a product of two integers.
+2018-03-05 17:02:41	probs	drdo: do you mean 'an integer which isn't even" ?
+2018-03-05 17:02:53	drdo	probs: yes
+2018-03-05 17:03:09	Z-module	which itself comes from the uniqueness of prime factorization for positive integers
+2018-03-05 17:03:12	Z-module	(up to order)
+2018-03-05 17:04:44	Vince_	so this is pretty difficult then ... hmm
+2018-03-05 17:05:03	probs	oh so, I could just think of it as p -> q as "if n is even, n^2 is even" and I'd just have to prove ~p -> ~q in the same way.
+2018-03-05 17:06:08	probs	that's proving the inverse though
+2018-03-05 17:06:23	ringstuff	Vince_: it's not hard to solve this problem numerically
+2018-03-05 17:06:32	probs	You wanted the contrapositive, which is ~q -> ~p. Trying to think about it that way
+2018-03-05 17:06:43	Z-module	In ordinary math and logic, proving  p -> q  is exactly the same as proving ~q -> ~p.
+2018-03-05 17:06:49	probs	right
+2018-03-05 17:06:51	koro	heahm i don't think you want to solve it explicitly
+2018-03-05 17:06:55	Vince_	oh?
+2018-03-05 17:06:59	gustavn64	What exactly does this mean? I mean, since we can't be sure the sum is absolutely convergent, this means the order matters. Doesn't it?
+2018-03-05 17:07:00	gustavn64	https://i.imgur.com/XprlLM0.png
+2018-03-05 17:07:05	koro	i mean it's harder than it's worth
+2018-03-05 17:07:17	Ozera	https://i.imgur.com/rKUBRAf.jpg In the 'A lower bound' section, why is their conclusion true? That "we cannot hope to spread all the gossip around in fewer than ceil(log_2(n)) days"
+2018-03-05 17:07:18	Vince_	lol im not really following
+2018-03-05 17:07:30	koro	you want a precise formula
+2018-03-05 17:07:32	drdo	You can prove it by more elementary means, or using the cannon of unique factorisation
+2018-03-05 17:07:42	koro	that's not so easy for this type of question
+2018-03-05 17:07:48	koro	in fact sometimes it's impossible
+2018-03-05 17:08:36	Vince_	cannon of unique factorisation... wow LOL okay ill look that up
+2018-03-05 17:08:53	koro	that wasn't mean for you i don't think
+2018-03-05 17:08:53	Aleric	ringstuff: Ok, I got that part working... can you give me a hint on how to do the inverse of: g(n) = 2 * n - bit_count(n) + 1, where bit_count is the sum of digits in base 2?  This is not what we talked about (that was n - bit_count(n)), but it's the sequence that I really need.
+2018-03-05 17:09:07	Vince_	thank god
+2018-03-05 17:10:16	Vince_	my buddy said he thinks I could use quadratic equation to solve it?
+2018-03-05 17:10:24	koro	nope
+2018-03-05 17:10:30	probs	I'm still having trouble with the last part about proving that an even n means n^2 = even
+2018-03-05 17:10:31	Z-module	unyu: you asked what the topology of Q/Z is. Lots of intperpretations are possible, but one is simply its realization as the very specific subgroup  {(e^(i*2*pi*q) : q in Q}  of C^*, which as a subspace of euclidean C is just a countable dense subset of the circle. It's =~ Q, by the therem I cited earlier. (I could even give you an explicit homeomorphism if you like.)
+2018-03-05 17:10:48	probs	with the 'divides' and 'prime' stuff.
+2018-03-05 17:11:14	koro	Vince_: you can use that to find whre you will meet the orbit given that you travel at a given direction, but that doesn't really tell you which direction to travel to meet the actual planet
+2018-03-05 17:11:14	ringstuff	probs: pick any particular definition of "n is even"
+2018-03-05 17:12:09	koro	it's much trickier to do this, even numerically you have to be careful
+2018-03-05 17:12:10	Vince_	oh i c koro
+2018-03-05 17:12:14	Aleric	If p and q are integers and p is even then pq is also even.... Isn't that like a given?
+2018-03-05 17:12:25	Vince_	can we cheat a bit and simplify it?
+2018-03-05 17:12:27	Vince_	since it's a game
+2018-03-05 17:12:39	probs	I can't really find one. Usually I just use 2k where k is an integer
+2018-03-05 17:12:43	koro	i'd try to help if i didn't have to go now
+2018-03-05 17:12:56	Aleric	probs: that would work.
+2018-03-05 17:13:00	ringstuff	Aleric: I mean, you can compute the inverse in as many steps as you have bits
+2018-03-05 17:13:00	Vince_	damn... thanks for the try though!
+2018-03-05 17:13:05	koro	good luck
+2018-03-05 17:13:10	probs	I'm not allowed to use that definition, however
+2018-03-05 17:13:12	Vince_	thx
+2018-03-05 17:13:15	ringstuff	is that not good enough?
+2018-03-05 17:13:20	Aleric	n=2k --> n^2 = 2(2k^2)
+2018-03-05 17:13:40	ringstuff	probs: again, *pick a definition* and the answer is trivial
+2018-03-05 17:13:55	Batzy	ill ask later then I guess.
+2018-03-05 17:14:29	Aleric	ringstuff: I don't really have a clue yet no :(.
+2018-03-05 17:14:39	probs	the only definition I know is that 2k = n one and I'm not allowed to use it so I can't pick another definition
+2018-03-05 17:15:03	probs	something about prime numbers was mentioned?
+2018-03-05 17:16:06	⚡	BenLand100 is now known as TheDoctor
+2018-03-05 17:16:10	⚡	TheDoctor is now known as Treebeard
+2018-03-05 17:16:16	⚡	Treebeard is now known as Freud
+2018-03-05 17:16:25	⚡	Freud is now known as BenLand100
+2018-03-05 17:17:09	Aleric	probs: How about "even means has at least one prime factor 2"... So, if n does not have any prime factors of 2, then n^2 won't either. But if n does, then so does n^2.  (this is exactly the same as writing n=2k though)
+2018-03-05 17:17:57	ringstuff	probs: so your question is "how am I supposed to define an even number?"
+2018-03-05 17:18:18	gustavn64	In general, what does it mean to sum from minus infinity to infinity?
+2018-03-05 17:18:40	gustavn64	I can't find any single formal definition of it
+2018-03-05 17:19:38	unyu	Split your series into two, one where the index goes from -1 to -oo, another where the index goes from 0 to oo.
+2018-03-05 17:20:22	unyu	Of course, the choice of “splitting point” is irrelevant.
+2018-03-05 17:20:44	gustavn64	That's the formal definition of it? Any reference for that (out of curiousity)?
+2018-03-05 17:20:49	ringstuff	gustavn64: alternatively, the sum \Sum_{x \in C} f(x) is the supremum of all finite sums over finite subsets of C
+2018-03-05 17:20:50	gustavn64	I couldn't find it
+2018-03-05 17:21:13	gustavn64	ringstuff: That's just for non-negative f
+2018-03-05 17:21:18	probs	hmm. so I can just say that it's true that if n is even, n^2 is also even because a requirement for n to be even is that it has at least one prime factor of 2
+2018-03-05 17:22:05	ringstuff	gustavn64: well, it's the definition whenever the sum converges
+2018-03-05 17:22:33	unyu	ringstuff: What if the series is not absolutely convergent on either side?
+2018-03-05 17:22:38	probs	ringstuff: my question is maybe answered along the lines of what Aleric said. I need to prove that when n is even, n^2 is also even
+2018-03-05 17:22:51	brett01479	ringstuff, it isn't the definition for the same reason that gustavn64 said
+2018-03-05 17:22:56	unyu	ringstuff: Also, supremum, really?
+2018-03-05 17:23:20	brett01479	ringstuff, if you extend to negatives the natural way, it becomes equivalent to being in L1, which is akin to requiring absolute convergence
+2018-03-05 17:24:01	ringstuff	ah
+2018-03-05 17:24:06	Batzy	Does anyone know how to find lim_(x,y) to (1,2) ln(xy^2 - 3)/(xy^2 - 4)?
+2018-03-05 18:30:41	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 18:30:41	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 18:30:41	⚡	Channel ##math: 890 nicks (0 ops, 0 voices, 890 normals)
+2018-03-05 18:30:41	Vince_	yeah
+2018-03-05 18:30:42	Vince_	sure
+2018-03-05 18:30:53	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 18:30:56	Batzy	okay so
+2018-03-05 18:30:59	Batzy	make a line
+2018-03-05 18:31:02	Vince_	but it's velocity(direction) could change...
+2018-03-05 18:31:06	Batzy	wtf
+2018-03-05 18:31:19	▷	Batzy is done.
+2018-03-05 18:31:22	Vince_	lmao
+2018-03-05 18:31:23	jimbzy	Hehehe
+2018-03-05 18:31:34	Batzy	you said constant velocity
+2018-03-05 18:31:43	Vince_	as in no acceleration
+2018-03-05 18:31:51	PlanckWalk	Batzy: COnstant velocity of known magnitude but unknown direction
+2018-03-05 18:31:51	Batzy	yes so
+2018-03-05 18:31:54	Batzy	constant velocity
+2018-03-05 18:32:00	Batzy	PlanckWalk: i see now.
+2018-03-05 18:32:09	Vince_	but in a game velocity is speed + direciton
+2018-03-05 18:32:32	Vince_	yeah exactly planckwalk
+2018-03-05 18:32:44	Batzy	that's real life.
+2018-03-05 18:32:47	Batzy	lol
+2018-03-05 18:32:53	PlanckWalk	(afk)
+2018-03-05 18:32:54	Vince_	video games are real life
+2018-03-05 18:33:08	Batzy	and idk what it means by "velocity direction could change"
+2018-03-05 18:33:10	Batzy	so i am done.
+2018-03-05 18:33:23	Batzy	idk why you would need to calculate this in a game anyways
+2018-03-05 18:33:32	Batzy	oh
+2018-03-05 18:33:34	Vince_	did u see the image?
+2018-03-05 18:33:34	Batzy	no i do
+2018-03-05 18:33:38	Batzy	yes i did.
+2018-03-05 18:33:41	Vince_	i think im confusing u by saying it could change
+2018-03-05 18:33:43	Vince_	sorry
+2018-03-05 18:33:46	Batzy	no i know now
+2018-03-05 18:33:48	Batzy	it doesn't change
+2018-03-05 18:34:07	Batzy	you're trying to have the spaceship say "COLLISION IN ____" for a certain velocity
+2018-03-05 18:34:08	Vince_	no it doesnt! sorry, if he knows the planet will be there in 30 days. he will go at a constant vector
+2018-03-05 18:34:19	Vince_	yes!
+2018-03-05 18:34:22	unyu	Let R be a topological ring. Do the constructions of R[x] and R[[x]] come with an induced topology? I expect this to be the case. Moreover, if R is discrete, I expect R[x] to be discrete, but not R[[x]], since a series really has to be the limit of its sequence of partial sums.
+2018-03-05 18:34:55	Batzy	yeah
+2018-03-05 18:35:05	Batzy	so write the equation for the path of the ship
+2018-03-05 18:35:37	Batzy	that's easier than the path of the planet :^)
+2018-03-05 18:35:45	Vince_	loll wuttt
+2018-03-05 18:35:52	Batzy	mainly because i cant do the path of the planet in my head right now.
+2018-03-05 18:36:10	Batzy	so if your velocity is (1,1)
+2018-03-05 18:36:15	Batzy	your slope is 1/1
+2018-03-05 18:36:20	Vince_	yes
+2018-03-05 18:36:39	Batzy	so every "t" increment you have x = t and y = t
+2018-03-05 18:36:52	Vince_	yeah
+2018-03-05 18:36:58	Batzy	say you have initial position x0, y0
+2018-03-05 18:37:09	Batzy	then (x,y) = t(1,1) + (x0,y0)
+2018-03-05 18:37:42	Batzy	more compactly that (x,y) = (x0 + t, y0 + t)
+2018-03-05 18:38:05	Vince_	yeah that makse sense
+2018-03-05 18:38:07	Batzy	good
+2018-03-05 18:38:14	Batzy	now draw a picture for figuring it out on a sphere
+2018-03-05 18:38:14	Batzy	:)
+2018-03-05 18:38:23	enthdegree	There exist Banach spaces isomorphic to their second duals but that are not reflexive. (R. C. James)
+2018-03-05 18:38:24	Vince_	lmao
+2018-03-05 18:38:27	Batzy	cirlce*
+2018-03-05 18:38:28	Batzy	sorry
+2018-03-05 18:38:37	Batzy	Vince_: it's the same idea you just need to know some trig
+2018-03-05 18:38:40	Vince_	k im off for supper thx for the help!
+2018-03-05 18:38:44	Batzy	cya
+2018-03-05 18:38:51	jimbzy	Cheers amigo
+2018-03-05 18:41:04	Batzy	i dont think i've ever said "im off for supper" in my life.
+2018-03-05 18:41:36	jimbzy	:)
+2018-03-05 18:42:17	Millennial	unyu: they do
+2018-03-05 18:42:28	Millennial	namely, the x-adic topology
+2018-03-05 18:42:39	Millennial	R[[x]] is the completion of R[x] in the x-adic topology
+2018-03-05 18:43:21	jamesson	 Does this look sane? i.imgur.com/Y55U5bu.png
+2018-03-05 18:46:19	somiaj	jamesson: sin(theta) = 1/2 has two solutions on the unit circle, and you only included one.
+2018-03-05 18:46:42	somiaj	I really don't know what your goal is, so I can't really say much more than that, unsure what A_t is or what area you are trying to compute.
+2018-03-05 18:48:19	jamesson	somiaj: goal is to find area common to r=4 sin (2theta) and r=2
+2018-03-05 18:48:42	unyu	Millennial: And what is the topology of R[x]?
+2018-03-05 18:49:21	unyu	Millennial: If R[[x]] is really a completion, then R[x] can't be discrete, even for R discrete, as I originally expected, right?
+2018-03-05 18:49:33	Millennial	unyu: R[x] is not discrete, no
+2018-03-05 18:50:04	Aleric	I'm trying to find the inverse of my function...
+2018-03-05 18:50:09	Aleric	still*
+2018-03-05 18:50:16	somiaj	jamesson: yea, then I think you need the solution you lost to sin(foo) = 1/2, and I assume you mean you want the area of the four pieces of the pedals that are inside the r=2 circle? https://www.desmos.com/calculator/ukbbc8ssyy
+2018-03-05 18:50:43	Batzy	Aleric: whatever function that is
+2018-03-05 18:50:48	Millennial	unyu: if you want to "visualize" it, imagine the construction of the cantor set
+2018-03-05 18:51:00	somiaj	jamesson: oh wait, I think I see what you are doing, yea you might be able to avoid that second solution via symetry
+2018-03-05 18:51:07	Discrete	Im looking for a book or paper covering discrete mathematics, any tips
+2018-03-05 18:51:40	Millennial	R[[x]] is analogous to the cantor set, whereas R[x] you can imagine as the countable dense subset you get by looking at the boundary of each set in the recursive construction and taking a union
+2018-03-05 18:51:40	Aleric	Batzy: g(n) = 2n + 1 - sum_of_digits_in_base_two(n)
+2018-03-05 18:51:45	jamesson	Yea exactly, the book wrote the second solution and then for some reason dumped it and doubled the first
+2018-03-05 18:52:05	jamesson	somiaj: but your graph is correct
+2018-03-05 18:52:07	Millennial	this analogy works nicely if you consider Z and Z_2 in the dyadic topology
+2018-03-05 18:52:24	Millennial	in the general case of R[x], it may not work as nicely, but it's roughly the kind of thing that's going on
+2018-03-05 18:52:50	unyu	Millennial: So, “ax” and “bx” are closer than “a” and “b” originally were. Moreover, “ax^2” and “bx^2” are even closer. And so on?
+2018-03-05 18:52:50	a____ptr	which topic is this relevant to?
+2018-03-05 18:53:03	a____ptr	(i still have never seen p-adic or w/e irl)
+2018-03-05 18:53:08	jamesson	somiaj: I just wanted to see if you thought my calculation was accurate, because I cannot see yet that the answer I got matches the book
+2018-03-05 18:54:02	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 18:54:02	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 18:54:02	⚡	Channel ##math: 885 nicks (0 ops, 0 voices, 885 normals)
+2018-03-05 18:59:26	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 18:59:26	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 18:59:26	⚡	Channel ##math: 884 nicks (0 ops, 0 voices, 884 normals)
+2018-03-05 18:59:27	tannishpage	jamesson: I am not too sure. But I think it means a plane that lies on the X origin and Z axies
+2018-03-05 18:59:36	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 18:59:45	⚡	You are now known as bbugyi201
+2018-03-05 18:59:45	tannishpage	jamesson: I need help with b
+2018-03-05 18:59:47	somiaj	jamesson: I think XOZ plane is the xz-plane by most.
+2018-03-05 18:59:54	brett01479	a____ptr, what are you saying about cts and injective?
+2018-03-05 19:00:05	jamesson	somiaj: ?
+2018-03-05 19:00:25	a____ptr	brett01479: ?
+2018-03-05 19:00:59	somiaj	jamesson: you asked what the first one meant, to me it looks like it is asking for the XZ plane
+2018-03-05 19:01:03	brett01479	were you saying something about continuous and injective implying something
+2018-03-05 19:01:31	tannishpage	somiaj, jamesson: I need help with b.
+2018-03-05 19:01:39	a____ptr	brett01479: i said "i need to show that f(A) is open and f^-1 is differentiable"
+2018-03-05 19:01:39	unyu	a____ptr: Err, sorry, I should have said “if g's order didn't divide q”.
+2018-03-05 19:01:41	jamesson	somiaj: O Ok
+2018-03-05 19:01:46	tannishpage	I should've said that
+2018-03-05 19:02:08	brett01479	a____ptr, just wanted to clarify that cts + injective doesn't imply f'(x) has nonzero det
+2018-03-05 19:02:29	jamesson	tannishpage: I actually have to do more work with this myself, but the idea is that z-axis is a normal vector
+2018-03-05 19:02:37	a____ptr	brett01479: no its part of the given assumption
+2018-03-05 19:02:57	tannishpage	jamesson: ok.
+2018-03-05 19:02:59	brett01479	a____ptr, was injective part of the assumption?
+2018-03-05 19:03:06	a____ptr	brett01479: yes..
+2018-03-05 19:03:09	brett01479	cool
+2018-03-05 19:03:14	a____ptr	brett01479: well "one-to-one" in spivak
+2018-03-05 19:03:23	a____ptr	i could be wrong but page 11 says injective, i think
+2018-03-05 19:03:57	⚡	You are now known as bbugyi200
+2018-03-05 19:03:58	a____ptr	yeah it is injective in a more saner terminology
+2018-03-05 19:04:13	brett01479	yeah, definitely use inverse fn theorem
+2018-03-05 19:07:25	a____ptr	injective + inverse function theorem just gives you every point has an open set which its inverse is homeomorphic... ?
+2018-03-05 19:08:01	a____ptr	every point f(x) i shouldve clarified...
+2018-03-05 19:10:12	brett01479	it does give you that
+2018-03-05 19:14:24	⚡	negatratoron is now known as jcarpenter2
+2018-03-05 19:14:55	a____ptr	brett01479: so the image is open because its an open union of f: V -> W, where v is open nbhd of x, and W is open nbhd of f(x)?
+2018-03-05 19:16:50	a____ptr	{moreover, we have that for different points x, x' in A, this "local" homeomorphism must agree since if we take V (open nbhd of x) and V' (open nbhd of x'), if their intersection is nonempty inverse function theorem still applies so their image must agree on overlaps, so i can apply gluing lemma?)
+2018-03-05 19:45:42	Z-module	a____ptr: for that thing up there, your "so" is out of place. You have to *assume* f is a C^1 (or better) function and that f' never vanishes on A.
+2018-03-05 19:47:01	Z-module	(I mean, has full rank on all of A)
+2018-03-05 19:48:00	because	Hi
+2018-03-05 19:48:20	⚡	because is now known as Guest25404
+2018-03-05 19:48:29	Guest25404	hello
+2018-03-05 19:51:44	⚡	fstd_ is now known as fstd
+2018-03-05 19:52:44	EI24	hi, in linear algebra, does a plane equation represent a line with the same direction as the normal vector?
+2018-03-05 19:54:14	EI24	is the plane equation parallel to the normal vector?
+2018-03-05 19:54:16	EI24	rather
+2018-03-05 19:57:07	a____ptr	Z-module: spivak's included det f'(a) is never zero but never mention if f is C^0 or C^1
+2018-03-05 20:01:50	wikiemol	I cannot get anyone in any of the many physics chats I've tried to explain things to me mathematically haha
+2018-03-05 20:08:18	wikiemol	This is really simple physics, but for some reason I am just not understanding it. Lets say we have a block of mass m and a force F acting on the block right? So the entire block starts accelerating at an acceleration a. Half of the block has the same acceleration, but it has half the mass. Since F = ma, wouldn't the force on half the block be F/2 ?
+2018-03-05 20:17:07	somiaj	wikiemol: seems reasonable, adnt here is ##physics too.
+2018-03-05 20:17:30	Ozera	I think its just one #
+2018-03-05 20:17:41	somiaj	no like math I think it is too, due to freenode policy
+2018-03-05 20:17:56	Ozera	oh
+2018-03-05 20:18:10	somiaj	by policy only 'offical open source project channels' get one #, and math and physics aren't really controled by some open source group.
+2018-03-05 20:18:14	wikiemol	somiaj: I went there, but they told me that wasn't true
+2018-03-05 20:18:41	wikiemol	But they would only give me "physicsy" reasoning, and not mathematical reasoning
+2018-03-05 20:19:12	somiaj	wikiemol: you want physics reasoning with physics, not math, math comes up with lots of things that cannot happen in physics.
+2018-03-05 20:19:56	somiaj	wikiemol: but anyways, I think it is more how you word your question. I don't think you want to think about if you have a full force acting on a block, then you would ahve half the force acting on half the block. Usually you treat the block as a point object at its center of mass
+2018-03-05 20:21:41	wikiemol	Maybe you're right
+2018-03-05 20:21:46	wikiemol	Thanks
+2018-03-05 20:23:00	somiaj	so if you phrased your question as if you had a second block of half the mass of the first, then the force required to move that block with the same acceleratio as the first is half the force.
+2018-03-05 20:23:51	somiaj	I think the phsyical issue is you have a single block that is considered a 'rigid' object in physics, you cannot apply a force to just half of it, and you cannot accelerate just half of it without accelerating the other half, but ##physics would be be the place for this, as in you do want a physical explination of thins, not a math one.
+2018-03-05 20:24:53	wikiemol	Ugh, physical explanations frustrate me :( I thought this was something that could be derived mathematically from the classical lagrangian
+2018-03-05 20:27:40	JesusHChrist	Hey! Could someone help me with the formula for the variance of the disturbance term in an ordinary linear regression model?
+2018-03-05 20:31:44	⚡	mrdata-- is now known as mrdata-
+2018-03-05 20:31:51	waterdrop	I'm reading Bishop and having trouble with some of the notation / I lack familiarity with higher dimensional integrals or measure theory. If w is a vector of parameters, what would the integral over w of p(A|w)p(w)dw denote? Conceptually, I think this is the quantity that we get by splitting n-dimensional space (where w has length n) into little boxes, evaluating p(w) at a point in the box, computing the volume of the box (where vol
+2018-03-05 20:34:50	somiaj	think of w being a 2D vector, then dw is an area, and that is like a double integral of f(x,y) dA
+2018-03-05 20:35:00	Millennial	waterdrop: if you're integrating over all possible values of w, i.e if \int p(w) dw = 1, then \int p(A|w) p(w) dw = p(A)
+2018-03-05 20:35:12	Millennial	p(A|w) p(w) is just p(A \cap w)
+2018-03-05 20:35:13	somiaj	so in general it looks like dw is a scalar quanity that represents the 'volume' of a tiny piece of your space.
+2018-03-05 20:35:20	Millennial	i.e it's the probability of both happening at the same time
+2018-03-05 20:36:29	waterdrop	Millennial: = p(A), you meant, right?
+2018-03-05 20:36:58	waterdrop	somiaj: Yeah, I said above that I think that the dw represents volume. I'm not sure what you meant by thinking of w as a 2d vector…does what I said above seem right?
+2018-03-05 20:37:12	Millennial	waterdrop: that's what i wrote
+2018-03-05 20:37:32	waterdrop	Millennial: The part after the p turned into a smiley face
+2018-03-05 20:38:08	waterdrop	Millennial: Does what I wrote above about what quantity that integral actually is seem right though?
+2018-03-05 20:38:23	Millennial	it's needlessly complicated
+2018-03-05 20:38:49	waterdrop	Millennial: Yeah I had a bit of trouble expressing it. Is it right though haha?
+2018-03-05 20:38:56	waterdrop	I'm just trying to make sure I understand what quantity it is
+2018-03-05 20:41:07	somiaj	waterdrop: I was just giving a 2D as an example to help give a away to visualize the integral, your actual description got cut off.
+2018-03-05 20:42:05	waterdrop	somiaj: I think this is the quantity that we get by splitting n-dimensional space (where w has length n) into little boxes, evaluating p(w) at a point in the box, computing the volume of the box (where volume is defined in R^n as the product of the lengths of each of the "sides" of the box), using that volume for "dw", and then multiplying p(A|w)p(w)dw, where the w in p(A|w) and p(w) uses the value for w at the center of the box. Th
+2018-03-05 20:42:33	somiaj	you cut out at again, after the line venter of the box. Th.....
+2018-03-05 20:43:18	waterdrop	…at the center of the box. Then we sum p(A|w)p(w)dw, where we compute this as described above for each box, over our little boxes as the volume of each box -> 0
+2018-03-05 20:45:38	waterdrop	somiaj: Is that right?
+2018-03-05 20:46:51	somiaj	I'm trying to parse it, but over all I think that it is more just a generic description of an integral there over including much probability.
+2018-03-05 20:47:14	somiaj	but yes, if you wanted to define that integral, that is how you define it interms of volumes of boxes, and taking the limit as the volume of the tiny boxxes ->0
+2018-03-05 20:47:48	Liz	Hi everyone
+2018-03-05 20:47:52	waterdrop	somiaj: Yes, I agree it's just an integral…I just haven't seen integrals in R^n for n > 3
+2018-03-05 20:48:01	⚡	Liz is now known as Guest86004
+2018-03-05 20:48:26	somiaj	waterdrop: provided they are in R^n, just extend the double, triple, four times, etc integral.
+2018-03-05 20:48:29	Guest86004	Oh... Um. Okay. I just have a question about this quiz im doing.
+2018-03-05 20:49:21	Guest86004	given a mean of 7.6 and a standard deviation of 3.1, within how many standard deviations of the mean to the values 10, 9, 11, 5, and 3 fall? My choices are 0, 1, 2, and 3
+2018-03-05 20:50:10	somiaj	waterdrop: but in this case I would notice that p(w)dw has more meaning than just volume, it is related to the probability measure, or more specifically you can define P(A) = int_A p(w) dw, where p(w) is the density function.
+2018-03-05 20:50:11	waterdrop	somiaj: Okay. And the way we compute volume for the "dw" at the end would just be the product of the lengths of the sides, right? So if we wanted to integrate a function f(x_1, …, x_5) in R^5 over a region, we'd split that region into boxes in the usual way, and for each box we'd evaluate f at the center of the box and take the volume to be the product of the length of the sides of the box? (so, 5 sides)
+2018-03-05 20:51:12	somiaj	Guest86004: does this help. If you are 2 standard devitions away from the mean you are between 7.6 - 2*3.1 and 7.6 + 2*3.1
+2018-03-05 20:51:40	waterdrop	somiaj: Uh, P(A) would be int over w of p(A|w)p(w)dw (that's just the law of total probability). And yeah, p(w)dw is roughly the probability that w falls in the box centered at that specific value of w
+2018-03-05 20:52:18	somiaj	waterdrop: so if you only integrate over the set A, then P(A) = int_A p(w) dw, in essence that is how probability is related to a probablity density.
+2018-03-05 20:52:58	somiaj	waterdrop: and yes, you can define Riemann integrals in R^n in such a way (though my experience is probablity usually prefers lebesgue integrals)
+2018-03-05 20:53:05	somiaj	my very limted experience
+2018-03-05 20:53:23	waterdrop	somiaj: Oh sure, if A is a subset of the values that w can take on, then yeah. In the original thing, A was just an event.
+2018-03-05 20:53:49	waterdrop	somiaj: But yeah, I see what you're saying. If A is a subset of values that w can take on, then P(w falls in A) = int_Ap(w)dw
+2018-03-05 20:54:06	somiaj	waterdrop: and events are subsets of the state space, and the idea is with a probablity measure you can integrate over the event to get its probablity.
+2018-03-05 20:54:14	Guest86004	No because Im not sure how to get my answer from that. I put both those into the calculator and didnt get an answer
+2018-03-05 20:54:22	waterdrop	somiaj: Ah I see. Okay that's past me :)
+2018-03-05 20:55:04	waterdrop	somiaj: thanks for the help
+2018-03-05 20:55:06	somiaj	waterdrop: it is basically what you are doing, the major difference I see is what you are doing only works for continous distributions that have a density function p(w).
+2018-03-05 20:55:42	waterdrop	somiaj: Right. Yeah, I'm only dealing with such distributions right now :) I unfortunately don't know any measure theory.
+2018-03-05 20:55:47	somiaj	waterdrop: if you abstract integration a bit, you can turn put both discrete and continous distributions under the same theory of integration with repsect to a probablity measure.
+2018-03-05 20:56:00	waterdrop	I see
+2018-03-05 20:56:55	somiaj	Guest86004: Draw out a number line, put the center at 7.6. Go one standard devation to the left and right of that, 7.6 - 3.1 and 7.6 + 3.1, draw a mark, go two standard devitionas away, 7.6 - 2*3.1 and 7.6 + 2*3.1, this way you are measuring distance away in terms of these new ticks, which is number of standard deviations away from the mean
+2018-03-05 20:57:17	Guest86004	I got it wrong and it caused me to fail the quiz. Thanks anyway guys.
+2018-03-05 20:58:14	somiaj	Guest86004: then put your numbers 10, and so on on the number line, using this new tick system, where do they appear, how far away from the mean are they in terms of standard devations. For example 10: 7.6 + 3.1 = 10.7, so 10 is within 1 standard deviation from the mean, while 12 is between 1 and 2 standard devations from the mean (or within 2 standard devations from the mean)
+2018-03-05 21:08:00	B132	I need to prove that trace(AB) = trace(BA)
+2018-03-05 21:08:35	B132	I was thinking that I can use the left-multiplication transformation.
+2018-03-05 21:09:04	B132	But does it make sense to write that the trace(A) = trace(L_A)?
+2018-03-05 21:11:07	i_c-Y	you need AB and BA to be both defined, obviously. but you can do this directly from trace as sum of diagonal entries in one line.
+2018-03-05 21:11:59	i_c-Y	tr(AB) = sum(i=1 to n, j=1 to m A(i,j) B(j,i) ) = sum(j=1 to m, i=1 to n B(j,i) A(i,j)) = tr(BA)
+2018-03-05 21:12:49	B132	Can you say that the trace(AB) = trace(L_AB) = trace(L_A*L_B) = trace(L_A)trace(L_B) = trace(L_B)trace(L_A) = trace(L_B*L_A) = trace(L_BA) = trace(BA)?
+2018-03-05 21:13:58	B132	I think not.
+2018-03-05 21:14:00	i_c-Y	no.
+2018-03-05 21:14:02	B132	I see what your saying.
+2018-03-05 21:14:06	i_c-Y	trace of product is not product of trace.
+2018-03-05 21:18:18	waterdrop	somiaj: Are you still around?
+2018-03-05 21:19:31	somiaj	waterdrop: I am, but best practice is just ask the channel a question if you have one.
+2018-03-05 21:20:05	waterdrop	somiaj: Two questions if you're still free - P(A|w, B, C)p(w|B, C) = p(A, w) | B, C. Is that true? And if w_1, …, w_n is a partition of a sample space, then P(A|B, C) = sum over i of P(A, w_i | B, C). Is that true?
+2018-03-05 21:21:15	waterdrop	somiaj: Sorry, the right hand side of the first equality should read p(A, w | B, C).
+2018-03-05 21:21:30	somiaj	I don't quite follow that notation, so can't answer and its been a while since I have done much with this.
+2018-03-05 21:21:51	waterdrop	somiaj: Ah ok, np
+2018-03-05 21:21:58	somiaj	also it sometimes appears you are switching P(foo) for the probablity of an event and p(w) the probablity density function.
+2018-03-05 21:22:11	mandeep	in high school what subset of geometry is typically taught? euclidean?
+2018-03-05 21:22:49	waterdrop	somiaj: Everything above is the probability of an event. Earlier, only p(w | ..) was a density. P(A|w) earlier was the probability of an event.
+2018-03-05 21:23:41	waterdrop	somiaj: So only the p(w|..) earlier were densities. Everything else I've meant the probability of an event. (including with the w's most recently above)
+2018-03-05 21:24:44	somiaj	and as a density p(w|A) means 0 unless you are inside of A, then p(w)?
+2018-03-05 21:25:45	waterdrop	somiaj: uh, I never used p(w|A) earlier actually. I only used p(w) to denote a density
+2018-03-05 21:26:36	somiaj	oh sorry you had p(A|w) -- wasn't quite sure what that was supose to mean.
+2018-03-05 21:29:51	⚡	bitch is now known as Phoque
+2018-03-05 21:33:30	waterdrop	somiaj: hmm that would be the probability of A given a value for w. I think that makes sense. p(w)dw is the probability of w falling in a small box, and P(A|w) is roughly the probability of A given that w is in that small box. so int_{w}P(A|w)p(w)dw should be P(A) using the law of total probability
+2018-03-05 21:33:45	waterdrop	is that right?
+2018-03-05 21:35:19	⚡	Phoque is now known as bitch
+2018-03-05 21:36:53	somiaj	waterdrop: I think there is some mixing of notation I'm not use to, to me you can only have conditional probabiltiy given an event, and w isn't reprsenting an event here.
+2018-03-05 21:37:35	somiaj	but I think there is something I'm over looking
+2018-03-05 21:38:07	waterdrop	somiaj: well it's P(A|w={x_1, x_2, …, x_n})…so the probability of A given a specific value for w
+2018-03-05 21:38:10	waterdrop	does that make sense?
+2018-03-05 21:38:13	somiaj	but anyways, maybe someone else who knows more about this than I can that could help
+2018-03-05 21:38:36	waterdrop	btw this is from Bishop's Pattern Recognition and Machine Learning Equation 1.68
+2018-03-05 21:40:39	waterdrop	somiaj: https://www.probabilitycourse.com/chapter5/5_2_3_conditioning_independence.php - what I'm saying above is just the equation 5.16 here
+2018-03-05 21:42:28	somiaj	waterdrop: that is more the notation I'm use to, everything there makes sense.
+2018-03-05 21:42:47	waterdrop	somiaj: uh, how is it different from what I wrote above?
+2018-03-05 21:43:15	waterdrop	P(A) = int_{W}P(A|W=w)p_W(w)dw - does that help?
+2018-03-05 21:44:18	waterdrop	int_{W} is over all possible values that W can take on, P(A|W=w) is the probability of the event A given W=w, p_W(w) is the density for W
+2018-03-05 21:47:09	somiaj	waterdrop: for me since I'm not familar with the theory, small things just confuse me, P(A|w) didn't make sense because I didn't realize there was a random variable W involved.
+2018-03-05 21:47:44	waterdrop	somiaj: Okay but it does make sense now right?
+2018-03-05 21:48:06	somiaj	anyways seems reasonable, I don't know enough to say for sure though.
+2018-03-05 21:48:13	waterdrop	ok
+2018-03-05 21:49:00	waterdrop	somiaj: well for equation 5.16 on the page I linked, the P(A|X=x) would just be the probability for A given a value x for X, right? It would not be a density.
+2018-03-05 21:51:56	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 21:51:56	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 21:51:56	⚡	Channel ##math: 874 nicks (0 ops, 0 voices, 874 normals)
+2018-03-05 21:52:12	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 21:56:18	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 21:56:18	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 21:56:18	⚡	Channel ##math: 876 nicks (0 ops, 0 voices, 876 normals)
+2018-03-05 21:56:33	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 21:56:51	somiaj	waterdrop: yes P(A|X=x) is the probablity of A given the vent X=x
+2018-03-05 21:57:04	webbb	hi
+2018-03-05 21:57:20	webbb	hm, so when I multiply two sine functions I can somehow simplify them?
+2018-03-05 21:57:30	webbb	sin(22deg) * sin(10deg) ? :)
+2018-03-05 21:57:37	webbb	or is there no way making it simpler?
+2018-03-05 21:58:29	somiaj	df00z: don't quite follow what you are asking, what 1 are you taking about? something like a^0 = 1?
+2018-03-05 21:59:04	somiaj	webbb: define simpiler? What is your goal? (like are you trying to find an antiderivative)
+2018-03-05 21:59:34	webbb	somiaj: could I avoid further calculating the actual sinus value?
+2018-03-05 21:59:45	df00z	He's using a compound interest formula to explain euler's formula.  A = P(1 + r / n) ^ n    Where A is amount, P is principal, r is interest rate, n is the number of times interest is compounded per year
+2018-03-05 22:00:11	df00z	where is the "1" coming from in this formula?
+2018-03-05 22:00:54	waterdrop	somiaj: Uh, now I think more about it though, how does that make sense rigorously? x is continuous, so X=x formally has 0 probability, right? so P(A|X=x) should be 0?
+2018-03-05 22:00:56	somiaj	webbb: with those angles I don't think you can get any nice calculation you can use special angles. So if you want a result, just plug it into a calculator.
+2018-03-05 22:01:06	df00z	I see it more like      (r/n) + (r/n) + (r/n) if n is 3
+2018-03-05 22:01:07	somiaj	webbb: there is what is known as the product to sum formulas that might help.
+2018-03-05 22:01:22	df00z	How do i intuit the "1" in the formula
+2018-03-05 22:01:37	somiaj	df00z: the interst formula gives the amount, so the 1 is what you start with.
+2018-03-05 22:02:11	df00z	It's not what you start with though
+2018-03-05 22:02:12	df00z	thats P
+2018-03-05 22:02:17	df00z	the second one
+2018-03-05 22:02:22	somiaj	df00z: Example, simple interst 5%, and the amount is $100. The interst is $100*0.05 = $5, the new amount is $100 + 0.05*$100 = $100*(1 + 0.05)
+2018-03-05 22:02:42	df00z	Yes!
+2018-03-05 22:02:43	somiaj	df00z: it is 100% = 1 is what you start with.
+2018-03-05 22:02:45	df00z	that last piece there
+2018-03-05 22:02:46	webbb	somiaj: yes, exactly this! :)
+2018-03-05 22:03:23	somiaj	df00z: In general if you increase by 5%, then you are 105% of the starting amount.
+2018-03-05 22:03:46	somiaj	df00z: so if you increase by an interst rate of r, the amount you multiply by is 1+r
+2018-03-05 22:04:04	df00z	Hmmm.
+2018-03-05 22:04:48	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 22:04:48	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 22:04:49	⚡	Channel ##math: 874 nicks (0 ops, 0 voices, 874 normals)
+2018-03-05 22:04:50	df00z	Is there anything I could read on that?   I don't get it...
+2018-03-05 22:04:50	df00z	lol
+2018-03-05 22:05:04	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 22:05:06	df00z	I get that 105....is 100 + 5%
+2018-03-05 22:05:26	illustion	is there a quick way to show that D = { 1 < |z| < 2 } and D = {2 < |z| < 3} are not conformally equivalent ?
+2018-03-05 22:05:41	somiaj	Unsure what is the best key words for google. look up things like "percentage increase" and "percentage of", these are different, yet related ideas.
+2018-03-05 22:06:01	somiaj	illustion: what does conformally equivlant mean?
+2018-03-05 22:06:14	illustion	meaning biholomorphism
+2018-03-05 22:06:50	illustion	holomorphic map that is bijective
+2018-03-05 22:08:07	waterdrop	somiaj: Any idea about my last question?
+2018-03-05 22:09:05	illustion	I think it would contradict Riemann mapping theorem ?
+2018-03-05 22:09:35	somiaj	illustion: D is not simply connected
+2018-03-05 22:09:42	illustion	yes
+2018-03-05 22:09:52	illustion	D1 and D2 aren’t simply connected
+2018-03-05 22:10:02	somiaj	illustion: but I don't know a simple way to say this, because they seem very similar to me (both discs with holes in them)
+2018-03-05 22:10:14	somiaj	illustion: so the Riemann mapping theroem wont' apply
+2018-03-05 22:10:31	illustion	yes
+2018-03-05 22:12:06	somiaj	waterdrop: I'm unsure there, but I don't see the overall goal. Are you trying to prove some relation, or just looking for a nice way to define P(A) with an integral?
+2018-03-05 22:13:03	waterdrop	somiaj: I'm just wondering why it makes sense to say that P(A|X=x) is the probability of A given X=x, when X=x should technically have probability 0 for any x since X is continuous
+2018-03-05 22:17:03	df00z	I get it I think - 100 *(1 + .05) is equivalent to 100 + 0.05*100.      I guess when to do that kind of transformation as it relates to using pow isn't intuitive to me.
+2018-03-05 22:18:02	somiaj	df00z: you repeate this, start with $100, after one cycle you have $100*(1 + 0.05) = $105, now you start the new cycle with $105, so you do $105*(1 + 0.05) = .. and then you get the result and repeate.
+2018-03-05 22:18:06	somiaj	df00z: that make sense?
+2018-03-05 22:18:56	df00z	Yeah.
+2018-03-05 22:19:14	somiaj	waterdrop: yea I'm not quite sure what is going on, they might be working with a density there and not a probablity, but I only know the very basics of the theory so subtle things like that get me too. Formally it might be something liek this. https://en.wikipedia.org/wiki/Conditional_probability_distribution#Continuous_distributions
+2018-03-05 22:19:16	df00z	Thanks, now I can progress.
+2018-03-05 22:19:50	Z-module	hmm, illustion, is this the same as proving that for any holomorphic bijecction f:D1 -> D2,  f' has a zero somewhere in D1 ?
+2018-03-05 22:19:58	somiaj	df00z: well I'm just gonna not do any computations and whatch what happesn: Start with 100, then get 100*(1 + 0.05), then get [100*(1 + 0.05)] * (1 + 0.05) = 100*(1 + 0.05)^2
+2018-03-05 22:20:45	somiaj	df00z: then I'm going to take the next step which is [100*(1 + 0.05)^2] * (1 + 0.05) = 100*(1 + 0.05)^3, and so on.
+2018-03-05 22:21:01	illustion	Z-module: so I think I got it
+2018-03-05 22:21:07	somiaj	so each step I apply interest I multiply by (1 + 0.05) to the previous ammount, and repeating this turns into exponents.
+2018-03-05 22:22:27	⚡	Map is now known as Guest14307
+2018-03-05 22:22:34	Z-module	well, I saw the beginning of a proof in a book
+2018-03-05 22:22:38	illustion	Z-module: so I think we can get contradiction for open mapping theorem somehow
+2018-03-05 22:23:08	waterdrop	somiaj: Hmm okay
+2018-03-05 22:23:11	waterdrop	thanks
+2018-03-05 22:23:13	df00z	I think I am starting to get it, it is going to take me a bit to wrap my head around.
+2018-03-05 22:23:22	waterdrop	Z-module: Are you familiar with continuous probability theory?
+2018-03-05 22:23:53	Z-module	turns out that two open annuli, one having inner and outer radii r < R, the other s < S  (all of r, R, s, S finite and positive) are conformally equivalent iff R/r = S/s
+2018-03-05 22:24:00	Z-module	waterdrop, not much
+2018-03-05 22:28:39	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 22:28:39	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 22:28:39	⚡	Channel ##math: 875 nicks (0 ops, 0 voices, 875 normals)
+2018-03-05 22:28:54	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 22:29:32	somiaj	Z-module: its like they knew exactly what page you would want and took it out.
+2018-03-05 22:31:41	Z-module	same thing happens in another complex analysis book
+2018-03-05 22:31:49	Z-module	apparently it's a somewhat tricky argument
+2018-03-05 22:41:32	⚡	puff````` is now known as puff
+2018-03-05 22:47:11	somiaj	waterdrop: It is probably some density like thing if you think in terms of Riemann integrals, recall that you really have cubes, so you have P(A| X in small box centered at x) * p(x) * volume of box, making this -> 0 will give that term sense, even if it is equal to 0 in the limit of P(A|X=x), though i'm unsure if this is a good way to intruprit it or not.
+2018-03-05 22:58:25	waterdrop	somiaj: Oh I guess it does make sense to think of P(A|X=x) as the limit of P(A|X is in a small box centered at x) as the volume of the box -> 0
+2018-03-05 22:59:50	somiaj	yea it is 0, but in the integral it gains meaning
+2018-03-05 23:00:00	somiaj	(well provided x isn't a point mass)
+2018-03-05 23:00:17	waterdrop	somiaj: well it's not 0 actually
+2018-03-05 23:00:50	waterdrop	I think P(A|X=x) is defined to be the limit of P(A|X falls in a box centered at x) as the volume of that box -> 0
+2018-03-05 23:00:55	waterdrop	that limit wouldn't be 0
+2018-03-05 23:01:03	waterdrop	*wouldn't necessarily be 0
+2018-03-05 23:04:19	waterdrop	somiaj: Yeah, I'm pretty sure that's right - check this out http://www.stat.yale.edu/~pollard/Courses/241.fall2014/notes2014/CtsCondition.pdf (the 8.5 part, where they define E[Y|X=x] using a limit like I described above)
+2018-03-05 23:05:40	waterdrop	X is a continuous random variable there with density function f, and they define, E(Y|X=z) = limit as e -> 0 of E(Y|z <= X <= z + e)
+2018-03-05 23:09:03	somiaj	I think they are defining it inside the integral which changes things. But this is not something I know much about.
+2018-03-05 23:14:19	waterdrop	somiaj: what do you mean by defining it inside the integral?
+2018-03-05 23:15:14	somiaj	the integral itself is a limit as the things you are summing up approach zero, so it is fine for that limit to approach zero and still give the integral a non-zero value.
+2018-03-05 23:17:18	waterdrop	somiaj: But P(A|X=x) has a definition independent of the integral (and so does p(w), the density for W). The only thing "going to 0" in the integral is dw, the volume of the box.
+2018-03-05 23:18:05	waterdrop	The integral is a limit of a Riemann sum as the volumes of the boxes you use go to 0, right? But P(A|X=x) is defined independently of the limit of the Riemann sum.
+2018-03-05 23:18:51	waterdrop	somiaj: what I'm saying is that P(A|X=x) is defined to be the limit as e -> 0 of P(A|x - e < X < x + e), which has nothing to do with the Riemann integral.
+2018-03-05 23:20:27	somiaj	Okay, but for a continous random variable, that would give 0, as you pointed out eariler.
+2018-03-05 23:20:49	waterdrop	somiaj: no it wouldn't give 0
+2018-03-05 23:21:29	waterdrop	somiaj: in the page I linked above with the stat 241 course notes from yale, they define E[Y|X=x] = lim e -> 0 of E[Y|x - e < X < x + e]
+2018-03-05 23:21:34	somiaj	why do you think it wouldn't be 0? I can only see it not being zero in the case x is a point mass.
+2018-03-05 23:22:36	waterdrop	somiaj: We're taking the limit as e -> 0 on the right hand side, right? For any e > 0, P(A|x - e < X < x + e) is non zero.
+2018-03-05 23:22:53	waterdrop	*well, can be non-zero
+2018-03-05 23:23:06	waterdrop	P(A| x - 0.001 < X < x + 0.001), for example
+2018-03-05 23:23:16	somiaj	sure, but its limit will be 0 if X is continous.
+2018-03-05 23:23:29	somiaj	(though maybe I'm not understanding the conditional correclty)
+2018-03-05 23:24:05	somiaj	oh I see, yea I was missunderstanding the conditional.
+2018-03-05 23:25:16	somiaj	as I said, I'm not that good at this stuff...:/
+2018-03-05 23:26:07	waterdrop	somiaj: How were you reading it? yeah intuitively as e -> 0, then x - e < X < x + e is a smaller part of the sample space, but P(A|x - e < X < x + e) is just looking at the fraction that A takes up in that much smaller sample space, so it doesn't necessarily -> 0. the sample space you're looking at is getting smaller as e -> 0, but we care about the percentage of that space that A takes up
+2018-03-05 23:27:07	waterdrop	somiaj: np, your feedback helped me clarify a lot of stuff for myself :)
+2018-03-05 23:27:09	somiaj	waterdrop: I was thinking more about the fact the probablity of a continous variable -> 0 as e->0, but I forgot about the division by this probablity, i.e. P(A and |x - X| < e)/P( |x - X| < e ) using the definition of conditional probablity.
+2018-03-05 23:27:27	somiaj	and since both the numerator and denomaaintor are goint to zero, that can have a non zero probablity
+2018-03-05 23:27:40	somiaj	(I was only focusing on the fact the numerator went to zero)
+2018-03-05 23:28:10	somiaj	and it is the division by zero why they have to define it as such.
+2018-03-05 23:28:14	waterdrop	somiaj: yeah, I think my more intuitive description above about the sample space getting smaller as e -> 0 but us caring about the fraction that A takes up in that smaller sample space was pretty much just saying what you just said
+2018-03-05 23:29:15	waterdrop	somiaj: not sure what you mean by the division by 0
+2018-03-05 23:29:44	somiaj	waterdrop: A common definition of conditional probablity is P(A|B) = P(A and B)/P(B)
+2018-03-05 23:29:55	waterdrop	yeah I'm familiar with that
+2018-03-05 23:30:08	somiaj	here B = |x - X| < e, and that probablity -> 0 as e -> 0 [that is the probablity I was thinking about]
+2018-03-05 23:30:43	somiaj	so P(B) -> 0 as e->0
+2018-03-05 23:30:49	waterdrop	somiaj: yep. but yeah since we care about the fraction that A takes up, it works fine :)
+2018-03-05 23:31:03	somiaj	correct, but that is what I was over looking when I thought the limit would always be 0
+2018-03-05 23:31:15	waterdrop	somiaj: right
+2018-03-05 23:31:58	waterdrop	I feel like I should probably read a more rigorous probability book before continuing with my current machine learning book…not sure what to read though. I've taken real analysis but it didn't cover lebesgue integration or measure theory.
+2018-03-05 23:33:02	somiaj	The measure theory approach is nice because it puts both continous and discrete under the same frame work (which mostly boils down to an infinte sum is just an integral over a discrete measure)
+2018-03-05 23:33:30	waterdrop	I see
+2018-03-05 23:33:50	waterdrop	maybe I'll just keep learning as I go for now
+2018-03-05 23:34:51	Batzy	Are all complete theories decidable?
+2018-03-05 23:35:24	Batzy	nevermind.
+2018-03-05 23:40:38	Batzy	Also what does the latex command \models really mean?
+2018-03-05 23:42:32	somiaj	https://en.wikipedia.org/wiki/Double_turnstile
+2018-03-05 23:55:39	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 23:55:39	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 23:55:39	⚡	Channel ##math: 880 nicks (0 ops, 0 voices, 880 normals)
+2018-03-05 23:56:20	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-05 23:56:20	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-05 23:56:20	⚡	Channel ##math: 881 nicks (0 ops, 0 voices, 881 normals)
+2018-03-05 23:56:35	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-05 23:57:22	Batzy	also one more question
+2018-03-05 23:58:14	Batzy	https://math.stackexchange.com/questions/158676/complete-incomplete-theory for the anwer given here, we would say that "all models are isomorphic to C_3"?
+2018-03-06 00:02:07	Millennial	Batzy: yeah
+2018-03-06 00:05:42	Zebs	What is the proper way to denote a telescoping set before cancelling things out?
+2018-03-06 00:05:53	Zebs	Telescoping sum, I should say.
+2018-03-06 00:07:23	Zebs	Is it proper to do something like (b - a) + (c - b) + ... + (n - (n - 1))?
+2018-03-06 00:08:10	Millennial	Zebs: yes
+2018-03-06 00:08:10	Zebs	And will the implication of there being a prior (n - 1) be clear enough when it is crossed out?
+2018-03-06 00:08:16	Millennial	yes
+2018-03-06 00:08:18	somiaj	something like that is fine, usually just enough terms to make the cancelation obvious.
+2018-03-06 00:08:26	Zebs	Awesom, thanks!
+2018-03-06 00:08:38	Zebs	*Awesome
+2018-03-06 00:09:24	unyu	It doesn't hurt to write \sum_{i=1}^n (x_i - x_{i-1}) = \sum_{i=1}^n x_i - \sum_{i=1}^n x_{i-1} = \sum_{i=1}^n x_i - \sum_{i=0}^{n-1} x_i = x_n - x_0
+2018-03-06 00:13:02	Zebs	Interesting. So a distribution of the sum before rearranging.
+2018-03-06 00:21:53	Zebs	So, excuse my poor understanding, the -1 of x-1 can distribute to the upper and lower bounds?
+2018-03-06 00:25:43	Millennial	unyu: re your question about R[x]: there's a nice result which says that if K is a field, then the only bounded valuations on K[x] are p-adic for some prime p in K[x]
+2018-03-06 00:26:01	Millennial	a valuation is a norm which respects the ring structure, i.e |ab| = |a| |b|
+2018-03-06 00:26:23	Millennial	this probably doesn't answer your question
+2018-03-06 00:26:25	Millennial	but it's a nice result
+2018-03-06 00:26:28	Millennial	so i thought i'd mention it
+2018-03-06 00:34:32	unyu	Millennial: Ah, thanks!
+2018-03-06 00:35:13	a____ptr	Im not sure how to prove this..
+2018-03-06 00:35:35	a____ptr	Say f: A open subset R^n -> R^n
+2018-03-06 00:35:55	a____ptr	With f injective and det f'(a) is never zero
+2018-03-06 00:36:11	a____ptr	Then f(A) is open and its inverse is diff-able
+2018-03-06 00:36:39	a____ptr	{also spivak's doesn't mention f is C^1... But I think you're supposed to assume it too}
+2018-03-06 00:37:55	math543	a____ptr is f: R^n -> R^n or A -> R^n?
+2018-03-06 00:38:02	a____ptr	I kinda get that for every p in A, we have open nbhds in the domain and codomain which f is homeomorphic
+2018-03-06 00:38:09	a____ptr	math543: the latter
+2018-03-06 00:39:26	a____ptr	(That's from the inverse mapping theorem), so you have an open cover, but I'm not really sure how this entails f(A) is open
+2018-03-06 00:40:04	a____ptr	The union of the open nbhds of f(p) is an open cover which f(A) is a subset of, but idk how to show equality I guess
+2018-03-06 00:40:31	pedro3005	of course f(A) is the union of all f(p)'s for p in A
+2018-03-06 00:40:56	a____ptr	Yeah, but that doesnt really tell you anything
+2018-03-06 00:40:58	pedro3005	so if each f(p) has an open nbhd contained in f(A)
+2018-03-06 00:41:09	pedro3005	then f(A) is the union of all these open nbhds
+2018-03-06 00:41:14	math543	Can anyone help me with https://imgur.com/a/Q3c7o c, and d. ?
+2018-03-06 00:41:39	math543	(functional analysis)
+2018-03-06 00:41:44	a____ptr	pedro3005: if gig
+2018-03-06 00:41:48	a____ptr	Damnit
+2018-03-06 00:42:13	a____ptr	pedro3005: is open nbhd of f(p) supposed to be contained in f(A)?
+2018-03-06 00:42:28	pedro3005	well it's the image of an open nbhd of p
+2018-03-06 00:42:29	a____ptr	(From the statement of inverse function theorem)
+2018-03-06 00:42:35	pedro3005	so how wouldn't it be
+2018-03-06 00:42:47	a____ptr	Ah right
+2018-03-06 00:42:56	a____ptr	Yeah you're right thanks
+2018-03-06 00:43:04	a____ptr	 (I missed that)
+2018-03-06 00:43:15	math543	what? why is an open neighborhood of f(p) contained in f(A)
+2018-03-06 00:43:35	math543	consider f: [0, 1] -> [0, 1] given by x |-> x
+2018-03-06 00:43:43	a____ptr	Its the image of an open nbhd of p math543
+2018-03-06 00:44:04	math543	f: [0, 1] -> R xigven by x |-> x.
+2018-03-06 00:44:12	a____ptr	(For sufficiently small enough nbhd)
+2018-03-06 00:44:12	math543	f(1) = 1.
+2018-03-06 00:44:23	math543	1 has no open neighborhood in f([0, 1]). ...
+2018-03-06 00:44:25	math543	I'm confused
+2018-03-06 00:44:39	math543	either you are wrong or you stated something incorrectly.
+2018-03-06 00:44:43	pedro3005	lesson of the day: be careful around manifolds with boundary
+2018-03-06 00:45:02	math543	pedro3005 so you agree that I have a counterexample to what you said
+2018-03-06 00:45:17	pedro3005	no, i agree that you joined the conversation without understanding its context
+2018-03-06 00:45:31	a____ptr	Brb
+2018-03-06 00:45:36	thermo	B)
+2018-03-06 00:45:38	math543	lol. so please explain to me then why I did not provide a counterexample
+2018-03-06 00:46:00	math543	your claim was that p in A implies f(p) has open nhood in f(A)?
+2018-03-06 00:46:04	pedro3005	the inverse function theorem as we're talking about it is for functions on an open subset of euclidean space
+2018-03-06 00:46:25	pedro3005	that is true if f'(p) is invertible
+2018-03-06 00:47:02	pedro3005	and p is in the interior of A
+2018-03-06 00:47:12	math543	I agree. sorry as stated I didn't see these conditions
+2018-03-06 00:47:38	math543	this prevents countereexamples like the one I had or f: (0, 1) -> R given by x |-> 0.
+2018-03-06 00:47:56	math543	(the former because of open domain), the latter because of invertibility of f'
+2018-03-06 00:48:00	math543	(i.e., det f' != 0
+2018-03-06 00:48:08	math543	Can anyone help me with https://imgur.com/a/Q3c7o c, and d. ?
+2018-03-06 00:48:37	addem	Trying to show that the absolute value of the contour integral of (z+4)/(z^3-1) over quarter-circle from 2 to 2i is bounded above by 6pi/7.  Thought about using the ML Theorem by L is already pi, and it seems unlikely that the integrand is at most 6/7 in absolute value.
+2018-03-06 00:48:42	torchinz	can't understand, how they got the t-value in here: https://imgur.com/oErH9Nq   . Please help
+2018-03-06 00:49:39	addem	torchinz: They used a computer with fancy numerical optimization methods and stuff.
+2018-03-06 00:49:48	addem	You'll likely never need to know how to generate those numbers.
+2018-03-06 00:50:09	addem	But if you really want to know, it's the integral of a function sorta like the Gaussian distribution.
+2018-03-06 00:50:28	math543	Can anyone help me with https://imgur.com/a/Q3c7o c, and d. ?
+2018-03-06 00:50:50	torchinz	addem, can I discuss that in a PM?
+2018-03-06 00:51:03	addem	torchinz: Actually, I take that back, I was thinking of the significance, not the t.
+2018-03-06 00:51:17	antonfire	addem: have you tried checking whether the integrand is at most 6/7
+2018-03-06 00:51:20	addem	The t comes from standardizing--you need to know the mean, variance, and degrees of freedom.
+2018-03-06 00:52:28	addem	antonfire: I started poking at that, but it didn't seem like it was going to turn out right.  But perhaps I should labor on that route harder.
+2018-03-06 00:53:26	antonfire	You could evaluate the integrand at a couple of points on that curve and see what the absolute value is to sanity-check the thing that seems unlikely to you.
+2018-03-06 00:58:51	math543	Can anyone help me with https://imgur.com/a/Q3c7o c, and d. ?
+2018-03-06 00:58:54	addem	Oh damn, that was just the triangle inequality and its reverse.
+2018-03-06 01:03:02	a____ptr	has anyone seen "c" to mean "<=" btw?
+2018-03-06 01:03:15	a____ptr	(where c is the subset symbol, and <= is the implication arrow)
+2018-03-06 01:03:16	⚡	fosstar is now known as happybelatedpida
+2018-03-06 01:03:26	⚡	happybelatedpida is now known as happylatepiday
+2018-03-06 01:03:39	addem	I've seen horseshoe used as implication, but not from right-to-left.
+2018-03-06 01:04:01	a____ptr	yeah i would write the other way around but i dont have reflected c on my keyboard
+2018-03-06 01:04:14	addem	Ah, yeah, that used to be and still is kind of common notation.
+2018-03-06 01:04:36	addem	Among logicians, usually ones with a stronger Philosophy bent.
+2018-03-06 01:04:55	a____ptr	ah, addem so its more common in phil-related stuffs?
+2018-03-06 01:06:23	addem	Yeah.  Of course I'm sure it bleeds out of there, but Quine's book, Priest, lots of logicians who are philosophers use it to mean "material conditional" as distinct from other sorts of conditionals.
+2018-03-06 01:06:43	addem	I think I read a linguistics-heavy logic book that did that too, again distinguishing the material conditional from other conditionals.
+2018-03-06 01:07:35	a____ptr	i didnt know about those, thats neat
+2018-03-06 01:12:07	math543	Can anyone help me with https://imgur.com/a/Q3c7o c, and d. ?
+2018-03-06 01:16:51	addem	What is the contour integral, intuitively?  We can't talk about the area of a curtain in this context.
+2018-03-06 01:18:27	marxS	do we always obtain the normal closure by just adjoining the "missing" zeros
+2018-03-06 01:18:29	marxS	of a polynomial
+2018-03-06 01:18:30	addem	I guess maybe the best way to think about it is as the "net change"?
+2018-03-06 01:19:35	dalcde	a____ptr: Russel & Whitehead does that, for example.
+2018-03-06 01:22:22	Millennial	marxS: yes
+2018-03-06 01:22:32	Millennial	well, not "a polynomial"
+2018-03-06 01:22:54	Millennial	but doing it for the elements of a basis for the field extension is enough
+2018-03-06 01:25:17	marxS	damn normal closures and k-monomorphisms are confusing af lol
+2018-03-06 01:25:37	Millennial	marxS: what's confusing about them
+2018-03-06 01:26:09	marxS	idk, just stuff like this: http://i.imgur.com/dgVzAxl.png
+2018-03-06 01:26:18	marxS	like there's a few different things to wrap your head around
+2018-03-06 01:26:39	marxS	all these monomorphisms linking to automorphisms through isomorphisms of field extensions blah blah...
+2018-03-06 01:27:24	Millennial	marxS: i assume they are saying these things have the same image, which they should have said explicitly
+2018-03-06 01:27:37	Millennial	because an embedding K -> L is not an automorphism of K
+2018-03-06 01:27:56	dalcde	Yeah, a better way of saying (2) and (3) is that every embedding of L/K into a normal extension has the same image.
+2018-03-06 01:28:02	Millennial	yes
+2018-03-06 01:28:16	dalcde	What you really ought/want to do is to say that every embedding into the Galois/separable closure has the same image
+2018-03-06 01:28:23	dalcde	But somehow people have an irrational fear of these closure things
+2018-03-06 01:28:32	dalcde	Maybe because they are not finite.
+2018-03-06 01:28:34	Millennial	dalcde: why are we taking a separable closure
+2018-03-06 01:28:38	Millennial	you mean normal closure
+2018-03-06 01:29:14	dalcde	s/Galois/algebraic/, I mean
+2018-03-06 01:29:20	Millennial	oh
+2018-03-06 01:29:27	Millennial	yeah, sure
+2018-03-06 02:25:10	Batzy	Is it fair to define a model as a set which satisfies a set of axioms?
+2018-03-06 02:25:54	Batzy	nvm i get it
+2018-03-06 02:28:24	pedro3005	get a model theory book and read the definition of model
+2018-03-06 02:28:31	Batzy	OK :(
+2018-03-06 02:28:34	Batzy	no i got it
+2018-03-06 02:28:42	Batzy	pedro3005: Enderton is good?
+2018-03-06 02:28:43	Batzy	I hear
+2018-03-06 02:28:57	pedro3005	dunno
+2018-03-06 02:29:03	Batzy	Do you have one you like?
+2018-03-06 02:30:10	pedro3005	i read a bit of one by david marker, iirc, that was okay. at least it got to the interesting stuff rather than beating around the bush with a bunch of boring elementary logic crap
+2018-03-06 02:30:39	pedro3005	it skips a lot of foundational stuff about first order logic but really who wants to see that
+2018-03-06 02:35:39	blackk	still discussing model theory
+2018-03-06 02:36:02	blackk	I know of only one book but I never read it nor I know anything about model theory
+2018-03-06 02:36:08	blackk	a scott
+2018-03-06 02:36:20	blackk	Intro to Model Theory by Marker
+2018-03-06 02:36:42	Batzy	nice
+2018-03-06 02:36:46	Batzy	I might do the enderton book first
+2018-03-06 02:36:56	Batzy	because I would like to learn elementary logic crap
+2018-03-06 02:36:56	Batzy	:P
+2018-03-06 02:37:15	blackk	is it only mere interest or related to something else
+2018-03-06 02:39:32	Batzy	Well
+2018-03-06 02:39:36	Batzy	im interested.
+2018-03-06 02:39:46	Batzy	which has caused it to be related to something else
+2018-03-06 02:44:42	Batzy	So
+2018-03-06 02:44:54	Batzy	Two models being isomorphic is really just two sets being isomorphic.
+2018-03-06 02:45:45	Batzy	like a model that is N and a model that is Q would be isomorphic.
+2018-03-06 02:46:02	Batzy	it's that simple... okay
+2018-03-06 02:46:11	blackk	I cant even remember what a model was.. I just read 3 pages of Marker like a decade ago
+2018-03-06 02:46:22	blackk	I vaguely remember language, theorem etc.
+2018-03-06 02:46:29	Batzy	blackk: so if I had a set of field axioms
+2018-03-06 02:46:32	Batzy	a model for that would be Q
+2018-03-06 02:46:42	Batzy	it's a "structure" which satisfies those axioms
+2018-03-06 02:46:59	blackk	yeah there is a more precise definition of structure if I can recall
+2018-03-06 02:47:09	Batzy	let me see if its in this book
+2018-03-06 02:47:32	blackk	let me check marker meanwhile
+2018-03-06 02:47:55	Batzy	it's a longish definition
+2018-03-06 02:47:56	Batzy	lol
+2018-03-06 02:48:03	blackk	rifght its in the first page
+2018-03-06 02:48:05	blackk	of marker
+2018-03-06 02:48:09	blackk	here it isnt too long
+2018-03-06 02:48:15	Batzy	and the one i found is a structure of a first order language too
+2018-03-06 02:48:16	blackk	first it defines a language
+2018-03-06 02:48:22	Batzy	wow
+2018-03-06 02:48:31	Batzy	What's that book called again? Do you have it in pdf?
+2018-03-06 02:48:32	blackk	which consists of 3 things
+2018-03-06 02:48:39	blackk	Introduction to Model Theory, by Marker
+2018-03-06 02:48:46	blackk	I saw Marker in a conference once
+2018-03-06 02:48:52	Batzy	My school blocked libgen and im still working on my workaround
+2018-03-06 02:48:53	blackk	I have it in pdf
+2018-03-06 02:48:58	Batzy	can you like give it to me
+2018-03-06 02:49:01	blackk	send me your email I send you the goodies
+2018-03-06 02:49:01	Batzy	dropbox, email, whatever
+2018-03-06 02:49:04	Batzy	kk
+2018-03-06 02:49:09	blackk	ok dropbox would work too
+2018-03-06 02:49:18	blackk	gimme a minute
+2018-03-06 02:49:23	Batzy	I msged you
+2018-03-06 02:51:00	blackk	oh its djvu if thats ok with you
+2018-03-06 02:52:06	Batzy	That's fine
+2018-03-06 02:53:10	Batzy	why do people use djvu anyways?
+2018-03-06 02:53:18	blackk	it has higher compression rate
+2018-03-06 02:53:32	blackk	for a better quality
+2018-03-06 02:53:42	Batzy	Now I know XD
+2018-03-06 02:53:49	blackk	but creating djvu is a pain
+2018-03-06 02:54:28	blackk	reading it is only difficult if you are using an e-reader that doesnt have built in support (like kindle maybe)
+2018-03-06 02:54:45	blackk	anyway
+2018-03-06 02:54:49	blackk	a language is a triple
+2018-03-06 02:55:01	blackk	a set of functions F
+2018-03-06 02:55:12	blackk	and for each elemetn f in F there is an associated integer n_f
+2018-03-06 02:55:19	blackk	positive integer rather
+2018-03-06 02:55:52	blackk	"functions" are just symbol in this context
+2018-03-06 02:56:10	blackk	a set of relation R and similarly for each r in R a positive number n_r is given
+2018-03-06 02:56:21	blackk	"relation" again just symbol
+2018-03-06 02:56:28	blackk	a set of constant symbols C
+2018-03-06 02:57:04	blackk	and marker has example
+2018-03-06 02:57:09	blackk	e.g. language of rings
+2018-03-06 02:57:29	blackk	consists of {+,-,.} as set of binary function symbols
+2018-03-06 02:57:39	blackk	{0,1} as set of constant
+2018-03-06 02:58:07	blackk	and empty set as the set of relations
+2018-03-06 02:58:24	blackk	+,-,. are 2-ary so we associate 2 to each
+2018-03-06 02:58:57	blackk	so if L is a language
+2018-03-06 02:59:05	blackk	one can define an L-structure
+2018-03-06 02:59:23	blackk	which you can read in marker :P
+2018-03-06 02:59:31	blackk	its 5 lines only
+2018-03-06 02:59:56	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-06 02:59:56	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-06 02:59:56	⚡	Channel ##math: 869 nicks (0 ops, 0 voices, 869 normals)
+2018-03-06 03:00:13	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-06 03:00:18	blackk	I think its the beginners recommendation for model theory
+2018-03-06 03:00:31	Batzy	I don't think it's an absolute beginners thing
+2018-03-06 03:00:44	Batzy	he said it's appropriate for people who have taken 1 UG course in logic and 1 grad course
+2018-03-06 03:00:48	blackk	well sure in some examples you need to know some algebra
+2018-03-06 03:01:03	Batzy	he said he assumes things like knowledge of Zorn's lemma
+2018-03-06 03:01:09	blackk	oh ok
+2018-03-06 03:01:22	blackk	thats not too much cause for concern
+2018-03-06 03:01:40	blackk	but I never had logic in my life and I could follow the first 2 pages
+2018-03-06 03:02:15	Batzy	me neither
+2018-03-06 03:02:22	Batzy	I wonder why the language for hereditary sets is empty though
+2018-03-06 03:03:04	blackk	afk
+2018-03-06 03:07:02	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-06 03:07:02	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-06 03:07:02	⚡	Channel ##math: 871 nicks (0 ops, 0 voices, 871 normals)
+2018-03-06 03:07:06	⚡	uptime is now known as robot
+2018-03-06 03:07:18	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-06 03:07:29	⚡	##math: You're not a channel operator
+2018-03-06 03:07:31	⚡	##math: You're not a channel operator
+2018-03-06 03:37:15	hamad	Hello, how can I numerically solve this ? x=tan(f(x)+f(1-1/x))
+2018-03-06 03:37:20	hamad	I want numerical solution for the values of x
+2018-03-06 03:37:32	hamad	of f(x)*
+2018-03-06 03:37:57	hamad	I am not sure how to write it in matlab
+2018-03-06 03:39:55	lieven	so f(x)+f(1-1/x)=arctan x
+2018-03-06 03:41:17	hamad	yea
+2018-03-06 03:41:24	hamad	@lieven
+2018-03-06 03:42:35	enthdegree	check this out
+2018-03-06 03:42:35	enthdegree	http://www.public.asu.edu/~cdchapm2/approximating-determinants/
+2018-03-06 03:42:36	hamad	I mean I know if I had like what f(x0) then I can solve it, but I don't
+2018-03-06 03:42:38	hamad	so can I ?
+2018-03-06 03:44:00	hamad	my perception is I need an initial point to solve it?
+2018-03-06 03:44:34	butterthebuddha	X = Y a.s. <=> E(X) = E(Y)
+2018-03-06 03:44:37	butterthebuddha	Is that true?
+2018-03-06 11:22:12	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-06 11:22:12	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-06 11:22:12	⚡	Channel ##math: 879 nicks (0 ops, 0 voices, 879 normals)
+2018-03-06 11:22:17	Galois	e.g. design protocols where the key is divided up among a set of people and an arbitrary function determines which subsets of the keyholders can together decrypt
+2018-03-06 11:22:33	⚡	Channel created on Fri, 29 Jan 2010 15:42:00
+2018-03-06 11:22:36	math833	damn thats pretty cool
+2018-03-06 11:22:56	Galois	so the tool that made this advanced functionality possible is a new proof technique, called "Sequences of Games" (that's the title of the paper)
+2018-03-06 11:23:07	unyu	Ah...
+2018-03-06 11:23:18	Galois	the subtitle is: A tool for taming complexity in security proofs
+2018-03-06 11:23:37	Galois	basically it lets you modularize a security proof into a series of small, manageable transitions
+2018-03-06 11:24:19	Galois	now if you actually read any crypto paper since 2004 that does advanced functionality and contains a security proof, then it uses the Sequences of Games technique
+2018-03-06 11:24:53	Galois	I mean nowadays they don't even explain the technique anymore, they assume everyone knows it. "We define security of protocol A in terms of the following game: ..."
+2018-03-06 11:24:58	Kanov	that is quite a strong generalization, Galois, how certain are you of it's validity
+2018-03-06 11:25:02	unyu	That seems like a good analogue of what I'm doing as well: I'm modularizing proofs of correctness of various data structures, and finding out that ostensibly wildly different data structures might have common parts, after all.
+2018-03-06 11:25:44	Galois	I agree that if you're designing new proof techniques then you're approaching the problem from the right perspective. Of course success is not guaranteed. It might just be too hard to solve.
+2018-03-06 11:26:11	Galois	"can be done by an undergraduate" is a difficult standard to meet. I would say sequences of games can be learned and mastered by a graduate student.
+2018-03-06 11:26:27	koro	hey i need a translation of the word "eclatable" to english. "Eclatement" translates to "blow-up", but for some reason "blow-upable" sounds pretty shitty. Is there another word?
+2018-03-06 11:26:40	unyu	Galois: Fortunately, I have an easy way to tell whether something can be done by an undergraduate. As I said, *I* am an undergraduate.
+2018-03-06 11:26:51	harrynoob	koro: "admits blow-ups"?
+2018-03-06 11:27:09	Galois	that doesn't work, since this kind of breakthrough research usually takes years, by which time you won't be an undergraduate anymore
+2018-03-06 11:27:09	jhpy1024	Hey guys, anyone here familiar with mixed-integer linear programming? I'm modelling a problem and could use a little help
+2018-03-06 11:27:09	koro	that's not an adjective!
+2018-03-06 11:27:18	math833	blow-up is used in graph theory
+2018-03-06 11:27:23	harrynoob	indeed it is not
+2018-03-06 11:27:28	koro	it's used in many places
+2018-03-06 11:27:35	math833	expandable?
+2018-03-06 11:27:36	koro	but anyway, I would really like an adjective :/
+2018-03-06 11:27:47	Galois	burstable, inflatable
+2018-03-06 11:27:56	koro	lolwhat, no
+2018-03-06 11:28:02	unyu	Galois: Yeah, I've been doing this for years already, indeed. Well before I decided to study math, even.
+2018-03-06 11:28:18	harrynoob	koro: are we talking about blow-up of say, varieties, or schemes, or whatever here?
+2018-03-06 11:28:22	harrynoob	(eg algebraic geometry)
+2018-03-06 11:28:31	harrynoob	(s/eg/ie/)
+2018-03-06 11:28:34	koro	similar kind of, but simpler setting (just blow-up of points)
+2018-03-06 11:28:47	koro	e.g. replacing a point by a circle, say
+2018-03-06 11:29:10	dalcde	unyu: If I end up in academia, thirty years later I will enter an undergraduate degree in English, and tell everyone the research I do can be done by undergraduates.
+2018-03-06 11:29:21	jhpy1024	Is it okay to have indicator variables (for conditionals) in an objective function of a MILP?
+2018-03-06 11:29:41	harrynoob	you might opt for a different word. in a context i'm working in right now, the blow-up is referred to as the "modification" along a specific map. "modifiable" is nice
+2018-03-06 11:29:44	math833	Lol
+2018-03-06 11:29:56	harrynoob	other than that, blow-upable is probably your best bet
+2018-03-06 11:30:05	koro	harrynoob: but blow-up is a very standard word for this, so I should stick with it
+2018-03-06 11:30:25	harrynoob	yeah i'd just stick with blow-upable then
+2018-03-06 11:30:28	koro	oh so it's not out of the question to use blow-upable?
+2018-03-06 11:30:33	koro	fine
+2018-03-06 11:30:40	koro	thanks
+2018-03-06 11:30:41	unyu	dalcde: You've seen the stupid questions I've asked here. My degree of mathematical maturity is exactly that of an undergraduate.
+2018-03-06 11:30:55	harrynoob	i mean it looks bad, and is probably bad english, but it's what you'd say in real life
+2018-03-06 11:30:57	koro	unyu: no it isn't
+2018-03-06 11:31:51	dalcde	unyu: I'm not sure how that is relevant to the current discussion.
+2018-03-06 11:31:59	Galois	I only care about blowups to resolve singularities, so I would say resolvable
+2018-03-06 11:32:20	koro	doesn't work for me. these are fixed points of a map. resolving means nothing
+2018-03-06 11:32:28	koro	but i'll go with blow-upable
+2018-03-06 11:32:35	math833	blow-jobable?
+2018-03-06 11:32:44	harrynoob	what kind of obstructions would there be to blowing up in this context
+2018-03-06 11:32:55	harrynoob	ie why do you even need an adjective for this
+2018-03-06 11:33:23	math833	I will laugh if they get recommendations back saying dont use blow-upable
+2018-03-06 11:34:06	koro	you want to replace the fixed point p by a circle, say, i.e. if X is your space you consider X\{p} \cup circle, with an adequate topology. You want the map f to extend continuously to this circle
+2018-03-06 11:34:10	koro	this is not always doable
+2018-03-06 11:34:24	koro	it is for instance if X is nice and f is differentiable, but not in general
+2018-03-06 11:34:36	harrynoob	ah, i see, yes
+2018-03-06 11:35:18	koro	i suppose i should say sphere, or whatever instead of circle. In my case X = surface so circle is the right thing
+2018-03-06 11:48:23	yashi	What is the Laplace transform of a time-ordered exponential?
+2018-03-06 11:51:06	asdfffd	hi, is it true that if f is continous and (xn) is Cauchy sequence, then (f(xn)) is also caucy sequence
+2018-03-06 11:51:07	asdfffd	?
+2018-03-06 11:51:20	asdfffd	I know it it is true if f is uniformly continous
+2018-03-06 11:51:36	asdfffd	but  I am not sure if f is only continous
+2018-03-06 11:52:07	pedro3005	it's not true
+2018-03-06 11:52:28	pedro3005	f(x) = 1/x and x_n = 1/n
+2018-03-06 11:54:20	asdfffd	right, (f(xn)) = n is not cauchy ,thans
+2018-03-06 11:54:27	yashi	It's not a coincidence that in Hebrew Cauchy means "difficulty".
+2018-03-06 12:00:58	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-06 12:00:58	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-06 12:00:58	⚡	Channel ##math: 887 nicks (0 ops, 0 voices, 887 normals)
+2018-03-06 12:01:23	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-06 12:01:23	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-06 12:01:24	⚡	Channel ##math: 887 nicks (0 ops, 0 voices, 887 normals)
+2018-03-06 12:01:52	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-06 12:01:52	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-06 12:01:52	⚡	Channel ##math: 888 nicks (0 ops, 0 voices, 888 normals)
+2018-03-06 12:02:28	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-06 12:02:28	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-06 12:02:28	⚡	Channel ##math: 887 nicks (0 ops, 0 voices, 887 normals)
+2018-03-06 12:03:07	⚡	Topic for ##math is "Just ask your question! | LaTeX pastebin: http://mathb.in | Unmaintained wiki: http://freenode-math.wikia.com/ | Book recommendations: http://freenode-math.wikia.com/wiki/Book_List | Also visit ##statistics and ##math-software | LaTeX symbol lookup: http://detexify.kirelabs.org/classify.html | Ping ops in ##math-ops if someone is misbehaving"
+2018-03-06 12:03:07	⚡	Topic set by int-e (~noone@static.88-198-179-137.clients.your-server.de) on Mon, 22 Aug 2016 08:55:28
+2018-03-06 12:03:07	⚡	Channel ##math: 887 nicks (0 ops, 0 voices, 887 normals)
