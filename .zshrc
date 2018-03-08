@@ -59,4 +59,4 @@ command_not_found_handler() {
     LocalAlias -x $WORD -- "$@"
 }
 
-compdef __git_branch_names gmd
+compdef __git_branch_names gff gco

@@ -49,8 +49,24 @@ alias Jdb='jdb -classpath "../bin"'
 alias gnum="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gpf='git push -f'
-gmd() { git merge $1 && confirm "git branch -D $1 && git push --delete origin $1"; }
+alias ghooks='rm -rf .git/hooks && git init' 
 gcB() { git checkout -b $1 && git push --set-upstream origin $1; }
+
+gff() {
+    if [[ $(git symbolic-ref --short HEAD) != "master" ]]; then
+        git checkout master
+    fi
+    git pull --rebase && git merge --ff-only $1 && confirm "git branch -D $1 && git push --delete origin $1"
+}
+
+unalias gco  # Defined in Oh-My-Zsh's Git plugin
+gco() {
+    if [[ -n "$1" ]]; then
+        git checkout "$@"
+    else
+        git checkout @{-1}  # Last Branch (aka 'git checkout -')
+    fi
+}
 
 
 # ----- Overriden Commands
@@ -118,8 +134,11 @@ alias CDoc='LangDoc -e c -m'
 alias Doc='LangDoc -e sh -m'
 
 
-# ----- Package Installs/Updates
+# ----- Package Management
 alias update='confirm "sudo pacman -Syu"; confirm "mkdir /tmp/builds && cd /tmp/builds && cower -vud && buildall"'
+alias del='sudo pacman -Rs'
+alias mkpkg='makepkg -si'
+
 
 get() {
     if pacman -Ss "^$1\$" &> /dev/null; then
@@ -139,8 +158,9 @@ get() {
 
 
 # ----- MISCELLANEOUS
-alias mutt-gmail="mutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
-alias mutt-root='sudo mutt -f /var/spool/mail/root'
+alias mutt="neomutt"
+alias mutt-gmail="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
+alias mutt-root='sudo neomutt -f /var/spool/mail/root'
 alias lls="ls -alF"
 alias so='source ~/Dropbox/dotfiles/.zshrc'
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
