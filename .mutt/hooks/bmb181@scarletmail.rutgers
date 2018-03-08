@@ -3,7 +3,7 @@ set my_accnt = "bryan.bugyi@rutgers"
 
 set from = "bryan.bugyi@rutgers.edu"
 set imap_user = "bmb181@scarletmail.rutgers.edu"
-set imap_pass=$my_pwd_rutgers
+set imap_pass=$my_mutt_rutgers_pwd
 
 ##REMOTE GMAIL FOLDERS
 set folder = "imaps://bmb181@scarletmail.rutgers.edu@imap.gmail.com:993"
@@ -13,7 +13,7 @@ set trash = "+[Google Mail]/Trash"
 
 ##SMTP Settings to sent email
 set smtp_url = "smtp://bmb181@scarletmail.rutgers.edu@smtp.gmail.com:587/"
-set smtp_pass=$my_pwd_rutgers
+set smtp_pass=$my_mutt_rutgers_pwd
 
 ############################## MACROS ########################################
 macro index,pager R "<save-message>=References <enter>" "Save Reference"

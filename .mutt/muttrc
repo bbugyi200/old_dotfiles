@@ -5,7 +5,8 @@ auto_view text/html
 
 mailboxes imaps://bryanbugyi34@imap.gmail.com:993/ imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ imaps://bmb181@scarletmail.rutgers.edu@imap.gmail.com:993/ /var/spool/mail/bryan
 
-source "gpg2 -dq ~/.my-mutt-pwds.gpg |"
+# source "gpg2 -dq ~/.my-mutt-pwds.gpg |"
+source ~/.mutt/passwd
 # source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc
 source ~/.mutt/hooks/bmb181@scarletmail.rutgers
 
@@ -41,6 +42,8 @@ set confirmappend=no      # Makes folder moves faster.
 set pager_stop            # don't go to next message at end of message
 
 set mail_check=10
+set timeout=30            # Needed for 'mail_check' to work when mutt is idle
+set beep_new
 set nomark_old            # I don't care if message is OLD
 set delete=yes		 	  # purge deleted messages without asking
 set mailcap_path=~/.mutt/mailcap
@@ -73,6 +76,8 @@ macro index,pager D "<save-message>=[Gmail]/All Mail<enter>" "Delete"
 macro index,pager S "<save-message>=Saved<enter>" "Save"
 
 ### Inspired by Vim ###
+bind index g noop
+bind pager g noop
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to All Mail"
 macro index go "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail (Outbox)"
