@@ -8,10 +8,11 @@
 
 # Type can be 
 #    Add      (add feature)
-#    Rem      (remove feature)
-#    Mod      (modifying/refactoring production code)
+#    Remove   (remove feature)
+#    Modify   (modify production code; new behavior; new unit tests needed)
+#    Refactor (refactor production code; same behavior; old unit tests pass)
 #    Fix      (bug fix)
-#    Sty      (formatting, missing semi colons, etc; no code change)
+#    Cleanup  (formatting, missing semi colons, variable names, etc)
 #    Docs     (changes to documentation)
 #    Test     (adding or refactoring tests; no production code change)
 # --------------------
