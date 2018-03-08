@@ -1,0 +1,11 @@
+tabs:
+    position: left
+    show: always
+    last_close: startpage
+
+url:
+    start_pages: https://google.com
+
+editor:
+    command: ['termite', '-r', 'qute-editor', '--class', 'qute-editor', '-e',
+              'vim -S ~/.config/qutebrowser/editor.vimrc {}']
