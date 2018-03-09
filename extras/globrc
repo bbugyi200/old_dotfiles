@@ -3,7 +3,7 @@
 # ----- Vim
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/{body.txt,mind.txt,heart.txt}'
-alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt ~/Dropbox/notes/project_schedule.txt'
+alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt ~/Dropbox/notes/misc/projects/project_schedule.txt'
 alias vip="vim -c 'execute \"normal \\<c-p>\"'"
 alias lim='vim -c "normal \`0" -c "bdelete 1"'
 wim() { vim $(find ~/Dropbox/scripts -type f -name $1); }
@@ -157,7 +157,18 @@ get() {
 }
 
 
+# ----- TaskWarrior
+alias ta='task'
+alias tcl='task context low'
+alias tcm='task context mid'
+alias tch='task context high'
+alias tcn='task context none'
+alias ti='task add +inbox +next due:tomorrow wait:due'
+
+
 # ----- MISCELLANEOUS
+unalias l  # I don't like not being able to make a local alias with 'l'
+
 alias mutt="neomutt"
 alias mutt-gmail="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
 alias mutt-root='sudo neomutt -f /var/spool/mail/root'
