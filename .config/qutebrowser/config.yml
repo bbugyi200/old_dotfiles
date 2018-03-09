@@ -2,6 +2,7 @@ tabs:
     position: left
     show: always
     last_close: startpage
+    select_on_remove: last-used
 
 url:
     start_pages: https://google.com

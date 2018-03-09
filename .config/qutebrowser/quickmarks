@@ -14,3 +14,4 @@ qutebrowser-commands https://www.qutebrowser.org/doc/help/commands.html#click-el
 qutebrowser-userscripts https://github.com/qutebrowser/qutebrowser/tree/master/misc/userscripts
 *my_amazon_orders https://www.amazon.com/gp/your-account/order-history?ref_=ya_d_c_yo
 doc-fugitive https://github.com/tpope/vim-fugitive/blob/master/doc/fugitive.txt
+doc-taskwarrior https://taskwarrior.org/docs/

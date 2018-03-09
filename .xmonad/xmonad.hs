@@ -238,7 +238,7 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (role =? "scratchpad")
                     (NSP.customFloating $ W.RationalRect l t w h)]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
-                scratchpad = "termite -r scratchpad --class scratchpad -d ~/Dropbox/notes" 
+                scratchpad = "termite -r scratchpad --class scratchpad -d ~/Dropbox/notes/misc" 
                 h = 0.5
                 w = 0.5
                 t = 0.4  -- Distance from top edge
@@ -250,8 +250,7 @@ myManageHook = composeAll
     , className=? "Galculator"      --> doFloat
     , className=? "Peek"            --> doFloat
     , className=? "Pinentry"        --> doFloat
-    , className=? "qute-editor"     --> doRectFloat (W.RationalRect x y w h)
-    , className=? "qb-pass"         --> doRectFloat (W.RationalRect x y w h)]
+    , className=? "qute-editor"     --> doRectFloat (W.RationalRect x y w h)]
     where
         x = 0.3
         y = 0.4

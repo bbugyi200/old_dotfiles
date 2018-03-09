@@ -1,0 +1,3 @@
+[submodule ".weechat/python/weechat-vimode"]
+	path = .weechat/python/weechat-vimode
+	url = git@github.com:bbugyi200/weechat-vimode

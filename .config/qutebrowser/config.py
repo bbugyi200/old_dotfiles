@@ -10,7 +10,8 @@ config.load_autoconfig()
 
 # ----- Dictionary Values
 c.url.searchengines['DEFAULT'] = 'http://www.google.com/search?q={}'
-c.url.searchengines['gh'] = 'https://www.google.com/search?q=site%3Agithub.com+{}'
+c.url.searchengines['gg'] = 'https://www.google.com/search?q=site%3Agithub.com+{}'
+c.url.searchengines['ggg'] = 'https://github.com/bbugyi200/{}'
 c.url.searchengines['li'] = 'https://www.google.com/search?q=site%3Alinkedin.com+{}'
 c.url.searchengines['red'] = 'https://www.google.com/search?q=site%3Areddit.com+{}'
 c.url.searchengines['a'] = 'https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}'

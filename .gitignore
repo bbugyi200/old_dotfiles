@@ -10,7 +10,14 @@
 .xmonad/*
 !.xmonad/xmonad.hs
 
-.weechat/*
+.weechat/logs/*
+.weechat/*.log
+.weechat/python/weechat-vimode/*
+
+.task/*
+.taskrc
+
+.password-store
 
 .vim/*
 !.vim/vimrc
