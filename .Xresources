@@ -1,0 +1,68 @@
+! Settings
+URxvt*buffered:               true            ! double buffer for xtf
+URxvt*hold:                   false           ! kill window on shell exit
+URxvt*loginShell:             true            ! to load shell profiles
+URxvt*print-pipe:             cat > $HOME/tmp/$(echo urxvt.dump.$(date +'%s'))
+URxvt*saveLines:              9999            ! non-tmux window scroll back
+! Text
+URxvt*font:                   xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
+URxvt*internalBorder:         6               ! pixels from frame edge
+! URxvt*letterSpace:            -1              ! xft adjustment (for vanilla urxvt)
+URxvt*lineSpace:              4               ! pixels between lines for added readability
+! UI
+URxvt*fading:                 30              ! % brightness reduction on focus loss
+URxvt*mapAlert:               true            ! de-iconify on bell alert
+URxvt*scrollBar:              false           ! maximize usable line width
+URxvt*visualBell:             true            ! blink window on bell
+! Scrolling
+URxvt*scrollTtyKeypress:      true            ! scroll to bottom on keypress
+URxvt*scrollTtyOutput:        false           ! do not scroll to bottom on output
+URxvt*scrollWithBuffer:       false           ! do not use scrollback buffer
+URxvt*skipScroll:             true            ! favour scroll speed over listing all lines
+! Enable left mouse click url launcher
+URxvt*matcher.button:         1
+URxvt*perl-ext:
+URxvt*perl-ext-common:        default,matcher
+URxvt*url-launcher:           luakit
+
+! color scheme
+URxvt*background:             [90]#131d24
+URxvt*foreground:             #eeeeee
+URxvt*cursorColor:            #eeeeee
+! black
+URxvt.color0:                 #101010
+URxvt.color8:                 #565656
+! red
+URxvt.color1:                 #bd4a4a
+URxvt.color9:                 #cc6666
+! green
+URxvt.color2:                 #778800
+URxvt.color10:                #88aa22
+! yellow
+URxvt.color3:                 #e8ae5b
+URxvt.color11:                #ffd965
+! blue
+URxvt.color4:                 #3a526b
+URxvt.color12:                #66aabb
+! magenta
+URxvt.color5:                 #ff5879
+URxvt.color13:                #f26b9e
+! cyan
+URxvt.color6:                 #72ad8c
+URxvt.color14:                #9fe3bc
+! white
+URxvt.color7:                 #fdf6e3
+URxvt.color15:                #c3c2c5
+
+! Perl Extensions
+URxvt.perl-ext-common: default,url-select,clipboard
+! Clipboard
+URxvt.clipboard.autocopy: true
+URxvt.keysym.C-c: perl:clipboard:copy
+URxvt.keysym.C-v: perl:clipboard:paste
+! Matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.keysym.C-f: perl:url-select:select_next
+URxvt.url-select.underline: true
+URxvt.url-select.launcher: /usr/bin/xdg-open
