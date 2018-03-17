@@ -21,6 +21,13 @@
 
 .fetchmailrc
 
+.config/watson/*
+!.config/watson/config
+
+.config/qutebrowser/bookmarks/*
+.config/qutebrowser/qsettings/*
+.config/qutebrowser/quickmarks
+
 .vim/*
 !.vim/vimrc
 !.vim/ftplugin/
