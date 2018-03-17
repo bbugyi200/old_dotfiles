@@ -19,6 +19,8 @@
 
 .password-store
 
+.fetchmailrc
+
 .vim/*
 !.vim/vimrc
 !.vim/ftplugin/
