@@ -47,8 +47,8 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "athena" = "%UnsafeStdinReader% }%hamster%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
-getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%hamster%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "athena" = "%UnsafeStdinReader% }%watson%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
+getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%watson%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "secondary" = "%cpu%  |  %memory%}%KVAY%{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
 
 removeEmptyWorkspaceAfter' f = do
@@ -64,9 +64,9 @@ removeEmptyWorkspace' = do
 
 ------------------------------- Key Bindings ----------------------------------
 
--- Modifier Masks
+------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
 meta = mod1Mask
-meta2 = mod4Mask
+super = mod4Mask
 ctrl = controlMask
 shift = shiftMask
 
@@ -84,16 +84,12 @@ myAdditionalKeys = [
    , ((meta, j), sendMessage Shrink)
    , ((meta, k), sendMessage Expand)
 
-   -- Hamster Start and Stop
-   , ((meta, xK_KP_Delete), spawn "ham start")
-   , ((meta, xK_KP_Insert), spawn "ham stop")
-
    -- Local WS Commands
    , ((meta, f), windows $ W.focusUp)     -- Focus
    , ((meta .|. ctrl, f), windows W.swapDown)    -- Shift
 
    -- Next Layout
-   , ((meta2 .|. meta, xK_space), sendMessage NextLayout)  -- Toggles Fullscreen
+   , ((super .|. meta, xK_space), sendMessage NextLayout)  -- Toggles Fullscreen
 
    -- Next Screen
    , ((meta, xK_backslash), CW.nextScreen)
@@ -118,18 +114,18 @@ myAdditionalKeys = [
    , ((meta, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart")
 
    -- Remove Workspaces
-   , ((meta .|. meta2, r), DW.removeWorkspace)  -- Remove Current Workspace
-   , (( meta2 .|. shift, n), removeEmptyWorkspace') -- if Empty
+   , ((meta .|. super, r), DW.removeWorkspace)  -- Remove Current Workspace
+   , (( super .|. shift, n), removeEmptyWorkspace') -- if Empty
 
    -- Screenshot Commands
    , ((meta, xK_Print), spawn "sshot")
    , ((meta .|. ctrl, xK_Print), spawn "receipt_sshot")
 
    -- Scratchpad
-   , ((0, xK_F1), NSP.namedScratchpadAction scratchpads "scratchpad")
+   , ((meta, xK_KP_End), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator")
    , ((ctrl .|. meta, c), NSP.namedScratchpadAction scratchpads "calculator")
-   , ((0, xK_F2), NSP.namedScratchpadAction scratchpads "taskwarrior")
+   , ((meta, xK_KP_Down), NSP.namedScratchpadAction scratchpads "taskwarrior")
 
    -- screenlock
    , ((meta, l), spawn "screenlock")
@@ -145,9 +141,9 @@ myAdditionalKeys = [
    , ((ctrl, xK_0), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1, CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1, removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1])
 
    -- Shutdown / Restart
-   , ((ctrl .|. meta .|. meta2, s),
+   , ((ctrl .|. meta .|. super, s),
    spawn "confirm --dmenu 'ham stop && dbox_sync && shutdown now'")
-   , ((ctrl .|. meta .|. meta2, r),
+   , ((ctrl .|. meta .|. super, r),
    spawn "confirm --dmenu 'ham stop && systemctl reboot -i'")
 
    -- Swap
@@ -180,18 +176,12 @@ myAdditionalKeys = [
         \ 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'")
    ]
 
-   -- Hamster Numpad Bindings
-   ++ [((meta, key), spawn $ "ham start " ++ (show i))
-       | (i, key) <- zip [1..9]
-       [xK_KP_End,xK_KP_Down,xK_KP_Page_Down,xK_KP_Left,xK_KP_Begin,xK_KP_Right,xK_KP_Home,xK_KP_Up,xK_KP_Page_Up]
-      ]
-
    -- Launch Applications
    ++ [((meta, key), sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
-       [x, c, z, v, xK_1, xK_2, xK_3]
-       [myTerminal,"qutebrowser","zathura","okular","anki","hamster","slack"]
-       ["TERM","WEB","ZATH","OKULAR","ANKI","HAMSTER","SLACK"]
+       [x, c, z, v, xK_1, xK_2]
+       [myTerminal,"qutebrowser","zathura","okular","anki","slack"]
+       ["TERM","WEB","ZATH","OKULAR","ANKI","SLACK"]
       ]
 
    -- Launch Second Applications

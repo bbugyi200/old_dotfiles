@@ -35,7 +35,7 @@ Config { font = "xft:Dina:pixelsize=13"
                                  , "--high",    "red"] 10
                     , Run Weather "KVAY" ["--template", "MOUNT HOLLY, NJ 08060  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"] 3000
                     , Run Weather "KSMQ" ["--template", "PISCATAWAY TWNSHP, NJ 08854  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"] 3000
-					, Run Com "poll-watson" [] "hamster" 10
+					, Run Com "poll-watson" [] "watson" 10
                     , Run Com "dbox-xmonad" [] "dropbox" 10
                     , Run Com "pia-xmonad" [] "pia" 50
                     , Run PipeReader " :/tmp/volume-fifo" "volume"
