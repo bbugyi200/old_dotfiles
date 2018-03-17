@@ -2,4 +2,7 @@ clear lock
 clear control
 add control = Caps_Lock Control_L Control_R
 keycode 66 = Control_L Caps_Lock NoSymbol NoSymbol
+
 keycode 135 = Super_L
+keycode 64 = Super_L NoSymbol Super_L
+keycode 133 = Alt_L Meta_L Alt_L Meta_L
