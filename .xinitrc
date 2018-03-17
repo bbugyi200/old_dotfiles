@@ -8,4 +8,5 @@ numlockx &
 clipmenud &
 dunst &
 xbindkeys
+fetchmail -d 900
 exec xmonad

@@ -6,14 +6,16 @@ name: <%= name %>
 on_project_stop:
 
 windows:
-    - I:
+    - A:
         layout: main-vertical
         panes:
             - 0:
-                - if [ $(pwd) != /home/bryan ]; then; tree; else; clear; fi
-    - II:
+                - if [ $(pwd) != /home/bryan ]; then; tree; else; clear && ls -a && echo; fi
+    - B:
         layout: main-vertical
         panes:
-    - III:
+            - 0:
+    - C:
         layout: main-vertical
         panes:
+            - 0:

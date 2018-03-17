@@ -206,10 +206,15 @@ myAdditionalKeys = [
    ++ [((ctrl, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
        | (i, k) <- zip [0..8] $ [xK_1 .. xK_9]
       ]
+   where
+       a = xK_a; b = xK_b; c = xK_c; d = xK_d; e = xK_e; f = xK_f
+       g = xK_g; h = xK_h; i = xK_i; j = xK_j; k = xK_k; l = xK_l
+       m = xK_m; n = xK_n; o = xK_o; p = xK_p; q = xK_q; r = xK_r
+       s = xK_s; t = xK_t; u = xK_u; v = xK_v; w = xK_w; x = xK_x
+       y = xK_y; z = xK_z
 
 -------------------------------- Misc Configs ---------------------------------
-myTerminal = "termite -e 'tm-init Terminal'"
-myModMask = mod4Mask
+myTerminal = "urxvt -e zsh -c 'tm-init Terminal'"
 
 myFocusFollowsMouse = False
 myClickJustFocuses = False
@@ -236,13 +241,16 @@ myLayout = tiled ||| Mirror tiled ||| Full
     ratio = 1/2
     delta = 3/100
 
-scratchpads = [ NSP.NS "scratchpad" scratchpad (role =? "scratchpad") 
+scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad") 
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "calculator" "galculator" (className =? "Galculator")
-                    (NSP.customFloating $ W.RationalRect l t w h)]
+                    (NSP.customFloating $ W.RationalRect l t w h)
+              , NSP.NS "taskwarrior" taskwarrior (appName =? "taskwarrior")
+                    (NSP.customFloating $ W.RationalRect 0.1 0.2 0.75 0.75)]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
-                scratchpad = "termite -r scratchpad --class scratchpad -d ~/Dropbox/notes/misc" 
+                scratchpad = "urxvt -name scratchpad -cd ~/Dropbox/notes/misc" 
+                taskwarrior = "urxvt -name taskwarrior -e zsh -c 'task next +READY; zsh'"
                 h = 0.5
                 w = 0.5
                 t = 0.4  -- Distance from top edge
@@ -254,7 +262,7 @@ myManageHook = composeAll
     , className=? "Galculator"      --> doFloat
     , className=? "Peek"            --> doFloat
     , className=? "Pinentry"        --> doFloat
-    , className=? "qute-editor"     --> doRectFloat (W.RationalRect x y w h)]
+    , appName=? "qute-editor"     --> doRectFloat (W.RationalRect x y w h)]
     where
         x = 0.3
         y = 0.4

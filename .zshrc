@@ -13,6 +13,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 alias -s pdf="zathura"
 alias -s epub="zathura"
 alias -s djvu="zathura"
+alias -s ps="zathura"
 
 # LibreOffice
 alias -s doc="/usr/lib/libreoffice/program/soffice.bin --writer"
@@ -60,3 +61,4 @@ command_not_found_handler() {
 }
 
 compdef __git_branch_names gff gco
+compdef _task tt ti tpi ts to ta tg tgw tgr tga

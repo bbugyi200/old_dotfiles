@@ -91,7 +91,7 @@ set nohlsearch
 set viminfo+=n~/.vim/viminfo
 
 " Needed for 'echodoc' plugin
-set noshowmode
+" set noshowmode
 
 
 " --------------------------------- LETS -------------------------------------
@@ -130,6 +130,7 @@ hi Constant ctermfg=lightmagenta
 
 hi SpellBad cterm=underline
 
+hi Normal guibg=NONE ctermbg=NONE
 
 " ------------------------------ KEY MAPPINGS --------------------------------
 " Preserves flags when repeating the last substitute command.
@@ -218,6 +219,9 @@ nmap gm :LivedownToggle<CR>
 nnoremap <Leader>l yiW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
 nnoremap <Leader>L yW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
 command! -nargs=1 Doc execute "Silent LangDoc --ext=" . expand('%:e') . " -m <args>"
+
+" Maps command to 'tm' shell script
+command! -nargs=1 Tm execute "Silent tm <args>"
 
 imap <C-h> <Esc><C-h>
 imap <C-l> <Esc><C-l>
@@ -327,3 +331,35 @@ augroup BWCCreateDir
 	autocmd!
 	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+" Status Line Settings
+ set laststatus=2
+
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
+endfunction
+
+" highlight VertSplit ctermfg=DarkGrey ctermbg=DarkGrey
+highlight StatusLine cterm=NONE ctermfg=black ctermbg=yellow
+highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
+
+" highlight SLColor1 ctermfg=white ctermbg=DarkRed
+" highlight SLColor2 ctermfg=black ctermbg=DarkGrey
+" highlight Blank ctermfg=black ctermbg=white
+
+set statusline=
+set statusline+=%{StatuslineGit()}
+set statusline+=\ %f
+set statusline+=%m\ 
+set statusline+=%=
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ 

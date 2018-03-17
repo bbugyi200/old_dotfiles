@@ -16,7 +16,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/neoinclude.vim'
-Plugin 'Shougo/echodoc.vim'
 
 " "~~~~~ MISC ~~~~~
 Plugin 'VundleVim/Vundle.vim'
@@ -29,7 +28,6 @@ Plugin 'benmills/vimux'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'shime/vim-livedown'
 Plugin 'Raimondi/delimitMate'
-Plugin 'vim-airline/vim-airline'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'artur-shaik/vim-javacomplete2'
@@ -38,9 +36,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'embear/vim-localvimrc'
 Plugin 'dyng/ctrlsf.vim'
+Plugin 'ap/vim-buftabline'
 
 Plugin 'eagletmt/ghcmod-vim'
-" Plugin 'eagletmt/neco-ghc'  " Disabled until ghc-mod is fixed for Arch
 Plugin 'neovimhaskell/haskell-vim'
 
 Plugin 'SirVer/ultisnips'
@@ -54,6 +52,12 @@ Plugin 'jez/vim-superman'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" -------------------------- BUFTABLINE ----------------------------------------
+hi! link BufTabLineCurrent PmenuSel
+hi! link BufTabLineActive TabLine
+let g:buftabline_numbers = 1
+let g:buftabline_indicators = 1
 
 " ------------------------- CTRLSF ---------------------------------------------
 let g:ctrlsf_regex_pattern = 1
@@ -105,58 +109,6 @@ let g:ctrlp_custom_ignore = {
 " control. It also supports works with .svn, .hg, .bzr.
 let g:ctrlp_working_path_mode = 'r'
 
-" ------------------------------- EchoDoc --------------------------------------
-let g:echodoc#enable_at_startup=1
-
-" ------------------------------- Airline Status Bar Configs -------------------
-
-" The following set commands are used to fix issue with delay in Airline
-" picking up on change from Insert to Normal mode. BEWARE of possible issues
-" caused by setting timeout too low.
-set timeoutlen=1000 ttimeoutlen=10
-
-set laststatus=2
-
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
-" Powerline Status Bar
-set rtp+=$POWERLINE_DIRECTORY/powerline/bindings/vim/
-set t_Co=256
-
-" Airline Tabline Options
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamecollapse = 0
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
 " ------------------------------ UltiSnips Configurations ----------------------
 "
 " Allows other directories to be searched for snippet files
@@ -166,9 +118,11 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 " ------------------------------- Syntastic Config -----------------------------
 let g:Tex_IgnoredWarnings =
             \ 'Command terminated with space.'."\n"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set laststatus=2
+" set statusline+=[%f]
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
@@ -266,7 +220,6 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags

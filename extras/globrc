@@ -1,6 +1,13 @@
 # ------------------------------------------------------------------------------
 # ------------------------- FUNCTIONS + ALIASES --------------------------------
-# ----- Vim
+
+# ---------- Unalias / Disable
+# I don't like not being able to make a local alias with these
+unalias l
+disable r
+
+
+# ---------- Vim
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/{body.txt,mind.txt,heart.txt}'
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt ~/Dropbox/notes/misc/projects/project_schedule.txt'
@@ -18,7 +25,7 @@ mim() {
     elif [[ "/bin/bash" == $SHELL ]]; then
         MARK=${1^^}
     fi
-    vim -c "normal \`$MARK" -c "bdelete 1"
+    vim -c "normal \`$MARK" -c "bdelete 1" -c "normal g;"
 }
 
 # Enables vim :Man command from the terminal
@@ -31,7 +38,7 @@ vman() {
 }
 
 
-# ----- SSH / FTP
+# ---------- SSH / FTP
 alias ssh-athena="ssh -p $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
@@ -39,13 +46,13 @@ alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias sftp-athena="sftp -P $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
 
 
-# ----- Java
+# ---------- Java
 alias Java='java -classpath .:../bin'
 alias Javac='javac -d ../bin'
 alias Jdb='jdb -classpath "../bin"'
 
 
-# ----- Git
+# ---------- Git
 alias gnum="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gpf='git push -f'
@@ -53,10 +60,18 @@ alias ghooks='rm -rf .git/hooks && git init'
 gcB() { git checkout -b $1 && git push --set-upstream origin $1; }
 
 gff() {
-    if [[ $(git symbolic-ref --short HEAD) != "master" ]]; then
+    CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
+    if [[ $CURRENT_BRANCH != "master" ]]; then
         git checkout master
     fi
-    git pull --rebase && git merge --ff-only $1 && confirm "git branch -D $1 && git push --delete origin $1"
+
+    if [[ -z "$1" ]]; then
+        TARGET_BRANCH=$CURRENT_BRANCH
+    else
+        TARGET_BRANCH=$1
+    fi
+
+    git pull --rebase && git merge --ff-only $TARGET_BRANCH && confirm "git branch -D $TARGET_BRANCH && git push --delete origin $TARGET_BRANCH"
 }
 
 unalias gco  # Defined in Oh-My-Zsh's Git plugin
@@ -69,7 +84,7 @@ gco() {
 }
 
 
-# ----- Overriden Commands
+# ---------- Overriden Commands
 alias ccat='pygmentize -g'
 alias cower='cower -c'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
@@ -83,7 +98,7 @@ alias mv="mv -i"
 alias cp="cp -i"
 
 
-# ----- transmission-remote
+# ---------- transmission-remote
 tsm() { transmission-remote -l; }
 tsm-start() { transmission-daemon; }
 tsm-stop() { killall -9 transmission-daemon; }
@@ -96,7 +111,7 @@ tsm-purge() { transmission-remote -t$1 -rad; }
 rip() { nohup torrent "$@" &> /dev/null & disown }
 
 
-# ----- ETERNAL BASH HISTORY
+# ---------- ETERNAL BASH HISTORY
 # https://spin.atomicobject.com/2016/05/28/log-bash-history/
 LOGFILE="/home/bryan/Dropbox/logs/$(hostname)-cmd-history.log"
 log_bash_history() { 
@@ -127,14 +142,14 @@ hview() {
 }
 
 
-# ----- LangDoc
+# ---------- LangDoc
 alias PyDoc='LangDoc -e py -m'
 alias JavaDoc='LangDoc -e java -m'
 alias CDoc='LangDoc -e c -m'
 alias Doc='LangDoc -e sh -m'
 
 
-# ----- Package Management
+# ---------- Package Management
 alias update='confirm "sudo pacman -Syu"; confirm "mkdir /tmp/builds && cd /tmp/builds && cower -vud && buildall"'
 alias del='sudo pacman -Rs'
 alias mkpkg='makepkg -si'
@@ -149,6 +164,7 @@ get() {
             mkcd /tmp/builds
             cower -d $1
             tmux send-keys "cd $1 && tree" "Enter"
+            tmux send-keys "makepkg -si"
         else
             echo "Package not found in AUR!"
             return 1
@@ -157,18 +173,65 @@ get() {
 }
 
 
-# ----- TaskWarrior
-alias ta='task'
-alias tcl='task context low'
-alias tcm='task context mid'
-alias tch='task context high'
-alias tcn='task context none'
-alias ti='task add +inbox +next due:tomorrow wait:due'
+# ---------- TaskWarrior
+tcs () {
+    CURRENT_CONTEXT=$(task context show | perl -lne "print \$1 if /Context '([A-Za-z]*)'/")
+    task context none &> /dev/null
+    eval "task $@"
+    task context $CURRENT_CONTEXT &> /dev/null
+}
+
+tt () {
+    if [[ -z "$1" ]]; then
+        clear && task next +READY
+    else
+        clear && task "$@" && task next +READY
+    fi
+}
+
+tc () {
+    if [[ -z "$1" ]]; then
+        task context show
+    else
+        task context "$@"
+    fi
+}
+
+ts () {
+    tcs start.not: stop
+
+    if [[ -n "$1" ]]; then
+        tt rc.verbose=nothing start $1
+    else
+        tt
+    fi
+}
+
+to () { clear && task "$@" && task $2 all; task next +READY; }
+ta () { task add "$@" && task +LATEST; }
+tpi () { task $1 mod -inbox "${@:2}" && clear && task $1 && task next +READY +inbox; }
+tg () { tcs "$@" rc.verbose=blank,label list; }
+tgw () { tcs "$@" rc.verbose=blank,label waiting; }
+tgr () { tcs status:Recurring "$@" rc.verbose=off all; }
+tga () { tcs rc.verbose=blank,label "$@" all; }
+tall () { tcs next; }
+tnall () { tcs next +READY; }
+
+alias t='task'
+alias tan='to annotate'
+alias tu='to modify'
+alias td='tt done'
+alias te='vim -c "normal g;" ~/.taskrc'
+alias ti='clear && task +inbox -DELETED -COMPLETED all'
+alias tcn='tt context none'
+alias tcl='tt context low'
+alias tcm='tt context mid'
+alias tch='tt context high'
+
+alias wat='watson'
 
 
-# ----- MISCELLANEOUS
-unalias l  # I don't like not being able to make a local alias with 'l'
-
+# ---------- MISCELLANEOUS
 alias mutt="neomutt"
 alias mutt-gmail="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
 alias mutt-root='sudo neomutt -f /var/spool/mail/root'
@@ -180,6 +243,7 @@ alias delshots='confirm "find /home/bryan/Dropbox/logs/aphrodite-motion -name \"
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 alias rstwifi='sudo systemctl restart netctl-auto@wlo1.service'
 alias la="LocalAlias"
+alias c='clear'
 
 # Overrides '/usr/bin/w'
 w() {
