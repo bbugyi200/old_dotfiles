@@ -7,5 +7,7 @@ global:
     normal:
       C-r: restart
       ctrl-R: restart
+  hints.auto_follow: unique-match
+  hints.auto_follow_timeout: 2
   tabs.position: left
   tabs.show: always
