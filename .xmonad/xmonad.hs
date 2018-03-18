@@ -141,7 +141,7 @@ myAdditionalKeys = [
    -- Launch Applications
    ++ [((alpha, key), sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
-       [x, c, z, v, xK_1, xK_2]
+       [x, c, z, v, xK_KP_End, xK_KP_Down]
        [myTerminal,"qutebrowser","zathura","okular","anki","slack"]
        ["TERM","WEB","ZATH","OKULAR","ANKI","SLACK"]
       ]
