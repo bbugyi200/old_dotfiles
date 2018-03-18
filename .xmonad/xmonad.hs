@@ -71,7 +71,8 @@ removeEmptyWorkspace' = do
 --
 -- NOTE: I have used Xmodmap to swap the 'super' and 'alt' keys on my keyboard.
 --       This has no effect on this configuration (i.e. the alt key still corresponds
---       to `mod1Mask`), but most other programs will recognize 'super' as 'alt'.
+--       to `mod1Mask`), but most other programs will recognize 'super' as 'alt' and
+--       vice-versa.
 
 alpha = mod1Mask
 beta = mod4Mask
@@ -80,6 +81,7 @@ shift = shiftMask
 
 myAdditionalKeys = [
    ---------- ALPHANUMERIC CHARACTERS ----------
+   -- (you can sort these bindings with `<range>sort r /, [A-z]),/`)
    ((alpha, xK_0), spawn "tmux switchc -n") -- Tmux Next Session
    , ((ctrl, xK_0), sequence_ [DW.addWorkspacePrompt myXPConfig,DW.setWorkspaceIndex 1,
                                CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
@@ -157,6 +159,7 @@ myAdditionalKeys = [
    ++ [((alpha, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
        | (i, k) <- zip [0..8] $ [xK_1 .. xK_9]
       ]
+
    where
        a = xK_a; b = xK_b; c = xK_c; d = xK_d; e = xK_e; f = xK_f
        g = xK_g; h = xK_h; i = xK_i; j = xK_j; k = xK_k; l = xK_l
@@ -200,8 +203,8 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                     (NSP.customFloating $ W.RationalRect 0.05 0.05 0.9 0.9) ]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
-                scratchpad = "urxvt -name scratchpad -cd ~/Dropbox/notes/misc -e zsh -c 'clear && LocalAlias -v; zsh'" 
-                taskwarrior = "urxvt -name taskwarrior -cd ~/.task -e zsh -c 'clear && task next +READY limit:25; zsh'"
+                scratchpad = "urxvt -name scratchpad -cd ~/Dropbox/notes/misc -e zsh -c 'clear; zsh'" 
+                taskwarrior = "urxvt -name taskwarrior -cd ~/.task -e zsh -c 'clear && task next +READY limit:page; zsh'"
                 l = 0.25 -- Distance from left edge
                 t = 0.4  -- Distance from top edge
                 w = 0.5
