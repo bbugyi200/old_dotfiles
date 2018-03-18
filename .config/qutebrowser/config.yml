@@ -8,7 +8,7 @@ tabs:
         unrelated: next
 
 url:
-    start_pages: https://google.com
+    start_pages: https://www.google.com
 
 editor:
     command: ['urxvt', '-name', 'qute-editor', '-e', 'zsh', '-c',
