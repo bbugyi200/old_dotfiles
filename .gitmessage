@@ -7,14 +7,14 @@
 # |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
 
 # Type can be 
-#    Add      (add feature)
-#    Remove   (remove feature)
-#    Modify   (modify production code; new behavior; new unit tests needed)
-#    Refactor (refactor production code; same behavior; old unit tests pass)
-#    Fix      (bug fix)
-#    Cleanup  (formatting, missing semi colons, variable names, etc)
-#    Docs     (changes to documentation)
-#    Test     (adding or refactoring tests; no production code change)
+#    Add:       add feature
+#    Remove:    remove feature
+#    Fix:       bug fix
+#    Modify:    modify production code; new behavior; new unit tests needed
+#    Refactor:  refactor production code; same behavior; old unit tests pass
+#    Update:    update to meta files (README, .gitignore, etc) OR miscellaneous changes
+#    Style:     formatting, missing semi colons, variable names, docstrings, etc
+#    Test:      adding or refactoring tests; no production code change
 # --------------------
 # Remember to
 #    Capitalize the subject line
