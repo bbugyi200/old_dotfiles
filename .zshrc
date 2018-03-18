@@ -8,6 +8,9 @@ source /home/bryan/Dropbox/dotfiles/extras/globrc
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 # ----------------------------------- ALIASES --------------------------------
+
+alias so='RUNNING_SOURCE_CMD=1 source ~/Dropbox/dotfiles/.zshrc'
+
 # --- Suffix Aliases
 # Zathura
 alias -s pdf="zathura"
@@ -59,6 +62,11 @@ command_not_found_handler() {
     WORD=$1; shift
     LocalAlias -x $WORD -- "$@"
 }
+
+if [[ -f $PWD/.lzshrc ]] && [[ -z "$RUNNING_SOURCE_CMD" ]]; then
+    source ".lzshrc"
+    printf "*** ALERT: Sourced Local zshrc File ***\n\n"
+fi
 
 compdef __git_branch_names gff gco
 compdef _task tt ti tpi ts to ta tg tgw tgr tga

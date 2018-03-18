@@ -1,0 +1,72 @@
+# ---------- TaskWarrior
+tcs () {
+    CURRENT_CONTEXT=$(task context show | perl -lne "print \$1 if /Context '([A-Za-z]*)'/")
+    task context none &> /dev/null
+    eval "task $@"
+    task context $CURRENT_CONTEXT &> /dev/null
+}
+
+tt () {
+    if [[ -z "$1" ]]; then
+        clear && task next +READY
+    else
+        clear && task "$@" && task next +READY
+    fi
+}
+
+tc () {
+    if [[ -z "$1" ]]; then
+        task context show
+    else
+        task context "$@"
+    fi
+}
+
+ts () {
+    tcs start.not: stop
+
+    if [[ -n "$1" ]]; then
+        tt rc.verbose=nothing start $1
+    else
+        tt
+    fi
+}
+
+to () { clear && task "$@" && task next +READY; task $2 | less; }
+ta () { task add "$@" && task +LATEST; }
+ti () { task $1 info | less; }
+tpi () { to mod $1 -inbox "${@:2}"; }
+tg () { tcs "$@" rc.verbose=blank,label list; }
+tgw () { tcs "$@" rc.verbose=blank,label waiting; }
+tgr () { tcs status:Recurring "$@" rc.verbose=blank,label all; }
+tga () { tcs rc.verbose=blank,label "$@" all; }
+tall () { tcs next; }
+tnall () { tcs next +READY; }
+
+alias t='task'
+alias tan='to annotate'
+alias tu='to modify'
+alias td='tt done'
+alias te='vim -c "normal g;" ~/.taskrc'
+alias tin='task +inbox -DELETED -COMPLETED all | less'
+alias tcn='tt context none'
+alias tcl='tt context low'
+alias tcm='tt context mid'
+alias tch='tt context high'
+alias tss='task +ACTIVE done && ts'
+
+
+# ---------- WATSON
+alias wae='watson edit'
+alias war='watson report'
+alias wal='watson log'
+
+wa () {
+    if [[ -z "$1" ]]; then
+        watson status
+    else
+        watson "$@"
+    fi
+}
+
+
