@@ -79,112 +79,63 @@ ctrl = controlMask
 shift = shiftMask
 
 myAdditionalKeys = [
-   -- Alarm
-   ((alpha .|. beta, a), spawn "alarm-xmonad")
-
-   -- Tmux Prefix
-   , ((alpha, a), spawn "xdotool keyup Meta_L Meta_R Super_L Super_R && xdotool key ctrl+a")
-
-   -- clipmenu
-   , ((alpha, b), spawn "clipmenu")
-
-   -- Close Focused Window
-   , ((alpha, w), spawn "close-window")
-
-   -- Expand or Shrink Master Area
-   , ((alpha, j), sendMessage Shrink)
-   , ((alpha, k), sendMessage Expand)
-
-   -- Local WS Commands
-   , ((alpha, f), windows $ W.focusUp)     -- Focus
-   , ((alpha .|. ctrl, f), windows W.swapDown)    -- Shift
-
-   -- Next Layout
-   , ((beta .|. alpha, xK_space), sendMessage NextLayout)  -- Toggles Fullscreen
-
-   -- Next Screen
-   , ((alpha, xK_backslash), CW.nextScreen)
-   , ((alpha, xK_Tab), CW.nextScreen)
-
-   -- Open New Book in Okular
-   , ((alpha .|. ctrl, o), spawn "dmenu_books --application=okular")
-
-   -- Prev/Next Hidden NonEmpty Workspace
-   , ((alpha, xK_bracketleft), sequence_ [CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)])
-   , ((alpha, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)])
-
-   -- Prev/Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha .|. ctrl, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen])
-   , ((alpha .|. ctrl, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen])
-
-   -- Program Launcher
-   , ((alpha, xK_space), spawn "rofi -modi drun -show drun")
-   , ((alpha .|. ctrl, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"])
-
-   -- Restarts XMonad
-   , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart")
-
-   -- Remove Workspaces
-   , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
-   , ((alpha .|. shift, r), removeEmptyWorkspace') -- if Empty
-
-   -- Screenshot Commands
-   , ((alpha, xK_Print), spawn "sshot")
-   , ((alpha .|. ctrl, xK_Print), spawn "receipt_sshot")
-
-   -- Scratchpad
-   , ((alpha, xK_semicolon), NSP.namedScratchpadAction scratchpads "scratchpad")
-   , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator")
-   , ((ctrl .|. alpha, c), NSP.namedScratchpadAction scratchpads "calculator")
-   , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "taskwarrior")
-
-   -- screenlock
-   , ((alpha, l), spawn "screenlock")
-
-   -- Send current WS to Next Screen
-   , ((ctrl .|. alpha, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- send focus
-   , ((ctrl .|. alpha, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- don't send focus
-
-   -- Shift current window to MISC
-   , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"])
-
-   -- Shift current window to _______
-   , ((ctrl, xK_0), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1, CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1, removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1])
-
-   -- Shutdown / Restart
-   , ((ctrl .|. alpha .|. beta, s),
-   spawn "confirm --dmenu 'task start.not: stop && dbox_sync && shutdown now'")
-   , ((ctrl .|. alpha .|. beta, r),
-   spawn "confirm --dmenu 'systemctl reboot -i'")
-
-   -- Swap
-   , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace'])
-   , ((ctrl .|. alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen])
-
-   -- taskwarrior
-   , ((alpha, t), spawn "rofi -dmenu -p 'Inbox' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _")
-
-   -- Toggle to Last Workspace
-   , ((alpha, o), CW.toggleWS' ["NSP"])
-
-   -- Toggle External Monitor
-   , ((ctrl .|. alpha, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart")
-
-   -- Toggle PIA
-   , ((ctrl .|. alpha, p), spawn "PIA")
-
-   -- TMUX
-   , ((alpha, xK_9), spawn "tmux switchc -p")
-   , ((alpha, xK_0), spawn "tmux switchc -n")
-   , ((alpha, n), spawn "tmux next-window")
-   , ((alpha, p), spawn "tmux previous-window")
-   , ((alpha, k), spawn "tm-kill")
-   , ((alpha, e), spawn "tm-send --action=clear")
-   , ((alpha, q), spawn "tm-send --action=quit")
-   , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd'")
-   , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu)'")
+   ---------- ALPHANUMERIC CHARACTERS ----------
+   ((alpha .|. beta, a), spawn "alarm-xmonad") -- Alarm
+   , ((alpha, a), spawn "xdotool keyup Meta_L Meta_R Super_L Super_R Alt_L Alt_R && xdotool key ctrl+a") -- Tmux Prefix
+   , ((alpha, b), spawn "clipmenu") -- clipmenu
+   , ((ctrl .|. alpha, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
+   , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
+   , ((alpha, f), windows $ W.focusUp)     -- Focus Local
+   , ((alpha .|. ctrl, f), windows W.swapDown)    -- Shift Local
    , ((alpha, h), spawn "tm-send --action \
         \ 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'")
+   , ((alpha .|. beta, j), sendMessage Shrink) -- Shrink Master Area
+   , ((alpha, k), spawn "tm-kill") -- Kill Screen
+   , ((alpha .|. beta, k), sendMessage Expand) -- Expand Master Area
+   , ((alpha, l), spawn "screenlock") -- screenlock
+   , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
+   , ((ctrl .|. alpha, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
+   , ((alpha, n), spawn "tmux next-window") -- Tmux Next
+   , ((alpha .|. ctrl, o), spawn "dmenu_books --application=okular") -- Open New Book in Okular
+   , ((alpha, o), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
+   , ((ctrl .|. alpha, p), spawn "PIA") -- Toggle PIA
+   , ((alpha, p), spawn "tmux previous-window") -- Tmux Previous
+   , ((alpha, q), spawn "tm-send --action=quit") -- Quit Screen
+   , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
+   , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
+   , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
+   , ((ctrl .|. alpha .|. beta, r), spawn "confirm --dmenu 'systemctl reboot -i'") -- Restart
+   , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.not: stop && dbox_sync && shutdown now'") -- Shutdown
+   , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
+   , ((ctrl .|. alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen]) -- Swap (keep focus on window)
+   , ((alpha, t), spawn "rofi -dmenu -p 'Inbox' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior
+   , ((alpha, w), spawn "close-window") -- Close Focused Window
+   , ((ctrl, xK_0), sequence_ [DW.addWorkspacePrompt myXPConfig,DW.setWorkspaceIndex 1,
+                               CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
+                               removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
+   , ((alpha, xK_0), spawn "tmux switchc -n") -- Tmux Next Session
+   , ((alpha, xK_9), spawn "tmux switchc -p") -- Tmux Previous Session
+
+   ---------- SPECIAL CHARACTERS ----------
+   -- (you can sort these bindings with `:<range>sort /K\_[A-z]/`)
+   , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
+   , ((alpha .|. ctrl, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
+   , ((alpha, xK_Print), spawn "sshot") -- Screenshot
+   , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
+   , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "taskwarrior") -- Scratchpad Add Task to Inbox
+   , ((alpha, xK_backslash), CW.nextScreen) -- Next Screen
+   , ((ctrl .|. alpha, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- Send current WS to Next Screen (keep focus)
+   , ((alpha, xK_bracketleft), sequence_ [CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)]) -- Prev Hidden NonEmpty Workspace
+   , ((alpha .|. ctrl, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
+   , ((alpha .|. ctrl, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu)'") -- cd to Next Dir
+   , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd'") -- cd to Last Dir
+   , ((alpha, xK_semicolon), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
+   , ((ctrl .|. alpha, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
+   , ((beta .|. alpha, xK_space), sendMessage NextLayout) -- Next Layout
+   , ((alpha .|. ctrl, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
+   , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    ]
 
    -- Launch Applications
@@ -204,7 +155,7 @@ myAdditionalKeys = [
       ]
 
    -- Shift to WS; then Focus WS
-   ++ [((ctrl, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
+   ++ [((alpha, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
        | (i, k) <- zip [0..8] $ [xK_1 .. xK_9]
       ]
    where
