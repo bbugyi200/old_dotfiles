@@ -80,44 +80,43 @@ shift = shiftMask
 
 myAdditionalKeys = [
    ---------- ALPHANUMERIC CHARACTERS ----------
-   ((alpha .|. beta, a), spawn "alarm-xmonad") -- Alarm
+   ((alpha, xK_0), spawn "tmux switchc -n") -- Tmux Next Session
+   , ((ctrl, xK_0), sequence_ [DW.addWorkspacePrompt myXPConfig,DW.setWorkspaceIndex 1,
+                               CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
+                               removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
+   , ((alpha, xK_9), spawn "tmux switchc -p") -- Tmux Previous Session
+   , ((alpha .|. beta, a), spawn "alarm-xmonad") -- Alarm
    , ((alpha, a), spawn "xdotool keyup Meta_L Meta_R Super_L Super_R Alt_L Alt_R && xdotool key ctrl+a") -- Tmux Prefix
    , ((alpha, b), spawn "clipmenu") -- clipmenu
    , ((ctrl .|. alpha, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), windows $ W.focusUp)     -- Focus Local
    , ((alpha .|. ctrl, f), windows W.swapDown)    -- Shift Local
-   , ((alpha, h), spawn "tm-send --action \
-        \ 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'")
+   , ((alpha, h), spawn "tm-send --action 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'") -- cd to Tmux Home Dir
    , ((alpha .|. beta, j), sendMessage Shrink) -- Shrink Master Area
-   , ((alpha, k), spawn "tm-kill") -- Kill Screen
    , ((alpha .|. beta, k), sendMessage Expand) -- Expand Master Area
+   , ((alpha, k), spawn "tm-kill") -- Kill Screen
    , ((alpha, l), spawn "screenlock") -- screenlock
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((ctrl .|. alpha, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
    , ((alpha, n), spawn "tmux next-window") -- Tmux Next
-   , ((alpha .|. ctrl, o), spawn "dmenu_books --application=okular") -- Open New Book in Okular
    , ((alpha, o), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
+   , ((alpha .|. ctrl, o), spawn "dmenu_books --application=okular") -- Open New Book in Okular
    , ((ctrl .|. alpha, p), spawn "PIA") -- Toggle PIA
    , ((alpha, p), spawn "tmux previous-window") -- Tmux Previous
    , ((alpha, q), spawn "tm-send --action=quit") -- Quit Screen
-   , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((ctrl .|. alpha .|. beta, r), spawn "confirm --dmenu 'systemctl reboot -i'") -- Restart
-   , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.not: stop && dbox_sync && shutdown now'") -- Shutdown
-   , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
+   , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
    , ((ctrl .|. alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen]) -- Swap (keep focus on window)
+   , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
+   , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.not: stop && dbox_sync && shutdown now'") -- Shutdown
    , ((alpha, t), spawn "rofi -dmenu -p 'Inbox' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior
    , ((alpha, w), spawn "close-window") -- Close Focused Window
-   , ((ctrl, xK_0), sequence_ [DW.addWorkspacePrompt myXPConfig,DW.setWorkspaceIndex 1,
-                               CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
-                               removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
-   , ((alpha, xK_0), spawn "tmux switchc -n") -- Tmux Next Session
-   , ((alpha, xK_9), spawn "tmux switchc -p") -- Tmux Previous Session
 
    ---------- SPECIAL CHARACTERS ----------
-   -- (you can sort these bindings with `:<range>sort /K\_[A-z]/`)
+   -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
    , ((alpha .|. ctrl, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
