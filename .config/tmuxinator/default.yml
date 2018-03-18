@@ -10,12 +10,14 @@ windows:
         layout: main-vertical
         panes:
             - 0:
-                - if [ $(pwd) != /home/bryan ]; then; tree; else; clear && ls -a && echo; fi
+                - lls
     - B:
         layout: main-vertical
         panes:
             - 0:
+                - lls
     - C:
         layout: main-vertical
         panes:
             - 0:
+                - lls

@@ -2,5 +2,7 @@
 
 [options]
 stop_on_start = true
+log_current = true
+report_current = true
 
-# vim: syntax=cfg:
+# vim: ft=cfg:
