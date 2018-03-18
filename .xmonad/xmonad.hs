@@ -68,6 +68,10 @@ removeEmptyWorkspace' = do
 --
 -- The `alpha` and `beta` keys will always be set to either 'super' or 'alt',
 -- depending on which key you want as your primary meta key.
+--
+-- NOTE: I have used Xmodmap to swap the 'super' and 'alt' keys on my keyboard.
+--       This has no effect on this configuration (i.e. the alt key still corresponds
+--       to `mod1Mask`), but most other programs will recognize 'super' as 'alt'.
 
 alpha = mod1Mask
 beta = mod4Mask
@@ -77,6 +81,9 @@ shift = shiftMask
 myAdditionalKeys = [
    -- Alarm
    ((alpha .|. beta, a), spawn "alarm-xmonad")
+
+   -- Tmux Prefix
+   , ((alpha, a), spawn "xdotool keyup Meta_L Meta_R Super_L Super_R && xdotool key ctrl+a")
 
    -- clipmenu
    , ((alpha, b), spawn "clipmenu")
@@ -118,8 +125,8 @@ myAdditionalKeys = [
    , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart")
 
    -- Remove Workspaces
-   , ((alpha .|. beta, r), DW.removeWorkspace)  -- Remove Current Workspace
-   , (( beta .|. shift, n), removeEmptyWorkspace') -- if Empty
+   , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
+   , ((alpha .|. shift, r), removeEmptyWorkspace') -- if Empty
 
    -- Screenshot Commands
    , ((alpha, xK_Print), spawn "sshot")
@@ -146,16 +153,16 @@ myAdditionalKeys = [
 
    -- Shutdown / Restart
    , ((ctrl .|. alpha .|. beta, s),
-   spawn "confirm --dmenu 'ham stop && dbox_sync && shutdown now'")
+   spawn "confirm --dmenu 'task start.not: stop && dbox_sync && shutdown now'")
    , ((ctrl .|. alpha .|. beta, r),
-   spawn "confirm --dmenu 'ham stop && systemctl reboot -i'")
+   spawn "confirm --dmenu 'systemctl reboot -i'")
 
    -- Swap
    , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace'])
    , ((ctrl .|. alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen])
 
    -- taskwarrior
-   , ((ctrl .|. alpha, t), spawn "rofi -dmenu -p 'Inbox' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _")
+   , ((alpha, t), spawn "rofi -dmenu -p 'Inbox' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _")
 
    -- Toggle to Last Workspace
    , ((alpha, o), CW.toggleWS' ["NSP"])
@@ -240,15 +247,15 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
               , NSP.NS "calculator" "galculator" (className =? "Galculator")
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "taskwarrior" taskwarrior (appName =? "taskwarrior")
-                    (NSP.customFloating $ W.RationalRect 0.1 0.2 0.75 0.75)]
+                    (NSP.customFloating $ W.RationalRect 0.05 0.05 0.9 0.9) ]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
-                scratchpad = "urxvt -name scratchpad -cd ~/Dropbox/notes/misc" 
-                taskwarrior = "urxvt -name taskwarrior -e zsh -c 'task next +READY; zsh'"
-                h = 0.5
-                w = 0.5
+                scratchpad = "urxvt -name scratchpad -cd ~/Dropbox/notes/misc -e zsh -c 'clear && LocalAlias -v; zsh'" 
+                taskwarrior = "urxvt -name taskwarrior -cd ~/.task -e zsh -c 'clear && task next +READY limit:25; zsh'"
+                l = 0.25 -- Distance from left edge
                 t = 0.4  -- Distance from top edge
-                l = 0.25
+                w = 0.5
+                h = 0.5
 
 myManageHook = composeAll
     [ manageSpawn
@@ -256,10 +263,10 @@ myManageHook = composeAll
     , className=? "Galculator"      --> doFloat
     , className=? "Peek"            --> doFloat
     , className=? "Pinentry"        --> doFloat
-    , appName=? "qute-editor"     --> doRectFloat (W.RationalRect x y w h)]
+    , appName=? "qute-editor"     --> doRectFloat (W.RationalRect l t w h)]
     where
-        x = 0.3
-        y = 0.4
+        l = 0.3
+        t = 0.4
         w = 0.3
         h = 0.15
 
