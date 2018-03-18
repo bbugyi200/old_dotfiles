@@ -8,9 +8,9 @@ tcs () {
 
 tt () {
     if [[ -z "$1" ]]; then
-        clear && task next +READY
+        clear && task next +READY limit:25
     else
-        clear && task "$@" && task next +READY
+        clear && task "$@" && task next +READY limit:25
     fi
 }
 

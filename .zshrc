@@ -9,6 +9,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 # ----------------------------------- ALIASES --------------------------------
 
+alias so='RUNNING_SOURCE_CMD=1 source ~/.zshrc'
+
 # --- Suffix Aliases
 # Zathura
 alias -s pdf="zathura"
@@ -62,6 +64,9 @@ command_not_found_handler() {
 }
 
 if [[ -f $PWD/.lzshrc ]]; then
+    if [[ -z "$RUNNING_SOURCE_CMD" ]]; then
+        printf "\n*** ALERT: A Local zshrc File has been Sourced ***\n\n"
+    fi
     source ".lzshrc"
 fi
 
