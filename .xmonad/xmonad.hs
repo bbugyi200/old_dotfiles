@@ -83,14 +83,11 @@ myAdditionalKeys = [
    ---------- ALPHANUMERIC CHARACTERS ----------
    -- (you can sort these bindings with `<range>sort r /, [A-z]),/`)
    ((alpha, xK_0), spawn "tmux switchc -n") -- Tmux Next Session
-   , ((ctrl, xK_0), sequence_ [DW.addWorkspacePrompt myXPConfig,DW.setWorkspaceIndex 1,
-                               CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
-                               removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
    , ((alpha, xK_9), spawn "tmux switchc -p") -- Tmux Previous Session
    , ((alpha .|. beta, a), spawn "alarm-xmonad") -- Alarm
    , ((alpha, a), spawn "xdotool keyup Meta_L Meta_R Super_L Super_R Alt_L Alt_R && xdotool key ctrl+a") -- Tmux Prefix
    , ((alpha, b), spawn "clipmenu") -- clipmenu
-   , ((ctrl .|. alpha, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
+   , ((alpha .|. beta, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), windows $ W.focusUp)     -- Focus Local
    , ((alpha .|. ctrl, f), windows W.swapDown)    -- Shift Local
@@ -102,6 +99,9 @@ myAdditionalKeys = [
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((ctrl .|. alpha, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
    , ((alpha, n), spawn "tmux next-window") -- Tmux Next
+   , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
+                           CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
+                           removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
    , ((alpha, o), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
    , ((alpha .|. ctrl, o), spawn "dmenu_books --application=okular") -- Open New Book in Okular
    , ((ctrl .|. alpha, p), spawn "PIA") -- Toggle PIA
@@ -114,7 +114,8 @@ myAdditionalKeys = [
    , ((ctrl .|. alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen]) -- Swap (keep focus on window)
    , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
    , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.not: stop && dbox_sync && shutdown now'") -- Shutdown
-   , ((alpha, t), spawn "rofi -dmenu -p 'Inbox' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior
+   , ((alpha, t), spawn "rofi -dmenu -p 'Inbox' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
+   , ((alpha .|. beta, t), spawn "rofi -dmenu -p 'Due Today' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (due today)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
 
    ---------- SPECIAL CHARACTERS ----------
@@ -157,7 +158,7 @@ myAdditionalKeys = [
 
    -- Shift to WS; then Focus WS
    ++ [((alpha, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
-       | (i, k) <- zip [0..8] $ [xK_1 .. xK_9]
+       | (i, k) <- zip [0..8] $ [xK_1 .. xK_8]
       ]
 
    where
@@ -186,7 +187,10 @@ myWorkspaces :: [String]
 myWorkspaces = ["TERM","WEB","NSP"]
 
 myXPConfig :: P.XPConfig
-myXPConfig = def {P.position = P.Bottom}
+myXPConfig = P.def {
+  P.font = "xft:Source Code Pro",
+  P.position = P.CenteredAt 0.2 0.4
+}
 
 myLayout = tiled ||| Mirror tiled ||| Full
   where
