@@ -54,7 +54,7 @@ URxvt.color15:                #c3c2c5
 URxvt.perl-ext-common: default,url-select,clipboard
 ! Clipboard
 URxvt.clipboard.autocopy: true
-URxvt.keysym.C-c: perl:clipboard:copy
+URxvt.keysym.C-S-C: perl:clipboard:copy
 URxvt.keysym.C-v: perl:clipboard:paste
 ! Matcher
 URxvt.url-launcher: /usr/bin/xdg-open
