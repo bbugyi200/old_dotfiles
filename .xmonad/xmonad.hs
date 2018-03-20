@@ -90,30 +90,30 @@ myAdditionalKeys = [
    , ((alpha .|. beta, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), windows $ W.focusUp)     -- Focus Local
-   , ((alpha .|. ctrl, f), windows W.swapDown)    -- Shift Local
+   , ((alpha .|. beta, f), windows W.swapDown)    -- Shift Local
    , ((alpha, h), spawn "tm-send --action 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'") -- cd to Tmux Home Dir
    , ((alpha .|. beta, j), sendMessage Shrink) -- Shrink Master Area
    , ((alpha .|. beta, k), sendMessage Expand) -- Expand Master Area
    , ((alpha, k), spawn "tm-kill") -- Kill Screen
-   , ((alpha, l), spawn "screenlock") -- screenlock
+   , ((alpha, l), spawn "my-screenlock") -- screenlock
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
-   , ((ctrl .|. alpha, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
+   , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
    , ((alpha, n), spawn "tmux next-window") -- Tmux Next
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
                            removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
    , ((alpha, o), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
-   , ((alpha .|. ctrl, o), spawn "dmenu_books --application=okular") -- Open New Book in Okular
-   , ((ctrl .|. alpha, p), spawn "PIA") -- Toggle PIA
+   , ((alpha .|. beta, o), spawn "dmenu_books --application=okular") -- Open New Book in Okular
    , ((alpha, p), spawn "tmux previous-window") -- Tmux Previous
+   , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
    , ((alpha, q), spawn "tm-send --action=quit") -- Quit Screen
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((ctrl .|. alpha .|. beta, r), spawn "confirm --dmenu 'systemctl reboot -i'") -- Restart
    , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
-   , ((ctrl .|. alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen]) -- Swap (keep focus on window)
    , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
-   , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.not: stop && dbox_sync && shutdown now'") -- Shutdown
+   , ((alpha .|. beta, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen]) -- Swap (keep focus on window)
+   , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.not: stop; dbox_sync && shutdown now'") -- Shutdown
    , ((alpha, t), spawn "rofi -dmenu -p 'Inbox' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "rofi -dmenu -p 'Due Today' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (due today)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
@@ -121,22 +121,26 @@ myAdditionalKeys = [
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
-   , ((alpha .|. ctrl, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
+   , ((alpha, xK_KP_Delete), spawn "rofi -dmenu -p 'Start Now' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox && task start.not: stop; task +LATEST start")
+   , ((alpha, xK_KP_Enter), spawn "task start.not: done")
+   , ((alpha, xK_KP_Insert), spawn "task start.not: stop")
+   , ((alpha, xK_KP_Subtract), spawn "task start $(cat /tmp/tw.last.uuid)")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
+   , ((alpha .|. beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
    , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "taskwarrior") -- Scratchpad Add Task to Inbox
    , ((alpha, xK_backslash), CW.nextScreen) -- Next Screen
-   , ((ctrl .|. alpha, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- Send current WS to Next Screen (keep focus)
+   , ((alpha .|. beta, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- Send current WS to Next Screen (keep focus)
    , ((alpha, xK_bracketleft), sequence_ [CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)]) -- Prev Hidden NonEmpty Workspace
-   , ((alpha .|. ctrl, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
-   , ((alpha .|. ctrl, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu)'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd'") -- cd to Last Dir
    , ((alpha, xK_semicolon), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
-   , ((ctrl .|. alpha, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
+   , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((beta .|. alpha, xK_space), sendMessage NextLayout) -- Next Layout
-   , ((alpha .|. ctrl, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
+   , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    ]
 
@@ -149,7 +153,7 @@ myAdditionalKeys = [
       ]
 
    -- Launch Second Applications
-   ++ [((ctrl .|. alpha, key), sequence_ [CW.nextScreen, DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
+   ++ [((alpha .|. beta, key), sequence_ [CW.nextScreen, DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
        [c, x, z, v]
        ["qutebrowser", myTerminal, "zathura", "zathura"]
@@ -204,15 +208,15 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
               , NSP.NS "calculator" "galculator" (className =? "Galculator")
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "taskwarrior" taskwarrior (appName =? "taskwarrior")
-                    (NSP.customFloating $ W.RationalRect 0.05 0.05 0.9 0.9) ]
+                    (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh) ]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
                 scratchpad = "urxvt -name scratchpad -cd ~/Dropbox/notes/misc -e zsh -c 'clear; zsh'" 
                 taskwarrior = "urxvt -name taskwarrior -cd ~/.task -e zsh -c 'clear && task next +READY limit:page; zsh'"
-                l = 0.25 -- Distance from left edge
-                t = 0.4  -- Distance from top edge
-                w = 0.5
-                h = 0.5
+                l = 0.25; bigl = 0.05  -- Distance from left edge
+                t = 0.4; bigt = 0.05  -- Distance from top edge
+                w = 0.5; bigw = 0.9
+                h = 0.5; bigh = 0.9
 
 myManageHook = composeAll
     [ manageSpawn
