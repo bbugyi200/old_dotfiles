@@ -121,8 +121,10 @@ myAdditionalKeys = [
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
+   , ((alpha, xK_KP_Delete), spawn "rofi -dmenu -p 'Start Now' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox && task start.not: stop; task +LATEST start")
    , ((alpha, xK_KP_Enter), spawn "task start.not: done")
    , ((alpha, xK_KP_Insert), spawn "task start.not: stop")
+   , ((alpha, xK_KP_Subtract), spawn "task start $(cat /tmp/tw.last.uuid)")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((alpha .|. beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
