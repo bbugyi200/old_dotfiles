@@ -1,16 +1,21 @@
 # ---------- TaskWarrior
 tcs () {
     CURRENT_CONTEXT=$(task context show | perl -lne "print \$1 if /Context '([A-Za-z]*)'/")
-    task context none &> /dev/null
-    eval "task $@"
+
+    TARGET_CONTEXT="$1"
+
+    task context $TARGET_CONTEXT &> /dev/null
+    eval "task ${@:2}"
     task context $CURRENT_CONTEXT &> /dev/null
 }
 
+tcsn () { tcs none "$@"; }
+
 tt () {
     if [[ -z "$1" ]]; then
-        clear && task next +READY limit:25
+        clear && task next +READY limit:page
     else
-        clear && task "$@" && task next +READY limit:25
+        clear && task "$@" && task next +READY limit:page
     fi
 }
 
@@ -23,50 +28,85 @@ tc () {
 }
 
 ts () {
-    tcs start.not: stop
+    task start.not: stop
 
     if [[ -n "$1" ]]; then
-        tt rc.verbose=nothing start $1
+        # Hook will stop any started tasks (not needed here)
+        tt rc.verbose:nothing start $1
     else
         tt
     fi
+}
+
+te () {
+    if [[ -n "$1" ]]; then
+        task edit "$@"
+    else
+        vim -c "normal g;" ~/.taskrc
+    fi
+}
+
+tin () {
+    clear
+
+    if [[ -n "$1" ]]; then
+        task "$@"
+    fi
+
+    task +inbox -DELETED -COMPLETED all
 }
 
 to () { clear && task "$@" && task next +READY; task $2 | less; }
 ta () { task add "$@" && task +LATEST; }
 ti () { task $1 info | less; }
 tpi () { to mod $1 -inbox "${@:2}"; }
-tg () { tcs "$@" rc.verbose=blank,label list; }
-tgw () { tcs "$@" rc.verbose=blank,label waiting; }
-tgr () { tcs status:Recurring "$@" rc.verbose=blank,label all; }
-tga () { tcs rc.verbose=blank,label "$@" all; }
-tall () { tcs next; }
-tnall () { tcs next +READY; }
+tmi () { tin $1 mod "${@:2}"; }
+tsi () { tt add +inbox "$@" && tt +LATEST start; }
+tg () { tcsn "$@" rc.verbose=blank,label list; }
+tgw () { tcsn "$@" rc.verbose=blank,label waiting; }
+tgr () { tcsn status:Recurring "$@" rc.verbose=blank,label all; }
+tga () { tcsn rc.verbose=blank,label "$@" -COMPLETED -DELETED all; }
+tgd () { tcsn rc.verbose=blank,label "$@" \\\( +COMPLETED or +DELETED \\\) all; }
+tget () { task _get "$@"; }
+tall () { tcsn next; }
+tnall () { tcsn next +READY; }
+tnl () { task next +READY limit:none; }  # no limit
+tsub () { task $1 modify "/$2/$3/g"; }
+trev () { tcs review rc.defaultwidth:$COLUMNS rc.report.all.sort:urgency- \\\( +PENDING or +WAITING \\\) all limit:none | less; }
 
 alias t='task'
 alias tan='to annotate'
 alias tu='to modify'
-alias td='tt done'
-alias te='vim -c "normal g;" ~/.taskrc'
-alias tin='task +inbox -DELETED -COMPLETED all | less'
+alias td='tt rc.verbose=nothing done'
+alias tdo='task done'
+alias tdel='tt delete'
+alias til='tin | less'
 alias tcn='tt context none'
 alias tcl='tt context low'
 alias tcm='tt context mid'
 alias tch='tt context high'
-alias tss='task +ACTIVE done && ts'
+alias tss='task start.not: done; ts'
+alias tcomp='task limit:10 \( status:completed or status:deleted \) rc.report.all.sort:end- all'
 
 
 # ---------- WATSON
-alias wae='watson edit'
-alias war='watson report'
-alias wal='watson log'
-
 wa () {
     if [[ -z "$1" ]]; then
-        watson status
+        watson log -d -G
     else
         watson "$@"
     fi
 }
 
+alias w='clear && wa log -d -G && echo'
+alias war='wa report'
+alias we='wa edit'
+alias ws='wa status'
+alias wlg='wa log'
+alias wdel='wa remove'
 
+# ---------- ZSH Completions
+compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
+compdef _watson wa
+
+# vim: ft=zsh:
