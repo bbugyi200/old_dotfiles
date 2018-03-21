@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+import sys
+import json
+
+import tags
+
+old_task = json.loads(sys.stdin.readline())
+new_task = json.loads(sys.stdin.readline())
+
+new_task = tags.process_del_tags(new_task, old_task)
+new_task = tags.process_add_tags(new_task, old_task=old_task)
+
+print(json.dumps(new_task))
+sys.exit(0)

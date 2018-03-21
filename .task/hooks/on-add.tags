@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+import sys
+import json
+
+import tags
+
+new_task = json.loads(sys.stdin.readline())
+
+new_task = tags.process_add_tags(new_task)
+
+print(json.dumps(new_task))
+sys.exit(0)

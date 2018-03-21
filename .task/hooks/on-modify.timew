@@ -1,0 +1,32 @@
+#!/usr/bin/env python2
+
+import sys
+import json
+import os
+
+# Make no changes to the task, simply observe.
+old_task = json.loads(sys.stdin.readline())
+new_task = json.loads(sys.stdin.readline())
+
+# Extract attributes for use as tags.
+tags = []
+
+if 'project' in new_task:
+    project = new_task['project']
+    tags.append(project)
+    while '.' in project:
+        project = project[:project.rfind('.')]
+        tags.append(project)
+
+combined_tags = ' '.join(['"%s"' % tag for tag in tags]).encode('utf-8').strip()
+
+# Started task.
+if 'start' in new_task and 'start' not in old_task:
+    os.system('timew start "[Project: {project}]" {tags}'.format(project=new_task['description'],
+                                                       tags=combined_tags.decode()))
+
+# Stopped task.
+elif 'start' not in new_task and 'start' in old_task:
+    os.system('timew stop')
+
+print(json.dumps(new_task))
