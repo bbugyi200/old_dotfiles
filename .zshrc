@@ -3,13 +3,14 @@
 source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
 source /home/bryan/Dropbox/dotfiles/extras/tmuxinator.zsh
 source /home/bryan/Dropbox/dotfiles/extras/globrc
+source /home/bryan/Dropbox/dotfiles/extras/taskwarrior.zsh
 
 # -------------------------- OH-MY-ZSH ---------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 # ----------------------------------- ALIASES --------------------------------
 
-alias so='RUNNING_SOURCE_CMD=1 source ~/.zshrc'
+alias so='source ~/.zshrc'
 
 # --- Suffix Aliases
 # Zathura
@@ -17,29 +18,27 @@ alias -s pdf="zathura"
 alias -s epub="zathura"
 alias -s djvu="zathura"
 alias -s ps="zathura"
-
 # LibreOffice
 alias -s doc="/usr/lib/libreoffice/program/soffice.bin --writer"
 alias -s docx="/usr/lib/libreoffice/program/soffice.bin --writer"
 alias -s odt="/usr/lib/libreoffice/program/soffice.bin --writer"
 alias -s ppt="/usr/lib/libreoffice/program/soffice.bin --impress"
-
+alias -s pptx="/usr/lib/libreoffice/program/soffice.bin --impress"
 # Imv
 alias -s xbm="imv"
 alias -s png="imv"
 alias -s pcx="imv"
 alias -s jpg="imv"
 alias -s jpeg="imv"
-
 # Miscellaneous
 alias -s git="git clone"
 alias -s html="google-chrome-stable"
-
+alias -s txt="vim"
 
 # --- Global Aliases
 alias -g @@="&> /dev/null & disown"
 alias -g X="&& exit"
-alias -g ::="| grep"
+alias -g ::="| grep -e"
 
 # -------------------------------- BINDINGS ----------------------------------
 bindkey "^P" up-line-or-search
@@ -64,11 +63,14 @@ command_not_found_handler() {
 }
 
 if [[ -f $PWD/.lzshrc ]]; then
-    if [[ -z "$RUNNING_SOURCE_CMD" ]]; then
-        printf "\n*** ALERT: A Local zshrc File has been Sourced ***\n\n"
-    fi
+    printf "\n*** ALERT: A Local zshrc File has been Sourced ***\n\n"
     source ".lzshrc"
 fi
 
-compdef __git_branch_names gff gco
-compdef _task tt ti tpi ts to ta tg tgw tgr tga
+compdef __git_branch_names gco
+compdef _command_names wim
+compdef _pacman_completions_all_packages get
+
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+source /usr/share/bash-completion/completions/timew
