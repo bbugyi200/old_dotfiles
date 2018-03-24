@@ -1,84 +1,20 @@
-import datetime as dt
 import sys
+from dateutil.parser import parse
 
-from dates import getToday
-
-
-class FieldRef:
-    """ Field Reference
-
-    References one of a Task's fields. Setting <foo> field's default to `FieldRef(<bar>)` is
-    equivalent to `task add ... foo:bar ...`.
-
-    You can also set the <foo> field's default to `FieldRef(<foo>)` to enforce a mandatory
-    field.
-    """
-    def __init__(self, field):
-        self.field = field
-
-
-class ModList:
-    """ Modify a List (used when field value is a list)
-
-    For example, you can use this to add or remove a tag from the 'tags' field.
-    """
-    mode_opts = ['+', '-']
-
-    def __init__(self, item, mode: '+|-'):
-        self.item = item
-        self.mode = mode
-
-        if mode not in self.mode_opts:
-            print("Mode must be one of the following!: {}", self.mode_opts)
-            sys.exit(1)
-
-
-tomorrow = dt.datetime.today() + dt.timedelta(hours=18)
-inbox_due_time = '{year}{month:02d}{day:02d}T100000Z'.format(year=tomorrow.year,
-                                                             month=tomorrow.month,
-                                                             day=tomorrow.day)
-
-
-tag_defaults = {'GTD': {'project': 'Meta'},
-                'hotfix': {'project': 'Meta'},
-                'inbox': {'project': 'Meta',
-                          'due': inbox_due_time,
-                          'wait': inbox_due_time},
-                'tickle': {'project': 'Meta',
-                           'due': FieldRef('due'),
-                           'wait': FieldRef('due')},
-                'tv': {'project': 'Fun'},
-                'read': {'project': 'Fun'},
-                'call': {'tags': ModList('go', '+')},
-                'dev': {'project': 'Dev',
-                        'tags': ModList('dev', '-')},
-                'bug': {'project': 'Dev'}}
-
-
-# Note that the 'annual' and 'Nyears' tags are treated differently
-# so we make sure to adjust for leap years.
-basic_recur_tags = {'daily': 1,
-                    'weekly': 7,
-                    'monthly': 30,
-                    'annually': 1}
-
-recur_tags = {}
-for prefix, i in [('', 1), ('bi', 2), ('tri', 3)]:
-    for basic, N in basic_recur_tags.items():
-        recur_tags[prefix + basic] = i * N
-
-for i in range(4,7):
-    for period, N in {'{}days': 1, '{}weeks': 7,
-                      '{}months': 30, '{}years': 1}.items():
-        recur_tags[period.format(i)] = int(i * N)
-
-tag_defaults.update(dict.fromkeys(recur_tags.keys(),
-                                  {'due': getToday(),
-                                   'wait': FieldRef('due')}))
+import defaults
+from dates import get_new_wait
 
 
 def hasTag(task, tag):
     return ('tags' in task.keys()) and (tag in task['tags'])
+
+
+def compareFields(taskA, taskB, field):
+    return (field not in set(taskA.keys()) & set(taskB.keys())) or (taskA[field] == taskB[field])
+
+
+def fieldEquals(task, field, value):
+    return (field in task.keys()) and (task[field] == value)
 
 
 def process_del_tags(new_task, old_task):
@@ -88,9 +24,9 @@ def process_del_tags(new_task, old_task):
     if 'tags' not in old_task.keys():
         return new_task
 
-    for tag in tag_defaults.keys():
+    for tag in defaults.tags.keys():
         if (tag in old_task['tags']) and (('tags' not in new_task.keys()) or (tag not in new_task['tags'])):
-            for field in tag_defaults[tag].keys():
+            for field in defaults.tags[tag].keys():
                 try:
                     if new_task[field] == old_task[field]:
                         fmt = "-{tag} => {field}:\n"
@@ -119,13 +55,13 @@ def process_add_tags(new_task, *, old_task={}):
             pass
 
         fmt = "+{tag} => {field}{sep}{val}\n"
-        for tag in tag_defaults.keys():
+        for tag in defaults.tags.keys():
             if tag in new_task['tags'] and (('tags' not in old_task.keys()) or (tag not in old_task['tags'])):
 
-                if tag in recur_tags.keys():
+                if tag in defaults.repeats.keys():
                     output += "+{tag} recurrence has been set.\n".format(tag=tag)
 
-                for field, value in tag_defaults[tag].items():
+                for field, value in defaults.tags[tag].items():
                     if value is None:
                         try:
                             new_task.pop(field)
@@ -133,7 +69,7 @@ def process_add_tags(new_task, *, old_task={}):
                             pass
                     else:
                         if field not in new_task.keys():
-                            if isinstance(value, FieldRef):
+                            if isinstance(value, defaults.FieldRef):
                                 try:
                                     new_task[field] = new_task[value.field]
                                 except KeyError as e:
@@ -145,7 +81,7 @@ def process_add_tags(new_task, *, old_task={}):
 
                             output += fmt.format(tag=tag, field=field, sep=':', val=new_task[field])
 
-                        if isinstance(value, ModList):
+                        if isinstance(value, defaults.ModList):
                             if value.mode == '+' and value.item not in new_task[field]:
                                 if field not in new_task.keys():
                                     new_task[field] = []
@@ -162,6 +98,12 @@ def process_add_tags(new_task, *, old_task={}):
 
                             output += fmt.format(tag=tag, field=field, sep=sep, val='(\'' + value.item + '\')')
 
+    if 'wait_delta' in new_task.keys():
+        if compareFields(new_task, old_task, 'wait') and (new_task['wait_delta'] >= 0):
+            new_task['wait'] = get_new_wait(new_task)
+    else:
+        new_task = _wait_delta_check(new_task)
+
     # Set 'Misc' project if no other project is set
     if 'project' not in new_task.keys():
         new_task['project'] = 'Misc'
@@ -175,5 +117,28 @@ def process_add_tags(new_task, *, old_task={}):
     if output != header:
         output += '   \n'  # Spaces Needed
         print(output)
+
+    return new_task
+
+
+def add_hook(new_task):
+    """ Ran by Add Hook Only Must be run after process functions. """
+    new_task = _wait_delta_check(new_task)
+    return new_task
+
+
+def _wait_delta_check(new_task):
+    if fieldEquals(new_task, 'repeat', 'yes'):
+        if 'wait' in new_task.keys():
+            delta = parse(new_task['due']) - parse(new_task['wait'])
+            if delta.days < 0:
+                new_task['wait_delta'] = -1
+                new_task.pop('wait')
+                print('Negative wait removed.')
+            else:
+                new_task['wait_delta'] = delta.days
+                print('[repeat.wait_delta] set to {} for repeating task.'.format(delta.days))
+        else:
+            new_task['wait_delta'] = -1
 
     return new_task
