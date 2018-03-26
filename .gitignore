@@ -12,6 +12,9 @@
 
 .weechat/*
 
+.timewarrior/data/*
+.timewarrior/extensions/*
+
 .task/*
 !.task/hooks
 .taskrc
