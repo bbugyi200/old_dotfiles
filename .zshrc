@@ -33,6 +33,7 @@ alias -s jpeg="imv"
 # Miscellaneous
 alias -s git="git clone"
 alias -s html="google-chrome-stable"
+alias -s avi="vlc"
 alias -s txt="vim"
 
 # --- Global Aliases
@@ -73,4 +74,6 @@ compdef _pacman_completions_all_packages get
 
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
-source /usr/share/bash-completion/completions/timew
+for filename in ~/.bash-completions/*; do
+    source "$filename"
+done

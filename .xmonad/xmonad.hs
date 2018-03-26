@@ -47,8 +47,8 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "athena" = "%UnsafeStdinReader% }%watson%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
-getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%watson%{ %alarm%%pia%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "athena" = "%UnsafeStdinReader% }%timew%{ %counter%%pia%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
+getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%timew%{ %counter%%pia%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "secondary" = "%cpu%  |  %memory%}%KVAY%{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
 
 removeEmptyWorkspaceAfter' f = do
@@ -84,10 +84,11 @@ myAdditionalKeys = [
    -- (you can sort these bindings with `<range>sort r /, [A-z]),/`)
    ((alpha, xK_0), spawn "tmux switchc -n") -- Tmux Next Session
    , ((alpha, xK_9), spawn "tmux switchc -p") -- Tmux Previous Session
-   , ((alpha .|. beta, a), spawn "alarm-xmonad") -- Alarm
-   , ((alpha, a), spawn "xdotool keyup Meta_L Meta_R Super_L Super_R Alt_L Alt_R && xdotool key ctrl+a") -- Tmux Prefix
+   , ((alpha .|. beta, a), spawn "alarm") -- Alarm
+   , ((alpha, a), spawn "sleep 0.2 && xdotool key alt+a") -- Tmux Prefix
+   , ((alpha .|. ctrl, a), spawn "khal-alarms") -- Calendar Alarms
    , ((alpha, b), spawn "clipmenu") -- clipmenu
-   , ((alpha .|. beta, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
+   , ((alpha .|. ctrl, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), windows $ W.focusUp)     -- Focus Local
    , ((alpha .|. beta, f), windows W.swapDown)    -- Shift Local
@@ -106,6 +107,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, o), spawn "dmenu_books --application=okular") -- Open New Book in Okular
    , ((alpha, p), spawn "tmux previous-window") -- Tmux Previous
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
+   , ((alpha .|. ctrl, p), spawn "pause_task")
    , ((alpha, q), spawn "tm-send --action=quit") -- Quit Screen
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
@@ -113,30 +115,32 @@ myAdditionalKeys = [
    , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
    , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
    , ((alpha .|. beta, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen]) -- Swap (keep focus on window)
-   , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.not: stop; dbox_sync && shutdown now'") -- Shutdown
-   , ((alpha, t), spawn "rofi -dmenu -p 'Inbox' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
-   , ((alpha .|. beta, t), spawn "rofi -dmenu -p 'Due Today' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (due today)
+   , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.any: stop; dbox_sync && shutdown now'") -- Shutdown
+   , ((alpha, t), spawn "rofi -dmenu -format 'q' -p 'Inbox' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
+   , ((alpha .|. beta, t), spawn "rofi -format 'q' -dmenu -p 'Due Today' | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh -T") -- taskwarrior (due today)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
 
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
-   , ((alpha, xK_KP_Delete), spawn "rofi -dmenu -p 'Start Now' | sed \"s/\\([\\\'\\\"]\\)/\\\\\\\\\\1/g\" | xargs task add +inbox && task start.not: stop; task +LATEST start")
-   , ((alpha, xK_KP_Enter), spawn "task start.not: done")
-   , ((alpha, xK_KP_Insert), spawn "task start.not: stop")
-   , ((alpha, xK_KP_Subtract), spawn "task start $(cat /tmp/tw.last.uuid)")
+   , ((alpha, xK_KP_Add), spawn "next_task")
+   , ((alpha, xK_KP_Delete), spawn "rofi -dmenu -format 'q' -p 'Hotfix' | xargs task add project:Hotfix && task start.any: stop; task rc.context:none +LATEST start && task_refresh -T")
+   , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh -T")
+   , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh -T")
+   , ((alpha, xK_KP_Subtract), spawn "last_task")
+   , ((alpha, xK_KP_Multiply), spawn "wait_task")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
-   , ((alpha .|. beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
+   , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
-   , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "taskwarrior") -- Scratchpad Add Task to Inbox
+   , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "weechat") -- Scratchpad Add Task to Inbox
    , ((alpha, xK_backslash), CW.nextScreen) -- Next Screen
    , ((alpha .|. beta, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- Send current WS to Next Screen (keep focus)
    , ((alpha, xK_bracketleft), sequence_ [CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)]) -- Prev Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu)'") -- cd to Next Dir
-   , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd'") -- cd to Last Dir
+   , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); clear'") -- cd to Next Dir
+   , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; clear'") -- cd to Last Dir
    , ((alpha, xK_semicolon), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((beta .|. alpha, xK_space), sendMessage NextLayout) -- Next Layout
@@ -207,12 +211,12 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "calculator" "galculator" (className =? "Galculator")
                     (NSP.customFloating $ W.RationalRect l t w h)
-              , NSP.NS "taskwarrior" taskwarrior (appName =? "taskwarrior")
+              , NSP.NS "weechat" weechat (appName =? "weechat")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh) ]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
-                scratchpad = "urxvt -name scratchpad -cd ~/Dropbox/notes/misc -e zsh -c 'clear; zsh'" 
-                taskwarrior = "urxvt -name taskwarrior -cd ~/.task -e zsh -c 'clear && task next +READY limit:page; zsh'"
+                scratchpad = "urxvt -name scratchpad -cd ~/Dropbox/notes -e zsh -c 'clear && ls -a && echo; zsh'" 
+                weechat = "urxvt -name weechat -cd ~/.task -e zsh -c 'weechat'"
                 l = 0.25; bigl = 0.05  -- Distance from left edge
                 t = 0.4; bigt = 0.05  -- Distance from top edge
                 w = 0.5; bigw = 0.9
@@ -236,7 +240,7 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "maintCheck"
                 >> spawn "init-bg"
                 >> spawn "sleep 3 && volume-xmonad"
-                >> spawn "alarm-xmonad --resume"
+                >> spawn "alarm --resume"
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "secondary") ++ " --screen=1")
 
 -------------------------------- Main -----------------------------------------

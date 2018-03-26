@@ -10,6 +10,10 @@ export POWERLINE_DIRECTORY=/usr/lib/python3.6/site-packages
 export PANEL_FIFO=/tmp/panel-fifo
 export MATLABPATH=$HOME/.matlab
 
+# virtualenvwrapper
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper_lazy.sh
+
 # Enables executables installed with 'gem install' to run
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 

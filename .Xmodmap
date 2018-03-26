@@ -4,6 +4,6 @@ add control = Caps_Lock Control_L Control_R
 keycode 66 = Control_L Caps_Lock NoSymbol NoSymbol
 
 keycode 64 = Super_L
-keycode 108 = Super_L
+keycode 108 = Super_R
 keycode 133 = Alt_L
-keycode 135 = Alt_L
+keycode 135 = Alt_R

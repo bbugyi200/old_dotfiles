@@ -1,0 +1,23 @@
+[general]
+targets = gh_issue_tracker
+
+[gh_issue_tracker]
+service = github
+github.login = bbugyi200
+github.username = bbugyi200
+github.password = @oracle:eval:pass github.com/bbugyi200
+github.description_template = #{{githubnumber}}: {{githubtitle}}
+github.project_template = Dev.{{githubrepo|replace("bbugyi200/","")|replace("/",".")}}
+github.import_labels_as_tags = True
+github.query = author:bbugyi200 is:open is:issue -repo:HackRU/SlackRU -repo:bbugyi200/IntelliBudget 
+github.include_user_issues = False
+github.include_user_repos = False
+
+[notifications]
+notifications = True
+backend = gobject
+finished_querying_sticky = False
+task_crud_sticky = True
+only_on_new_tasks = True
+
+# vim: ft=cfg:

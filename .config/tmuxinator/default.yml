@@ -6,18 +6,28 @@ name: <%= name %>
 on_project_stop:
 
 windows:
-    - A:
-        layout: main-vertical
+    - src:
+        layout: even-horizontal
         panes:
             - 0:
                 - lls
-    - B:
-        layout: main-vertical
+    - tests:
+        layout: even-horizontal
         panes:
             - 0:
                 - lls
-    - C:
-        layout: main-vertical
+    - debug:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - lls
+    - docs:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - lls
+    - configs:
+        layout: even-horizontal
         panes:
             - 0:
                 - lls

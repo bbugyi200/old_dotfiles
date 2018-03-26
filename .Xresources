@@ -20,6 +20,7 @@ URxvt*scrollTtyKeypress:      true            ! scroll to bottom on keypress
 URxvt*scrollTtyOutput:        false           ! do not scroll to bottom on output
 URxvt*scrollWithBuffer:       false           ! do not use scrollback buffer
 URxvt*skipScroll:             true            ! favour scroll speed over listing all lines
+URxvt*geometry:               100x39
 
 ! ----- COLORS
 URxvt*background:             [90]#131d24

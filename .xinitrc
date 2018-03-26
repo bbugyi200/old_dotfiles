@@ -8,5 +8,5 @@ numlockx &
 clipmenud &
 dunst &
 xbindkeys
-fetchmail -d 900
+fetchmail --syslog -d 900
 exec xmonad

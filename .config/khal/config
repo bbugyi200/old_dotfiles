@@ -1,0 +1,15 @@
+[calendars]
+
+[[mycalendar]]
+path = /home/bryan/.local/share/khal/calendars/mycalendar
+type = calendar
+
+[default]
+default_calendar=mycalendar
+
+[locale]
+timeformat = %H:%M
+dateformat = %Y-%m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %Y-%m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M

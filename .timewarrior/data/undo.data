@@ -1,0 +1,2845 @@
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180320T130452Z"}
+txn:
+  type: interval
+  before: {"start":"20180320T130452Z"}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180320T130452Z","end":"20180321T113012Z"}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T113012Z","tags":["stuff"]}
+txn:
+  type: interval
+  before: {"start":"20180321T113012Z","tags":["stuff"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T113012Z","end":"20180321T113525Z","tags":["stuff"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T113525Z","tags":["other"]}
+txn:
+  type: interval
+  before: {"start":"20180321T113525Z","tags":["other"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T113525Z","end":"20180321T121421Z","tags":["other"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T121421Z","tags":["Dev","Dev.Stuff","Doing Stuff"]}
+txn:
+  type: interval
+  before: {"start":"20180321T121421Z","tags":["Dev","Dev.Stuff","Doing Stuff"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T121421Z","end":"20180321T121612Z","tags":["Dev","Dev.Stuff","Doing Stuff"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T121612Z","tags":["Dev","Dev.Stuff","Other Stuff"]}
+txn:
+  type: config
+  before: 
+  after: verbose = no
+txn:
+  type: interval
+  before: {"start":"20180321T121612Z","tags":["Dev","Dev.Stuff","Other Stuff"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T121612Z","end":"20180321T124700Z","tags":["Dev","Dev.Stuff","Other Stuff"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124700Z","tags":["Dayplan","Meta"]}
+txn:
+  type: interval
+  before: {"start":"20180321T124700Z","tags":["Dayplan","Meta"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124700Z","end":"20180321T124725Z","tags":["Dayplan","Meta"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124725Z","tags":["C11","Study","Study.Algorithms"]}
+txn:
+  type: interval
+  before: {"start":"20180321T124725Z","tags":["C11","Study","Study.Algorithms"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124725Z","end":"20180321T124757Z","tags":["C11","Study","Study.Algorithms"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124757Z","tags":["Dayplan","Meta"]}
+txn:
+  type: interval
+  before: {"start":"20180321T124757Z","tags":["Dayplan","Meta"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124757Z","end":"20180321T124835Z","tags":["Dayplan","Meta"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124835Z","tags":["C11","Study","Study.Algorithms"]}
+txn:
+  type: interval
+  before: {"start":"20180321T124835Z","tags":["C11","Study","Study.Algorithms"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124835Z","end":"20180321T124843Z","tags":["C11","Study","Study.Algorithms"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124843Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T124843Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124843Z","end":"20180321T130949Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T130956Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T130956Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T130956Z","end":"20180321T131122Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T131128Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T131128Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T131128Z","end":"20180321T131215Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T132026Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T132026Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T132026Z","end":"20180321T132333Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T132333Z","tags":["Dev","Dev.Test","TEST"]}
+txn:
+  type: interval
+  before: {"start":"20180321T132333Z","tags":["Dev","Dev.Test","TEST"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T132333Z","end":"20180321T132428Z","tags":["Dev","Dev.Test","TEST"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T132428Z","tags":["Dev","Dev.Test","TESTING STUFF"]}
+txn:
+  type: interval
+  before: {"start":"20180321T132428Z","tags":["Dev","Dev.Test","TESTING STUFF"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T132428Z","end":"20180321T152657Z","tags":["Dev","Dev.Test","TESTING STUFF"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T153234Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T153234Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T153234Z","end":"20180321T153243Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T153541Z","tags":["Make Startup Service for bugwarrior","Meta"]}
+txn:
+  type: interval
+  before: {"start":"20180321T153541Z","tags":["Make Startup Service for bugwarrior","Meta"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T153541Z","end":"20180321T153753Z","tags":["Make Startup Service for bugwarrior","Meta"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T153753Z","tags":["Meta","watson: give 'restart' command '@' syntax"]}
+txn:
+  type: interval
+  before: {"start":"20180321T153753Z","tags":["Meta","watson: give 'restart' command '@' syntax"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T153753Z","end":"20180321T153815Z","tags":["Meta","watson: give 'restart' command '@' syntax"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T153953Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T153953Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T153953Z","end":"20180321T163245Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164006Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T164006Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164006Z","end":"20180321T164016Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164036Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T164036Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164036Z","end":"20180321T164040Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164046Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T164046Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164046Z","end":"20180321T164048Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164930Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T164930Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164930Z","end":"20180321T164932Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164940Z","tags":["Meta","Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script"]}
+txn:
+  type: interval
+  before: {"start":"20180321T164940Z","tags":["Meta","Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164940Z","end":"20180321T165006Z","tags":["Meta","Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T170139Z","tags":[": Turn every multiline function in .globrc and .zshrc into a exec tasksh script","Meta"]}
+txn:
+  type: interval
+  before: {"start":"20180321T170139Z","tags":[": Turn every multiline function in .globrc and .zshrc into a exec tasksh script","Meta"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T170139Z","end":"20180321T170146Z","tags":[": Turn every multiline function in .globrc and .zshrc into a exec tasksh script","Meta"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T170423Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T170423Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T170423Z","end":"20180321T170426Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T170426Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T170426Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T170426Z","end":"20180321T170441Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T170448Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T170448Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T170448Z","end":"20180321T170508Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T170511Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T170511Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T170511Z","end":"20180321T170512Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T170511Z","end":"20180321T170512Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T170448Z","end":"20180321T170508Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T170426Z","end":"20180321T170441Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T170423Z","end":"20180321T170426Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T170139Z","end":"20180321T170146Z","tags":[": Turn every multiline function in .globrc and .zshrc into a exec tasksh script","Meta"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T164940Z","end":"20180321T165006Z","tags":["Meta","Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T153953Z","end":"20180321T163245Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T153753Z","end":"20180321T153815Z","tags":["Meta","watson: give 'restart' command '@' syntax"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T153541Z","end":"20180321T153753Z","tags":["Make Startup Service for bugwarrior","Meta"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T153234Z","end":"20180321T153243Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T132428Z","end":"20180321T152657Z","tags":["Dev","Dev.Test","TESTING STUFF"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T132333Z","end":"20180321T132428Z","tags":["Dev","Dev.Test","TEST"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T124835Z","end":"20180321T124843Z","tags":["C11","Study","Study.Algorithms"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T124725Z","end":"20180321T124757Z","tags":["C11","Study","Study.Algorithms"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T121612Z","end":"20180321T124700Z","tags":["Dev","Dev.Stuff","Other Stuff"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T113525Z","end":"20180321T121421Z","tags":["other"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180320T130452Z","end":"20180321T113012Z"}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T124757Z","end":"20180321T124835Z","tags":["Dayplan","Meta"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T124700Z","end":"20180321T124725Z","tags":["Dayplan","Meta"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T121421Z","end":"20180321T121612Z","tags":["Dev","Dev.Stuff","Doing Stuff"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T113012Z","end":"20180321T113525Z","tags":["stuff"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T131128Z","end":"20180321T131215Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T132026Z","end":"20180321T132333Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T131128Z","end":"20180321T132333Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T130956Z","end":"20180321T131122Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T131128Z","end":"20180321T132333Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T130956Z","end":"20180321T132333Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T124843Z","end":"20180321T130949Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T130956Z","end":"20180321T132333Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124843Z","end":"20180321T132333Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T164046Z","end":"20180321T164048Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T164930Z","end":"20180321T164932Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164046Z","end":"20180321T164932Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T164036Z","end":"20180321T164040Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T164046Z","end":"20180321T164932Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164036Z","end":"20180321T164932Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T164006Z","end":"20180321T164016Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T164036Z","end":"20180321T164932Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T164006Z","end":"20180321T164932Z","tags":["Meta","Project: Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T124843Z","end":"20180321T132333Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T164006Z","end":"20180321T164932Z","tags":["Meta","Project: Migrate from watson to timew"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T124843Z","end":"20180321T164932Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: {"start":"20180321T124843Z","end":"20180321T164932Z","tags":["Meta","Migrate from watson to timew"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180321T124843Z","end":"20180321T164932Z","tags":["Meta","Migrate from watson to timew"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T171947Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T171947Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T171947Z","end":"20180321T172002Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T172146Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T172146Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T172146Z","end":"20180321T172238Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T172242Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T172242Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T172242Z","end":"20180321T172450Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T172457Z","tags":["Meta","[Project: Process Inbox should be top]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T172457Z","tags":["Meta","[Project: Process Inbox should be top]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T172457Z","end":"20180321T172500Z","tags":["Meta","[Project: Process Inbox should be top]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T172504Z","tags":["Meta","[Project: Write script that lets you process inbox item by converting it into a GitHub issue.]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T172504Z","tags":["Meta","[Project: Write script that lets you process inbox item by converting it into a GitHub issue.]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T172504Z","end":"20180321T172711Z","tags":["Meta","[Project: Write script that lets you process inbox item by converting it into a GitHub issue.]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T173202Z","tags":["Meta","[Project: Make Special Tag]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T173202Z","tags":["Meta","[Project: Make Special Tag]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T173202Z","end":"20180321T184316Z","tags":["Meta","[Project: Make Special Tag]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T184318Z","tags":["Meta","[Project: Make Special Tag for recurring events]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T184318Z","tags":["Meta","[Project: Make Special Tag for recurring events]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T184318Z","end":"20180321T203535Z","tags":["Meta","[Project: Make Special Tag for recurring events]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T204054Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T173202Z","end":"20180321T184316Z","tags":["Meta","[Project: Make Special Tag]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T184318Z","end":"20180321T203535Z","tags":["Meta","[Project: Make Special Tag for recurring events]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T173202Z","end":"20180321T203535Z","tags":["Meta","[Project: Make Special Tag]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T173202Z","end":"20180321T203535Z","tags":["Meta","[Project: Make Special Tag]"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180321T173202Z","end":"20180321T203535Z","tags":["Meta","[Project: Make Special Tag]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T173202Z","end":"20180321T203535Z","tags":["Meta","[Project: Make Special Tag]"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180321T173202Z","end":"20180321T203535Z","tags":["Meta","[Project: Make Special Tag]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T172504Z","end":"20180321T172711Z","tags":["Meta","[Project: Write script that lets you process inbox item by converting it into a GitHub issue.]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T172457Z","end":"20180321T172500Z","tags":["Meta","[Project: Process Inbox should be top]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T172242Z","end":"20180321T172450Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T172146Z","end":"20180321T172238Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T171947Z","end":"20180321T172002Z","tags":["Meta","[Project: Turn every multiline function in .globrc and .zshrc into a exec tasksh script]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180321T204054Z","tags":["Meta","[Project: Process Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T204054Z","end":"20180321T213518Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T213809Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T213809Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T213809Z","end":"20180321T213811Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T213811Z","tags":["Meta","[Project: Make Startup Service for bugwarrior]"]}
+txn:
+  type: interval
+  before: {"start":"20180321T213811Z","tags":["Meta","[Project: Make Startup Service for bugwarrior]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180321T213811Z","end":"20180321T223324Z","tags":["Meta","[Project: Make Startup Service for bugwarrior]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T002346Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T002346Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T002346Z","end":"20180322T003004Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T003004Z","tags":["Meta","[Project: Adjust recurring urgencies to reflex changes]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T003004Z","tags":["Meta","[Project: Adjust recurring urgencies to reflex changes]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T003004Z","end":"20180322T012211Z","tags":["Meta","[Project: Adjust recurring urgencies to reflex changes]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T012219Z","tags":["Misc","[Project: Check Email]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T012219Z","tags":["Misc","[Project: Check Email]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T012219Z","end":"20180322T014734Z","tags":["Misc","[Project: Check Email]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T153847Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T153847Z","tags":["Meta","[Project: Process Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T153847Z","end":"20180322T161122Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T161122Z","tags":["Meta","[Project: SymLinks for Terminal are Broke]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T161122Z","tags":["Meta","[Project: SymLinks for Terminal are Broke]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T161122Z","tags":["Meta","[Project: SymLinks for Terminal are Broke]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T153847Z","end":"20180322T161122Z","tags":["Meta","[Project: Process Inbox]"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180322T153847Z","end":"20180322T160000Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T160000Z","tags":["Meta","[Project: SymLinks for Terminal are Broke]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T160000Z","tags":["Meta","[Project: SymLinks for Terminal are Broke]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T160000Z","end":"20180322T161939Z","tags":["Meta","[Project: SymLinks for Terminal are Broke]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T161939Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T161939Z","tags":["Meta","[Project: Process Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T161939Z","end":"20180322T162242Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T162501Z","tags":["Hotfix","[Project: Big Prob!]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T162501Z","tags":["Hotfix","[Project: Big Prob!]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T162501Z","end":"20180322T162519Z","tags":["Hotfix","[Project: Big Prob!]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T162620Z","tags":["Hotfix","[Project: The world is ending]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T162620Z","tags":["Hotfix","[Project: The world is ending]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T162620Z","end":"20180322T162628Z","tags":["Hotfix","[Project: The world is ending]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T162628Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T162620Z","end":"20180322T162628Z","tags":["Hotfix","[Project: The world is ending]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T162501Z","end":"20180322T162519Z","tags":["Hotfix","[Project: Big Prob!]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T161939Z","end":"20180322T162242Z","tags":["Meta","[Project: Process Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T162628Z","tags":["Meta","[Project: Process Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T161939Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T161939Z","tags":["Meta","[Project: Process Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T161939Z","end":"20180322T163607Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T163607Z","tags":["Meta","[Project: Split strict up into strict and timesensitive (annual tasks are strict but not timesensitive; daily tasks are timesensitive but not strict)]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T163607Z","tags":["Meta","[Project: Split strict up into strict and timesensitive (annual tasks are strict but not timesensitive; daily tasks are timesensitive but not strict)]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T163607Z","end":"20180322T174425Z","tags":["Meta","[Project: Split strict up into strict and timesensitive (annual tasks are strict but not timesensitive; daily tasks are timesensitive but not strict)]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T174425Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T174425Z","tags":["Meta","[Project: Process Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T174425Z","end":"20180322T175935Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T175935Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T175935Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T175935Z","end":"20180322T182530Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T182530Z","tags":["Hotfix","[Project: Change UDA Names]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T182530Z","tags":["Hotfix","[Project: Change UDA Names]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T175935Z","end":"20180322T182530Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180322T175935Z","end":"20180322T181500Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T181500Z","tags":["Hotfix","[Project: Change UDA Names]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T181500Z","tags":["Hotfix","[Project: Change UDA Names]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T181500Z","end":"20180322T184340Z","tags":["Hotfix","[Project: Change UDA Names]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T184349Z","tags":["Hotfix","[Project: Fix Consistent UDA]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T184349Z","tags":["Hotfix","[Project: Fix Consistent UDA]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T184349Z","tags":["Hotfix","[Project: Fix Consistent UDA]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T181500Z","end":"20180322T184340Z","tags":["Hotfix","[Project: Change UDA Names]"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180322T181500Z","end":"20180322T183000Z","tags":["Hotfix","[Project: Change UDA Names]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T183000Z","tags":["Hotfix","[Project: Fix Consistent UDA]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T183000Z","tags":["Hotfix","[Project: Fix Consistent UDA]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T183000Z","end":"20180322T184437Z","tags":["Hotfix","[Project: Fix Consistent UDA]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T184438Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T184438Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T184438Z","end":"20180322T184928Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T184933Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T184933Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T184933Z","end":"20180322T185656Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T185656Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T185656Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T185656Z","end":"20180322T185746Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T185801Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T185656Z","end":"20180322T185746Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T184933Z","end":"20180322T185656Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T185801Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T184933Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T184933Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T184933Z","end":"20180322T191802Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T192613Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T192613Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T192613Z","end":"20180322T193957Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T193957Z","tags":["Misc","[Project: Protein Bars]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T193957Z","tags":["Misc","[Project: Protein Bars]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T193957Z","end":"20180322T194056Z","tags":["Misc","[Project: Protein Bars]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T194057Z","tags":["Misc","[Project: Pickup Package (L3)]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T194057Z","tags":["Misc","[Project: Pickup Package (L3)]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T194057Z","end":"20180322T194633Z","tags":["Misc","[Project: Pickup Package (L3)]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T194057Z","end":"20180322T194633Z","tags":["Misc","[Project: Pickup Package (L3)]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T194657Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T194657Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T194657Z","end":"20180322T195001Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T195001Z","tags":["Hotfix","[Project: BUG]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T195001Z","tags":["Hotfix","[Project: BUG]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T195001Z","end":"20180322T195005Z","tags":["Hotfix","[Project: BUG]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T195001Z","end":"20180322T195005Z","tags":["Hotfix","[Project: BUG]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T195014Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T195014Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T195014Z","end":"20180322T195224Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T195225Z","tags":["Meta","[Project: Make key binding for 'wait current task for 3 hours, then next_task' (also delete time for that event)]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T195225Z","tags":["Meta","[Project: Make key binding for 'wait current task for 3 hours, then next_task' (also delete time for that event)]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T194657Z","end":"20180322T195001Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180322T195014Z","end":"20180322T195224Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T194500Z","tags":["Meta","[Project: Make key binding for 'wait current task for 3 hours, then next_task' (also delete time for that event)]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T194500Z","tags":["Meta","[Project: Make key binding for 'wait current task for 3 hours, then next_task' (also delete time for that event)]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T194500Z","end":"20180322T195247Z","tags":["Meta","[Project: Make key binding for 'wait current task for 3 hours, then next_task' (also delete time for that event)]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T195250Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T195250Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T195250Z","end":"20180322T210314Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T210441Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T210441Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T210441Z","end":"20180322T220326Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T220358Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T220358Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T220358Z","end":"20180322T220739Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T220739Z","tags":["Hotfix","[Project: 'wait' property is added to 'repeat' tasks when they are completed even for tasks that don't wait]"]}
+txn:
+  type: interval
+  before: {"start":"20180322T220739Z","tags":["Hotfix","[Project: 'wait' property is added to 'repeat' tasks when they are completed even for tasks that don't wait]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180322T220739Z","end":"20180323T004558Z","tags":["Hotfix","[Project: 'wait' property is added to 'repeat' tasks when they are completed even for tasks that don't wait]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T004559Z","tags":["Misc","[Project: Pickup Package (L3)]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T004559Z","tags":["Misc","[Project: Pickup Package (L3)]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T004559Z","end":"20180323T004609Z","tags":["Misc","[Project: Pickup Package (L3)]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T021457Z","tags":["Misc","[Project: Check Email]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T021457Z","tags":["Misc","[Project: Check Email]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T021457Z","end":"20180323T022847Z","tags":["Misc","[Project: Check Email]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T022848Z","tags":["Misc","[Project: Run onething Script]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T022848Z","tags":["Misc","[Project: Run onething Script]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T022848Z","end":"20180323T022904Z","tags":["Misc","[Project: Run onething Script]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T023014Z","tags":["Study","Study.Anki","[Project: Review Anki Cards]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T023014Z","tags":["Study","Study.Anki","[Project: Review Anki Cards]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T023014Z","end":"20180323T023017Z","tags":["Study","Study.Anki","[Project: Review Anki Cards]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T023014Z","end":"20180323T023017Z","tags":["Study","Study.Anki","[Project: Review Anki Cards]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T023018Z","tags":["Misc","[Project: Put Protein Bar in Bookbag]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T023018Z","tags":["Misc","[Project: Put Protein Bar in Bookbag]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T023018Z","end":"20180323T023156Z","tags":["Misc","[Project: Put Protein Bar in Bookbag]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T023201Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T023201Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T023201Z","end":"20180323T024150Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T024225Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T024225Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T024225Z","end":"20180323T025032Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025032Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T025032Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025032Z","end":"20180323T025036Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025120Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T025120Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025120Z","end":"20180323T025122Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025127Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T025127Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025127Z","end":"20180323T025127Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025127Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T025127Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025127Z","end":"20180323T025407Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025516Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T025516Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025516Z","end":"20180323T025532Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025602Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T025602Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025602Z","end":"20180323T025609Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025616Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T025616Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025616Z","end":"20180323T025616Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025616Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T025616Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T025616Z","end":"20180323T025741Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T030918Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T030918Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T030918Z","end":"20180323T030929Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T031347Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T031347Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T031347Z","end":"20180323T031347Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T031347Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T031347Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T031347Z","end":"20180323T033053Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T033103Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T033103Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T033103Z","end":"20180323T034235Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034245Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T034245Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034245Z","end":"20180323T034245Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034245Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T034245Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034245Z","end":"20180323T034255Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034331Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T034331Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034331Z","end":"20180323T034335Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034342Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T034342Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034342Z","end":"20180323T034342Z","tags":["Study","Study.CompArch","[Project: C3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034342Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T034342Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034342Z","end":"20180323T034431Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034659Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T034659Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034659Z","end":"20180323T034706Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034712Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T034712Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034712Z","end":"20180323T034719Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034724Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T034724Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034724Z","end":"20180323T034822Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034826Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T034826Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T034826Z","end":"20180323T043326Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T043340Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T043340Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T043340Z","end":"20180323T043420Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T043421Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T043421Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T043421Z","end":"20180323T043428Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T043438Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T043438Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T043438Z","end":"20180323T071935Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T072514Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T072514Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T072514Z","end":"20180323T072634Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T074058Z","tags":["Meta","[Project: Fix: ,S and ,F bindings should use filetype]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T074058Z","tags":["Meta","[Project: Fix: ,S and ,F bindings should use filetype]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T074058Z","end":"20180323T074110Z","tags":["Meta","[Project: Fix: ,S and ,F bindings should use filetype]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T074058Z","end":"20180323T074110Z","tags":["Meta","[Project: Fix: ,S and ,F bindings should use filetype]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075320Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T075320Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075320Z","end":"20180323T075432Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075433Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T075433Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075433Z","end":"20180323T075443Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075641Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T075641Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075641Z","end":"20180323T075708Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075816Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T075816Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075816Z","end":"20180323T075822Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T075320Z","end":"20180323T075432Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180323T075816Z","end":"20180323T075822Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180323T075320Z","end":"20180323T075432Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180323T075816Z","end":"20180323T075822Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180323T075433Z","end":"20180323T075443Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180323T075641Z","end":"20180323T075708Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075320Z","end":"20180323T075822Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T075320Z","end":"20180323T075822Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075320Z","end":"20180323T075822Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T075320Z","end":"20180323T075822Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T075320Z","end":"20180323T075822Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T080332Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T080332Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180323T080332Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180323T043438Z","end":"20180323T071935Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180323T043438Z","end":"20180323T060000Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T072514Z","end":"20180323T072634Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180323T075320Z","end":"20180323T075822Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T060000Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T060000Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T060000Z","end":"20180323T080618Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim project:Dev.scripts]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T081243Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T081243Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T081243Z","end":"20180323T081245Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T081254Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T081254Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T081254Z","end":"20180323T081302Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T081439Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T081439Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T081439Z","end":"20180323T081442Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T081521Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T081521Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T081521Z","end":"20180323T081536Z","tags":["Dev","Dev.scripts","[Project: #35: Upgrade wim]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T192401Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T192401Z","tags":["Meta","[Project: Process Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T192401Z","end":"20180323T192707Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T192839Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T192839Z","tags":["Meta","[Project: Process Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T192839Z","end":"20180323T201533Z","tags":["Meta","[Project: Process Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T230738Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T230738Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T230738Z","end":"20180323T230742Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T230738Z","end":"20180323T230742Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T230738Z","end":"20180323T230842Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T230738Z","end":"20180323T230842Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T230000Z","end":"20180323T230104Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T231307Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T231307Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T231307Z","end":"20180323T231454Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T232610Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T232610Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T232610Z","end":"20180323T232617Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T232621Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T232621Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T232621Z","end":"20180323T233423Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233428Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T233428Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233428Z","end":"20180323T233531Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233535Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T233535Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233535Z","end":"20180323T233652Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233705Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T233705Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233705Z","end":"20180323T233819Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233842Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T233842Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233842Z","end":"20180323T233901Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233911Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T233911Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233911Z","end":"20180323T233925Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233938Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T233938Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T233938Z","end":"20180323T234149Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T234227Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T234227Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T234227Z","end":"20180323T234255Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T234307Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: {"start":"20180323T234307Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180323T234307Z","end":"20180324T001543Z","tags":["Study","Study.Algorithms","[Project: Lect5-Lect7]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T001551Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T001551Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T001551Z","end":"20180324T001611Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T001634Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T001634Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T001634Z","end":"20180324T001654Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T001712Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T001712Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T001712Z","end":"20180324T003559Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T030757Z","tags":["Hotfix","[Project: Fetchmail is failing to load some of my inbox emails]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T030757Z","tags":["Hotfix","[Project: Fetchmail is failing to load some of my inbox emails]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T030757Z","end":"20180324T033946Z","tags":["Hotfix","[Project: Fetchmail is failing to load some of my inbox emails]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T033957Z","tags":["Study","Study.Algorithms","[Project: Prob-Solv2]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T033957Z","tags":["Study","Study.Algorithms","[Project: Prob-Solv2]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T033957Z","end":"20180324T034009Z","tags":["Study","Study.Algorithms","[Project: Prob-Solv2]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T034010Z","tags":["Hotfix","[Project: TEST]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T034010Z","tags":["Hotfix","[Project: TEST]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T034010Z","end":"20180324T034036Z","tags":["Hotfix","[Project: TEST]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T034038Z","tags":["Study","Study.Algorithms","[Project: Prob-Solv2]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T033957Z","end":"20180324T034009Z","tags":["Study","Study.Algorithms","[Project: Prob-Solv2]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180324T034038Z","tags":["Study","Study.Algorithms","[Project: Prob-Solv2]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180324T034010Z","end":"20180324T034036Z","tags":["Hotfix","[Project: TEST]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T033957Z","tags":["Study","Study.Algorithms","[Project: Prob-Solv2]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T033957Z","tags":["Study","Study.Algorithms","[Project: Prob-Solv2]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T043340Z","tags":["Study","Study.Algorithms","[Project: Lect6]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T043340Z","tags":["Study","Study.Algorithms","[Project: Lect6]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T043340Z","end":"20180324T043512Z","tags":["Study","Study.Algorithms","[Project: Lect6]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T043512Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T043512Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T043512Z","end":"20180324T054517Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T055351Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T055351Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T055351Z","end":"20180324T055601Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T055626Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T055626Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T055626Z","end":"20180324T062038Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T074403Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T074403Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T074403Z","end":"20180324T074408Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T074413Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T074413Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T074413Z","end":"20180324T074519Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T074524Z","tags":["Hotfix","[Project: BUG]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T074524Z","tags":["Hotfix","[Project: BUG]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T074524Z","end":"20180324T074530Z","tags":["Hotfix","[Project: BUG]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T074530Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T074530Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T074530Z","end":"20180324T074612Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T074524Z","end":"20180324T074530Z","tags":["Hotfix","[Project: BUG]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180324T074530Z","end":"20180324T074612Z","tags":["Dev","Dev.scripts","[Project: #15: alarm: automatically set alarm for next calendar task]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T074708Z","tags":["Dev","[Project: TEST]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T074708Z","tags":["Dev","[Project: TEST]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T074708Z","end":"20180324T074726Z","tags":["Dev","[Project: TEST]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T083011Z","tags":["Dev","Dev.scripts","[Project: #6: Optimize and Rewrite Global History (hgrep and hview)]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T083011Z","tags":["Dev","Dev.scripts","[Project: #6: Optimize and Rewrite Global History (hgrep and hview)]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T083011Z","end":"20180324T083017Z","tags":["Dev","Dev.scripts","[Project: #6: Optimize and Rewrite Global History (hgrep and hview)]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T083011Z","end":"20180324T083017Z","tags":["Dev","Dev.scripts","[Project: #6: Optimize and Rewrite Global History (hgrep and hview)]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T084049Z","tags":["Dev","Dev.TestRepo","[Project: #3: Test Issue]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T084049Z","tags":["Dev","Dev.TestRepo","[Project: #3: Test Issue]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T084049Z","end":"20180324T084438Z","tags":["Dev","Dev.TestRepo","[Project: #3: Test Issue]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T084506Z","tags":["Dev","Dev.TestRepo","[Project: #3: Test Issue]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T084506Z","tags":["Dev","Dev.TestRepo","[Project: #3: Test Issue]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T084506Z","end":"20180324T084637Z","tags":["Dev","Dev.TestRepo","[Project: #3: Test Issue]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T084506Z","end":"20180324T084637Z","tags":["Dev","Dev.TestRepo","[Project: #3: Test Issue]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180324T084049Z","end":"20180324T084438Z","tags":["Dev","Dev.TestRepo","[Project: #3: Test Issue]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180324T074708Z","end":"20180324T074726Z","tags":["Dev","[Project: TEST]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T090227Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T090227Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T090227Z","end":"20180324T090325Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T090227Z","end":"20180324T090325Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T083000Z","end":"20180324T083058Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T090527Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T090527Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180324T083000Z","end":"20180324T083058Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180324T083000Z","end":"20180324T083000Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T083000Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T083000Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T083000Z","end":"20180324T090635Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T083000Z","end":"20180324T083000Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180324T083000Z","end":"20180324T090635Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T083000Z","end":"20180324T090635Z","tags":["Dev","Dev.scripts","[Project: #45: Upgrade 'gff' and 'gcB' functions to 'gstart' and 'gstop' scripts]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T091237Z","tags":["Dev","Dev.scripts","[Project: #1: Generalize ]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T091237Z","tags":["Dev","Dev.scripts","[Project: #1: Generalize ]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T091237Z","end":"20180324T091516Z","tags":["Dev","Dev.scripts","[Project: #1: Generalize ]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T210455Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T210455Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T210455Z","end":"20180324T210614Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T210455Z","end":"20180324T210614Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T210000Z","end":"20180324T210119Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T210000Z","end":"20180324T210119Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T210000Z","end":"20180324T210119Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T210000Z","end":"20180324T210119Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T210000Z","end":"20180324T210119Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T211022Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T210000Z","end":"20180324T210119Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180324T211022Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T210000Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T210000Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T210000Z","end":"20180324T211036Z","tags":["Dev","Dev.dotfiles","[Project: #22: Ticklers should be automatically given wait date of day before and use khal to schedule on calendar]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T211109Z","tags":["Meta","[Project: Process TW Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T211109Z","tags":["Meta","[Project: Process TW Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T211109Z","end":"20180324T214406Z","tags":["Meta","[Project: Process TW Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T214406Z","tags":["Meta","[Project: Migrate ALL of 'notes' folder into a reference file (it should subsume the role of 'notes/misc')]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T214406Z","tags":["Meta","[Project: Migrate ALL of 'notes' folder into a reference file (it should subsume the role of 'notes/misc')]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T214406Z","end":"20180324T215530Z","tags":["Meta","[Project: Migrate ALL of 'notes' folder into a reference file (it should subsume the role of 'notes/misc')]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T215534Z","tags":["Meta","[Project: Process TW Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T215534Z","tags":["Meta","[Project: Process TW Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T215534Z","end":"20180324T215536Z","tags":["Meta","[Project: Process TW Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T215537Z","tags":["Meta","[Project: Process Email Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T215537Z","tags":["Meta","[Project: Process Email Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T215537Z","end":"20180324T215946Z","tags":["Meta","[Project: Process Email Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T215946Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T215946Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T215946Z","end":"20180324T222948Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T222948Z","tags":["Meta","[Project: Review GTD Process]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T222948Z","tags":["Meta","[Project: Review GTD Process]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T222948Z","end":"20180324T223029Z","tags":["Meta","[Project: Review GTD Process]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T223927Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T223927Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T223927Z","end":"20180324T224329Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T224339Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180324T224339Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T224339Z","end":"20180324T235957Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T000202Z","tags":["Cleanup GitHub Repos","Dev"]}
+txn:
+  type: interval
+  before: {"start":"20180325T000202Z","tags":["Cleanup GitHub Repos","Dev"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180324T224339Z","end":"20180324T235957Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180324T224339Z","end":"20180324T234500Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T234500Z","tags":["Cleanup GitHub Repos","Dev"]}
+txn:
+  type: interval
+  before: {"start":"20180324T234500Z","tags":["Cleanup GitHub Repos","Dev"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180324T234500Z","end":"20180325T000245Z","tags":["Cleanup GitHub Repos","Dev"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T000245Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T000245Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T000245Z","end":"20180325T003729Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T003729Z","tags":["Fun","[Project: Process Substitution]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T003729Z","tags":["Fun","[Project: Process Substitution]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T003729Z","end":"20180325T003741Z","tags":["Fun","[Project: Process Substitution]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T003741Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T003729Z","end":"20180325T003741Z","tags":["Fun","[Project: Process Substitution]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180325T003741Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T003741Z","end":"20180325T003824Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T003824Z","tags":["Hotfix","[Project: Changed Name of 'wait_delta' to 'delta']"]}
+txn:
+  type: interval
+  before: {"start":"20180325T003824Z","tags":["Hotfix","[Project: Changed Name of 'wait_delta' to 'delta']"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180325T000245Z","end":"20180325T003729Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180325T000245Z","end":"20180325T002500Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T003741Z","end":"20180325T003824Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T002500Z","tags":["Hotfix","[Project: Changed Name of 'wait_delta' to 'delta']"]}
+txn:
+  type: interval
+  before: {"start":"20180325T002500Z","tags":["Hotfix","[Project: Changed Name of 'wait_delta' to 'delta']"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T002500Z","end":"20180325T003954Z","tags":["Hotfix","[Project: Changed Name of 'wait_delta' to 'delta']"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T003954Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T003954Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T003954Z","end":"20180325T011836Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T011930Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T011930Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T011930Z","end":"20180325T012215Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T012232Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T012232Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T012232Z","end":"20180325T012244Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T012305Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T012305Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T012305Z","end":"20180325T034030Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T034042Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T034042Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T034042Z","end":"20180325T052621Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T052621Z","tags":["Hotfix","[Project: Create '+reminder' Special Tag]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T052621Z","tags":["Hotfix","[Project: Create '+reminder' Special Tag]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180325T034042Z","end":"20180325T052621Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+  type: interval
+  before: 
+  after: {"start":"20180325T034042Z","end":"20180325T050000Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T050000Z","tags":["Hotfix","[Project: Create '+reminder' Special Tag]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T050000Z","tags":["Hotfix","[Project: Create '+reminder' Special Tag]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T050000Z","end":"20180325T052700Z","tags":["Hotfix","[Project: Create '+reminder' Special Tag]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T055142Z","tags":["Meta","[Project: alarm: when used with 'khal-alarms' should use calendar event title for Notification]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T055142Z","tags":["Meta","[Project: alarm: when used with 'khal-alarms' should use calendar event title for Notification]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T052700Z","tags":["Meta","[Project: alarm: when used with 'khal-alarms' should use calendar event title for Notification]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T052700Z","tags":["Meta","[Project: alarm: when used with 'khal-alarms' should use calendar event title for Notification]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T052700Z","end":"20180325T055605Z","tags":["Meta","[Project: alarm: when used with 'khal-alarms' should use calendar event title for Notification]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T055636Z","tags":["Study","Study.Algorithms","[Project: Previous Midterm Problems]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T055636Z","tags":["Study","Study.Algorithms","[Project: Previous Midterm Problems]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T055636Z","end":"20180325T055640Z","tags":["Study","Study.Algorithms","[Project: Previous Midterm Problems]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T055656Z","tags":["Study","Study.Algorithms","[Project: Previous Midterm Problems]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T055656Z","tags":["Study","Study.Algorithms","[Project: Previous Midterm Problems]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T055656Z","end":"20180325T062720Z","tags":["Study","Study.Algorithms","[Project: Previous Midterm Problems]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T062720Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T055656Z","end":"20180325T062720Z","tags":["Study","Study.Algorithms","[Project: Previous Midterm Problems]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180325T055636Z","end":"20180325T055640Z","tags":["Study","Study.Algorithms","[Project: Previous Midterm Problems]"]}
+  after: 
+txn:
+  type: interval
+  before: {"start":"20180325T062720Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T062720Z","end":"20180325T062823Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T062829Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T062829Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T062829Z","end":"20180325T100440Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T100458Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T100458Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T100458Z","end":"20180325T123957Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T124002Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T124002Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T124002Z","end":"20180325T132540Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T154001Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T154001Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T144000Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: {"start":"20180325T144000Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180325T144000Z","end":"20180325T154028Z","tags":["Study","Study.CompArch","[Project: PA-3]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T010936Z","tags":["Meta","[Project: Process TW Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T010936Z","tags":["Meta","[Project: Process TW Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T010936Z","end":"20180326T011402Z","tags":["Meta","[Project: Process TW Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T011402Z","tags":["Meta","[Project: Process Email Inbox]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T011402Z","tags":["Meta","[Project: Process Email Inbox]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T011402Z","end":"20180326T011443Z","tags":["Meta","[Project: Process Email Inbox]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T011507Z","tags":["Meta","[Project: Silicon Valley Premiers Today]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T011507Z","tags":["Meta","[Project: Silicon Valley Premiers Today]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T011507Z","end":"20180326T011636Z","tags":["Meta","[Project: Silicon Valley Premiers Today]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T011507Z","end":"20180326T011636Z","tags":["Meta","[Project: Silicon Valley Premiers Today]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T011640Z","tags":["Meta","[Project: Pack Colon]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T011640Z","tags":["Meta","[Project: Pack Colon]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T011640Z","end":"20180326T011818Z","tags":["Meta","[Project: Pack Colon]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T011818Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T011818Z","tags":["Meta","[Project: Dayplan]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T011818Z","end":"20180326T013305Z","tags":["Meta","[Project: Dayplan]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T013311Z","tags":["Misc","[Project: Put Protein Bar in Bookbag]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T013311Z","tags":["Misc","[Project: Put Protein Bar in Bookbag]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T013311Z","end":"20180326T013318Z","tags":["Misc","[Project: Put Protein Bar in Bookbag]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T013318Z","tags":["Study","Study.Anki","[Project: Review Anki Cards]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T013318Z","tags":["Study","Study.Anki","[Project: Review Anki Cards]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T013318Z","end":"20180326T020012Z","tags":["Study","Study.Anki","[Project: Review Anki Cards]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T020023Z","tags":["Study","Study.Algorithms","[Project: Lect6]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T020023Z","tags":["Study","Study.Algorithms","[Project: Lect6]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T020023Z","end":"20180326T020056Z","tags":["Study","Study.Algorithms","[Project: Lect6]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T020101Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T020101Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T020101Z","end":"20180326T020655Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T021115Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: {"start":"20180326T021115Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T021115Z","end":"20180326T021140Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
+txn:
+  type: interval
+  before: 
+  after: {"start":"20180326T021220Z","tags":["Study","Study.Algorithms","[Project: C15]"]}
