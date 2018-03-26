@@ -28,11 +28,15 @@ class ModList:
     """
     mode_opts = ['+', '-']
 
-    def __init__(self, item, mode: '+|-'):
-        self.item = item
-        self.mode = mode
+    def __init__(self, items, modes: '(+|-, ..., +|-)'):
+        if not isinstance(items, str) and not isinstance(modes, str):
+            self.items = items
+            self.modes = modes
+        else:
+            self.items = (items, )
+            self.modes = (modes, )
 
-        if mode not in self.mode_opts:
+        if not all(mode in self.mode_opts for mode in modes):
             print("Mode must be one of the following!: {}", self.mode_opts)
             sys.exit(1)
 
@@ -43,31 +47,44 @@ tomorrow_due_time = '{year}{month:02d}{day:02d}T100000Z'.format(year=tomorrow.ye
                                                              day=tomorrow.day)
 
 tags = {'GTD': {'project': 'Meta'},
-        'inbox': {'project': 'Meta',
+        'inbox': {
+            'project': 'Meta',
             'due': tomorrow_due_time,
             'wait': tomorrow_due_time},
-        'tickle': {'project': 'Meta',
+        'tickle': {
+            'project': 'Meta',
             'due': tomorrow_due_time,
-            'wait_delta': 1},
+            'delta': 0},
+        'reminder': {
+            'project': 'Meta',
+            'due': tomorrow_due_time,
+            'delta': 1,
+            'tags': ModList(('reminder', 'tickle'), ('-', '+'))},
         'tv': {'project': 'Fun'},
         'read': {'project': 'Fun'},
-        'consistent': {'consistent': 'yes',
+        'consistent': {
+            'consistent': 'yes',
             'tags': ModList('consistent', '-')},
-        'strict': {'strict': 'yes',
+        'strict': {
+            'strict': 'yes',
             'tags': ModList('strict', '-')},
         'call': {'tags': ModList('go', '+')},
-        'dev': {'project': 'Dev',
+        'dev': {
+            'project': 'Dev',
             'tags': ModList('dev', '-')},
-        'bug': {'project': 'Dev',
-                'priority': 'H'}}
+        'bug': {
+            'project': 'Dev',
+            'priority': 'H'}}
 
 
 # Note that the 'annual' and 'Nyears' tags are treated differently
 # so we make sure to adjust for leap years.
-repeat_basics = {'daily': 1,
+repeat_basics = {
+        'daily': 1,
         'weekly': 7,
         'monthly': 30,
-        'annually': 1}
+        'annually': 1
+}
 
 repeats = {}
 for prefix, i in [('', 1), ('bi', 2)]:
@@ -80,9 +97,11 @@ for i in range(3,7):
         repeats[period.format(i)] = int(i * N)
 
 for key in repeats.keys():
-    tags[key] = {'due': getToday(),
-                 'wait': FieldRef('due'),
-                 'repeat': 'yes'}
+    tags[key] = {
+            'due': getToday(),
+            'wait': FieldRef('due'),
+            'repeat': 'yes'
+    }
 
 # Annual tasks should repeat at the same time every year
 for tag in ['annually', 'biannually', '3years',

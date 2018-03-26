@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+""" Hooks that Monitor for Task Completions
+
+Hooks that should be run when 'task done' or 'task stop' is run belong here.
+"""
+
 import sys
 import json
 import datetime as dt
@@ -35,7 +40,7 @@ if isDone(new_task):
 
             new_task['due'] = new_due.strftime(date_fmt)
 
-            if new_task['wait_delta'] >= 0:
+            if new_task['delta'] >= 0:
                 new_task['wait'] = get_new_wait(new_task)
 
             new_task['status'] = 'pending'
@@ -43,7 +48,6 @@ if isDone(new_task):
 
 
 if ('start' in old_task) and ('start' not in new_task):
-
     with open('/home/bryan/.task/.last_task', 'w') as f:
         f.write(new_task['uuid'])
 

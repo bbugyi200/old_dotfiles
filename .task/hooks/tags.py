@@ -1,3 +1,5 @@
+""" Functions Relating to Task Tags """
+
 import sys
 from dateutil.parser import parse
 
@@ -9,11 +11,16 @@ def hasTag(task, tag):
     return ('tags' in task.keys()) and (tag in task['tags'])
 
 
-def compareFields(taskA, taskB, field):
+def fieldsEquivalent(taskA, taskB, field):
+    """ Compares the Given Field of two Tasks
+
+    Returns True if the fields are equal.
+    """
     return (field not in set(taskA.keys()) & set(taskB.keys())) or (taskA[field] == taskB[field])
 
 
 def fieldEquals(task, field, value):
+    """ True if 'task[field]' equals 'value' """
     return (field in task.keys()) and (task[field] == value)
 
 
@@ -54,6 +61,10 @@ def process_add_tags(new_task, *, old_task={}):
         except KeyError as e:
             pass
 
+        # Medium priority should not exist
+        if ('priority' in new_task.keys()) and (new_task['priority'] == 'M'):
+            new_task.pop('priority')
+
         fmt = "+{tag} => {field}{sep}{val}\n"
         for tag in defaults.tags.keys():
             if tag in new_task['tags'] and (('tags' not in old_task.keys()) or (tag not in old_task['tags'])):
@@ -72,6 +83,8 @@ def process_add_tags(new_task, *, old_task={}):
                             if isinstance(value, defaults.FieldRef):
                                 try:
                                     new_task[field] = new_task[value.field]
+                                    output += fmt.format(tag=tag, field=field,
+                                                         sep=' = ', val='task[{}]'.format(value.field))
                                 except KeyError as e:
                                     error_fmt = "The '{field}:' field must be defined when using the '+{tag}' tag."
                                     print(error_fmt.format(field=value.field, tag=tag))
@@ -82,37 +95,36 @@ def process_add_tags(new_task, *, old_task={}):
                             output += fmt.format(tag=tag, field=field, sep=':', val=new_task[field])
 
                         if isinstance(value, defaults.ModList):
-                            if value.mode == '+' and value.item not in new_task[field]:
-                                if field not in new_task.keys():
-                                    new_task[field] = []
-                                new_task[field].append(value.item)
-                                sep = '.append'
-                            elif value.mode == '-':
-                                try:
-                                    new_task[field].remove(value.item)
-                                    sep = '.remove'
-                                except ValueError as e:
-                                    error_fmt = "Cannot remove '{item}'! '{item}' is not in '{field}'!"
-                                    print(error_fmt.format(item=value.item, field=field))
-                                    sys.exit(1)
+                            for item, mode in zip(value.items, value.modes):
+                                if mode == '+' and item not in new_task[field]:
+                                    if field not in new_task.keys():
+                                        new_task[field] = []
+                                    new_task[field].append(item)
+                                    sep = '.append'
+                                elif mode == '-':
+                                    try:
+                                        new_task[field].remove(item)
+                                        sep = '.remove'
+                                    except ValueError as e:
+                                        error_fmt = "Cannot remove '{item}'! '{item}' is not in '{field}'!"
+                                        print(error_fmt.format(item=item, field=field))
+                                        sys.exit(1)
 
-                            output += fmt.format(tag=tag, field=field, sep=sep, val='(\'' + value.item + '\')')
+                                output += fmt.format(tag=tag, field=field, sep=sep, val='(\'' + item + '\')')
 
-    if 'wait_delta' in new_task.keys():
-        if compareFields(new_task, old_task, 'wait') and (new_task['wait_delta'] >= 0):
+    if 'delta' in new_task.keys():
+        if fieldsEquivalent(new_task, old_task, 'wait') and (new_task['delta'] >= 0):
             new_task['wait'] = get_new_wait(new_task)
+            out = "'delta' Field Exists => task[wait] = task[due] - {}d\n".format(int(new_task['delta']))
+            print(out)
     else:
-        new_task = _wait_delta_check(new_task)
+        new_task = _set_delta(new_task)
 
     # Set 'Misc' project if no other project is set
     if 'project' not in new_task.keys():
         new_task['project'] = 'Misc'
-        temp = "Default Project Set => Misc\n"
-        print(temp)
-
-    # Medium priority should not exist
-    if ('priority' in new_task.keys()) and (new_task['priority'] == 'M'):
-        new_task.pop('priority')
+        out = "Default Project Set => Misc\n"
+        print(out)
 
     if output != header:
         output += '   \n'  # Spaces Needed
@@ -121,24 +133,19 @@ def process_add_tags(new_task, *, old_task={}):
     return new_task
 
 
-def add_hook(new_task):
-    """ Ran by Add Hook Only Must be run after process functions. """
-    new_task = _wait_delta_check(new_task)
-    return new_task
-
-
-def _wait_delta_check(new_task):
+def _set_delta(new_task):
+    """ Sets 'task[delta]' to Integer Difference of 'task[due]' and 'task[wait]' """
     if fieldEquals(new_task, 'repeat', 'yes'):
         if 'wait' in new_task.keys():
-            delta = parse(new_task['due']) - parse(new_task['wait'])
-            if delta.days < 0:
-                new_task['wait_delta'] = -1
+            tdelta = parse(new_task['due']) - parse(new_task['wait'])
+            if tdelta.days < 0:
+                new_task['delta'] = -1
                 new_task.pop('wait')
                 print('Negative wait removed.')
             else:
-                new_task['wait_delta'] = delta.days
-                print('[repeat.wait_delta] set to {} for repeating task.'.format(delta.days))
+                new_task['delta'] = tdelta.days
+                print('[repeat.delta] set to {} for repeating task.'.format(tdelta.days))
         else:
-            new_task['wait_delta'] = -1
+            new_task['delta'] = -1
 
     return new_task

@@ -1,5 +1,10 @@
 #!/usr/bin/env python2
 
+""" 'timew' Hook
+
+Starts/stops 'timew' when task is started/stopped.
+"""
+
 import sys
 import json
 import os
@@ -23,10 +28,10 @@ combined_tags = ' '.join(['"%s"' % tag for tag in tags]).encode('utf-8').strip()
 # Started task.
 if 'start' in new_task and 'start' not in old_task:
     os.system('timew start "[Project: {project}]" {tags}'.format(project=new_task['description'],
-                                                       tags=combined_tags.decode()))
+                                                                 tags=combined_tags.decode()))
 
 # Stopped task.
-elif 'start' not in new_task and 'start' in old_task:
+elif ('start' not in new_task) and ('start' in old_task):
     os.system('timew stop')
 
 print(json.dumps(new_task))
