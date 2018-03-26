@@ -10,13 +10,10 @@
 .xmonad/*
 !.xmonad/xmonad.hs
 
-.weechat/logs/*
-.weechat/*.log
-.weechat/python/weechat-vimode/*
-.weechat/sec.conf
-.weechat/urlserver_list.txt
+.weechat/*
 
 .task/*
+!.task/hooks
 .taskrc
 
 .password-store
