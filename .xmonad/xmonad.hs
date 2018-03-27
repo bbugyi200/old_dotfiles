@@ -84,8 +84,8 @@ shift = shiftMask
 myAdditionalKeys = [
    ---------- ALPHANUMERIC CHARACTERS ----------
    -- (you can sort these bindings with `<range>sort r /, [A-z]),/`)
-   ((alpha, xK_0), spawn "tmux switchc -n") -- Tmux Next Session
-   , ((alpha, xK_9), spawn "tmux switchc -p") -- Tmux Previous Session
+   ((alpha, xK_0), spawn "tmux -L $(tm-socket) switchc -n") -- Tmux Next Session
+   , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
    , ((alpha .|. beta, a), spawn "alarm") -- Alarm
    , ((alpha, a), spawn "sleep 0.2 && xdotool key alt+a") -- Tmux Prefix
    , ((alpha .|. ctrl, a), spawn "khal-alarms") -- Calendar Alarms
@@ -101,13 +101,13 @@ myAdditionalKeys = [
    , ((alpha, l), spawn "my-screenlock") -- screenlock
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
-   , ((alpha, n), spawn "tmux next-window") -- Tmux Next
+   , ((alpha, n), spawn "tmux -L $(tm-socket) next-window") -- Tmux Next
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
                            removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
    , ((alpha, o), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
    , ((alpha .|. beta, o), spawn "dmenu_books --application=okular") -- Open New Book in Okular
-   , ((alpha, p), spawn "tmux previous-window") -- Tmux Previous
+   , ((alpha, p), spawn "tmux -L $(tm-socket) previous-window") -- Tmux Previous
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
    , ((alpha .|. ctrl, p), spawn "pause_task")
    , ((alpha, q), spawn "tm-send --action=quit") -- Quit Screen
@@ -141,6 +141,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha, xK_comma), NSP.namedScratchpadAction scratchpads "gtd") -- Scratchpad GTD
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); clear'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; clear'") -- cd to Last Dir
    , ((alpha, xK_semicolon), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
@@ -208,17 +209,19 @@ myLayout = tiled ||| Mirror tiled ||| Full
     nmaster = 1
     ratio = 1/2
     delta = 3/100
-
 scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad") 
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "calculator" "galculator" (className =? "Galculator")
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "weechat" weechat (appName =? "weechat")
+                    (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh)
+              , NSP.NS "gtd" gtd (appName =? "GTD")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh) ]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
                 scratchpad = "urxvt -name scratchpad -cd ~/Dropbox/notes -e zsh -c 'clear && ls -a && echo; zsh'" 
                 weechat = "urxvt -name weechat -cd ~/.task -e zsh -c 'weechat'"
+                gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD'"
                 l = 0.25; bigl = 0.05  -- Distance from left edge
                 t = 0.4; bigt = 0.05  -- Distance from top edge
                 w = 0.5; bigw = 0.9
@@ -241,8 +244,8 @@ myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
                 >> spawn "maintCheck"
                 >> spawn "init-bg"
-                >> spawn "sleep 3 && volume-xmonad"
-                >> spawn "sleep 3 && calevent"
+                >> spawn "sleep 2 && volume-xmonad"
+                >> spawn "sleep 2 && khal-alarms"
                 >> spawn "alarm --resume"
                 >> spawn ((xmobarTempFmt $ getXmobarTemplate "1-bottom") ++ " --position=Bottom")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "2-top") ++ " --screen=1")

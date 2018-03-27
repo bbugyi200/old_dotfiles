@@ -101,7 +101,7 @@ restart_khal_alarms() { kill "$(cat /tmp/khal-alarms.pid 2> /dev/null)" &> /dev/
 kc() { clear && khal list --notstarted --format '{start-time} {title}' now && echo; }
 kn() { khal new "$@" && kc && restart_khal_alarms; }
 knt() { khal new tomorrow "$@" && kc && restart_khal_alarms; }
-ke() { khal edit "$@" && kc && restart_khal_alarms; }
+ke() { ikhal "$@" && kc && restart_khal_alarms; }
 
 # ---------- ZSH Completions
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
