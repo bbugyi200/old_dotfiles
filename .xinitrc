@@ -9,4 +9,5 @@ clipmenud &
 dunst &
 xbindkeys
 fetchmail --syslog -d 900
+khal-alarms &
 exec xmonad

@@ -10,7 +10,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 # ----------------------------------- ALIASES --------------------------------
 
-alias so='source ~/.zshrc'
+alias so='unalias -a && source ~/.zshrc'
 
 # --- Suffix Aliases
 # Zathura

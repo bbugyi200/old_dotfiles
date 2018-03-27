@@ -16,3 +16,6 @@ editor:
 
 content:
     geolocation: true
+
+downloads:
+    remove_finished: 10000

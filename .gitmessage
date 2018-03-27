@@ -1,20 +1,20 @@
 
 
-# <type> (If applied, this commit will...) <subject> (Max 50 char)
+# <type>: (If applied, this commit will...) <subject> (Max 50 char)
 # |<----  Using a Maximum Of 50 Characters  ---->|
 
 # Explain why this change is being made
 # |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
 
 # Type can be 
-#    Add        add feature
-#    Remove     remove feature
-#    Fix        bug fix
-#    Change     modify production code; new behavior; new unit tests needed
-#    Refactor   refactor production code; same behavior; old unit tests pass
-#    Update     update to meta files (README, gh-pages, configs, .gitignore, etc)
-#    Cleanup    formatting, missing semi colons, variable names, docstrings, etc
+#    Add:       add feature
+#    Rem:       remove feature
+#    Fix:       bug fix
+#    Mod:       modify production code; new behavior; new unit tests needed
+#    Ref:       refactor production code; same behavior; old unit tests pass
+#    Style:     formatting, missing semi colons, variable names, docstrings, etc
 #    Tests:     adding or refactoring tests; no production code change
+#    Meta:      update to meta files (README, gh-pages, configs, .gitignore, etc)
 # --------------------
 # Remember to
 #    Capitalize the subject line

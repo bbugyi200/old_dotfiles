@@ -50,7 +50,7 @@ tags = {'GTD': {'project': 'Meta'},
         'inbox': {
             'project': 'Meta',
             'due': tomorrow_due_time,
-            'wait': tomorrow_due_time},
+            'delta': 0},
         'tickle': {
             'project': 'Meta',
             'due': tomorrow_due_time,

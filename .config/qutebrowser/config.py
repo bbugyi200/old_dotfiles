@@ -39,6 +39,9 @@ bind('<Ctrl-p>', 'spawn --userscript qute-pass', mode='insert')
 bind('<Ctrl-Shift-u>', 'spawn --userscript qute-pass --username-only', mode='insert')
 bind('<Ctrl-Shift-p>', 'spawn --userscript qute-pass --password-only', mode='insert')
 
+# >>> PROMPT
+bind('<Ctrl-o>', 'prompt-open-download zathura {}', mode='prompt')
+
 # >>> COMMAND
 bind('<Ctrl-f>', 'edit-command', mode='command')
 
@@ -51,10 +54,12 @@ bind('<Ctrl-l>', 'edit-url')
 bind(',e', 'scroll-to-perc 0', 'later 25 hint inputs -m number',
      'later 50 spawn xdotool key 0', 'later 100 open-editor')
 bind(',t', 'config-cycle tabs.position left top')
-bind(',s', 'set-cmd-text -s :open -t site {url} ')
 bind(',rss', 'spawn --userscript openfeeds')
 # Miscellaneous
 bind('gi', 'hint inputs')
+bind('sb', 'quickmark-save')
+bind('C', 'tab-clone')
+bind('m', 'enter-mode set_mark')
 
 
 # ----- Load Yaml Config

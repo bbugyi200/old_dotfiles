@@ -84,7 +84,7 @@
 
     ### Text ###
 
-    font = Monospace 8
+    font = Terminus (TTF) 12
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -253,11 +253,16 @@
     icon = /usr/share/icons/gnome/16x16/status/messagebox_warning.png
 
 [urgency_critical]
-    background = "#A00000"
-    foreground = "#ffffff"
+    background = "#b50000"
+    foreground = "#f1f1f1"
     timeout = 15
     # Icon for notifications with critical urgency, uncomment to enable
     icon = /usr/share/icons/gnome/16x16/status/messagebox_critical.png
+
+[dropbox]
+    appname = "Dropbox"
+    format = ""
+
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

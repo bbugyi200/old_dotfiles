@@ -48,7 +48,7 @@ tin () {
 # be an ID.
 to () { eval "task_send $@ && task next +READY; task $2 | less"; }
 ti () { eval "task_send $1 info"; }
-tpi () { task "$1" mod -inbox "${@:2}" && confirm "task next +READY"; }
+tpi () { task "$1" mod -inbox "${@:2}" && confirm "clear && task next +READY"; }
 tmi () { eval "tin $1 mod ${@:2}"; }
 tsi () { eval "tt add +inbox $@ && tt +LATEST start"; }
 tg () { eval "tcsn $@ rc.verbose=blank,label list"; }
@@ -59,7 +59,7 @@ tgd () { eval "tcsn rc.verbose=blank,label $@ \( +COMPLETED or +DELETED \) all";
 tget () { task _get "$@"; }
 tall () { task_send; }
 tnall () { tcsn "next +READY"; }
-tnl () { t next +READY limit:none; }  # no limit
+tnl () { task next +READY limit:none; }  # no limit
 tsub () { tt $1 modify "/$2/$3/g"; }
 trev () { tcs "review rc.defaultwidth:$COLUMNS rc.report.all.sort:urgency- \( +PENDING or +WAITING \) all limit:none"; }
 
@@ -97,8 +97,8 @@ alias timd='tim delete'
 
 # ---------- Khal
 alias k='khal'
-restart_khal_alarms() { kill "$(cat /tmp/khal-alarms.pid)" &> /dev/null; setsid khal-alarms &> /dev/null; }
-kc() { clear && khal list --notstarted now && echo; }
+restart_khal_alarms() { kill "$(cat /tmp/khal-alarms.pid 2> /dev/null)" &> /dev/null; setsid khal-alarms &> /dev/null; }
+kc() { clear && khal list --notstarted --format '{start-time} {title}' now && echo; }
 kn() { khal new "$@" && kc && restart_khal_alarms; }
 knt() { khal new tomorrow "$@" && kc && restart_khal_alarms; }
 ke() { khal edit "$@" && kc && restart_khal_alarms; }
