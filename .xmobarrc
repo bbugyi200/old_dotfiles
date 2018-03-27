@@ -38,7 +38,7 @@ Config { font = "xft:Dina:pixelsize=13"
 					, Run Com "poll-timew" [] "timew" 10
                     , Run Com "dbox-xmonad" [] "dropbox" 10
                     , Run Com "pia-xmonad" [] "pia" 50
-                    , Run Com "calevent" [] "calevent" 600
+                    , Run PipeReader ":/tmp/calevent-fifo" "calevent"
                     , Run PipeReader " :/tmp/volume-fifo" "volume"
                     , Run PipeReader " :/tmp/counter-fifo" "counter"
                     , Run UnsafeStdinReader

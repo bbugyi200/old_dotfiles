@@ -242,6 +242,7 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "maintCheck"
                 >> spawn "init-bg"
                 >> spawn "sleep 3 && volume-xmonad"
+                >> spawn "sleep 3 && calevent"
                 >> spawn "alarm --resume"
                 >> spawn ((xmobarTempFmt $ getXmobarTemplate "1-bottom") ++ " --position=Bottom")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "2-top") ++ " --screen=1")
