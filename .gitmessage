@@ -14,7 +14,7 @@
 #    Ref:       refactor production code; same behavior; old unit tests pass
 #    Style:     formatting, missing semi colons, variable names, docstrings, etc
 #    Tests:     adding or refactoring tests; no production code change
-#    Meta:      update to meta files (README, gh-pages, configs, .gitignore, etc)
+#    Update     update to meta files (README, gh-pages, configs, .gitignore, etc)
 # --------------------
 # Remember to
 #    Capitalize the subject line

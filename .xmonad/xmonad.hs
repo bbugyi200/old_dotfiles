@@ -47,9 +47,11 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "athena" = "%UnsafeStdinReader% }%timew%{ %counter%%pia%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
-getXmobarTemplate "aphrodite" = "%UnsafeStdinReader% }%timew%{ %counter%%pia%%dynnetwork%  |  %dropbox%  |  %battery%  |  %volume%  |  %date%"
-getXmobarTemplate "secondary" = "%cpu%  |  %memory%}%KVAY%{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader% }%timew%{ %counter%%pia%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
+getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
+getXmobarTemplate "2-top" = "}%KVAY%{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
+getXmobarTemplate "2-bottom" = "}{"
 
 removeEmptyWorkspaceAfter' f = do
     workspaceList <- gets (W.workspaces . windowset)
@@ -241,13 +243,15 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "init-bg"
                 >> spawn "sleep 3 && volume-xmonad"
                 >> spawn "alarm --resume"
-                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "secondary") ++ " --screen=1")
+                >> spawn ((xmobarTempFmt $ getXmobarTemplate "1-bottom") ++ " --position=Bottom")
+                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "2-top") ++ " --screen=1")
+                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "2-bottom") ++ " --position=Bottom --screen=1")
 
 -------------------------------- Main -----------------------------------------
 main :: IO ()
 main = do
     hostname <- getHostName
-    xmproc <- spawnPipe (xmobarTempFmt $ getXmobarTemplate hostname)
+    xmproc <- spawnPipe (xmobarTempFmt $ getXmobarTemplate $ "1-top-" ++ hostname)
     xmonad $ ewmh desktopConfig
         {
             terminal                = myTerminal
