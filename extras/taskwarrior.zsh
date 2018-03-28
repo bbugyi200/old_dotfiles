@@ -52,8 +52,8 @@ tg () { eval "tcsn $@ rc.verbose=blank,label list"; }
 tgw () { eval "tcsn $@ rc.verbose=blank,label waiting"; }
 tga () { eval "tcsn rc.verbose=blank,label $@ -COMPLETED -DELETED all"; }
 tgcd () { eval "tcsn rc.verbose=blank,label $@ \( +COMPLETED or +DELETED \) all"; }
+tdep () { task "$1" mod depends:"$2"; }
 tget () { task _get "$@"; }
-ttall () { task_send; }
 tnall () { tcsn "next +READY"; }
 tnl () { task next +READY limit:none; }  # no limit
 tsub () { tt $1 modify "/$2/$3/g"; }
@@ -68,10 +68,11 @@ alias td='tt rc.verbose=nothing done'
 alias tdo='task done'
 alias tdue='tga +OVERDUE'
 alias tdel='tt delete'
-alias tcn='tt context none'
-alias tcl='tt context low'
-alias tcm='tt context mid'
-alias tch='tt context high'
+alias tcn='tt context none && tmux -L GTD rename-window -t GTD:0.0 NONE'
+alias tcd='tt context dead && tmux -L GTD rename-window -t GTD:0.0 DEAD'
+alias tcl='tt context low && tmux -L GTD rename-window -t GTD:0.0 LOW'
+alias tcm='tt context mid && tmux -L GTD rename-window -t GTD:0.0 MID'
+alias tch='tt context high && tmux -L GTD rename-window -t GTD:0.0 HIGH'
 alias tcomp='task limit:10 \( status:completed or status:deleted \) rc.report.all.sort:end- all'
 
 # ---------- TimeWarrior

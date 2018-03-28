@@ -99,6 +99,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, k), sendMessage Expand) -- Expand Master Area
    , ((alpha, k), spawn "tm-kill") -- Kill Screen
    , ((alpha, l), spawn "my-screenlock") -- screenlock
+   , ((alpha .|. beta, l), sendMessage NextLayout) -- Next Layout
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
    , ((alpha, n), spawn "tmux -L $(tm-socket) next-window") -- Tmux Next
@@ -146,7 +147,6 @@ myAdditionalKeys = [
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; clear'") -- cd to Last Dir
    , ((alpha, xK_semicolon), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
-   , ((beta .|. alpha, xK_space), sendMessage NextLayout) -- Next Layout
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    ]
