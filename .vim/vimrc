@@ -49,7 +49,7 @@ set smartcase
 set wildmenu
 set wildmode=full
 " 'find'/ctrlp should ignore these folders
-set wildignore+=*/__pycache__/*,*/.git/*,*/bin/*,*/venv/*
+set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*
 " Increase command history limit
 set history=200
 " Always show one line above/below cursor
