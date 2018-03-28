@@ -3,7 +3,7 @@
 # ---------- TaskWarrior
 tcs () {
     TARGET_CONTEXT="$1"; shift
-    task_send "rc.context=$TARGET_CONTEXT $@"
+    task rc.context="$TARGET_CONTEXT" "$@"
 }
 
 tcsn () { tcs none "$@"; }
@@ -47,17 +47,13 @@ tin () {
 # All functions that use 'to' REQUIRE their first argument to
 # be an ID.
 to () { eval "task_send $@ && task next +READY; task $2 | less"; }
-ti () { eval "task_send $1 info"; }
 tpi () { task "$1" mod -inbox "${@:2}" && confirm "clear && task next +READY"; }
-tmi () { eval "tin $1 mod ${@:2}"; }
-tsi () { eval "tt add +inbox $@ && tt +LATEST start"; }
 tg () { eval "tcsn $@ rc.verbose=blank,label list"; }
 tgw () { eval "tcsn $@ rc.verbose=blank,label waiting"; }
-tgr () { eval "tcsn status:Recurring $@ rc.verbose=blank,label all"; }
 tga () { eval "tcsn rc.verbose=blank,label $@ -COMPLETED -DELETED all"; }
-tgd () { eval "tcsn rc.verbose=blank,label $@ \( +COMPLETED or +DELETED \) all"; }
+tgcd () { eval "tcsn rc.verbose=blank,label $@ \( +COMPLETED or +DELETED \) all"; }
 tget () { task _get "$@"; }
-tall () { task_send; }
+ttall () { task_send; }
 tnall () { tcsn "next +READY"; }
 tnl () { task next +READY limit:none; }  # no limit
 tsub () { tt $1 modify "/$2/$3/g"; }
@@ -70,6 +66,7 @@ alias tan='to annotate'
 alias tu='to modify'
 alias td='tt rc.verbose=nothing done'
 alias tdo='task done'
+alias tdue='tga +OVERDUE'
 alias tdel='tt delete'
 alias tcn='tt context none'
 alias tcl='tt context low'
@@ -101,7 +98,8 @@ restart_khal_alarms() { kill "$(cat /tmp/khal-alarms.pid 2> /dev/null)" &> /dev/
 kc() { clear && khal list --notstarted --format '{start-time} {title}' now && echo; }
 kn() { khal new "$@" && kc && restart_khal_alarms; }
 knt() { khal new tomorrow "$@" && kc && restart_khal_alarms; }
-ke() { ikhal "$@" && kc && restart_khal_alarms; }
+ke() { khal edit "$@" && kc && restart_khal_alarms; }
+ki() { ikhal "$@" && kc && restart_khal_alarms; }
 
 # ---------- ZSH Completions
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget

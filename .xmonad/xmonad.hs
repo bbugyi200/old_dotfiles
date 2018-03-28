@@ -219,9 +219,9 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh) ]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
-                scratchpad = "urxvt -name scratchpad -cd ~/Dropbox/notes -e zsh -c 'clear && ls -a && echo; zsh'" 
-                weechat = "urxvt -name weechat -cd ~/.task -e zsh -c 'weechat'"
-                gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD'"
+                scratchpad = "urxvt -name scratchpad -e zsh -c 'tmuxinator start ScratchPad root=$(defaultTmuxDir --get ScratchPad)'" 
+                weechat = "urxvt -name weechat -e zsh -c 'tmuxinator start WeeChat root=$(defaultTmuxDir --get WeeChat)'"
+                gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD root=$(defaultTmuxDir --get GTD)'"
                 l = 0.25; bigl = 0.05  -- Distance from left edge
                 t = 0.4; bigt = 0.05  -- Distance from top edge
                 w = 0.5; bigw = 0.9

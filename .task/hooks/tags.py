@@ -16,7 +16,10 @@ def fieldsEquivalent(taskA, taskB, field):
 
     Returns True if the fields are equal.
     """
-    return (field not in set(taskA.keys()) & set(taskB.keys())) or (taskA[field] == taskB[field])
+    c1 = (field in set(taskA.keys()) & set(taskB.keys())) and (taskA[field] == taskB[field])
+    c2 = field not in set(taskA.keys()) | set(taskB.keys())
+
+    return any([c1, c2])
 
 
 def fieldEquals(task, field, value):
