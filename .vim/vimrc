@@ -159,9 +159,9 @@ nnoremap <Leader>g gqap
 nnoremap <C-Del> :call delete(expand('%'))<CR>
 nnoremap <C-s> :SyntasticToggleMode<CR>
 " Edit Snippet File
-nnoremap <Leader>S :Ex ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/UltiSnips<CR>
+nnoremap <Leader>S :e ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/UltiSnips/<C-R>=&filetype<CR>.snippets<CR>
 " Edit ftplugin File
-nnoremap <Leader>F :Ex ~/Dropbox/dotfiles/.vim/ftplugin<CR>
+nnoremap <Leader>F :e ~/Dropbox/dotfiles/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>
 " Delete Buffer
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
 " Vertical Buffer
@@ -172,9 +172,9 @@ inoremap <C-o> <C-x><C-o>
 " Toggles LiveDown for Markdown (e.g. README.md)
 nmap gm :LivedownToggle<CR>
 " Pulls Up Documentation for Module/Function Under Cursor
-nnoremap <Leader>l yiW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
-nnoremap <Leader>L yW:Silent LangDoc --ext=<C-r>=expand('%:e')<CR> -m '<C-r>"'<CR>
-command! -nargs=1 Doc execute "Silent LangDoc --ext=" . expand('%:e') . " -m <args>"
+nnoremap <Leader>l yiW:Silent LangDoc --filetype=<C-r>=&filetype<CR> -m '<C-r>"'<CR>
+nnoremap <Leader>L yW:Silent LangDoc --filetype=<C-r>=&filetype<CR> -m '<C-r>"'<CR>
+command! -nargs=1 Doc execute "Silent LangDoc --filetype=" . &filetype . " -m <args>"
 " Maps command to 'tm' shell script
 command! -nargs=1 Tm execute "Silent tm <args>"
 imap <C-h> <Esc><C-h>
