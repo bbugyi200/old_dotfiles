@@ -1,3 +1,4 @@
+import re
 import yaml
 
 # pylint: disable=C0111
@@ -8,24 +9,55 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 config.load_autoconfig()
 
 
+class URL(str):
+    """ URL for 'searchengines' dict
+
+    Allows for additional pattern matching.
+    """
+    def __new__(cls, value, *args, **kwargs):
+        return super(URL, cls).__new__(cls, value)
+
+    def __init__(self, default, others, regexps, filters=None):
+        self.default = default
+        if isinstance(others, str):
+            self.others = (others,)
+            self.regexps = (regexps,)
+            self.filters = (filters,)
+        else:
+            self.others = others
+            self.regexps = regexps
+            self.filters = filters
+
+        self.filters = tuple(map(lambda x: x if x else lambda y: (y,), self.filters))
+
+    def format(self, term, *args, **kwargs):
+        for other, regexp, filter_ in zip(self.others, self.regexps, self.filters):
+            if re.match(regexp, term):
+                return str.format(other, *filter_(term), *args, **kwargs)
+
+        return str.format(self.default, term, *args, **kwargs)
+
+
 # ----- Dictionary Values
-c.url.searchengines['DEFAULT'] = 'http://www.google.com/search?q={}'
-c.url.searchengines['a'] = 'https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={}'
-c.url.searchengines['al'] = 'http://www.google.com/search?q=arch+linux+{}'
-c.url.searchengines['d'] = 'http://www.dictionary.com/browse/{}'
-c.url.searchengines['gg'] = 'https://www.google.com/search?q=site%3Agithub.com+{}'
+c.url.searchengines['DEFAULT'] = URL('https://google.com/search?q={}',
+                                     'https://duckduckgo.com/?q={}',
+                                     '^%21.*')
+c.url.searchengines['ep'] = URL('https://google.com/search?q={}+episodes',
+                                'https://google.com/search?q=Season+{}+episodes',
+                                '^[0-9].*')
+c.url.searchengines['ddg'] = 'https://duckduckgo.com/?q={}'
+c.url.searchengines['al'] = 'https://google.com/search?q=arch+linux+{}'
+c.url.searchengines['gg'] = 'https://google.com/search?q=site%3Agithub.com+{}&ia=web'
 c.url.searchengines['ggg'] = 'https://github.com/bbugyi200/{}'
-c.url.searchengines['ggi'] = 'https://github.com/bbugyi200/{}/issues'
+c.url.searchengines['ggi'] = URL('https://github.com/bbugyi200/{}/issues',
+                                 'https://github.com/bbugyi200/{1}/issues/{0}',
+                                 '^[0-9].*',
+                                 filters=lambda x: re.split('\+|%20', x, maxsplit=1))
 c.url.searchengines['ggii'] = 'https://github.com/bbugyi200/{}/issues/new'
-c.url.searchengines['img'] = 'https://www.google.com/search?tbm=isch&q={}'
-c.url.searchengines['li'] = 'https://www.google.com/search?q=site%3Alinkedin.com+{}'
+c.url.searchengines['li'] = 'https://google.com/search?q=site%3Alinkedin.com+{}&ia=web'
 c.url.searchengines['py'] = 'https://docs.python.org/2/library/{}'
-c.url.searchengines['red'] = 'https://www.google.com/search?q=site%3Areddit.com+{}'
-c.url.searchengines['site'] = 'https://www.google.com/search?q=site%3A{}'
-c.url.searchengines['t'] = 'http://www.thesaurus.com/browse/{}'
-c.url.searchengines['w'] = 'https://www.wikipedia.org/w/index.php?title=Special:Search&search={}'
+c.url.searchengines['red'] = 'https://google.com/search?q=site%3Areddit.com+{}&ia=web'
 c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
-c.url.searchengines['yt'] = 'https://www.youtube.com/results?search_query={}'
 
 
 # ----- Bindings
@@ -48,7 +80,7 @@ bind('<Ctrl-f>', 'edit-command', mode='command')
 # >>> NORMAL
 # Ctrl
 bind('<Ctrl-r>', 'restart')
-bind('<Ctrl-t>', 'spawn --userscript taskadd tags:read')
+bind('<Ctrl-t>', 'spawn --userscript taskadd tags:inbox')
 bind('<Ctrl-l>', 'edit-url')
 # Leader (,)
 bind(',e', 'scroll-to-perc 0', 'later 25 hint inputs -m number',
@@ -58,9 +90,8 @@ bind(',rss', 'spawn --userscript openfeeds')
 # Miscellaneous
 bind('gi', 'hint inputs')
 bind('sb', 'quickmark-save')
-bind('C', 'tab-clone')
+bind('C', 'tab-clone', 'back')
 bind('m', 'enter-mode set_mark')
-
 
 # ----- Load Yaml Config
 with (config.configdir / 'config.yml').open() as f:

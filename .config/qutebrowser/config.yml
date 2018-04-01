@@ -2,7 +2,7 @@ tabs:
     position: left
     show: always
     last_close: startpage
-    select_on_remove: last-used
+    select_on_remove: next
     new_position:
         related: next
         unrelated: next
