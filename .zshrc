@@ -3,7 +3,7 @@
 source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
 source /home/bryan/Dropbox/dotfiles/extras/tmuxinator.zsh
 source /home/bryan/Dropbox/dotfiles/extras/globrc
-source /home/bryan/Dropbox/dotfiles/extras/taskwarrior.zsh
+source /home/bryan/Dropbox/dotfiles/extras/GTD.zsh
 
 # -------------------------- OH-MY-ZSH ---------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
@@ -40,6 +40,7 @@ alias -s txt="vim"
 alias -g @@="&> /dev/null & disown"
 alias -g X="&& exit"
 alias -g ::="| grep -e"
+alias -g %="| less"
 
 # -------------------------------- BINDINGS ----------------------------------
 bindkey "^P" up-line-or-search

@@ -10,7 +10,7 @@ config.load_autoconfig()
 
 
 class URL(str):
-    """ URL for 'searchengines' dict
+    """ URL for 'url.searchengines' dict
 
     Allows for additional pattern matching.
     """
@@ -24,10 +24,15 @@ class URL(str):
             self.regexps = (regexps,)
             self.filters = (filters,)
         else:
-            self.others = others
-            self.regexps = regexps
+            self.others = tuple(others)
+            self.regexps = tuple(regexps)
             self.filters = filters
 
+        # Allows 'filters' argument to be omitted even when multiple 'others' exist
+        if filters is None:
+            self.filters = (None,) * len(self.others)
+
+        # Allows 'None' to be given as default filter
         self.filters = tuple(map(lambda x: x if x else lambda y: (y,), self.filters))
 
     def format(self, term, *args, **kwargs):
@@ -90,7 +95,7 @@ bind(',rss', 'spawn --userscript openfeeds')
 # Miscellaneous
 bind('gi', 'hint inputs')
 bind('sb', 'quickmark-save')
-bind('C', 'tab-clone', 'back')
+bind('C', 'tab-clone', 'back', 'tab-move -')
 bind('m', 'enter-mode set_mark')
 
 # ----- Load Yaml Config

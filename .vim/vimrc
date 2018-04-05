@@ -20,6 +20,7 @@ endif
 
 " -------------------------------- SETS --------------------------------------
 " Status Line Settings (mode display)
+set nrformats+=alpha
 set number
 set laststatus=2
 set clipboard=unnamedplus
@@ -130,7 +131,6 @@ nnoremap <CR> o<Esc>
 " Plugin Mappings
 nmap <C-N> :cd %:h<CR>:NERDTree<CR><S-B>
 nmap <Leader>p :CtrlPMRU<CR>
-nmap <Leader>z :ZoomWin<CR>
 nmap <C-g> :Gstatus<CR>
 nmap <Leader>f :CtrlSF 
 " Swap highlighted word with last word in buffer
@@ -281,8 +281,8 @@ function! StatuslineGit()
   return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
 endfunction
 
-" highlight VertSplit ctermfg=DarkGrey ctermbg=DarkGrey
-highlight StatusLine cterm=NONE ctermfg=black ctermbg=yellow
+highlight VertSplit ctermfg=DarkGrey ctermbg=227
+highlight StatusLine cterm=NONE ctermfg=black ctermbg=227
 highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
 
 " highlight SLColor1 ctermfg=white ctermbg=DarkRed

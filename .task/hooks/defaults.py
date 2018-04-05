@@ -62,6 +62,7 @@ tags = {'GTD': {'project': 'Meta'},
             'tags': ModList(('reminder', 'tickle'), ('-', '+'))},
         'tv': {'project': 'Fun'},
         'read': {'project': 'Fun'},
+        'text': {'tags': ModList('study', '+')},
         'consistent': {
             'consistent': 'yes',
             'tags': ModList('consistent', '-')},

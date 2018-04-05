@@ -10,7 +10,7 @@ disable r
 # ---------- Vim
 alias lim='vim -c "normal \`0" -c "bdelete 1"'
 alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/{body.txt,mind.txt,heart.txt}'
-alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt ~/Dropbox/notes/misc/projects/project_schedule.txt'
+alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias vip="vim -c 'execute \"normal \\<c-p>\"'"
 fim() { vim -c 'CtrlPMRU' -c "normal $1" -c 'execute "normal \<cr>"'; }
@@ -39,7 +39,6 @@ vman() {
 
 
 # ---------- SSH / FTP
-alias sftp-athena="sftp -P $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
 alias ssh-athena="ssh -p $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"

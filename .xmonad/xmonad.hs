@@ -19,6 +19,7 @@ import Network.HostName (getHostName)
 
 import qualified XMonad.StackSet as W
 import qualified XMonad.Prompt as P
+import qualified XMonad.Prompt.Shell as PS
 import qualified XMonad.Util.NamedScratchpad as NSP
 import qualified XMonad.Hooks.DynamicLog as DL
 import qualified XMonad.Actions.CycleWS as CW
@@ -47,7 +48,7 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader% }%timew%{ %counter%%pia%%dynnetwork%  |  %dropbox%  |  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%KVAY%{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
@@ -146,6 +147,7 @@ myAdditionalKeys = [
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); clear'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; clear'") -- cd to Last Dir
    , ((alpha, xK_semicolon), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
+   , ((alpha .|. shift, xK_semicolon), PS.shellPrompt myXPConfig)
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
@@ -154,9 +156,9 @@ myAdditionalKeys = [
    -- Launch Applications
    ++ [((alpha, key), sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
-       [x, c, z, v, xK_KP_End, xK_KP_Down]
-       [myTerminal,"qutebrowser","zathura","okular","anki","slack"]
-       ["TERM","WEB","ZATH","OKULAR","ANKI","SLACK"]
+       [x, c, z, v, xK_KP_End, xK_KP_Down, xK_KP_Page_Down]
+       [myTerminal,"qutebrowser","zathura","okular","anki","slack","zeal"]
+       ["TERM","WEB","ZATH","OKULAR","ANKI","SLACK","ZEAL"]
       ]
 
    -- Launch Second Applications
