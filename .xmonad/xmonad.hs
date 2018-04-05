@@ -146,8 +146,8 @@ myAdditionalKeys = [
    , ((alpha, xK_comma), NSP.namedScratchpadAction scratchpads "gtd") -- Scratchpad GTD
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); clear'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; clear'") -- cd to Last Dir
-   , ((alpha, xK_semicolon), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
-   , ((alpha .|. shift, xK_semicolon), PS.shellPrompt myXPConfig)
+   , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
+   , ((alpha, xK_semicolon), PS.shellPrompt myXPConfig)
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
@@ -235,7 +235,8 @@ myManageHook = composeAll
     , className=? "Galculator"      --> doFloat
     , className=? "Peek"            --> doFloat
     , className=? "Pinentry"        --> doFloat
-    , appName=? "qute-editor"     --> doRectFloat (W.RationalRect l t w h)]
+    , appName=? "term-calendar"     --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)
+    , appName=? "qute-editor"       --> doRectFloat (W.RationalRect l t w h)]
     where
         l = 0.3
         t = 0.4
