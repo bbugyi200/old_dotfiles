@@ -104,11 +104,11 @@ hi SpellBad cterm=underline
 hi Normal guibg=NONE ctermbg=NONE
 
 " ------------------------------ KEY MAPPINGS --------------------------------
+" Makes ix.io snippet using highlighted text and sends ix.io link to clipboard
+noremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
 " Enables 'very magic' mode by default
 nnoremap / /\v
 vnoremap / /\v
-cnoremap %s/ %smagic/
-cnoremap \>s/ \>smagic/
 nnoremap :g/ :g/\v
 nnoremap :g// :g//
 " Preserves flags when repeating the last substitute command.
