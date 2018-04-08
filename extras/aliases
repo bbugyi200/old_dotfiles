@@ -10,41 +10,16 @@ alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias vip="vim -c 'execute \"normal \\<c-p>\" '"
 fim() { vim -c 'CtrlPMRU' -c "normal $1" -c 'execute "normal \<cr>"'; }
 
-mim() {
-    if [[ -z "$1" ]]; then
-        echo "usage: mim <mark>"
-        return 1
-    fi
-    if [[ "/bin/zsh" == $SHELL ]]; then
-        MARK=${1:u}
-    elif [[ "/bin/bash" == $SHELL ]]; then
-        MARK=${1^^}
-    fi
-    vim -c "normal \`$MARK" -c "bdelete 1" -c "normal g;"
-}
-
-# Enables vim :Man command from the terminal
-vman() {
-	vim -c "SuperMan $*"
-
-	if [ "$?" != "0" ]; then
-		echo "No manual entry for $*"
-	fi
-}
-
-
 # ---------- SSH / FTP
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
 alias ssh-athena="ssh -p $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
 
-
 # ---------- Java
 alias Java='java -classpath .:../bin'
 alias Javac='javac -d ../bin'
 alias Jdb='jdb -classpath "../bin"'
-
 
 # ---------- Git
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
@@ -66,7 +41,6 @@ gco() {
     fi
 }
 
-
 # ---------- Overriden Commands
 alias ag='ag --hidden'
 alias ccat='pygmentize -g'
@@ -82,7 +56,6 @@ alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"
 
-
 # ---------- transmission-remote
 tsm() { transmission-remote -l; }
 tsm-start() { transmission-daemon; }
@@ -94,7 +67,6 @@ tsm-rm() { transmission-remote -t$1 -r; }
 tsm-purge() { transmission-remote -t$1 -rad; }
 
 rip() { nohup torrent "$@" &> /dev/null & disown; }
-
 
 # ---------- ETERNAL BASH HISTORY
 # https://spin.atomicobject.com/2016/05/28/log-bash-history/
@@ -126,37 +98,16 @@ hview() {
     fi
 }
 
-
 # ---------- LangDoc
 alias PyDoc='LangDoc -e py -m'
 alias JavaDoc='LangDoc -e java -m'
 alias CDoc='LangDoc -e c -m'
 alias Doc='LangDoc -e sh -m'
 
-
 # ---------- Package Management
 alias update='confirm "sudo pacman -Syu"; confirm "mkdir /tmp/builds; cd /tmp/builds && cower -vud && buildall"'
 alias del='sudo pacman -Rs'
 alias mkpkg='makepkg -si'
-
-
-get() {
-    if pacman -Ss "^$1\$" &> /dev/null; then
-        sudo pacman -S $1
-    else
-        echo "Package not found in official repositories!"
-        if cower -s "^$1\$" &> /dev/null; then
-            mkcd /tmp/builds
-            cower -d $1
-            tmux send-keys "cd $1 && tree" "Enter"
-            tmux send-keys "makepkg -si"
-        else
-            echo "Package not found in AUR!"
-            return 1
-        fi
-    fi
-}
-
 
 # ---------- Python
 cprof() { python -m cProfile -s "$@" | less; }
@@ -167,7 +118,6 @@ pyx () {
     shift
     python -m trace --ignore-dir $(python -c 'import os, sys; print(os.pathsep.join(sys.path[1:]))') -t $target "$@"
 }
-
 
 # ---------- MISCELLANEOUS
 alias c='clear'
@@ -182,19 +132,11 @@ alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 lls () { clear && ls -a && echo; }
 lcd () { cd "$1" && lls; }
-
 # Overrides '/usr/bin/w'
-w() {
-    which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n" && la $1)
-}
-
+w() { which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n" && la $1); }
 # Sleep, then run the last command
-ss () {
-    tmux send-keys "sleep 1.5 && !-2" "Enter"
-}
-
+ss () { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
 # Prints the value of a variable
 pvar () { set | grep -i -e "^$1"; }
-
 # Create and CD to New Directory
 mkcd() { mkdir -p $1 && cd $1; }
