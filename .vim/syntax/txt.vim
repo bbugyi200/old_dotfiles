@@ -9,7 +9,7 @@ endif
 syn cluster txtContains add=Todo,BeginWS,Underlined
 
 " Title
-syn region StatusLine start="###" end="###$" contains=@NoSpell oneline
+syn region WildMenu start="###" end="###$" contains=@NoSpell oneline
 
 " Section
 syn match Statement "^[A-Z][^a-z]*[A-Z0-9)\]]$" contains=@txtContains,@NoSpell

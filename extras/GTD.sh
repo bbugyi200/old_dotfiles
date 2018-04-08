@@ -80,7 +80,7 @@ alias tw='timew'
 alias timd='tim delete'
 
 # ---------- Khal
-alias k='khal'
+alias k='khal --color'
 restart_khal_alarms() { kill "$(cat /tmp/khal-alarms.pid 2> /dev/null)" &> /dev/null; setsid khal-alarms &> /dev/null; }
 kc() { clear && khal list --notstarted --format '{start-time} {title}' now && echo; }
 kn() { khal new "$@" && kc && restart_khal_alarms; }

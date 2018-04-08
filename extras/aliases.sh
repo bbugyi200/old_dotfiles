@@ -6,7 +6,7 @@ alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/not
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias vip="vim -c 'execute \"normal \\<c-p>\" '"
-fim() { vim -c 'CtrlPMRU' -c "normal $1" -c 'execute "normal \<cr>"'; }
+pim() { vim -c 'CtrlPMRU' -c "normal $1" -c 'execute "normal \<cr>"'; }
 
 # ---------- SSH / FTP ----------
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
@@ -72,6 +72,7 @@ cprof() { python -m cProfile -s "$@" | less; }
 
 # ---------- MISCELLANEOUS ----------
 alias c='clear'
+alias cal='cal -n 3'
 alias psgrep='ps -aux | grep -E'
 alias delshots='confirm "find /home/bryan/Dropbox/logs/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias la="LocalAlias"
@@ -83,7 +84,6 @@ alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 lls () { clear && ls -a && echo; }
 lcd () { cd "$1" && lls; }
-# Overrides '/usr/bin/w'
 w() { which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n" && la $1); }
 # Sleep, then run the last command
 ss () { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
