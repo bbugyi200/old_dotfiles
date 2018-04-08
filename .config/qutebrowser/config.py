@@ -97,6 +97,8 @@ bind('gi', 'hint inputs')
 bind('sb', 'quickmark-save')
 bind('C', 'tab-clone', 'back', 'tab-move -')
 bind('m', 'enter-mode set_mark')
+bind('p', 'open -- {clipboard}')
+bind('P', 'open -t -- {clipboard}')
 
 # ----- Load Yaml Config
 with (config.configdir / 'config.yml').open() as f:
