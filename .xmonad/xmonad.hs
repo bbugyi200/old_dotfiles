@@ -147,7 +147,8 @@ myAdditionalKeys = [
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); clear'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; clear'") -- cd to Last Dir
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
-   , ((alpha, xK_semicolon), PS.shellPrompt myXPConfig)
+   , ((alpha, xK_semicolon), PS.prompt "bam" myXPConfig)
+   , ((alpha .|. beta, xK_semicolon), PS.prompt "bam -P 'less'" myXPConfig)
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
@@ -169,8 +170,13 @@ myAdditionalKeys = [
        ["WEB'", "TERM'", "ZATH'", "ZATH"]
       ]
 
+   -- View WS
+   ++ [((alpha, k), withNthWorkspace' W.view i)
+       | (i, k) <- zip [0..8] $ [xK_1 .. xK_8]
+      ]
+
    -- Shift to WS; then Focus WS
-   ++ [((alpha, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
+   ++ [((alpha .|. beta, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
        | (i, k) <- zip [0..8] $ [xK_1 .. xK_8]
       ]
 
@@ -211,6 +217,13 @@ myLayout = tiled ||| Mirror tiled ||| Full
     nmaster = 1
     ratio = 1/2
     delta = 3/100
+
+-- Measurements used by Floating Windows
+l = 0.25; bigl = 0.05  -- Distance from left edge
+t = 0.4; bigt = 0.05  -- Distance from top edge
+w = 0.5; bigw = 0.9
+h = 0.5; bigh = 0.9
+
 scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad") 
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "calculator" "galculator" (className =? "Galculator")
@@ -224,10 +237,6 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                 scratchpad = "urxvt -name scratchpad -e zsh -c 'tmuxinator start ScratchPad root=$(defaultTmuxDir --get ScratchPad)'" 
                 weechat = "urxvt -name weechat -e zsh -c 'tmuxinator start WeeChat root=$(defaultTmuxDir --get WeeChat)'"
                 gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD root=$(defaultTmuxDir --get GTD)'"
-                l = 0.25; bigl = 0.05  -- Distance from left edge
-                t = 0.4; bigt = 0.05  -- Distance from top edge
-                w = 0.5; bigw = 0.9
-                h = 0.5; bigh = 0.9
 
 myManageHook = composeAll
     [ manageSpawn
@@ -235,13 +244,9 @@ myManageHook = composeAll
     , className=? "Galculator"      --> doFloat
     , className=? "Peek"            --> doFloat
     , className=? "Pinentry"        --> doFloat
-    , appName=? "term-calendar"     --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)
-    , appName=? "qute-editor"       --> doRectFloat (W.RationalRect l t w h)]
-    where
-        l = 0.3
-        t = 0.4
-        w = 0.3
-        h = 0.15
+    , appName=? "floater"           --> doRectFloat (W.RationalRect l t w h)
+    , appName=? "big-floater"       --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
+    , appName=? "qute-editor"       --> doRectFloat (W.RationalRect 0.3 0.4 0.3 0.15)]
 
 myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
@@ -249,7 +254,6 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "init-bg"
                 >> spawn "sleep 2 && volume-xmonad"
                 >> spawn "sleep 2 && khal-alarms"
-                >> spawn "alarm --resume"
                 >> spawn ((xmobarTempFmt $ getXmobarTemplate "1-bottom") ++ " --position=Bottom")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "2-top") ++ " --screen=1")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "2-bottom") ++ " --position=Bottom --screen=1")
