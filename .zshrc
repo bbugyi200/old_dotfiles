@@ -4,12 +4,13 @@ source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
 unalias gco  # Defined in Oh-My-Zsh's Git plugin
 
 source /home/bryan/Dropbox/dotfiles/extras/tmuxinator.zsh
-source /home/bryan/Dropbox/dotfiles/extras/aliases
+source /home/bryan/Dropbox/dotfiles/extras/aliases.sh
+source /home/bryan/Dropbox/dotfiles/extras/eternal_history.sh
 
 # -------------------------- OH-MY-ZSH ---------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
-# ----------------------------------- ALIASES --------------------------------
+# ------------------------------ ZSH ALIASES ---------------------------------
 alias so='unalias -a && source ~/.zshrc'
 
 # --- Suffix Aliases

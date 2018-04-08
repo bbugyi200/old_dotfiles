@@ -1,8 +1,6 @@
-#!/bin/bash
+source /home/bryan/Dropbox/dotfiles/extras/GTD.sh
 
-source /home/bryan/Dropbox/dotfiles/extras/GTD.zsh
-
-# ---------- Vim
+# ---------- Vim ----------
 alias lim='vim -c "normal \`0" -c "bdelete 1"'
 alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/{body.txt,mind.txt,heart.txt}'
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
@@ -10,18 +8,18 @@ alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias vip="vim -c 'execute \"normal \\<c-p>\" '"
 fim() { vim -c 'CtrlPMRU' -c "normal $1" -c 'execute "normal \<cr>"'; }
 
-# ---------- SSH / FTP
+# ---------- SSH / FTP ----------
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
 alias ssh-athena="ssh -p $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
 
-# ---------- Java
+# ---------- Java ----------
 alias Java='java -classpath .:../bin'
 alias Javac='javac -d ../bin'
 alias Jdb='jdb -classpath "../bin"'
 
-# ---------- Git
+# ---------- Git ----------
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias ghooks='rm -rf .git/hooks && git init' 
@@ -29,19 +27,10 @@ alias gnum="git log --oneline --color=always | nl -s ':  ' | less"
 alias gpf='git push -f'
 alias gho='ghi open'
 alias algrep='alias | grep -e'
-
-gri() { git rebase -i HEAD~$1; }
 alias grc='git rebase --continue'
+gri() { git rebase -i HEAD~$1; }
 
-gco() {
-    if [[ -n "$1" ]]; then
-        git checkout "$@"
-    else
-        git checkout @{-1}  # Last Branch (aka 'git checkout -')
-    fi
-}
-
-# ---------- Overriden Commands
+# ---------- Overriden Commands ----------
 alias ag='ag --hidden'
 alias ccat='pygmentize -g'
 alias cower='cower -c'
@@ -50,13 +39,12 @@ alias sudo='sudo '  # makes aliases visible to sudo
 alias time='/usr/bin/time'
 alias tree='tree -I "venv*|__pycache__*|coverage*"'
 loc() { /usr/bin/locate -r ".*$@.*"; }
-
 # Remove/Overwrite Files Safely
 alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"
 
-# ---------- transmission-remote
+# ---------- transmission-remote ----------
 tsm() { transmission-remote -l; }
 tsm-start() { transmission-daemon; }
 tsm-stop() { killall -9 transmission-daemon; }
@@ -65,61 +53,24 @@ tsm-add() { transmission-remote -a $1; }
 tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250; }
 tsm-rm() { transmission-remote -t$1 -r; }
 tsm-purge() { transmission-remote -t$1 -rad; }
-
 rip() { nohup torrent "$@" &> /dev/null & disown; }
 
-# ---------- ETERNAL BASH HISTORY
-# https://spin.atomicobject.com/2016/05/28/log-bash-history/
-LOGFILE="/home/bryan/Dropbox/logs/$(hostname)-cmd-history.log"
-log_bash_history() { 
-    if [ "$(id -u)" -ne 0 ]; then
-        printf "%-20s%-25s%-60s%s\n" "$(hostname)" "$(date '+%Y-%m-%d.%H:%M:%S')" "$(pwd | sed 's/\/home\/[Bb]ryan/~/' | cut -c -55)" "$(fc -ln -1)" >> $LOGFILE;
-    fi; 
-}
-
-hgrep() {
-    if [ "$1" = '--local' -o "$1" = '-l' ]
-    then
-        cat $LOGFILE | nl -s ' ' | grep -a -e " $(getPWD) " | grep -a -e "$(hostname)" | tr -s ' '| cut -d' ' -f 2,6- | grep -a -e "$2"
-    elif [ "$1" = '--verbose' -o "$1" = '-v' ]
-    then
-        cat ~/Dropbox/logs/athena-cmd-history.log ~/Dropbox/logs/aphrodite-cmd-history.log | nl | grep -a -e "$2"
-    else
-        cat $LOGFILE | nl -s ' ' | grep -a -e "$(hostname)" | tr -s ' ' | cut -d' ' -f 2,6- | grep -a -e "$1"
-    fi
-}
-
-hview() {
-    if [ $# -eq 0 ]
-    then 
-        vim $LOGFILE
-    else
-        vim +$1 $LOGFILE
-    fi
-}
-
-# ---------- LangDoc
+# ---------- LangDoc ----------
 alias PyDoc='LangDoc -e py -m'
 alias JavaDoc='LangDoc -e java -m'
 alias CDoc='LangDoc -e c -m'
 alias Doc='LangDoc -e sh -m'
 
-# ---------- Package Management
+# ---------- Package Management ----------
 alias update='confirm "sudo pacman -Syu"; confirm "mkdir /tmp/builds; cd /tmp/builds && cower -vud && buildall"'
 alias del='sudo pacman -Rs'
 alias mkpkg='makepkg -si'
 
 # ---------- Python
-cprof() { python -m cProfile -s "$@" | less; }
 alias pdb='python -m pdb'
-# Trace through Python program execution (python near-equivalent to 'set -x' in bash)
-pyx () {
-    target=$(which $1); [[ $target == *"not found" ]] && target=$1
-    shift
-    python -m trace --ignore-dir $(python -c 'import os, sys; print(os.pathsep.join(sys.path[1:]))') -t $target "$@"
-}
+cprof() { python -m cProfile -s "$@" | less; }
 
-# ---------- MISCELLANEOUS
+# ---------- MISCELLANEOUS ----------
 alias c='clear'
 alias psgrep='ps -aux | grep -E'
 alias delshots='confirm "find /home/bryan/Dropbox/logs/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'

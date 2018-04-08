@@ -91,5 +91,3 @@ ki() { ikhal "$@" && kc && restart_khal_alarms; }
 # ---------- Jrnl
 alias j='jrnl'
 alias je='jrnl --edit'
-
-# vim: ft=zsh:
