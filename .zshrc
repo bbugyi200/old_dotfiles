@@ -62,6 +62,7 @@ export PROMPT_COMMAND="log_bash_history"
 export TERM="screen-256color"
 
 # ------------------------------ AUTOCOMPLETION ------------------------------
+_git 2>/dev/null  # hack to make git branch completion work
 compdef __git_branch_names gco
 compdef _command_names wim
 compdef _pacman_completions_all_packages get
