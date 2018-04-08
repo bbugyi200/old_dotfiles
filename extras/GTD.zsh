@@ -40,12 +40,11 @@ tg () { eval "tcsn $@ rc.verbose=blank,label list"; }
 tgw () { eval "tcsn $@ rc.verbose=blank,label waiting"; }
 tga () { eval "tcsn rc.verbose=blank,label $@ -COMPLETED -DELETED all"; }
 tgcd () { eval "tcsn rc.verbose=blank,label $@ \( +COMPLETED or +DELETED \) all"; }
-tdep () { task "$1" mod depends:"$2"; }
 tget () { task _get "$@"; }
 tnall () { tcsn "next +READY"; }
 tnl () { task next +READY limit:none; }  # no limit
 tsub () { task $1 modify "/$2/$3/g"; }
-trev () { tcs "review rc.defaultwidth:$COLUMNS rc.report.all.sort:urgency- limit:none \( +PENDING or +WAITING \) all"; }
+trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS limit:none \( +PENDING or +WAITING \) | less; }
 
 
 alias t='task'
@@ -53,6 +52,8 @@ alias ta='task add'
 alias tan='to annotate'
 alias tu='to modify'
 alias td='task rc.verbose=nothing done'
+alias qtrev='trev'
+alias tlat='task +LATEST info | less'
 alias tdue='tga +OVERDUE'
 alias tdel='task delete'
 alias tcn='task context none && tmux -L GTD rename-window -t GTD:0.0 NONE'
@@ -90,8 +91,5 @@ ki() { ikhal "$@" && kc && restart_khal_alarms; }
 # ---------- Jrnl
 alias j='jrnl'
 alias je='jrnl --edit'
-
-# ---------- ZSH Completions
-compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
 
 # vim: ft=zsh:

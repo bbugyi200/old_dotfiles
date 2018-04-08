@@ -5,3 +5,11 @@ export TASK_SEND_ENABLED=1
 function precmd() {
     task_refresh
 }
+
+newcmd() {
+    eval "precmd() { task_send $*; }"
+}
+
+tt() {
+    (sleep 0.5 && task_send "$*") &
+}

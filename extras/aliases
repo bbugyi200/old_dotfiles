@@ -1,18 +1,13 @@
-# ------------------------------------------------------------------------------
-# ------------------------- FUNCTIONS + ALIASES --------------------------------
+#!/bin/bash
 
-# ---------- Unalias / Disable
-# I don't like not being able to make a local alias with these
-unalias l
-disable r
-
+source /home/bryan/Dropbox/dotfiles/extras/GTD.zsh
 
 # ---------- Vim
 alias lim='vim -c "normal \`0" -c "bdelete 1"'
 alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/{body.txt,mind.txt,heart.txt}'
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
-alias vip="vim -c 'execute \"normal \\<c-p>\"'"
+alias vip="vim -c 'execute \"normal \\<c-p>\" '"
 fim() { vim -c 'CtrlPMRU' -c "normal $1" -c 'execute "normal \<cr>"'; }
 
 mim() {
@@ -63,7 +58,6 @@ alias algrep='alias | grep -e'
 gri() { git rebase -i HEAD~$1; }
 alias grc='git rebase --continue'
 
-unalias gco  # Defined in Oh-My-Zsh's Git plugin
 gco() {
     if [[ -n "$1" ]]; then
         git checkout "$@"
@@ -74,6 +68,7 @@ gco() {
 
 
 # ---------- Overriden Commands
+alias ag='ag --hidden'
 alias ccat='pygmentize -g'
 alias cower='cower -c'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
@@ -98,7 +93,7 @@ tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250; }
 tsm-rm() { transmission-remote -t$1 -r; }
 tsm-purge() { transmission-remote -t$1 -rad; }
 
-rip() { nohup torrent "$@" &> /dev/null & disown }
+rip() { nohup torrent "$@" &> /dev/null & disown; }
 
 
 # ---------- ETERNAL BASH HISTORY
@@ -140,7 +135,7 @@ alias Doc='LangDoc -e sh -m'
 
 
 # ---------- Package Management
-alias update='confirm "sudo pacman -Syu"; confirm "mkdir /tmp/builds && cd /tmp/builds && cower -vud && buildall"'
+alias update='confirm "sudo pacman -Syu"; confirm "mkdir /tmp/builds; cd /tmp/builds && cower -vud && buildall"'
 alias del='sudo pacman -Rs'
 alias mkpkg='makepkg -si'
 
@@ -203,25 +198,3 @@ pvar () { set | grep -i -e "^$1"; }
 
 # Create and CD to New Directory
 mkcd() { mkdir -p $1 && cd $1; }
-
-
-# ------------------------------ EXPORTS ---------------------------------------
-# I set this so the crontab would use vim for editing
-export EDITOR=$(which vim)
-
-export PROMPT_COMMAND="log_bash_history" 
-# Removed to fix double history log # ; $PROMPT_COMMAND"
-
-
-# ------------------------------ MISC ------------------------------------------
-#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
-stty -ixon
-
-if [[ -d $PWD/venv ]]; then
-	source "venv/bin/activate"
-fi
-
-# Fixes Mutt Background Issue (stays transparent) in TMUX
-export TERM="screen-256color"
-
-# vim: set filetype=zsh:
