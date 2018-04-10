@@ -95,10 +95,11 @@ bind(',rss', 'spawn --userscript openfeeds')
 # Miscellaneous
 bind('gi', 'hint inputs')
 bind('sb', 'quickmark-save')
-bind('C', 'tab-clone', 'back', 'tab-move -')
+bind('C', 'tab-clone', 'back')
 bind('m', 'enter-mode set_mark')
 bind('p', 'open -- {clipboard}')
 bind('P', 'open -t -- {clipboard}')
+bind('x', 'search')  # Clears search
 
 # ----- Load Yaml Config
 with (config.configdir / 'config.yml').open() as f:

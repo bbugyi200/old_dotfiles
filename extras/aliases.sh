@@ -12,6 +12,7 @@ pim() { vim -c 'CtrlPMRU' -c "normal $1" -c 'execute "normal \<cr>"'; }
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
 alias ssh-athena="ssh -p $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
+alias ssh-artemis="ssh root@67.207.92.152"
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
 
 # ---------- Java ----------
@@ -32,6 +33,7 @@ gri() { git rebase -i HEAD~$1; }
 
 # ---------- Overriden Commands ----------
 alias ag='ag --hidden'
+alias cal='cal -n 3'
 alias ccat='pygmentize -g'
 alias cower='cower -c'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
@@ -72,7 +74,6 @@ cprof() { python -m cProfile -s "$@" | less; }
 
 # ---------- MISCELLANEOUS ----------
 alias c='clear'
-alias cal='cal -n 3'
 alias psgrep='ps -aux | grep -E'
 alias delshots='confirm "find /home/bryan/Dropbox/logs/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias la="LocalAlias"

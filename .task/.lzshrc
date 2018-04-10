@@ -7,7 +7,7 @@ function precmd() {
 }
 
 newcmd() {
-    eval "precmd() { task_send $*; }"
+    eval "precmd() { tmux -L GTD send-keys -t GTD:0.0 q C-u \"$*\" \"Enter\"; }"
 }
 
 tt() {

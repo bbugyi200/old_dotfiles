@@ -90,7 +90,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, a), spawn "alarm") -- Alarm
    , ((alpha, a), spawn "sleep 0.2 && xdotool key alt+a") -- Tmux Prefix
    , ((alpha .|. ctrl, a), spawn "khal-alarms") -- Calendar Alarms
-   , ((alpha, b), spawn "clipmenu") -- clipmenu
+   , ((alpha, b), spawn "clipster_menu") -- clipmenu
    , ((alpha .|. ctrl, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), windows $ W.focusUp)     -- Focus Local
@@ -121,16 +121,16 @@ myAdditionalKeys = [
    , ((alpha .|. beta, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen]) -- Swap (keep focus on window)
    , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.any: stop; dbox_sync && shutdown now'") -- Shutdown
    , ((alpha, t), spawn "rofi -dmenu -format 'q' -p 'Inbox' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
-   , ((alpha .|. beta, t), spawn "rofi -format 'q' -dmenu -p 'Due Today' | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh -T") -- taskwarrior (due today)
+   , ((alpha .|. beta, t), spawn "rofi -format 'q' -dmenu -p 'Due Today' | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
 
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
    , ((alpha, xK_KP_Add), spawn "next_task")
-   , ((alpha, xK_KP_Delete), spawn "rofi -dmenu -format 'q' -p 'Hotfix' | xargs task add project:Hotfix && task start.any: stop; task rc.context:none +LATEST start && task_refresh -T")
-   , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh -T")
-   , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh -T")
+   , ((alpha, xK_KP_Delete), spawn "rofi -dmenu -p 'Instant Start' | xargs task add && task start.any: stop; task rc.context:none +LATEST start && task_refresh")
+   , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
+   , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
    , ((alpha, xK_KP_Subtract), spawn "last_task")
    , ((alpha, xK_KP_Multiply), spawn "wait_task")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
@@ -158,8 +158,8 @@ myAdditionalKeys = [
    ++ [((alpha, key), sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)])
        | (key, cmd, ws) <- zip3
        [x, c, z, v, xK_KP_End, xK_KP_Down, xK_KP_Page_Down]
-       [myTerminal,"qutebrowser","zathura","okular","anki","slack","zeal"]
-       ["TERM","WEB","ZATH","OKULAR","ANKI","SLACK","ZEAL"]
+       [myTerminal,"qutebrowser","zathura","vlc","anki","slack","zeal"]
+       ["TERM","WEB","ZATH","VLC","ANKI","SLACK","ZEAL"]
       ]
 
    -- Launch Second Applications
@@ -244,6 +244,7 @@ myManageHook = composeAll
     , className=? "Galculator"      --> doFloat
     , className=? "Peek"            --> doFloat
     , className=? "Pinentry"        --> doFloat
+    , className=? "Clipster"        --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
     , appName=? "floater"           --> doRectFloat (W.RationalRect l t w h)
     , appName=? "big-floater"       --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
     , appName=? "qute-editor"       --> doRectFloat (W.RationalRect 0.3 0.4 0.3 0.15)]

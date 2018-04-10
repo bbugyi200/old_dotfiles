@@ -33,12 +33,13 @@ tin () { task +inbox -DELETED -COMPLETED all; }
 
 # All functions that use 'to' REQUIRE their first argument to
 # be an ID.
+ti () { task "$@" info | less; }
 to () { eval "task_send $@ && task next +READY; task $2 | less"; }
 tl () { task "$1" | less; }
 tpi () { task "$1" mod -inbox "${@:2}"; }
 tg () { eval "tcsn $@ rc.verbose=blank,label list"; }
 tgw () { eval "tcsn $@ rc.verbose=blank,label waiting"; }
-tga () { eval "tcsn rc.verbose=blank,label $@ -COMPLETED -DELETED all"; }
+tga () { eval "tcsn rc.verbose=blank,label rc.defaultwidth:$COLUMNS $@ -COMPLETED -DELETED all"; }
 tgcd () { eval "tcsn rc.verbose=blank,label $@ \( +COMPLETED or +DELETED \) all"; }
 tget () { task _get "$@"; }
 tnall () { tcsn "next +READY"; }
@@ -60,6 +61,7 @@ alias tcn='task context none && tmux -L GTD rename-window -t GTD:0.0 NONE'
 alias tcl='task context low && tmux -L GTD rename-window -t GTD:0.0 LOW'
 alias tcm='task context mid && tmux -L GTD rename-window -t GTD:0.0 MID'
 alias tch='task context high && tmux -L GTD rename-window -t GTD:0.0 HIGH'
+alias tcmob='task context mobile && tmux -L GTD rename-window -t GTD:0.0 MOBILE'
 alias tcomp='task limit:10 \( status:completed or status:deleted \) rc.report.all.sort:end- all'
 
 # ---------- TimeWarrior

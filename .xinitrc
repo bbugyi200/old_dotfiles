@@ -5,7 +5,7 @@ source /etc/X11/xinit/xinitrc
 fswebcam "/home/bryan/login-sshots/%m.%d.%y-%H:%M:%S.jpg"
 /usr/bin/dropbox &
 numlockx &
-clipmenud &
+clipster -d &
 dunst &
 xbindkeys
 fetchmail --syslog -d 900

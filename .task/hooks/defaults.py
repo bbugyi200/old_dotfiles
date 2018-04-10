@@ -69,13 +69,23 @@ tags = {'GTD': {'project': 'Meta'},
         'strict': {
             'strict': 'yes',
             'tags': ModList('strict', '-')},
-        'call': {'tags': ModList('go', '+')},
         'dev': {
             'project': 'Dev',
             'tags': ModList('dev', '-')},
+        'Severity_1': {
+            'tags': ModList('Severity_1', '-'),
+            'severity': 'critical'},
+        'Severity_2': {
+            'tags': ModList('Severity_2', '-'),
+            'severity': 'high'},
+        'Severity_3': {
+            'tags': ModList('Severity_3', '-'),
+            'severity': 'medium'},
+        'Severity_4': {
+            'tags': ModList('Severity_4', '-'),
+            'severity': 'low'},
         'bug': {
-            'project': 'Dev',
-            'priority': 'H'}}
+            'project': 'Dev'}}
 
 
 # Note that the 'annual' and 'Nyears' tags are treated differently

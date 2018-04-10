@@ -39,7 +39,6 @@ alias -s txt="vim"
 
 # --- Global Aliases
 alias -g @@="&> /dev/null & disown"
-alias -g X="&& exit"
 alias -g ::="| grep -e"
 alias -g %="| less"
 

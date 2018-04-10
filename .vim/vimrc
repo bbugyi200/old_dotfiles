@@ -96,6 +96,7 @@ au BufRead,BufNewFile *.nasm set filetype=nasm
 au BufRead,BufNewFile *.txt set filetype=txt
 au BufRead,BufNewFile *.xmobarrc set syntax=haskell
 au BufRead,BufNewFile *.lshrc set syntax=zsh
+au BufRead,BufNewFile *.lzshrc set syntax=zsh
 au BufRead,BufNewFile *.conf set syntax=cfg
 " Used to make syntax highlighting more readable when using Linux
 " transparent terminal
