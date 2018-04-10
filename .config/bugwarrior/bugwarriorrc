@@ -14,7 +14,7 @@ github.include_user_issues = False
 github.include_user_repos = False
 
 [notifications]
-notifications = True
+notifications = False
 backend = gobject
 finished_querying_sticky = False
 task_crud_sticky = True
