@@ -9,7 +9,7 @@ github.password = @oracle:eval:pass github.com/bbugyi200
 github.description_template = #{{githubnumber}}: {{githubtitle}}
 github.project_template = Dev.{{githubrepo|replace("bbugyi200/","")|replace("/",".")}}
 github.import_labels_as_tags = True
-github.query = author:bbugyi200 is:open is:issue -repo:HackRU/SlackRU -repo:bbugyi200/IntelliBudget 
+github.query = involves:bbugyi200 is:open is:issue -repo:HackRU/SlackRU -repo:bbugyi200/IntelliBudget 
 github.include_user_issues = False
 github.include_user_repos = False
 

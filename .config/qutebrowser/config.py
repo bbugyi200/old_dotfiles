@@ -43,6 +43,13 @@ class URL(str):
         return str.format(self.default, term, *args, **kwargs)
 
 
+def piratebay_filter(x):
+    y = re.split('\+|%20', x, maxsplit=2)
+    y[0] = int(y[0])
+    y[1] = int(y[1])
+    return y
+
+
 # ----- Dictionary Values
 c.url.searchengines['DEFAULT'] = URL('https://google.com/search?q={}',
                                      'https://duckduckgo.com/?q={}',
@@ -63,6 +70,10 @@ c.url.searchengines['li'] = 'https://google.com/search?q=site%3Alinkedin.com+{}&
 c.url.searchengines['py'] = 'https://docs.python.org/2/library/{}'
 c.url.searchengines['red'] = 'https://google.com/search?q=site%3Areddit.com+{}&ia=web'
 c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
+c.url.searchengines['pir'] = URL('https://thepiratebay.org/search/{}',
+                                 'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
+                                 '^[0-9][0-9]?(\+|%20)[0-9][0-9]?.*',
+                                 filters=piratebay_filter)
 
 
 # ----- Bindings

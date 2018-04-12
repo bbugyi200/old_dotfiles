@@ -91,6 +91,7 @@ myAdditionalKeys = [
    , ((alpha, a), spawn "sleep 0.2 && xdotool key alt+a") -- Tmux Prefix
    , ((alpha .|. ctrl, a), spawn "khal-alarms") -- Calendar Alarms
    , ((alpha, b), spawn "clipster_menu") -- clipmenu
+   , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha .|. ctrl, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), windows $ W.focusUp)     -- Focus Local

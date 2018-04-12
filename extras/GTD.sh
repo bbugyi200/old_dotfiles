@@ -93,3 +93,5 @@ ki() { ikhal "$@" && kc && restart_khal_alarms; }
 # ---------- Jrnl
 alias j='jrnl'
 alias je='jrnl --edit'
+alias js='jrnl secure'
+alias jse='jrnl secure --edit'
