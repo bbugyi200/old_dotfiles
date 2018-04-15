@@ -30,8 +30,9 @@ if isDone(new_task):
         if hasTag(new_task, tag):
             due_date = dt.datetime.strptime(new_task['due'], date_fmt)
 
-            if not isConsistent(new_task):
-                due_date = getTodayDT()
+            todayDT = getTodayDT()
+            if not isConsistent(new_task) and (due_date.astimezone(tz=dt.timezone.utc) < todayDT):
+                due_date = todayDT
 
             if any(x in tag for x in ['annual', 'year']):
                 new_due = due_in_N_years(N, due_date)

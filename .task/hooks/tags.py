@@ -64,10 +64,6 @@ def process_add_tags(new_task, *, old_task={}):
         except KeyError as e:
             pass
 
-        # Medium priority should not exist
-        if ('priority' in new_task.keys()) and (new_task['priority'] == 'M'):
-            new_task.pop('priority')
-
         fmt = "+{tag} => {field}{sep}{val}\n"
         for tag in defaults.tags.keys():
             if tag in new_task['tags'] and (('tags' not in old_task.keys()) or (tag not in old_task['tags'])):
@@ -114,6 +110,10 @@ def process_add_tags(new_task, *, old_task={}):
                                         sys.exit(1)
 
                                 output += fmt.format(tag=tag, field=field, sep=sep, val='(\'' + item + '\')')
+
+    # Medium priority should not exist
+    if ('priority' in new_task.keys()) and (new_task['priority'] == 'M'):
+        new_task.pop('priority')
 
     if 'delta' in new_task.keys():
         if fieldsEquivalent(new_task, old_task, 'wait') and (new_task['delta'] >= 0):
