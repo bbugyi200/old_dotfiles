@@ -25,6 +25,7 @@ import qualified XMonad.Hooks.DynamicLog as DL
 import qualified XMonad.Actions.CycleWS as CW
 import qualified XMonad.Actions.DynamicWorkspaces as DW
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
+import qualified XMonad.Layout.ResizableTile as RT
 
 ---------------------------------- Functions ----------------------------------
 -- Function that prevents cycling to workspaces available on other screens
@@ -97,11 +98,12 @@ myAdditionalKeys = [
    , ((alpha, f), windows $ W.focusUp)     -- Focus Local
    , ((alpha .|. beta, f), windows W.swapDown)    -- Shift Local
    , ((alpha, h), spawn "tm-send --action 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'") -- cd to Tmux Home Dir
-   , ((alpha .|. beta, j), sendMessage Shrink) -- Shrink Master Area
-   , ((alpha .|. beta, k), sendMessage Expand) -- Expand Master Area
+   , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
+   , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
+   , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
    , ((alpha, k), spawn "tm-kill") -- Kill Screen
    , ((alpha, l), spawn "my-screenlock") -- screenlock
-   , ((alpha .|. beta, l), sendMessage NextLayout) -- Next Layout
+   , ((alpha .|. beta, l), sendMessage Expand) -- Next Layout
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
    , ((alpha, n), spawn "tmux -L $(tm-socket) next-window") -- Tmux Next
@@ -144,7 +146,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha, xK_comma), NSP.namedScratchpadAction scratchpads "gtd") -- Scratchpad GTD
+   , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); clear'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; clear'") -- cd to Last Dir
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
@@ -153,6 +155,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
+   , ((alpha .|. beta .|. ctrl, xK_space), sendMessage NextLayout) -- Next Layout
    ]
 
    -- Launch Applications
@@ -212,9 +215,9 @@ myXPConfig = P.def {
   P.position = P.CenteredAt 0.2 0.4
 }
 
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = resizableTall ||| Mirror resizableTall ||| Full
   where
-    tiled = smartSpacing 5 $ Tall nmaster delta ratio
+    resizableTall = RT.ResizableTall nmaster delta ratio []
     nmaster = 1
     ratio = 1/2
     delta = 3/100
