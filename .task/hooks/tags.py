@@ -77,23 +77,17 @@ def process_add_tags(new_task, *, old_task={}):
                             new_task.pop(field)
                         except KeyError as e:
                             pass
-                    else:
-                        if field not in new_task.keys():
-                            if isinstance(value, defaults.FieldRef):
-                                try:
-                                    new_task[field] = new_task[value.field]
-                                    output += fmt.format(tag=tag, field=field,
-                                                         sep=' = ', val='task[{}]'.format(value.field))
-                                except KeyError as e:
-                                    error_fmt = "The '{field}:' field must be defined when using the '+{tag}' tag."
-                                    print(error_fmt.format(field=value.field, tag=tag))
-                                    sys.exit(1)
-                            else:
-                                new_task[field] = value
-
-                            output += fmt.format(tag=tag, field=field, sep=':', val=new_task[field])
-
-                        if isinstance(value, defaults.ModList):
+                    elif field not in new_task.keys() or field in defaults.always_update:
+                        if isinstance(value, defaults.FieldRef):
+                            try:
+                                new_task[field] = new_task[value.field]
+                                output += fmt.format(tag=tag, field=field,
+                                                     sep=' = ', val='task[{}]'.format(value.field))
+                            except KeyError as e:
+                                error_fmt = "The '{field}:' field must be defined when using the '+{tag}' tag."
+                                print(error_fmt.format(field=value.field, tag=tag))
+                                sys.exit(1)
+                        elif isinstance(value, defaults.ModList):
                             for item, mode in zip(value.items, value.modes):
                                 if mode == '+' and item not in new_task[field]:
                                     if field not in new_task.keys():
@@ -110,6 +104,9 @@ def process_add_tags(new_task, *, old_task={}):
                                         sys.exit(1)
 
                                 output += fmt.format(tag=tag, field=field, sep=sep, val='(\'' + item + '\')')
+                        else:
+                            new_task[field] = value
+                            output += fmt.format(tag=tag, field=field, sep=':', val=new_task[field])
 
     # Medium priority should not exist
     if ('priority' in new_task.keys()) and (new_task['priority'] == 'M'):

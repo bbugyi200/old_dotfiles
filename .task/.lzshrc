@@ -10,6 +10,10 @@ newcmd() {
     eval "precmd() { tmux -L GTD send-keys -t GTD:0.0 q C-u \"$*\" \"Enter\"; }"
 }
 
+Newcmd() {
+    eval "precmd() { tmux -L GTD send-keys -t GTD:0.0 q C-u \"clear && $*\" \"Enter\"; }"
+}
+
 tt() {
     (sleep 0.5 && task_send "$*") &
 }

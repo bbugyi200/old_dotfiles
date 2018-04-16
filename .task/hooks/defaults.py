@@ -46,6 +46,8 @@ tomorrow_due_time = '{year}{month:02d}{day:02d}T100000Z'.format(year=tomorrow.ye
                                                              month=tomorrow.month,
                                                              day=tomorrow.day)
 
+always_update = ['severity', 'tags']
+
 tags = {'GTD': {'project': 'Meta'},
         'inbox': {
             'project': 'Meta',
@@ -110,7 +112,6 @@ for i in range(3,7):
 for key in repeats.keys():
     tags[key] = {
             'due': getToday(),
-            'wait': FieldRef('due'),
             'repeat': 'yes'
     }
 
