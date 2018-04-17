@@ -26,6 +26,7 @@ import qualified XMonad.Actions.CycleWS as CW
 import qualified XMonad.Actions.DynamicWorkspaces as DW
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 import qualified XMonad.Layout.ResizableTile as RT
+import qualified XMonad.Actions.Navigation2D as N2D
 
 ---------------------------------- Functions ----------------------------------
 -- Function that prevents cycling to workspaces available on other screens
@@ -95,15 +96,13 @@ myAdditionalKeys = [
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha .|. ctrl, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
-   , ((alpha, f), windows $ W.focusUp)     -- Focus Local
-   , ((alpha .|. beta, f), windows W.swapDown)    -- Shift Local
-   , ((alpha, h), spawn "tm-send --action 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'") -- cd to Tmux Home Dir
-   , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
-   , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
-   , ((alpha, k), spawn "tm-kill") -- Kill Screen
-   , ((alpha, l), spawn "my-screenlock") -- screenlock
-   , ((alpha .|. beta, l), sendMessage Expand) -- Next Layout
+   , ((alpha, f), sendMessage NextLayout) -- Next Layout
+   , ((alpha, h), N2D.windowGo N2D.L False)
+   , ((alpha, j), N2D.windowGo N2D.D False)
+   , ((alpha, k), N2D.windowGo N2D.U False)
+   , ((alpha .|. beta, k), spawn "tm-kill") -- Kill Screen
+   , ((alpha, l), N2D.windowGo N2D.R False)
+   , ((alpha .|. beta, l), spawn "my-screenlock") -- screenlock
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
    , ((alpha, n), spawn "tmux -L $(tm-socket) next-window") -- Tmux Next
@@ -121,7 +120,7 @@ myAdditionalKeys = [
    , ((ctrl .|. alpha .|. beta, r), spawn "confirm --dmenu 'systemctl reboot -i'") -- Restart
    , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
    , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
-   , ((alpha .|. beta, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace', CW.nextScreen]) -- Swap (keep focus on window)
+   , ((alpha .|. beta, s), windows W.swapDown)    -- Shift Local
    , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.any: stop; dbox_sync && shutdown now'") -- Shutdown
    , ((alpha, t), spawn "rofi -dmenu -format 'q' -p 'Inbox' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "rofi -format 'q' -dmenu -p 'Due Today' | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
@@ -132,13 +131,17 @@ myAdditionalKeys = [
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
    , ((alpha, xK_KP_Add), spawn "next_task")
    , ((alpha, xK_KP_Delete), spawn "rofi -dmenu -p 'Instant Start' | xargs task add && task start.any: stop; task rc.context:none +LATEST start && task_refresh")
+   , ((alpha, xK_Down), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
    , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
+   , ((alpha, xK_Left), sendMessage Shrink) -- Next Layout
    , ((alpha, xK_KP_Subtract), spawn "last_task")
    , ((alpha, xK_KP_Multiply), spawn "wait_task")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
+   , ((alpha, xK_Right), sendMessage Expand)
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
+   , ((alpha, xK_Up), sendMessage RT.MirrorExpand) -- Expand Master Area
    , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "weechat") -- Scratchpad Add Task to Inbox
    , ((alpha, xK_backslash), CW.nextScreen) -- Next Screen
    , ((alpha .|. beta, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- Send current WS to Next Screen (keep focus)
@@ -153,9 +156,8 @@ myAdditionalKeys = [
    , ((alpha, xK_semicolon), PS.prompt "bam" myXPConfig)
    , ((alpha .|. beta, xK_semicolon), PS.prompt "bam -P 'less'" myXPConfig)
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
-   , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
-   , ((alpha .|. beta .|. ctrl, xK_space), sendMessage NextLayout) -- Next Layout
+   , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    ]
 
    -- Launch Applications
@@ -215,9 +217,9 @@ myXPConfig = P.def {
   P.position = P.CenteredAt 0.2 0.4
 }
 
-myLayout = resizableTall ||| Mirror resizableTall ||| Full
+myLayout = resizableTall ||| Full
   where
-    resizableTall = RT.ResizableTall nmaster delta ratio []
+    resizableTall = smartSpacing 5 $ RT.ResizableTall nmaster delta ratio []
     nmaster = 1
     ratio = 1/2
     delta = 3/100
