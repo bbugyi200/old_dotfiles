@@ -19,6 +19,7 @@ else
 endif
 
 " -------------------------------- SETS --------------------------------------
+set autoread
 " Status Line Settings (mode display)
 set nrformats+=alpha
 set number
@@ -211,6 +212,8 @@ else
 endif
 
 " ------------------------------ AUTOS ---------------------------------------
+" Reloads buffer on buffer changes
+autocmd FocusGained,BufEnter * :checktime
 " Turns spellcheck on for certain file extensions
 " 2nd line disables the colorcolumn
 autocmd BufRead,BufNewFile *.txt set colorcolumn=
