@@ -1,5 +1,26 @@
 source /home/bryan/Dropbox/dotfiles/extras/GTD.sh
 
+# ---------- MISCELLANEOUS ----------
+alias c='clear'
+alias delshots='confirm "find /home/bryan/Dropbox/logs/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
+alias la="LocalAlias"
+lls () { clear && ls -a && echo; }
+lcd () { cd "$1" && lls; }
+alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
+# Create and CD to New Directory
+mkcd() { mkdir -p $1 && cd $1; }
+alias mutt-gmail="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
+alias mutt-root='sudo neomutt -f /var/spool/mail/root'
+alias mutt="neomutt"
+alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
+alias psgrep='ps -aux | grep -E'
+# Prints the value of a variable
+pvar () { set | grep -i -e "^$1"; }
+alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
+# Sleep, then run the last command
+ss () { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
+w() { which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n" && la $1); }
+
 # ---------- Vim ----------
 alias lim='vim -c "normal \`0" -c "bdelete 1"'
 alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/{body.txt,mind.txt,heart.txt}'
@@ -33,7 +54,7 @@ gri() { git rebase -i HEAD~$1; }
 
 # ---------- Overriden Commands ----------
 alias ag='ag --hidden'
-alias cal='cal -n 3'
+alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 alias cower='cower -c'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
@@ -71,24 +92,3 @@ alias mkpkg='makepkg -si'
 # ---------- Python
 alias pdb='python -m pdb'
 cprof() { python -m cProfile -s "$@" | less; }
-
-# ---------- MISCELLANEOUS ----------
-alias c='clear'
-alias psgrep='ps -aux | grep -E'
-alias delshots='confirm "find /home/bryan/Dropbox/logs/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
-alias la="LocalAlias"
-alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
-alias mutt-gmail="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
-alias mutt-root='sudo neomutt -f /var/spool/mail/root'
-alias mutt="neomutt"
-alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
-alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
-lls () { clear && ls -a && echo; }
-lcd () { cd "$1" && lls; }
-w() { which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n" && la $1); }
-# Sleep, then run the last command
-ss () { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
-# Prints the value of a variable
-pvar () { set | grep -i -e "^$1"; }
-# Create and CD to New Directory
-mkcd() { mkdir -p $1 && cd $1; }

@@ -34,7 +34,6 @@ tin () { task +inbox -DELETED -COMPLETED all; }
 # All functions that use 'to' REQUIRE their first argument to
 # be an ID.
 ti () { task "$@" info | less; }
-to () { eval "task_send $@ && task next +READY; task $2 | less"; }
 tl () { task "$1" | less; }
 tpi () { task "$1" mod -inbox "${@:2}"; }
 tg () { eval "tcsn $@ rc.verbose=blank,label list"; }
@@ -50,18 +49,17 @@ trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS lim
 
 alias t='task'
 alias ta='task add'
-alias tan='to annotate'
-alias tu='to modify'
 alias td='task rc.verbose=nothing done'
 alias qtrev='trev'
 alias tlat='task +LATEST info | less'
 alias tdue='tga +OVERDUE'
 alias tdel='task delete'
-alias tcn='task context none && tmux -L GTD rename-window -t GTD:0.0 NONE'
-alias tcl='task context low && tmux -L GTD rename-window -t GTD:0.0 LOW'
-alias tcm='task context mid && tmux -L GTD rename-window -t GTD:0.0 MID'
-alias tch='task context high && tmux -L GTD rename-window -t GTD:0.0 HIGH'
-alias tcmob='task context mobile && tmux -L GTD rename-window -t GTD:0.0 MOBILE'
+alias tcn='task context none && task_refresh -C'
+alias tcl='task context low && task_refresh -C'
+alias tcm='task context mid && task_refresh -C'
+alias tch='task context high && task_refresh -C'
+alias tcb='task context bedtime && task_refresh -C'
+alias tcmob='task context mobile && task_refresh -C'
 alias tcomp='task limit:10 \( status:completed or status:deleted \) rc.report.all.sort:end- all'
 
 # ---------- TimeWarrior

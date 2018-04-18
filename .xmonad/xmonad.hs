@@ -91,18 +91,23 @@ myAdditionalKeys = [
    , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
    , ((alpha .|. beta, a), spawn "alarm") -- Alarm
    , ((alpha, a), spawn "sleep 0.2 && xdotool key alt+a") -- Tmux Prefix
-   , ((alpha .|. ctrl, a), spawn "khal-alarms") -- Calendar Alarms
+   , ((alpha .|. beta, a), spawn "khal-alarms") -- Calendar Alarms
    , ((alpha, b), spawn "clipster_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
-   , ((alpha .|. ctrl, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
+   , ((alpha .|. shift, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
-   , ((alpha, f), sendMessage NextLayout) -- Next Layout
+   , ((alpha, f), windows $ W.focusUp)     -- Focus Local
+   , ((alpha .|. beta, f), sendMessage NextLayout) -- Next Layout
    , ((alpha, h), N2D.windowGo N2D.L False)
+   , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
    , ((alpha, j), N2D.windowGo N2D.D False)
+   , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), N2D.windowGo N2D.U False)
-   , ((alpha .|. beta, k), spawn "tm-kill") -- Kill Screen
+   , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
+   , ((alpha .|. shift, k), spawn "tm-kill") -- Kill Screen
    , ((alpha, l), N2D.windowGo N2D.R False)
-   , ((alpha .|. beta, l), spawn "my-screenlock") -- screenlock
+   , ((alpha .|. beta, l), sendMessage Expand)
+   , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
    , ((alpha, n), spawn "tmux -L $(tm-socket) next-window") -- Tmux Next
@@ -113,35 +118,32 @@ myAdditionalKeys = [
    , ((alpha .|. beta, o), spawn "dmenu_books --application=okular") -- Open New Book in Okular
    , ((alpha, p), spawn "tmux -L $(tm-socket) previous-window") -- Tmux Previous
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
-   , ((alpha .|. ctrl, p), spawn "pause_task")
+   , ((alpha .|. shift, p), spawn "pause_task")
    , ((alpha, q), spawn "tm-send --action=quit") -- Quit Screen
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
-   , ((ctrl .|. alpha .|. beta, r), spawn "confirm --dmenu 'systemctl reboot -i'") -- Restart
+   , ((alpha .|. beta .|. ctrl, r), spawn "confirm --dmenu 'systemctl reboot -i'") -- Restart
    , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
    , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
    , ((alpha .|. beta, s), windows W.swapDown)    -- Shift Local
-   , ((ctrl .|. alpha .|. beta, s), spawn "confirm --dmenu 'task start.any: stop; dbox_sync && shutdown now'") -- Shutdown
+   , ((alpha .|. beta .|. ctrl, s), spawn "confirm --dmenu 'task start.any: stop; dbox_sync && shutdown now'") -- Shutdown
    , ((alpha, t), spawn "rofi -dmenu -format 'q' -p 'Inbox' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "rofi -format 'q' -dmenu -p 'Due Today' | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
+   , ((alpha .|. shift, t), spawn "rofi -dmenu -p 'Instant Start' | xargs task add && task start.any: stop; task rc.context:none +LATEST start && task_refresh")
    , ((alpha, w), spawn "close-window") -- Close Focused Window
 
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
    , ((alpha, xK_KP_Add), spawn "next_task")
-   , ((alpha, xK_KP_Delete), spawn "rofi -dmenu -p 'Instant Start' | xargs task add && task start.any: stop; task rc.context:none +LATEST start && task_refresh")
-   , ((alpha, xK_Down), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
+   , ((alpha, xK_Home), spawn "tm-send --action 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'") -- cd to Tmux Home Dir
    , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
-   , ((alpha, xK_Left), sendMessage Shrink) -- Next Layout
    , ((alpha, xK_KP_Subtract), spawn "last_task")
    , ((alpha, xK_KP_Multiply), spawn "wait_task")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
-   , ((alpha, xK_Right), sendMessage Expand)
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
-   , ((alpha, xK_Up), sendMessage RT.MirrorExpand) -- Expand Master Area
    , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "weechat") -- Scratchpad Add Task to Inbox
    , ((alpha, xK_backslash), CW.nextScreen) -- Next Screen
    , ((alpha .|. beta, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- Send current WS to Next Screen (keep focus)
