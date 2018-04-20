@@ -95,17 +95,18 @@ myAdditionalKeys = [
    , ((alpha, b), spawn "clipster_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha .|. shift, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
+   , ((alpha, d), windows $ W.focusDown)
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
-   , ((alpha, f), windows $ W.focusUp)     -- Focus Local
-   , ((alpha .|. beta, f), sendMessage NextLayout) -- Next Layout
-   , ((alpha, h), N2D.windowGo N2D.L False)
+   , ((alpha, f), sendMessage NextLayout) -- Next Layout
+   , ((alpha, h), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.L False])
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha, j), N2D.windowGo N2D.D False)
+   , ((alpha .|. shift, h), spawn "tm-send --action 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'") -- cd to Tmux Home Dir
+   , ((alpha, j), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
-   , ((alpha, k), N2D.windowGo N2D.U False)
+   , ((alpha, k), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.U False])
    , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
    , ((alpha .|. shift, k), spawn "tm-kill") -- Kill Screen
-   , ((alpha, l), N2D.windowGo N2D.R False)
+   , ((alpha, l), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.R False])
    , ((alpha .|. beta, l), sendMessage Expand)
    , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
@@ -130,17 +131,19 @@ myAdditionalKeys = [
    , ((alpha, t), spawn "rofi -dmenu -format 'q' -p 'Inbox' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "rofi -format 'q' -dmenu -p 'Due Today' | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "rofi -dmenu -p 'Instant Start' | xargs task add && task start.any: stop; task rc.context:none +LATEST start && task_refresh")
+   , ((alpha, u), windows $ W.focusUp)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
 
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
    , ((alpha, xK_KP_Add), spawn "next_task")
+   , ((alpha, xK_KP_Delete), spawn "task start.any: stop && timew delete @1 && task_refresh")
+   , ((alpha, xK_KP_Divide), spawn "wait_task -N")
    , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
-   , ((alpha, xK_Home), spawn "tm-send --action 'clear && cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\"))'") -- cd to Tmux Home Dir
    , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
    , ((alpha, xK_KP_Subtract), spawn "last_task")
-   , ((alpha, xK_KP_Multiply), spawn "wait_task")
+   , ((alpha, xK_KP_Multiply), spawn "wait_task -D 15min -N")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
@@ -151,10 +154,11 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
+   , ((alpha, xK_comma), sequence_ [spawn "task_refresh -w 0", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); clear'") -- cd to Next Dir
+   , ((alpha, xK_slash), sequence_ [spawn "task_refresh -w 5", NSP.namedScratchpadAction scratchpads "gtd"])
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; clear'") -- cd to Last Dir
-   , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad") -- Scratchpad
+   , ((alpha, xK_period), sequence_ [spawn "task_refresh -w 2", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad
    , ((alpha, xK_semicolon), PS.prompt "bam" myXPConfig)
    , ((alpha .|. beta, xK_semicolon), PS.prompt "bam -P 'less'" myXPConfig)
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
