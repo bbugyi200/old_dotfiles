@@ -14,8 +14,9 @@ import XMonad.Hooks.ManageHelpers (doRectFloat)
 
 import Data.Maybe (isNothing,isJust)
 import Control.Monad (liftM,when)
-import Graphics.X11.ExtraTypes.XF86
 import Network.HostName (getHostName)
+
+import Graphics.X11.ExtraTypes.XF86
 
 import qualified XMonad.StackSet as W
 import qualified XMonad.Prompt as P
@@ -67,6 +68,10 @@ removeEmptyWorkspace' = do
     let n = length $ workspaceList
     when (n > 3) $ DW.removeEmptyWorkspace
 
+launch_app :: String -> String -> X ()
+launch_app ws cmd = sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)]
+
+
 ------------------------------- Key Bindings ----------------------------------
 
 ------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
@@ -94,6 +99,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, a), spawn "khal-alarms") -- Calendar Alarms
    , ((alpha, b), spawn "clipster_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
+   , ((alpha, c), launch_app "WEB" "qutebrowser")
    , ((alpha .|. shift, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, d), windows $ W.focusDown)
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
@@ -132,7 +138,10 @@ myAdditionalKeys = [
    , ((alpha .|. beta, t), spawn "rofi -format 'q' -dmenu -p 'Due Today' | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "rofi -dmenu -p 'Instant Start' | xargs task add && task start.any: stop; task rc.context:none +LATEST start && task_refresh")
    , ((alpha, u), windows $ W.focusUp)
+   , ((alpha, v), launch_app "VLC" "vlc")
+   , ((alpha, x), launch_app "TERM" myTerminal)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
+   , ((alpha, z), launch_app "ZATH" "zathura")
 
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
@@ -165,22 +174,6 @@ myAdditionalKeys = [
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    ]
-
-   -- Launch Applications
-   ++ [((alpha, key), sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)])
-       | (key, cmd, ws) <- zip3
-       [x, c, z, v, xK_KP_End, xK_KP_Down, xK_KP_Page_Down]
-       [myTerminal,"qutebrowser","zathura","vlc","anki","slack","zeal"]
-       ["TERM","WEB","ZATH","VLC","ANKI","SLACK","ZEAL"]
-      ]
-
-   -- Launch Second Applications
-   ++ [((alpha .|. beta, key), sequence_ [CW.nextScreen, DW.addWorkspace ws, (spawnOn ws $ "WS_is_Empty && " ++ cmd)])
-       | (key, cmd, ws) <- zip3
-       [c, x, z, v]
-       ["qutebrowser", myTerminal, "zathura", "zathura"]
-       ["WEB'", "TERM'", "ZATH'", "ZATH"]
-      ]
 
    -- View WS
    ++ [((alpha, k), withNthWorkspace' W.view i)
@@ -236,9 +229,7 @@ t = 0.4; bigt = 0.05  -- Distance from top edge
 w = 0.5; bigw = 0.9
 h = 0.5; bigh = 0.9
 
-scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad") 
-                    (NSP.customFloating $ W.RationalRect l t w h)
-              , NSP.NS "calculator" "galculator" (className =? "Galculator")
+scratchpads = [ NSP.NS "calculator" "galculator" (className =? "Galculator")
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "weechat" weechat (appName =? "weechat")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh)
@@ -246,7 +237,6 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh) ]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
-                scratchpad = "urxvt -name scratchpad -e zsh -c 'tmuxinator start ScratchPad root=$(defaultTmuxDir --get ScratchPad)'" 
                 weechat = "urxvt -name weechat -e zsh -c 'tmuxinator start WeeChat root=$(defaultTmuxDir --get WeeChat)'"
                 gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD root=$(defaultTmuxDir --get GTD)'"
 
