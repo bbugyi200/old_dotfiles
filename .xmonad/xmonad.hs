@@ -136,7 +136,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta .|. ctrl, s), spawn "confirm --dmenu 'task start.any: stop; dbox_sync && shutdown now'") -- Shutdown
    , ((alpha, t), spawn "rofi -dmenu -format 'q' -p 'Inbox' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "rofi -format 'q' -dmenu -p 'Due Today' | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
-   , ((alpha .|. shift, t), spawn "rofi -dmenu -p 'Instant Start' | xargs task add && task start.any: stop; task rc.context:none +LATEST start && task_refresh")
+   , ((alpha .|. shift, t), spawn "task_hotstart")
    , ((alpha, u), windows $ W.focusUp)
    , ((alpha, v), launch_app "VLC" "vlc")
    , ((alpha, x), launch_app "TERM" myTerminal)

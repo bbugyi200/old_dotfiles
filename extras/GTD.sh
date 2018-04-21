@@ -14,7 +14,7 @@ tcx () {
     if [[ -z "$1" ]]; then
         task context show
     else
-        task context "$@"
+        task context "$@" && task_refresh -F rename,config
     fi
 }
 
@@ -54,12 +54,12 @@ alias qtrev='trev'
 alias tlat='task +LATEST info | less'
 alias tdue='tga +OVERDUE'
 alias tdel='task delete'
-alias tcn='task context none && task_refresh -C'
-alias tcl='task context low && task_refresh -C'
-alias tcm='task context mid && task_refresh -C'
-alias tch='task context high && task_refresh -C'
-alias tcb='task context bedtime && task_refresh -C'
-alias tcmob='task context mobile && task_refresh -C'
+alias tcn='task context none && task_refresh -F rename,config'
+alias tcl='task context low && task_refresh -F rename,config'
+alias tcm='task context mid && task_refresh -F rename,config'
+alias tch='task context high && task_refresh -F rename,config'
+alias tcb='task context bedtime && task_refresh -F rename,config'
+alias tcmob='task context mobile && task_refresh -F rename,config'
 alias tcomp='task limit:10 \( status:completed or status:deleted \) rc.report.all.sort:end- all'
 
 # ---------- TimeWarrior
@@ -83,10 +83,10 @@ alias timd='tim delete'
 alias k='khal --color'
 restart_khal_alarms() { kill "$(cat /tmp/khal-alarms.pid 2> /dev/null)" &> /dev/null; setsid khal-alarms &> /dev/null; }
 kc() { clear && khal list --notstarted --format '{start-time} {title}' now && echo; }
-kn() { khal new "$@" && kc && restart_khal_alarms; }
-knt() { khal new tomorrow "$@" && kc && restart_khal_alarms; }
-ke() { khal edit "$@" && kc && restart_khal_alarms; }
-ki() { ikhal "$@" && kc && restart_khal_alarms; }
+kn() { khal new "$@" && restart_khal_alarms; }
+knt() { khal new tomorrow "$@" && restart_khal_alarms; }
+ke() { khal edit "$@" && restart_khal_alarms; }
+ki() { ikhal "$@" && restart_khal_alarms; }
 
 # ---------- Jrnl
 alias j='jrnl'

@@ -3,14 +3,10 @@
 export TASK_SEND_ENABLED=1
 
 function precmd() {
-    task_refresh
+    task_refresh -F taskw
 }
 
 newcmd() {
-    eval "precmd() { tmux -L GTD send-keys -t GTD:0.0 q C-u \"$*\" \"Enter\"; }"
-}
-
-Newcmd() {
     eval "precmd() { tmux -L GTD send-keys -t GTD:0.0 q C-u \"clear && $*\" \"Enter\"; }"
 }
 

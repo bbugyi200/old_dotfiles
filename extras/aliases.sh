@@ -85,7 +85,7 @@ alias CDoc='LangDoc -e c -m'
 alias Doc='LangDoc -e sh -m'
 
 # ---------- Package Management ----------
-alias update='confirm "sudo pacman -Syu"; confirm "mkdir /tmp/builds; cd /tmp/builds && cower -vud && buildall"'
+alias update='confirm "sudo pacman -Syu"; confirm "mkdir /tmp/builds; cd /tmp/builds && cower -vud && buildall"; confirm "gem update"'
 alias del='sudo pacman -Rs'
 alias mkpkg='makepkg -si'
 

@@ -1,0 +1,3 @@
+precmd() {
+    task_refresh -F timew
+}

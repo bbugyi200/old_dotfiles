@@ -54,7 +54,6 @@ tags = {'GTD': {'project': 'Meta'},
             'due': tomorrow_due_time,
             'delta': 0},
         'tickle': {
-            'project': 'Meta',
             'due': tomorrow_due_time,
             'delta': 0},
         'reminder': {

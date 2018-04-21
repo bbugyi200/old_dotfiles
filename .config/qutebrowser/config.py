@@ -59,14 +59,14 @@ c.url.searchengines['ep'] = URL('https://google.com/search?q={}+episodes',
                                 '^[0-9].*')
 c.url.searchengines['d'] = 'https://duckduckgo.com/?q={}'
 c.url.searchengines['al'] = 'https://google.com/search?q=arch+linux+{}'
-c.url.searchengines['g'] = 'https://google.com/search?q=site%3Agithub.com+{}&ia=web'
-c.url.searchengines['gg'] = 'https://github.com/bbugyi200/{}'
-c.url.searchengines['gi'] = URL('https://github.com/bbugyi200/{}/issues',
+c.url.searchengines['gh'] = 'https://google.com/search?q=site%3Agithub.com+{}&ia=web'
+c.url.searchengines['ghm'] = 'https://github.com/bbugyi200/{}'
+c.url.searchengines['ghi'] = URL('https://github.com/bbugyi200/{}/issues',
                                 ('https://github.com/bbugyi200/scripts/issues/{}',
                                  'https://github.com/bbugyi200/{1}/issues/{0}'),
                                 ('^[0-9]+$', '^[0-9]+.+'),
                                 filters=(None, lambda x: re.split('\+|%20', x, maxsplit=1)))
-c.url.searchengines['gni'] = 'https://github.com/bbugyi200/{}/issues/new'
+c.url.searchengines['ghni'] = 'https://github.com/bbugyi200/{}/issues/new'
 c.url.searchengines['li'] = 'https://google.com/search?q=site%3Alinkedin.com+{}&ia=web'
 c.url.searchengines['py'] = 'https://docs.python.org/2/library/{}'
 c.url.searchengines['red'] = 'https://google.com/search?q=site%3Areddit.com+{}&ia=web'

@@ -146,6 +146,7 @@ map Bl feedkeys ":blist <Tab><C-u>blist"
 # Miscellaneous Bookmark Bindings
 map Bb focus_inputbar ":bmark "
 map Bd feedkeys ":bdelete <Tab>"
+map BB feedkeys ":bmark j<Return>:bmark k<Return>"
 
 # ---------- Miscellaneous Bindings
 map o feedkeys ":exec dmenu_books<Return>"

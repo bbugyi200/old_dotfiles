@@ -1,0 +1,5 @@
+precmd() {
+    task_refresh -F khal
+}
+
+alias ki='tmux send-keys -t 2.0 "ikhal && tmux select-pane -t 2.1 && kc" "Enter" && tmux select-pane -t 2.0'
