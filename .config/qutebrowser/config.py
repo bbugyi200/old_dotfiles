@@ -44,7 +44,7 @@ class URL(str):
 
 
 def season_episode_filter(x):
-    y = re.split('\+|%20', x, maxsplit=2)
+    y = re.split('%20', x, maxsplit=2)
     y[0] = int(y[0])
     y[1] = int(y[1])
     return y
@@ -65,7 +65,7 @@ c.url.searchengines['ghi'] = URL('https://github.com/bbugyi200/{}/issues',
                                 ('https://github.com/bbugyi200/scripts/issues/{}',
                                  'https://github.com/bbugyi200/{1}/issues/{0}'),
                                 ('^[0-9]+$', '^[0-9]+.+'),
-                                filters=(None, lambda x: re.split('\+|%20', x, maxsplit=1)))
+                                filters=(None, lambda x: re.split('%20', x, maxsplit=1)))
 c.url.searchengines['ghni'] = 'https://github.com/bbugyi200/{}/issues/new'
 c.url.searchengines['li'] = 'https://google.com/search?q=site%3Alinkedin.com+{}&ia=web'
 c.url.searchengines['py'] = 'https://docs.python.org/2/library/{}'
@@ -73,11 +73,11 @@ c.url.searchengines['red'] = 'https://google.com/search?q=site%3Areddit.com+{}&i
 c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
 c.url.searchengines['pir'] = URL('https://thepiratebay.org/search/{}',
                                  'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
-                                 '^[0-9][0-9]?(\+|%20)[0-9][0-9]?.*',
+                                 '^[0-9][0-9]?%20[0-9][0-9]?.*',
                                  filters=season_episode_filter)
 c.url.searchengines['sub'] = URL('https://google.com/search?q={}+subtitles',
                                  'https://google.com/search?q={2}+S{0:02d}E{1:02d}+subtitles',
-                                 '^[0-9][0-9]?(\+|%20)[0-9][0-9]?.*',
+                                 '^[0-9][0-9]?%20[0-9][0-9]?.*',
                                  filters=season_episode_filter)
 
 
