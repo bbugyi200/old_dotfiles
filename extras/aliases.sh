@@ -2,10 +2,11 @@ source /home/bryan/Dropbox/dotfiles/extras/GTD.sh
 
 # ---------- MISCELLANEOUS ----------
 alias c='clear'
-alias delshots='confirm "find /home/bryan/Dropbox/logs/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
+alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias la="LocalAlias"
-lls () { clear && ls -a && echo; }
+lls () { clear && ls -a "$@" && echo; }
 lcd () { cd "$1" && lls; }
+init-cproject () { rsync -av ~/Dropbox/scripts/templates/cproject/ ./; }
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 # Create and CD to New Directory
 mkcd() { mkdir -p $1 && cd $1; }
@@ -16,10 +17,17 @@ alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias psgrep='ps -aux | grep -E'
 # Prints the value of a variable
 pvar () { set | grep -i -e "^$1"; }
-alias snapshots='find /home/bryan/Dropbox/logs/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
+alias snapshots='find /home/bryan/Dropbox/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 # Sleep, then run the last command
 ss () { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
 w() { which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n" && la $1); }
+
+# ---------- FAVORITE DIRECTORIES ----------
+alias 1='cd ~'
+alias 2='cd ~/Dropbox'
+alias 3='cd ~/Dropbox/scripts'
+alias 4='cd ~/Dropbox/dotfiles'
+alias 5='cd ~/Downloads'
 
 # ---------- Vim ----------
 alias lim='vim -c "normal \`0" -c "bdelete 1"'
@@ -58,6 +66,7 @@ alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 alias cower='cower -c'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
+alias du='ncdu --color dark'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias time='/usr/bin/time'
 alias tree='tree -I "venv*|__pycache__*|coverage*"'
@@ -85,7 +94,6 @@ alias CDoc='LangDoc -e c -m'
 alias Doc='LangDoc -e sh -m'
 
 # ---------- Package Management ----------
-alias update='confirm "sudo pacman -Syu"; confirm "mkdir /tmp/builds; cd /tmp/builds && cower -vud && buildall"; confirm "gem update"'
 alias del='sudo pacman -Rs'
 alias mkpkg='makepkg -si'
 

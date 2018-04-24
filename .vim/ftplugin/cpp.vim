@@ -9,3 +9,7 @@ else
      \ ." && tmux split-window -h \"./" .expand("%:t:r")
      \ ." && read -rep $'\n\nPress any key to continue...' && tmux resize-pane -D 20\" && clear")
 endif
+
+" Opens corresponding '.c' file.
+" For some reason, '.h' files have a filetype of 'cpp'.
+nnoremap <Leader>c :e <C-r>=expand('%:r')<CR>.c<CR>

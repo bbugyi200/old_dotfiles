@@ -152,7 +152,7 @@ myAdditionalKeys = [
    , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
    , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
    , ((alpha, xK_KP_Subtract), spawn "last_task")
-   , ((alpha, xK_KP_Multiply), spawn "wait_task -D 15min -N")
+   , ((alpha, xK_KP_Multiply), spawn "wait_task -D 1h -N")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
@@ -177,12 +177,12 @@ myAdditionalKeys = [
 
    -- View WS
    ++ [((alpha, k), withNthWorkspace' W.view i)
-       | (i, k) <- zip [0..8] $ [xK_1 .. xK_8]
+       | (i, k) <- zip [0..7] $ [xK_1 .. xK_8]
       ]
 
    -- Shift to WS; then Focus WS
    ++ [((alpha .|. beta, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
-       | (i, k) <- zip [0..8] $ [xK_1 .. xK_8]
+       | (i, k) <- zip [0..7] $ [xK_1 .. xK_8]
       ]
 
    where

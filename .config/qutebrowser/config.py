@@ -71,6 +71,7 @@ c.url.searchengines['li'] = 'https://google.com/search?q=site%3Alinkedin.com+{}&
 c.url.searchengines['py'] = 'https://docs.python.org/2/library/{}'
 c.url.searchengines['red'] = 'https://google.com/search?q=site%3Areddit.com+{}&ia=web'
 c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
+c.url.searchengines['lib'] = 'http://libgen.io/search.php?req={}'
 c.url.searchengines['pir'] = URL('https://thepiratebay.org/search/{}',
                                  'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
                                  '^[0-9][0-9]?%20[0-9][0-9]?.*',
@@ -93,7 +94,7 @@ bind('<Ctrl-Shift-u>', 'spawn --userscript qute-pass --username-only', mode='ins
 bind('<Ctrl-Shift-p>', 'spawn --userscript qute-pass --password-only', mode='insert')
 
 # >>> PROMPT
-bind('<Ctrl-o>', 'prompt-open-download zathura {}', mode='prompt')
+bind('<Ctrl-o>', 'prompt-open-download xdg-open {}', mode='prompt')
 
 # >>> COMMAND
 bind('<Ctrl-f>', 'edit-command', mode='command')

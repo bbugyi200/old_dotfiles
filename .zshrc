@@ -1,7 +1,10 @@
 # ----------------------------------------------------------------------------
 # ------------------------------ SOURCES -------------------------------------
 source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
+
 unalias gco  # Defined in Oh-My-Zsh's Git plugin
+unalias d; unalias l; disable r
+unalias 1; unalias 2; unalias 3; unalias 4; unalias 5; unalias 6; unalias 7; unalias 8; unalias 9
 
 source /home/bryan/Dropbox/dotfiles/extras/tmuxinator.zsh
 source /home/bryan/Dropbox/dotfiles/extras/aliases.sh
@@ -41,11 +44,6 @@ alias -s txt="vim"
 alias -g @@="&> /dev/null & disown"
 alias -g ::="| grep -e"
 alias -g %="| less"
-
-# --- Unalias Aliases
-# I don't like not being able to make a local alias with these
-unalias l
-disable r
 
 # -------------------------------- BINDINGS ----------------------------------
 bindkey "^P" up-line-or-search

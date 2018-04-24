@@ -49,7 +49,7 @@ trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS lim
 
 alias t='task'
 alias ta='task add'
-alias td='task rc.verbose=nothing done'
+alias td='task done'
 alias qtrev='trev'
 alias tlat='task +LATEST info | less'
 alias tdue='tga +OVERDUE'
@@ -81,9 +81,9 @@ alias timd='tim delete'
 
 # ---------- Khal
 alias k='khal --color'
-restart_khal_alarms() { kill "$(cat /tmp/khal-alarms.pid 2> /dev/null)" &> /dev/null; setsid khal-alarms &> /dev/null; }
+restart_khal_alarms() { setsid khal-alarms &> /dev/null; }
 kc() { clear && khal list --notstarted --format '{start-time} {title}' now && echo; }
-kn() { khal new "$@" && restart_khal_alarms; }
+kn() { khal new "$*" && restart_khal_alarms; }
 knt() { khal new tomorrow "$@" && restart_khal_alarms; }
 ke() { khal edit "$@" && restart_khal_alarms; }
 ki() { ikhal "$@" && restart_khal_alarms; }
