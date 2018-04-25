@@ -17,10 +17,14 @@ _darcs
 .+~          # emacs backup files
 \#.*\#       # emacs autosave files
 
+/*\.swo
+/*\.swp
+
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
-^/.lshrc
+\.lshrc
+clinks
 
 ^/extras/*
 ^/img/*

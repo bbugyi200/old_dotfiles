@@ -1,10 +1,12 @@
-source /home/bryan/Dropbox/dotfiles/extras/GTD.sh
+source /home/bryan/Dropbox/dotfiles/home/extras/GTD.sh
 
 # ---------- MISCELLANEOUS ----------
 alias c='clear'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias la="LocalAlias"
-lls () { clear && ls -a "$@" && echo; }
+ll () { ls --color=always -l "$@" | less; }
+lls () { clear && ls "$@" && echo; }
+lla () { clear && ls -a "$@" && echo; }
 lcd () { cd "$1" && lls; }
 init-cproject () { rsync -av ~/Dropbox/scripts/templates/cproject/ ./; }
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
@@ -22,12 +24,18 @@ alias snapshots='find /home/bryan/Dropbox/var/aphrodite-motion -name "*$(date +%
 ss () { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
 w() { which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n" && la $1); }
 
+# ---------- DROPBOX ----------
+alias dst='dropbox-cli status'
+alias dfs='dropbox-cli filestatus'
+alias dstart='dropbox-cli start'
+alias dstop='dropbox-cli stop'
+
 # ---------- FAVORITE DIRECTORIES ----------
-alias 1='cd ~'
-alias 2='cd ~/Dropbox'
-alias 3='cd ~/Dropbox/scripts'
-alias 4='cd ~/Dropbox/dotfiles'
-alias 5='cd ~/Downloads'
+alias 1='lcd ~'
+alias 2='lcd ~/Dropbox'
+alias 3='lcd ~/Dropbox/scripts/bin/main'
+alias 4='lcd ~/Dropbox/dotfiles/home'
+alias 5='lcd ~/Downloads'
 
 # ---------- Vim ----------
 alias lim='vim -c "normal \`0" -c "bdelete 1"'

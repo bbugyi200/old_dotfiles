@@ -1,14 +1,14 @@
 # ----------------------------------------------------------------------------
 # ------------------------------ SOURCES -------------------------------------
-source /home/bryan/Dropbox/dotfiles/extras/oh-my-zsh
+source /home/bryan/Dropbox/dotfiles/home/extras/oh-my-zsh
 
 unalias gco  # Defined in Oh-My-Zsh's Git plugin
-unalias d; unalias l; disable r
+unalias d; unalias l; unalias ll; disable r
 unalias 1; unalias 2; unalias 3; unalias 4; unalias 5; unalias 6; unalias 7; unalias 8; unalias 9
 
-source /home/bryan/Dropbox/dotfiles/extras/tmuxinator.zsh
-source /home/bryan/Dropbox/dotfiles/extras/aliases.sh
-source /home/bryan/Dropbox/dotfiles/extras/eternal_history.sh
+source /home/bryan/Dropbox/dotfiles/home/extras/tmuxinator.zsh
+source /home/bryan/Dropbox/dotfiles/home/extras/aliases.sh
+source /home/bryan/Dropbox/dotfiles/home/extras/eternal_history.sh
 
 # -------------------------- OH-MY-ZSH ---------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'

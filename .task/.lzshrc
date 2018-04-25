@@ -6,8 +6,16 @@ function precmd() {
     task_refresh -F taskw
 }
 
-newcmd() {
+n() {
     eval "precmd() { tmux -L GTD send-keys -t GTD:0.0 q C-u \"clear && $*\" \"Enter\"; }"
+}
+
+np() {
+    eval "precmd() { tmux -L GTD send-keys -t GTD:0.0 q C-u \"clear && tga project:$*\" \"Enter\"; }"
+}
+
+nps() {
+    eval "precmd() { tmux -L GTD send-keys -t GTD:0.0 q C-u \"clear && tga project:Study.$*\" \"Enter\"; }"
 }
 
 tt() {
