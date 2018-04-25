@@ -43,7 +43,7 @@ class URL(str):
         return str.format(self.default, term, *args, **kwargs)
 
 
-def season_episode_filter(x):
+def double_int_filter(x):
     y = re.split('%20', x, maxsplit=2)
     y[0] = int(y[0])
     y[1] = int(y[1])
@@ -52,8 +52,9 @@ def season_episode_filter(x):
 
 # ----- Dictionary Values
 c.url.searchengines['DEFAULT'] = URL('https://google.com/search?q={}',
-                                     'https://duckduckgo.com/?q={}',
-                                     '^%21.*')
+                                     ('https://duckduckgo.com/?q={}',
+                                      'https://duckduckgo.com/?q=!{}'),
+                                      ('^%21.*', '^[A-z][A-z]?%20.*'))
 c.url.searchengines['ep'] = URL('https://google.com/search?q={}+episodes',
                                 'https://google.com/search?q=Season+{}+episodes',
                                 '^[0-9].*')
@@ -75,11 +76,11 @@ c.url.searchengines['lib'] = 'http://libgen.io/search.php?req={}'
 c.url.searchengines['pir'] = URL('https://thepiratebay.org/search/{}',
                                  'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
                                  '^[0-9][0-9]?%20[0-9][0-9]?.*',
-                                 filters=season_episode_filter)
+                                 filters=double_int_filter)
 c.url.searchengines['sub'] = URL('https://google.com/search?q={}+subtitles',
                                  'https://google.com/search?q={2}+S{0:02d}E{1:02d}+subtitles',
                                  '^[0-9][0-9]?%20[0-9][0-9]?.*',
-                                 filters=season_episode_filter)
+                                 filters=double_int_filter)
 
 
 # ----- Bindings
