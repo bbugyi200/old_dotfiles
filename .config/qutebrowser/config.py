@@ -17,29 +17,29 @@ class URL(str):
     def __new__(cls, value, *args, **kwargs):
         return super(URL, cls).__new__(cls, value)
 
-    def __init__(self, default, *others, regexp, filters=None):
-        self.default = default
-        self.others = others
-        if isinstance(regexp, str):
-            self.regexp = (regexp,)
+    def __init__(self, default_url, *other_urls, patterns, filters=None):
+        self.default_url = default_url
+        self.other_urls = other_urls
+        if isinstance(patterns, str):
+            self.patterns = (patterns,)
             self.filters = (filters,)
         else:
-            self.regexp = tuple(regexp)
+            self.patterns = patterns
             self.filters = filters
 
-        # Allows 'filters' argument to be omitted even when multiple 'others' exist
+        # Allows 'filters' argument to be omitted even when multiple 'other_urls' exist
         if filters is None:
-            self.filters = (None,) * len(self.others)
+            self.filters = (None,) * len(self.other_urls)
 
-        # Allows 'None' to be given as default filter
+        # Allows 'None' to be given when no special filter is desired
         self.filters = tuple(map(lambda x: x if x else lambda y: (y,), self.filters))
 
     def format(self, term, *args, **kwargs):
-        for other, exp, filter_ in zip(self.others, self.regexp, self.filters):
-            if re.match(exp, term):
-                return str.format(other, *filter_(term), *args, **kwargs)
+        for url, pttrn, filter_ in zip(self.other_urls, self.patterns, self.filters):
+            if re.match(pttrn, term):
+                return str.format(url, *filter_(term), *args, **kwargs)
 
-        return str.format(self.default, term, *args, **kwargs)
+        return str.format(self.default_url, term, *args, **kwargs)
 
 
 def double_int_filter(x):
@@ -53,10 +53,10 @@ def double_int_filter(x):
 c.url.searchengines['DEFAULT'] = URL('https://google.com/search?q={}',
                                      'https://duckduckgo.com/?q={}',
                                      'https://duckduckgo.com/?q=!{}',
-                                      regexp=('^%21.*', '^[A-z][A-z]?%20.*'))
+                                      patterns=('^%21.*', '^[A-z][A-z]?%20.*'))
 c.url.searchengines['ep'] = URL('https://google.com/search?q={}+episodes',
                                 'https://google.com/search?q=Season+{}+episodes',
-                                regexp='^[0-9].*')
+                                patterns='^[0-9].*')
 c.url.searchengines['d'] = 'https://duckduckgo.com/?q={}'
 c.url.searchengines['al'] = 'https://google.com/search?q=arch+linux+{}'
 c.url.searchengines['gh'] = 'https://google.com/search?q=site%3Agithub.com+{}&ia=web'
@@ -64,7 +64,7 @@ c.url.searchengines['ghm'] = 'https://github.com/bbugyi200/{}'
 c.url.searchengines['ghi'] = URL('https://github.com/bbugyi200/{}/issues',
                                  'https://github.com/bbugyi200/scripts/issues/{}',
                                  'https://github.com/bbugyi200/{1}/issues/{0}',
-                                 regexp=('^[0-9]+$', '^[0-9]+.+'),
+                                 patterns=('^[0-9]+$', '^[0-9]+.*'),
                                  filters=(None, lambda x: re.split('%20', x, maxsplit=1)))
 c.url.searchengines['ghni'] = 'https://github.com/bbugyi200/{}/issues/new'
 c.url.searchengines['li'] = 'https://google.com/search?q=site%3Alinkedin.com+{}&ia=web'
@@ -74,11 +74,11 @@ c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
 c.url.searchengines['lib'] = 'http://libgen.io/search.php?req={}'
 c.url.searchengines['pir'] = URL('https://thepiratebay.org/search/{}',
                                  'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
-                                 regexp='^[0-9][0-9]?%20[0-9][0-9]?.*',
+                                 patterns='^[0-9][0-9]?%20[0-9][0-9]?%20[A-z].*',
                                  filters=double_int_filter)
 c.url.searchengines['sub'] = URL('https://google.com/search?q={}+subtitles',
                                  'https://google.com/search?q={2}+S{0:02d}E{1:02d}+subtitles',
-                                 regexp='^[0-9][0-9]?%20[0-9][0-9]?.*',
+                                 patterns='^[0-9][0-9]?%20[0-9][0-9]?%20[A-z].*',
                                  filters=double_int_filter)
 
 
