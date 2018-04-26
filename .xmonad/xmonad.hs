@@ -100,7 +100,7 @@ myAdditionalKeys = [
    , ((alpha, b), spawn "clipster_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), launch_app "WEB" "qutebrowser")
-   , ((alpha .|. shift, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
+   , ((alpha .|. beta, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, d), windows $ W.focusDown)
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
@@ -164,10 +164,11 @@ myAdditionalKeys = [
    , ((alpha, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_comma), sequence_ [spawn "task_refresh -w 0", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
+   , ((alpha .|. beta, xK_comma), sequence_ [spawn "task_refresh -w 2", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad
+   , ((alpha .|. shift, xK_comma), sequence_ [spawn "task_refresh -w 5", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); clear'") -- cd to Next Dir
-   , ((alpha, xK_slash), sequence_ [spawn "task_refresh -w 5", NSP.namedScratchpadAction scratchpads "gtd"])
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; clear'") -- cd to Last Dir
-   , ((alpha, xK_period), sequence_ [spawn "task_refresh -w 2", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad
+   , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "gtd"])
    , ((alpha, xK_semicolon), PS.prompt "bam" myXPConfig)
    , ((alpha .|. beta, xK_semicolon), PS.prompt "bam -P 'less'" myXPConfig)
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)

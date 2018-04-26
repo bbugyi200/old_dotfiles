@@ -2,11 +2,11 @@ source /home/bryan/Dropbox/dotfiles/home/extras/GTD.sh
 
 # ---------- MISCELLANEOUS ----------
 alias c='clear'
+alias dayplan='vim ~/Dropbox/notes/dayplan.txt'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias la="LocalAlias"
 ll () { ls --color=always -l "$@" | less; }
-lls () { clear && ls "$@" && echo; }
-lla () { clear && ls -a "$@" && echo; }
+lls () { clear && ls -a "$@" && echo; }
 lcd () { cd "$1" && lls; }
 init-cproject () { rsync -av ~/Dropbox/scripts/templates/cproject/ ./; }
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'

@@ -48,8 +48,7 @@ tomorrow_due_time = '{year}{month:02d}{day:02d}T100000Z'.format(year=tomorrow.ye
 
 always_update = ['severity', 'tags']
 
-tags = {'GTD': {'project': 'Meta'},
-        'inbox': {
+tags = {'inbox': {
             'project': 'Meta',
             'due': tomorrow_due_time,
             'delta': 0},

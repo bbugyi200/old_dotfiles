@@ -161,9 +161,9 @@ nnoremap <Leader>g gqap
 nnoremap <C-Del> :call delete(expand('%'))<CR>
 nnoremap <C-s> :SyntasticToggleMode<CR>
 " Edit Snippet File
-nnoremap <Leader>S :e ~/Dropbox/dotfiles/.vim/bundle/vim-snippets/UltiSnips/<C-R>=&filetype<CR>.snippets<CR>
+nnoremap <Leader>S :e ~/.vim/bundle/vim-snippets/UltiSnips/<C-R>=&filetype<CR>.snippets<CR>
 " Edit ftplugin File
-nnoremap <Leader>F :e ~/Dropbox/dotfiles/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>
+nnoremap <Leader>F :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>
 " Delete Buffer
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
 " Vertical Buffer

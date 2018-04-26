@@ -18,6 +18,8 @@ nps() {
     eval "precmd() { tmux -L GTD send-keys -t GTD:0.0 q C-u \"clear && tga project:Study.$*\" \"Enter\"; }"
 }
 
+tas() { tmux send-keys "ta project:Study.$*" "Enter"; }
+
 tt() {
     (sleep 0.5 && task_send "$*") &
 }
