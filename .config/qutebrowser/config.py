@@ -42,18 +42,23 @@ class URL(str):
         return str.format(self.default_url, term, *args, **kwargs)
 
 
-def double_int_filter(x):
-    y = re.split('%20', x, maxsplit=2)
-    y[0] = int(y[0])
-    y[1] = int(y[1])
-    return y
+class DoubleInt:
+    """ URL Pattern with two Int Arguments """
+    pattern = '^[0-9][0-9]?%20[0-9][0-9]?%20[A-z]'
+
+    @staticmethod
+    def filter(x):
+        y = re.split('%20', x, maxsplit=2)
+        y[0] = int(y[0])
+        y[1] = int(y[1])
+        return y
 
 
 # ----- Dictionary Values
 c.url.searchengines['DEFAULT'] = URL('https://google.com/search?q={}',
                                      'https://duckduckgo.com/?q={}',
                                      'https://duckduckgo.com/?q=!{}',
-                                      patterns=('^%21.*', '^[A-z][A-z]?%20.*'))
+                                     patterns=('^%21', '^(?!is)[A-z][A-z]?%20'))
 c.url.searchengines['ep'] = URL('https://google.com/search?q={}+episodes',
                                 'https://google.com/search?q=Season+{}+episodes',
                                 patterns='^[0-9].*')
@@ -74,12 +79,12 @@ c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
 c.url.searchengines['lib'] = 'http://libgen.io/search.php?req={}'
 c.url.searchengines['pir'] = URL('https://thepiratebay.org/search/{}',
                                  'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
-                                 patterns='^[0-9][0-9]?%20[0-9][0-9]?%20[A-z].*',
-                                 filters=double_int_filter)
-c.url.searchengines['sub'] = URL('https://google.com/search?q={}+subtitles',
-                                 'https://google.com/search?q={2}+S{0:02d}E{1:02d}+subtitles',
-                                 patterns='^[0-9][0-9]?%20[0-9][0-9]?%20[A-z].*',
-                                 filters=double_int_filter)
+                                 patterns=DoubleInt.pattern,
+                                 filters=DoubleInt.filter)
+c.url.searchengines['sub'] = URL('https://duckduckgo.com/?q=!+{0}+inurl%3Aenglish+site:subscene.com',
+                                 'https://duckduckgo.com/?q=!+{2}+S{0:02d}E{1:02d}+inurl%3Aenglish+site:subscene.com',
+                                 patterns=DoubleInt.pattern,
+                                 filters=DoubleInt.filter)
 
 
 # ----- Bindings
@@ -95,6 +100,7 @@ bind('<Ctrl-Shift-p>', 'spawn --userscript qute-pass --password-only', mode='ins
 
 # >>> PROMPT
 bind('<Ctrl-o>', 'prompt-open-download xdg-open {}', mode='prompt')
+bind('<Ctrl-z>', 'prompt-open-download unzip -d /home/bryan/Downloads {}', mode='prompt')
 
 # >>> COMMAND
 bind('<Ctrl-f>', 'edit-command', mode='command')
