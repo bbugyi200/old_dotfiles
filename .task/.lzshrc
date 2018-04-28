@@ -3,7 +3,8 @@
 export TASK_SEND_ENABLED=1
 
 function precmd() {
-    task_refresh -F taskw
+    tmux -L GTD send-keys -t GTD:0.0 "tc" "Enter"
+    task_refresh -F "timew,khal"
 }
 
 n() {

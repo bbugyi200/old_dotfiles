@@ -14,6 +14,7 @@ application/x-extension-xhtml=qutebrowser.desktop
 application/x-extension-xht=qutebrowser.desktop
 application/postscript=zathura.desktop
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+application/zip=unzip-subtitles.desktop
 
 [Added Associations]
 x-scheme-handler/http=qutebrowser.desktop;

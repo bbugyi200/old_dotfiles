@@ -1,0 +1,106 @@
+# vim: ft=cfg:
+
+# ----- CONTEXTS -----
+context.high=project:Study or +brainstorm or project:Read.Review or (urg>7)
+context.low=+easy or ( project:Read project.not:Read.Review ) or project:Holiday.Gifts or ( project:Dev and (urg>2) ) or priority:H or (urg>7)
+context.bedtime=project:Read project.not:Read.Review
+context.mobile=+call or project:Read.Blog or +errand or (urg>7)
+context.review=project.not:Holiday or project:Holiday.
+
+# ----- inthe.AM -----
+taskd.certificate=/home/bryan/.task/private.certificate.pem
+taskd.key=/home/bryan/.task/private.key.pem
+taskd.ca=/home/bryan/.task/ca.cert.pem
+taskd.server=taskwarrior.inthe.am:53589
+taskd.credentials=inthe_am/bryanbugyi34/4f732411-455b-4297-9731-c4f34c44b7f9
+taskd.trust=ignore hostname
+
+# ----- URGENCY -----
+urgency.inherit=yes
+# HIGH
+urgency.active.coefficient=500.0
+urgency.user.project.Meta.coefficient=100.0
+urgency.user.tag.tickle.coefficient=100.0
+# ZERO
+urgency.annotations.coefficient=0.0
+urgency.blocked.coefficient=0.0
+urgency.blocking.coefficient=0.0
+urgency.waiting.coefficient=0.0
+urgency.project.coefficient=0.0
+urgency.tags.coefficient=0.0
+# DUE
+urgency.due.coefficient=10.0
+urgency.uda.repeat.coefficient=-5.0  # recurring tasks MUST have due dates
+urgency.uda.strict.coefficient=5.0  # in these tasks, the due date is a "true" due date
+# Priorities
+urgency.uda.priority.H.coefficient=3.0
+urgency.uda.priority.L.coefficient=-3.0
+urgency.uda.priority.M.coefficient=0.0
+# MISC
+urgency.user.tag.inbox.coefficient=2.0  # places inbox tasks above other 'Meta' tasks
+urgency.user.project.Read.Blog.coefficient=0.2  # places blog items over other 'Read' tasks
+# Severity
+urgency.uda.severity.critical.coefficient=10.0
+urgency.uda.severity.high.coefficient=3.0
+urgency.uda.severity.medium.coefficient=1.5
+urgency.uda.severity.low.coefficient=0.0
+
+# ----- UDAs -----
+# repeat
+uda.repeat.type=string
+uda.repeat.label=Repeat.Enabled
+uda.repeat.values=yes,no
+# consistent
+uda.consistent.type=string
+uda.consistent.label=Repeat.Consistent
+uda.consistent.values=yes,no
+# strict
+uda.strict.type=string
+uda.strict.label=Repeat.Strict
+uda.strict.values=yes,no
+# delta (due - wait)
+uda.delta.type=numeric
+uda.delta.label=Delta
+# Severity
+uda.severity.type=string
+uda.severity.label=Severity
+uda.severity.values=critical,high,medium,low
+
+# ----- REPORTS -----
+report.all.columns=status.short,id,uuid.short,start.age,entry.age,depends.list,priority,project,tags,recur.indicator,scheduled.countdown,due,wait.remaining,description.count,urgency
+report.all.labels=Status,ID,UUID,Active,Age,D,P,Project,Tags,R,Sch,Due,Wait,Description,Urg
+report.all.sort=urgency-
+
+# ----- FILES -----
+data.location=~/.task
+
+# ----- TASKSH REVIEWS -----
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=status+,urgency-,reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
+tasksh.autoclear=1
+
+# ----- MISC -----
+verbose=blank,label,new-id,affected,edit,special,unwait,recur
+_forcecolor=on
+reserved.lines=1
+search.case.sensitive=no
+nag=
+
+# ----- COLORS -----
+color.tag.inbox=underline white
+color.tag.brainstorm=blue
+color.tag.bug=rgb550
+color.tag.tickle=black on rgb440
+color.project.Read=green
+color.project.Holiday=rgb515
+color.project.Meta=black on rgb214
+color.due.today=rgb050
+color.overdue=rgb500
+color.blocked=white on black
+color.tagged=  # A task should not be colored for just any tag
+
+# ----- DYNAMICALLY SET AT RUNTIME -----

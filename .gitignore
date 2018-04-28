@@ -17,7 +17,6 @@
 
 .task/*
 !.task/hooks
-.taskrc
 
 .password-store
 

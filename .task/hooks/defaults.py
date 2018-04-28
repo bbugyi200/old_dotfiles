@@ -55,17 +55,16 @@ tags = {'inbox': {
         'tickle': {
             'due': tomorrow_due_time,
             'delta': 0},
-        'reminder': {
+        'remind': {
             'project': 'Meta',
             'due': tomorrow_due_time,
             'delta': 1,
-            'tags': ModList(('reminder', 'tickle'), ('-', '+'))},
+            'tags': ModList(('remind', 'tickle'), ('-', '+'))},
         'tv': {'project': 'Fun'},
         'read': {'project': 'Read.Blog',
                  'tags': ModList('read', '-')},
         'review': {'project': 'Read.Review',
                    'tags': ModList('review', '-')},
-        'text': {'tags': ModList('NEW', '+')},
         'consistent': {
             'consistent': 'yes',
             'tags': ModList('consistent', '-')},

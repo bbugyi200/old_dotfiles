@@ -41,7 +41,7 @@ class URL(str):
 
 class DoubleInt:
     """ URL Pattern with two Int Arguments """
-    pattern = '^[0-9][0-9]?%20[0-9][0-9]?%20[A-z]'
+    pattern = '^[0-9][0-9][0-9]?%20[0-9][0-9][0-9]?%20[A-z]'
 
     @staticmethod
     def filter(x):

@@ -1,7 +1,7 @@
 import re
 import yaml
 
-from searchengines import URL, DoubleInt
+import searchengines as SE
 
 # pylint: disable=C0111
 c = c  # noqa: F821 pylint: disable=E0602,C0103
@@ -10,39 +10,37 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 # Load autoconfig.yml
 config.load_autoconfig()
 
-
 # ----- Dictionary Values
-c.url.searchengines['DEFAULT'] = URL('https://google.com/search?q={}',
-                                     'https://duckduckgo.com/?q={}',
-                                     'https://duckduckgo.com/?q=!{}',
-                                     patterns=('^(%21|%5C|/)', '^(?!is)[A-z][A-z]?%20'),
-                                     filters=(lambda x: x.replace('/', '%5C'), None))
-c.url.searchengines['ep'] = URL('https://google.com/search?q={}+episodes',
-                                'https://google.com/search?q=Season+{}+episodes',
-                                patterns='^[0-9].*')
+c.url.searchengines['DEFAULT'] = SE.URL('https://google.com/search?q={}',
+                                        'https://duckduckgo.com/?q={}',
+                                        'https://duckduckgo.com/?q=!{}',
+                                        patterns=('^(%21|%5C)', '^(?!is)[A-z][A-z]?%20'))
+c.url.searchengines['ep'] = SE.URL('https://google.com/search?q={}+episodes',
+                                   'https://google.com/search?q=Season+{}+episodes',
+                                   patterns='^[0-9].*')
 c.url.searchengines['d'] = 'https://duckduckgo.com/?q={}'
 c.url.searchengines['al'] = 'https://google.com/search?q=arch+linux+{}'
 c.url.searchengines['gh'] = 'https://google.com/search?q=site%3Agithub.com+{}&ia=web'
 c.url.searchengines['ghm'] = 'https://github.com/bbugyi200/{}'
-c.url.searchengines['ghi'] = URL('https://github.com/bbugyi200/{}/issues',
-                                 'https://github.com/bbugyi200/scripts/issues/{}',
-                                 'https://github.com/bbugyi200/{1}/issues/{0}',
-                                 patterns=('^[0-9]+$', '^[0-9]+.*'),
-                                 filters=(None, lambda x: re.split('%20', x, maxsplit=1)))
+c.url.searchengines['ghi'] = SE.URL('https://github.com/bbugyi200/{}/issues',
+                                    'https://github.com/bbugyi200/scripts/issues/{}',
+                                    'https://github.com/bbugyi200/{1}/issues/{0}',
+                                    patterns=('^[0-9]+$', '^[0-9]+%20[A-z]'),
+                                    filters=(None, lambda x: re.split('%20', x, maxsplit=1)))
 c.url.searchengines['ghni'] = 'https://github.com/bbugyi200/{}/issues/new'
 c.url.searchengines['li'] = 'https://google.com/search?q=site%3Alinkedin.com+{}&ia=web'
 c.url.searchengines['py'] = 'https://docs.python.org/2/library/{}'
 c.url.searchengines['red'] = 'https://google.com/search?q=site%3Areddit.com+{}&ia=web'
 c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
 c.url.searchengines['lib'] = 'http://libgen.io/search.php?req={}'
-c.url.searchengines['pir'] = URL('https://thepiratebay.org/search/{}',
-                                 'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
-                                 patterns=DoubleInt.pattern,
-                                 filters=DoubleInt.filter)
-c.url.searchengines['sub'] = URL('https://duckduckgo.com/?q=!+{0}+inurl%3Aenglish+site:subscene.com',
-                                 'https://duckduckgo.com/?q=!+{2}+S{0:02d}E{1:02d}+inurl%3Aenglish+site:subscene.com',
-                                 patterns=DoubleInt.pattern,
-                                 filters=DoubleInt.filter)
+c.url.searchengines['pir'] = SE.URL('https://thepiratebay.org/search/{}',
+                                    'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
+                                    patterns=SE.DoubleInt.pattern,
+                                    filters=SE.DoubleInt.filter)
+c.url.searchengines['sub'] = SE.URL('https://duckduckgo.com/?q=!+{0}+inurl%3Aenglish+site:subscene.com',
+                                    'https://duckduckgo.com/?q=!+{2}+S{0:02d}E{1:02d}+inurl%3Aenglish+site:subscene.com',
+                                    patterns=SE.DoubleInt.pattern,
+                                    filters=SE.DoubleInt.filter)
 
 
 # ----- Bindings
@@ -58,7 +56,6 @@ bind('<Ctrl-Shift-p>', 'spawn --userscript qute-pass --password-only', mode='ins
 
 # >>> PROMPT
 bind('<Ctrl-o>', 'prompt-open-download xdg-open {}', mode='prompt')
-bind('<Ctrl-z>', 'prompt-open-download unzip -d /home/bryan/Downloads {}', mode='prompt')
 
 # >>> COMMAND
 bind('<Ctrl-f>', 'edit-command', mode='command')
