@@ -97,7 +97,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, a), spawn "alarm") -- Alarm
    , ((alpha, a), spawn "sleep 0.2 && xdotool key alt+a") -- Tmux Prefix
    , ((alpha .|. beta, a), spawn "khal-alarms") -- Calendar Alarms
-   , ((alpha, b), spawn "clipster_menu") -- clipmenu
+   , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), launch_app "WEB" "qutebrowser")
    , ((alpha .|. beta, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad

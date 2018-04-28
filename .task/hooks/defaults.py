@@ -52,6 +52,8 @@ tags = {'inbox': {
             'project': 'Meta',
             'due': tomorrow_due_time,
             'delta': 0},
+        'taskwarrior': {'tags': ModList('GTD', '+')},
+        'khal': {'tags': ModList('GTD', '+')},
         'tickle': {
             'due': tomorrow_due_time,
             'delta': 0},
