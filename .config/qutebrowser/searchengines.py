@@ -39,13 +39,22 @@ class URL(str):
         return str.format(self.default_url, term, *args, **kwargs)
 
 
-class DoubleInt:
-    """ URL Pattern with two Int Arguments """
-    pattern = '^[0-9][0-9][0-9]?%20[0-9][0-9][0-9]?%20[A-z]'
+class IntQueryFactory:
+    """ Template for URL Queries that have Int Arguments """
+    def __init__(self, N):
+        self.N = N
+        pttrn_fmt = '^{}[A-z]'
+        int_pttrn = '[0-9]+%20'
+        for i in range(self.N-1):
+            int_pttrn = int_pttrn + int_pttrn
+        self.pattern = pttrn_fmt.format(int_pttrn)
 
-    @staticmethod
-    def filter(x):
-        y = re.split('%20', x, maxsplit=2)
-        y[0] = int(y[0])
-        y[1] = int(y[1])
+    def filter(self, x):
+        y = re.split('%20', x, maxsplit=self.N)
+        for i in range(self.N):
+            y[i] = int(y[i])
         return y
+
+
+OneIntQuery = IntQueryFactory(1)
+TwoIntQuery = IntQueryFactory(2)
