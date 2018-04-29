@@ -1,4 +1,3 @@
-import re
 import yaml
 
 import searchengines as SE
@@ -10,21 +9,22 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 # Load autoconfig.yml
 config.load_autoconfig()
 
-
 # ----- Dictionary Values
 c.url.searchengines['DEFAULT'] = SE.URL(SE.google('{}'),
                                         SE.duckduckgo('{}'),
                                         SE.duckduckgo('!{}'),
-                                        SE.lucky('{}'),
-                                        patterns=('^%21', '^(?!is)[A-z][A-z]?%20', '^(%5C|/)'),
-                                        filters=(None, None, lambda x: re.sub('(%5C|/)', '', x)))
+                                        SE.LuckyQuery.url('{}'),
+                                        patterns=('^%21', '^(?!is)[A-z][A-z]?%20', SE.LuckyQuery.pattern),
+                                        filters=(None, None, SE.LuckyQuery.filter))
 c.url.searchengines['ep'] = SE.URL(SE.google('{} episodes'),
                                    SE.google('Season {} episodes'),
                                    patterns=SE.OneIntQuery.pattern)
 c.url.searchengines['d'] = SE.duckduckgo('{}')
 c.url.searchengines['al'] = SE.google('arch linux {}')
-c.url.searchengines['gh'] = SE.google('site:github.com {}')
-c.url.searchengines['gh!'] = SE.lucky('{} site:github.com')
+c.url.searchengines['gh'] = SE.URL(SE.google('{} site:github.com'),
+                                   SE.LuckyQuery.url('{} site:github.com'),
+                                   patterns=SE.LuckyQuery.pattern,
+                                   filters=SE.LuckyQuery.filter)
 c.url.searchengines['ghm'] = 'https://github.com/bbugyi200/{}'
 c.url.searchengines['ghi'] = SE.URL('https://github.com/bbugyi200/{}/issues',
                                     'https://github.com/bbugyi200/scripts/issues/{}',
@@ -41,8 +41,8 @@ c.url.searchengines['pir'] = SE.URL('https://thepiratebay.org/search/{}',
                                     'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
                                     patterns=SE.TwoIntQuery.pattern,
                                     filters=SE.TwoIntQuery.filter)
-c.url.searchengines['sub'] = SE.URL(SE.lucky('{0} inurl:english site:subscene.com'),
-                                    SE.lucky('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
+c.url.searchengines['sub'] = SE.URL(SE.LuckyQuery.url('{0} inurl:english site:subscene.com'),
+                                    SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
                                     patterns=SE.TwoIntQuery.pattern,
                                     filters=SE.TwoIntQuery.filter)
 

@@ -39,9 +39,9 @@ class URL(str):
 
                 formatted = str.format(url, *filtered, *args, **kwargs)
 
-                lucky_prefix = lucky('')
-                if formatted.startswith(lucky_prefix):
-                    return IFL.getTopLink(formatted[len(lucky_prefix):])
+                lucky_url_prefix = LuckyQuery.url('')
+                if formatted.startswith(lucky_url_prefix):
+                    return IFL.getTopLink(formatted[len(lucky_url_prefix):])
 
                 return formatted
 
@@ -65,6 +65,21 @@ class IntQueryFactory:
         return y
 
 
+class LuckyQuery:
+    """ Queries that Utilize Google's I'm Feeling Lucky Feature """
+    pattern = '^(%5C|/)'
+
+    @staticmethod
+    def url(x):
+        x = _filter_urlstr(x)
+        # dummy link is needed to pass qutebrowser's validation checks
+        return 'https://imfeelinglucky/{}'.format(x)
+
+    @staticmethod
+    def filter(x):
+        return re.sub('(%5C|/)', '', x)
+
+
 def _filter_urlstr(x):
     mapping = [(' ', '+'), ('%3A', ':')]
 
@@ -79,11 +94,6 @@ def _filter_urlstr(x):
 def google(x):
     x = _filter_urlstr(x)
     return 'https://google.com/search?q={}'.format(x)
-
-
-def lucky(x):
-    x = _filter_urlstr(x)
-    return 'https://imfeelinglucky/{}'.format(x)
 
 
 def duckduckgo(x):
