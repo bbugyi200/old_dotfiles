@@ -60,13 +60,13 @@ class LuckyQuery:
 
     @classmethod
     def url(cls, query, end=''):
-        escaped_query = utils.escape_query(query)
+        escaped_query = utils.escape(query)
         fmt_url = '{}{{}}{}{}'.format(cls.prefix, cls.suffix, re.sub(r'\{(\d*)\}', r'{{\1}}', end))
         return fmt_url.format(escaped_query)
 
-    @staticmethod
-    def filter(query):
-        return re.sub('(%5C|/)', '', query)
+    @classmethod
+    def filter(cls, query):
+        return re.sub(cls.pattern, '', query)
 
     @classmethod
     def is_lucky(cls, url):

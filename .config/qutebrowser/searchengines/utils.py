@@ -3,11 +3,11 @@
 import re
 
 
-def escape_query(x):
-    char_mapping = [(' ', '+'), (':', '%3A')]
+def escape(query):
+    character_map = [(' ', '+'), (':', '%3A')]
 
-    temp = x
-    for pattern, repl in char_mapping:
+    temp = query
+    for pattern, repl in character_map:
         temp = re.sub(pattern, repl, temp)
 
     # preserves python format strings

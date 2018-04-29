@@ -18,7 +18,7 @@ USER_AGENT = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKi
 
 def fetch_results(query):
     assert isinstance(query, str), 'Search term must be a string'
-    escaped_query = utils.escape_query(query)
+    escaped_query = utils.escape(query)
 
     google_url = 'https://www.google.com/search?q={}'.format(escaped_query)
     response = requests.get(google_url, headers=USER_AGENT)
@@ -40,7 +40,7 @@ def get_top_link(query):
         if link and link != '#' and re.match('^http[s]?://', link['href']):
             return link['href']
 
-    return 'https://www.google.com/search?q={}'.format(utils.escape_query(query))
+    return 'https://www.google.com/search?q={}'.format(utils.escape(query))
 
 
 if __name__ == "__main__":

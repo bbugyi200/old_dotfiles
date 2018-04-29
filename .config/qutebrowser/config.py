@@ -10,12 +10,14 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 # Load autoconfig.yml
 config.load_autoconfig()
 
-# construction of bang search pattern for 1-3 letter words
-two_letter_words = ['is']
-three_letter_words = ['the', 'are', 'was', 'who', 'can', 'how', 'did']
-bang_fmt = '^({}[A-z][A-z]?|{}[A-z]{{3}})%20'
-bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in two_letter_words]),
-                             ''.join(['(?!{})'.format(w) for w in three_letter_words]))
+# construction of bang search pattern for 1-3 letter words and specified longer bangs
+excluded_two_letter_words = ['is']
+excluded_three_letter_words = ['the', 'are', 'was', 'who', 'can', 'how', 'did']
+included_long_bangs = ['gt[A-z][A-z]+', 'bang', 'giphy']
+bang_fmt = '^({}[A-z][A-z]?|{}[A-z]{{3}}|({}))%20'
+bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in excluded_two_letter_words]),
+                             ''.join(['(?!{})'.format(w) for w in excluded_three_letter_words]),
+                             '|'.join(included_long_bangs))
 
 # ----- Search Engines
 c.url.searchengines['DEFAULT'] = SE.URL(SE.static.google('{}'),
