@@ -71,7 +71,7 @@ class LuckyQuery:
 
     @staticmethod
     def url(x):
-        x = _filter_urlstr(x)
+        x = _escape_url(x)
         # dummy link is needed to pass qutebrowser's validation checks
         return 'https://imfeelinglucky/{}'.format(x)
 
@@ -80,8 +80,18 @@ class LuckyQuery:
         return re.sub('(%5C|/)', '', x)
 
 
-def _filter_urlstr(x):
-    mapping = [(' ', '+'), ('%3A', ':')]
+def google(x):
+    x = _escape_url(x)
+    return 'https://google.com/search?q={}'.format(x)
+
+
+def duckduckgo(x):
+    x = _escape_url(x)
+    return 'https://duckduckgo.com/?q={}'.format(x)
+
+
+def _escape_url(x):
+    mapping = [(' ', '+'), (':', '%3A')]
 
     temp = x
     for pattern, repl in mapping:
@@ -89,16 +99,6 @@ def _filter_urlstr(x):
 
     y = re.sub(r'{(\d)%3A', r'{\1:', temp)
     return y
-
-
-def google(x):
-    x = _filter_urlstr(x)
-    return 'https://google.com/search?q={}'.format(x)
-
-
-def duckduckgo(x):
-    x = _filter_urlstr(x)
-    return 'https://duckduckgo.com/?q={}'.format(x)
 
 
 OneIntQuery = IntQueryFactory(1)

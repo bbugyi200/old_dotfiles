@@ -23,15 +23,14 @@ c.url.searchengines['d'] = SE.duckduckgo('{}')
 c.url.searchengines['al'] = SE.google('arch linux {}')
 c.url.searchengines['gh'] = SE.URL(SE.google('{} site:github.com'),
                                    SE.LuckyQuery.url('{} site:github.com'),
-                                   patterns=SE.LuckyQuery.pattern,
-                                   filters=SE.LuckyQuery.filter)
-c.url.searchengines['ghm'] = 'https://github.com/bbugyi200/{}'
+                                   'https://github.com/bbugyi200/{}',
+                                   patterns=(SE.LuckyQuery.pattern, '^%40'),
+                                   filters=(SE.LuckyQuery.filter, lambda x: x.replace('%40', '')))
 c.url.searchengines['ghi'] = SE.URL('https://github.com/bbugyi200/{}/issues',
                                     'https://github.com/bbugyi200/scripts/issues/{}',
                                     'https://github.com/bbugyi200/{1}/issues/{0}',
                                     patterns=('^[0-9]+$', SE.OneIntQuery.pattern),
                                     filters=(None, SE.OneIntQuery.filter))
-c.url.searchengines['ghni'] = 'https://github.com/bbugyi200/{}/issues/new'
 c.url.searchengines['li'] = SE.google('site:linkedin.com {}')
 c.url.searchengines['py'] = 'https://docs.python.org/2/library/{}'
 c.url.searchengines['red'] = SE.google('site:reddit.com {}')
