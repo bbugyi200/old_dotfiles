@@ -2,6 +2,8 @@
 
 import re
 
+import imfeelinglucky as IFL
+
 
 class URL(str):
     """ URL for 'url.searchengines' dict
@@ -34,7 +36,14 @@ class URL(str):
                 filtered = filter_(term)
                 if isinstance(filtered, str):
                     filtered = (filtered,)
-                return str.format(url, *filtered, *args, **kwargs)
+
+                formatted = str.format(url, *filtered, *args, **kwargs)
+
+                lucky_prefix = lucky('')
+                if formatted.startswith(lucky_prefix):
+                    return IFL.getTopLink(formatted[len(lucky_prefix):])
+
+                return formatted
 
         return str.format(self.default_url, term, *args, **kwargs)
 
@@ -57,8 +66,12 @@ class IntQueryFactory:
 
 
 def _filter_urlstr(x):
+    mapping = [(' ', '+'), ('%3A', ':')]
+
     temp = x
-    temp = temp.replace(' ', '+').replace(':', '%3A')
+    for pattern, repl in mapping:
+        temp = re.sub(pattern, repl, temp)
+
     y = re.sub(r'{(\d)%3A', r'{\1:', temp)
     return y
 
@@ -66,6 +79,11 @@ def _filter_urlstr(x):
 def google(x):
     x = _filter_urlstr(x)
     return 'https://google.com/search?q={}'.format(x)
+
+
+def lucky(x):
+    x = _filter_urlstr(x)
+    return 'https://imfeelinglucky/{}'.format(x)
 
 
 def duckduckgo(x):
