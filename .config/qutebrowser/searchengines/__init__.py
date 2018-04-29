@@ -52,14 +52,17 @@ class URL(str):
 
 class LuckyQuery:
     """ Queries that Utilize Google's I'm Feeling Lucky Feature """
-    pattern = '^(%5C|/)'
+    pattern = '^(%5C|/|%21)'
+
+    # dummy url is needed to pass qutebrowser's validation checks
     prefix = 'https://imfeelinglucky/'
+    suffix = '@'
 
     @classmethod
-    def url(cls, query):
+    def url(cls, query, end=''):
         escaped_query = utils.escape_query(query)
-        # dummy link is needed to pass qutebrowser's validation checks
-        return '{}{}'.format(cls.prefix, escaped_query)
+        fmt_url = '{}{{}}{}{}'.format(cls.prefix, cls.suffix, re.sub(r'\{(\d*)\}', r'{{\1}}', end))
+        return fmt_url.format(escaped_query)
 
     @staticmethod
     def filter(query):
@@ -71,7 +74,9 @@ class LuckyQuery:
 
     @classmethod
     def get_top_link(cls, url):
-        return IFL.get_top_link(url[len(cls.prefix):])
+        query, end = url[len(cls.prefix):].split(cls.suffix)
+        top_link = IFL.get_top_link(query)
+        return '{}/{}'.format(top_link, end) if end else top_link
 
 
 class IntQueryFactory:

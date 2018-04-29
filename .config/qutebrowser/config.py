@@ -1,3 +1,4 @@
+import re
 import yaml
 
 import searchengines as SE
@@ -9,17 +10,23 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 # Load autoconfig.yml
 config.load_autoconfig()
 
-# ----- Dictionary Values
+# construction of bang pattern for 1-3 letter words
+two_letter_words = ['is']
+three_letter_words = ['the', 'are', 'was', 'who', 'can', 'how', 'did']
+bang_fmt = '^({}[A-z][A-z]?|{}[A-z]{{3}})%20'
+bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in two_letter_words]),
+                             ''.join(['(?!{})'.format(w) for w in three_letter_words]))
+
+# ----- Search Engines
 c.url.searchengines['DEFAULT'] = SE.URL(SE.static.google('{}'),
                                         SE.static.duckduckgo('{}'),
                                         SE.static.duckduckgo('!{}'),
                                         SE.LuckyQuery.url('{}'),
-                                        patterns=('^%21', '^(?!is)[A-z][A-z]?%20', SE.LuckyQuery.pattern),
+                                        patterns=('^%21', bang_pttrn, SE.LuckyQuery.pattern),
                                         filters=(None, None, SE.LuckyQuery.filter))
 c.url.searchengines['ep'] = SE.URL(SE.static.google('{} episodes'),
                                    SE.static.google('Season {} episodes'),
                                    patterns=SE.OneIntQuery.pattern)
-c.url.searchengines['d'] = SE.static.duckduckgo('{}')
 c.url.searchengines['al'] = SE.static.google('arch linux {}')
 c.url.searchengines['gh'] = SE.URL(SE.static.google('{} site:github.com'),
                                    SE.LuckyQuery.url('{} site:github.com'),
@@ -29,8 +36,16 @@ c.url.searchengines['gh'] = SE.URL(SE.static.google('{} site:github.com'),
 c.url.searchengines['ghi'] = SE.URL('https://github.com/bbugyi200/{}/issues',
                                     'https://github.com/bbugyi200/scripts/issues/{}',
                                     'https://github.com/bbugyi200/{1}/issues/{0}',
-                                    patterns=('^[0-9]+$', SE.OneIntQuery.pattern),
-                                    filters=(None, SE.OneIntQuery.filter))
+                                    SE.LuckyQuery.url('{0} site:github.com', end='issues?&q=is%3Aissue+{1}'),
+                                    SE.LuckyQuery.url('{} site:github.com', end='issues'),
+                                    patterns=('^[0-9]+$',
+                                              SE.OneIntQuery.pattern,
+                                              '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%3F'),
+                                              SE.LuckyQuery.pattern),
+                                    filters=(None,
+                                             SE.OneIntQuery.filter,
+                                             lambda x: re.split(r'%20%3F', SE.LuckyQuery.filter(x), maxsplit=1),
+                                             SE.LuckyQuery.filter))
 c.url.searchengines['li'] = SE.static.google('site:linkedin.com {}')
 c.url.searchengines['red'] = SE.static.google('site:reddit.com {}')
 c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
