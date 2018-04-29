@@ -4,10 +4,10 @@ import re
 
 
 def escape_query(x):
-    mapping = [(' ', '+'), (':', '%3A')]
+    char_mapping = [(' ', '+'), (':', '%3A')]
 
     temp = x
-    for pattern, repl in mapping:
+    for pattern, repl in char_mapping:
         temp = re.sub(pattern, repl, temp)
 
     # preserves python format strings

@@ -10,7 +10,7 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 # Load autoconfig.yml
 config.load_autoconfig()
 
-# construction of bang pattern for 1-3 letter words
+# construction of bang search pattern for 1-3 letter words
 two_letter_words = ['is']
 three_letter_words = ['the', 'are', 'was', 'who', 'can', 'how', 'did']
 bang_fmt = '^({}[A-z][A-z]?|{}[A-z]{{3}})%20'
@@ -36,7 +36,7 @@ c.url.searchengines['gh'] = SE.URL(SE.static.google('{} site:github.com'),
 c.url.searchengines['ghi'] = SE.URL('https://github.com/bbugyi200/{}/issues',
                                     'https://github.com/bbugyi200/scripts/issues/{}',
                                     'https://github.com/bbugyi200/{1}/issues/{0}',
-                                    SE.LuckyQuery.url('{0} site:github.com', end='issues?&q=is%3Aissue+{1}'),
+                                    SE.LuckyQuery.url('{} site:github.com', end='issues?&q=is%3Aissue+{}'),
                                     SE.LuckyQuery.url('{} site:github.com', end='issues'),
                                     patterns=('^[0-9]+$',
                                               SE.OneIntQuery.pattern,
