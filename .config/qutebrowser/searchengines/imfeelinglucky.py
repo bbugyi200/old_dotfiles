@@ -11,16 +11,14 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
+import searchengines.utils as utils
+
 USER_AGENT = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36}'}
-
-
-def escape_query(query):
-    return query.replace(' ', '+').replace(':', '%3A')
 
 
 def fetch_results(query):
     assert isinstance(query, str), 'Search term must be a string'
-    escaped_query = escape_query(query)
+    escaped_query = utils.escape_query(query)
 
     google_url = 'https://www.google.com/search?q={}'.format(escaped_query)
     response = requests.get(google_url, headers=USER_AGENT)
@@ -29,8 +27,12 @@ def fetch_results(query):
     return response.text
 
 
-def getTopLink(query):
-    html = fetch_results(query)
+def get_top_link(query):
+    try:
+        html = fetch_results(query)
+    except requests.exceptions.HTTPError as e:
+        return e.response.url
+
     soup = BeautifulSoup(html, 'html.parser')
     result_block = soup.find_all('div', attrs={'class': 'g'})
     for result in result_block:
@@ -38,7 +40,7 @@ def getTopLink(query):
         if link and link != '#' and re.match('^http[s]?://', link['href']):
             return link['href']
 
-    return 'https://www.google.com/search?q={}'.format(escape_query(query))
+    return 'https://www.google.com/search?q={}'.format(utils.escape_query(query))
 
 
 if __name__ == "__main__":
@@ -46,4 +48,4 @@ if __name__ == "__main__":
     parser.add_argument('query', help='Google Search Query')
     args = parser.parse_args()
 
-    print(getTopLink(args.query))
+    print(get_top_link(args.query))

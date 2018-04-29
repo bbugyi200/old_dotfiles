@@ -10,18 +10,18 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 config.load_autoconfig()
 
 # ----- Dictionary Values
-c.url.searchengines['DEFAULT'] = SE.URL(SE.google('{}'),
-                                        SE.duckduckgo('{}'),
-                                        SE.duckduckgo('!{}'),
+c.url.searchengines['DEFAULT'] = SE.URL(SE.static.google('{}'),
+                                        SE.static.duckduckgo('{}'),
+                                        SE.static.duckduckgo('!{}'),
                                         SE.LuckyQuery.url('{}'),
                                         patterns=('^%21', '^(?!is)[A-z][A-z]?%20', SE.LuckyQuery.pattern),
                                         filters=(None, None, SE.LuckyQuery.filter))
-c.url.searchengines['ep'] = SE.URL(SE.google('{} episodes'),
-                                   SE.google('Season {} episodes'),
+c.url.searchengines['ep'] = SE.URL(SE.static.google('{} episodes'),
+                                   SE.static.google('Season {} episodes'),
                                    patterns=SE.OneIntQuery.pattern)
-c.url.searchengines['d'] = SE.duckduckgo('{}')
-c.url.searchengines['al'] = SE.google('arch linux {}')
-c.url.searchengines['gh'] = SE.URL(SE.google('{} site:github.com'),
+c.url.searchengines['d'] = SE.static.duckduckgo('{}')
+c.url.searchengines['al'] = SE.static.google('arch linux {}')
+c.url.searchengines['gh'] = SE.URL(SE.static.google('{} site:github.com'),
                                    SE.LuckyQuery.url('{} site:github.com'),
                                    'https://github.com/bbugyi200/{}',
                                    patterns=(SE.LuckyQuery.pattern, '^%40'),
@@ -31,19 +31,19 @@ c.url.searchengines['ghi'] = SE.URL('https://github.com/bbugyi200/{}/issues',
                                     'https://github.com/bbugyi200/{1}/issues/{0}',
                                     patterns=('^[0-9]+$', SE.OneIntQuery.pattern),
                                     filters=(None, SE.OneIntQuery.filter))
-c.url.searchengines['li'] = SE.google('site:linkedin.com {}')
-c.url.searchengines['py'] = 'https://docs.python.org/2/library/{}'
-c.url.searchengines['red'] = SE.google('site:reddit.com {}')
+c.url.searchengines['li'] = SE.static.google('site:linkedin.com {}')
+c.url.searchengines['red'] = SE.static.google('site:reddit.com {}')
 c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
 c.url.searchengines['lib'] = 'http://libgen.io/search.php?req={}'
 c.url.searchengines['pir'] = SE.URL('https://thepiratebay.org/search/{}',
                                     'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
                                     patterns=SE.TwoIntQuery.pattern,
                                     filters=SE.TwoIntQuery.filter)
-c.url.searchengines['sub'] = SE.URL(SE.LuckyQuery.url('{0} inurl:english site:subscene.com'),
+c.url.searchengines['sub'] = SE.URL(SE.static.google('{} inurl:english site:subscene.com'),
+                                    SE.LuckyQuery.url('{0} inurl:english site:subscene.com'),
                                     SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
-                                    patterns=SE.TwoIntQuery.pattern,
-                                    filters=SE.TwoIntQuery.filter)
+                                    patterns=(SE.LuckyQuery.pattern, SE.TwoIntQuery.pattern),
+                                    filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter))
 
 
 # ----- Bindings
