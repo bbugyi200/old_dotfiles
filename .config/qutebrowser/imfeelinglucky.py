@@ -14,13 +14,13 @@ from bs4 import BeautifulSoup
 USER_AGENT = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36}'}
 
 
-def escape_url(query):
+def escape_query(query):
     return query.replace(' ', '+').replace(':', '%3A')
 
 
 def fetch_results(query):
     assert isinstance(query, str), 'Search term must be a string'
-    escaped_query = escape_url(query)
+    escaped_query = escape_query(query)
 
     google_url = 'https://www.google.com/search?q={}'.format(escaped_query)
     response = requests.get(google_url, headers=USER_AGENT)
@@ -38,7 +38,7 @@ def getTopLink(query):
         if link and link != '#' and re.match('^http[s]?://', link['href']):
             return link['href']
 
-    return 'https://www.google.com/search?q={}'.format(escape_url(query))
+    return 'https://www.google.com/search?q={}'.format(escape_query(query))
 
 
 if __name__ == "__main__":

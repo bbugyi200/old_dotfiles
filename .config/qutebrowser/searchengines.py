@@ -71,7 +71,7 @@ class LuckyQuery:
 
     @staticmethod
     def url(x):
-        x = _escape_url(x)
+        x = _escape_query(x)
         # dummy link is needed to pass qutebrowser's validation checks
         return 'https://imfeelinglucky/{}'.format(x)
 
@@ -81,16 +81,16 @@ class LuckyQuery:
 
 
 def google(x):
-    x = _escape_url(x)
+    x = _escape_query(x)
     return 'https://google.com/search?q={}'.format(x)
 
 
 def duckduckgo(x):
-    x = _escape_url(x)
+    x = _escape_query(x)
     return 'https://duckduckgo.com/?q={}'.format(x)
 
 
-def _escape_url(x):
+def _escape_query(x):
     mapping = [(' ', '+'), (':', '%3A')]
 
     temp = x
