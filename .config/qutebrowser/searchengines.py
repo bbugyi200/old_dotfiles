@@ -56,5 +56,22 @@ class IntQueryFactory:
         return y
 
 
+def _filter_urlstr(x):
+    temp = x
+    temp = temp.replace(' ', '+').replace(':', '%3A')
+    y = re.sub(r'{(\d)%3A', r'{\1:', temp)
+    return y
+
+
+def google(x):
+    x = _filter_urlstr(x)
+    return 'https://google.com/search?q={}'.format(x)
+
+
+def duckduckgo(x):
+    x = _filter_urlstr(x)
+    return 'https://duckduckgo.com/?q={}'.format(x)
+
+
 OneIntQuery = IntQueryFactory(1)
 TwoIntQuery = IntQueryFactory(2)

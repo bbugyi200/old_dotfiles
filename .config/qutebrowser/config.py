@@ -11,17 +11,17 @@ config.load_autoconfig()
 
 
 # ----- Dictionary Values
-c.url.searchengines['DEFAULT'] = SE.URL('https://google.com/search?q={}',
-                                        'https://duckduckgo.com/?q={}',
-                                        'https://duckduckgo.com/?q=!{}',
+c.url.searchengines['DEFAULT'] = SE.URL(SE.google('{}'),
+                                        SE.duckduckgo('{}'),
+                                        SE.duckduckgo('!{}'),
                                         patterns=('^(%21|%5C)', '^(?!is)[A-z][A-z]?%20'))
-c.url.searchengines['ep'] = SE.URL('https://google.com/search?q={}+episodes',
-                                   'https://google.com/search?q=Season+{}+episodes',
+c.url.searchengines['ep'] = SE.URL(SE.google('{} episodes'),
+                                   SE.google('Season {} episodes'),
                                    patterns=SE.OneIntQuery.pattern)
-c.url.searchengines['d'] = 'https://duckduckgo.com/?q={}'
-c.url.searchengines['al'] = 'https://google.com/search?q=arch+linux+{}'
-c.url.searchengines['gh'] = 'https://google.com/search?q=site%3Agithub.com+{}&ia=web'
-c.url.searchengines['gh!'] = 'https://duckduckgo.com/?q=!+{}+site%3Agithub.com'
+c.url.searchengines['d'] = SE.duckduckgo('{}')
+c.url.searchengines['al'] = SE.google('arch linux {}')
+c.url.searchengines['gh'] = SE.google('site:github.com {}&ia=web')
+c.url.searchengines['gh!'] = SE.duckduckgo('! {} site:github.com')
 c.url.searchengines['ghm'] = 'https://github.com/bbugyi200/{}'
 c.url.searchengines['ghi'] = SE.URL('https://github.com/bbugyi200/{}/issues',
                                     'https://github.com/bbugyi200/scripts/issues/{}',
@@ -29,23 +29,23 @@ c.url.searchengines['ghi'] = SE.URL('https://github.com/bbugyi200/{}/issues',
                                     patterns=('^[0-9]+$', SE.OneIntQuery.pattern),
                                     filters=(None, SE.OneIntQuery.filter))
 c.url.searchengines['ghni'] = 'https://github.com/bbugyi200/{}/issues/new'
-c.url.searchengines['li'] = 'https://google.com/search?q=site%3Alinkedin.com+{}&ia=web'
+c.url.searchengines['li'] = SE.google('site:linkedin.com {}&ia=web')
 c.url.searchengines['py'] = 'https://docs.python.org/2/library/{}'
-c.url.searchengines['red'] = 'https://google.com/search?q=site%3Areddit.com+{}&ia=web'
+c.url.searchengines['red'] = SE.google('site:reddit.com {}&ia=web')
 c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
 c.url.searchengines['lib'] = 'http://libgen.io/search.php?req={}'
 c.url.searchengines['pir'] = SE.URL('https://thepiratebay.org/search/{}',
                                     'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
                                     patterns=SE.TwoIntQuery.pattern,
                                     filters=SE.TwoIntQuery.filter)
-c.url.searchengines['sub'] = SE.URL('https://duckduckgo.com/?q={0}+inurl%3Aenglish+site:subscene.com',
-                                    'https://duckduckgo.com/?q={2}+S{0:02d}E{1:02d}+inurl%3Aenglish+site:subscene.com',
+c.url.searchengines['sub'] = SE.URL(SE.duckduckgo('{0} inurl:english site:subscene.com'),
+                                    SE.duckduckgo('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
                                     patterns=SE.TwoIntQuery.pattern,
                                     filters=SE.TwoIntQuery.filter)
-c.url.searchengines['sub!'] = SE.URL('https://duckduckgo.com/?q=!+{0}+inurl%3Aenglish+site:subscene.com',
-                                    'https://duckduckgo.com/?q=!+{2}+S{0:02d}E{1:02d}+inurl%3Aenglish+site:subscene.com',
-                                    patterns=SE.TwoIntQuery.pattern,
-                                    filters=SE.TwoIntQuery.filter)
+c.url.searchengines['sub!'] = SE.URL(SE.duckduckgo('! {0} inurl:english site:subscene.com'),
+                                     SE.duckduckgo('! {2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
+                                     patterns=SE.TwoIntQuery.pattern,
+                                     filters=SE.TwoIntQuery.filter)
 
 
 # ----- Bindings
