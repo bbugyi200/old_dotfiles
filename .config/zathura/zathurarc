@@ -150,6 +150,9 @@ map BB feedkeys ":bmark j<Return>:bmark k<Return>"
 
 # ---------- Miscellaneous Bindings
 map o feedkeys ":exec dmenu_books<Return>"
-map x feedkeys ":nohlsearch<Return>"
+map ch feedkeys ":nohlsearch<Return>"
+
+unmap q
+map x quit
 
 # vim: set ft=conf:

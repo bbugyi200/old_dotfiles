@@ -8,7 +8,10 @@ import searchengines.static as static  # noqa: F401
 
 
 class URL(str):
-    """ Dynamic URL for 'url.searchengines' - Allows for additional pattern matching """
+    """ Dynamic URL for 'url.searchengines'
+
+    Enables additional pattern matching
+    """
     def __new__(cls, value, *args, **kwargs):
         return super(URL, cls).__new__(cls, value)
 
@@ -52,7 +55,7 @@ class URL(str):
 
 class LuckyQuery:
     """ Queries that Utilize Google's I'm Feeling Lucky Feature """
-    pattern = '^(%5C|/|%21)'
+    pattern = '^(%5C|/)'
 
     # dummy url is needed to pass qutebrowser's validation checks
     prefix = 'https://imfeelinglucky/'
@@ -80,7 +83,7 @@ class LuckyQuery:
 
 
 class IntQueryFactory:
-    """ Template for URL Queries that have Int Arguments """
+    """ Template for URL Queries that start with Int Arguments """
     def __init__(self, N):
         self.N = N
         pttrn_fmt = '^{}[A-z]'

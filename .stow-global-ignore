@@ -26,5 +26,8 @@ _darcs
 \.lshrc
 clinks
 
+\.archive.tar.gz
+
 ^/extras/*
 ^/img/*
+^/__pycache__/*

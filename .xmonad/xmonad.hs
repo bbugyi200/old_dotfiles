@@ -10,7 +10,7 @@ import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Layout.Spacing (smartSpacing)
 import XMonad.Util.WorkspaceCompare (getSortByIndex)
 import XMonad.Hooks.EwmhDesktops (ewmh,ewmhDesktopsLogHook,ewmhDesktopsStartup)
-import XMonad.Hooks.ManageHelpers (doRectFloat)
+import XMonad.Hooks.ManageHelpers (doRectFloat,doFullFloat)
 
 import Data.Maybe (isNothing,isJust)
 import Control.Monad (liftM,when)
@@ -163,7 +163,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha, xK_comma), sequence_ [NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
+   , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); lls'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; lls'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
@@ -248,6 +248,7 @@ myManageHook = composeAll
     , className=? "Galculator"      --> doFloat
     , className=? "Peek"            --> doFloat
     , className=? "Pinentry"        --> doFloat
+    , className=? "mpv"             --> doFullFloat
     , className=? "Clipster"        --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
     , appName=? "floater"           --> doRectFloat (W.RationalRect l t w h)
     , appName=? "big-floater"       --> doRectFloat (W.RationalRect bigl bigt bigw bigh)

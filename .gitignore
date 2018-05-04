@@ -4,8 +4,12 @@
 .mutt/aliases
 .mutt/.vimrc
 .ipython/*
-.local/*
 .xournal/*
+
+.local/share/*
+!.local/share/qutebrowser
+.local/share/qutebrowser/*
+!.local/share/qutebrowser/userscripts
 
 .xmonad/*
 !.xmonad/xmonad.hs

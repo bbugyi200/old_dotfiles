@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "jseval document.querySelector('input[type=text]').focus()" >> "$QUTE_FIFO"
+echo "enter-mode insert" >> "$QUTE_FIFO"
+echo "open-editor" >> "$QUTE_FIFO"
+
+sleep 1
+while [[ $(wmctrl -lx) == *"qute-editor.URxvt"* ]]; do
+    sleep 0.25
+done
+
+echo "fake-key -g <Enter>" >> "$QUTE_FIFO"

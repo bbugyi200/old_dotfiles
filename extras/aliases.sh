@@ -2,13 +2,14 @@ source /home/bryan/Dropbox/dotfiles/home/extras/GTD.sh
 
 # ---------- MISCELLANEOUS ----------
 alias c='clear'
+alias cppinit='cinit ++'
 alias dayplan='vim ~/Dropbox/notes/dayplan.txt'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias la="LocalAlias"
 ll () { ls --color=always -l "$@" | less; }
 lls () { clear && ls -a "$@" && echo; }
 lcd () { cd "$1" && lls; }
-init-cproject () { rsync -av ~/Dropbox/scripts/templates/cproject/ ./; }
+pyinit () { cp -i ~/Dropbox/scripts/templates/template.py $1 && vim $1; }
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 # Create and CD to New Directory
 mkcd() { mkdir -p $1 && cd $1; }
@@ -27,6 +28,7 @@ w() { which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n"
 # ---------- DROPBOX ----------
 alias dst='dropbox-cli status'
 alias dfs='dropbox-cli filestatus'
+alias watdst='watch -n 5 dropbox-cli status'
 alias dstart='dropbox-cli start'
 alias dstop='dropbox-cli stop'
 
@@ -106,5 +108,5 @@ alias del='sudo pacman -Rs'
 alias mkpkg='makepkg -si'
 
 # ---------- Python
-alias pdb='python -m pdb'
+alias pdb='ipdb'
 cprof() { python -m cProfile -s "$@" | less; }

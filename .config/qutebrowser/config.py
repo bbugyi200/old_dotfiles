@@ -11,13 +11,11 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 config.load_autoconfig()
 
 # construction of bang search pattern for 1-3 letter words and specified longer bangs
-excluded_two_letter_words = ['is']
-excluded_three_letter_words = ['the', 'are', 'was', 'who', 'can', 'how', 'did']
-included_long_bangs = ['gt[A-z][A-z]+', 'bang', 'giphy']
-bang_fmt = '^({}[A-z][A-z]?|{}[A-z]{{3}}|({}))%20'
-bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in excluded_two_letter_words]),
-                             ''.join(['(?!{})'.format(w) for w in excluded_three_letter_words]),
-                             '|'.join(included_long_bangs))
+excluded_bangs = ['is', 'py']
+included_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy']
+bang_fmt = '^({}[A-z][A-z]?|({}))%20'
+bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in excluded_bangs]),
+                             '|'.join(included_bangs))
 
 # ----- Search Engines
 c.url.searchengines['DEFAULT'] = SE.URL(SE.static.google('{}'),
@@ -49,7 +47,10 @@ c.url.searchengines['ghi'] = SE.URL('https://github.com/bbugyi200/{}/issues',
                                              lambda x: re.split(r'%20%3F', SE.LuckyQuery.filter(x), maxsplit=1),
                                              SE.LuckyQuery.filter))
 c.url.searchengines['li'] = SE.static.google('site:linkedin.com {}')
-c.url.searchengines['red'] = SE.static.google('site:reddit.com {}')
+c.url.searchengines['r'] = SE.URL(SE.static.google('{} site:reddit.com'),
+                                  SE.LuckyQuery.url('{} site:reddit.com'),
+                                  patterns=SE.LuckyQuery.pattern,
+                                  filters=SE.LuckyQuery.filter)
 c.url.searchengines['waf'] = 'https://waffle.io/bbugyi200/{}'
 c.url.searchengines['lib'] = 'http://libgen.io/search.php?req={}'
 c.url.searchengines['pir'] = SE.URL('https://thepiratebay.org/search/{}',
@@ -68,6 +69,10 @@ def bind(key, *commands, mode='normal'):
     config.bind(key, ' ;; '.join(commands), mode=mode)
 
 
+def unbind(*args, **kwargs):
+    config.unbind(*args, **kwargs)
+
+
 # >>> INSERT
 bind('<Ctrl-i>', 'spawn -d qute-pass-add {url}', mode='insert')
 bind('<Ctrl-p>', 'spawn --userscript qute-pass', mode='insert')
@@ -81,23 +86,40 @@ bind('<Ctrl-o>', 'prompt-open-download xdg-open {}', mode='prompt')
 bind('<Ctrl-f>', 'edit-command', mode='command')
 
 # >>> NORMAL
-# Ctrl
+# Unbinds
+unbind('b'); unbind('B')  # Be consistent. Use :open to launch quickmarks.
+unbind('d'); unbind('D')
+unbind('gd'); unbind('ad')
+unbind('co')
+unbind('M')
+# Bookmarks / Quickmarks / Marks
+bind('sq', 'quickmark-save')
+bind('sb', 'bookmark-add')
+bind('dq', 'quickmark-del')
+bind('db', 'bookmark-del')
+bind('a', ':set-cmd-text -s :quickmark-load')
+bind('A', ':set-cmd-text -s :quickmark-load -t')
+# <Ctrl-?>
 bind('<Ctrl-r>', 'restart')
 bind('<Ctrl-t>', 'spawn --userscript taskadd tags:inbox')
 bind('<Ctrl-l>', 'edit-url')
 # Leader (,)
-bind(',e', 'scroll-to-perc 0', 'later 25 hint inputs -m number',
-     'later 50 spawn xdotool key 0', 'later 100 open-editor')
+bind(',e', 'spawn --userscript searchbar-command')
 bind(',t', 'config-cycle tabs.position left top')
 bind(',rss', 'spawn --userscript openfeeds')
+bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
 # Miscellaneous
-bind('gi', 'hint inputs')
-bind('sb', 'quickmark-save')
-bind('C', 'tab-clone', 'back')
-bind('m', 'enter-mode set_mark')
+bind('x', 'tab-close')
+bind('X', 'tab-close -o')
+bind('D', 'download')
+bind('dd', 'download-cancel')
+bind('to', 'tab-only')
+bind('m', 'spawn --userscript view_in_mpv {url}')
+bind('M', 'hint links spawn --userscript view_in_mpv {hint-url}')
 bind('p', 'open -- {clipboard}')
 bind('P', 'open -t -- {clipboard}')
-bind('x', 'search')  # Clears search
+bind('ch', 'search')  # Clears Highlighting
+bind('gi', 'hint inputs')
 
 # ----- Load Yaml Config
 with (config.configdir / 'config.yml').open() as f:

@@ -5,13 +5,13 @@
 Hooks that should be run when 'task done' or 'task stop' is run belong here.
 """
 
-import sys
-import json
 import datetime as dt
+import json
+import sys
 
-from tags import hasTag
 from dates import date_fmt, due_in_N_years, getTodayDT, get_new_wait
 from defaults import repeats
+from tags import hasTag
 
 old_task = json.loads(sys.stdin.readline())
 new_task = json.loads(sys.stdin.readline())
