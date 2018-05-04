@@ -63,6 +63,9 @@ c.url.searchengines['sub'] = SE.URL(SE.static.google('{} inurl:english site:subs
                                     patterns=(SE.LuckyQuery.pattern, SE.TwoIntQuery.pattern),
                                     filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter))
 
+# ----- Aliases
+c.aliases['mpv'] = 'spawn --userscript view_in_mpv {url}'
+
 
 # ----- Bindings
 def bind(key, *commands, mode='normal'):
@@ -97,8 +100,6 @@ bind('sq', 'quickmark-save')
 bind('sb', 'bookmark-add')
 bind('dq', 'quickmark-del')
 bind('db', 'bookmark-del')
-bind('a', ':set-cmd-text -s :quickmark-load')
-bind('A', ':set-cmd-text -s :quickmark-load -t')
 # <Ctrl-?>
 bind('<Ctrl-r>', 'restart')
 bind('<Ctrl-t>', 'spawn --userscript taskadd tags:inbox')
@@ -109,17 +110,19 @@ bind(',t', 'config-cycle tabs.position left top')
 bind(',rss', 'spawn --userscript openfeeds')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
 # Miscellaneous
+bind('tg', 'set-cmd-text -s :tab-give')
+bind('tt', 'set-cmd-text -s :tab-take')
 bind('x', 'tab-close')
 bind('X', 'tab-close -o')
 bind('D', 'download')
 bind('dd', 'download-cancel')
 bind('to', 'tab-only')
-bind('m', 'spawn --userscript view_in_mpv {url}')
-bind('M', 'hint links spawn --userscript view_in_mpv {hint-url}')
+bind('m', 'hint links spawn umpv {hint-url}')
+bind('M', 'hint links spawn umpv --append {hint-url}')
+bind(';M', 'hint --rapid links spawn umpv --append {hint-url}')
 bind('p', 'open -- {clipboard}')
 bind('P', 'open -t -- {clipboard}')
 bind('ch', 'search')  # Clears Highlighting
-bind('gi', 'hint inputs')
 
 # ----- Load Yaml Config
 with (config.configdir / 'config.yml').open() as f:
