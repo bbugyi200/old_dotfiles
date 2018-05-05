@@ -10,6 +10,9 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 # Load autoconfig.yml
 config.load_autoconfig()
 
+####################
+#  Search Engines  #
+####################
 # construction of bang search pattern for 1-3 letter words and specified longer bangs
 excluded_bangs = ['is', 'py']
 included_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy']
@@ -17,7 +20,6 @@ bang_fmt = '^({}[A-z][A-z]?|({}))%20'
 bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in excluded_bangs]),
                              '|'.join(included_bangs))
 
-# ----- Search Engines
 c.url.searchengines = {
     'DEFAULT': SE.URL(SE.static.google('{}'),
                       SE.static.duckduckgo('{}'),
@@ -65,11 +67,15 @@ c.url.searchengines = {
                   filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter))
 }
 
-# ----- Aliases
+#############
+#  Aliases  #
+#############
 c.aliases['mpv'] = 'spawn --userscript view_in_mpv {url}'
 
 
-# ----- Bindings
+##############
+#  Bindings  #
+##############
 def bind(key, *commands, mode='normal'):
     config.bind(key, ' ;; '.join(commands), mode=mode)
 
@@ -129,7 +135,9 @@ bind('to', 'tab-only')
 bind('p', 'open -- {clipboard}')
 bind('P', 'open -t -- {clipboard}')
 
-# ----- Load Yaml Config
+######################
+#  Load yaml Config  #
+######################
 with (config.configdir / 'config.yml').open() as f:
     yaml_data = yaml.load(f)
 
