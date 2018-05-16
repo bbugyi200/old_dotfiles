@@ -113,7 +113,7 @@ bind(',rss', 'spawn --userscript openfeeds')
 bind(',t', 'config-cycle tabs.position left top')
 bind(';m', 'hint links spawn umpv {hint-url}')
 bind(';M', 'hint links spawn umpv --append {hint-url}')
-bind(';Y', 'hint links spawn ytcast {hint-url}')
+bind(';Y', 'hint links spawn ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
 bind('<Ctrl-t>', 'spawn --userscript taskadd tags:inbox')
@@ -131,7 +131,7 @@ bind('tg', 'set-cmd-text -s :tab-give')
 bind('x', 'tab-close')
 bind('X', 'tab-close -o')
 bind('w-', 'window-only')
-bind('Y', 'spawn ytcast {url}')
+bind('Y', 'spawn ytcast {url}', 'message-info "Casting YouTube to chromecast..."')
 
 ######################
 #  Load yaml Config  #
