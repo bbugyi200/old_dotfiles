@@ -43,3 +43,5 @@
 !.config/tmuxinator/default.yml
 
 .config/mpv/watch_later/*
+
+.vimwiki/*

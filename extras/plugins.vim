@@ -61,6 +61,9 @@ Plugin 'jez/vim-superman'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" --------------------------- VIMWIKI ------------------------------------------
+let g:vimwiki_list = [{'path': '~/.vimwiki/', 'path_html': '~/.vimwiki-html/'}]
+
 " -------------------------- BUFTABLINE ----------------------------------------
 hi! link BufTabLineCurrent PmenuSel
 hi! link BufTabLineActive TabLine
