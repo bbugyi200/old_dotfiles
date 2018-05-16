@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 
-""" Hooks that Monitor for Task Completions
-
-Hooks that should be run when 'task done' or 'task stop' is run belong here.
-"""
+""" Hooks that Monitor for Task Completions (i.e. 'task done') """
 
 import datetime as dt
 import json
@@ -22,7 +19,7 @@ def isDone(task):
 
 
 def isConsistent(task):
-    return ('tags' in task.keys()) and ('consistent' in task.keys())
+    return ('tags' in task.keys()) and ('consistent' in task.keys()) and (task['consistent'] == 'yes')
 
 
 if isDone(new_task):
@@ -46,10 +43,5 @@ if isDone(new_task):
 
             new_task['status'] = 'pending'
             new_task.pop('end')
-
-
-if ('start' in old_task) and ('start' not in new_task):
-    with open('/home/bryan/.task/.last_task', 'w') as f:
-        f.write(new_task['uuid'])
 
 print(json.dumps(new_task))
