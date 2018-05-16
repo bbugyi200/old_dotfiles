@@ -149,8 +149,9 @@ map Bd feedkeys ":bdelete <Tab>"
 map BB feedkeys ":bmark j<Return>:bmark k<Return>"
 
 # ---------- Miscellaneous Bindings
-map o feedkeys ":exec dmenu_books<Return>"
-map ch feedkeys ":nohlsearch<Return>"
+map o feedkeys ":exec zopen<Return>"
+map <Esc> feedkeys ":nohlsearch<Return>"
+map <C-[> feedkeys ":nohlsearch<Return>"
 
 unmap q
 map x quit

@@ -70,18 +70,26 @@ c.url.searchengines = {
 #############
 #  Aliases  #
 #############
-c.aliases['mpv'] = 'spawn --userscript view_in_mpv {url}'
+c.aliases['mpv'] = 'spawn --userscript view_in_umpv {url}'
 
 
 ##############
 #  Bindings  #
 ##############
-def bind(key, *commands, mode='normal'):
-    config.bind(key, ' ;; '.join(commands), mode=mode)
 
-
+########## Unbinds
 def unbind(*args, **kwargs):
     config.unbind(*args, **kwargs)
+
+
+unbound_keys = ['b', 'B', 'd', 'D', 'gd', 'ad', 'co']
+for key in unbound_keys:
+    unbind(key)
+
+
+########## Binds
+def bind(key, *commands, mode='normal'):
+    config.bind(key, ' ;; '.join(commands), mode=mode)
 
 
 # >>> INSERT
@@ -97,43 +105,33 @@ bind('<Ctrl-o>', 'prompt-open-download xdg-open {}', mode='prompt')
 bind('<Ctrl-f>', 'edit-command', mode='command')
 
 # >>> NORMAL
-# Unbinds
-unbound_keys = ['b', 'B', 'd', 'D', 'gd', 'ad', 'co', 'M']
-for key in unbound_keys:
-    unbind(key)
-# Youtube
-bind('Y', 'spawn ytcast {url}')
+bind(',e', 'spawn --userscript searchbar-command')
+bind(',m', 'spawn --userscript view_in_umpv -d')
+bind(',p', 'open -p')
+bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
+bind(',rss', 'spawn --userscript openfeeds')
+bind(',t', 'config-cycle tabs.position left top')
+bind(';m', 'hint links spawn umpv {hint-url}')
+bind(';M', 'hint links spawn umpv --append {hint-url}')
 bind(';Y', 'hint links spawn ytcast {hint-url}')
-bind('m', 'hint links spawn umpv {hint-url}')
-bind('M', 'hint links spawn umpv --append {hint-url}')
-# Bookmarks / Quickmarks / Marks
-bind('sq', 'quickmark-save')
-bind('sb', 'bookmark-add')
-bind('dq', 'quickmark-del')
-bind('db', 'bookmark-del')
-bind('a', ':set-cmd-text -s :quickmark-load')
-bind('A', ':set-cmd-text -s :quickmark-load -t')
-# <Ctrl-?>
+bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
 bind('<Ctrl-t>', 'spawn --userscript taskadd tags:inbox')
-bind('<Ctrl-l>', 'edit-url')
-# Leader (,)
-bind(',e', 'spawn --userscript searchbar-command')
-bind(',t', 'config-cycle tabs.position left top')
-bind(',rss', 'spawn --userscript openfeeds')
-bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
-# Miscellaneous
+bind('a', ':set-cmd-text -s :quickmark-load')
+bind('A', ':set-cmd-text -s :quickmark-load -t')
 bind('b', 'set-cmd-text -s :buffer')
-bind('gi', 'hint inputs')
-bind('tg', 'set-cmd-text -s :tab-give')
-bind('tt', 'set-cmd-text -s :tab-take')
-bind('x', 'tab-close')
-bind('X', 'tab-close -o')
+bind('cd', 'download-cancel')
 bind('D', 'download')
-bind('dd', 'download-cancel')
-bind('to', 'tab-only')
+bind('gi', 'hint inputs')
 bind('p', 'open -- {clipboard}')
 bind('P', 'open -t -- {clipboard}')
+bind('t-', 'tab-only')
+bind('tt', 'set-cmd-text -s :tab-take')
+bind('tg', 'set-cmd-text -s :tab-give')
+bind('x', 'tab-close')
+bind('X', 'tab-close -o')
+bind('w-', 'window-only')
+bind('Y', 'spawn ytcast {url}')
 
 ######################
 #  Load yaml Config  #

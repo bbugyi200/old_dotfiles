@@ -33,7 +33,7 @@ tin () { task +inbox -DELETED -COMPLETED all; }
 
 # All functions that use 'to' REQUIRE their first argument to
 # be an ID.
-ti () { task "$@" info | less; }
+ti () { task rc._forcecolor:on "$@" info | less; }
 tl () { task "$1" | less; }
 tpi () { task "$1" mod -inbox "${@:2}"; }
 tg () { eval "tcsn $@ rc.verbose=blank,label list"; }
@@ -51,11 +51,12 @@ alias t='task'
 alias ta='task add'
 alias td='task done'
 alias qtrev='trev'
-alias tlat='task +LATEST info | less'
+alias tlat='task rc._forcecolor:on +LATEST info | less'
 alias tdue='tga +OVERDUE'
 alias tdel='task delete'
 alias tcn='task context none && task_refresh -F rename,config'
 alias tcl='task context low && task_refresh -F rename,config'
+alias tcm='task context mid && task_refresh -F rename,config'
 alias tch='task context high && task_refresh -F rename,config'
 alias tcb='task context bedtime && task_refresh -F rename,config'
 alias tcmob='task context mobile && task_refresh -F rename,config'

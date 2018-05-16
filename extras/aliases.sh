@@ -3,12 +3,12 @@ source /home/bryan/Dropbox/dotfiles/home/extras/GTD.sh
 # ---------- MISCELLANEOUS ----------
 alias c='clear'
 alias cppinit='cinit ++'
-alias dayplan='vim ~/Dropbox/notes/dayplan.txt'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias la="LocalAlias"
 ll () { ls --color=always -l "$@" | less; }
 lls () { clear && ls -a "$@" && echo; }
 lcd () { cd "$1" && lls; }
+alias lpass-login='lpass login bryanbugyi34@gmail.com'
 pyinit () { cp -i ~/Dropbox/scripts/templates/template.py $1 && vim $1; }
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 # Create and CD to New Directory
@@ -20,6 +20,7 @@ alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias psgrep='ps -aux | grep -E'
 # Prints the value of a variable
 pvar () { set | grep -i -e "^$1"; }
+alias rg='ranger'
 alias snapshots='find /home/bryan/Dropbox/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 # Sleep, then run the last command
 ss () { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
@@ -41,7 +42,7 @@ alias 5='lcd ~/Downloads'
 
 # ---------- Vim ----------
 alias lim='vim -c "normal \`0" -c "bdelete 1"'
-alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/{body.txt,mind.txt,heart.txt}'
+alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/*.txt'
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias vip="vim -c 'execute \"normal \\<c-p>\" '"
@@ -75,12 +76,14 @@ alias ag='ag --hidden'
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 alias cower='cower -c'
+alias dayplan='dayplan -d'
+alias ghc='ghc -dynamic'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
 alias du='ncdu --color dark'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias time='/usr/bin/time'
 alias tree='tree -I "venv*|__pycache__*|coverage*"'
-loc() { /usr/bin/locate -r ".*$@.*"; }
+alias loc='locate -r'
 # Remove/Overwrite Files Safely
 alias rm="rm -i"
 alias mv="mv -i"
@@ -95,7 +98,7 @@ tsm-add() { transmission-remote -a $1; }
 tsm-boost() { transmission-remote -t$1 -Bh -phall -pr250; }
 tsm-rm() { transmission-remote -t$1 -r; }
 tsm-purge() { transmission-remote -t$1 -rad; }
-rip() { nohup torrent "$@" &> /dev/null & disown; }
+rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 
 # ---------- LangDoc ----------
 alias PyDoc='LangDoc -e py -m'

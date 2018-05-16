@@ -9,3 +9,4 @@ else
 endif
 
 nnoremap <Leader>8 A  # noqa: E
+nnoremap <Leader>T :e ~/Dropbox/scripts/templates/template.py<CR>

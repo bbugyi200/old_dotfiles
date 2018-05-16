@@ -100,13 +100,12 @@ myAdditionalKeys = [
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), launch_app "WEB" "qutebrowser")
-   , ((alpha .|. beta, c), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, d), windows $ W.focusDown)
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
    , ((alpha, h), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.L False])
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(defaultTmuxDir --get $(tmux display-message -p \"#S\")) && lls'") -- cd to Tmux Home Dir
+   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tmdir --get $(tmux display-message -p \"#S\")) && lls'") -- cd to Tmux Home Dir
    , ((alpha, j), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.U False])
@@ -165,10 +164,12 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); lls'") -- cd to Next Dir
+   , ((alpha .|. beta, xK_equal), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; lls'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
    , ((alpha, xK_semicolon), PS.prompt "bam" myXPConfig)
-   , ((alpha .|. beta, xK_semicolon), PS.prompt "bam -P 'less'" myXPConfig)
+   , ((alpha .|. beta, xK_semicolon), PS.prompt "zsh -c" myXPConfig)
+   , ((alpha .|. shift, xK_semicolon), PS.prompt "bam -P 'less'" myXPConfig)
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
@@ -230,7 +231,7 @@ h = 0.5; bigh = 0.9
 
 scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad") 
                     (NSP.customFloating $ W.RationalRect l t w h)
-              , NSP.NS "calculator" "galculator" (className =? "Galculator")
+              , NSP.NS "calculator" calculator (appName =? "calculator")
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "weechat" weechat (appName =? "weechat")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh)
@@ -238,17 +239,17 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh) ]
             where 
                 role = stringProperty "WM_WINDOW_ROLE"
-                scratchpad = "urxvt -name scratchpad -e zsh -c 'tmuxinator start ScratchPad root=$(defaultTmuxDir --get ScratchPad)'"
-                weechat = "urxvt -name weechat -e zsh -c 'tmuxinator start WeeChat root=$(defaultTmuxDir --get WeeChat)'"
-                gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD root=$(defaultTmuxDir --get GTD)'"
+                calculator = "urxvt -name calculator -e zsh -c 'bc -l'"
+                scratchpad = "urxvt -name scratchpad -e zsh -c 'tmuxinator start ScratchPad root=$(tmdir --get ScratchPad)'"
+                weechat = "urxvt -name weechat -e zsh -c 'tmuxinator start WeeChat root=$(tmdir --get WeeChat)'"
+                gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD root=$(tmdir --get GTD)'"
 
 myManageHook = composeAll
     [ manageSpawn
     , NSP.namedScratchpadManageHook scratchpads
-    , className=? "Galculator"      --> doFloat
     , className=? "Peek"            --> doFloat
     , className=? "Pinentry"        --> doFloat
-    , className=? "mpv"             --> doFullFloat
+    , appName=? "calculator"        --> doRectFloat (W.RationalRect l t w h)
     , className=? "Clipster"        --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
     , appName=? "floater"           --> doRectFloat (W.RationalRect l t w h)
     , appName=? "big-floater"       --> doRectFloat (W.RationalRect bigl bigt bigw bigh)

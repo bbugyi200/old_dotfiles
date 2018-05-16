@@ -16,6 +16,13 @@ Plugin 'tpope/vim-repeat'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/neoinclude.vim'
+Plugin 'Shougo/unite.vim'
+
+" ~~~~~ TaskWarrior ~~~~~
+Plugin 'vimwiki/vimwiki'
+Plugin 'tbabej/taskwiki'
+Plugin 'blindFS/vim-taskwarrior'
+Plugin 'powerman/vim-plugin-AnsiEsc'
 
 " "~~~~~ MISC ~~~~~
 Plugin 'VundleVim/Vundle.vim'
@@ -37,6 +44,7 @@ Plugin 'embear/vim-localvimrc'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'KabbAmine/zeavim.vim'
+
 
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'neovimhaskell/haskell-vim'
@@ -79,7 +87,7 @@ EOF
 endif
 
 let g:jedi#show_call_signatures = 0
-let g:jedi#goto_command = "gd"
+let g:jedi#goto_command = "<C-]>"
 let g:jedi#goto_assignments_command = ""
 
 " ----------------------------- NECO-GHC ---------------------------------------
@@ -134,7 +142,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 " You can disable specific warnings for <checker> by using
 " the 'g:syntastic_<ext>_<checker>_args' variable
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E123,E126,E127,E128,E226,E231,E402,E501,E701,E702,E731'
+let g:syntastic_python_flake8_args='--ignore=E123,E126,E127,E128,E226,E231,E266,E402,E501,E701,E702,E731'
 
 let g:syntastic_tex_checkers=['chktex']
 let g:syntastic_tex_chktex_args='-n 1'

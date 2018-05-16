@@ -2,6 +2,8 @@
 *.o
 *~
 *.pyc
+*.tar
+*.gz
 venv/*
 __pycache__/*
 .lvimrc

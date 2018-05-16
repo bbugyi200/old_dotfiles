@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "spawn --userscript block_youtube" >> $QUTE_FIFO
+echo "message-info 'Sending video to umpv...'" >> $QUTE_FIFO
+umpv $QUTE_URL

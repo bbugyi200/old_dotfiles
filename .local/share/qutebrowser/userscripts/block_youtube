@@ -139,5 +139,5 @@ printjs() {
 }
 echo "jseval -q $(printjs)" >> "$QUTE_FIFO"
 
-msg info "Opening $QUTE_URL with mpv"
-"${video_command[@]}" "$@" "$QUTE_URL"
+# msg info "Opening $QUTE_URL with mpv"
+# "${video_command[@]}" "$@" "$QUTE_URL"

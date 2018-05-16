@@ -10,5 +10,4 @@ dunst &
 xbindkeys
 fetchmail --syslog -d 900
 khal-alarms &
-xtaskidle &
 exec xmonad
