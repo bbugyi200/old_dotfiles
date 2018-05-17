@@ -64,7 +64,8 @@ c.url.searchengines = {
                   SE.LuckyQuery.url('{0} inurl:english site:subscene.com'),
                   SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
                   patterns=(SE.LuckyQuery.pattern, SE.TwoIntQuery.pattern),
-                  filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter))
+                  filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter)),
+    'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}'
 }
 
 #############
