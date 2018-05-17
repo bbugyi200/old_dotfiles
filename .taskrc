@@ -37,7 +37,7 @@ urgency.uda.priority.H.coefficient=3.0
 urgency.uda.priority.L.coefficient=-3.0
 urgency.uda.priority.M.coefficient=0.0
 # MISC
-urgency.user.tag.GTD.coefficient=4.0
+urgency.user.tag.GTD.coefficient=3.0
 urgency.user.tag.inbox.coefficient=2.0  # places inbox tasks above other 'Meta' tasks
 urgency.user.project.Review.Blog.coefficient=0.2  # places blog items over other 'Review' tasks
 # Severity

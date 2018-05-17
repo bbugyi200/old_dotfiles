@@ -63,7 +63,6 @@ tags = {'inbox': {
             'due': tomorrow_due_time,
             'delta': 1,
             'tags': ModList(('remind', 'tickle'), ('-', '+'))},
-        'tv': {'project': 'Fun'},
         'blog': {'project': 'Blogs',
                  'tags': ModList('blog', '-')},
         'review': {'project': 'Study.Review',

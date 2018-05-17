@@ -18,17 +18,6 @@ tcx () {
     fi
 }
 
-ts () {
-    task start.not: stop
-
-    if [[ -n "$1" ]]; then
-        # Hook will stop any started tasks (not needed here)
-        task rc.verbose:nothing start $1
-    else
-        task
-    fi
-}
-
 tin () { task +inbox -DELETED -COMPLETED all; }
 
 # All functions that use 'to' REQUIRE their first argument to
@@ -49,6 +38,7 @@ trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS lim
 
 alias t='task'
 alias ta='task add'
+alias ts='task start'
 alias td='task done'
 alias qtrev='trev'
 alias tlat='task rc._forcecolor:on +LATEST info | less'
