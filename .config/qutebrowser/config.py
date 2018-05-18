@@ -21,6 +21,8 @@ bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in excluded_bangs
                              '|'.join(included_bangs))
 
 c.url.searchengines = {
+    'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
+    'al': SE.static.google('arch linux {}'),
     'DEFAULT': SE.URL(SE.static.google('{}'),
                       SE.static.duckduckgo('{}'),
                       SE.static.duckduckgo('!{}'),
@@ -30,7 +32,6 @@ c.url.searchengines = {
     'ep': SE.URL(SE.static.google('{} episodes'),
                  SE.static.google('Season {} episodes'),
                  patterns=SE.OneIntQuery.pattern),
-    'al': SE.static.google('arch linux {}'),
     'gh': SE.URL(SE.static.google('{} site:github.com'),
                  SE.LuckyQuery.url('{} site:github.com inurl:doc'),
                  SE.LuckyQuery.url('{} site:github.com'),
@@ -55,22 +56,21 @@ c.url.searchengines = {
                            lambda x: re.split(r'%20%3F', SE.LuckyQuery.filter(x), maxsplit=1),
                            SE.LuckyQuery.filter)),
     'li': SE.static.google('site:linkedin.com {}'),
-    'r': SE.URL(SE.static.google('{} site:reddit.com'),
-                SE.LuckyQuery.url('{} site:reddit.com'),
-                patterns=SE.LuckyQuery.pattern,
-                filters=SE.LuckyQuery.filter),
-    'waf':'https://waffle.io/bbugyi200/{}',
     'lib':'http://libgen.io/search.php?req={}',
     'pir': SE.URL('https://thepiratebay.org/search/{}',
                   'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
                   patterns=SE.TwoIntQuery.pattern,
                   filters=SE.TwoIntQuery.filter),
+    'r': SE.URL(SE.static.google('{} site:reddit.com'),
+                SE.LuckyQuery.url('{} site:reddit.com'),
+                patterns=SE.LuckyQuery.pattern,
+                filters=SE.LuckyQuery.filter),
     'sub': SE.URL(SE.static.google('{} inurl:english site:subscene.com'),
                   SE.LuckyQuery.url('{0} inurl:english site:subscene.com'),
                   SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
                   patterns=(SE.LuckyQuery.pattern, SE.TwoIntQuery.pattern),
                   filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter)),
-    'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}'
+    'waf':'https://waffle.io/bbugyi200/{}'
 }
 
 #############
@@ -82,22 +82,20 @@ c.aliases['mpv'] = 'spawn --userscript view_in_umpv {url}'
 ##############
 #  Bindings  #
 ##############
-
-########## Unbinds
 def unbind(*args, **kwargs):
     config.unbind(*args, **kwargs)
 
 
-unbound_keys = ['b', 'B', 'd', 'D', 'gd', 'ad', 'co']
-for key in unbound_keys:
-    unbind(key)
-
-
-########## Binds
 def bind(key, *commands, mode='normal'):
     config.bind(key, ' ;; '.join(commands), mode=mode)
 
 
+########## Unbinds
+unbound_keys = ['b', 'B', 'd', 'D', 'gd', 'ad', 'co']
+for key in unbound_keys:
+    unbind(key)
+
+########## Binds
 # >>> INSERT
 bind('<Ctrl-i>', 'spawn -d qute-pass-add {url}', mode='insert')
 bind('<Ctrl-p>', 'spawn --userscript qute-pass', mode='insert')
@@ -117,8 +115,8 @@ bind(',p', 'open -p')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
 bind(',rss', 'spawn --userscript openfeeds')
 bind(',t', 'config-cycle tabs.position left top')
-bind(';m', 'hint links spawn umpv {hint-url}')
-bind(';M', 'hint links spawn umpv --append {hint-url}')
+bind(';m', 'hint links spawn umpv {hint-url}', 'message-info "Select video to load with umpv."')
+bind(';M', 'hint links spawn umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
 bind(';Y', 'hint links spawn ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
