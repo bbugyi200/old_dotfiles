@@ -1,5 +1,6 @@
 """ Functions Relating to Task Tags """
 
+import subprocess as sp
 import sys
 from dateutil.parser import parse
 
@@ -9,6 +10,10 @@ from dates import get_new_wait
 
 def hasTag(task, tag):
     return ('tags' in task.keys()) and (tag in task['tags'])
+
+
+def isDone(task):
+    return task['status'].lower() == 'completed'
 
 
 def fieldsEquivalent(taskA, taskB, field):
@@ -57,13 +62,6 @@ def process_add_tags(new_task, *, old_task={}):
     header = ' \n======= Custom Tag Added =======\n'
     output = header
     if 'tags' in new_task.keys():
-        # Clear 'Misc' project
-        try:
-            if new_task['project'] == 'Misc':
-                new_task.pop('project')
-        except KeyError as e:
-            pass
-
         fmt = "+{tag} => {field}{sep}{val}\n"
         for tag in defaults.tags.keys():
             if tag in new_task['tags'] and (('tags' not in old_task.keys()) or (tag not in old_task['tags'])):
@@ -120,11 +118,12 @@ def process_add_tags(new_task, *, old_task={}):
     else:
         new_task = _set_delta(new_task)
 
-    # Set 'Misc' project if no other project is set
+    # Don't let task be created without project
     if 'project' not in new_task.keys():
-        new_task['project'] = 'Misc'
-        out = "Default Project Set => Misc\n"
-        print(out)
+        msg = 'You forgot to assign a project to the task.'
+        sp.call(['notify-send', 'TaskWarrior', msg])
+        print(msg)
+        sys.exit(1)
 
     if output != header:
         output += '   \n'  # Spaces Needed

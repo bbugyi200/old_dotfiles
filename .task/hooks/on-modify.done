@@ -8,14 +8,10 @@ import sys
 
 from dates import date_fmt, due_in_N_years, getTodayDT, get_new_wait
 from defaults import repeats
-from tags import hasTag
+from tags import hasTag, isDone
 
 old_task = json.loads(sys.stdin.readline())
 new_task = json.loads(sys.stdin.readline())
-
-
-def isDone(task):
-    return task['status'].lower() == 'completed'
 
 
 def isConsistent(task):

@@ -6,6 +6,8 @@ import sys
 import json
 import os
 
+from tags import isDone
+
 # Make no changes to the task, simply observe.
 old_task = json.loads(sys.stdin.readline())
 new_task = json.loads(sys.stdin.readline())
@@ -31,7 +33,8 @@ if 'start' in new_task and 'start' not in old_task:
 # Stopped task.
 elif ('start' not in new_task) and ('start' in old_task):
     os.system('timew stop')
-    with open('/home/bryan/.task/.last_task', 'w') as f:
-        f.write(new_task['uuid'])
+    if not isDone(new_task):
+        with open('/home/bryan/.task/.last_task', 'w') as f:
+            f.write(new_task['uuid'])
 
 print(json.dumps(new_task))

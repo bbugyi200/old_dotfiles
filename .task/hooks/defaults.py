@@ -65,8 +65,8 @@ tags = {'inbox': {
             'tags': ModList(('remind', 'tickle'), ('-', '+'))},
         'blog': {'project': 'Blogs',
                  'tags': ModList('blog', '-')},
-        'review': {'project': 'Study.Review',
-                 'tags': ModList('review', '-')},
+        'doc': {'project': 'Study.Docs',
+                 'tags': ModList('doc', '-')},
         'video': {'project': 'Videos',
                   'tags': ModList('video', '-')},
         'consistent': {
