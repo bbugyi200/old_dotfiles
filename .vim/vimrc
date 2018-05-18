@@ -106,6 +106,7 @@ hi SpellBad cterm=underline
 hi Normal guibg=NONE ctermbg=NONE
 
 " ------------------------------ KEY MAPPINGS --------------------------------
+nnoremap ZZ :xa<CR>
 " Makes ix.io snippet using highlighted text and sends ix.io link to clipboard
 noremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
 " Enables 'very magic' mode by default
@@ -124,10 +125,6 @@ nnoremap <space> i<space><esc>l
 " Put space before and after character under cursor
 nnoremap <Leader><space> a<space><esc>hi<space><esc>l
 " NOTE:: Just use ZZ in normal mode to save and quit.
-" Shortcuts for quiting vim
-noremap <Leader>e :quit<CR>
-" Shortcuts for saving vim
-noremap <Leader>s :w<CR>
 " Makes enter key work right in Normal mode
 nnoremap <CR> o<Esc>
 " Plugin Mappings

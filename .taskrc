@@ -1,10 +1,10 @@
 # vim: ft=cfg:
 
 # ----- CONTEXTS -----
-context.high=project:Study -low or project:Review.Read or +brainstorm or (urg>7)
+context.high=project:Study -low or +research or (urg>7)
 context.low=project.not:Study or +low or (urg>7)
 context.bedtime=project:Study +low
-context.mobile=+call or project:Review.Blog or project:Review.Video or +errand or (urg>7)
+context.mobile=+call or project:Blogs or project:Videos or +errand or (urg>7)
 context.review=project.not:Study. project.not:Dev. -inbox ( project.not:Holiday or project:Holiday. )
 
 # ----- inthe.AM -----
@@ -39,7 +39,7 @@ urgency.uda.priority.M.coefficient=0.0
 # MISC
 urgency.user.tag.GTD.coefficient=3.0
 urgency.user.tag.inbox.coefficient=2.0  # places inbox tasks above other 'Meta' tasks
-urgency.user.project.Review.Blog.coefficient=0.2  # places blog items over other 'Review' tasks
+urgency.user.project.Study.Docs.coefficient=-2.0
 # Severity
 urgency.uda.severity.critical.coefficient=10.0
 urgency.uda.severity.high.coefficient=3.0
@@ -93,12 +93,12 @@ nag=
 
 # ----- COLORS -----
 color.tag.inbox=underline white
-color.tag.brainstorm=blue
+color.tag.research=blue
 color.tag.bug=rgb550
 color.tag.tickle=black on rgb440
 color.project.Blogs=green
-color.project.Videos=green
-color.project.Study.Review=green
+color.project.Videos=rgb524
+color.project.Study.Docs=gray13
 color.project.Holiday=rgb515
 color.project.Meta=black on rgb214
 color.due.today=rgb050
@@ -107,4 +107,4 @@ color.blocked=white on black
 color.tagged=  # A task should not be colored for just any tag
 
 # ----- DYNAMICALLY SET AT RUNTIME -----
-context=high
+context=low

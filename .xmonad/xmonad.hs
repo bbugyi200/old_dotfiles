@@ -96,7 +96,7 @@ myAdditionalKeys = [
    , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
    , ((alpha .|. beta, a), spawn "alarm") -- Alarm
    , ((alpha, a), spawn "sleep 0.2 && xdotool key alt+a") -- Tmux Prefix
-   , ((alpha .|. beta, a), spawn "khal-alarms") -- Calendar Alarms
+   , ((alpha .|. beta, a), spawn "calalrms") -- Calendar Alarms
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), launch_app "WEB" "qutebrowser")
@@ -132,7 +132,7 @@ myAdditionalKeys = [
    , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
    , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
    , ((alpha .|. beta, s), windows W.swapDown)    -- Shift Local
-   , ((alpha .|. beta .|. ctrl, s), spawn "confirm --dmenu 'task start.any: stop; dbox_sync && shutdown now'") -- Shutdown
+   , ((alpha .|. beta .|. ctrl, s), spawn "confirm --dmenu 'smart_shutdown'") -- Shutdown
    , ((alpha, t), spawn "rofi -dmenu -format 'q' -p 'Inbox' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "rofi -format 'q' -dmenu -p 'Due Today' | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
@@ -260,7 +260,7 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "maintCheck"
                 >> spawn "init-bg"
                 >> spawn "sleep 2 && volume-xmonad"
-                >> spawn "sleep 2 && khal-alarms"
+                >> spawn "sleep 2 && calalrms"
                 >> spawn ((xmobarTempFmt $ getXmobarTemplate "1-bottom") ++ " --position=Bottom")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "2-top") ++ " --screen=1")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "2-bottom") ++ " --position=Bottom --screen=1")

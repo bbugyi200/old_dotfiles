@@ -18,6 +18,17 @@ tcx () {
     fi
 }
 
+ts () {
+    task start.not: stop
+
+    if [[ -n "$1" ]]; then
+        # Hook will stop any started tasks (not needed here)
+        task rc.verbose:nothing start $1
+    else
+        task
+    fi
+}
+
 tin () { task +inbox -DELETED -COMPLETED all; }
 
 # All functions that use 'to' REQUIRE their first argument to
@@ -38,7 +49,6 @@ trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS lim
 
 alias t='task'
 alias ta='task add'
-alias ts='task start'
 alias td='task done'
 alias qtrev='trev'
 alias tlat='task rc._forcecolor:on +LATEST info | less'
@@ -71,7 +81,7 @@ alias timd='tim delete'
 
 # ---------- Khal
 alias k='khal --color'
-restart_khal_alarms() { setsid khal-alarms &> /dev/null; }
+restart_khal_alarms() { setsid calalrms &> /dev/null; }
 kc() { clear && khal list --notstarted --format '{start-time} {title}' now && echo; }
 kn() { khal new "$*" && restart_khal_alarms; }
 knt() { khal new tomorrow "$@" && restart_khal_alarms; }
