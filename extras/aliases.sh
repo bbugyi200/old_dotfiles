@@ -64,7 +64,7 @@ alias Jdb='jdb -classpath "../bin"'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias ghooks='rm -rf .git/hooks && git init' 
-alias gnum="git log --oneline --color=always | nl -s ':  ' | less"
+alias gnlog="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias gpf='git push -f'
 alias gho='ghi open'
 alias algrep='alias | grep -e'

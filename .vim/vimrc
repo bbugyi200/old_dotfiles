@@ -106,7 +106,12 @@ hi SpellBad cterm=underline
 hi Normal guibg=NONE ctermbg=NONE
 
 " ------------------------------ KEY MAPPINGS --------------------------------
-nnoremap ZZ :xa<CR>
+" Shortcuts for quiting vim
+noremap <Leader>e :quit<CR>
+imap <Leader>e <Esc><Leader>e
+" Shortcuts for saving vim
+noremap <Leader>s :w<CR>
+imap <Leader>s <Esc><Leader>s
 " Makes ix.io snippet using highlighted text and sends ix.io link to clipboard
 noremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
 " Enables 'very magic' mode by default

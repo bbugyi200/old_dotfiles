@@ -6,6 +6,11 @@ type = calendar
 
 [default]
 default_calendar=mycalendar
+highlight_event_days=True
+
+[highlight_days]
+color="dark green"
+method="fg"
 
 [locale]
 timeformat = %H:%M

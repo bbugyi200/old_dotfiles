@@ -20,7 +20,6 @@ import Graphics.X11.ExtraTypes.XF86
 
 import qualified XMonad.StackSet as W
 import qualified XMonad.Prompt as P
-import qualified XMonad.Prompt.Shell as PS
 import qualified XMonad.Util.NamedScratchpad as NSP
 import qualified XMonad.Hooks.DynamicLog as DL
 import qualified XMonad.Actions.CycleWS as CW
@@ -96,7 +95,7 @@ myAdditionalKeys = [
    , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
    , ((alpha .|. beta, a), spawn "alarm") -- Alarm
    , ((alpha, a), spawn "sleep 0.2 && xdotool key alt+a") -- Tmux Prefix
-   , ((alpha .|. beta, a), spawn "calalrms") -- Calendar Alarms
+   , ((alpha .|. beta, a), launch_app "ANKI" "anki")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), launch_app "WEB" "qutebrowser")
@@ -167,9 +166,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_equal), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; lls'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
-   , ((alpha, xK_semicolon), PS.prompt "bam" myXPConfig)
-   , ((alpha .|. beta, xK_semicolon), PS.prompt "zsh -c" myXPConfig)
-   , ((alpha .|. shift, xK_semicolon), PS.prompt "bam -P 'less'" myXPConfig)
+   , ((alpha, xK_semicolon), spawn "shellPrompt -d")
    , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)

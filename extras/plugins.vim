@@ -26,7 +26,6 @@ Plugin 'powerman/vim-plugin-AnsiEsc'
 
 " "~~~~~ MISC ~~~~~
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdTree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'danro/rename.vim'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -36,15 +35,13 @@ Plugin 'shime/vim-livedown'
 Plugin 'Raimondi/delimitMate'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'Rip-Rip/clang_complete'
 Plugin 'scrooloose/syntastic'
-Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'embear/vim-localvimrc'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'KabbAmine/zeavim.vim'
-
 
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'neovimhaskell/haskell-vim'
@@ -61,8 +58,12 @@ Plugin 'jez/vim-superman'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+let g:task_rc_override = 'rc._forcecolor=off'
+
 " --------------------------- VIMWIKI ------------------------------------------
 let g:vimwiki_list = [{'path': '~/.vimwiki/', 'path_html': '~/.vimwiki-html/'}]
+" Disables ,swp mapping created by AnsiEsc plugin
+let g:no_cecutil_maps = 1 
 
 " -------------------------- BUFTABLINE ----------------------------------------
 hi! link BufTabLineCurrent PmenuSel

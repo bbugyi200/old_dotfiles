@@ -61,6 +61,7 @@ c.url.searchengines = {
                   'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
                   patterns=SE.TwoIntQuery.pattern,
                   filters=SE.TwoIntQuery.filter),
+    'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.URL(SE.static.google('{} site:reddit.com'),
                 SE.LuckyQuery.url('{} site:reddit.com'),
                 patterns=SE.LuckyQuery.pattern,

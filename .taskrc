@@ -28,6 +28,7 @@ urgency.blocking.coefficient=0.0
 urgency.waiting.coefficient=0.0
 urgency.project.coefficient=0.0
 urgency.tags.coefficient=0.0
+urgency.age.coefficient=0.0
 # DUE
 urgency.due.coefficient=10.0
 urgency.uda.repeat.coefficient=-5.0  # recurring tasks MUST have due dates
@@ -39,7 +40,7 @@ urgency.uda.priority.M.coefficient=0.0
 # MISC
 urgency.user.tag.GTD.coefficient=3.0
 urgency.user.tag.inbox.coefficient=2.0  # places inbox tasks above other 'Meta' tasks
-urgency.user.project.Study.Docs.coefficient=-2.0
+urgency.user.project.Study.Docs.coefficient=-1.0
 # Severity
 urgency.uda.severity.critical.coefficient=10.0
 urgency.uda.severity.high.coefficient=3.0
@@ -88,6 +89,7 @@ tasksh.autoclear=1
 verbose=blank,label,new-id,affected,edit,special,unwait,recur
 reserved.lines=1
 search.case.sensitive=no
+_forcecolor=on
 defaultwidth=`tput cols`
 nag=
 
@@ -107,4 +109,3 @@ color.blocked=white on black
 color.tagged=  # A task should not be colored for just any tag
 
 # ----- DYNAMICALLY SET AT RUNTIME -----
-context=low
