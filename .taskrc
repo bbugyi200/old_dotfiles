@@ -90,7 +90,7 @@ tasksh.autoclear=1
 verbose=blank,label,new-id,affected,edit,special,unwait,recur
 reserved.lines=1
 search.case.sensitive=no
-_forcecolor=off
+_forcecolor=on
 defaultwidth=`tput cols`
 nag=
 

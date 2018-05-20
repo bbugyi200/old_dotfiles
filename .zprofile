@@ -14,6 +14,10 @@ export MATLABPATH=$HOME/.matlab
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper_lazy.sh
 
+# Latitude and Longitude coordinates for 417 Cripps Drive
+export LATITUDE="39.997467N"
+export LONGITUDE="74.778291W"
+
 # Enables executables installed with 'gem install' to run
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
