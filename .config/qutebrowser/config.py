@@ -111,6 +111,7 @@ bind('<Ctrl-f>', 'edit-command', mode='command')
 
 # >>> NORMAL
 bind(',e', 'spawn --userscript searchbar-command')
+bind(',G', 'jseval -q document.querySelector("h2").click()')  # click GET on libgen
 bind(',m', 'spawn --userscript view_in_umpv -d')
 bind(',p', 'open -p')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
@@ -118,6 +119,7 @@ bind(',rss', 'spawn --userscript openfeeds')
 bind(',t', 'config-cycle tabs.position left top')
 bind(';m', 'hint links spawn umpv {hint-url}', 'message-info "Select video to load with umpv."')
 bind(';M', 'hint links spawn umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
+bind(';T', 'hint links spawn torrent -d {hint-url}', 'message-info "Select magnet link to torrent."')
 bind(';Y', 'hint links spawn ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')

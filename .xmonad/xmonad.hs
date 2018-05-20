@@ -98,7 +98,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, a), launch_app "ANKI" "anki")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
-   , ((alpha, c), launch_app "WEB" "qutebrowser")
+   , ((alpha, c), launch_app "WEB" "qutebrowser --enable-webengine-inspector")
    , ((alpha, d), windows $ W.focusDown)
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
