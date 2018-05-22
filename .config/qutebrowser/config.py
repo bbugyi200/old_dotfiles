@@ -92,12 +92,12 @@ def bind(keys, *commands, mode='normal'):
 
 
 ########## Unbinds
-unbound_normal = ['b', 'B', 'd', 'D', 'gd', 'ad', 'co']
-for keys in unbound_normal:
+unbound_nkeys = ['b', 'B', 'd', 'D', 'gd', 'ad', 'co']
+for keys in unbound_nkeys:
     unbind(keys)
 
-unbound_insert = ['<Ctrl-e>']
-for keys in unbound_insert:
+unbound_ikeys = ['<Ctrl-e>']
+for keys in unbound_ikeys:
     unbind(keys, mode='insert')
 
 ########## Binds
