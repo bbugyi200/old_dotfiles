@@ -1,0 +1,17 @@
+{
+  "journals": {
+    "default": "/home/bryan/Dropbox/notes/Journal/main.txt",
+    "secure": {
+      "journal": "/home/bryan/Dropbox/notes/Journal/secure.txt",   
+      "encrypt": true
+    }
+  },
+  "editor": "/usr/bin/vim",
+  "encrypt": false,
+  "default_hour": 9,
+  "default_minute": 0,
+  "timeformat": "%Y-%m-%d %H:%M",
+  "tagsymbols": "@",
+  "highlight": true,
+  "linewrap": 79
+}
