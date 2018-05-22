@@ -3,3 +3,7 @@ precmd() {
 }
 
 alias ki='tmux send-keys -t 2.0 "ikhal && tmux select-pane -t 2.1 && nohup khal-alarms &> /dev/null & disown && kc" "Enter" && tmux select-pane -t 2.0'
+alias krise='tmux send-keys "kn $(sunrise) Sunrise" "Enter"'
+alias ktrise='tmux send-keys "knt $(sunrise) Sunrise" "Enter"'
+alias kset='tmux send-keys "kn $(sunset) Sunset" "Enter"'
+alias ktset='tmux send-keys "knt $(sunset) Sunset" "Enter"'

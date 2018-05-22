@@ -33,13 +33,13 @@ Config { font = "xft:Dina:pixelsize=13"
                                  , "--High",    "50"
                                  , "--normal",  "green"
                                  , "--high",    "red"] 10
-                    , Run Weather "KVAY" ["--template", "MOUNT HOLLY, NJ 08060  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"] 3000
-                    , Run Weather "KSMQ" ["--template", "PISCATAWAY TWNSHP, NJ 08854  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"] 3000
+                    , Run Weather "KVAY" ["--template", "MOUNT HOLLY, NJ 08060  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"] 9000
+                    , Run Weather "KSMQ" ["--template", "PISCATAWAY TWNSHP, NJ 08854  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"]9000
 					, Run Com "poll-timew" [] "timew" 10
                     , Run Com "dbox-xmonad" [] "dropbox" 10
                     , Run Com "pia-xmonad" [] "pia" 50
-                    , Run Com "sunrise" [] "sunrise" 86400
-                    , Run Com "sunset" [] "sunset" 86400
+                    , Run Com "sunrise" [] "sunrise" 864000
+                    , Run Com "sunset" [] "sunset" 864000
                     , Run PipeReader ":/run/user/1000/calalrms/fifo" "calevent"
                     , Run PipeReader ":/run/user/1000/volume.fifo" "volume"
                     , Run PipeReader ":/run/user/1000/alarm/fifo" "counter"

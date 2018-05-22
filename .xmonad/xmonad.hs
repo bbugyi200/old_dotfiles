@@ -53,7 +53,7 @@ getXmobarTemplate :: String -> String
 getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
-getXmobarTemplate "2-top" = "}%KVAY%     [%sunrise% / %sunset%]{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
+getXmobarTemplate "2-top" = "}%KVAY%      [%sunrise% / %sunset%]{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
 getXmobarTemplate "2-bottom" = "}{"
 
 removeEmptyWorkspaceAfter' f = do
@@ -132,8 +132,8 @@ myAdditionalKeys = [
    , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
    , ((alpha .|. beta, s), windows W.swapDown)    -- Shift Local
    , ((alpha .|. beta .|. ctrl, s), spawn "confirm --dmenu 'smart_shutdown'") -- Shutdown
-   , ((alpha, t), spawn "rofi -dmenu -format 'q' -p 'Inbox' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
-   , ((alpha .|. beta, t), spawn "rofi -format 'q' -dmenu -p 'Due Today' | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
+   , ((alpha, t), spawn "prompt 'Inbox' -format \"'q'\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
+   , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
    , ((alpha, u), windows $ W.focusUp)
    , ((alpha, v), launch_app "VLC" "vlc")
