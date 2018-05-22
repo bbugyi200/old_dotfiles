@@ -83,21 +83,26 @@ c.aliases['mpv'] = 'spawn --userscript view_in_umpv {url}'
 ##############
 #  Bindings  #
 ##############
-def unbind(*args, **kwargs):
-    config.unbind(*args, **kwargs)
+def unbind(keys, mode='normal'):
+    config.unbind(keys, mode=mode)
 
 
-def bind(key, *commands, mode='normal'):
-    config.bind(key, ' ;; '.join(commands), mode=mode)
+def bind(keys, *commands, mode='normal'):
+    config.bind(keys, ' ;; '.join(commands), mode=mode)
 
 
 ########## Unbinds
-unbound_keys = ['b', 'B', 'd', 'D', 'gd', 'ad', 'co']
-for key in unbound_keys:
-    unbind(key)
+unbound_normal = ['b', 'B', 'd', 'D', 'gd', 'ad', 'co']
+for keys in unbound_normal:
+    unbind(keys)
+
+unbound_insert = ['<Ctrl-e>']
+for keys in unbound_insert:
+    unbind(keys, mode='insert')
 
 ########## Binds
 # >>> INSERT
+bind('<Ctrl-f>', 'open-editor', mode='insert')
 bind('<Ctrl-i>', 'spawn -d qute-pass-add {url}', mode='insert')
 bind('<Ctrl-p>', 'spawn --userscript qute-pass', mode='insert')
 bind('<Ctrl-Shift-u>', 'spawn --userscript qute-pass --username-only', mode='insert')
