@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "jseval document.querySelector('input[type=text]').focus()" >> "$QUTE_FIFO"
+echo "jseval -q document.querySelector('input').focus()" >> "$QUTE_FIFO"
+echo "jseval -q document.querySelector('input[type=text]').focus()" >> "$QUTE_FIFO"
 echo "enter-mode insert" >> "$QUTE_FIFO"
 echo "open-editor" >> "$QUTE_FIFO"
 
