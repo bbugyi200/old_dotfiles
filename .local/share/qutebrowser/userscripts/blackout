@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 #
-# This script has been hyjacked from the official 'view_in_mpv' userscript
+# This script has been hyjacked (and trimmed down) from the official 'view_in_mpv' userscript:
+# https://github.com/qutebrowser/qutebrowser/blob/master/misc/userscripts/view_in_mpv
 #
-# I use this userscript to black out a youtube video running on the current page
+# I use this userscript to black out the youtube video (works on most other embedded videos)
+# running on the current page.
 
 
 set -e
@@ -28,9 +30,6 @@ msg() {
     fi
 }
 
-MPV_COMMAND=${MPV_COMMAND:-mpv}
-# Warning: spaces in single flags are not supported
-MPV_FLAGS=${MPV_FLAGS:- --force-window --no-terminal --keep-open=yes --ytdl --ytdl-raw-options=yes-playlist=}
 IFS=" " read -r -a video_command <<< "$MPV_COMMAND $MPV_FLAGS"
 
 js() {
@@ -67,18 +66,10 @@ cat <<EOF
         var replacement = document.createElement("div");
         replacement.innerHTML = "
             <p style=\\"margin-bottom: 0.5em\\">
-            Opening page with:
-            <span style=\\"font-family: monospace;\\">${video_command[*]}</span>
+            This video has been blacked out.
             </p>
             <p>
-            In order to restore this particular video
-            <a style=\\"font-weight: bold;
-                        color: white;
-                        background: transparent;
-                     \\"
-               onClick=\\"restore_video(this, " + i + ");\\"
-               href=\\"javascript: restore_video(this, " + i + ")\\"
-              >click here</a>.
+            To retore this video, refresh this page.
             </p>
         ";
         replacement.style.position = "relative";
