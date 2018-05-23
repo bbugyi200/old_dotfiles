@@ -70,7 +70,6 @@ removeEmptyWorkspace' = do
 launch_app :: String -> String -> X ()
 launch_app ws cmd = sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)]
 
-
 ------------------------------- Key Bindings ----------------------------------
 
 ------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
@@ -132,11 +131,11 @@ myAdditionalKeys = [
    , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
    , ((alpha .|. beta, s), windows W.swapDown)    -- Shift Local
    , ((alpha .|. beta .|. ctrl, s), spawn "confirm --dmenu 'smart_shutdown'") -- Shutdown
-   , ((alpha, t), spawn "prompt 'Inbox' -format \"'q'\" | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
+   , ((alpha, t), spawn "prompt 'Inbox' -format 'q' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
    , ((alpha, u), windows $ W.focusUp)
-   , ((alpha, v), launch_app "VLC" "vlc")
+   , ((alpha, v), launch_app "CAST" "cast")
    , ((alpha, x), launch_app "TERM" myTerminal)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, z), launch_app "ZATH" "zathura")

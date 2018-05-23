@@ -23,6 +23,7 @@ bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in excluded_bangs
 c.url.searchengines = {
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
     'al': SE.static.google('arch linux {}'),
+    'aur': 'https://aur.archlinux.org/packages/?K={}&SB=p&SO=d',
     'DEFAULT': SE.URL(SE.static.google('{}'),
                       SE.static.duckduckgo('{}'),
                       SE.static.duckduckgo('!{}'),
@@ -78,6 +79,7 @@ c.url.searchengines = {
 #  Aliases  #
 #############
 c.aliases['mpv'] = 'spawn --userscript view_in_umpv {url}'
+c.aliases['vs'] = 'open -w'
 
 
 ##############

@@ -1,15 +1,19 @@
 [calendars]
-
-[[mycalendar]]
-path = /home/bryan/.local/share/khal/calendars/mycalendar
-type = calendar
+  [[home]]
+    path = /home/bryan/.local/share/khal/calendars/home
+    type = calendar
+    color = "#5f8700"
+  [[health]]
+    path = /home/bryan/.local/share/khal/calendars/health
+    type = calendar
+    color = "#5f5fff"
+    
 
 [default]
-default_calendar=mycalendar
+default_calendar=home
 highlight_event_days=True
 
 [highlight_days]
-color="dark green"
 method="fg"
 
 [locale]
@@ -18,3 +22,5 @@ dateformat = %Y-%m-%d
 longdateformat = %Y-%m-%d
 datetimeformat = %Y-%m-%d %H:%M
 longdatetimeformat = %Y-%m-%d %H:%M
+
+# vim: set ft=cfg:
