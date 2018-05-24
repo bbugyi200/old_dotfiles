@@ -12,8 +12,6 @@
 #    Fix:       bug fix
 #    Mod:       modify production code; new behavior; new unit tests needed
 #    Ref:       refactor production code; same behavior; old unit tests pass
-#    Sty:       formatting, missing semi colons, variable names, docstrings, etc
-#    Tests:     adding or refactoring tests; no production code change
 #    Update     update to meta files (README, gh-pages, configs, .gitignore, etc)
 # --------------------
 # Remember to
