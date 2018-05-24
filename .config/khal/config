@@ -3,6 +3,10 @@
     path = /home/bryan/.local/share/khal/calendars/home
     type = calendar
     color = "#5f8700"
+  [[daily]]
+    path = /home/bryan/.local/share/khal/calendars/daily
+    type = calendar
+    color = "#808080"
   [[health]]
     path = /home/bryan/.local/share/khal/calendars/health
     type = calendar

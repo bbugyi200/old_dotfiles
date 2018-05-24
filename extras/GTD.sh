@@ -83,8 +83,8 @@ alias timd='tim delete'
 alias k='khal --color'
 restart_khal_alarms() { setsid calalrms -d &> /dev/null; }
 kc() { clear && khal calendar --notstarted --format '{start-time} {title}' now && echo; }
-kn() { khal new "$*" && restart_khal_alarms; }
-knt() { khal new tomorrow "$@" && restart_khal_alarms; }
+kn() { khal new -a daily "$*" && restart_khal_alarms; }
+knt() { khal new -a daily tomorrow "$@" && restart_khal_alarms; }
 ke() { khal edit "$@" && restart_khal_alarms; }
 ki() { ikhal "$@" && restart_khal_alarms; }
 
