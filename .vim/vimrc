@@ -243,6 +243,7 @@ autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Enables recognition of LocalAlias files
 autocmd BufRead,BufNewFile .lshrc set ft=zsh
+autocmd BufRead,BufNewFile config set ft=cfg
 
 " ------------------------- FUNCTIONS AND COMMANDS ---------------------------
 " Redraws screen after silent command
