@@ -33,8 +33,7 @@ Config { font = "xft:Dina:pixelsize=13"
                                  , "--High",    "50"
                                  , "--normal",  "green"
                                  , "--high",    "red"] 10
-                    , Run Weather "KVAY" ["--template", "MOUNT HOLLY, NJ 08060  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"] 9000
-                    , Run Weather "KSMQ" ["--template", "PISCATAWAY TWNSHP, NJ 08854  |  TEMP: <tempF>F  |  SKY: <skyCondition>  |  WIND: <windCardinal> <windMph>mph"]9000
+                    , Run Com "poll-weather" [] "weather" 900
 					, Run Com "poll-timew" [] "timew" 10
                     , Run Com "dbox-xmonad" [] "dropbox" 10
                     , Run Com "pia-xmonad" [] "pia" 50

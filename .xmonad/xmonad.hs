@@ -53,7 +53,7 @@ getXmobarTemplate :: String -> String
 getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
-getXmobarTemplate "2-top" = "}%KVAY%      [%sunrise% / %sunset%]{"   -- KVAY: Mount Holly; KSMQ: Piscataway Township
+getXmobarTemplate "2-top" = "}%weather%      [%sunrise% / %sunset%]{"
 getXmobarTemplate "2-bottom" = "}{"
 
 removeEmptyWorkspaceAfter' f = do
