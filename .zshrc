@@ -44,6 +44,7 @@ alias -s txt="vim"
 alias -g @@="&> /dev/null & disown"
 alias -g ::="| grep -e"
 alias -g %="| less"
+alias -g X="clear &&"
 
 # -------------------------------- BINDINGS ----------------------------------
 bindkey "^P" up-line-or-search

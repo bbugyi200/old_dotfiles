@@ -18,6 +18,8 @@ import Network.HostName (getHostName)
 
 import Graphics.X11.ExtraTypes.XF86
 
+import qualified Data.List as DataList
+import qualified Data.Char as DataChar
 import qualified XMonad.StackSet as W
 import qualified XMonad.Prompt as P
 import qualified XMonad.Util.NamedScratchpad as NSP
@@ -70,6 +72,20 @@ removeEmptyWorkspace' = do
 launch_app :: String -> String -> X ()
 launch_app ws cmd = sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)]
 
+-- Only shows layout when fullscreen mode is enabled
+my_ppOrder :: [String] -> [String]
+my_ppOrder (ws:l:t:_) = 
+    if DataList.isInfixOf "Full" l
+        then [ws, DL.xmobarColor "white" "" "<icon=full.xbm/>"]
+        else [ws]
+
+strToUpper :: String -> String
+strToUpper = map DataChar.toUpper
+
+------------------------------- Variables -------------------------------------
+
+seq_push = [CW.swapNextScreen, CW.toggleWS' ["NSP"]]
+
 ------------------------------- Key Bindings ----------------------------------
 
 ------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
@@ -114,6 +130,7 @@ myAdditionalKeys = [
    , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
+   , ((alpha .|. shift, m), sequence_ $ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"] ++ seq_push) -- Shift current window to MISC
    , ((alpha, n), spawn "tmux -L $(tm-socket) next-window") -- Tmux Next
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
@@ -155,18 +172,18 @@ myAdditionalKeys = [
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
    , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "weechat") -- Scratchpad Add Task to Inbox
    , ((alpha, xK_backslash), CW.nextScreen) -- Next Screen
-   , ((alpha .|. beta, xK_backslash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"]]) -- Send current WS to Next Screen (keep focus)
-   , ((alpha, xK_bracketleft), sequence_ [CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)]) -- Prev Hidden NonEmpty Workspace
-   , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, CW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha, xK_bracketright), sequence_ [CW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
-   , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, CW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha .|. beta, xK_backslash), sequence_ seq_push) -- Send current WS to Next Screen (keep focus)
+   , ((alpha, xK_bracketleft), sequence_ [DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)]) -- Prev Hidden NonEmpty Workspace
+   , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha, xK_bracketright), sequence_ [DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
+   , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, DW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); lls'") -- cd to Next Dir
    , ((alpha .|. beta, xK_equal), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; lls'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
    , ((alpha, xK_semicolon), spawn "shellPrompt -d")
-   , ((alpha .|. beta, xK_slash), sequence_ [CW.swapNextScreen, CW.toggleWS' ["NSP"], CW.nextScreen]) -- Send current WS to Next Screen (send focus)
+   , ((alpha .|. beta, xK_slash), sequence_ $ seq_push ++ [CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    ]
@@ -280,13 +297,14 @@ main = do
           , startupHook             = myStartupHook
           , logHook                 = DL.dynamicLogWithPP DL.xmobarPP
             { DL.ppOutput                = hPutStrLn xmproc
-            , DL.ppOrder                 = \(ws:l:t:_)   -> [ws]
-            , DL.ppCurrent               = DL.xmobarColor "yellow" "" . DL.wrap "[" "]"
-            , DL.ppHidden                = DL.xmobarColor "white" ""
-            , DL.ppHiddenNoWindows       = DL.xmobarColor "darkgrey" ""
+            , DL.ppOrder                 = my_ppOrder
+            , DL.ppSep                   = DL.xmobarColor "white" "" "    "
+            , DL.ppCurrent               = DL.xmobarColor "yellow" "" . strToUpper . DL.wrap "[" "]"
+            , DL.ppVisible               = DL.xmobarColor "yellow" "" . strToUpper
+            , DL.ppHidden                = DL.xmobarColor "white" "" . strToUpper
+            , DL.ppHiddenNoWindows       = DL.xmobarColor "darkgrey" "" . strToUpper
             , DL.ppWsSep                 = "    "
             , DL.ppTitle                 = DL.xmobarColor "green"  "" . DL.shorten 40
-            , DL.ppVisible               = DL.xmobarColor "yellow" ""
             , DL.ppUrgent                = DL.xmobarColor "red" "yellow"
             , DL.ppSort                  = (NSP.namedScratchpadFilterOutWorkspace .) `liftM` DW.getSortByOrder
             } >> ewmhDesktopsLogHook <+> DL.dynamicLogXinerama

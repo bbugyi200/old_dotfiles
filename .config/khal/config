@@ -1,14 +1,14 @@
 [calendars]
   [[home]]
-    path = /home/bryan/.local/share/khal/calendars/home
+    path = /home/bryan/.local/share/khal/calendars/gcal/bryanbugyi34@gmail.com
     type = calendar
     color = "#5f8700"
   [[daily]]
-    path = /home/bryan/.local/share/khal/calendars/daily
+    path = /home/bryan/.local/share/khal/calendars/gcal/bbf3uq8qpm58ghrnellfg1vtb0@group.calendar.google.com
     type = calendar
     color = "#808080"
   [[health]]
-    path = /home/bryan/.local/share/khal/calendars/health
+    path = /home/bryan/.local/share/khal/calendars/gcal/8f77kdc3qaqfl2bnkbmgvtr20c@group.calendar.google.com
     type = calendar
     color = "#5f5fff"
     

@@ -23,7 +23,7 @@ ts () {
 
     if [[ -n "$1" ]]; then
         # Hook will stop any started tasks (not needed here)
-        task rc.verbose:nothing start $1
+        task start $1
     else
         task
     fi

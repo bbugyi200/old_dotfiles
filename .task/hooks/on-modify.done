@@ -4,10 +4,12 @@
 
 import datetime as dt
 import json
+import subprocess as sp
 import sys
 
 from dates import date_fmt, due_in_N_years, getTodayDT, get_new_wait
 from defaults import repeats
+from log import logger
 from tags import hasTag, isDone
 
 old_task = json.loads(sys.stdin.readline())
@@ -15,12 +17,36 @@ new_task = json.loads(sys.stdin.readline())
 
 
 def isConsistent(task):
+    """ Returns True if 'consistent' attribute is present and enabled. """
     return ('tags' in task.keys()) and ('consistent' in task.keys()) and (task['consistent'] == 'yes')
 
 
-if isDone(new_task):
+def close_GH_issue(new_task):
+    """ Closes corresponding GitHub Issue (if one exists). """
+    if 'githubrepo' in new_task:
+        logger.debug('{} corresponds to task: {}'.format(new_task['githubrepo'], new_task['description']))
+
+        msg = 'This issue is being closed because its corresponding BugWarrior task has been completed.'
+        gh_issue_number = str(int(float(new_task['githubnumber'])))
+        cmd_list = ['ghi', 'close', '-m', msg, gh_issue_number, '--', new_task['githubrepo']]
+        logger.debug('Running command: {}'.format(cmd_list))
+
+        ps = sp.Popen(cmd_list, stdout=sp.PIPE, stderr=sp.STDOUT)
+        out = ps.communicate()[0]
+        retval = ps.returncode
+
+        if retval != 0:
+            logger.debug('ghi command failed. Error output: {}'.format(out.decode().strip()))
+
+
+def revive_repeat(new_task):
+    """ Checks if task has a custom repeat tag. If so, the task is brought back into pending
+    status and a new due date is set.
+    """
     for tag, N in repeats.items():
         if hasTag(new_task, tag):
+            msg = '+{} tag found. Task "{}..." has been identified as a custom repeat.'
+            logger.debug(msg.format(tag, new_task['description'][:20]))
             due_date = dt.datetime.strptime(new_task['due'], date_fmt)
 
             todayDT = getTodayDT()
@@ -39,5 +65,12 @@ if isDone(new_task):
 
             new_task['status'] = 'pending'
             new_task.pop('end')
+
+    return new_task
+
+
+if isDone(new_task):
+    close_GH_issue(new_task)
+    new_task = revive_repeat(new_task)
 
 print(json.dumps(new_task))

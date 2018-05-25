@@ -3,7 +3,7 @@
 # This script has been hyjacked (and trimmed down) from the official 'view_in_mpv' userscript:
 # https://github.com/qutebrowser/qutebrowser/blob/master/misc/userscripts/view_in_mpv
 #
-# I use this userscript to black out the youtube video (works on most other embedded videos)
+# I use this userscript to black out the youtube video (also works on most other embedded videos)
 # running on the current page.
 
 

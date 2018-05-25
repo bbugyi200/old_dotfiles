@@ -9,7 +9,6 @@ ll () { ls --color=always -l "$@" | less; }
 lls () { clear && ls -a "$@" && echo; }
 lcd () { cd "$1" && lls; }
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
-pyinit () { cp -i ~/Dropbox/scripts/templates/template.py $1 && vim $1; }
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 # Create and CD to New Directory
 mkcd() { mkdir -p $1 && cd $1; }
@@ -24,6 +23,7 @@ alias rg='ranger'
 alias snapshots='find /home/bryan/Dropbox/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 # Sleep, then run the last command
 ss () { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
+alias actvenv='source venv/bin/activate'
 w() { which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n" && la $1); }
 
 # ---------- DROPBOX ----------

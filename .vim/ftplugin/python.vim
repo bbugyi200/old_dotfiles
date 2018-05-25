@@ -10,3 +10,5 @@ endif
 
 nnoremap <Leader>8 A  # noqa: E
 nnoremap <Leader>T :e ~/Dropbox/scripts/templates/template.py<CR>
+nnoremap <Leader>" i"<CR>"<Esc>
+nnoremap <Leader>' i"<CR>'<Esc>
