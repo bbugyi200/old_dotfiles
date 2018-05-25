@@ -13,33 +13,34 @@ import tags
 old_task = json.loads(sys.stdin.readline())
 new_task = json.loads(sys.stdin.readline())
 
-# Extract attributes for use as tags.
-timew_tags = []
+if __name__ == "__main__":
+    # Extract attributes for use as tags.
+    timew_tags = []
 
-if 'project' in new_task:
-    project = new_task['project']
-    timew_tags.append(project)
-    while '.' in project:
-        project = project[:project.rfind('.')]
+    if 'project' in new_task:
+        project = new_task['project']
         timew_tags.append(project)
+        while '.' in project:
+            project = project[:project.rfind('.')]
+            timew_tags.append(project)
 
-combined_timew_tags = ' '.join(['"%s"' % tag for tag in timew_tags]).encode('utf-8').strip()
+    combined_timew_tags = ' '.join(['"%s"' % tag for tag in timew_tags]).encode('utf-8').strip()
 
-# Started task.
-if 'start' in new_task and 'start' not in old_task:
-    logger.debug('Task Started: {}'.format(new_task['description']))
-    cmd = 'timew start "[Project: {project}]" {tags}'
-    sp.check_call(cmd.format(project=new_task['description'], tags=combined_timew_tags.decode()),
-            shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
+    # Started task.
+    if 'start' in new_task and 'start' not in old_task:
+        logger.debug('Task Started: {}'.format(new_task['description']))
+        cmd = 'timew start "[Project: {project}]" {tags}'
+        sp.check_call(cmd.format(project=new_task['description'], tags=combined_timew_tags.decode()),
+                shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
 
-    sp.Popen('xtaskidle -d', shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
+        sp.Popen('xtaskidle -d', shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
 
-# Stopped task.
-elif ('start' not in new_task) and ('start' in old_task):
-    logger.debug('Task Stopped: {}'.format(new_task['description']))
-    sp.Popen('timew stop', shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
-    if not tags.isDone(new_task):
-        with open('/home/bryan/.task/.last_task', 'w') as f:
-            f.write(new_task['uuid'])
+    # Stopped task.
+    elif ('start' not in new_task) and ('start' in old_task):
+        logger.debug('Task Stopped: {}'.format(new_task['description']))
+        sp.Popen('timew stop', shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
+        if not tags.isDone(new_task):
+            with open('/home/bryan/.task/.last_task', 'w') as f:
+                f.write(new_task['uuid'])
 
-print(json.dumps(new_task))
+    print(json.dumps(new_task))
