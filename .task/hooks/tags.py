@@ -120,10 +120,8 @@ def process_add_tags(new_task, *, old_task={}):
 
     # Don't let task be created without project
     if 'project' not in new_task.keys():
-        msg = 'You forgot to assign a project to the task.'
-        sp.call(['notify-send', 'TaskWarrior', msg])
-        print(msg)
-        sys.exit(1)
+        out = sp.check_output(['prompt', 'Select a Project'])
+        new_task['project'] = out.decode().strip()
 
     if output != header:
         output += '   \n'  # Spaces Needed
