@@ -1,0 +1,21 @@
+[general]
+status_path = "/home/bryan/.local/share/vdirsyncer/status/"
+
+[pair gcal]
+a = "gcal_local"
+b = "gcal_remote"
+collections = ["from a", "from b"]
+conflict_resolution = "b wins"
+
+[storage gcal_local]
+type = "filesystem"
+path = "/home/bryan/.local/share/khal/calendars/gcal/" 
+fileext=".ics"
+
+[storage gcal_remote]
+type = "google_calendar"
+token_file = "/home/bryan/.local/share/vdirsyncer/token"
+client_id = "720295328599-7hso4iquhqol9q6rd9k22ivchieo3d4g.apps.googleusercontent.com"
+client_secret = "dU-tiJA3KGm6-2zbrUQJS43m"
+start_date = "datetime.now() - timedelta(days=5)"
+end_date = "datetime.now() + timedelta(days=30)"
