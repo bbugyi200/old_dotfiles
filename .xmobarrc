@@ -33,7 +33,7 @@ Config { font = "xft:Dina:pixelsize=13"
                                  , "--High",    "50"
                                  , "--normal",  "green"
                                  , "--high",    "red"] 10
-                    , Run Com "poll-weather" [] "weather" 900
+                    , Run Com "poll-weather" ["-d", "-q"] "weather" 9000
 					, Run Com "poll-timew" [] "timew" 10
                     , Run Com "dbox-xmonad" [] "dropbox" 10
                     , Run Com "pia-xmonad" [] "pia" 50

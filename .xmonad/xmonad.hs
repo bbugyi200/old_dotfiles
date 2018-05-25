@@ -305,7 +305,6 @@ main = do
             , DL.ppHiddenNoWindows       = DL.xmobarColor "darkgrey" "" . strToUpper
             , DL.ppWsSep                 = "    "
             , DL.ppTitle                 = DL.xmobarColor "green"  "" . DL.shorten 40
-            , DL.ppUrgent                = DL.xmobarColor "red" "yellow"
             , DL.ppSort                  = (NSP.namedScratchpadFilterOutWorkspace .) `liftM` DW.getSortByOrder
             } >> ewmhDesktopsLogHook <+> DL.dynamicLogXinerama
       } `additionalKeys` myAdditionalKeys
