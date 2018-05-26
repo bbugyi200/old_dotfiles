@@ -26,9 +26,8 @@ def close_GH_issue(new_task):
     if 'githubrepo' in new_task:
         logger.debug('{} corresponds to task: {}'.format(new_task['githubrepo'], new_task['description']))
 
-        msg = 'This issue is being closed because its corresponding BugWarrior task has been completed.'
         gh_issue_number = str(int(float(new_task['githubnumber'])))
-        cmd_list = ['ghi', 'close', '-m', msg, gh_issue_number, '--', new_task['githubrepo']]
+        cmd_list = ['ghi', 'close', gh_issue_number, '--', new_task['githubrepo']]
         logger.debug('Running command: {}'.format(cmd_list))
 
         ps = sp.Popen(cmd_list, stdout=sp.PIPE, stderr=sp.STDOUT)
