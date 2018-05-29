@@ -32,10 +32,8 @@ def close_GH_issue(new_task):
 
         ps = sp.Popen(cmd_list, stdout=sp.PIPE, stderr=sp.STDOUT)
         out = ps.communicate()[0]
-        retval = ps.returncode
 
-        if retval != 0:
-            logger.debug('ghi command failed. Error output: {}'.format(out.decode().strip()))
+        logger.debug('ghi command failed. Error output: {}'.format(out.decode().strip()))
 
 
 def revive_repeat(new_task):
@@ -45,7 +43,7 @@ def revive_repeat(new_task):
     for tag, N in repeats.items():
         if hasTag(new_task, tag):
             msg = '+{} tag found. Task "{}..." has been identified as a custom repeat.'
-            logger.debug(msg.format(tag, new_task['description'][:20]))
+            logger.debug(msg.format(tag, new_task['description'][:40]))
             due_date = dt.datetime.strptime(new_task['due'], date_fmt)
 
             todayDT = getTodayDT()
@@ -69,7 +67,8 @@ def revive_repeat(new_task):
 
 
 if __name__ == "__main__":
-    if isDone(new_task):
+    if isDone(new_task) and not isDone(old_task):
+        logger.debug('Task has been marked COMPLETED: {}'.format(new_task['description'][:40]))
         close_GH_issue(new_task)
         new_task = revive_repeat(new_task)
 

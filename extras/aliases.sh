@@ -82,7 +82,7 @@ alias matlab='matlab -nojvm -nodisplay -nosplash'
 alias du='ncdu --color dark'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias time='/usr/bin/time'
-alias tree='tree -I "venv*|__pycache__*|coverage*"'
+alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
 alias loc='locate -r'
 # Remove/Overwrite Files Safely
 alias rm="rm -i"

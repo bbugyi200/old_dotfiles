@@ -12,8 +12,9 @@
 #    Fix:       bug fix
 #    Mod:       modify production code; new behavior; new unit tests needed
 #    Ref:       refactor production code; same behavior; old unit tests pass
-#    Sty:       formatting, missing semi colons, variable names, docstrings, etc
-#    Update     update to meta files (README, gh-pages, configs, .gitignore, etc)
+#    Sty:       formatting, spacing, variable names, etc
+#    Docs:      changes to documentation; docstrings, log messages, README, etc.
+#    Meta:      changes to .gitignore, .flake8, *.ini, setup.py, binaries, etc.
 # --------------------
 # Remember to
 #    Capitalize the subject line

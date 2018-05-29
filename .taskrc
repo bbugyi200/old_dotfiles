@@ -1,10 +1,8 @@
 # vim: ft=cfg:
 
 # ----- CONTEXTS -----
-context.high=project:Study -low or +research or (urg>7)
-context.mid=
-context.low=project.not:Study or +low or (urg>7)
-context.bedtime=project:Study +low
+context.study=project:Study or +research or (urg>7)
+context.localalias=project:Dev.localalias or (urg>7)
 context.mobile=+call or project:Blogs or project:Videos or +errand or (urg>7)
 context.review=project.not:Study. project.not:Dev. -inbox ( project.not:Holiday or project:Holiday. )
 
@@ -110,4 +108,4 @@ color.blocked=white on black
 color.tagged=  # A task should not be colored for just any tag
 
 # ----- DYNAMICALLY SET AT RUNTIME -----
-context=high
+context=localalias

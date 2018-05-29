@@ -70,7 +70,7 @@ removeEmptyWorkspace' = do
     when (n > 3) $ DW.removeEmptyWorkspace
 
 launch_app :: String -> String -> X ()
-launch_app ws cmd = sequence_ [DW.addWorkspace ws, (spawnHere $ "WS_is_Empty && " ++ cmd)]
+launch_app ws cmd = sequence_ [DW.addWorkspace ws, (spawnHere $ "hide_nsp && WS_is_Empty && " ++ cmd)]
 
 -- Only shows layout when fullscreen mode is enabled
 my_ppOrder :: [String] -> [String]
@@ -154,6 +154,7 @@ myAdditionalKeys = [
    , ((alpha, u), windows $ W.focusUp)
    , ((alpha, v), launch_app "CAST" "cast")
    , ((alpha, x), launch_app "TERM" myTerminal)
+   , ((alpha .|. beta, x), launch_app "TERM'" myTerminal)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, z), launch_app "ZATH" "zathura")
 
@@ -221,7 +222,7 @@ myBorderWidth = 5
 myFocusedBorderColor = blue
 
 myWorkspaces :: [String]
-myWorkspaces = ["TERM","WEB","NSP"]
+myWorkspaces = ["NSP", "TERM","WEB"]
 
 myXPConfig :: P.XPConfig
 myXPConfig = P.def {
@@ -242,6 +243,7 @@ t = 0.4; bigt = 0.05  -- Distance from top edge
 w = 0.5; bigw = 0.9
 h = 0.5; bigh = 0.9
 
+scratchpad_list = ["scratchpad", "calculator", "weechat", "gtd"]
 scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad") 
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "calculator" calculator (appName =? "calculator")
