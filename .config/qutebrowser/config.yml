@@ -1,5 +1,6 @@
 tabs:
     position: left
+    mousewheel_switching: false
     show: always
     last_close: startpage
     select_on_remove: next

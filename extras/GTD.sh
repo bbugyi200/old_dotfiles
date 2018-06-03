@@ -47,7 +47,6 @@ tsub () { task $1 modify "/$2/$3/g"; }
 trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS limit:none \( +PENDING or +WAITING \) | less; }
 
 
-alias t='task'
 alias ta='task add'
 alias td='task done'
 alias qtrev='trev'

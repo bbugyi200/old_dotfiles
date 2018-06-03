@@ -66,12 +66,12 @@ tags = {'inbox': {
         'blog': {'project': 'Blogs',
                  'tags': ModList('blog', '-')},
         'doc': {'project': 'Study.Docs',
-                 'tags': ModList('doc', '-')},
+                'tags': ModList('doc', '-')},
         'video': {'project': 'Videos',
                   'tags': ModList('video', '-')},
-        'consistent': {
+        'const': {
             'consistent': 'yes',
-            'tags': ModList('consistent', '-')},
+            'tags': ModList('const', '-')},
         'strict': {
             'strict': 'yes',
             'tags': ModList('strict', '-')},
@@ -108,7 +108,7 @@ for prefix, i in [('', 1), ('bi', 2)]:
     for basic, N in repeat_basics.items():
         repeats[prefix + basic] = i * N
 
-for i in range(3,7):
+for i in range(3, 7):
     for period, N in {'{}days': 1, '{}weeks': 7,
                       '{}months': 30, '{}years': 1}.items():
         repeats[period.format(i)] = int(i * N)

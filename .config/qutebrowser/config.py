@@ -14,7 +14,7 @@ config.load_autoconfig()
 #  Search Engines  #
 ####################
 # construction of bang search pattern for 1-3 letter words and specified longer bangs
-excluded_bangs = ['is', 'py']
+excluded_bangs = ['is', 'do']
 included_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy']
 bang_fmt = '^({}[A-z][A-z]?|({}))%20'
 bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in excluded_bangs]),
@@ -60,7 +60,7 @@ c.url.searchengines = {
                            lambda x: re.split(r'%20%23', SE.LuckyQuery.filter(x), maxsplit=1),
                            SE.LuckyQuery.filter)),
     'li': SE.static.google('site:linkedin.com {}'),
-    'lib':'http://libgen.io/search.php?req={}',
+    'lib': 'http://libgen.io/search.php?req={}',
     'pir': SE.URL('https://thepiratebay.org/search/{}',
                   'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
                   patterns=SE.TwoIntQuery.pattern,
@@ -75,13 +75,12 @@ c.url.searchengines = {
                   SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
                   patterns=(SE.LuckyQuery.pattern, SE.TwoIntQuery.pattern),
                   filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter)),
-    'waf':'https://waffle.io/bbugyi200/{}'
+    'waf': 'https://waffle.io/bbugyi200/{}'
 }
 
 #############
 #  Aliases  #
 #############
-c.aliases['mpv'] = 'spawn --userscript view_in_umpv {url}'
 c.aliases['vs'] = 'open -w'
 
 

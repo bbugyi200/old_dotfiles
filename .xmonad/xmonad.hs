@@ -262,7 +262,7 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
 myManageHook = composeAll
     [ manageSpawn
     , NSP.namedScratchpadManageHook scratchpads
-    , className=? "Peek"            --> doFloat
+    , appName=? "peek"              --> doFloat
     , className=? "Pinentry"        --> doFloat
     , appName=? "calculator"        --> doRectFloat (W.RationalRect l t w h)
     , className=? "Clipster"        --> doRectFloat (W.RationalRect bigl bigt bigw bigh)

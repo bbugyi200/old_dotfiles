@@ -19,6 +19,7 @@ else
 endif
 
 " -------------------------------- SETS --------------------------------------
+set tw=99
 set autoread
 " Status Line Settings (mode display)
 set nrformats+=alpha

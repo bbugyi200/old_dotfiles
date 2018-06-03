@@ -88,7 +88,7 @@ class IntQueryFactory:
         self.N = N
         pttrn_fmt = '^{}[A-z]'
         int_pttrn = '[0-9]+%20'
-        for i in range(self.N-1):
+        for i in range(self.N - 1):
             int_pttrn = int_pttrn + int_pttrn
         self.pattern = pttrn_fmt.format(int_pttrn)
 

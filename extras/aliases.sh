@@ -1,10 +1,11 @@
 source /home/bryan/Dropbox/dotfiles/home/extras/GTD.sh
 
 # ---------- MISCELLANEOUS ----------
+auto() { nohup autodemo $@ &> /dev/null & disown && clear; }
 alias c='clear'
 alias cppinit='cinit ++'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
-alias la="LocalAlias"
+alias la='la -c'
 ll () { ls --color=always -l "$@" | less; }
 lls () { clear && ls -a "$@" && echo; }
 lcd () { cd "$1" && lls; }
@@ -12,8 +13,8 @@ alias lpass-login='lpass login bryanbugyi34@gmail.com'
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 # Create and CD to New Directory
 mkcd() { mkdir -p $1 && cd $1; }
-alias mutt-gmail="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
-alias mutt-root='sudo neomutt -f /var/spool/mail/root'
+alias gmutt="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
+alias rmutt='sudo neomutt -f /var/spool/mail/root'
 alias mutt="neomutt"
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias psgrep='ps -aux | grep -E'
@@ -46,7 +47,6 @@ alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/not
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias vip="vim -c 'execute \"normal \\<c-p>\" '"
-pim() { vim -c 'CtrlPMRU' -c "normal $1" -c 'execute "normal \<cr>"'; }
 
 # ---------- SSH / FTP ----------
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'

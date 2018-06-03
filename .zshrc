@@ -34,6 +34,7 @@ alias -s png="imv -d"
 alias -s pcx="imv -d"
 alias -s jpg="imv -d"
 alias -s jpeg="imv -d"
+alias -s gif="imv -d"
 # Miscellaneous
 alias -s git="git clone"
 alias -s html="google-chrome-stable"
@@ -78,8 +79,8 @@ done
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 
-if [[ -d $PWD/venv ]]; then
-	source "venv/bin/activate"
+if [[ -d $PWD/.git ]] && [[ -d ~/.virtualenvs/$(basename $PWD) ]]; then
+    workon $(basename $PWD)
 fi
 
 # Starts ssh-agent automatically
@@ -93,12 +94,10 @@ fi
 # Needed for Eternal Command History
 precmd() { eval "$PROMPT_COMMAND" }
 
-command_not_found_handler() {
-    WORD=$1; shift
-    LocalAlias -x $WORD -- "$@"
-}
-
 if [[ -f $PWD/.lzshrc ]]; then
     printf "\n*** ALERT: A Local zshrc File has been Sourced ***\n\n"
     source ".lzshrc"
 fi
+
+# added by travis gem
+[ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh

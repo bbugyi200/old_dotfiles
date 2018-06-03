@@ -9,6 +9,7 @@ export XDG_CONFIG_HOME=/home/bryan/.config
 export POWERLINE_DIRECTORY=/usr/lib/python3.6/site-packages
 export PANEL_FIFO=/tmp/panel-fifo
 export MATLABPATH=$HOME/.matlab
+export SHELLCHECK_OPTS="-e SC2068 -e SC2148"
 
 # virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
@@ -19,7 +20,7 @@ export LATITUDE="39.997467N"
 export LONGITUDE="74.778291W"
 
 # Enables executables installed with 'gem install' to run
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:/home/bryan/.local/bin:$PATH"
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -le 3 ] && [ "$(id -u)" != 0 ]; then
   exec startx
