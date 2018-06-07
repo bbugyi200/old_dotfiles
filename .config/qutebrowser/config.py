@@ -1,3 +1,4 @@
+import functools
 import re
 import yaml
 
@@ -23,7 +24,6 @@ bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in excluded_bangs
 c.url.searchengines = {
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
     'al': SE.static.google('arch linux {}'),
-    'aur': 'https://aur.archlinux.org/packages/?K={}&SB=p&SO=d',
     'DEFAULT': SE.URL(SE.static.google('{}'),
                       SE.static.duckduckgo('{}'),
                       SE.static.duckduckgo('!{}'),
@@ -34,31 +34,36 @@ c.url.searchengines = {
                  SE.static.google('Season {} episodes'),
                  patterns=SE.OneIntQuery.pattern),
     'gh': SE.URL(SE.static.google('{} site:github.com'),
-                 SE.LuckyQuery.url('{} site:github.com inurl:doc'),
                  SE.LuckyQuery.url('{} site:github.com'),
                  'https://github.com/bbugyi200/{}',
-                 patterns=('{}%23'.format(SE.LuckyQuery.pattern),
-                           SE.LuckyQuery.pattern,
-                           '^%40'),
-                 filters=(lambda x: SE.LuckyQuery.filter(x).replace('%23', ''),
-                          SE.LuckyQuery.filter,
-                          lambda x: x.replace('%40', ''))),
+                 patterns=(
+                     SE.LuckyQuery.pattern,
+                     '^%40',
+                 ),
+                 filters=(
+                     SE.LuckyQuery.filter,
+                     lambda x: x.replace('%40', ''),
+                 )),
     'ghi': SE.URL('https://github.com/bbugyi200/{}/issues',
                   'https://github.com/bbugyi200/scripts/issues/{}',
                   'https://github.com/bbugyi200/{1}/issues/{0}',
                   SE.LuckyQuery.url('{} site:github.com', end='issues?&q=is%3Aissue+{}'),
                   SE.LuckyQuery.url('{} site:github.com', end='issues/{}'),
                   SE.LuckyQuery.url('{} site:github.com', end='issues'),
-                  patterns=('^[0-9]+$',
-                            SE.OneIntQuery.pattern,
-                            '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%3F'),
-                            '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%23'),
-                            SE.LuckyQuery.pattern),
-                  filters=(None,
-                           SE.OneIntQuery.filter,
-                           lambda x: re.split(r'%20%3F', SE.LuckyQuery.filter(x), maxsplit=1),
-                           lambda x: re.split(r'%20%23', SE.LuckyQuery.filter(x), maxsplit=1),
-                           SE.LuckyQuery.filter)),
+                  patterns=(
+                      '^[0-9]+$',
+                      SE.OneIntQuery.pattern,
+                      '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%3F'),
+                      '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%23'),
+                      SE.LuckyQuery.pattern,
+                  ),
+                  filters=(
+                      None,
+                      SE.OneIntQuery.filter,
+                      lambda x: re.split(r'%20%3F', SE.LuckyQuery.filter(x), maxsplit=1),
+                      lambda x: re.split(r'%20%23', SE.LuckyQuery.filter(x), maxsplit=1),
+                      SE.LuckyQuery.filter,
+                  )),
     'li': SE.static.google('site:linkedin.com {}'),
     'lib': 'http://libgen.io/search.php?req={}',
     'pir': SE.URL('https://thepiratebay.org/search/{}',
@@ -95,6 +100,12 @@ def bind(keys, *commands, mode='normal'):
     config.bind(keys, ' ;; '.join(commands), mode=mode)
 
 
+# bind functions for different modes
+ibind = functools.partial(bind, mode='insert')
+pbind = functools.partial(bind, mode='prompt')
+cbind = functools.partial(bind, mode='command')
+
+
 ########## Unbinds
 unbound_nkeys = ['b', 'B', 'd', 'D', 'gd', 'ad', 'co']
 for keys in unbound_nkeys:
@@ -106,17 +117,17 @@ for keys in unbound_ikeys:
 
 ########## Binds
 # >>> INSERT
-bind('<Ctrl-f>', 'open-editor', mode='insert')
-bind('<Ctrl-i>', 'spawn -d qute-pass-add {url}', mode='insert')
-bind('<Ctrl-p>', 'spawn --userscript qute-pass', mode='insert')
-bind('<Ctrl-Shift-u>', 'spawn --userscript qute-pass --username-only', mode='insert')
-bind('<Ctrl-Shift-p>', 'spawn --userscript qute-pass --password-only', mode='insert')
+ibind('<Ctrl-f>', 'open-editor')
+ibind('<Ctrl-i>', 'spawn -d qute-pass-add {url}')
+ibind('<Ctrl-p>', 'spawn --userscript qute-pass')
+ibind('<Ctrl-Shift-u>', 'spawn --userscript qute-pass --username-only')
+ibind('<Ctrl-Shift-p>', 'spawn --userscript qute-pass --password-only')
 
 # >>> PROMPT
-bind('<Ctrl-o>', 'prompt-open-download xdg-open {}', mode='prompt')
+pbind('<Ctrl-o>', 'prompt-open-download xdg-open {}')
 
 # >>> COMMAND
-bind('<Ctrl-f>', 'edit-command', mode='command')
+cbind('<Ctrl-f>', 'edit-command --run')
 
 # >>> NORMAL
 bind(',e', 'spawn --userscript searchbar-command')
@@ -133,6 +144,7 @@ bind(';Y', 'hint links spawn ytcast {hint-url}', 'message-info "Casting YouTube 
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
 bind('<Ctrl-t>', 'spawn --userscript taskadd tags:inbox')
+bind('<Ctrl-v>', 'spawn --userscript taskadd tags:video')
 bind('a', ':set-cmd-text -s :quickmark-load')
 bind('A', ':set-cmd-text -s :quickmark-load -t')
 bind('b', 'set-cmd-text -s :buffer')
