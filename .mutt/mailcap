@@ -1,4 +1,4 @@
 application/*;  xdg-open %s
 image/*; xdg-open %s
-text/html;  qutebrowser %s; needsterminal
-text/html;  elinks -dump %s; nametemplate=%s.html; copiousoutput
+text/html;  /home/bryan/.mutt/view_attachment %s html
+text/html;  w3m %s; nametemplate=%s.html; copiousoutput

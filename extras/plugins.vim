@@ -43,6 +43,7 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'KabbAmine/zeavim.vim'
 Plugin 'gu-fan/riv.vim'
+Plugin 'tpope/vim-rhubarb'
 
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'neovimhaskell/haskell-vim'
@@ -61,6 +62,8 @@ filetype plugin indent on    " required
 
 let g:task_rc_override = 'rc._forcecolor=off'
 let g:riv_disable_folding = 1
+let g:riv_ignored_imaps = "<Tab>,<S-Tab>"
+let g:riv_ignored_maps = "<CR>"
 autocmd FileType txt setlocal commentstring=//\ %s
 
 " --------------------------- VIMWIKI ------------------------------------------

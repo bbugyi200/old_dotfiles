@@ -167,7 +167,7 @@ myAdditionalKeys = [
    , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
    , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
    , ((alpha, xK_KP_Subtract), spawn "last_task")
-   , ((alpha, xK_KP_Multiply), spawn "wait_task -D 1h -N")
+   , ((alpha, xK_KP_Multiply), spawn "wait_task -D 1h -N --purge")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
@@ -268,7 +268,7 @@ myManageHook = composeAll
     , className=? "Clipster"        --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
     , appName=? "floater"           --> doRectFloat (W.RationalRect l t w h)
     , appName=? "big-floater"       --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
-    , appName=? "qute-editor"       --> doRectFloat (W.RationalRect 0.3 0.4 0.3 0.15)]
+    , appName=? "qute-editor"       --> doRectFloat (W.RationalRect l t w h)]
 
 myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"

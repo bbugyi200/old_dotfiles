@@ -88,7 +88,7 @@ tasksh.autoclear=1
 verbose=blank,label,new-id,affected,edit,special,unwait,recur
 reserved.lines=1
 search.case.sensitive=no
-_forcecolor=on
+_forcecolor=no
 defaultwidth=`tput cols`
 nag=
 
@@ -108,4 +108,4 @@ color.blocked=white on black
 color.tagged=  # A task should not be colored for just any tag
 
 # ----- DYNAMICALLY SET AT RUNTIME -----
-context=study
+context=localalias

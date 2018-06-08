@@ -8,7 +8,6 @@ else
     nmap <F8> :w<CR>:Run -i<CR> 
 endif
 
-nnoremap <Leader>8 A  # noqa: E
 nnoremap <Leader>T :e ~/Dropbox/scripts/templates/template.py<CR>
 nnoremap <Leader><Leader>T :e ~/Dropbox/scripts/templates/test_template.py<CR>
 

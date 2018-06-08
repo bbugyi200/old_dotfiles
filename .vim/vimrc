@@ -113,11 +113,7 @@ noremap <Leader>e :quit<CR>
 noremap <Leader>s :w<CR>
 " Makes ix.io snippet using highlighted text and sends ix.io link to clipboard
 noremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
-" Enables 'very magic' mode by default
-nnoremap / /\v
-vnoremap / /\v
-nnoremap :g/ :g/\v
-nnoremap :g// :g//
+noremap <silent> <Leader><Leader>i :w !ix \| xclip -sel clipboard<CR>
 " Preserves flags when repeating the last substitute command.
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
@@ -134,8 +130,8 @@ nnoremap <CR> o<Esc>
 " Plugin Mappings
 nmap <C-N> :cd %:h<CR>:NERDTree<CR><S-B>
 nmap <Leader>p :CtrlPMRU<CR>
-nmap <C-g> :Gstatus<CR>
 nmap <Leader>f :CtrlSF 
+nmap <C-g> :Gstatus<CR>
 " Swap highlighted word with last word in buffer
 vnoremap <Leader>x <Esc>`.``gvP``P
 nmap <Leader>x ve<Leader>x
@@ -174,39 +170,25 @@ imap <Leader>v <Esc><Leader>v
 inoremap <C-o> <C-x><C-o>
 " Toggles LiveDown for Markdown (e.g. README.md)
 nmap <Leader>md :LivedownToggle<CR>
-" Pulls Up Documentation for Module/Function Under Cursor
-nnoremap <Leader>l yiW:Silent LangDoc --filetype=<C-r>=&filetype<CR> -m '<C-r>"'<CR>
-nnoremap <Leader>L yW:Silent LangDoc --filetype=<C-r>=&filetype<CR> -m '<C-r>"'<CR>
-command! -nargs=1 Doc execute "Silent LangDoc --filetype=" . &filetype . " -m <args>"
-" Maps command to 'tm' shell script
-command! -nargs=1 Tm execute "Silent tm <args>"
 imap <C-h> <Esc><C-h>
 imap <C-l> <Esc><C-l>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
-
 " bind <Leader>N to ':bN'
 nmap <Leader>1 :b1<CR>
-imap <Leader>1 <Esc><Leader>1
 nmap <Leader>2 :b2<CR>
-imap <Leader>2 <Esc><Leader>2
 nmap <Leader>3 :b3<CR>
-imap <Leader>3 <Esc><Leader>3
 nmap <Leader>4 :b4<CR>
-imap <Leader>4 <Esc><Leader>4
 nmap <Leader>5 :b5<CR>
-imap <Leader>5 <Esc><Leader>5
 nmap <Leader>6 :b6<CR>
-imap <Leader>6 <Esc><Leader>6
 nmap <Leader>7 :b7<CR>
-imap <Leader>7 <Esc><Leader>7
 nmap <Leader>8 :b8<CR>
-imap <Leader>8 <Esc><Leader>8
 nmap <Leader>9 :b9<CR>
-imap <Leader>9 <Esc><Leader>9
-
 " cd to current working directory
 nnoremap <Leader>cwd :cd %:h<CR>:pwd<CR>
+" fugitive mappings
+nmap gd :Gdiff 
+nmap gs :Gstatus<CR>
 
 " -------------------------- SPLIT AND TAB SETTINGS --------------------------
 " See: http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits "
@@ -261,18 +243,20 @@ augroup filetypedetect
 augroup END
 
 autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
-" Disables auto-comments on newlines
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Disables auto-comments on newlines and disables autowrap
+autocmd FileType * setlocal formatoptions-=t formatoptions-=r formatoptions-=o
 " Enables recognition of LocalAlias files
 autocmd BufRead,BufNewFile .lshrc set ft=zsh
 autocmd BufRead,BufNewFile config set ft=cfg
+autocmd BufRead,BufNewFile .coveragerc set ft=cfg
 
-" ------------------------- FUNCTIONS AND COMMANDS ---------------------------
+" ------------------------------- CUSTOM COMMANDS ----------------------------
 " Redraws screen after silent command
 command! -nargs=1 Silent
 \   execute 'silent !' . <q-args>
 \ | execute 'redraw!'
 
+" ------------------------------- FUNCTIONS ---------------------------------
 let g:S = 0  "result in global variable S
 function! Sum(number)
   let g:S = g:S + a:number
@@ -313,10 +297,6 @@ endfunction
 highlight VertSplit ctermfg=DarkGrey ctermbg=227
 highlight StatusLine cterm=NONE ctermfg=black ctermbg=227
 highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
-
-" highlight SLColor1 ctermfg=white ctermbg=DarkRed
-" highlight SLColor2 ctermfg=black ctermbg=DarkGrey
-" highlight Blank ctermfg=black ctermbg=white
 
 set statusline=
 set statusline+=%{StatuslineGit()}

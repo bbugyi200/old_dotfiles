@@ -1,11 +1,12 @@
 source /home/bryan/Dropbox/dotfiles/home/extras/GTD.sh
 
 # ---------- MISCELLANEOUS ----------
+alias actvenv='source venv/bin/activate'
 auto() { nohup autodemo $@ &> /dev/null & disown && clear; }
 alias c='clear'
 alias cppinit='cinit ++'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
-alias la='la -c'
+alias la='localalias --color'
 ll () { ls --color=always -l "$@" | less; }
 lls () { clear && ls -a "$@" && echo; }
 lcd () { cd "$1" && lls; }
@@ -24,7 +25,8 @@ alias rg='ranger'
 alias snapshots='find /home/bryan/Dropbox/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 # Sleep, then run the last command
 ss () { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
-alias actvenv='source venv/bin/activate'
+alias vplug="vim -c ':PluginInstall'"
+alias vcplug="vim -c ':PluginClean'"
 w() { which $1 || (printf "\n----- Searching Local Aliases/Functions... -----\n" && la $1); }
 
 # ---------- DROPBOX ----------

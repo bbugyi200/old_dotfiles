@@ -1,11 +1,11 @@
 """ Functions Relating to Task Tags """
 
+import datetime as dt
 import subprocess as sp
 import sys
-from dateutil.parser import parse
 
 import defaults
-from dates import get_new_wait
+from dates import get_new_wait, date_fmt
 
 
 def hasTag(task, tag):
@@ -134,7 +134,7 @@ def _set_delta(new_task):
     """ Sets 'task[delta]' to Integer Difference of 'task[due]' and 'task[wait]' """
     if fieldEquals(new_task, 'repeat', 'yes'):
         if 'wait' in new_task.keys():
-            tdelta = parse(new_task['due']) - parse(new_task['wait'])
+            tdelta = dt.datetime.strptime(new_task['due'], date_fmt) - dt.datetime.strptime(new_task['wait'], date_fmt)
             if tdelta.days < 0:
                 new_task['delta'] = -1
                 new_task.pop('wait')

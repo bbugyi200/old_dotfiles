@@ -10,7 +10,6 @@ venv/*
 .tox/*
 .coverage
 **/coverage/*
-.coveragerc
 
 .lvimrc
 **/.lshrc
