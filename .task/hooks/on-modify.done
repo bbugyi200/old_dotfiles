@@ -7,11 +7,11 @@ This hook contains functions that are run when a task is completed (e.g. `task d
 
 import datetime as dt
 import json
-import subprocess as sp
 import sys
 
 import dates
 import defaults
+import github
 import log
 import tags
 
@@ -22,21 +22,6 @@ new_task = json.loads(sys.stdin.readline())
 def isConsistent(task):
     """Returns True if 'consistent' attribute is present and enabled."""
     return ('tags' in task.keys()) and ('consistent' in task.keys()) and (task['consistent'] == 'yes')
-
-
-def close_GH_issue(new_task):
-    """Closes corresponding GitHub Issue (if one exists)."""
-    if 'githubrepo' in new_task:
-        log.logger.debug('{} corresponds to task: {}'.format(new_task['githubrepo'], new_task['description']))
-
-        gh_issue_number = str(int(float(new_task['githubnumber'])))
-        cmd_list = ['ghi', 'close', gh_issue_number, '--', new_task['githubrepo']]
-        log.logger.debug('Running command: {}'.format(cmd_list))
-
-        ps = sp.Popen(cmd_list, stdout=sp.PIPE, stderr=sp.STDOUT)
-        out = ps.communicate()[0]
-
-        log.logger.debug('ghi command failed. Error output: {}'.format(out.decode().strip()))
 
 
 def revive_repeat(new_task):
@@ -72,7 +57,8 @@ def revive_repeat(new_task):
 if __name__ == "__main__":
     if tags.isDone(new_task) and not tags.isDone(old_task):
         log.logger.debug('Task has been marked COMPLETED: {}'.format(new_task['description'][:40]))
-        close_GH_issue(new_task)
+        if github.is_issue(new_task):
+            github.close_issue(new_task)
         new_task = revive_repeat(new_task)
 
     print(json.dumps(new_task))

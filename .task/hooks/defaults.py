@@ -138,5 +138,4 @@ tags['daily']['strict'] = 'yes'
 tags['bidaily']['strict'] = 'yes'
 
 log.logger.debug('Finished defining defaults.')
-log.logger.debug('repeats: %s', repr(repeats))
-log.logger.debug('tags: %s', repr(tags))
+log.logger.vdebug('repeats: %s', repr(repeats))
