@@ -1,15 +1,24 @@
-""" This module defines defaults for tasks matching particular
-    filters (e.g. have a particular tag)
+"""Defines defaults for tasks matching particular filters (e.g. have a particular tag)
+
+Attributes:
+    force_update (list): list of fields that should be updated regardless of whether or not the
+        field already exists.
+    repeats (dict): a mapping of all special repeat tags to an integer that represents the repeat
+        duration (e.g. Ndays, N years, etc.)
+    tags (dict): a mapping of special tags to a of dict with the signature {<field>: <new_value>},
+        where <new_value> may be a constant value or defined using a special field action class
+        defined in this module.
 """
 
 import datetime as dt
 import sys
 
-from dates import getToday
+import dates
+import log
 
 
 class FieldRef:
-    """ Field Reference
+    """Field Reference
 
     References one of a Task's fields. Setting <foo> field's default to `FieldRef(<bar>)` is
     equivalent to `task add ... foo:bar ...`.
@@ -22,7 +31,7 @@ class FieldRef:
 
 
 class ModList:
-    """ Modify a List (used when field value is a list)
+    """Modify a List (used when field value is a list)
 
     For example, you can use this to add or remove a tag from the 'tags' field.
     """
@@ -41,26 +50,27 @@ class ModList:
             sys.exit(1)
 
 
-tomorrow = dt.datetime.today() + dt.timedelta(hours=18)
-tomorrow_due_time = '{year}{month:02d}{day:02d}T100000Z'.format(year=tomorrow.year,
-                                                             month=tomorrow.month,
-                                                             day=tomorrow.day)
+_tomorrow = dt.datetime.today() + dt.timedelta(hours=18)
+_tomorrow_due_time = '{year}{month:02d}{day:02d}T100000Z'.format(year=_tomorrow.year,
+                                                             month=_tomorrow.month,
+                                                             day=_tomorrow.day)
 
-always_update = ['severity', 'tags']
-
+# Public Attributes
+force_update = ['severity', 'tags']
+repeats = {}
 tags = {'inbox': {
             'project': 'Meta',
-            'due': tomorrow_due_time,
+            'due': _tomorrow_due_time,
             'delta': 0},
         'taskwarrior': {'tags': ModList('GTD', '+')},
         'khal': {'tags': ModList('GTD', '+')},
         'GTD': {'priority': 'H'},
         'tickle': {
-            'due': tomorrow_due_time,
+            'due': _tomorrow_due_time,
             'delta': 0},
         'remind': {
             'project': 'Meta',
-            'due': tomorrow_due_time,
+            'due': _tomorrow_due_time,
             'delta': 1,
             'tags': ModList(('remind', 'tickle'), ('-', '+'))},
         'blog': {'project': 'Blogs',
@@ -96,16 +106,15 @@ tags = {'inbox': {
 
 # Note that the 'annual' and 'Nyears' tags are treated differently
 # so we make sure to adjust for leap years.
-repeat_basics = {
+_repeat_basics = {
         'daily': 1,
         'weekly': 7,
         'monthly': 30,
         'annually': 1
 }
 
-repeats = {}
 for prefix, i in [('', 1), ('bi', 2)]:
-    for basic, N in repeat_basics.items():
+    for basic, N in _repeat_basics.items():
         repeats[prefix + basic] = i * N
 
 for i in range(3, 7):
@@ -115,7 +124,7 @@ for i in range(3, 7):
 
 for key in repeats.keys():
     tags[key] = {
-            'due': getToday(),
+            'due': dates.getToday(),
             'repeat': 'yes'
     }
 
@@ -127,3 +136,7 @@ for tag in ['annually', 'biannually', '3years',
 # Due dates of Daily Tasks should be respected (higher urgency)
 tags['daily']['strict'] = 'yes'
 tags['bidaily']['strict'] = 'yes'
+
+log.logger.debug('Finished defining defaults.')
+log.logger.debug('repeats: %s', repr(repeats))
+log.logger.debug('tags: %s', repr(tags))

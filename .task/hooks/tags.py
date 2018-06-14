@@ -1,39 +1,25 @@
-""" Functions Relating to Task Tags """
+"""Functions Relating to Task Tags"""
 
 import datetime as dt
 import subprocess as sp
 import sys
 
+import dates
 import defaults
-from dates import get_new_wait, date_fmt
 
 
 def hasTag(task, tag):
+    """True if tags field of @task contains @tag."""
     return ('tags' in task.keys()) and (tag in task['tags'])
 
 
 def isDone(task):
+    """True if task is completed."""
     return task['status'].lower() == 'completed'
 
 
-def fieldsEquivalent(taskA, taskB, field):
-    """ Compares the Given Field of two Tasks
-
-    Returns True if the fields are equal.
-    """
-    c1 = (field in set(taskA.keys()) & set(taskB.keys())) and (taskA[field] == taskB[field])
-    c2 = field not in set(taskA.keys()) | set(taskB.keys())
-
-    return any([c1, c2])
-
-
-def fieldEquals(task, field, value):
-    """ True if 'task[field]' equals 'value' """
-    return (field in task.keys()) and (task[field] == value)
-
-
 def process_del_tags(new_task, old_task):
-    """ Remove default task values when special tag is removed from task """
+    """Remove default task values when special tag is removed from task"""
     header = ' \n======= Custom Tag Removed =======\n'
     output = header
     if 'tags' not in old_task.keys():
@@ -58,7 +44,7 @@ def process_del_tags(new_task, old_task):
 
 
 def process_add_tags(new_task, *, old_task={}):
-    """ Add default task settings when special tag is added to task """
+    """Add default task settings when special tag is added to task"""
     header = ' \n======= Custom Tag Added =======\n'
     output = header
     if 'tags' in new_task.keys():
@@ -75,7 +61,7 @@ def process_add_tags(new_task, *, old_task={}):
                             new_task.pop(field)
                         except KeyError as e:
                             pass
-                    elif field not in new_task.keys() or field in defaults.always_update:
+                    elif field not in new_task.keys() or field in defaults.force_update:
                         if isinstance(value, defaults.FieldRef):
                             try:
                                 new_task[field] = new_task[value.field]
@@ -111,8 +97,8 @@ def process_add_tags(new_task, *, old_task={}):
         new_task.pop('priority')
 
     if 'delta' in new_task.keys():
-        if fieldsEquivalent(new_task, old_task, 'wait') and (new_task['delta'] >= 0):
-            new_task['wait'] = get_new_wait(new_task)
+        if _fieldsEquiv(new_task, old_task, 'wait') and (new_task['delta'] >= 0):
+            new_task['wait'] = dates.get_new_wait(new_task)
             out = "'delta' Field Exists => task[wait] = task[due] - {}d\n".format(int(new_task['delta']))
             print(out)
     else:
@@ -130,11 +116,27 @@ def process_add_tags(new_task, *, old_task={}):
     return new_task
 
 
+def _fieldsEquiv(taskA, taskB, field):
+    """Compares the Given Field of two Tasks
+
+    Returns True if the fields are equal.
+    """
+    c1 = (field in set(taskA.keys()) & set(taskB.keys())) and (taskA[field] == taskB[field])
+    c2 = field not in set(taskA.keys()) | set(taskB.keys())
+
+    return any([c1, c2])
+
+
+def _fieldEquals(task, field, value):
+    """True if 'task[field]' equals 'value'"""
+    return (field in task.keys()) and (task[field] == value)
+
+
 def _set_delta(new_task):
-    """ Sets 'task[delta]' to Integer Difference of 'task[due]' and 'task[wait]' """
-    if fieldEquals(new_task, 'repeat', 'yes'):
+    """Sets 'task[delta]' to Integer Difference of 'task[due]' and 'task[wait]'"""
+    if _fieldEquals(new_task, 'repeat', 'yes'):
         if 'wait' in new_task.keys():
-            tdelta = dt.datetime.strptime(new_task['due'], date_fmt) - dt.datetime.strptime(new_task['wait'], date_fmt)
+            tdelta = dt.datetime.strptime(new_task['due'], dates.date_fmt) - dt.datetime.strptime(new_task['wait'], dates.date_fmt)
             if tdelta.days < 0:
                 new_task['delta'] = -1
                 new_task.pop('wait')

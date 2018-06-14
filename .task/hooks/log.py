@@ -1,3 +1,9 @@
+"""Sets up logging.
+
+Attributes:
+    logger: log.Logger object used for logging taskwarrior hooks.
+"""
+
 import logging
 
 import gutils

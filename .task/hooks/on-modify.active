@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 
-""" Hooks that run when a task is started or stopped """
+"""Active (start/stop) on-modify hook.
+
+This hook contains functions that are run when a task is start and/or stopped.
+"""
 
 import json
 import subprocess as sp
 import sys
 
-from log import logger
+import log
 import tags
 
 # Make no changes to the task, simply observe.
@@ -28,7 +31,7 @@ if __name__ == "__main__":
 
     # Started task.
     if 'start' in new_task and 'start' not in old_task:
-        logger.debug('Task Started: {}'.format(new_task['description']))
+        log.logger.debug('Task Started: {}'.format(new_task['description']))
         cmd = 'timew start "[Project: {project}]" {tags}'
         sp.check_call(cmd.format(project=new_task['description'], tags=combined_timew_tags.decode()),
                 shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
@@ -37,7 +40,7 @@ if __name__ == "__main__":
 
     # Stopped task.
     elif ('start' not in new_task) and ('start' in old_task):
-        logger.debug('Task Stopped: {}'.format(new_task['description']))
+        log.logger.debug('Task Stopped: {}'.format(new_task['description']))
         sp.Popen('timew stop', shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
         if not tags.isDone(new_task):
             with open('/home/bryan/.task/.last_task', 'w') as f:
