@@ -2,7 +2,10 @@
 
 """Done (completed) on-modify hook.
 
-This hook contains functions that are run when a task is completed (e.g. `task done`).
+This hook contains functions that are run when a task is completed (e.g. `task done`). This
+includes:
+   - Implementing custom "repeat" tag recurrences.
+   - Closing corresponding GitHub Issues.
 """
 
 import datetime as dt
@@ -19,12 +22,12 @@ old_task = json.loads(sys.stdin.readline())
 new_task = json.loads(sys.stdin.readline())
 
 
-def isConsistent(task):
+def _isConsistent(task):
     """Returns True if 'consistent' attribute is present and enabled."""
     return ('tags' in task.keys()) and ('consistent' in task.keys()) and (task['consistent'] == 'yes')
 
 
-def revive_repeat(new_task):
+def _revive_repeat(new_task):
     """Checks if task has a custom repeat tag. If so, the task is brought back into pending
     status and a new due date is set.
     """
@@ -35,7 +38,7 @@ def revive_repeat(new_task):
             due_date = dt.datetime.strptime(new_task['due'], dates.date_fmt)
 
             todayDT = dates.getTodayDT()
-            if not isConsistent(new_task) and (due_date.astimezone(tz=dt.timezone.utc) < todayDT):
+            if not _isConsistent(new_task) and (due_date.astimezone(tz=dt.timezone.utc) < todayDT):
                 due_date = todayDT
 
             if any(x in tag for x in ['annual', 'year']):
@@ -59,6 +62,6 @@ if __name__ == "__main__":
         log.logger.debug('Task has been marked COMPLETED: {}'.format(new_task['description'][:40]))
         if github.is_issue(new_task):
             github.close_issue(new_task)
-        new_task = revive_repeat(new_task)
+        new_task = _revive_repeat(new_task)
 
     print(json.dumps(new_task))

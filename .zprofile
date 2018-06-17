@@ -9,7 +9,7 @@ export XDG_CONFIG_HOME=/home/bryan/.config
 export POWERLINE_DIRECTORY=/usr/lib/python3.6/site-packages
 export PANEL_FIFO=/tmp/panel-fifo
 export MATLABPATH=$HOME/.matlab
-export SHELLCHECK_OPTS="-e SC1117 -e SC2059 -e SC2129 -e SC2162"
+export SHELLCHECK_OPTS="-e SC1091 -e SC1117 -e SC2059 -e SC2129 -e SC2162"
 
 # virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs

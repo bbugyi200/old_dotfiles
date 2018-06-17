@@ -2,7 +2,10 @@
 
 """Active (start/stop) on-modify hook.
 
-This hook contains functions that are run when a task is start and/or stopped.
+This hook contains functions that are run when a task is start and/or stopped. This includes:
+   - Starting/stopping TimeWarrior
+   - Starting xtaskidle
+   - Writing last task UUID to file (used by 'last_task' script).
 """
 
 import json

@@ -249,6 +249,7 @@ autocmd FileType * setlocal formatoptions-=t formatoptions-=r formatoptions-=o
 autocmd BufRead,BufNewFile .lshrc set ft=zsh
 autocmd BufRead,BufNewFile config set ft=cfg
 autocmd BufRead,BufNewFile .coveragerc set ft=cfg
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " ------------------------------- CUSTOM COMMANDS ----------------------------
 " Redraws screen after silent command

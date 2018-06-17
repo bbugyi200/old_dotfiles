@@ -33,7 +33,7 @@ def process_del_tags(new_task, old_task):
                         fmt = "-{tag} => {field}:\n"
                         output += fmt.format(tag=tag, field=field)
                         new_task.pop(field)
-                except KeyError as e:
+                except KeyError:
                     pass
 
     if output != header:
@@ -59,7 +59,7 @@ def process_add_tags(new_task, *, old_task={}):
                     if value is None:
                         try:
                             new_task.pop(field)
-                        except KeyError as e:
+                        except KeyError:
                             pass
                     elif field not in new_task.keys() or field in defaults.force_update:
                         if isinstance(value, defaults.FieldRef):
@@ -67,7 +67,7 @@ def process_add_tags(new_task, *, old_task={}):
                                 new_task[field] = new_task[value.field]
                                 output += fmt.format(tag=tag, field=field,
                                                      sep=' = ', val='task[{}]'.format(value.field))
-                            except KeyError as e:
+                            except KeyError:
                                 error_fmt = "The '{field}:' field must be defined when using the '+{tag}' tag."
                                 print(error_fmt.format(field=value.field, tag=tag))
                                 sys.exit(1)
@@ -82,7 +82,7 @@ def process_add_tags(new_task, *, old_task={}):
                                     try:
                                         new_task[field].remove(item)
                                         sep = '.remove'
-                                    except ValueError as e:
+                                    except ValueError:
                                         error_fmt = "Cannot remove '{item}'! '{item}' is not in '{field}'!"
                                         print(error_fmt.format(item=item, field=field))
                                         sys.exit(1)

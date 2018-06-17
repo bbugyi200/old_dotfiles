@@ -44,6 +44,7 @@ Plugin 'ap/vim-buftabline'
 Plugin 'KabbAmine/zeavim.vim'
 Plugin 'gu-fan/riv.vim'
 Plugin 'tpope/vim-rhubarb'
+Plugin 'Vimjas/vim-python-pep8-indent'
 
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'neovimhaskell/haskell-vim'

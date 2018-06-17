@@ -3,6 +3,7 @@
 # ----- CONTEXTS -----
 context.study=project:Study or +research or (urg>6)
 context.localalias=project:Dev.localalias or (urg>6)
+context.grad=project:Study.Grad
 context.mobile=+call or project:Blogs or project:Videos or +errand or (urg>6)
 context.review=project.not:Study. project.not:Dev. -inbox ( project.not:Holiday or project:Holiday. )
 
@@ -88,7 +89,7 @@ tasksh.autoclear=1
 verbose=blank,label,new-id,affected,edit,special,unwait,recur
 reserved.lines=1
 search.case.sensitive=no
-_forcecolor=off
+_forcecolor=no
 defaultwidth=`tput cols`
 nag=
 
@@ -108,4 +109,3 @@ color.blocked=white on black
 color.tagged=  # A task should not be colored for just any tag
 
 # ----- DYNAMICALLY SET AT RUNTIME -----
-context=review

@@ -148,6 +148,8 @@ map Bb focus_inputbar ":bmark "
 map Bd feedkeys ":bdelete <Tab>"
 
 # ---------- Miscellaneous Bindings
+map s feedkeys ":exec zsearch<Return>"
+map S feedkeys ":exec zsearch --keys<Return>"
 map o feedkeys ":exec zopen<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
 map <C-[> feedkeys ":nohlsearch<Return>"

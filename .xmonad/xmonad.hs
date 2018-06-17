@@ -157,6 +157,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, x), launch_app "TERM'" myTerminal)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, z), launch_app "ZATH" "zathura")
+   , ((alpha .|. beta .|. shift, z), sequence_ [CW.nextScreen, launch_app "ZATH'" "zsearch --new"])
 
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)

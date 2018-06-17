@@ -8,9 +8,6 @@ import logging
 
 import gutils
 
-gutils.logging.add_vdebug_level(logging)
-_STREAM_LOGGING_LEVEL = logging.INFO
-
 
 def _add_handers(logger):
     """Adds logging handlers to @logger.
@@ -39,4 +36,7 @@ def _add_handers(logger):
 
 
 logger = logging.getLogger(__name__)
+gutils.logging.add_vdebug_level(logging)
+
+_STREAM_LOGGING_LEVEL = logging.VDEBUG
 _add_handers(logger)

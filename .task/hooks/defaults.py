@@ -31,13 +31,14 @@ class FieldRef:
 
 
 class ModList:
-    """Modify a List (used when field value is a list)
+    """Modify List
 
-    For example, you can use this to add or remove a tag from the 'tags' field.
+    Used when field value is a list. For example, you can use this to add or remove a tag from the
+    'tags' field.
     """
     mode_opts = ['+', '-']
 
-    def __init__(self, items, modes: '(+|-, ..., +|-)'):
+    def __init__(self, items, modes):
         if not isinstance(items, str) and not isinstance(modes, str):
             self.items = items
             self.modes = modes
@@ -137,5 +138,4 @@ for tag in ['annually', 'biannually', '3years',
 tags['daily']['strict'] = 'yes'
 tags['bidaily']['strict'] = 'yes'
 
-log.logger.debug('Finished defining defaults.')
 log.logger.vdebug('repeats: %s', repr(repeats))

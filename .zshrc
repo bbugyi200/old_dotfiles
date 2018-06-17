@@ -2,9 +2,14 @@
 # ------------------------------ SOURCES -------------------------------------
 source /home/bryan/Dropbox/dotfiles/home/extras/oh-my-zsh
 
-unalias gco  # Defined in Oh-My-Zsh's Git plugin
-unalias d; unalias l; unalias ll; disable r
-unalias 1; unalias 2; unalias 3; unalias 4; unalias 5; unalias 6; unalias 7; unalias 8; unalias 9
+# Disable aliases
+arr=("ll" "gco")
+for i in "${arr[@]}"; do
+    unalias "$i" &> /dev/null
+done
+
+# Disable builtins
+disable r
 
 source /home/bryan/Dropbox/dotfiles/home/extras/tmuxinator.zsh
 source /home/bryan/Dropbox/dotfiles/home/extras/aliases.sh
@@ -43,7 +48,7 @@ alias -s txt="vim"
 
 # --- Global Aliases
 alias -g @@="&> /dev/null & disown"
-alias -g ::="| grep -e"
+alias -g ::="| grep -i -e"
 alias -g %="| less"
 alias -g X="clear &&"
 
@@ -80,7 +85,7 @@ done
 stty -ixon
 
 if [[ -d $PWD/.git ]] && [[ -d ~/.virtualenvs/$(basename $PWD) ]]; then
-    workon $(basename $PWD)
+    workon $(basename $PWD) &> /dev/null
 fi
 
 # Starts ssh-agent automatically
@@ -99,5 +104,13 @@ if [[ -f $PWD/.lzshrc ]]; then
     source ".lzshrc"
 fi
 
+if (( $+commands[tag] )); then
+  export TAG_SEARCH_PROG=ag  # replace with rg for ripgrep
+  tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
+  alias ag=tag  # replace with rg for ripgrep
+fi
+
 # added by travis gem
 [ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh
+
+[ -f /home/bryan/.config/localalias/localalias.zsh ] && source /home/bryan/.config/localalias/localalias.zsh

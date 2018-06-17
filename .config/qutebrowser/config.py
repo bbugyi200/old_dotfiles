@@ -80,12 +80,13 @@ c.url.searchengines = {
                   SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
                   patterns=(SE.LuckyQuery.pattern, SE.TwoIntQuery.pattern),
                   filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter)),
-    'waf': 'https://waffle.io/bbugyi200/{}'
 }
 
 #############
 #  Aliases  #
 #############
+c.aliases['h'] = 'help'
+c.aliases['tvid'] = 'spawn --userscript taskadd tags:video'
 c.aliases['vs'] = 'open -w'
 
 
@@ -107,11 +108,11 @@ cbind = functools.partial(bind, mode='command')
 
 
 ########## Unbinds
-unbound_nkeys = ['b', 'B', 'd', 'D', 'gd', 'ad', 'co']
+unbound_nkeys = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'M', ]
 for keys in unbound_nkeys:
     unbind(keys)
 
-unbound_ikeys = ['<Ctrl-e>']
+unbound_ikeys = ['<Ctrl-e>', ]
 for keys in unbound_ikeys:
     unbind(keys, mode='insert')
 
@@ -144,13 +145,14 @@ bind(';Y', 'hint links spawn ytcast {hint-url}', 'message-info "Casting YouTube 
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
 bind('<Ctrl-t>', 'spawn --userscript taskadd tags:inbox')
-bind('<Ctrl-v>', 'spawn --userscript taskadd tags:video')
 bind('a', ':set-cmd-text -s :quickmark-load')
 bind('A', ':set-cmd-text -s :quickmark-load -t')
-bind('b', 'set-cmd-text -s :buffer')
+bind('b', 'quickmark-save')
+bind('B', 'bookmark-add')
 bind('cd', 'download-cancel')
 bind('D', 'download')
 bind('gi', 'hint inputs')
+bind('m', 'enter-mode set_mark')
 bind('p', 'open -- {clipboard}')
 bind('P', 'open -t -- {clipboard}')
 bind('t-', 'tab-only')
