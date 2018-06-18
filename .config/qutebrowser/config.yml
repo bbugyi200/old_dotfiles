@@ -2,7 +2,7 @@ tabs:
     position: left
     mousewheel_switching: false
     show: always
-    last_close: startpage
+    last_close: close
     select_on_remove: next
     new_position:
         related: next

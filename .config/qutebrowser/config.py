@@ -86,6 +86,7 @@ c.url.searchengines = {
 #  Aliases  #
 #############
 c.aliases['h'] = 'help'
+c.aliases['libget'] = 'jseval -q document.querySelector("h2").click()'  # click GET on libgen
 c.aliases['tvid'] = 'spawn --userscript taskadd tags:video'
 c.aliases['vs'] = 'open -w'
 
@@ -132,11 +133,12 @@ cbind('<Ctrl-f>', 'edit-command --run')
 
 # >>> NORMAL
 bind(',e', 'spawn --userscript searchbar-command')
-bind(',G', 'jseval -q document.querySelector("h2").click()')  # click GET on libgen
 bind(',m', 'spawn --userscript view_in_umpv -d')
 bind(',p', 'open -p')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
 bind(',rss', 'spawn --userscript openfeeds')
+bind(',ss', 'set-cmd-text -s :session-save -o')
+bind(',sl', 'set-cmd-text -s :session-load -c')
 bind(',t', 'config-cycle tabs.position left top')
 bind(';m', 'hint links spawn umpv {hint-url}', 'message-info "Select video to load with umpv."')
 bind(';M', 'hint links spawn umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
@@ -145,8 +147,8 @@ bind(';Y', 'hint links spawn ytcast {hint-url}', 'message-info "Casting YouTube 
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
 bind('<Ctrl-t>', 'spawn --userscript taskadd tags:inbox')
-bind('a', ':set-cmd-text -s :quickmark-load')
-bind('A', ':set-cmd-text -s :quickmark-load -t')
+bind('a', 'set-cmd-text -s :quickmark-load')
+bind('A', 'set-cmd-text -s :quickmark-load -t')
 bind('b', 'quickmark-save')
 bind('B', 'bookmark-add')
 bind('cd', 'download-cancel')

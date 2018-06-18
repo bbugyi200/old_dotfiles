@@ -4,7 +4,7 @@ import XMonad
 import XMonad.Actions.SpawnOn (spawnOn,spawnHere,manageSpawn)
 import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Config.Desktop (desktopConfig)
-import XMonad.Hooks.ManageDocks (avoidStruts)
+import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe,hPutStrLn)
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Layout.Spacing (smartSpacing)
@@ -119,7 +119,7 @@ myAdditionalKeys = [
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
    , ((alpha, h), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.L False])
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tmdir --get $(tmux display-message -p \"#S\")) && lls'") -- cd to Tmux Home Dir
+   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tmdir --get $(tmux display-message -p \"#S\")) && ll'") -- cd to Tmux Home Dir
    , ((alpha, j), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.U False])
@@ -180,9 +180,9 @@ myAdditionalKeys = [
    , ((alpha, xK_bracketright), sequence_ [DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, DW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
-   , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); lls'") -- cd to Next Dir
+   , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); ll'") -- cd to Next Dir
    , ((alpha .|. beta, xK_equal), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
-   , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; lls'") -- cd to Last Dir
+   , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; ll'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
    , ((alpha, xK_semicolon), spawn "shellPrompt -d")
    , ((alpha .|. beta, xK_slash), sequence_ $ seq_push ++ [CW.nextScreen]) -- Send current WS to Next Screen (send focus)
@@ -286,7 +286,7 @@ main :: IO ()
 main = do
     hostname <- getHostName
     xmproc <- spawnPipe (xmobarTempFmt $ getXmobarTemplate $ "1-top-" ++ hostname)
-    xmonad $ ewmh desktopConfig
+    xmonad . docks . ewmh $ desktopConfig
         {
             terminal                = myTerminal
           , modMask                 = alpha

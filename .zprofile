@@ -20,7 +20,7 @@ export LATITUDE="39.997467N"
 export LONGITUDE="74.778291W"
 
 # Enables executables installed with 'gem install' to run
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:/home/bryan/.local/bin:$PATH"
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:/home/bryan/.local/bin:$PATH:~/.cabal/bin"
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -le 3 ] && [ "$(id -u)" != 0 ]; then
   exec startx

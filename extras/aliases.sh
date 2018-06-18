@@ -2,12 +2,9 @@ source /home/bryan/Dropbox/dotfiles/home/extras/GTD.sh
 
 # ---------- MISCELLANEOUS ----------
 alias actvenv='source venv/bin/activate'
-auto() { nohup autodemo $@ &> /dev/null & disown && clear; }
+auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 alias cppinit='cinit ++'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
-ll () { ls --color=always -l "$@" | less; }
-lls () { clear && ls -a "$@" && echo; }
-lcd () { cd "$1" && lls; }
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 # Create and CD to New Directory

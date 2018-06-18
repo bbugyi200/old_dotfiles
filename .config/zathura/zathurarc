@@ -122,7 +122,7 @@ map gW feedkeys ":blist W<Return>"
 map gX feedkeys ":blist X<Return>"
 map gY feedkeys ":blist Y<Return>"
 map gZ feedkeys ":blist Z<Return>"
-map g0 feedkeys ":blist 0<Return>"
+map g0 feedkeys ":blist 0<Return>:nohlsearch<Return>"  # '0' is a special mark used by 'zsearch'
 map g1 feedkeys ":blist 1<Return>"
 map g2 feedkeys ":blist 2<Return>"
 map g3 feedkeys ":blist 3<Return>"
