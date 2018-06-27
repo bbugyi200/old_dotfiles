@@ -14,12 +14,13 @@ config.load_autoconfig()
 ####################
 #  Search Engines  #
 ####################
-# construction of bang search pattern for 1-3 letter words and specified longer bangs
-excluded_bangs = ['is', 'do', 'c', 'C']
-included_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy']
-bang_fmt = '^({}[A-z][A-z]?|({}))%20'
-bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in excluded_bangs]),
-                             '|'.join(included_bangs))
+one_letter_bangs = ['a', 'd', 'g', 'i', 't', 'w']
+two_letter_bangs = ['wa']
+long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy']
+included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
+
+bang_fmt = '^({})%20'
+bang_pttrn = bang_fmt.format('|'.join(included_bangs))
 
 c.url.searchengines = {
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
