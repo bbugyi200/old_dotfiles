@@ -25,6 +25,7 @@ __pycache__/*
 **/.pytest_cache/*
 .cache
 
+.clang_complete
 .stow-local-ignore
 passwd
 tags

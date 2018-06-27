@@ -15,7 +15,7 @@ config.load_autoconfig()
 #  Search Engines  #
 ####################
 # construction of bang search pattern for 1-3 letter words and specified longer bangs
-excluded_bangs = ['is', 'do']
+excluded_bangs = ['is', 'do', 'c', 'C']
 included_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy']
 bang_fmt = '^({}[A-z][A-z]?|({}))%20'
 bang_pttrn = bang_fmt.format(''.join(['(?!{})'.format(w) for w in excluded_bangs]),
@@ -64,7 +64,10 @@ c.url.searchengines = {
                       lambda x: re.split(r'%20%23', SE.LuckyQuery.filter(x), maxsplit=1),
                       SE.LuckyQuery.filter,
                   )),
-    'li': SE.static.google('site:linkedin.com {}'),
+    'li': SE.URL(SE.static.google('site:linkedin.com {}'),
+                 SE.static.google('site:linkedin.com {} software'),
+                 patterns='^%40',
+                 filters=lambda x: x[3:]),
     'lib': 'http://libgen.io/search.php?req={}',
     'pir': SE.URL('https://thepiratebay.org/search/{}',
                   'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
@@ -88,6 +91,7 @@ c.url.searchengines = {
 c.aliases['h'] = 'help'
 c.aliases['libget'] = 'jseval -q document.querySelector("h2").click()'  # click GET on libgen
 c.aliases['tvid'] = 'spawn --userscript taskadd tags:video'
+c.aliases['tdoc'] = 'spawn --userscript taskadd tags:doc'
 c.aliases['vs'] = 'open -w'
 
 

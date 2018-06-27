@@ -10,14 +10,14 @@ windows:
         layout: even-horizontal
         panes:
             - 0:
-                - lls
+                - ll
     - II:
         layout: even-horizontal
         panes:
             - 0:
-                - lls
+                - ll
     - III:
         layout: even-horizontal
         panes:
             - 0:
-                - lls
+                - ll

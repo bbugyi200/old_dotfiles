@@ -1,10 +1,10 @@
--------------------------------------------------------------------------------
--------------------------------- Imports --------------------------------------
+---------------
+--  Imports  --
+---------------
 import XMonad
 import XMonad.Actions.SpawnOn (spawnOn,spawnHere,manageSpawn)
 import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Config.Desktop (desktopConfig)
-import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe,hPutStrLn)
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Layout.Spacing (smartSpacing)
@@ -18,6 +18,7 @@ import Network.HostName (getHostName)
 
 import Graphics.X11.ExtraTypes.XF86
 
+import qualified XMonad.Hooks.ManageDocks as Docks
 import qualified Data.List as DataList
 import qualified Data.Char as DataChar
 import qualified XMonad.StackSet as W
@@ -30,15 +31,17 @@ import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 import qualified XMonad.Layout.ResizableTile as RT
 import qualified XMonad.Actions.Navigation2D as N2D
 
----------------------------------- Functions ----------------------------------
+-----------------
+--  Functions  --
+-----------------
 -- Function that prevents cycling to workspaces available on other screens
 hiddenNotNSP :: X (WindowSpace -> Bool)
 hiddenNotNSP = do
   sort <- DW.getSortByOrder
   hs <- gets (map W.tag . sort . NSP.namedScratchpadFilterOutWorkspace . W.hidden . windowset)
-  return (\w -> (W.tag w) `elem` hs)
+  return (\w -> W.tag w `elem` hs)
 
--- | This is a re-implementation of DW.withNthworkspace with "skipTags"
+-- This is a re-implementation of DW.withNthworkspace with "skipTags"
 -- added to filter out NSP.
 withNthWorkspace' :: (String -> WindowSet -> WindowSet) -> Int -> X ()
 withNthWorkspace' job wnum = do
@@ -58,46 +61,49 @@ getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwo
 getXmobarTemplate "2-top" = "}%weather%      [%sunrise% / %sunset%]{"
 getXmobarTemplate "2-bottom" = "}{"
 
+removeEmptyWorkspaceAfter' :: X () -> X ()
 removeEmptyWorkspaceAfter' f = do
     workspaceList <- gets (W.workspaces . windowset)
-    let n = length $ workspaceList
+    let n = length workspaceList
     when (n > 3) $ DW.removeEmptyWorkspaceAfter f
-    when (n <= 3) $ f
+    when (n <= 3) f
 
+removeEmptyWorkspace' :: X ()
 removeEmptyWorkspace' = do
     workspaceList <- gets (W.workspaces . windowset)
-    let n = length $ workspaceList
-    when (n > 3) $ DW.removeEmptyWorkspace
+    let n = length workspaceList
+    when (n > 3) DW.removeEmptyWorkspace
 
-launch_app :: String -> String -> X ()
-launch_app ws cmd = sequence_ [DW.addWorkspace ws, (spawnHere $ "hide_nsp && WS_is_Empty && " ++ cmd)]
+launchApp :: String -> String -> X ()
+launchApp ws cmd = sequence_ [DW.addWorkspace ws, spawnHere $ "hide_nsp && WS_is_Empty && " ++ cmd]
 
 -- Only shows layout when fullscreen mode is enabled
-my_ppOrder :: [String] -> [String]
-my_ppOrder (ws:l:t:_) = 
-    if DataList.isInfixOf "Full" l
+myPpOrder :: [String] -> [String]
+myPpOrder (ws:l:t:_) = 
+    if "Full" `DataList.isInfixOf` l
         then [ws, DL.xmobarColor "white" "" "<icon=full.xbm/>"]
         else [ws]
 
 strToUpper :: String -> String
 strToUpper = map DataChar.toUpper
 
-------------------------------- Variables -------------------------------------
+seqPush :: [X ()]
+seqPush = [CW.swapNextScreen, CW.toggleWS' ["NSP"]]
 
-seq_push = [CW.swapNextScreen, CW.toggleWS' ["NSP"]]
-
-------------------------------- Key Bindings ----------------------------------
+--------------------
+--  Key Bindings  --
+--------------------
 
 ------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
 --
--- The `alpha` and `beta` keys will always be set to either 'super' or 'alt',
--- depending on which key you want as your primary meta key.
+-- The `alpha` and `beta` keys will always be set to either 'super' or 'alt', depending on which
+-- key you want as your primary meta key.
 --
--- NOTE: I have used Xmodmap to swap the 'super' and 'alt' keys on my keyboard.
---       This has no effect on this configuration (i.e. the alt key still corresponds
---       to `mod1Mask`), but most other programs will recognize 'super' as 'alt' and
---       vice-versa.
+-- NOTE: I have used Xmodmap to swap the 'super' and 'alt' keys on my keyboard.  This has no effect
+-- on this configuration (i.e. the alt key still corresponds to `mod1Mask`), but most other
+-- programs will recognize 'super' as 'alt' and vice-versa.
 
+-- KeyMask Aliases
 alpha = mod1Mask
 beta = mod4Mask
 ctrl = controlMask
@@ -110,11 +116,11 @@ myAdditionalKeys = [
    , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
    , ((alpha .|. beta, a), spawn "alarm") -- Alarm
    , ((alpha, a), spawn "sleep 0.2 && xdotool key alt+a") -- Tmux Prefix
-   , ((alpha .|. beta, a), launch_app "ANKI" "anki")
+   , ((alpha .|. beta, a), launchApp "ANKI" "anki")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
-   , ((alpha, c), launch_app "WEB" "qutebrowser --enable-webengine-inspector")
-   , ((alpha, d), windows $ W.focusDown)
+   , ((alpha, c), launchApp "WEB" "qutebrowser --enable-webengine-inspector")
+   , ((alpha, d), windows W.focusDown)
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
    , ((alpha, h), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.L False])
@@ -130,7 +136,7 @@ myAdditionalKeys = [
    , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
-   , ((alpha .|. shift, m), sequence_ $ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"] ++ seq_push) -- Shift current window to MISC
+   , ((alpha .|. shift, m), sequence_ $ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"] ++ seqPush) -- Shift current window to MISC
    , ((alpha, n), spawn "tmux -L $(tm-socket) next-window") -- Tmux Next
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
@@ -151,13 +157,14 @@ myAdditionalKeys = [
    , ((alpha, t), spawn "prompt 'Inbox' -format 'q' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
-   , ((alpha, u), windows $ W.focusUp)
-   , ((alpha, v), launch_app "CAST" "cast")
-   , ((alpha, x), launch_app "TERM" myTerminal)
-   , ((alpha .|. beta, x), launch_app "TERM'" myTerminal)
+   , ((alpha, u), windows W.focusUp)
+   , ((alpha, v), launchApp "CAST" "cast")
+   , ((alpha, x), launchApp "TERM" myTerminal)
+   , ((alpha .|. beta, x), launchApp "TERM'" myTerminal)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
-   , ((alpha, z), launch_app "ZATH" "zathura")
-   , ((alpha .|. beta .|. shift, z), sequence_ [CW.nextScreen, launch_app "ZATH'" "zsearch --new"])
+   , ((alpha, z), launchApp "ZATH" "zathura")
+   , ((alpha .|. beta, z), launchApp "ZEAL" "zeal")
+   , ((alpha .|. beta .|. shift, z), sequence_ [CW.nextScreen, launchApp "ZATH'" "zsearch --new"])
 
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
@@ -174,7 +181,7 @@ myAdditionalKeys = [
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
    , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "weechat") -- Scratchpad Add Task to Inbox
    , ((alpha, xK_backslash), CW.nextScreen) -- Next Screen
-   , ((alpha .|. beta, xK_backslash), sequence_ seq_push) -- Send current WS to Next Screen (keep focus)
+   , ((alpha .|. beta, xK_backslash), sequence_ seqPush) -- Send current WS to Next Screen (keep focus)
    , ((alpha, xK_bracketleft), sequence_ [DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)]) -- Prev Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
@@ -185,19 +192,19 @@ myAdditionalKeys = [
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; ll'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
    , ((alpha, xK_semicolon), spawn "shellPrompt -d")
-   , ((alpha .|. beta, xK_slash), sequence_ $ seq_push ++ [CW.nextScreen]) -- Send current WS to Next Screen (send focus)
+   , ((alpha .|. beta, xK_slash), sequence_ $ seqPush ++ [CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
    ]
 
    -- View WS
    ++ [((alpha, k), withNthWorkspace' W.view i)
-       | (i, k) <- zip [0..7] $ [xK_1 .. xK_8]
+       | (i, k) <- zip [0..7] [xK_1 .. xK_8]
       ]
 
    -- Shift to WS; then Focus WS
    ++ [((alpha .|. beta, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
-       | (i, k) <- zip [0..7] $ [xK_1 .. xK_8]
+       | (i, k) <- zip [0..7] [xK_1 .. xK_8]
       ]
 
    where
@@ -207,7 +214,9 @@ myAdditionalKeys = [
        s = xK_s; t = xK_t; u = xK_u; v = xK_v; w = xK_w; x = xK_x
        y = xK_y; z = xK_z
 
--------------------------------- Misc Configs ---------------------------------
+------------------------------------
+--  Miscellaneous Configurations  --
+------------------------------------
 myTerminal = "urxvt -e zsh -c 'tm-init Terminal'"
 
 myFocusFollowsMouse = False
@@ -244,7 +253,6 @@ t = 0.4; bigt = 0.05  -- Distance from top edge
 w = 0.5; bigw = 0.9
 h = 0.5; bigh = 0.9
 
-scratchpad_list = ["scratchpad", "calculator", "weechat", "gtd"]
 scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad") 
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "calculator" calculator (appName =? "calculator")
@@ -263,13 +271,13 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
 myManageHook = composeAll
     [ manageSpawn
     , NSP.namedScratchpadManageHook scratchpads
-    , appName=? "peek"              --> doFloat
-    , className=? "Pinentry"        --> doFloat
-    , appName=? "calculator"        --> doRectFloat (W.RationalRect l t w h)
-    , className=? "Clipster"        --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
-    , appName=? "floater"           --> doRectFloat (W.RationalRect l t w h)
-    , appName=? "big-floater"       --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
-    , appName=? "qute-editor"       --> doRectFloat (W.RationalRect l t w h)]
+    , appName=? "peek"        --> doFloat
+    , className=? "Pinentry"  --> doFloat
+    , appName=? "calculator"  --> doRectFloat (W.RationalRect l t w h)
+    , className=? "Clipster"  --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
+    , appName=? "floater"     --> doRectFloat (W.RationalRect l t w h)
+    , appName=? "big-floater" --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
+    , appName=? "qute-editor" --> doRectFloat (W.RationalRect l t w h)]
 
 myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
@@ -277,16 +285,18 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "init-bg"
                 >> spawn "sleep 2 && volume-xmonad"
                 >> spawn "sleep 2 && calalrms"
-                >> spawn ((xmobarTempFmt $ getXmobarTemplate "1-bottom") ++ " --position=Bottom")
-                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "2-top") ++ " --screen=1")
-                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ (xmobarTempFmt $ getXmobarTemplate "2-bottom") ++ " --position=Bottom --screen=1")
+                >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " --position=Bottom")
+                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=1")
+                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " --position=Bottom --screen=1")
 
--------------------------------- Main -----------------------------------------
+------------
+--  Main  --
+------------
 main :: IO ()
 main = do
     hostname <- getHostName
     xmproc <- spawnPipe (xmobarTempFmt $ getXmobarTemplate $ "1-top-" ++ hostname)
-    xmonad . docks . ewmh $ desktopConfig
+    xmonad . Docks.docks . ewmh $ desktopConfig
         {
             terminal                = myTerminal
           , modMask                 = alpha
@@ -296,11 +306,11 @@ main = do
           , clickJustFocuses        = myClickJustFocuses
           , workspaces              = myWorkspaces
           , manageHook              = myManageHook
-          , layoutHook              = avoidStruts $ myLayout
+          , layoutHook              = Docks.avoidStruts myLayout
           , startupHook             = myStartupHook
           , logHook                 = DL.dynamicLogWithPP DL.xmobarPP
             { DL.ppOutput                = hPutStrLn xmproc
-            , DL.ppOrder                 = my_ppOrder
+            , DL.ppOrder                 = myPpOrder
             , DL.ppSep                   = DL.xmobarColor "white" "" "    "
             , DL.ppCurrent               = DL.xmobarColor "yellow" "" . strToUpper . DL.wrap "[" "]"
             , DL.ppVisible               = DL.xmobarColor "yellow" "" . strToUpper

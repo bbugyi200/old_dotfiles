@@ -2,6 +2,7 @@
 
 # ----- CONTEXTS -----
 context.study=project:Study or +research or (urg>6)
+context.dev=project:Dev project.not:Dev.localalias or (urg>6)
 context.localalias=project:Dev.localalias or (urg>6)
 context.grad=project:Study.Grad
 context.mobile=+call or project:Blogs or project:Videos or +errand or (urg>6)
@@ -38,13 +39,13 @@ urgency.uda.priority.H.coefficient=3.0
 urgency.uda.priority.L.coefficient=-3.0
 urgency.uda.priority.M.coefficient=0.0
 # MISC
-urgency.user.tag.GTD.coefficient=3.0
+urgency.user.tag.GTD.coefficient=2.0
 urgency.user.tag.inbox.coefficient=2.0  # places inbox tasks above other 'Meta' tasks
 urgency.user.project.Study.Docs.coefficient=-1.0
 # Severity
-urgency.uda.severity.critical.coefficient=10.0
-urgency.uda.severity.high.coefficient=3.0
-urgency.uda.severity.medium.coefficient=1.5
+urgency.uda.severity.critical.coefficient=5.0
+urgency.uda.severity.high.coefficient=2.0
+urgency.uda.severity.medium.coefficient=1.0
 urgency.uda.severity.low.coefficient=0.0
 
 # ----- UDAs -----
@@ -105,7 +106,8 @@ color.project.Holiday=rgb515
 color.project.Meta=black on rgb214
 color.due.today=rgb050
 color.overdue=rgb500
-color.blocked=white on black
+color.blocked=white on red
 color.tagged=  # A task should not be colored for just any tag
 
 # ----- DYNAMICALLY SET AT RUNTIME -----
+context=review

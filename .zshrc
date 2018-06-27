@@ -50,6 +50,7 @@ alias -s txt="vim"
 alias -g @@="&> /dev/null & disown"
 alias -g ::="| grep -i -e"
 alias -g %="| less"
+alias -g %%="tmux send-keys '!-2 | less' Enter Enter"
 alias -g X="clear &&"
 
 # -------------------------------- BINDINGS ----------------------------------

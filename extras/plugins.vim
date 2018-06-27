@@ -1,4 +1,3 @@
-" ------------------------------------------------------------------------------
 " ------------------ BEGIN:: Vundle Configurations -----------------------------
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -24,6 +23,11 @@ Plugin 'tbabej/taskwiki'
 Plugin 'blindFS/vim-taskwarrior'
 Plugin 'powerman/vim-plugin-AnsiEsc'
 
+" ~~~~~ HASKELL ~~~~~~
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'neovimhaskell/haskell-vim'
+
 " "~~~~~ MISC ~~~~~
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
@@ -45,9 +49,9 @@ Plugin 'KabbAmine/zeavim.vim'
 Plugin 'gu-fan/riv.vim'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'Vimjas/vim-python-pep8-indent'
-
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'neovimhaskell/haskell-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'
+Plugin 'pboettch/vim-cmake-syntax'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -61,28 +65,78 @@ Plugin 'jez/vim-superman'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"""""""""""""""""""""""""""""""""""""""""
+"  Haskell-vim + ghcmod-vim + neoc-ghc  "
+"""""""""""""""""""""""""""""""""""""""""
+let g:haskell_indent_disable = 1
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:necoghc_enable_detailed_browse = 1
+
+"""""""""""""
+"  Tabular  "
+"""""""""""""
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
+"""""""""""""""""""
+"  vim-solarized  "
+"""""""""""""""""""
+colorscheme solarized
+
+""""""""""""""
+"  NerdTree  "
+""""""""""""""
+nmap <Leader>n :NERDTreeToggle<CR>
+
+"""""""""""""""""""""
+"  vim-taskwarrior  "
+"""""""""""""""""""""
 let g:task_rc_override = 'rc._forcecolor=off'
+
+"""""""""""""
+"  riv.vim  "
+"""""""""""""
 let g:riv_disable_folding = 1
 let g:riv_ignored_imaps = "<Tab>,<S-Tab>"
 let g:riv_ignored_maps = "<CR>"
 autocmd FileType txt setlocal commentstring=//\ %s
 
-" --------------------------- VIMWIKI ------------------------------------------
+"""""""""""""
+"  vimwiki  "
+"""""""""""""
 let g:vimwiki_list = [{'path': '~/.vimwiki/', 'path_html': '~/.vimwiki-html/'}]
 " Disables ,swp mapping created by AnsiEsc plugin
 let g:no_cecutil_maps = 1 
 
-" -------------------------- BUFTABLINE ----------------------------------------
+""""""""""""""""
+"  BufTabLine  "
+""""""""""""""""
 hi! link BufTabLineCurrent PmenuSel
 hi! link BufTabLineActive TabLine
 let g:buftabline_numbers = 1
 let g:buftabline_indicators = 1
 
-" ------------------------- CTRLSF ---------------------------------------------
+""""""""""""
+"  CtrlSF  "
+""""""""""""
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_default_root = 'project'
 
-" ------------------------- JEDI-VIM -------------------------------------------
+""""""""""""""
+"  Jedi-vim  "
+""""""""""""""
 " Add the virtualenv's site-packages to vim path
 if has('python')
 py << EOF
@@ -101,20 +155,15 @@ let g:jedi#show_call_signatures = 0
 let g:jedi#goto_command = "<C-]>"
 let g:jedi#goto_assignments_command = ""
 
-" ----------------------------- NECO-GHC ---------------------------------------
-" Disable haskell-vim omnifunc
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-let g:necoghc_enable_detailed_browse = 1
-
-" ----------------------------- HASKELL-VIM ------------------------------------
-let g:haskell_indent_disable=1
-
-" ------------------------------LOCALVIMRC -------------------------------------
+""""""""""""""""
+"  LocalVimrc  "
+""""""""""""""""
 let g:localvimrc_sandbox=0
 let g:localvimrc_ask=0
 
-" --------------------------------- CTRLP --------------------------------------
+"""""""""""
+"  CtrlP  "
+"""""""""""
 let g:ctrlp_follow_symlinks=1
 
 " Setup some default ignores
@@ -128,13 +177,16 @@ let g:ctrlp_custom_ignore = {
 " control. It also supports works with .svn, .hg, .bzr.
 let g:ctrlp_working_path_mode = 'r'
 
-" ------------------------------ UltiSnips Configurations ----------------------
-"
+"""""""""""""""
+"  UltiSnips  "
+"""""""""""""""
 " Allows other directories to be searched for snippet files
 " let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/bryan/Dropbox/dotfiles/extra/UltiSnips"]
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
-" ------------------------------- Syntastic Config -----------------------------
+"""""""""""""""
+"  Syntastic  "
+"""""""""""""""
 let g:Tex_IgnoredWarnings =
             \ 'Command terminated with space.'."\n"
 " set laststatus=2
@@ -164,17 +216,25 @@ let g:syntastic_tex_chktex_args='-n 1'
 let g:syntastic_c_include_dirs=['../../include','../include', 'include']
 let g:syntastic_c_check_header=1
 
-" Adds c++11 support to error checking logic
-let g:syntastic_cpp_compiler_options = '-std=c++11'
+" Adds c++14 support to error checking logic
+let g:syntastic_cpp_compiler_options = '-std=c++14'
 
 " Enables Syntastic to work with Java
 " let g:syntastic_java_checker = 'javac'
 let g:syntastic_java_javac_classpath=fnamemodify(getcwd(), ':h')."/bin:".getcwd()
 
+"""""""""""""""""""
+"  ClangComplete  "
+"""""""""""""""""""
 
-" ----------------------------- NeoComplete Configuration ----------------------
+let g:clang_user_options = '-Iinclude'
+
+"""""""""""""""""
+"  NeoComplete  "
+"""""""""""""""""
 "
 " let g:neocomplete#enable_auto_close_preview=1
+
 set completeopt-=preview
 
 """""""""""""""""""""""""""""""
@@ -246,7 +306,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd FileType c setlocal omnifunc=ClangComplete
+autocmd FileType c,cpp,cc,h setlocal omnifunc=ClangComplete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')

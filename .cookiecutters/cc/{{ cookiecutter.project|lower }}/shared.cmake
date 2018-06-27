@@ -1,0 +1,1 @@
+project({{ cookiecutter.project|lower }})

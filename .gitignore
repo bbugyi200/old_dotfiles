@@ -45,3 +45,5 @@
 .config/mpv/watch_later/*
 
 .vimwiki/*
+
+.cookiecutters/cookiecutter-pypackage

@@ -1,16 +1,13 @@
-" ----------------------------------------------------------------------------
-" ---------------------------- PLUGINS ---------------------------------------
-if filereadable($CONFIG . "/plugins.vim")
-	source $CONFIG/plugins.vim
-else
-	source /home/bryan/Dropbox/dotfiles/home/extras/plugins.vim
-endif
-
+""""""""""""""""""""
+"  Enable Plugins  "
+""""""""""""""""""""
 filetype plugin indent on
 filetype plugin on
 runtime macros/matchit.vim
 
-" ---------------------- GVim/Vim Specific Configs ---------------------------
+""""""""""
+"  gVim  "
+""""""""""
 if has("gui_running")
 	colo desert
 	cd $HOME
@@ -18,7 +15,9 @@ else
 	set background=dark
 endif
 
-" -------------------------------- SETS --------------------------------------
+""""""""""""""
+"  Settings  "
+""""""""""""""
 set tw=99
 set autoread
 " Status Line Settings (mode display)
@@ -75,7 +74,9 @@ set nohlsearch
 " Changes location of viminfo file
 set viminfo+=n~/.vim/viminfo
 
-" --------------------------------- LETS -------------------------------------
+""""""""""""""""""""""""""
+"  Variable Assignments  "
+""""""""""""""""""""""""""
 " Appends the current working directory to PATH
 let tempPath=expand("%:p:h") . "/**"
 exec "set path+=" . tempPath
@@ -88,10 +89,11 @@ noremap \ ,
 " let &winwidth = &columns * 6 / 10
 let &winheight = &lines * 6 / 10
 
-" ---------------------------- SYNTAX ----------------------------------------
+"""""""""""""""""""""""""
+"  Syntax Highlighting  "
+"""""""""""""""""""""""""
 syntax on
 syntax enable
-colorscheme solarized
 set background=dark
 " Enables syntax highlighting to work properly for certain filetypes
 au BufRead,BufNewFile *.nasm set filetype=nasm
@@ -106,7 +108,9 @@ hi Constant ctermfg=lightmagenta
 hi SpellBad cterm=underline
 hi Normal guibg=NONE ctermbg=NONE
 
-" ------------------------------ KEY MAPPINGS --------------------------------
+""""""""""""""""""
+"  Key Bindings  "
+""""""""""""""""""
 " Shortcuts for quiting vim
 noremap <Leader>e :quit<CR>
 " Shortcuts for saving vim
@@ -190,7 +194,9 @@ nnoremap <Leader>cwd :cd %:h<CR>:pwd<CR>
 nmap gd :Gdiff 
 nmap gs :Gstatus<CR>
 
-" -------------------------- SPLIT AND TAB SETTINGS --------------------------
+""""""""""""""""""""""""""""
+"  Split and Tab Settings  "
+""""""""""""""""""""""""""""
 " See: http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits "
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
@@ -217,7 +223,9 @@ else
   map <C-l> <C-w>l
 endif
 
-" ------------------------------ AUTOS ---------------------------------------
+""""""""""""""
+"  AutoCmds  "
+""""""""""""""
 " Reloads buffer on buffer changes
 autocmd FocusGained,BufEnter * :checktime
 " Turns spellcheck on for certain file extensions
@@ -244,20 +252,26 @@ augroup END
 
 autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
 " Disables auto-comments on newlines and disables autowrap
-autocmd FileType * setlocal formatoptions-=t formatoptions-=r formatoptions-=o
-" Enables recognition of LocalAlias files
-autocmd BufRead,BufNewFile .lshrc set ft=zsh
+autocmd BufRead,BufNewFile * setlocal formatoptions-=r formatoptions-=o formatoptions-=t
+autocmd BufRead,BufNewFile *.cpp,*.cc,*.c,*.h setlocal formatoptions+=ro
 autocmd BufRead,BufNewFile config set ft=cfg
 autocmd BufRead,BufNewFile .coveragerc set ft=cfg
+autocmd BufRead,BufNewFile CMakeLists.txt set ft=cmake
+autocmd BufRead,BufNewFile test_*.c set ft=c.cpputest
+autocmd BufRead,BufNewFile test_*.cc,test_*.cpp set ft=cpp.cpputest
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-" ------------------------------- CUSTOM COMMANDS ----------------------------
+"""""""""""""""""""""
+"  Custom Commands  "
+"""""""""""""""""""""
 " Redraws screen after silent command
 command! -nargs=1 Silent
 \   execute 'silent !' . <q-args>
 \ | execute 'redraw!'
 
-" ------------------------------- FUNCTIONS ---------------------------------
+"""""""""""""""
+"  Functions  "
+"""""""""""""""
 let g:S = 0  "result in global variable S
 function! Sum(number)
   let g:S = g:S + a:number
@@ -310,3 +324,12 @@ set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ 
+
+""""""""""""""""""
+"  Load Plugins  "
+""""""""""""""""""
+if filereadable($CONFIG . "/plugins.vim")
+	source $CONFIG/plugins.vim
+else
+	source /home/bryan/Dropbox/dotfiles/home/extras/plugins.vim
+endif

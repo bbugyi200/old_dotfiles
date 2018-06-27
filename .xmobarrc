@@ -28,9 +28,9 @@ Config { font = "xft:Dina:pixelsize=13"
                                   , "-i"	, "⚡ <left>%"
 								 ] 50
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
-                    , Run Memory [ "-t", "Mem: <usedratio>%"
+                    , Run Memory [ "-t", "Mem: <usedratio>% (<cache>M)"
                                  , "--Low",     "10"
-                                 , "--High",    "50"
+                                 , "--High",    "90"
                                  , "--normal",  "green"
                                  , "--high",    "red"] 10
                     , Run Com "poll-weather" ["-d", "-q"] "weather" 9000

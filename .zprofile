@@ -19,8 +19,11 @@ source /usr/bin/virtualenvwrapper_lazy.sh
 export LATITUDE="39.997467N"
 export LONGITUDE="74.778291W"
 
+# Needed for ghc-mod
+export cabal_helper_libexecdir=/home/bryan/.stack/global-project/.stack-work/install/x86_64-linux-tinfo6/lts-10.2/8.2.2/libexec/x86_64-linux-ghc-8.2.2/cabal-helper-0.8.0.2
+
 # Enables executables installed with 'gem install' to run
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:/home/bryan/.local/bin:$PATH:~/.cabal/bin"
+export PATH="/usr/local/bin:$(ruby -e 'print Gem.user_dir')/bin:/home/bryan/.local/bin:/home/bryan/.cabal/bin:$PATH"
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -le 3 ] && [ "$(id -u)" != 0 ]; then
   exec startx

@@ -13,3 +13,5 @@ endif
 " Opens corresponding '.c' file.
 " For some reason, '.h' files have a filetype of 'cpp'.
 nnoremap <Leader>c :e <C-r>=expand('%:r')<CR>.c<CR>
+nnoremap <Leader><Leader>c :e <C-r>=expand('%:r')<CR>.cc<CR>
+nnoremap <Leader>h :e <C-r>=expand('%:r')<CR>.h<CR>

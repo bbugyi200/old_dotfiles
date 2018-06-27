@@ -2,6 +2,7 @@ source /home/bryan/Dropbox/dotfiles/home/extras/GTD.sh
 
 # ---------- MISCELLANEOUS ----------
 alias actvenv='source venv/bin/activate'
+alias alg='alias | grep -e'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 alias cppinit='cinit ++'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
@@ -57,7 +58,6 @@ alias ghooks='rm -rf .git/hooks && git init'
 alias gnlog="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias gpf='git push -f'
 alias gho='ghi open'
-alias algrep='alias | grep -e'
 alias grc='git rebase --continue'
 gri() { git rebase -i HEAD~$1; }
 
@@ -67,7 +67,8 @@ alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 alias cower='cower -c'
 alias dayplan='dayplan -d'
-alias ghc='ghc -dynamic'
+alias ghc='stack ghc'
+alias ghci='stack ghci'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
 alias du='ncdu --color dark'
 alias sudo='sudo '  # makes aliases visible to sudo
