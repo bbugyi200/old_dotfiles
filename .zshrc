@@ -1,7 +1,26 @@
-# ----------------------------------------------------------------------------
-# ------------------------------ SOURCES -------------------------------------
-source /home/bryan/Dropbox/dotfiles/home/extras/oh-my-zsh
+###############
+#  Oh-My-Zsh  #
+###############
+ZSH=/home/bryan/.oh-my-zsh/
+ZSH_THEME="mytheme"
+DEFAULT_USER="bryan"
+DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_TITLE="true"
 
+plugins=(git z zsh-autosuggestions vi-mode systemd sudo)
+
+ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
+fi
+
+source $ZSH/oh-my-zsh.sh
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+
+################################
+#  Disable Aliases / Builtins  #
+################################
 # Disable aliases
 arr=("ll" "gco")
 for i in "${arr[@]}"; do
@@ -11,14 +30,21 @@ done
 # Disable builtins
 disable r
 
+#####################
+#  Source Commands  #
+#####################
 source /home/bryan/Dropbox/dotfiles/home/extras/tmuxinator.zsh
 source /home/bryan/Dropbox/dotfiles/home/extras/aliases.sh
 source /home/bryan/Dropbox/dotfiles/home/extras/eternal_history.sh
 
-# -------------------------- OH-MY-ZSH ---------------------------------------
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+##############
+#  Settings  #
+##############
+setopt null_glob  # disables errors when GLOB pattern doesn't match
 
-# ------------------------------ ZSH ALIASES ---------------------------------
+#################
+#  ZSH Aliases  #
+#################
 alias so='unalias -a && source ~/.zshrc'
 
 # --- Suffix Aliases
@@ -53,11 +79,15 @@ alias -g %="| less"
 alias -g %%="tmux send-keys '!-2 | less' Enter Enter"
 alias -g X="clear &&"
 
-# -------------------------------- BINDINGS ----------------------------------
+##############
+#  Bindings  #
+##############
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 
-# ------------------------------ EXPORTS ---------------------------------------
+#############
+#  Exports  #
+#############
 # I set this so the crontab would use vim for editing
 export EDITOR=$(which vim)
 
@@ -67,7 +97,9 @@ export PROMPT_COMMAND="log_bash_history"
 # Fixes Mutt Background Issue (stays transparent) in TMUX
 export TERM="screen-256color"
 
-# ------------------------------ AUTOCOMPLETION ------------------------------
+####################
+#  Autocompletion  #
+####################
 _git 2> /dev/null  # hack to make git branch completion work
 _pacman 2> /dev/null  # hack to make pacman completion work
 compdef __git_branch_names gco
@@ -81,7 +113,9 @@ for filename in ~/.bash-completions/*; do
     source "$filename"
 done
 
-# -------------------------------- MISCELLANEOUS -----------------------------
+###################
+#  Miscellaneous  #
+###################
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 
