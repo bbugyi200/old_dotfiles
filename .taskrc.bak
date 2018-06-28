@@ -104,10 +104,9 @@ color.project.Videos=rgb524
 color.project.Study.Docs=gray13
 color.project.Holiday=rgb515
 color.project.Meta=black on rgb214
-color.due.today=rgb050
+color.due.today=rgb020
 color.overdue=rgb500
-color.blocked=white on red
+color.blocked=white on gray4
 color.tagged=  # A task should not be colored for just any tag
 
 # ----- DYNAMICALLY SET AT RUNTIME -----
-context=review

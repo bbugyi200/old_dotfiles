@@ -51,6 +51,15 @@ class ModList:
             sys.exit(1)
 
 
+class Notify:
+    """Send Notification
+
+    Use @msg to send a desktop notification.
+    """
+    def __init__(self, msg):
+        self.msg = msg
+
+
 _tomorrow = dt.datetime.today() + dt.timedelta(hours=18)
 _tomorrow_due_time = '{year}{month:02d}{day:02d}T100000Z'.format(year=_tomorrow.year,
                                                              month=_tomorrow.month,
@@ -59,50 +68,75 @@ _tomorrow_due_time = '{year}{month:02d}{day:02d}T100000Z'.format(year=_tomorrow.
 # Public Attributes
 force_update = ['severity', 'tags']
 repeats = {}
-tags = {'inbox': {
-            'project': 'Meta',
-            'due': _tomorrow_due_time,
-            'delta': 0},
-        'taskwarrior': {'tags': ModList('GTD', '+')},
-        'khal': {'tags': ModList('GTD', '+')},
-        'GTD': {'priority': 'H'},
-        'tickle': {
-            'due': _tomorrow_due_time,
-            'delta': 0},
-        'remind': {
-            'project': 'Meta',
-            'due': _tomorrow_due_time,
-            'delta': 1,
-            'tags': ModList(('remind', 'tickle'), ('-', '+'))},
-        'blog': {'project': 'Blogs',
-                 'tags': ModList('blog', '-')},
-        'doc': {'project': 'Study.Docs',
-                'tags': ModList('doc', '-')},
-        'video': {'project': 'Videos',
-                  'tags': ModList('video', '-')},
-        'const': {
-            'consistent': 'yes',
-            'tags': ModList('const', '-')},
-        'strict': {
-            'strict': 'yes',
-            'tags': ModList('strict', '-')},
-        'dev': {
-            'project': 'Dev',
-            'tags': ModList('dev', '-')},
-        'Severity_1': {
-            'tags': ModList('Severity_1', '-'),
-            'severity': 'critical'},
-        'Severity_2': {
-            'tags': ModList('Severity_2', '-'),
-            'severity': 'high'},
-        'Severity_3': {
-            'tags': ModList('Severity_3', '-'),
-            'severity': 'medium'},
-        'Severity_4': {
-            'tags': ModList('Severity_4', '-'),
-            'severity': 'low'},
-        'bug': {
-            'project': 'Dev'}}
+tags = {
+    'blog': {
+        'project': 'Blogs',
+        'tags': ModList('blog', '-'),
+    },
+    'bug': {'project': 'Dev'},
+    'call': {
+        None: Notify('Add to Notebook!'),
+        'tags': ModList('note', '+'),
+    },
+    'const': {
+        'consistent': 'yes',
+        'tags': ModList('const', '-'),
+    },
+    'dev': {
+        'project': 'Dev',
+        'tags': ModList('dev', '-'),
+    },
+    'doc': {
+        'project': 'Study.Docs',
+        'tags': ModList('doc', '-'),
+    },
+    'errand': {
+        None: Notify('Add to Notebook!'),
+        'tags': ModList('note', '+'),
+    },
+    'GTD': {'priority': 'H'},
+    'inbox': {
+        'project': 'Meta',
+        'due': _tomorrow_due_time,
+        'delta': 0,
+    },
+    'khal': {'tags': ModList('GTD', '+')},
+    'remind': {
+        'project': 'Meta',
+        'due': _tomorrow_due_time,
+        'delta': 1,
+        'tags': ModList(('remind', 'tickle'), ('-', '+')),
+    },
+    'Severity_1': {
+        'tags': ModList('Severity_1', '-'),
+        'severity': 'critical',
+    },
+    'Severity_2': {
+        'tags': ModList('Severity_2', '-'),
+        'severity': 'high',
+    },
+    'Severity_3': {
+        'tags': ModList('Severity_3', '-'),
+        'severity': 'medium',
+    },
+    'Severity_4': {
+        'tags': ModList('Severity_4', '-'),
+        'severity': 'low',
+    },
+    'strict': {
+        'strict': 'yes',
+        'tags': ModList('strict', '-'),
+    },
+    'taskwarrior': {'tags': ModList('GTD', '+')},
+    'tickle': {
+        'due': _tomorrow_due_time,
+        'delta': 0,
+    },
+    'video': {
+        'project': 'Videos',
+        'tags': ModList('video', '-'),
+    },
+}
 
 
 # Note that the 'annual' and 'Nyears' tags are treated differently

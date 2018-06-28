@@ -7,6 +7,8 @@ import sys
 import dates
 import defaults
 
+import gutils
+
 
 def hasTag(task, tag):
     """True if tags field of @task contains @tag."""
@@ -88,6 +90,8 @@ def process_add_tags(new_task, *, old_task={}):
                                         sys.exit(1)
 
                                 output += fmt.format(tag=tag, field=field, sep=sep, val='(\'' + item + '\')')
+                        elif isinstance(value, defaults.Notify):
+                            gutils.notify(value.msg)
                         else:
                             new_task[field] = value
                             output += fmt.format(tag=tag, field=field, sep=':', val=new_task[field])
