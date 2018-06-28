@@ -64,3 +64,5 @@ nnoremap <Leader>" 100\|Bi"<CR>"<Esc>
 nnoremap <Leader><Leader>" :call JoinMultilineString()<CR>:call BreakMultlineString('"')<CR>
 nnoremap <Leader>' 100\|Bi'<CR>'<Esc>
 nnoremap <Leader><Leader>' :call JoinMultilineString()<CR>:call BreakMultlineString("'")<CR>
+
+nmap <Leader>t :call SwitchToTest('py')<CR>

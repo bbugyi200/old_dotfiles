@@ -95,6 +95,7 @@ defaultwidth=`tput cols`
 nag=
 
 # ----- COLORS -----
+color.tag.note=rgb020
 color.tag.inbox=underline white
 color.tag.research=blue
 color.tag.bug=rgb550
@@ -110,4 +111,3 @@ color.blocked=white on gray4
 color.tagged=  # A task should not be colored for just any tag
 
 # ----- DYNAMICALLY SET AT RUNTIME -----
-context=review

@@ -69,6 +69,7 @@ class Wrap:
         self.end = end
 
 
+_today_due_time = dates.get_today()
 _tomorrow_due_time = dates.get_tomorrow()
 
 # Public Attributes
@@ -148,6 +149,11 @@ tags = {
     'tickle': {
         'due': _tomorrow_due_time,
         'delta': 0,
+    },
+    'today': {
+        'due': _today_due_time,
+        'tags': ModList('today', '-'),
+        'project': 'Misc',
     },
     'video': {
         'project': 'Videos',

@@ -77,8 +77,11 @@ set viminfo+=n~/.vim/viminfo
 """"""""""""""""""""""""""
 "  Variable Assignments  "
 """"""""""""""""""""""""""
-" Appends the current working directory to PATH
+" Appends the open file's directory to PATH
 let tempPath=expand("%:p:h") . "/**"
+exec "set path+=" . tempPath
+" Appends the current working directory to PATH
+let tempPath=getcwd() . "/**"
 exec "set path+=" . tempPath
 " Sets LaTeX as default for .tex files
 let g:tex_flavor = "latex"
@@ -189,7 +192,7 @@ nmap <Leader>7 :b7<CR>
 nmap <Leader>8 :b8<CR>
 nmap <Leader>9 :b9<CR>
 " cd to current working directory
-nnoremap <Leader>cwd :cd %:h<CR>:pwd<CR>
+nnoremap <Leader>0 :cd %:h<CR>:pwd<CR>
 " fugitive mappings
 nmap gd :Gdiff 
 nmap gs :Gstatus<CR>
@@ -252,8 +255,8 @@ augroup END
 
 autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
 " Disables auto-comments on newlines and disables autowrap
-autocmd BufRead,BufNewFile * setlocal formatoptions-=r formatoptions-=o formatoptions-=t
-autocmd BufRead,BufNewFile *.cpp,*.cc,*.c,*.h setlocal formatoptions+=ro
+autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro
+autocmd FileType * setlocal formatoptions-=t
 autocmd BufRead,BufNewFile config set ft=cfg
 autocmd BufRead,BufNewFile .coveragerc set ft=cfg
 autocmd BufRead,BufNewFile CMakeLists.txt set ft=cmake
@@ -283,6 +286,17 @@ function! s:VSetSearch(cmdtype)
 	norm! gv"sy
 	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
 	let @s = temp
+endfunction
+
+" Used to switch to and from test files
+function! SwitchToTest(ext)
+    let basename = expand('%:t:r')
+    if basename =~ 'test_.*'
+        let pyfile = split(basename, "_")[1]
+        exec "find " . pyfile . "." . a:ext
+    else
+        exec "find test_" . basename . "." . a:ext
+    endif
 endfunction
 
 " Automatically creates directory if it does not already exist

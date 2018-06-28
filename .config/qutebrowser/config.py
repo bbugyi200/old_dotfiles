@@ -90,7 +90,6 @@ c.url.searchengines = {
 #  Aliases  #
 #############
 c.aliases['libget'] = 'jseval -q document.querySelector("h2").click()'  # click GET on libgen
-c.aliases['pocket'] = "spawn -v /home/bryan/.virtualenvs/pockyt/bin/pockyt put -f '{link}' -i {url}"
 c.aliases['vs'] = 'open -w'
 
 
@@ -135,19 +134,24 @@ pbind('<Ctrl-o>', 'prompt-open-download xdg-open {}')
 cbind('<Ctrl-f>', 'edit-command --run')
 
 # >>> NORMAL
+bind(',b', 'set-cmd-text :bookmark-add {url} "')
+bind(',dp', 'spawn -v pockyt-delete {url}')
 bind(',e', 'spawn --userscript searchbar-command')
-bind(',h', 'set-cmd-text -s :help -t')
+bind(',h', 'set-cmd-text -s :help')
+bind(',H', 'set-cmd-text -s :help -t')
 bind(',m', 'spawn --userscript view_in_umpv -d')
 bind(',p', 'open -p')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
 bind(',rss', 'spawn --userscript openfeeds')
 bind(',ss', 'set-cmd-text -s :session-save -o')
 bind(',sl', 'set-cmd-text -s :session-load -c')
+bind(',sp', "spawn -v pockyt put -f '{link}' -i {url}")
 bind(',t', 'config-cycle tabs.position left top')
-bind(';m', 'hint links spawn umpv {hint-url}', 'message-info "Select video to load with umpv."')
-bind(';M', 'hint links spawn umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
-bind(';T', 'hint links spawn torrent -d {hint-url}', 'message-info "Select magnet link to torrent."')
-bind(';Y', 'hint links spawn ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
+bind(';m', 'hint links spawn -v umpv {hint-url}', 'message-info "Select video to load with umpv."')
+bind(';M', 'hint links spawn -v umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
+bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
+bind(';T', 'hint links spawn -v torrent -d {hint-url}', 'message-info "Select magnet link to torrent."')
+bind(';Y', 'hint links spawn -v ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
 bind('<Ctrl-t>', 'spawn --userscript taskadd tags:inbox')
