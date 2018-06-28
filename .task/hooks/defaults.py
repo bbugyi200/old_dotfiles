@@ -17,19 +17,6 @@ import dates
 import log
 
 
-class FieldRef:
-    """Field Reference
-
-    References one of a Task's fields. Setting <foo> field's default to `FieldRef(<bar>)` is
-    equivalent to `task add ... foo:bar ...`.
-
-    You can also set the <foo> field's default to `FieldRef(<foo>)` to enforce a mandatory
-    field.
-    """
-    def __init__(self, field):
-        self.field = field
-
-
 class ModList:
     """Modify List
 
