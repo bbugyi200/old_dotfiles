@@ -10,11 +10,23 @@ Attributes:
         defined in this module.
 """
 
-import datetime as dt
 import sys
 
 import dates
 import log
+
+
+class FieldRef:
+    """Field Reference
+
+    References one of a Task's fields. Setting <foo> field's default to `FieldRef(<bar>)` is
+    equivalent to `task add ... foo:bar ...`.
+
+    You can also set the <foo> field's default to `FieldRef(<foo>)` to enforce a mandatory
+    field.
+    """
+    def __init__(self, field):
+        self.field = field
 
 
 class ModList:
@@ -47,22 +59,31 @@ class Notify:
         self.msg = msg
 
 
-_tomorrow = dt.datetime.today() + dt.timedelta(hours=18)
-_tomorrow_due_time = '{year}{month:02d}{day:02d}T100000Z'.format(year=_tomorrow.year,
-                                                             month=_tomorrow.month,
-                                                             day=_tomorrow.day)
+class Wrap:
+    """Wrap Field
+
+    Wraps string field with @start and @end.
+    """
+    def __init__(self, *, start, end):
+        self.start = start
+        self.end = end
+
+
+_tomorrow_due_time = dates.get_tomorrow()
 
 # Public Attributes
-force_update = ['severity', 'tags']
+force_update = ['description', 'severity', 'tags']
 repeats = {}
 tags = {
     'blog': {
         'project': 'Blogs',
         'tags': ModList('blog', '-'),
+        None: Notify('Print this out if you can!'),
     },
-    'bug': {'project': 'Dev'},
+    'bug': {
+        'project': 'Dev',
+    },
     'call': {
-        None: Notify('Add to Notebook!'),
         'tags': ModList('note', '+'),
     },
     'const': {
@@ -76,18 +97,25 @@ tags = {
     'doc': {
         'project': 'Study.Docs',
         'tags': ModList('doc', '-'),
+        None: Notify('Print this out if you can!'),
     },
     'errand': {
-        None: Notify('Add to Notebook!'),
         'tags': ModList('note', '+'),
     },
-    'GTD': {'priority': 'H'},
+    'GTD': {
+        'priority': 'H',
+    },
     'inbox': {
         'project': 'Meta',
         'due': _tomorrow_due_time,
         'delta': 0,
     },
-    'khal': {'tags': ModList('GTD', '+')},
+    'khal': {
+        'tags': ModList('GTD', '+'),
+    },
+    'note': {
+        'description': Wrap(start='Add "', end='" to notebook'),
+    },
     'remind': {
         'project': 'Meta',
         'due': _tomorrow_due_time,
@@ -114,7 +142,9 @@ tags = {
         'strict': 'yes',
         'tags': ModList('strict', '-'),
     },
-    'taskwarrior': {'tags': ModList('GTD', '+')},
+    'taskwarrior': {
+        'tags': ModList('GTD', '+'),
+    },
     'tickle': {
         'due': _tomorrow_due_time,
         'delta': 0,
@@ -146,7 +176,7 @@ for i in range(3, 7):
 
 for key in repeats.keys():
     tags[key] = {
-            'due': dates.getToday(),
+            'due': dates.get_today(),
             'repeat': 'yes'
     }
 

@@ -29,12 +29,17 @@ def process_del_tags(new_task, old_task):
 
     for tag in defaults.tags.keys():
         if (tag in old_task['tags']) and (('tags' not in new_task.keys()) or (tag not in new_task['tags'])):
-            for field in defaults.tags[tag].keys():
+            for field, value in defaults.tags[tag].items():
                 try:
                     if new_task[field] == old_task[field]:
                         fmt = "-{tag} => {field}:\n"
                         output += fmt.format(tag=tag, field=field)
-                        new_task.pop(field)
+
+                        if isinstance(value, defaults.Wrap):
+                            new_task[field] = new_task[field].replace(value.start, '')
+                            new_task[field] = new_task[field].replace(value.end, '')
+                        else:
+                            new_task.pop(field)
                 except KeyError:
                     pass
 
@@ -92,6 +97,10 @@ def process_add_tags(new_task, *, old_task={}):
                                 output += fmt.format(tag=tag, field=field, sep=sep, val='(\'' + item + '\')')
                         elif isinstance(value, defaults.Notify):
                             gutils.notify(value.msg)
+                        elif isinstance(value, defaults.Wrap):
+                            new_task[field] = value.start + new_task[field] + value.end
+                            val = "(start='%s', end='%s')" % (value.start, value.end)
+                            output += fmt.format(tag=tag, field=field, sep='.wrap', val=val)
                         else:
                             new_task[field] = value
                             output += fmt.format(tag=tag, field=field, sep=':', val=new_task[field])
