@@ -89,10 +89,8 @@ c.url.searchengines = {
 #############
 #  Aliases  #
 #############
-c.aliases['h'] = 'help'
 c.aliases['libget'] = 'jseval -q document.querySelector("h2").click()'  # click GET on libgen
-c.aliases['tvid'] = 'spawn --userscript taskadd tags:video'
-c.aliases['tdoc'] = 'spawn --userscript taskadd tags:doc'
+c.aliases['pocket'] = "spawn -v /home/bryan/.virtualenvs/pockyt/bin/pockyt put -f '{link}' -i {url}"
 c.aliases['vs'] = 'open -w'
 
 
@@ -138,6 +136,7 @@ cbind('<Ctrl-f>', 'edit-command --run')
 
 # >>> NORMAL
 bind(',e', 'spawn --userscript searchbar-command')
+bind(',h', 'set-cmd-text -s :help -t')
 bind(',m', 'spawn --userscript view_in_umpv -d')
 bind(',p', 'open -p')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
