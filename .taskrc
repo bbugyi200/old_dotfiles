@@ -4,6 +4,7 @@
 context.study=project:Study or +research or (urg>6)
 context.dev=project:Dev project.not:Dev.localalias or (urg>6)
 context.localalias=project:Dev.localalias or (urg>6)
+context.compilers=project:Study.Compilers or (urg>6)
 context.grad=project:Study.Grad
 context.mobile=+call or project:Blogs or project:Videos or +errand or (urg>6)
 context.review=project.not:Study. project.not:Dev. -inbox ( project.not:Holiday or project:Holiday. )

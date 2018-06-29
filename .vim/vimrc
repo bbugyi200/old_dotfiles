@@ -263,6 +263,7 @@ autocmd BufRead,BufNewFile CMakeLists.txt set ft=cmake
 autocmd BufRead,BufNewFile test_*.c set ft=c.cpputest
 autocmd BufRead,BufNewFile test_*.cc,test_*.cpp set ft=cpp.cpputest
 autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd BufReadPost /usr/include/c++/**/* set ft=cpp
 
 """""""""""""""""""""
 "  Custom Commands  "

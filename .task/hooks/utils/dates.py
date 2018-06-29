@@ -26,7 +26,7 @@ def _style_dt(old_dt):
 
 def _convert_to_dt(date_string):
     date = dt.datetime.strptime(date_string, date_fmt)
-    return date.astimezone(tz=dt.timezone.utc)
+    return date.replace(tzinfo=dt.timezone.utc)
 
 
 def get_today():

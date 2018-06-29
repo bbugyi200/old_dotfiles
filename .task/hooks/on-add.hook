@@ -2,10 +2,11 @@
 
 """This hook runs when a new TaskWarrior task is added"""
 
+import getpass
 import sys
 import json
 
-sys.path.insert(0, "/home/bryan/.task")
+sys.path.insert(0, '/home/{}/.task'.format(getpass.getuser()))
 
 import hooks.runners  # noqa
 

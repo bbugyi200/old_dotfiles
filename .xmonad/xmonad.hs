@@ -158,7 +158,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
    , ((alpha, u), windows W.focusUp)
-   , ((alpha, v), launchApp "CAST" "cast")
+   , ((alpha, v), launchApp "CAST" "mpvlc")
    , ((alpha, x), launchApp "TERM" myTerminal)
    , ((alpha .|. beta, x), launchApp "TERM'" myTerminal)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
