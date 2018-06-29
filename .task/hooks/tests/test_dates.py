@@ -5,7 +5,7 @@ import unittest.mock as mock
 
 import pytest
 
-import dates
+from utils import dates
 
 
 def test_get_today(today_shell_date):

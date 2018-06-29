@@ -1,25 +1,15 @@
-"""Done (completed) on-modify routines."""
+"""Hooks related to custom repeats (see defaults.py)"""
 
 import datetime as dt
-import dates
 import defaults
-import github
-import log
-import tags
+import utils
+from utils import dates
+from utils.log import logger as log
 
 
 def run(new_task, old_task):
-    """Run 'done' (completed) hooks
-
-    This hook contains functions that are run when a task is completed (e.g. `task done`). This
-    includes:
-       - Implementing custom "repeat" tag recurrences.
-       - Closing corresponding GitHub Issues.
-    """
-    if tags.isDone(new_task) and not tags.isDone(old_task):
-        log.logger.debug('Task has been marked COMPLETED: {}'.format(new_task['description'][:40]))
-        if github.is_issue(new_task):
-            github.close_issue(new_task)
+    if utils.is_done(new_task) and not utils.is_done(old_task):
+        log.debug('Task has been marked COMPLETED: {}'.format(new_task['description'][:40]))
         new_task = _revive_repeat(new_task)
     return new_task
 
@@ -34,9 +24,9 @@ def _revive_repeat(new_task):
     status and a new due date is set.
     """
     for tag, N in defaults.repeats.items():
-        if tags.hasTag(new_task, tag):
+        if utils.has_tag(new_task, tag):
             msg = '+{} tag found. Task "{}..." has been identified as a custom repeat.'
-            log.logger.debug(msg.format(tag, new_task['description'][:40]))
+            log.debug(msg.format(tag, new_task['description'][:40]))
             due_date = dt.datetime.strptime(new_task['due'], dates.date_fmt)
 
             todayDT = dates.get_today_dt()

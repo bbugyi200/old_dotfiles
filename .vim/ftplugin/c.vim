@@ -10,27 +10,45 @@ nnoremap <Leader>N :NeoIncludeMakeCache<CR>
 
 nmap <Leader>h :call SwitchSourceHeader()<CR>
 
-" Do NOT place anything except SwitchSourceHeader below this conditional.
+nmap <Leader>t :call SwitchToCTest()<CR>
+
+" Do NOT place anything else below this conditional.
 if exists('*SwitchSourceHeader')
     finish
 endif
+
+function! SwitchToCTest()
+    try
+        call SwitchToTest('c')
+    catch
+        try
+            call SwitchToTest('cc')
+        catch
+            call SwitchToTest('cpp')
+        endtry
+    endtry
+endfunction
 
 " Opens corresponding .c / .cc  file if .h file is open.
 " Opens corresponding .h  file if .c / .cc file is open.
 " This function MUST be defined at the bottom of the file.
 function! SwitchSourceHeader()
-  let ext = expand('%:e')
-  if ext == "cc" || ext == 'c' || ext == 'cpp'
-    find %:t:r.h
-  else
-    try
-      find %:t:r.c
-    catch
-      try
-        find %:t:r.cc
-      catch
-        find %:t:r.cpp
-      endtry
-    endtry
-  endif
+    let ext = expand('%:e')
+    if ext == "cc" || ext == 'c' || ext == 'cpp'
+        let header = expand('%:t:r') . ".h"
+        if header =~ "test_.*"
+            let header = split(header, "_")[1]
+        endif
+        exec "find " . header
+    else
+        try
+            find %:t:r.c
+        catch
+            try
+                find %:t:r.cc
+            catch
+                find %:t:r.cpp
+            endtry
+        endtry
+    endif
 endfunction

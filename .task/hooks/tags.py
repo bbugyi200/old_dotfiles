@@ -1,11 +1,11 @@
-"""Functions Relating to Task Tags"""
+"""Hooks and functions related to custom tags"""
 
 import datetime as dt
 import subprocess as sp
 import sys
 
-import dates
 import defaults
+from utils import dates
 
 import gutils
 
@@ -14,16 +14,6 @@ def run(new_task, old_task=None):
     new_task = _process_del_tags(new_task, old_task)
     new_task = _process_add_tags(new_task, old_task)
     return new_task
-
-
-def hasTag(task, tag):
-    """True if tags field of @task contains @tag."""
-    return ('tags' in task.keys()) and (tag in task['tags'])
-
-
-def isDone(task):
-    """True if task is completed."""
-    return task['status'].lower() == 'completed'
 
 
 def _process_del_tags(new_task, old_task=None):

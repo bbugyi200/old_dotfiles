@@ -9,5 +9,3 @@ else
      \ ." && tmux split-window -h \"./" .expand("%:t:r")
      \ ." && read -rep $'\n\nPress any key to continue...' && tmux resize-pane -D 20\" && clear")
 endif
-
-nmap <Leader>t :call SwitchToTest('cc')<CR>

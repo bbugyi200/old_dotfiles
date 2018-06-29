@@ -5,6 +5,17 @@ import datetime as dt
 date_fmt = '%Y%m%dT%H%M%SZ'
 
 
+def get_tomorrow():
+    """Returns Formated Datetime for Tomorrow (at 6AM)"""
+    tomorrow = _style_dt(dt.datetime.today() + dt.timedelta(hours=18))
+    return tomorrow.strftime(date_fmt)
+
+
+def get_today_dt():
+    """Returns Datetime for Today (at 6AM)"""
+    return _convert_to_dt(get_today())
+
+
 def _style_dt(old_dt):
     """Return datetime for today (at 6AM)"""
     new_dt = old_dt.astimezone(tz=dt.timezone.utc)
@@ -21,17 +32,6 @@ def get_today():
     """Returns Formated Datetime for Today (at 6AM)"""
     today = _style_dt(dt.datetime.today())
     return today.strftime(date_fmt)
-
-
-def get_tomorrow():
-    """Returns Formated Datetime for Tomorrow (at 6AM)"""
-    tomorrow = _style_dt(dt.datetime.today() + dt.timedelta(hours=18))
-    return tomorrow.strftime(date_fmt)
-
-
-def get_today_dt():
-    """Returns Datetime for Today (at 6AM)"""
-    return _convert_to_dt(get_today())
 
 
 def due_in_N_years(years, due_date):

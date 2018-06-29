@@ -12,8 +12,8 @@ Attributes:
 
 import sys
 
-import dates
-import log
+from utils import dates
+from utils.log import logger as log
 
 
 class FieldRef:
@@ -195,4 +195,4 @@ for tag in ['annually', 'biannually', '3years',
 tags['daily']['strict'] = 'yes'
 tags['bidaily']['strict'] = 'yes'
 
-log.logger.vdebug('repeats: %s', repr(repeats))
+log.vdebug('repeats: %s', repr(repeats))
