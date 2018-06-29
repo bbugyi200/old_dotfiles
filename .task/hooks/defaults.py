@@ -78,11 +78,6 @@ _tomorrow_due_time = dates.get_tomorrow()
 force_update = ['description', 'severity', 'tags']
 repeats = {}
 tags = {
-    'blog': {
-        'project': 'Blogs',
-        'tags': ModList('blog', '-'),
-        None: Notify('Print this out if you can!'),
-    },
     'bug': {
         'project': 'Dev',
     },
@@ -96,11 +91,6 @@ tags = {
     'dev': {
         'project': 'Dev',
         'tags': ModList('dev', '-'),
-    },
-    'doc': {
-        'project': 'Study.Docs',
-        'tags': ModList('doc', '-'),
-        None: Notify('Print this out if you can!'),
     },
     'errand': {
         'tags': ModList('note', '+'),
@@ -156,10 +146,6 @@ tags = {
         'due': _today_due_time,
         'tags': ModList('today', '-'),
         'project': 'Misc',
-    },
-    'video': {
-        'project': 'Videos',
-        'tags': ModList('video', '-'),
     },
 }
 
