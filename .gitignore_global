@@ -13,6 +13,7 @@ venv/*
 
 .lvimrc
 **/.lshrc
+**/.lzshrc
 **/.localalias
 
 var/*

@@ -41,6 +41,7 @@ source /home/bryan/Dropbox/dotfiles/home/extras/eternal_history.sh
 #  Settings  #
 ##############
 setopt null_glob  # disables errors when GLOB pattern doesn't match
+setopt globdots
 
 #################
 #  ZSH Aliases  #

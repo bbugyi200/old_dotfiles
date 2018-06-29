@@ -1,1 +1,0 @@
-{"v": "vim config.py searchengines/__init__.py searchengines/*.py config.yml $@"}
