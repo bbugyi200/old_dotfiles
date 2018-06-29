@@ -6,6 +6,12 @@ import re
 import log
 
 
+def run(new_task):
+    if is_issue(new_task):
+        new_task = depends(new_task)
+    return new_task
+
+
 def is_issue(task):
     """True if @task corresponds to a GitHub issue."""
     return 'githubrepo' in task

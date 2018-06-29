@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 
-"""Done (completed) on-modify hook."""
+"""This hook runs when an existing TaskWarrior task is modified"""
 
-import json
 import sys
+import json
 
-import done
+import main
 
 old_task = json.loads(sys.stdin.readline())
 new_task = json.loads(sys.stdin.readline())
 
-
 if __name__ == "__main__":
-    done.run(old_task, new_task)
+    new_task = main.modify_run(new_task, old_task)
     print(json.dumps(new_task))

@@ -5,7 +5,7 @@ import log
 import tags
 
 
-def run(old_task, new_task):
+def run(new_task, old_task):
     """Run 'active' (start/stop) hooks
 
     This hook contains functions that are run when a task is start and/or stopped. This includes:
@@ -41,3 +41,5 @@ def run(old_task, new_task):
         if not tags.isDone(new_task):
             with open('/home/bryan/.task/.last_task', 'w') as f:
                 f.write(new_task['uuid'])
+
+    return new_task

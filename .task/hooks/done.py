@@ -8,7 +8,7 @@ import log
 import tags
 
 
-def run(old_task, new_task):
+def run(new_task, old_task):
     """Run 'done' (completed) hooks
 
     This hook contains functions that are run when a task is completed (e.g. `task done`). This
@@ -21,6 +21,7 @@ def run(old_task, new_task):
         if github.is_issue(new_task):
             github.close_issue(new_task)
         new_task = _revive_repeat(new_task)
+    return new_task
 
 
 def _isConsistent(task):

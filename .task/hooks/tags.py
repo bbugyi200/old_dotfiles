@@ -10,6 +10,12 @@ import defaults
 import gutils
 
 
+def run(new_task, old_task=None):
+    new_task = _process_del_tags(new_task, old_task)
+    new_task = _process_add_tags(new_task, old_task)
+    return new_task
+
+
 def hasTag(task, tag):
     """True if tags field of @task contains @tag."""
     return ('tags' in task.keys()) and (tag in task['tags'])
@@ -20,8 +26,11 @@ def isDone(task):
     return task['status'].lower() == 'completed'
 
 
-def process_del_tags(new_task, old_task):
+def _process_del_tags(new_task, old_task=None):
     """Remove default task values when special tag is removed from task"""
+    if old_task is None:
+        return new_task
+
     header = ' \n======= Custom Tag Removed =======\n'
     output = header
     if 'tags' not in old_task.keys():
@@ -50,10 +59,14 @@ def process_del_tags(new_task, old_task):
     return new_task
 
 
-def process_add_tags(new_task, *, old_task={}):
+def _process_add_tags(new_task, old_task=None):
     """Add default task settings when special tag is added to task"""
     header = ' \n======= Custom Tag Added =======\n'
     output = header
+
+    if old_task is None:
+        old_task = dict()
+
     if 'tags' in new_task.keys():
         fmt = "+{tag} => {field}{sep}{val}\n"
         for tag in defaults.tags.keys():
