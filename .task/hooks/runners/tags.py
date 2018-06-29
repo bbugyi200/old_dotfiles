@@ -4,17 +4,17 @@ import datetime as dt
 import subprocess as sp
 import sys
 
-import defaults
-import utils
-from utils import dates
+from hooks import defaults
+from hooks.utils import log
+from hooks.utils import dates
 
 import gutils
 
-log = utils.log.getLogger()
+logger = log.getLogger()
 
 
 def run(new_task, old_task=None):
-    utils.log.running(log)
+    log.running(logger)
     new_task = _process_del_tags(new_task, old_task)
     new_task = _process_add_tags(new_task, old_task)
     return new_task

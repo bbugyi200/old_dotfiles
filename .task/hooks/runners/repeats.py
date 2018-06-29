@@ -1,17 +1,19 @@
 """Hooks related to custom repeats (see defaults.py)"""
 
 import datetime as dt
-import defaults
-import utils
-from utils import dates
 
-log = utils.log.getLogger()
+from hooks import defaults
+from hooks import utils
+from hooks.utils import log
+from hooks.utils import dates
+
+logger = log.getLogger()
 
 
 def run(new_task, old_task):
-    utils.log.running(log)
+    log.running(logger)
     if utils.is_done(new_task) and not utils.is_done(old_task):
-        log.debug('Task has been marked COMPLETED: {}'.format(new_task['description'][:40]))
+        logger.debug('Task has been marked COMPLETED: {}'.format(new_task['description'][:40]))
         new_task = _revive_repeat(new_task)
     return new_task
 
@@ -28,7 +30,7 @@ def _revive_repeat(new_task):
     for tag, N in defaults.repeats.items():
         if utils.has_tag(new_task, tag):
             msg = '+{} tag found. Task "{}..." has been identified as a custom repeat.'
-            log.debug(msg.format(tag, new_task['description'][:40]))
+            logger.debug(msg.format(tag, new_task['description'][:40]))
             due_date = dt.datetime.strptime(new_task['due'], dates.date_fmt)
 
             todayDT = dates.get_today_dt()

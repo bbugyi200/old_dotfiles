@@ -3,13 +3,14 @@
 import subprocess as sp
 import re
 
-import utils
+from hooks import utils
+from hooks.utils import log
 
-log = utils.log.getLogger()
+logger = log.getLogger()
 
 
 def run(new_task, old_task=None):
-    utils.log.running(log)
+    log.running(logger)
     if _is_issue(new_task):
         new_task = _depends(new_task)
         if old_task is not None and utils.is_done(new_task) and not utils.is_done(old_task):
@@ -24,16 +25,16 @@ def _is_issue(task):
 
 def _close_issue(task):
     """Closes corresponding GitHub Issue (if one exists)."""
-    log.debug('{} corresponds to task: {}'.format(task['githubrepo'], task['description']))
+    logger.debug('{} corresponds to task: {}'.format(task['githubrepo'], task['description']))
 
     gh_issue_number = str(int(float(task['githubnumber'])))
     cmd_list = ['ghi', 'close', gh_issue_number, '--', task['githubrepo']]
-    log.debug('Running command: {}'.format(cmd_list))
+    logger.debug('Running command: {}'.format(cmd_list))
 
     ps = sp.Popen(cmd_list, stdout=sp.PIPE, stderr=sp.STDOUT)
     out = ps.communicate()[0]
 
-    log.debug('ghi command failed. Error output: {}'.format(out.decode().strip()))
+    logger.debug('ghi command failed. Error output: {}'.format(out.decode().strip()))
 
 
 def _depends(task):
@@ -49,7 +50,7 @@ def _depends(task):
         New task dictionary.
     """
     if 'annotations' not in task:
-        log.debug('Task has no annotations, so cannot have a "Depends" comment.')
+        logger.debug('Task has no annotations, so cannot have a "Depends" comment.')
         return task
 
     issue_number = None
@@ -60,33 +61,33 @@ def _depends(task):
 
         match = re.search(r'depends:\s*#([0-9]+)', description)
         if not match:
-            log.debug('Found "Depends:" but regex match failed.')
-            log.vdebug('Comment: %s', repr(description))
+            logger.debug('Found "Depends:" but regex match failed.')
+            logger.vdebug('Comment: %s', repr(description))
             return task
         issue_number = int(match.groups()[0])
         break
 
     if issue_number is None:
-        log.debug('No dependency found on GitHub issue.')
+        logger.debug('No dependency found on GitHub issue.')
         return task
 
-    log.debug('Task depends on issue #{}.'.format(issue_number))
+    logger.debug('Task depends on issue #{}.'.format(issue_number))
     gh_repo = task['githubrepo'].split('/')[1]
-    log.debug('GitHub Repo: %s', repr(gh_repo))
+    logger.debug('GitHub Repo: %s', repr(gh_repo))
 
     cmd_list = ['task', 'rc.context:none', 'uuids']
     cmd_list.extend(['project:Dev.{}'.format(gh_repo)])
     cmd_list.extend(['/#{}:/'.format(issue_number)])
-    log.vdebug('Command List: %s', repr(cmd_list))
+    logger.vdebug('Command List: %s', repr(cmd_list))
 
     ps = sp.Popen(cmd_list, stdout=sp.PIPE)
     uuid = ps.communicate()[0].decode().strip()
 
     if uuid == '':
-        log.debug('Attempt to find UUID failed. Empty string returned by task command.')
+        logger.debug('Attempt to find UUID failed. Empty string returned by task command.')
         return task
     else:
-        log.debug('UUID of issue #{}: {}'.format(issue_number, uuid))
+        logger.debug('UUID of issue #{}: {}'.format(issue_number, uuid))
 
     new_task = task.copy()
 
@@ -96,11 +97,11 @@ def _depends(task):
         dependencies = []
 
     if uuid not in dependencies:
-        log.debug('Dependency not found. Adding...')
+        logger.debug('Dependency not found. Adding...')
         dependencies.append(uuid)
         new_task['depends'] = ','.join(dependencies)
     else:
-        log.debug('Dependency is already present.')
+        logger.debug('Dependency is already present.')
 
-    log.vdebug('New Task (after adding dependency): %s', repr(new_task))
+    logger.vdebug('New Task (after adding dependency): %s', repr(new_task))
     return new_task

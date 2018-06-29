@@ -25,7 +25,7 @@ def test_get_tomorrow(tomorrow_shell_date):
 
 @pytest.fixture
 def today_shell_date():
-    return shell_date()
+    return shell_date(date='6 hours ago')
 
 
 @pytest.fixture

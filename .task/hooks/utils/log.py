@@ -11,7 +11,7 @@ import os
 import gutils
 
 gutils.logging.add_vdebug_level(logging)
-_STREAM_LOGGING_LEVEL = logging.INFO
+_STREAM_LOGGING_LEVEL = logging.VDEBUG
 
 
 def init_logger():
@@ -41,7 +41,7 @@ def init_logger():
 
 def running(logger):
     """Logs hook startup message"""
-    logger.debug("Running Hooks...")
+    logger.debug("Running Hook...")
 
 
 def getLogger():

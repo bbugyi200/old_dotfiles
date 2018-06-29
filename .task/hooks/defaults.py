@@ -12,10 +12,10 @@ Attributes:
 
 import sys
 
-import utils
+from hooks.utils import log
 from utils import dates
 
-log = utils.log.getLogger()
+logger = log.getLogger()
 
 
 class FieldRef:
@@ -183,4 +183,4 @@ for tag in ['annually', 'biannually', '3years',
 tags['daily']['strict'] = 'yes'
 tags['bidaily']['strict'] = 'yes'
 
-log.vdebug('repeats: %s', repr(repeats))
+logger.vdebug('repeats: %s', repr(repeats))
