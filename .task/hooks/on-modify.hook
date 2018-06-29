@@ -5,7 +5,9 @@
 import sys
 import json
 
-import hooks.runners
+sys.path.insert(0, "/home/bryan/.task")
+
+import hooks.runners  # noqa
 
 old_task = json.loads(sys.stdin.readline())
 new_task = json.loads(sys.stdin.readline())
