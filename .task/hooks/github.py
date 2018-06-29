@@ -4,10 +4,12 @@ import subprocess as sp
 import re
 
 import utils
-from utils.log import logger as log
+
+log = utils.log.getLogger()
 
 
 def run(new_task, old_task=None):
+    utils.log.running(log)
     if _is_issue(new_task):
         new_task = _depends(new_task)
         if old_task is not None and utils.is_done(new_task) and not utils.is_done(old_task):

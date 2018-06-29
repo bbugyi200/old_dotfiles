@@ -4,10 +4,12 @@ import datetime as dt
 import defaults
 import utils
 from utils import dates
-from utils.log import logger as log
+
+log = utils.log.getLogger()
 
 
 def run(new_task, old_task):
+    utils.log.running(log)
     if utils.is_done(new_task) and not utils.is_done(old_task):
         log.debug('Task has been marked COMPLETED: {}'.format(new_task['description'][:40]))
         new_task = _revive_repeat(new_task)

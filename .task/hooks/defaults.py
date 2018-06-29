@@ -12,8 +12,10 @@ Attributes:
 
 import sys
 
+import utils
 from utils import dates
-from utils.log import logger as log
+
+log = utils.log.getLogger()
 
 
 class FieldRef:

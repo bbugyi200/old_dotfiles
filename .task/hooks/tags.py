@@ -5,12 +5,16 @@ import subprocess as sp
 import sys
 
 import defaults
+import utils
 from utils import dates
 
 import gutils
 
+log = utils.log.getLogger()
+
 
 def run(new_task, old_task=None):
+    utils.log.running(log)
     new_task = _process_del_tags(new_task, old_task)
     new_task = _process_add_tags(new_task, old_task)
     return new_task
