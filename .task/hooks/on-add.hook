@@ -10,5 +10,5 @@ import main
 new_task = json.loads(sys.stdin.readline())
 
 if __name__ == "__main__":
-    new_task = main.add_run(new_task)
+    new_task = main.run(new_task)
     print(json.dumps(new_task))

@@ -7,12 +7,14 @@ This hook contains functions that are run when a task is start and/or stopped. T
 """
 
 import subprocess as sp
+
 import utils
 from utils.log import logger as log
 
 
 def run(new_task, old_task):
     # Extract attributes for use as tags.
+    log.debug('Running %s Hooks...', __file__)
     timew_tags = []
 
     if 'project' in new_task:

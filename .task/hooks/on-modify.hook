@@ -11,5 +11,5 @@ old_task = json.loads(sys.stdin.readline())
 new_task = json.loads(sys.stdin.readline())
 
 if __name__ == "__main__":
-    new_task = main.modify_run(new_task, old_task)
+    new_task = main.run(new_task, old_task)
     print(json.dumps(new_task))

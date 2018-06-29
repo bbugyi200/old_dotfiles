@@ -9,15 +9,14 @@ import logging
 import gutils
 
 gutils.logging.add_vdebug_level(logging)
-_STREAM_LOGGING_LEVEL = logging.INFO
+_STREAM_LOGGING_LEVEL = logging.VDEBUG
+logger = logging.getLogger("twhooks")
 
 
-def _add_handers(logger):
-    """Adds logging handlers to @logger.
+def init_logger():
+    """Initialize the logger"""
+    root = logging.getLogger()
 
-    Args:
-        level (opt): Logging level. Defaults to logging.DEBUG.
-    """
     if _STREAM_LOGGING_LEVEL == logging.INFO:
         max_level = logging.DEBUG
     else:
@@ -26,7 +25,7 @@ def _add_handers(logger):
     fh = logging.FileHandler('/var/tmp/taskwarrior-hooks.log')
     sh = logging.StreamHandler()
 
-    logger.setLevel(max_level)
+    root.setLevel(max_level)
     fh.setLevel(max_level)
     sh.setLevel(_STREAM_LOGGING_LEVEL)
 
@@ -34,9 +33,5 @@ def _add_handers(logger):
     fh.setFormatter(formatter)
     sh.setFormatter(formatter)
 
-    logger.addHandler(fh)
-    logger.addHandler(sh)
-
-
-logger = logging.getLogger(__name__)
-_add_handers(logger)
+    root.addHandler(fh)
+    root.addHandler(sh)
