@@ -73,6 +73,7 @@ set breakindent
 set nohlsearch
 " Changes location of viminfo file
 set viminfo+=n~/.vim/viminfo
+set noswapfile
 
 """"""""""""""""""""""""""
 "  Variable Assignments  "
@@ -290,14 +291,22 @@ function! s:VSetSearch(cmdtype)
 endfunction
 
 " Used to switch to and from test files
-function! SwitchToTest(ext)
+function! _SwitchToTest(ext, fcmd)
     let basename = expand('%:t:r')
     if basename =~ 'test_.*'
         let pyfile = split(basename, "_")[1]
-        exec "find " . pyfile . "." . a:ext
+        exec a:fcmd . " " . pyfile . "." . a:ext
     else
-        exec "find test_" . basename . "." . a:ext
+        exec a:fcmd . " test_" . basename . "." . a:ext
     endif
+endfunction
+
+function! SwitchToTest(ext)
+    call _SwitchToTest(a:ext, 'find')
+endfunction
+
+function! VSwitchToTest(ext)
+    call _SwitchToTest(a:ext, 'vert sf')
 endfunction
 
 " Automatically creates directory if it does not already exist

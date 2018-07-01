@@ -154,6 +154,7 @@ endif
 let g:jedi#show_call_signatures = 0
 let g:jedi#goto_command = "<C-]>"
 let g:jedi#goto_assignments_command = ""
+let g:jedi#rename_command = ""
 
 """"""""""""""""
 "  LocalVimrc  "

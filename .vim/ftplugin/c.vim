@@ -1,16 +1,11 @@
 NeoIncludeMakeCache
 
-" Man Pages
 nnoremap <Leader>m :Man 3 <C-r><C-w><CR>/^[A-Z]\+<CR>gg
-
-" Open Makefile
 nnoremap <Leader>M :e Makefile<CR>
-
 nnoremap <Leader>N :NeoIncludeMakeCache<CR>
-
 nmap <Leader>h :call SwitchSourceHeader()<CR>
-
 nmap <Leader>t :call SwitchToCTest()<CR>
+nmap <Leader>T :call VSwitchToCTest()<CR>
 
 " Do NOT place anything else below this conditional.
 if exists('*SwitchSourceHeader')
@@ -25,6 +20,18 @@ function! SwitchToCTest()
             call SwitchToTest('cc')
         catch
             call SwitchToTest('cpp')
+        endtry
+    endtry
+endfunction
+
+function! VSwitchToCTest()
+    try
+        call VSwitchToTest('c')
+    catch
+        try
+            call VSwitchToTest('cc')
+        catch
+            call VSwitchToTest('cpp')
         endtry
     endtry
 endfunction

@@ -1,16 +1,8 @@
 " -------------------------------------------------------------------------------------------------
-if has('win32')
-    command! -nargs=* Run !py "%"
-    nmap <F8> :w<CR>:!py -i "%"<CR> 
-else
-    command! -nargs=* Run call VimuxRunCommandInDir("clear &&"
-                    \ ."tmux select-pane -t bottom &&" 
-                    \ ." python <args>", 1)
-    nmap <F8> :w<CR>:Run -i<CR> 
-endif
+command! -nargs=0 Run exec "!pytest -v %"
+command! -nargs=0 T exec ":e ~/Dropbox/scripts/templates/template.py"
+command! -nargs=0 TT exec ":e ~/Dropbox/scripts/templates/test_template.py"
 
-nnoremap <Leader>T :e ~/Dropbox/scripts/templates/template.py<CR>
-nnoremap <Leader><Leader>T :e ~/Dropbox/scripts/templates/test_template.py<CR>
 
 " ------------------------------------- MULTILINE STRINGS -----------------------------------------
 function! BreakMultlineString(quote)
@@ -66,3 +58,4 @@ nnoremap <Leader>' 100\|Bi'<CR>'<Esc>
 nnoremap <Leader><Leader>' :call JoinMultilineString()<CR>:call BreakMultlineString("'")<CR>
 
 nmap <Leader>t :call SwitchToTest('py')<CR>
+nmap <Leader>T :call VSwitchToTest('py')<CR>

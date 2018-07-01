@@ -107,7 +107,7 @@ tags = {
         'tags': ModList('GTD', '+'),
     },
     'note': {
-        'description': Wrap(start='Add "', end='" to notebook'),
+        'description': Wrap(start='Add "', end='" to notebook tasks'),
     },
     'remind': {
         'project': 'Meta',

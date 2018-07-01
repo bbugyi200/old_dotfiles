@@ -1,3 +1,4 @@
+import datetime as dt
 import functools
 import re
 import yaml
@@ -15,12 +16,13 @@ config.load_autoconfig()
 #  Search Engines  #
 ####################
 one_letter_bangs = ['a', 'd', 'g', 'i', 't', 'w']
-two_letter_bangs = ['wa']
+two_letter_bangs = ['wa', 'yt']
 long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy']
 included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
 
 bang_fmt = '^({})%20'
 bang_pttrn = bang_fmt.format('|'.join(included_bangs))
+
 
 c.url.searchengines = {
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
@@ -79,12 +81,34 @@ c.url.searchengines = {
                 SE.LuckyQuery.url('{} site:reddit.com'),
                 patterns=SE.LuckyQuery.pattern,
                 filters=SE.LuckyQuery.filter),
+    's0': SE.static.google('{} site:stackoverflow.com'),
     'sub': SE.URL(SE.static.google('{} inurl:english site:subscene.com'),
                   SE.LuckyQuery.url('{0} inurl:english site:subscene.com'),
                   SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
                   patterns=(SE.LuckyQuery.pattern, SE.TwoIntQuery.pattern),
                   filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter)),
 }
+
+
+##### Setting Up Stackoverflow Search Engines
+def stackoverflow(n):
+    """Returns stackoverflow HTTP encoded google search string.
+
+    The search results returned by Google will range from @n years ago until now.
+    """
+    fmt = '{{}} site:stackoverflow.com&source=lnt&tbs=cdr%3A1%2Ccd_min%3A{0}%2F{1}%2F{2}%2Ccd_max%3A&tbm='
+    D = _n_years_ago(n)
+    return fmt.format(D.month, D.day, D.year)
+
+
+def _n_years_ago(n):
+    """Return a datetime N years ago."""
+    today = dt.date.today()
+    return today.replace(year=(today.year - n))
+
+
+for n in range(1, 11):
+    c.url.searchengines['s{}'.format(n)] = SE.static.google(stackoverflow(n))
 
 #############
 #  Aliases  #
