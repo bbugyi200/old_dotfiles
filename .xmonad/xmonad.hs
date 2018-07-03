@@ -12,12 +12,10 @@ import XMonad.Util.WorkspaceCompare (getSortByIndex)
 import XMonad.Hooks.EwmhDesktops (ewmh,ewmhDesktopsLogHook,ewmhDesktopsStartup)
 import XMonad.Hooks.ManageHelpers (doRectFloat,doFullFloat)
 
-import Data.Maybe (isNothing,isJust)
-import Control.Monad (liftM,when)
-import Network.HostName (getHostName)
-
 import Graphics.X11.ExtraTypes.XF86
 
+import qualified Network.HostName as HostName
+import qualified Control.Monad as Monad
 import qualified XMonad.Hooks.ManageDocks as Docks
 import qualified Data.List as DataList
 import qualified Data.Char as DataChar
@@ -65,14 +63,14 @@ removeEmptyWorkspaceAfter' :: X () -> X ()
 removeEmptyWorkspaceAfter' f = do
     workspaceList <- gets (W.workspaces . windowset)
     let n = length workspaceList
-    when (n > 3) $ DW.removeEmptyWorkspaceAfter f
-    when (n <= 3) f
+    Monad.when (n > 3) $ DW.removeEmptyWorkspaceAfter f
+    Monad.when (n <= 3) f
 
 removeEmptyWorkspace' :: X ()
 removeEmptyWorkspace' = do
     workspaceList <- gets (W.workspaces . windowset)
     let n = length workspaceList
-    when (n > 3) DW.removeEmptyWorkspace
+    Monad.when (n > 3) DW.removeEmptyWorkspace
 
 launchApp :: String -> String -> X ()
 launchApp ws cmd = sequence_ [DW.addWorkspace ws, spawnHere $ "hide_nsp && WS_is_Empty && " ++ cmd]
@@ -163,7 +161,8 @@ myAdditionalKeys = [
    , ((alpha .|. beta, x), launchApp "TERM'" myTerminal)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, z), launchApp "ZATH" "zathura")
-   , ((alpha .|. beta, z), launchApp "ZEAL" "zeal")
+   , ((alpha .|. beta, z), launchApp "ZATH'" "zathura")
+   , ((alpha .|. shift, z), launchApp "ZEAL" "zeal")
    , ((alpha .|. beta .|. shift, z), sequence_ [CW.nextScreen, launchApp "ZATH'" "zsearch --new"])
 
    ---------- SPECIAL CHARACTERS ----------
@@ -294,7 +293,7 @@ myStartupHook = ewmhDesktopsStartup
 ------------
 main :: IO ()
 main = do
-    hostname <- getHostName
+    hostname <- HostName.getHostName
     xmproc <- spawnPipe (xmobarTempFmt $ getXmobarTemplate $ "1-top-" ++ hostname)
     xmonad . Docks.docks . ewmh $ desktopConfig
         {
@@ -318,6 +317,6 @@ main = do
             , DL.ppHiddenNoWindows       = DL.xmobarColor "darkgrey" "" . strToUpper
             , DL.ppWsSep                 = "    "
             , DL.ppTitle                 = DL.xmobarColor "green"  "" . DL.shorten 40
-            , DL.ppSort                  = (NSP.namedScratchpadFilterOutWorkspace .) `liftM` DW.getSortByOrder
+            , DL.ppSort                  = (NSP.namedScratchpadFilterOutWorkspace .) `Monad.liftM` DW.getSortByOrder
             } >> ewmhDesktopsLogHook <+> DL.dynamicLogXinerama
       } `additionalKeys` myAdditionalKeys
