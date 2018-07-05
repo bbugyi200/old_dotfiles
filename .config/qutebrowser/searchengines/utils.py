@@ -4,7 +4,7 @@ import re
 
 
 def escape(query):
-    character_map = [(' ', '+'), (':', '%3A')]
+    character_map = [(r'\+', '%2B'), (' ', '+'), (':', '%3A')]
 
     temp = query
     for pattern, repl in character_map:
