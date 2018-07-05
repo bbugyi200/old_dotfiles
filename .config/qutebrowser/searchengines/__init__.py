@@ -1,4 +1,4 @@
-""" Qutebrowser SearchEngine Helpers """
+"""Qutebrowser SearchEngine Helpers"""
 
 import re
 

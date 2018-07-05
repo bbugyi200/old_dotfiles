@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-
-""" Prints the URL of the First Google Search Result for the Given Query """
+"""Prints the URL of the First Google Search Result for the Given Query"""
 
 ##########################################################
 #  http://edmundmartin.com/scraping-google-with-python/  #
@@ -17,7 +15,11 @@ USER_AGENT = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebK
 
 
 def fetch_results(query):
-    assert isinstance(query, str), 'Search term must be a string'
+    try:
+        assert isinstance(query, str), 'Search term must be a string'
+    except AssertionError as e:
+        raise ValueError(str(e))
+
     escaped_query = utils.escape(query)
 
     google_url = 'https://www.google.com/search?q={}'.format(escaped_query)

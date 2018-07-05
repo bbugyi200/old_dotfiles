@@ -1,3 +1,5 @@
+"""Qutebrowser Configuration"""
+
 import datetime as dt
 import functools
 import re
@@ -81,7 +83,7 @@ c.url.searchengines = {
                 SE.LuckyQuery.url('{} site:reddit.com'),
                 patterns=SE.LuckyQuery.pattern,
                 filters=SE.LuckyQuery.filter),
-    's0': SE.static.google('{} site:stackoverflow.com'),
+    'so': SE.static.google('{} site:stackoverflow.com'),
     'sub': SE.URL(SE.static.google('{} inurl:english site:subscene.com'),
                   SE.LuckyQuery.url('{0} inurl:english site:subscene.com'),
                   SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
@@ -184,6 +186,7 @@ bind('A', 'set-cmd-text -s :quickmark-load -t')
 bind('b', 'quickmark-save')
 bind('B', 'bookmark-add')
 bind('cd', 'download-cancel')
+bind('C', 'tab-clone')
 bind('D', 'download')
 bind('gi', 'hint inputs')
 bind('m', 'enter-mode set_mark')

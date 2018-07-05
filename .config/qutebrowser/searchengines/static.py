@@ -1,4 +1,4 @@
-""" Static URL Helpers """
+"""Static URL Helpers"""
 
 import searchengines.utils as utils
 
