@@ -1,15 +1,47 @@
-include(../shared.cmake)
+find_package(Threads REQUIRED)
 
-include_directories(/usr/include/CppUTest)
-include_directories(/usr/include/CppUTestExt)
+# Enable ExternalProject CMake module
+include(ExternalProject)
 
-# add cpputest library
-add_library(imp_cpputest STATIC IMPORTED)
-set_property(TARGET imp_cpputest PROPERTY
-             IMPORTED_LOCATION /usr/lib/libCppUTest.a)
+# Download and install GoogleTest
+ExternalProject_Add(
+    gtest
+    URL https://github.com/google/googletest/archive/master.zip
+    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/gtest
+    # Disable install step
+    INSTALL_COMMAND ""
+)
+
+# Get GTest source and binary directories from CMake project
+ExternalProject_Get_Property(gtest source_dir binary_dir)
+
+# Create a libgtest target to be used as a dependency by test programs
+add_library(libgtest IMPORTED STATIC GLOBAL)
+add_dependencies(libgtest gtest)
+
+# Set libgtest properties
+set_target_properties(libgtest PROPERTIES
+    "IMPORTED_LOCATION" "${binary_dir}/googlemock/gtest/libgtest.a"
+    "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}"
+)
+
+# Create a libgmock target to be used as a dependency by test programs
+add_library(libgmock IMPORTED STATIC GLOBAL)
+add_dependencies(libgmock gtest)
+
+# Set libgmock properties
+set_target_properties(libgmock PROPERTIES
+    "IMPORTED_LOCATION" "${binary_dir}/googlemock/libgmock.a"
+    "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}"
+)
+
+# I couldn't make it work with INTERFACE_INCLUDE_DIRECTORIES
+include_directories("${source_dir}/googletest/include"
+                    "${source_dir}/googlemock/include")
 
 file(GLOB SOURCES "../src/[^main]*.cc")
 file(GLOB TESTS "*.cc")
 add_executable(runtests ${SOURCES} ${TESTS})
-target_link_libraries(runtests imp_cpputest)
+
+target_link_libraries(runtests libgtest libgmock)
 target_include_directories(runtests PUBLIC ../include)

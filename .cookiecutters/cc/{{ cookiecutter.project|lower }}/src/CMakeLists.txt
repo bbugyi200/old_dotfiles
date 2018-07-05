@@ -1,5 +1,3 @@
-include(../shared.cmake)
-
 file(GLOB SOURCES "*.cc")
 {% if cookiecutter.lib == 'y' %}
 add_library({{ cookiecutter.project|lower }} STATIC ${SOURCES})
