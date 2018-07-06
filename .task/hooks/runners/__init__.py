@@ -1,6 +1,7 @@
 """Runnable Hooks
 
-Every module (hook) in this package has a run() method which executes that hook.
+Every module (hook) in this package has a run method with the following signature which executes
+that hook: run(new_task, old_task=None).
 """
 
 from hooks.utils import log

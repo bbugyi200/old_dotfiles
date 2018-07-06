@@ -31,18 +31,18 @@ tags = {
         None: fields.Notify('Pig is Fat!'),
     },
     'call': {
-        'tags': fields.ModList('note', '+'),
+        'tags': fields.ModTags('note', '+'),
     },
     'const': {
         'consistent': 'yes',
-        'tags': fields.ModList('const', '-'),
+        'tags': fields.ModTags('const', '-'),
     },
     'dev': {
         'project': 'Dev',
-        'tags': fields.ModList('dev', '-'),
+        'tags': fields.ModTags('dev', '-'),
     },
     'errand': {
-        'tags': fields.ModList('note', '+'),
+        'tags': fields.ModTags('note', '+'),
     },
     'GTD': {
         'priority': 'H',
@@ -53,7 +53,7 @@ tags = {
         'wait': fields.Ref('due'),
     },
     'khal': {
-        'tags': fields.ModList('GTD', '+'),
+        'tags': fields.ModTags('GTD', '+'),
     },
     'note': {
         'description': fields.Wrap(start='Add "', end='" to notebook tasks'),
@@ -62,30 +62,30 @@ tags = {
         'project': 'Meta',
         'due': _tomorrow_due_time,
         'delta': 1,
-        'tags': fields.ModList(('remind', 'tickle'), ('-', '+')),
+        'tags': fields.ModTags(('remind', 'tickle'), ('-', '+')),
     },
     'Severity_1': {
-        'tags': fields.ModList('Severity_1', '-'),
+        'tags': fields.ModTags('Severity_1', '-'),
         'severity': 'critical',
     },
     'Severity_2': {
-        'tags': fields.ModList('Severity_2', '-'),
+        'tags': fields.ModTags('Severity_2', '-'),
         'severity': 'high',
     },
     'Severity_3': {
-        'tags': fields.ModList('Severity_3', '-'),
+        'tags': fields.ModTags('Severity_3', '-'),
         'severity': 'medium',
     },
     'Severity_4': {
-        'tags': fields.ModList('Severity_4', '-'),
+        'tags': fields.ModTags('Severity_4', '-'),
         'severity': 'low',
     },
     'strict': {
         'strict': 'yes',
-        'tags': fields.ModList('strict', '-'),
+        'tags': fields.ModTags('strict', '-'),
     },
     'taskwarrior': {
-        'tags': fields.ModList('GTD', '+'),
+        'tags': fields.ModTags('GTD', '+'),
     },
     'tickle': {
         'due': _tomorrow_due_time,
@@ -93,7 +93,7 @@ tags = {
     },
     'today': {
         'due': _today_due_time,
-        'tags': fields.ModList('today', '-'),
+        'tags': fields.ModTags('today', '-'),
         'project': 'Misc',
     },
 }

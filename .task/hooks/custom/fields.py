@@ -62,11 +62,10 @@ class Ref(Field):
         return task
 
 
-class ModList(Field):
-    """Modify List
+class ModTags(Field):
+    """Modify Tags List
 
-    Used when field value is a list. For example, you can use this to add or remove a tag from the
-    'tags' field.
+    Used to add/remove a tag from the 'tags' field.
     """
     mode_opts = ['+', '-']
 
