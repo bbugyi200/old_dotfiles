@@ -15,6 +15,12 @@ msg_fmt = "+{tag} => {field}{sep}{val}\n"
 
 
 class Field(metaclass=ABCMeta):
+    """Abstract Field Class
+
+    Attributes:
+        msg (str): This message will be appended to the output displayed to the user after
+            custom tag actions have been completed.
+    """
     def __init__(self):
         self.msg = ''
 

@@ -20,8 +20,10 @@ def run(*task_dicts):
     from hooks.runners import github
     from hooks.runners import repeats
     from hooks.runners import tags
+    from hooks.runners import validate
 
     new_task = tags.run(*task_dicts)
+    new_task = validate.run(*task_dicts)
     new_task = github.run(*task_dicts)
     new_task = active.run(*task_dicts)
     new_task = repeats.run(*task_dicts)

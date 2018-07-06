@@ -27,6 +27,9 @@ tags = {
     'bug': {
         'project': 'Dev',
     },
+    'pig': {
+        None: fields.Notify('Pig is Fat!'),
+    },
     'call': {
         'tags': fields.ModList('note', '+'),
     },

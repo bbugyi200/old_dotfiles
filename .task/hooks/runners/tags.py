@@ -1,7 +1,5 @@
 """Hooks and functions related to custom tags"""
 
-import subprocess as sp
-
 from hooks.custom import tags
 from hooks.custom import fields
 from hooks.utils import log
@@ -76,15 +74,6 @@ def _process_add_tags(new_task, old_task=None):
                         else:
                             new_task[field] = value
                             output += fields.msg_fmt.format(tag=tag, field=field, sep=':', val=new_task[field])
-
-    # Medium priority should not exist
-    if ('priority' in new_task.keys()) and (new_task['priority'] == 'M'):
-        new_task.pop('priority')
-
-    # Don't let task be created without project
-    if 'project' not in new_task.keys():
-        out = sp.check_output(['prompt', 'Select a Project'])
-        new_task['project'] = out.decode().strip()
 
     if output != header:
         output += '   \n'  # Spaces Needed
