@@ -2,7 +2,7 @@
 
 import datetime as dt
 
-from hooks import defaults
+from hooks.custom import tags
 from hooks import utils
 from hooks.utils import log
 from hooks.utils import dates
@@ -52,7 +52,7 @@ def _revive_repeat(new_task):
     Checks if task has a custom repeat tag. If so, the task is brought back into pending status and
     a new due date is set.
     """
-    for tag, N in defaults.repeats.items():
+    for tag, N in tags.repeats.items():
         if utils.has_tag(new_task, tag):
             msg = '+{} tag found. Task "{}..." has been identified as a custom repeat.'
             logger.debug(msg.format(tag, new_task['description'][:40]))

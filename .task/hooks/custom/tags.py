@@ -10,65 +10,11 @@ Attributes:
         defined in this module.
 """
 
-import sys
-
+from hooks.custom import fields
 from hooks.utils import log
 from utils import dates
 
 logger = log.getLogger()
-
-
-class FieldRef:
-    """Field Reference
-
-    References one of a Task's fields. Setting <foo> field's default to `FieldRef(<bar>)` is
-    equivalent to `task add ... foo:bar ...`.
-
-    You can also set the <foo> field's default to `FieldRef(<foo>)` to enforce a mandatory
-    field.
-    """
-    def __init__(self, field):
-        self.field = field
-
-
-class ModList:
-    """Modify List
-
-    Used when field value is a list. For example, you can use this to add or remove a tag from the
-    'tags' field.
-    """
-    mode_opts = ['+', '-']
-
-    def __init__(self, items, modes):
-        if not isinstance(items, str) and not isinstance(modes, str):
-            self.items = items
-            self.modes = modes
-        else:
-            self.items = (items, )
-            self.modes = (modes, )
-
-        if not all(mode in self.mode_opts for mode in modes):
-            print("Mode must be one of the following!: {}", self.mode_opts)
-            sys.exit(1)
-
-
-class Notify:
-    """Send Notification
-
-    Use @msg to send a desktop notification.
-    """
-    def __init__(self, msg):
-        self.msg = msg
-
-
-class Wrap:
-    """Wrap Field
-
-    Wraps string field with @start and @end.
-    """
-    def __init__(self, *, start, end):
-        self.start = start
-        self.end = end
 
 
 _today_due_time = dates.get_today()
@@ -82,18 +28,18 @@ tags = {
         'project': 'Dev',
     },
     'call': {
-        'tags': ModList('note', '+'),
+        'tags': fields.ModList('note', '+'),
     },
     'const': {
         'consistent': 'yes',
-        'tags': ModList('const', '-'),
+        'tags': fields.ModList('const', '-'),
     },
     'dev': {
         'project': 'Dev',
-        'tags': ModList('dev', '-'),
+        'tags': fields.ModList('dev', '-'),
     },
     'errand': {
-        'tags': ModList('note', '+'),
+        'tags': fields.ModList('note', '+'),
     },
     'GTD': {
         'priority': 'H',
@@ -101,42 +47,42 @@ tags = {
     'inbox': {
         'project': 'Meta',
         'due': _tomorrow_due_time,
-        'delta': 0,
+        'wait': fields.Ref('due'),
     },
     'khal': {
-        'tags': ModList('GTD', '+'),
+        'tags': fields.ModList('GTD', '+'),
     },
     'note': {
-        'description': Wrap(start='Add "', end='" to notebook tasks'),
+        'description': fields.Wrap(start='Add "', end='" to notebook tasks'),
     },
     'remind': {
         'project': 'Meta',
         'due': _tomorrow_due_time,
         'delta': 1,
-        'tags': ModList(('remind', 'tickle'), ('-', '+')),
+        'tags': fields.ModList(('remind', 'tickle'), ('-', '+')),
     },
     'Severity_1': {
-        'tags': ModList('Severity_1', '-'),
+        'tags': fields.ModList('Severity_1', '-'),
         'severity': 'critical',
     },
     'Severity_2': {
-        'tags': ModList('Severity_2', '-'),
+        'tags': fields.ModList('Severity_2', '-'),
         'severity': 'high',
     },
     'Severity_3': {
-        'tags': ModList('Severity_3', '-'),
+        'tags': fields.ModList('Severity_3', '-'),
         'severity': 'medium',
     },
     'Severity_4': {
-        'tags': ModList('Severity_4', '-'),
+        'tags': fields.ModList('Severity_4', '-'),
         'severity': 'low',
     },
     'strict': {
         'strict': 'yes',
-        'tags': ModList('strict', '-'),
+        'tags': fields.ModList('strict', '-'),
     },
     'taskwarrior': {
-        'tags': ModList('GTD', '+'),
+        'tags': fields.ModList('GTD', '+'),
     },
     'tickle': {
         'due': _tomorrow_due_time,
@@ -144,7 +90,7 @@ tags = {
     },
     'today': {
         'due': _today_due_time,
-        'tags': ModList('today', '-'),
+        'tags': fields.ModList('today', '-'),
         'project': 'Misc',
     },
 }
