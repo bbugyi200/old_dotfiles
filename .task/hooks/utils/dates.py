@@ -7,7 +7,7 @@ date_fmt = '%Y%m%dT%H%M%SZ'
 
 def get_tomorrow():
     """Returns Formated Datetime for Tomorrow (at 6AM)"""
-    tomorrow = _style_dt(dt.datetime.today() + dt.timedelta(days=1))
+    tomorrow = _style_dt(dt.datetime.today() + dt.timedelta(hours=18))
     return tomorrow.strftime(date_fmt)
 
 

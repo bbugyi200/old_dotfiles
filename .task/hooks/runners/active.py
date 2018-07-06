@@ -14,7 +14,10 @@ from hooks.utils import log
 logger = log.getLogger()
 
 
-def run(new_task, old_task):
+def run(new_task, old_task=None):
+    if old_task is None:
+        return new_task
+
     # Extract attributes for use as tags.
     log.running(logger)
     timew_tags = []

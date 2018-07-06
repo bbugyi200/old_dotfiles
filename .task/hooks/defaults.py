@@ -170,7 +170,7 @@ for i in range(3, 7):
 
 for key in repeats.keys():
     tags[key] = {
-            'due': dates.get_today(),
+            'due': _today_due_time,
             'repeat': 'yes'
     }
 

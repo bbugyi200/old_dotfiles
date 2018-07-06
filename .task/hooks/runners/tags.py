@@ -1,12 +1,10 @@
 """Hooks and functions related to custom tags"""
 
-import datetime as dt
 import subprocess as sp
 import sys
 
 from hooks import defaults
 from hooks.utils import log
-from hooks.utils import dates
 
 import gutils
 
@@ -116,14 +114,6 @@ def _process_add_tags(new_task, old_task=None):
     if ('priority' in new_task.keys()) and (new_task['priority'] == 'M'):
         new_task.pop('priority')
 
-    if 'delta' in new_task.keys():
-        if _fieldsEquiv(new_task, old_task, 'wait') and (new_task['delta'] >= 0):
-            new_task['wait'] = dates.get_new_wait(new_task)
-            out = "'delta' Field Exists => task[wait] = task[due] - {}d\n".format(int(new_task['delta']))
-            print(out)
-    else:
-        new_task = _set_delta(new_task)
-
     # Don't let task be created without project
     if 'project' not in new_task.keys():
         out = sp.check_output(['prompt', 'Select a Project'])
@@ -132,39 +122,5 @@ def _process_add_tags(new_task, old_task=None):
     if output != header:
         output += '   \n'  # Spaces Needed
         print(output)
-
-    return new_task
-
-
-def _fieldsEquiv(taskA, taskB, field):
-    """Compares the Given Field of two Tasks
-
-    Returns True if the fields are equal.
-    """
-    c1 = (field in set(taskA.keys()) & set(taskB.keys())) and (taskA[field] == taskB[field])
-    c2 = field not in set(taskA.keys()) | set(taskB.keys())
-
-    return any([c1, c2])
-
-
-def _fieldEquals(task, field, value):
-    """True if 'task[field]' equals 'value'"""
-    return (field in task.keys()) and (task[field] == value)
-
-
-def _set_delta(new_task):
-    """Sets 'task[delta]' to Integer Difference of 'task[due]' and 'task[wait]'"""
-    if _fieldEquals(new_task, 'repeat', 'yes'):
-        if 'wait' in new_task.keys():
-            tdelta = dt.datetime.strptime(new_task['due'], dates.date_fmt) - dt.datetime.strptime(new_task['wait'], dates.date_fmt)
-            if tdelta.days < 0:
-                new_task['delta'] = -1
-                new_task.pop('wait')
-                print('Negative wait removed.')
-            else:
-                new_task['delta'] = tdelta.days
-                print('[repeat.delta] set to {} for repeating task.'.format(tdelta.days))
-        else:
-            new_task['delta'] = -1
 
     return new_task
