@@ -4,7 +4,7 @@ import subprocess as sp
 
 
 def run(new_task, old_task=None):
-    """Run Validation Hooks.
+    """Run Validation Hook.
 
     Performs the following actions:
         - Remove 'M' priority. This priority is not supported.

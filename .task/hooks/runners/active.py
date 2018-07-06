@@ -1,10 +1,4 @@
-"""Active (start/stop) Hooks
-
-This hook contains functions that are run when a task is start and/or stopped. This includes:
-   - Starting/stopping TimeWarrior
-   - Starting xtaskidle
-   - Writing last task UUID to file (used by 'last_task' script).
-"""
+"""Active (start/stop) Hooks"""
 
 import subprocess as sp
 
@@ -15,6 +9,13 @@ logger = log.getLogger()
 
 
 def run(new_task, old_task=None):
+    """Run Active Hook.
+
+    This hook contains functions that are run when a task is start and/or stopped. This includes:
+       - Starting/stopping TimeWarrior
+       - Starting xtaskidle
+       - Writing last task UUID to file (used by 'last_task' script).
+    """
     if old_task is None:
         return new_task
 
