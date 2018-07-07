@@ -5,13 +5,16 @@ Attributes:
 """
 
 from abc import ABCMeta, abstractmethod
-import sys
 
 from hooks.utils import log
 import gutils
 
 logger = log.getLogger()
 msg_fmt = "+{tag} => {field}{sep}{val}\n"
+
+
+class FieldError(RuntimeError):
+    """Generic exception raised by custom Field objects"""
 
 
 class Field(metaclass=ABCMeta):
@@ -53,8 +56,7 @@ class Ref(Field):
                                        sep=' = ', val='task[{}]'.format(self.field))
         except KeyError:
             error_fmt = "The '{field}:' field must be defined when using the '+{tag}' tag."
-            print(error_fmt.format(field=self.field, tag=tag))
-            sys.exit(1)
+            raise FieldError(error_fmt.format(field=self.field, tag=tag))
 
         return task
 
@@ -76,8 +78,7 @@ class ModTags(Field):
             self.modes = (modes, )
 
         if not all(mode in self.mode_opts for mode in modes):
-            print("Mode must be one of the following!: {}", self.mode_opts)
-            sys.exit(1)
+            raise FieldError("Mode must be one of the following!: {}", self.mode_opts)
 
     def add(self, task, tag, field):
         for item, mode in zip(self.items, self.modes):
@@ -92,8 +93,7 @@ class ModTags(Field):
                     sep = '.remove'
                 except ValueError:
                     error_fmt = "Cannot remove '{item}'! '{item}' is not in '{field}'!"
-                    print(error_fmt.format(item=item, field=field))
-                    sys.exit(1)
+                    raise FieldError(error_fmt.format(item=item, field=field))
 
             self.msg += msg_fmt.format(tag=tag, field=field, sep=sep, val='(\'' + item + '\')')
 

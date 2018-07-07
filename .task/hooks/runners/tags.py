@@ -1,5 +1,8 @@
 """Hooks and functions related to custom tags"""
 
+import contextlib
+import sys
+
 from hooks.custom import tags
 from hooks.custom import fields
 from hooks.utils import log
@@ -12,6 +15,15 @@ def run(new_task, old_task=None):
     new_task = _process_del_tags(new_task, old_task)
     new_task = _process_add_tags(new_task, old_task)
     return new_task
+
+
+@contextlib.contextmanager
+def _field_context():
+    try:
+        yield
+    except fields.FieldError as e:
+        print(str(e))
+        sys.exit(1)
 
 
 def _process_del_tags(new_task, old_task=None):
@@ -33,7 +45,8 @@ def _process_del_tags(new_task, old_task=None):
                         output += fmt.format(tag=tag, field=field)
 
                         if isinstance(value, fields.Field):
-                            new_task = value.pop(new_task, tag, field)
+                            with _field_context():
+                                new_task = value.pop(new_task, tag, field)
                         else:
                             new_task.pop(field)
                 except KeyError:
@@ -69,8 +82,9 @@ def _process_add_tags(new_task, old_task=None):
                             pass
                     elif field not in new_task.keys() or field in tags.force_update:
                         if isinstance(value, fields.Field):
-                            new_task = value.add(new_task, tag, field)
-                            output += value.msg
+                            with _field_context():
+                                new_task = value.add(new_task, tag, field)
+                                output += value.msg
                         else:
                             new_task[field] = value
                             output += fields.msg_fmt.format(tag=tag, field=field, sep=':', val=new_task[field])
