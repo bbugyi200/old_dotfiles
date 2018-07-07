@@ -28,9 +28,9 @@ class Field(metaclass=ABCMeta):
     def add(self, task, tag, field):
         """Processes and returns task dict when corresponding special tag is added."""
 
-    @abstractmethod
     def pop(self, task, tag, field):
         """Processes and returns task dict when corresponding special tag is removed."""
+        return task
 
 
 class Ref(Field):
@@ -56,9 +56,6 @@ class Ref(Field):
             print(error_fmt.format(field=self.field, tag=tag))
             sys.exit(1)
 
-        return task
-
-    def pop(self, task, tag, field):
         return task
 
 
@@ -102,9 +99,6 @@ class ModTags(Field):
 
         return task
 
-    def pop(self, task, tag, field):
-        return task
-
 
 class Notify(Field):
     """Send Notification
@@ -117,9 +111,6 @@ class Notify(Field):
 
     def add(self, task, tag, field):
         gutils.notify(self.notification_msg)
-        return task
-
-    def pop(self, task, tag, field):
         return task
 
 
