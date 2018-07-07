@@ -110,7 +110,7 @@ class Notify(Field):
         self.notification_msg = notification_msg
 
     def add(self, task, tag, field):
-        gutils.notify(self.notification_msg)
+        gutils.notify(self.notification_msg, title='TaskWarrior Hook')
         return task
 
 
