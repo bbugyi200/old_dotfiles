@@ -2,6 +2,8 @@
 --  Imports  --
 ---------------
 import XMonad
+import Graphics.X11.ExtraTypes.XF86
+
 import XMonad.Actions.SpawnOn (spawnOn,spawnHere,manageSpawn)
 import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Config.Desktop (desktopConfig)
@@ -11,8 +13,6 @@ import XMonad.Layout.Spacing (smartSpacing)
 import XMonad.Util.WorkspaceCompare (getSortByIndex)
 import XMonad.Hooks.EwmhDesktops (ewmh,ewmhDesktopsLogHook,ewmhDesktopsStartup)
 import XMonad.Hooks.ManageHelpers (doRectFloat,doFullFloat)
-
-import Graphics.X11.ExtraTypes.XF86
 
 import qualified Network.HostName as HostName
 import qualified Control.Monad as Monad
@@ -53,7 +53,7 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%   (%window_count%)}%timew%{ %pia%%dropbox%  |  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%weather%      [%sunrise% / %sunset%]{"
@@ -77,10 +77,7 @@ launchApp ws cmd = sequence_ [DW.addWorkspace ws, spawnHere $ "hide_nsp && WS_is
 
 -- Only shows layout when fullscreen mode is enabled
 myPpOrder :: [String] -> [String]
-myPpOrder (ws:l:t:_) = 
-    if "Full" `DataList.isInfixOf` l
-        then [ws, DL.xmobarColor "white" "" "<icon=full.xbm/>"]
-        else [ws]
+myPpOrder (ws:l:t:_) = [ws]
 
 strToUpper :: String -> String
 strToUpper = map DataChar.toUpper
@@ -153,10 +150,10 @@ myAdditionalKeys = [
    , ((alpha .|. beta, s), windows W.swapDown)    -- Shift Local
    , ((alpha .|. beta .|. ctrl, s), spawn "confirm --dmenu 'smart_shutdown'") -- Shutdown
    , ((alpha, t), spawn "prompt 'Inbox' -format 'q' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
-   , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
+   , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add +today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
    , ((alpha, u), windows W.focusUp)
-   , ((alpha, v), launchApp "CAST" "mpvlc")
+   , ((alpha, v), launchApp "MPV" "mpvlc")
    , ((alpha, x), launchApp "TERM" myTerminal)
    , ((alpha .|. beta, x), launchApp "TERM'" myTerminal)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
