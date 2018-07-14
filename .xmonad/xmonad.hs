@@ -123,7 +123,7 @@ myAdditionalKeys = [
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
    , ((alpha, h), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.L False])
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tmdir --get $(tmux display-message -p \"#S\")) && ll'") -- cd to Tmux Home Dir
+   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tmux display-message -p \"#{TMUXINATOR_ROOT_$(tmux display-message -p \"#{window_index}\")}\") && ll'") -- cd to Tmuxinator Window Root
    , ((alpha, j), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.U False])
@@ -153,10 +153,11 @@ myAdditionalKeys = [
    , ((alpha .|. beta, s), windows W.swapDown)    -- Shift Local
    , ((alpha .|. beta .|. ctrl, s), spawn "confirm --dmenu 'smart_shutdown'") -- Shutdown
    , ((alpha, t), spawn "prompt 'Inbox' -format 'q' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
-   , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add due:today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
+   , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add +today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
    , ((alpha, u), windows W.focusUp)
-   , ((alpha, v), launchApp "CAST" "mpvlc")
+   , ((alpha, v), launchApp "MPV" "mpvlc")
+   , ((alpha .|. shift, v), launchApp "CAST" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cnciopoikihiagdjbjpnocolokfelagl")
    , ((alpha, x), launchApp "TERM" myTerminal)
    , ((alpha .|. beta, x), launchApp "TERM'" myTerminal)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
