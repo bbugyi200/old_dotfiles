@@ -123,7 +123,7 @@ myAdditionalKeys = [
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
    , ((alpha, h), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.L False])
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tmux display-message -p \"#{TMUXINATOR_ROOT_$(tmux display-message -p \"#{window_index}\")}\") && ll'") -- cd to Tmuxinator Window Root
+   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tm-root $(tmux display-message -p \"#{session_name} #{window_name}\")) && ll'") -- cd to Tmuxinator Window Root
    , ((alpha, j), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.U False])
