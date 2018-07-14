@@ -17,15 +17,6 @@ def run(new_task, old_task=None):
     return new_task
 
 
-@contextlib.contextmanager
-def _field_context():
-    try:
-        yield
-    except fields.FieldError as e:
-        print(str(e))
-        sys.exit(1)
-
-
 def _process_del_tags(new_task, old_task=None):
     """Remove default task values when special tag is removed from task"""
     if old_task is None:
@@ -94,3 +85,12 @@ def _process_add_tags(new_task, old_task=None):
         print(output)
 
     return new_task
+
+
+@contextlib.contextmanager
+def _field_context():
+    try:
+        yield
+    except fields.FieldError as e:
+        print(str(e))
+        sys.exit(1)

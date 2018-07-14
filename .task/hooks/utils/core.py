@@ -23,6 +23,9 @@ def fields_equiv(taskA, taskB, field):
 
     Returns True if the fields are equal.
     """
+    if taskA is None or taskB is None:
+        return True
+
     c1 = (field in set(taskA.keys()) & set(taskB.keys())) and (taskA[field] == taskB[field])
     c2 = field not in set(taskA.keys()) | set(taskB.keys())
 

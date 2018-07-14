@@ -2,6 +2,10 @@
 
 import subprocess as sp
 
+from hooks.utils import log
+
+logger = log.getLogger()
+
 
 def run(new_task, old_task=None):
     """Run Validation Hook.
@@ -9,6 +13,7 @@ def run(new_task, old_task=None):
     Performs the following actions:
         - Remove 'M' priority. This priority is not supported.
         - Prompt the user for a project name if none was given.
+        - If due time is midnight, change to 6AM.
     """
     # Medium priority should not exist
     if ('priority' in new_task.keys()) and (new_task['priority'] == 'M'):
@@ -17,6 +22,15 @@ def run(new_task, old_task=None):
     # Don't let task be created without project
     if 'project' not in new_task.keys():
         out = sp.check_output(['prompt', 'Select a Project'])
-        new_task['project'] = out.decode().strip()
+        project = out.decode().strip()
+
+        if project == '':
+            project = 'Misc'
+
+        new_task['project'] = project
+
+    if 'due' in new_task.keys() and new_task['due'][-7:] == '040000Z':
+        logger.debug('Setting due time for 6AM.')
+        new_task['due'] = new_task['due'][:-7] + '100000Z'
 
     return new_task

@@ -93,6 +93,10 @@ tags = {
         'tags': fields.ModTags('today', '-'),
         'project': 'Misc',
     },
+    'tv': {
+        'project': 'TV',
+        'tags': fields.ModTags('tv', '-'),
+    }
 }
 
 

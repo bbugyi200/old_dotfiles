@@ -1,21 +1,14 @@
 # vim: ft=cfg:
 
 # ----- CONTEXTS -----
-context.study=project:Study or +research or (urg>6)
 context.dev=project:Dev project.not:Dev.localalias or (urg>6)
+context.study=project:Study or +research or (urg>6)
+context.algebra=project:Study.Algebra or (urg>6)
 context.localalias=project:Dev.localalias or (urg>6)
 context.compilers=project:Study.Compilers or (urg>6)
+context.cpp=project:Study.CPP or (urg>6)
 context.grad=project:Study.Grad
-context.mobile=+call or project:Blogs or project:Videos or +errand or (urg>6)
 context.review=project.not:Study. project.not:Dev. -inbox ( project.not:Holiday or project:Holiday. )
-
-# ----- inthe.AM -----
-taskd.certificate=/home/bryan/.task/private.certificate.pem
-taskd.key=/home/bryan/.task/private.key.pem
-taskd.ca=/home/bryan/.task/ca.cert.pem
-taskd.server=taskwarrior.inthe.am:53589
-taskd.credentials=inthe_am/bryanbugyi34/4f732411-455b-4297-9731-c4f34c44b7f9
-taskd.trust=ignore hostname
 
 # ----- URGENCY -----
 urgency.inherit=yes
@@ -112,4 +105,3 @@ color.blocked=white on gray4
 color.tagged=  # A task should not be colored for just any tag
 
 # ----- DYNAMICALLY SET AT RUNTIME -----
-context=study
