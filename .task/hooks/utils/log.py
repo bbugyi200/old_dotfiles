@@ -11,7 +11,7 @@ import os
 import gutils
 
 gutils.logging.add_vdebug_level(logging)
-_STREAM_LOGGING_LEVEL = logging.INFO
+_STREAM_LOGGING_LEVEL = logging.INFO  # THIS VALUE CAN BE CHANGED TO ENABLE DEBUGGING OUTPUT
 
 
 def init_logger():

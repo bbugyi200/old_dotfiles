@@ -17,6 +17,15 @@ from utils import dates
 logger = log.getLogger()
 
 
+def _project_tag(tag, *, project=None):
+    """Helper function for creating custom tag that gives the task a 'project' name."""
+    if project is None:
+        project = tag.title()
+
+    return {'project': project,
+            'tags': fields.ModTags(tag, '-')}
+
+
 _today_due_time = dates.get_today()
 _tomorrow_due_time = dates.get_tomorrow()
 
@@ -34,10 +43,7 @@ tags = {
         'consistent': 'yes',
         'tags': fields.ModTags('const', '-'),
     },
-    'dev': {
-        'project': 'Dev',
-        'tags': fields.ModTags('dev', '-'),
-    },
+    'dev': _project_tag('dev'),
     'errand': {
         'tags': fields.ModTags('note', '+'),
     },
@@ -93,10 +99,7 @@ tags = {
         'tags': fields.ModTags('today', '-'),
         'project': 'Misc',
     },
-    'tv': {
-        'project': 'TV',
-        'tags': fields.ModTags('tv', '-'),
-    }
+    'tv': _project_tag('tv', project='TV'),
 }
 
 

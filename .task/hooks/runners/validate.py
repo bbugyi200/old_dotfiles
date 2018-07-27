@@ -29,8 +29,9 @@ def run(new_task, old_task=None):
 
         new_task['project'] = project
 
-    if 'due' in new_task.keys() and new_task['due'][-7:] == '040000Z':
-        logger.debug('Setting due time for 6AM.')
-        new_task['due'] = new_task['due'][:-7] + '100000Z'
+    for tag in ['due', 'wait']:
+        if tag in new_task.keys() and new_task[tag][-7:] == '040000Z':
+            logger.debug('Setting {} time for 6AM.'.format(tag))
+            new_task[tag] = new_task[tag][:-7] + '100000Z'
 
     return new_task

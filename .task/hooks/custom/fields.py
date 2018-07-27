@@ -6,8 +6,8 @@ Attributes:
 
 from abc import ABCMeta, abstractmethod
 
-from hooks.utils import log
 import gutils
+from hooks.utils import log
 
 logger = log.getLogger()
 msg_fmt = "+{tag} => {field}{sep}{val}\n"
