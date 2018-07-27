@@ -1,8 +1,8 @@
 """Qutebrowser Configuration"""
 
-import datetime as dt
 import functools
 import re
+
 import yaml
 
 import searchengines as SE
@@ -18,48 +18,18 @@ config.load_autoconfig()
 ####################
 #  Search Engines  #
 ####################
-def stackoverflow(n, *, prefix=None):
-    """Returns stackoverflow HTTP encoded google search string.
-
-    The search results returned by Google will range from @n years ago until now.
-
-    Args:
-        prefix (opt): If a string is provided for @prefix, it will be prepended to the final query.
-    """
-    if prefix is None:
-        prefix = ''
-
-    try:
-        assert isinstance(prefix, str), "@prefix arguement must be a string."
-    except AssertionError as e:
-        raise ValueError(str(e))
-    else:
-        prefix = prefix + ' '
-
-    fmt = '{0}{{}} site:stackoverflow.com&source=lnt&tbs=cdr%3A1%2Ccd_min%3A{1}%2F{2}%2F{3}%2Ccd_max%3A&tbm='
-    D = _n_years_ago(n)
-    return fmt.format(prefix, D.month, D.day, D.year)
-
-
-def _n_years_ago(n):
-    """Return a datetime N years ago."""
-    today = dt.date.today()
-    return today.replace(year=(today.year - n))
-
-
-one_letter_bangs = ['a', 'd', 'g', 'i', 't', 'w']
-two_letter_bangs = ['wa', 'yt']
-long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy']
+one_letter_bangs = ['a', 'd', 'g', 'i', 't', 'w', ]
+two_letter_bangs = ['gm', 'wa', 'yt', ]
+long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
 included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
 
 bang_fmt = '^({})%20'
 bang_pttrn = bang_fmt.format('|'.join(included_bangs))
 
-
 c.url.searchengines = {
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
     'al': SE.static.google('arch linux {}'),
-    'cc': SE.static.google(stackoverflow(7, prefix='C++')),
+    'cc': SE.static.stackoverflow(5, prefix='C++'),
     'DEFAULT': SE.URL(SE.static.google('{}'),
                       SE.static.duckduckgo('{}'),
                       SE.static.duckduckgo('!{}'),
@@ -105,11 +75,12 @@ c.url.searchengines = {
                  patterns='^%40',
                  filters=lambda x: x[3:]),
     'lib': 'http://libgen.io/search.php?req={}',
+    'm': SE.static.google('{} site:math.stackexchange.com OR site:tex.stackexchange.com'),
     'pir': SE.URL('https://thepiratebay.org/search/{}',
                   'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
                   patterns=SE.TwoIntQuery.pattern,
                   filters=SE.TwoIntQuery.filter),
-    'p': SE.static.google(stackoverflow(7, prefix='Python')),
+    'p': SE.static.stackoverflow(7, prefix='Python'),
     'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.URL(SE.static.google('{} site:reddit.com'),
                 SE.LuckyQuery.url('{} site:reddit.com'),
@@ -121,11 +92,12 @@ c.url.searchengines = {
                   SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
                   patterns=(SE.LuckyQuery.pattern, SE.TwoIntQuery.pattern),
                   filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter)),
+    'ud': SE.static.google('{} site:idioms.thefreedictionary.com OR site:en.wiktionary.org OR site:urbandictionary.com'),
 }
 
 ##### Setting Up Stackoverflow Search Engines
 for n in range(1, 11):
-    c.url.searchengines['s{}'.format(n)] = SE.static.google(stackoverflow(n))
+    c.url.searchengines['s{}'.format(n)] = SE.static.stackoverflow(n)
 
 #############
 #  Aliases  #
@@ -177,16 +149,17 @@ cbind('<Ctrl-f>', 'edit-command --run')
 # >>> NORMAL
 bind(',b', 'set-cmd-text :bookmark-add {url} "')
 bind(',dp', 'spawn -v pockyt-delete {url}')
+bind(',D', 'set-cmd-text -s :session-delete')
 bind(',e', 'spawn --userscript searchbar-command')
 bind(',h', 'set-cmd-text -s :help')
 bind(',H', 'set-cmd-text -s :help -t')
+bind(',L', 'set-cmd-text -s :session-load -c')
 bind(',m', 'spawn --userscript view_in_umpv -d')
 bind(',p', 'open -p')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
 bind(',rss', 'spawn --userscript openfeeds')
-bind(',ss', 'set-cmd-text -s :session-save -o')
-bind(',sl', 'set-cmd-text -s :session-load -c')
 bind(',sp', "spawn -v pockyt put -f '{link}' -i {url}")
+bind(',S', 'set-cmd-text -s :session-save -o')
 bind(',t', 'config-cycle tabs.position left top')
 bind(';m', 'hint links spawn -v umpv {hint-url}', 'message-info "Select video to load with umpv."')
 bind(';M', 'hint links spawn -v umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
@@ -204,10 +177,6 @@ bind('cd', 'download-cancel')
 bind('C', 'tab-clone')
 bind('D', 'download')
 bind('gi', 'hint inputs')
-bind('h', 'back')
-bind('H', 'scroll left')
-bind('l', 'forward')
-bind('L', 'scroll right')
 bind('m', 'enter-mode set_mark')
 bind('p', 'open -- {clipboard}')
 bind('P', 'open -t -- {clipboard}')
