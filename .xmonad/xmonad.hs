@@ -53,8 +53,8 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %volume%  |  %date%"
-getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader% }%timew%{ %pia%%dropbox%  |  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader% }%timew%{ %pia%  %volume%  |  %date%"
+getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader% }%timew%{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%weather%      [%sunrise% / %sunset%]{"
 getXmobarTemplate "2-bottom" = "}{"
@@ -123,7 +123,8 @@ myAdditionalKeys = [
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
    , ((alpha, h), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.L False])
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tm-root $(tmux display-message -p \"#{session_name} #{window_name}\")) && ll'") -- cd to Tmuxinator Window Root
+   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tm-root $(tmux display-message -p \"#{session_name} #{window_index}\")) && ll'")  -- cd to Tmuxinator Window-Specific Root
+   , ((alpha .|. ctrl, h), spawn "tm-send --action 'cd $(tmdir --get $(tmux display-message -p \"#{session_name}\")) && ll'")  -- cd to Tmuxinator Project Root
    , ((alpha, j), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.U False])
@@ -170,7 +171,7 @@ myAdditionalKeys = [
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
    , ((alpha, xK_KP_Add), spawn "next_task")
-   , ((alpha, xK_KP_Delete), spawn "task start.any: stop && timew delete @1 && task_refresh")
+   , ((alpha, xK_KP_Delete), spawn "timew delete @1 && task start.any: stop && task_refresh")
    , ((alpha, xK_KP_Divide), spawn "wait_task -N")
    , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
    , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
@@ -188,10 +189,10 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, DW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); ll'") -- cd to Next Dir
-   , ((alpha .|. beta, xK_equal), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; ll'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
    , ((alpha, xK_semicolon), spawn "shellPrompt -d")
+   , ((alpha, xK_slash), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha .|. beta, xK_slash), sequence_ $ seqPush ++ [CW.nextScreen]) -- Send current WS to Next Screen (send focus)
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
@@ -217,14 +218,13 @@ myAdditionalKeys = [
 ------------------------------------
 --  Miscellaneous Configurations  --
 ------------------------------------
-myTerminal = "urxvt -e zsh -c 'tm-init Terminal'"
+myTerminal = "urxvt -e zsh -c 'tm Terminal'"
 
 myFocusFollowsMouse = False
 myClickJustFocuses = False
 
 -- Colors --
 yellow = "#F8FB27"
-red = "#FF0000"
 blue = "#0000FF"
 ------------
 

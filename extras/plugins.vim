@@ -52,6 +52,8 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'pboettch/vim-cmake-syntax'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'

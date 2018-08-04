@@ -32,13 +32,13 @@ def site(*domains, prefix=None):
         prefix (opt): static content to prepend to query.
     """
     prefix = _validate_prefix(prefix)
-    return google('{0}{{}} {1}'.format(prefix, ' OR '.join(['site:' + S for S in domains])))
+    return google('{0}{{}} {1}'.format(prefix, ' OR '.join(['site:' + D for D in domains])))
 
 
 def _validate_prefix(prefix):
     """Validates and Beautifies @prefix Argument"""
     try:
-        assert isinstance(prefix, (str, type(None))), "@prefix arguement must be a string."
+        assert isinstance(prefix, (str, type(None))), "@prefix argument must be a string."
     except AssertionError as e:
         raise ValueError(str(e))
 

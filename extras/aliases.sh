@@ -26,8 +26,8 @@ alias dstop='dropbox-cli stop'
 alias du='ncdu --color dark'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
-alias ghc='stack ghc'
-alias ghci='stack ghci'
+alias ghc='stack ghc --'
+alias ghci='stack ghci --'
 alias gho='ghi open'
 alias ghooks='rm -rf .git/hooks && git init' 
 alias gmutt="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
@@ -46,6 +46,7 @@ alias mutt="neomutt"
 alias mv="mv -i"
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/*.txt'
+alias pg='pacman -Q | grep'
 alias pdb='ipdb'
 alias psgrep='ps -aux | grep -E'
 pvar() { set | grep -i -e "^$1"; }
@@ -63,6 +64,7 @@ alias ssh-athena="ssh -p $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias time='/usr/bin/time'
+tmd() { tmux display-message -p "#{$1}"; }
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
 tsm() { transmission-remote -l; }
 tsm-add() { transmission-remote -a $1; }
@@ -72,9 +74,11 @@ tsm-rm() { transmission-remote -t$1 -r; }
 tsm-start() { transmission-daemon; }
 tsm-stop() { killall -9 transmission-daemon; }
 tsm-watch() { watch -n 1 transmission-remote -l; }
+alias updatedb='sudo updatedb'
 alias vcplug="vim -c ':PluginClean'"
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias vip="vim -c 'execute \"normal \\<c-p>\" '"
 alias vplug="vim -c ':PluginInstall'"
 alias w='which'
+alias wm='wmctrl -lx'
 alias watdst='watch -n 5 dropbox-cli status'

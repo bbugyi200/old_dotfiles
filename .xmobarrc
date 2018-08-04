@@ -33,9 +33,8 @@ Config { font = "xft:Dina:pixelsize=13"
                                  , "--High",    "90"
                                  , "--normal",  "green"
                                  , "--high",    "red"] 10
+					, Run Com "poll-timew" [] "timew" 30
                     , Run Com "poll-weather" ["-d", "-q"] "weather" 9000
-					, Run Com "poll-timew" [] "timew" 10
-                    , Run Com "dbox-xmonad" [] "dropbox" 10
                     , Run Com "pia-xmonad" [] "pia" 50
                     , Run Com "sunrise" [] "sunrise" 864000
                     , Run Com "sunset" [] "sunset" 864000

@@ -18,7 +18,7 @@ config.load_autoconfig()
 ####################
 #  Search Engines  #
 ####################
-one_letter_bangs = ['a', 'd', 'g', 'i', 't', 'w', ]
+one_letter_bangs = ['a', 'd', 'g', 'i', 'm', 't', 'w', ]
 two_letter_bangs = ['gm', 'wa', 'yt', ]
 long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
 included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
@@ -75,7 +75,7 @@ c.url.searchengines = {
                  patterns='^%40',
                  filters=lambda x: x[3:]),
     'lib': 'http://libgen.io/search.php?req={}',
-    'm': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
+    'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
     'pir': SE.URL('https://thepiratebay.org/search/{}',
                   'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
                   patterns=SE.TwoIntQuery.pattern,
@@ -92,6 +92,7 @@ c.url.searchengines = {
                   SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
                   patterns=(SE.LuckyQuery.pattern, SE.TwoIntQuery.pattern),
                   filters=(SE.LuckyQuery.filter, SE.TwoIntQuery.filter)),
+    'ta': SE.static.google('abstract algebra {}'),  # temp searchengines start with 't'
     'ud': SE.static.site('idioms.thefreedictionary.com', 'en.wiktionary.org', 'urbandictionary.com'),
 }
 

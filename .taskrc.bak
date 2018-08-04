@@ -1,21 +1,14 @@
 # vim: ft=cfg:
 
 # ----- CONTEXTS -----
-context.study=project:Study or +research or (urg>6)
 context.dev=project:Dev project.not:Dev.localalias or (urg>6)
+context.study=project:Study or +research or (urg>6)
+context.algebra=project:Study.Algebra or (urg>6)
 context.localalias=project:Dev.localalias or (urg>6)
 context.compilers=project:Study.Compilers or (urg>6)
+context.cpp=project:Study.CPP or (urg>6)
 context.grad=project:Study.Grad
-context.mobile=+call or project:Blogs or project:Videos or +errand or (urg>6)
 context.review=project.not:Study. project.not:Dev. -inbox ( project.not:Holiday or project:Holiday. )
-
-# ----- inthe.AM -----
-taskd.certificate=/home/bryan/.task/private.certificate.pem
-taskd.key=/home/bryan/.task/private.key.pem
-taskd.ca=/home/bryan/.task/ca.cert.pem
-taskd.server=taskwarrior.inthe.am:53589
-taskd.credentials=inthe_am/bryanbugyi34/4f732411-455b-4297-9731-c4f34c44b7f9
-taskd.trust=ignore hostname
 
 # ----- URGENCY -----
 urgency.inherit=yes
@@ -33,8 +26,8 @@ urgency.tags.coefficient=0.0
 urgency.age.coefficient=0.0
 # DUE
 urgency.due.coefficient=10.0
-urgency.uda.repeat.coefficient=-5.0  # recurring tasks MUST have due dates
-urgency.uda.strict.coefficient=5.0  # in these tasks, the due date is a "true" due date
+urgency.uda.repeat.coefficient=-4.0  # recurring tasks MUST have due dates
+urgency.uda.strict.coefficient=4.0  # in these tasks, the due date is a "true" due date
 # Priorities
 urgency.uda.priority.H.coefficient=3.0
 urgency.uda.priority.L.coefficient=-3.0

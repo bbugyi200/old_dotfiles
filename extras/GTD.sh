@@ -8,7 +8,7 @@ tcs () {
 
 tcsn () { tcs none "$@"; }
 
-tc () { clear && task next +READY limit:page; }
+tc () { clear && task next rc.verbose=blank,label rc.defaultwidth:$COLUMNS +READY limit:page; }
 
 tcx () {
     if [[ -z "$1" ]]; then
@@ -39,6 +39,8 @@ tpi () { task "$1" mod -inbox "${@:2}"; }
 tg () { eval "tcsn $@ rc.verbose=blank,label list"; }
 tgw () { eval "tcsn $@ rc.verbose=blank,label waiting"; }
 tga () { eval "tcsn rc.verbose=blank,label rc.defaultwidth:$COLUMNS $@ -COMPLETED -DELETED all"; }
+tgp () { eval "tga project:$@"; }
+tgps () { eval "tgp Study.$@"; }
 tgcd () { eval "tcsn rc.verbose=blank,label $@ \( +COMPLETED or +DELETED \) all"; }
 tget () { task _get "$@"; }
 tnall () { tcsn "next +READY"; }
@@ -77,8 +79,8 @@ alias timd='tim delete'
 alias k='khal --color'
 restart_khal_alarms() { setsid calalrms -d &> /dev/null; }
 kc() { clear && khal calendar --notstarted --format '{start-time} {title}' now && echo; }
-kn() { khal new -a daily "$*" && restart_khal_alarms; }
-knt() { khal new -a daily tomorrow "$@" && restart_khal_alarms; }
+kn() { khal new -a daily ""$*"" && restart_khal_alarms; }
+knt() { khal new -a daily tomorrow ""$*"" && restart_khal_alarms; }
 ke() { khal edit "$@" && restart_khal_alarms; }
 ki() { ikhal "$@" && restart_khal_alarms; }
 

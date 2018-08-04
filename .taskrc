@@ -26,8 +26,8 @@ urgency.tags.coefficient=0.0
 urgency.age.coefficient=0.0
 # DUE
 urgency.due.coefficient=10.0
-urgency.uda.repeat.coefficient=-5.0  # recurring tasks MUST have due dates
-urgency.uda.strict.coefficient=5.0  # in these tasks, the due date is a "true" due date
+urgency.uda.repeat.coefficient=-4.0  # recurring tasks MUST have due dates
+urgency.uda.strict.coefficient=4.0  # in these tasks, the due date is a "true" due date
 # Priorities
 urgency.uda.priority.H.coefficient=3.0
 urgency.uda.priority.L.coefficient=-3.0
@@ -84,7 +84,7 @@ tasksh.autoclear=1
 verbose=blank,label,new-id,affected,edit,special,unwait,recur
 reserved.lines=1
 search.case.sensitive=no
-_forcecolor=no
+_forcecolor=yes
 defaultwidth=`tput cols`
 nag=
 

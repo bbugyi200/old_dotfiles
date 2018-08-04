@@ -3,7 +3,6 @@
 root: <%%= @settings['root'] %>
 name: <%= name %>
 
-pre_window: tmux setenv TMUXINATOR_ROOT_${TMUX_PANE##%} $(pwd)
 on_project_stop:
 
 windows:
