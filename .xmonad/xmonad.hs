@@ -88,6 +88,9 @@ strToUpper = map DataChar.toUpper
 seqPush :: [X ()]
 seqPush = [CW.swapNextScreen, CW.toggleWS' ["NSP"]]
 
+seqSwap :: [X()]
+seqSwap = [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']
+
 --------------------
 --  Key Bindings  --
 --------------------
@@ -150,8 +153,9 @@ myAdditionalKeys = [
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha .|. beta .|. ctrl, r), spawn "confirm --dmenu 'systemctl reboot -i'") -- Restart
    , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
-   , ((alpha, s), sequence_ [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']) -- Swap
-   , ((alpha .|. beta, s), windows W.swapDown)    -- Shift Local
+   , ((alpha, s), sequence_ seqSwap) -- Swap
+   , ((alpha .|. beta, s), sequence_ $ seqSwap ++ [CW.nextScreen]) -- Swap and Follow
+   , ((alpha .|. shift, s), windows W.swapDown)    -- Shift Local
    , ((alpha .|. beta .|. ctrl, s), spawn "confirm --dmenu 'smart_shutdown'") -- Shutdown
    , ((alpha, t), spawn "prompt 'Inbox' -format 'q' | xargs task add +inbox | tail -1 | xargs -I _ notify-send -u low _") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add +today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
@@ -278,6 +282,7 @@ myManageHook = composeAll
     , appName=? "floater"     --> doRectFloat (W.RationalRect l t w h)
     , appName=? "big-floater" --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
     , appName=? "qute-editor" --> doRectFloat (W.RationalRect l t w h)]
+
 
 myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
