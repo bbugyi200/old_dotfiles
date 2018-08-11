@@ -1,33 +1,33 @@
 ---------------
 --  Imports  --
 ---------------
+import Graphics.X11.ExtraTypes.XF86
 import XMonad
+
 import XMonad.Actions.SpawnOn (spawnOn,spawnHere,manageSpawn)
-import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Config.Desktop (desktopConfig)
-import XMonad.Util.Run (spawnPipe,hPutStrLn)
-import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Layout.Spacing (smartSpacing)
-import XMonad.Util.WorkspaceCompare (getSortByIndex)
 import XMonad.Hooks.EwmhDesktops (ewmh,ewmhDesktopsLogHook,ewmhDesktopsStartup)
 import XMonad.Hooks.ManageHelpers (doRectFloat,doFullFloat)
+import XMonad.Hooks.SetWMName (setWMName)
+import XMonad.Layout.Spacing (smartSpacing)
+import XMonad.Util.Run (spawnPipe,hPutStrLn)
+import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Util.WorkspaceCompare (getSortByIndex)
 
-import Graphics.X11.ExtraTypes.XF86
-
-import qualified Network.HostName as HostName
 import qualified Control.Monad as Monad
-import qualified XMonad.Hooks.ManageDocks as Docks
-import qualified Data.List as DataList
 import qualified Data.Char as DataChar
-import qualified XMonad.StackSet as W
-import qualified XMonad.Prompt as P
-import qualified XMonad.Util.NamedScratchpad as NSP
-import qualified XMonad.Hooks.DynamicLog as DL
+import qualified Data.List as DataList
+import qualified Network.HostName as HostName
 import qualified XMonad.Actions.CycleWS as CW
 import qualified XMonad.Actions.DynamicWorkspaces as DW
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
-import qualified XMonad.Layout.ResizableTile as RT
 import qualified XMonad.Actions.Navigation2D as N2D
+import qualified XMonad.Hooks.DynamicLog as DL
+import qualified XMonad.Hooks.ManageDocks as Docks
+import qualified XMonad.Layout.ResizableTile as RT
+import qualified XMonad.Prompt as P
+import qualified XMonad.StackSet as W
+import qualified XMonad.Util.NamedScratchpad as NSP
 
 -----------------
 --  Functions  --
@@ -53,7 +53,7 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader% }%timew%{ %pia%  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%    (%window_count%)}%timew%{ %pia%  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader% }%timew%{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%weather%      [%sunrise% / %sunset%]{"
@@ -88,7 +88,7 @@ strToUpper = map DataChar.toUpper
 seqPush :: [X ()]
 seqPush = [CW.swapNextScreen, CW.toggleWS' ["NSP"]]
 
-seqSwap :: [X()]
+seqSwap :: [X ()]
 seqSwap = [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']
 
 --------------------
@@ -97,7 +97,7 @@ seqSwap = [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']
 
 ------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
 --
--- The `alpha` and `beta` keys will always be set to either 'super' or 'alt', depending on which
+-- The `alpha` and `beta` keys should be set to either 'super' or 'alt', depending on which
 -- key you want as your primary meta key.
 --
 -- NOTE: I have used Xmodmap to swap the 'super' and 'alt' keys on my keyboard.  This has no effect
