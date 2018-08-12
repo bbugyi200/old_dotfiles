@@ -1,8 +1,7 @@
 {
   "journals": {
-    "default": "/home/bryan/Dropbox/notes/Journal/main.txt",
-    "secure": {
-      "journal": "/home/bryan/Dropbox/notes/Journal/secure.txt",   
+    "default": {
+      "journal": "/home/bryan/Dropbox/notes/encrypted.txt",   
       "encrypt": true
     }
   },

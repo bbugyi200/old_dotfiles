@@ -83,10 +83,6 @@ tags = {
         'tags': fields.ModTags('Severity_4', '-'),
         'severity': 'low',
     },
-    'strict': {
-        'strict': 'yes',
-        'tags': fields.ModTags('strict', '-'),
-    },
     'taskwarrior': {
         'tags': fields.ModTags('GTD', '+'),
     },

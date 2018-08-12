@@ -1,6 +1,8 @@
-# Aliases and Functions for TaskWarrior
+################################## Aliases and Functions for GTD ##################################
 
-# ---------- TaskWarrior
+#################
+#  TaskWarrior  #
+#################
 tcs () {
     TARGET_CONTEXT="$1"; shift
     task rc.context="$TARGET_CONTEXT" "$@"
@@ -33,6 +35,7 @@ tin () { task +inbox -DELETED -COMPLETED all; }
 
 # All functions that use 'to' REQUIRE their first argument to
 # be an ID.
+tdn () { task "$(task uuids +inbox -DELETED -COMPLETED | cut -d' ' -f1)" done; }
 ti () { task rc._forcecolor:on "$@" info | less; }
 tl () { task "$1" | less; }
 tpi () { task "$1" mod -inbox "${@:2}"; }
@@ -47,7 +50,7 @@ tnall () { tcsn "next +READY"; }
 tnl () { task next +READY limit:none; }  # no limit
 tsub () { task $1 modify "/$2/$3/g"; }
 trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS limit:none \( +PENDING or +WAITING \) | less; }
-
+twm () { timew move @1 "$1" :adjust; }
 
 alias ta='task add'
 alias td='task done'
@@ -68,14 +71,12 @@ twc () {
     timew
 }
 
-twm () {
-    timew move @1 "$1" :adjust
-}
-
 alias tw='timew'
 alias timd='tim delete'
 
-# ---------- Khal
+##########
+#  khal  #
+##########
 alias k='khal --color'
 restart_khal_alarms() { setsid calalrms -d &> /dev/null; }
 kc() { clear && khal calendar --notstarted --format '{start-time} {title}' now && echo; }
@@ -83,9 +84,3 @@ kn() { khal new -a daily ""$*"" && restart_khal_alarms; }
 knt() { khal new -a daily tomorrow ""$*"" && restart_khal_alarms; }
 ke() { khal edit "$@" && restart_khal_alarms; }
 ki() { ikhal "$@" && restart_khal_alarms; }
-
-# ---------- Jrnl
-alias j='jrnl'
-alias je='jrnl --edit'
-alias js='jrnl secure'
-alias jse='jrnl secure --edit'

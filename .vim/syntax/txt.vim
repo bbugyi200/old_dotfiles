@@ -16,10 +16,10 @@ syn match Statement "^[A-Z][^a-z]*[A-Z0-9)\]]$" contains=@txtContains,@NoSpell
 " OLD --> [A-Z () 0-9 / \[\] : # -]
 
 " Subsection
-syn region Function start="^\s\{2\}[A-Za-z]" end="$" contains=@NoSpell oneline
+syn region Type start="^\s*===" end="===$" contains=@NoSpell oneline
 
 " Subsubsection
-syn region Type start="^\s*===" end="===$" contains=@NoSpell oneline
+syn region Function start="^\s*---" end="---$" contains=@NoSpell oneline
 
 " Bullets
 " syn match ModeMsg "^\s*\([*-]\|[A-Za-z0-9]\.\)" contains=@NoSpell

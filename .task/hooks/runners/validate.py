@@ -13,7 +13,7 @@ def run(new_task, old_task=None):
     Performs the following actions:
         - Remove 'M' priority. This priority is not supported.
         - Prompt the user for a project name if none was given.
-        - If due time is midnight, change to 6AM.
+        - If due/wait time is midnight, change to 6AM.
     """
     # Medium priority should not exist
     if ('priority' in new_task.keys()) and (new_task['priority'] == 'M'):

@@ -1,8 +1,4 @@
-"""Sets up logging.
-
-Attributes:
-    logger: log.Logger object used for logging taskwarrior hooks.
-"""
+"""Functions Relating to Logging"""
 
 import inspect
 import logging

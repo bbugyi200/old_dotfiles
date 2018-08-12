@@ -1,4 +1,4 @@
-""" Functions Relating to Dates and Times"""
+"""Functions Relating to Dates and Times"""
 
 import datetime as dt
 

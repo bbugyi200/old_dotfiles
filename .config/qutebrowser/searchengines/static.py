@@ -46,6 +46,8 @@ def _validate_prefix(prefix):
         return ''
     elif prefix[-1] != ' ':
         return prefix + ' '
+    else:
+        return prefix
 
 
 def google(query):

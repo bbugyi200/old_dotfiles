@@ -45,14 +45,14 @@ alias mkpkg='makepkg -si'
 alias mutt="neomutt"
 alias mv="mv -i"
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
-alias onething='vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/*.txt'
+onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/"$1".txt; }
 alias pg='pacman -Q | grep'
 alias pdb='ipdb'
 alias psgrep='ps -aux | grep -E'
 pvar() { set | grep -i -e "^$1"; }
 alias rg='ranger'
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
-alias rm="rm -i"
+alias rm="safe-rm"
 alias rmutt='sudo neomutt -f /var/spool/mail/root'
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
@@ -74,6 +74,7 @@ tsm-rm() { transmission-remote -t$1 -r; }
 tsm-start() { transmission-daemon; }
 tsm-stop() { killall -9 transmission-daemon; }
 tsm-watch() { watch -n 1 transmission-remote -l; }
+tws() { timew shorten @1 "$1"mins; }
 alias updatedb='sudo updatedb'
 alias vcplug="vim -c ':PluginClean'"
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'

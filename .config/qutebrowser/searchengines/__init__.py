@@ -17,7 +17,6 @@ class URL(str):
 
     def __init__(self, default_url, *other_urls, patterns, filters=None):
         self.urls = list(other_urls)
-        self.urls.append(default_url)
 
         if isinstance(patterns, str):
             patterns = [patterns]
@@ -31,6 +30,7 @@ class URL(str):
             self.filters = [None] * len(other_urls)
 
         # default pattern and default filter
+        self.urls.append(default_url)
         patterns.append('.*')
         filters.append(None)
 
