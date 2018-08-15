@@ -21,8 +21,10 @@ class URL(str):
 
     def __init__(self, default_url, *others):
         self.urls = []
-        patterns = []
-        filters = []
+        self.patterns = []
+        self.filters = []
+
+        noop_filter = lambda x: x
 
         try:
             for other in others:
@@ -30,29 +32,18 @@ class URL(str):
                 assert len(other) in [2, 3], "{} must be either a 2-tuple or a 3-tuple.".format(other)
 
                 self.urls.append(other[0])
-                patterns.append(other[1])
+                self.patterns.append(other[1])
                 if len(other) == 3:
-                    filters.append(other[2])
+                    self.filters.append(other[2])
                 else:
-                    filters.append(None)
+                    self.filters.append(noop_filter)
         except AssertionError as e:
             raise ValueError(str(e))
 
-        if isinstance(patterns, str):
-            patterns = [patterns]
-            filters = [filters]
-        else:
-            patterns = list(patterns)
-            filters = list(filters)
-
         # default pattern and default filter
         self.urls.append(default_url)
-        patterns.append('.*')
-        filters.append(None)
-
-        # Allows 'None' to be given as one of multiple filters
-        self.filters = list(map(lambda x: x if x else lambda y: y, filters))
-        self.patterns = patterns
+        self.patterns.append('.*')
+        self.filters.append(noop_filter)
 
     def format(self, term, *args, **kwargs):
         for url, pttrn, filter_ in zip(self.urls, self.patterns, self.filters):
