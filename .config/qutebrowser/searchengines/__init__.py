@@ -11,12 +11,32 @@ class URL(str):
     """ Dynamic URL for 'url.searchengines'
 
     Enables additional pattern matching
+
+    Args:
+        default_url (str): default URL to return from 'format'
+        *others (tuple): 2 or 3-tuple of the form (URL, pattern, filter)
     """
     def __new__(cls, value, *args, **kwargs):
         return super(URL, cls).__new__(cls, value)
 
-    def __init__(self, default_url, *other_urls, patterns, filters=None):
-        self.urls = list(other_urls)
+    def __init__(self, default_url, *others):
+        self.urls = []
+        patterns = []
+        filters = []
+
+        try:
+            for other in others:
+                assert isinstance(other, tuple), "{} is NOT a tuple.".format(other)
+                assert len(other) in [2, 3], "{} must be either a 2-tuple or a 3-tuple.".format(other)
+
+                self.urls.append(other[0])
+                patterns.append(other[1])
+                if len(other) == 3:
+                    filters.append(other[2])
+                else:
+                    filters.append(None)
+        except AssertionError as e:
+            raise ValueError(str(e))
 
         if isinstance(patterns, str):
             patterns = [patterns]
@@ -24,10 +44,6 @@ class URL(str):
         else:
             patterns = list(patterns)
             filters = list(filters)
-
-        # Allows 'filters' argument to be omitted even when multiple 'other_urls' exist
-        if filters == [None]:
-            self.filters = [None] * len(other_urls)
 
         # default pattern and default filter
         self.urls.append(default_url)
