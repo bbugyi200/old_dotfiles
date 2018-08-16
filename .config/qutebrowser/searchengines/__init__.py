@@ -26,19 +26,19 @@ class URL(str):
 
         noop_filter = lambda x: x
 
-        try:
-            for other in others:
+        for other in others:
+            try:
                 assert isinstance(other, tuple), "{} is NOT a tuple.".format(other)
                 assert len(other) in [2, 3], "{} must be either a 2-tuple or a 3-tuple.".format(other)
+            except AssertionError as e:
+                raise ValueError(str(e))
 
-                self.urls.append(other[0])
-                self.patterns.append(other[1])
-                if len(other) == 3:
-                    self.filters.append(other[2])
-                else:
-                    self.filters.append(noop_filter)
-        except AssertionError as e:
-            raise ValueError(str(e))
+            self.urls.append(other[0])
+            self.patterns.append(other[1])
+            if len(other) == 3:
+                self.filters.append(other[2])
+            else:
+                self.filters.append(noop_filter)
 
         # default pattern and default filter
         self.urls.append(default_url)

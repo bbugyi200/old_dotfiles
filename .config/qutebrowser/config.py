@@ -31,34 +31,94 @@ c.url.searchengines = {
     'al': SE.static.google('arch linux {}'),
     'cc': SE.static.stackoverflow(5, prefix='C++'),
     'DEFAULT': SE.URL(SE.static.google('{}'),
-                      (SE.static.duckduckgo('{}'), '^%21'),
-                      (SE.static.duckduckgo('!{}'), bang_pttrn),
-                      (SE.LuckyQuery.url('{}'), SE.LuckyQuery.pattern, SE.LuckyQuery.filter)),
+                      (
+                          SE.static.duckduckgo('{}'),
+                          '^%21'
+                      ),
+                      (
+                          SE.static.duckduckgo('!{}'),
+                          bang_pttrn
+                      ),
+                      (
+                          SE.LuckyQuery.url('{}'),
+                          SE.LuckyQuery.pattern,
+                          SE.LuckyQuery.filter
+                      )),
     'ep': SE.URL(SE.static.google('{} episodes'),
-                 (SE.static.google('Season {} episodes'), SE.OneIntQuery.pattern)),
+                 (
+                     SE.static.google('Season {} episodes'),
+                     SE.OneIntQuery.pattern
+                 )),
     'gh': SE.URL(SE.static.site('github.com'),
-                 (SE.LuckyQuery.url('{} site:github.com'), SE.LuckyQuery.pattern, SE.LuckyQuery.filter),
-                 ('https://github.com/bbugyi200/{}', '^%40', lambda x: x.replace('%40', ''))),
+                 (
+                     SE.LuckyQuery.url('{} site:github.com'),
+                     SE.LuckyQuery.pattern,
+                     SE.LuckyQuery.filter
+                 ),
+                 (
+                     'https://github.com/bbugyi200/{}',
+                     '^%40',
+                     lambda x: x.replace('%40', '')
+                 )),
     'ghi': SE.URL('https://github.com/bbugyi200/{}/issues',
-                  ('https://github.com/bbugyi200/scripts/issues/{}', '^[0-9]+$'),
-                  ('https://github.com/bbugyi200/{1}/issues/{0}', SE.OneIntQuery.pattern, SE.OneIntQuery.filter),
-                  (SE.LuckyQuery.url('{} site:github.com', end='issues?&q=is%3Aissue+{}'), '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%3F'), lambda x: re.split(r'%20%3F', SE.LuckyQuery.filter(x), maxsplit=1)),
-                  (SE.LuckyQuery.url('{} site:github.com', end='issues/{}'), '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%23'), lambda x: re.split(r'%20%23', SE.LuckyQuery.filter(x), maxsplit=1)),
-                  (SE.LuckyQuery.url('{} site:github.com', end='issues'), SE.LuckyQuery.pattern, SE.LuckyQuery.filter)),
+                  (
+                      'https://github.com/bbugyi200/scripts/issues/{}',
+                      '^[0-9]+$'
+                  ),
+                  (
+                      'https://github.com/bbugyi200/{1}/issues/{0}',
+                      SE.OneIntQuery.pattern,
+                      SE.OneIntQuery.filter
+                  ),
+                  (
+                      SE.LuckyQuery.url('{} site:github.com', end='issues?&q=is%3Aissue+{}'),
+                      '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%3F'),
+                      lambda x: re.split(r'%20%3F', SE.LuckyQuery.filter(x), maxsplit=1)
+                  ),
+                  (
+                      SE.LuckyQuery.url('{} site:github.com', end='issues/{}'),
+                      '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%23'),
+                      lambda x: re.split(r'%20%23', SE.LuckyQuery.filter(x), maxsplit=1)
+                  ),
+                  (
+                      SE.LuckyQuery.url('{} site:github.com', end='issues'),
+                      SE.LuckyQuery.pattern,
+                      SE.LuckyQuery.filter
+                  )),
     'li': SE.URL(SE.static.site('linkedin.com'),
-                 (SE.static.site('linkedin.com', prefix='software'), '^%40', lambda x: x[3:])),
+                 (
+                     SE.static.site('linkedin.com', prefix='software'),
+                     '^%40',
+                     lambda x: x[3:]
+                 )),
     'lib': 'http://libgen.io/search.php?req={}',
     'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
     'pir': SE.URL('https://thepiratebay.org/search/{}',
-                  ('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}', SE.TwoIntQuery.pattern, SE.TwoIntQuery.filter)),
+                  (
+                      'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}',
+                      SE.TwoIntQuery.pattern,
+                      SE.TwoIntQuery.filter
+                  )),
     'p': SE.static.stackoverflow(7, prefix='Python'),
     'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.URL(SE.static.site('reddit.com'),
-                (SE.LuckyQuery.url('{} site:reddit.com'), SE.LuckyQuery.pattern, SE.LuckyQuery.filter)),
+                (
+                    SE.LuckyQuery.url('{} site:reddit.com'),
+                    SE.LuckyQuery.pattern,
+                    SE.LuckyQuery.filter
+                )),
     'so': SE.static.site('stackoverflow.com'),
     'sub': SE.URL(SE.static.google('{} inurl:english site:subscene.com'),
-                  (SE.LuckyQuery.url('{0} inurl:english site:subscene.com'), SE.LuckyQuery.pattern, SE.LuckyQuery.filter),
-                  (SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'), SE.TwoIntQuery.pattern, SE.TwoIntQuery.filter)),
+                  (
+                      SE.LuckyQuery.url('{0} inurl:english site:subscene.com'),
+                      SE.LuckyQuery.pattern,
+                      SE.LuckyQuery.filter
+                  ),
+                  (
+                      SE.LuckyQuery.url('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com'),
+                      SE.TwoIntQuery.pattern,
+                      SE.TwoIntQuery.filter
+                  )),
     'ta': SE.static.google('abstract algebra {}'),  # temp searchengines start with 't'
     'ud': SE.static.site('idioms.thefreedictionary.com', 'en.wiktionary.org', 'urbandictionary.com'),
 }
