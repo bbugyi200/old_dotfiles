@@ -7,43 +7,54 @@ import searchengines.utils as utils
 import searchengines.static as static  # noqa: F401
 
 
-class URL(str):
-    """ Dynamic URL for 'url.searchengines'
+class URL:
+    """URL Object
+
+    Used to initialize a SearchEngine object.
+
+    Args:
+        url (str): url string with braces ({}) to represent the search query
+        pattern (str): regex pattern used to identify when this URL should be used
+        filter_ (opt): a callable object used to filter out garbage in the search query
+    """
+    def __init__(self, url, pattern, filter_=None):
+        self.url = url
+        self.pattern = utils.encode(pattern)
+
+        if filter_ is None:
+            self.filter = lambda x: x
+        else:
+            self.filter = filter_
+
+
+class SearchEngine(str):
+    """ Dynamic SearchEngine for 'url.searchengines'
 
     Enables additional pattern matching
 
     Args:
         default_url (str): default URL to return from 'format'
-        *others (tuple): 2 or 3-tuple of the form (URL, pattern, filter)
+        *url_objects (URL): variable number of URL objects
     """
     def __new__(cls, value, *args, **kwargs):
-        return super(URL, cls).__new__(cls, value)
+        return super(SearchEngine, cls).__new__(cls, value)
 
-    def __init__(self, default_url, *others):
+    def __init__(self, default_url, *url_objects):
         self.urls = []
         self.patterns = []
         self.filters = []
 
-        noop_filter = lambda x: x
+        url_objects = url_objects + (URL(default_url, '.*'), )
 
-        for other in others:
+        for obj in url_objects:
             try:
-                assert isinstance(other, tuple), "{} is NOT a tuple.".format(other)
-                assert len(other) in [2, 3], "{} must be either a 2-tuple or a 3-tuple.".format(other)
+                assert isinstance(obj, URL), "{} must be a URL object.".format(obj)
             except AssertionError as e:
                 raise ValueError(str(e))
 
-            self.urls.append(other[0])
-            self.patterns.append(utils.encode(other[1]))
-            if len(other) == 3:
-                self.filters.append(other[2])
-            else:
-                self.filters.append(noop_filter)
-
-        # default pattern and default filter
-        self.urls.append(default_url)
-        self.patterns.append('.*')
-        self.filters.append(noop_filter)
+            self.urls.append(obj.url)
+            self.patterns.append(obj.pattern)
+            self.filters.append(obj.filter)
 
     def format(self, term, *args, **kwargs):
         for url, pttrn, filter_ in zip(self.urls, self.patterns, self.filters):
