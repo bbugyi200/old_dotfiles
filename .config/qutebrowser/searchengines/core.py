@@ -9,7 +9,7 @@ import re
 import searchengines.imfeelinglucky as IFL
 import searchengines.utils as utils
 
-__all__ = ['SearchEngine', 'URL', 'LuckyQuery', 'IntQueryFactory']
+__all__ = ['SearchEngine', 'URL', 'LuckyQuery', 'OneIntQuery', 'TwoIntQuery']
 
 
 class SearchEngine(str):
@@ -115,3 +115,7 @@ class IntQueryFactory:
         for i in range(self.N):
             y[i] = int(y[i])
         return y
+
+
+OneIntQuery = IntQueryFactory(1)
+TwoIntQuery = IntQueryFactory(2)
