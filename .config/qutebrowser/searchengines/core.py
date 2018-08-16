@@ -1,6 +1,11 @@
-"""Core Classes of the 'searchengines' Package"""
+"""Core Classes of the 'searchengines' Package
+
+This module is imported directly into the global scope of the 'searchengines' package. All
+classes/functions must be added to __all__ or they will NOT be made available.
+"""
 
 import re
+
 import searchengines.imfeelinglucky as IFL
 import searchengines.utils as utils
 
