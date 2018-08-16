@@ -124,16 +124,16 @@ myAdditionalKeys = [
    , ((alpha, d), windows W.focusDown)
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
-   , ((alpha, h), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.L False])
+   , ((alpha, h), sequence_ [N2D.windowGo N2D.L False])
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
    , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tm-root $(tmux display-message -p \"#{session_name} #{window_index}\")) && ll'")  -- cd to Tmuxinator Window-Specific Root
    , ((alpha .|. ctrl, h), spawn "tm-send --action 'cd $(tmdir --get $(tmux display-message -p \"#{session_name}\")) && ll'")  -- cd to Tmuxinator Project Root
-   , ((alpha, j), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.D False])
+   , ((alpha, j), sequence_ [N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
-   , ((alpha, k), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.U False])
+   , ((alpha, k), sequence_ [N2D.windowGo N2D.U False])
    , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
    , ((alpha .|. shift, k), spawn "tm-kill") -- Kill Screen
-   , ((alpha, l), sequence_ [sendMessage FirstLayout, N2D.windowGo N2D.R False])
+   , ((alpha, l), sequence_ [N2D.windowGo N2D.R False])
    , ((alpha .|. beta, l), sendMessage Expand)
    , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
@@ -144,7 +144,7 @@ myAdditionalKeys = [
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
                            removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
    , ((alpha, o), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
-   , ((alpha .|. beta, o), spawn "dmenu_books --application=okular") -- Open New Book in Okular
+   , ((alpha .|. beta, o), spawn "zopen") -- Open New Book in Zathura
    , ((alpha, p), spawn "tmux -L $(tm-socket) previous-window") -- Tmux Previous
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
    , ((alpha .|. shift, p), spawn "pause_task")

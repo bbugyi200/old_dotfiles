@@ -35,7 +35,7 @@ tin () { task +inbox -DELETED -COMPLETED all; }
 
 # All functions that use 'to' REQUIRE their first argument to
 # be an ID.
-tdn () { task "$(task uuids +inbox -DELETED -COMPLETED | cut -d' ' -f1)" done; }
+tdi () { task "$(task _ids +inbox -DELETED -COMPLETED | sort | paste -sd ' ' | cut -d' ' -f1)" done; }
 ti () { task rc._forcecolor:on "$@" info | less; }
 tl () { task "$1" | less; }
 tpi () { task "$1" mod -inbox "${@:2}"; }
@@ -77,7 +77,6 @@ alias timd='tim delete'
 ##########
 #  khal  #
 ##########
-alias k='khal --color'
 restart_khal_alarms() { setsid calalrms -d &> /dev/null; }
 kc() { clear && khal calendar --notstarted --format '{start-time} {title}' now && echo; }
 kn() { khal new -a daily ""$*"" && restart_khal_alarms; }

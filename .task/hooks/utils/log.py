@@ -1,10 +1,14 @@
 """Functions Relating to Logging"""
 
+import getpass
 import inspect
 import logging
 import os
+import sys
 
-import gutils
+sys.path.insert(0, '/home/{}/Dropbox/scripts/pymodules'.format(getpass.getuser()))
+
+import gutils  # noqa
 
 gutils.logging.add_vdebug_level(logging)
 _STREAM_LOGGING_LEVEL = logging.INFO  # THIS VALUE CAN BE CHANGED TO ENABLE DEBUGGING OUTPUT

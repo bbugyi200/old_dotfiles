@@ -55,6 +55,8 @@ rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 alias rm="safe-rm"
 alias rmutt='sudo neomutt -f /var/spool/mail/root'
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
+alias sc='systemctl'
+alias scu='systemctl --user'
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias snapshots='find /home/bryan/Dropbox/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 ss() { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
