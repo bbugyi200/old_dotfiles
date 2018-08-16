@@ -8,7 +8,7 @@ def encode(query):
 
     A list of HTML URL Codes can be found at: https://www.w3schools.com/tags/ref_urlencode.asp
     """
-    code_map = [('!', '%21'), ('#', '%23'), (' ', '%20'), (':', '%3A'), ('@', '%40'), ('\\', '%5C')]
+    code_map = [(' ', '%20'), ('!', '%21'), ('#', '%23'), (':', '%3A'), ('@', '%40'), ('\\', '%5C')]
 
     encoded = query
     for a, b in code_map:
