@@ -4,10 +4,14 @@ import re
 
 
 def encode(query):
-    character_map = [('!', '%21'), ('#', '%23'), (' ', '%2B'), (':', '%3A'), ('@', '%40'), ('\\', '%5C')]
+    """Encodes @query using HTML URL Codes
+
+    A list of HTML URL Codes can be found at: https://www.w3schools.com/tags/ref_urlencode.asp
+    """
+    code_map = [('!', '%21'), ('#', '%23'), (' ', '%2B'), (':', '%3A'), ('@', '%40'), ('\\', '%5C')]
 
     temp = query
-    for a, b in character_map:
+    for a, b in code_map:
         temp = temp.replace(a, b)
 
     # preserves python format strings
