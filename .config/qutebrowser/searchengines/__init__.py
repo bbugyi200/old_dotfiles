@@ -26,6 +26,9 @@ class URL:
         else:
             self.filter = filter_
 
+    def __iter__(self):
+        return (x for x in [self.url, self.pattern, self.filter])
+
 
 class SearchEngine(str):
     """Dynamic SearchEngine for 'url.searchengines'
@@ -40,24 +43,16 @@ class SearchEngine(str):
         return super(SearchEngine, cls).__new__(cls, value)
 
     def __init__(self, default_url, *url_objects):
-        self.urls = []
-        self.patterns = []
-        self.filters = []
+        try:
+            for U in url_objects:
+                assert isinstance(U, URL), "{} is NOT a URL object.".format(U)
+        except AssertionError as e:
+            raise ValueError(str(e))
 
-        url_objects = url_objects + (URL(default_url, '.*'), )
-
-        for obj in url_objects:
-            try:
-                assert isinstance(obj, URL), "{} must be a URL object.".format(obj)
-            except AssertionError as e:
-                raise ValueError(str(e))
-
-            self.urls.append(obj.url)
-            self.patterns.append(obj.pattern)
-            self.filters.append(obj.filter)
+        self.url_objects = url_objects + (URL(default_url, '.*'), )
 
     def format(self, term, *args, **kwargs):
-        for url, pttrn, filter_ in zip(self.urls, self.patterns, self.filters):
+        for url, pttrn, filter_ in self.url_objects:
             if re.match(pttrn, term):
                 filtered = filter_(term)
                 if isinstance(filtered, str):
