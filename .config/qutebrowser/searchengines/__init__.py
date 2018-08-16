@@ -34,7 +34,7 @@ class URL(str):
                 raise ValueError(str(e))
 
             self.urls.append(other[0])
-            self.patterns.append(other[1])
+            self.patterns.append(utils.encode(other[1]))
             if len(other) == 3:
                 self.filters.append(other[2])
             else:
@@ -62,7 +62,7 @@ class URL(str):
 
 class LuckyQuery:
     """ Queries that Utilize Google's I'm Feeling Lucky Feature """
-    pattern = '^(%5C|/)'
+    pattern = r'^(\|/)'
 
     # dummy url is needed to pass qutebrowser's validation checks
     prefix = 'https://imfeelinglucky/'
@@ -70,9 +70,9 @@ class LuckyQuery:
 
     @classmethod
     def url(cls, query, end=''):
-        escaped_query = utils.escape(query)
+        encoded_query = utils.encode(query)
         fmt_url = '{}{{}}{}{}'.format(cls.prefix, cls.suffix, re.sub(r'\{(\d*)\}', r'{{\1}}', end))
-        return fmt_url.format(escaped_query)
+        return fmt_url.format(encoded_query)
 
     @classmethod
     def filter(cls, query):
@@ -94,13 +94,13 @@ class IntQueryFactory:
     def __init__(self, N):
         self.N = N
         pttrn_fmt = '^{}[A-z]'
-        int_pttrn = '[0-9]+%20'
+        int_pttrn = '[0-9]+ '
         for i in range(self.N - 1):
             int_pttrn = int_pttrn + int_pttrn
         self.pattern = pttrn_fmt.format(int_pttrn)
 
     def filter(self, query):
-        y = re.split('%20', query, maxsplit=self.N)
+        y = re.split(utils.encode(' '), query, maxsplit=self.N)
         for i in range(self.N):
             y[i] = int(y[i])
         return y

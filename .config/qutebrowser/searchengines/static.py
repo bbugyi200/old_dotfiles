@@ -51,10 +51,10 @@ def _validate_prefix(prefix):
 
 
 def google(query):
-    escaped_query = utils.escape(query)
-    return 'https://google.com/search?q={}'.format(escaped_query)
+    encoded_query = utils.encode(query)
+    return 'https://google.com/search?q={}'.format(encoded_query)
 
 
 def duckduckgo(query):
-    escaped_query = utils.escape(query)
-    return 'https://duckduckgo.com/?q={}'.format(escaped_query)
+    encoded_query = utils.encode(query)
+    return 'https://duckduckgo.com/?q={}'.format(encoded_query)

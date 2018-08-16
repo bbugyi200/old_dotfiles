@@ -23,7 +23,7 @@ two_letter_bangs = ['gm', 'wa', 'yt', ]
 long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
 included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
 
-bang_fmt = '^({})%20'
+bang_fmt = '^({}) '
 bang_pttrn = bang_fmt.format('|'.join(included_bangs))
 
 c.url.searchengines = {
@@ -33,7 +33,7 @@ c.url.searchengines = {
     'DEFAULT': SE.URL(SE.static.google('{}'),
                       (
                           SE.static.duckduckgo('{}'),
-                          '^%21'
+                          '^!'
                       ),
                       (
                           SE.static.duckduckgo('!{}'),
@@ -57,8 +57,8 @@ c.url.searchengines = {
                  ),
                  (
                      'https://github.com/bbugyi200/{}',
-                     '^%40',
-                     lambda x: x.replace('%40', '')
+                     '^@',
+                     lambda x: x.replace(SE.utils.encode('@'), '')
                  )),
     'ghi': SE.URL('https://github.com/bbugyi200/{}/issues',
                   (
@@ -72,13 +72,13 @@ c.url.searchengines = {
                   ),
                   (
                       SE.LuckyQuery.url('{} site:github.com', end='issues?&q=is%3Aissue+{}'),
-                      '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%3F'),
-                      lambda x: re.split(r'%20%3F', SE.LuckyQuery.filter(x), maxsplit=1)
+                      '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]| )+@'),
+                      lambda x: re.split(SE.utils.encode(' @'), SE.LuckyQuery.filter(x), maxsplit=1)
                   ),
                   (
                       SE.LuckyQuery.url('{} site:github.com', end='issues/{}'),
-                      '{}{}'.format(SE.LuckyQuery.pattern, r'([A-z]|%20)+%23'),
-                      lambda x: re.split(r'%20%23', SE.LuckyQuery.filter(x), maxsplit=1)
+                      '{}{}'.format(SE.LuckyQuery.pattern, '([A-z]| )+#'),
+                      lambda x: re.split(SE.utils.encode(' #'), SE.LuckyQuery.filter(x), maxsplit=1)
                   ),
                   (
                       SE.LuckyQuery.url('{} site:github.com', end='issues'),
@@ -88,8 +88,8 @@ c.url.searchengines = {
     'li': SE.URL(SE.static.site('linkedin.com'),
                  (
                      SE.static.site('linkedin.com', prefix='software'),
-                     '^%40',
-                     lambda x: x[3:]
+                     '^@',
+                     lambda x: x.replace(SE.utils.encode('@'), '')
                  )),
     'lib': 'http://libgen.io/search.php?req={}',
     'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),

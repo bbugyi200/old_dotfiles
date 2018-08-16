@@ -27,7 +27,7 @@ def get_top_link(query):
         if link and link != '#' and re.match('^http[s]?://', link['href']):
             return link['href']
 
-    return 'https://www.google.com/search?q={}'.format(utils.escape(query))
+    return 'https://www.google.com/search?q={}'.format(utils.encode(query))
 
 
 def _fetch_results(query):
@@ -36,9 +36,9 @@ def _fetch_results(query):
     except AssertionError as e:
         raise ValueError(str(e))
 
-    escaped_query = utils.escape(query)
+    encoded_query = utils.encode(query)
 
-    google_url = 'https://www.google.com/search?q={}'.format(escaped_query)
+    google_url = 'https://www.google.com/search?q={}'.format(encoded_query)
     response = requests.get(google_url, headers=USER_AGENT)
     response.raise_for_status()
 
