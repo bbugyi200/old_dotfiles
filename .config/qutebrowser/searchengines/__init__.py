@@ -28,7 +28,7 @@ class URL:
 
 
 class SearchEngine(str):
-    """ Dynamic SearchEngine for 'url.searchengines'
+    """Dynamic SearchEngine for 'url.searchengines'
 
     Enables additional pattern matching
 
@@ -72,7 +72,7 @@ class SearchEngine(str):
 
 
 class LuckyQuery:
-    """ Queries that Utilize Google's I'm Feeling Lucky Feature """
+    """Queries that Utilize Google's I'm Feeling Lucky Feature"""
     pattern = r'^(\|/)'
 
     # dummy url is needed to pass qutebrowser's validation checks
@@ -101,7 +101,7 @@ class LuckyQuery:
 
 
 class IntQueryFactory:
-    """ Template for URL Queries that start with Int Arguments """
+    """Template for URL Queries that start with Int Arguments"""
     def __init__(self, N):
         self.N = N
         pttrn_fmt = '^{}[A-z]'
