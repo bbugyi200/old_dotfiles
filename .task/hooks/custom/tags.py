@@ -17,13 +17,11 @@ from utils import dates
 logger = log.getLogger()
 
 
-def _project_tag(tag, *, project=None):
-    """Helper function for creating custom tag that gives the task a 'project' name."""
-    if project is None:
-        project = tag.title()
-
-    return {'project': project,
-            'tags': fields.ModTags(tag, '-')}
+def _ghost_tag(tag, **kwargs):
+    """Helper function for creating custom tag that is deleted once used."""
+    D = {'tags': fields.ModTags(tag, '-')}
+    D.update(kwargs)
+    return D
 
 
 _today_due_time = dates.get_today()
@@ -39,11 +37,8 @@ tags = {
     'call': {
         'tags': fields.ModTags('note', '+'),
     },
-    'const': {
-        'consistent': 'yes',
-        'tags': fields.ModTags('const', '-'),
-    },
-    'dev': _project_tag('dev'),
+    'const': _ghost_tag('const', consistent='yes'),
+    'dev': _ghost_tag('dev', project='Dev'),
     'errand': {
         'tags': fields.ModTags('note', '+'),
     },
@@ -67,22 +62,10 @@ tags = {
         'delta': 1,
         'tags': fields.ModTags(('remind', 'tickle'), ('-', '+')),
     },
-    'Severity_1': {
-        'tags': fields.ModTags('Severity_1', '-'),
-        'severity': 'critical',
-    },
-    'Severity_2': {
-        'tags': fields.ModTags('Severity_2', '-'),
-        'severity': 'high',
-    },
-    'Severity_3': {
-        'tags': fields.ModTags('Severity_3', '-'),
-        'severity': 'medium',
-    },
-    'Severity_4': {
-        'tags': fields.ModTags('Severity_4', '-'),
-        'severity': 'low',
-    },
+    'Severity_1': _ghost_tag('Severity_1', severity='critical'),
+    'Severity_2': _ghost_tag('Severity_2', severity='high'),
+    'Severity_3': _ghost_tag('Severity_3', severity='medium'),
+    'Severity_4': _ghost_tag('Severity_4', severity='low'),
     'taskwarrior': {
         'tags': fields.ModTags('GTD', '+'),
     },
@@ -90,12 +73,8 @@ tags = {
         'due': _tomorrow_due_time,
         'delta': 0,
     },
-    'today': {
-        'due': _today_due_time,
-        'tags': fields.ModTags('today', '-'),
-        'project': 'Misc',
-    },
-    'tv': _project_tag('tv', project='TV'),
+    'today': _ghost_tag('today', due=_today_due_time, project='Misc'),
+    'tv': _ghost_tag('tv', project='TV'),
 }
 
 
