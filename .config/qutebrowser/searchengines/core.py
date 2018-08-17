@@ -9,7 +9,7 @@ import re
 import searchengines.imfeelinglucky as IFL
 import searchengines.utils as utils
 
-__all__ = ['SearchEngine', 'URL', 'LuckyQuery', 'OneIntQuery', 'TwoIntQuery']
+__all__ = ['SearchEngine', 'URL', 'LuckyURL', 'OneIntURL', 'TwoIntURL']
 
 
 class SearchEngine(str):
@@ -42,8 +42,8 @@ class SearchEngine(str):
 
                 formatted_url = str.format(url, *filtered, *args, **kwargs)
 
-                if LuckyQuery.is_lucky(formatted_url):
-                    formatted_url = LuckyQuery.get_top_link(formatted_url)
+                if LuckyURL.is_lucky(formatted_url):
+                    formatted_url = LuckyURL.get_top_link(formatted_url)
 
                 return formatted_url
 
@@ -71,19 +71,28 @@ class URL:
         return (x for x in [self.url, self.pattern, self.filter])
 
 
-class LuckyQuery:
+class LuckyURL(URL):
     """Queries that Utilize Google's I'm Feeling Lucky Feature"""
     pattern = r'^(\|/)'
 
     # dummy url is needed to pass qutebrowser's validation checks
-    prefix = 'https://imfeelinglucky/'
-    suffix = '@'
+    start_mark = 'https://imfeelinglucky/'
+    end_mark = '@'
+
+    def __init__(self, url, pattern=None, filter_=None, suffix=''):
+        if pattern is not None:
+            self.pattern = pattern
+
+        if filter_ is not None:
+            self.filter = filter_
+
+        super().__init__(self.make_lucky(url, suffix=suffix), self.pattern, self.filter)
 
     @classmethod
-    def url(cls, query, end=''):
-        encoded_query = utils.encode(query)
-        fmt_url = '{}{{}}{}{}'.format(cls.prefix, cls.suffix, re.sub(r'\{(\d*)\}', r'{{\1}}', end))
-        return fmt_url.format(encoded_query)
+    def make_lucky(cls, query, suffix=''):
+        query = utils.encode(query)
+        fmt_url = '{}{{}}{}{}'.format(cls.start_mark, cls.end_mark, re.sub(r'\{(\d*)\}', r'{{\1}}', suffix))
+        return fmt_url.format(query)
 
     @classmethod
     def filter(cls, query):
@@ -91,31 +100,40 @@ class LuckyQuery:
 
     @classmethod
     def is_lucky(cls, url):
-        return url.startswith(cls.prefix)
+        return url.startswith(cls.start_mark)
 
     @classmethod
     def get_top_link(cls, url):
-        query, end = url[len(cls.prefix):].split(cls.suffix)
+        query, suffix = url[len(cls.start_mark):].split(cls.end_mark)
         top_link = IFL.get_top_link(query)
-        return '{}/{}'.format(top_link, end) if end else top_link
+        return '{}/{}'.format(top_link, suffix) if suffix else top_link
 
 
-class IntQueryFactory:
+def IntURLFactory(n):
     """Template for URL Queries that start with Int Arguments"""
-    def __init__(self, N):
-        self.N = N
-        pttrn_fmt = '^{}[A-z]'
-        int_pttrn = '[0-9]+ '
-        for i in range(self.N - 1):
-            int_pttrn = int_pttrn + int_pttrn
-        self.pattern = pttrn_fmt.format(int_pttrn)
+    pttrn_fmt = '^{}[A-z]'
+    int_pttrn = '[0-9]+ '
+    for i in range(n - 1):
+        int_pttrn = int_pttrn + int_pttrn
 
-    def filter(self, query):
-        y = re.split(utils.encode(' '), query, maxsplit=self.N)
-        for i in range(self.N):
-            y[i] = int(y[i])
-        return y
+    class IntURL(URL):
+        pattern = pttrn_fmt.format(int_pttrn)
+
+        def __init__(self, url, filter_=None):
+            if filter_ is not None:
+                self.filter = filter_
+
+            super().__init__(url, self.pattern, self.filter)
+
+        @classmethod
+        def filter(cls, query):
+            y = re.split(utils.encode(' '), query, maxsplit=n)
+            for i in range(n):
+                y[i] = int(y[i])
+            return y
+
+    return IntURL
 
 
-OneIntQuery = IntQueryFactory(1)
-TwoIntQuery = IntQueryFactory(2)
+OneIntURL = IntURLFactory(1)
+TwoIntURL = IntURLFactory(2)
