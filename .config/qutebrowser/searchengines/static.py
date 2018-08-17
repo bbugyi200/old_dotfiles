@@ -5,9 +5,9 @@ import datetime as dt
 import searchengines.utils as utils
 
 
-######################
-#  Public Functions  #
-######################
+############
+#  Public  #
+############
 def stackoverflow(n, *, prefix=None):
     """Returns stackoverflow google search string.
 
@@ -42,9 +42,9 @@ def duckduckgo(query):
     return 'https://duckduckgo.com/?q={}'.format(encoded_query)
 
 
-#######################
-#  Private Functions  #
-#######################
+#############
+#  Private  #
+#############
 def _n_years_ago(n):
     """Return a datetime N years ago."""
     today = dt.date.today()

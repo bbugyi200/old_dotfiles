@@ -18,13 +18,16 @@ config.load_autoconfig()
 ####################
 #  Search Engines  #
 ####################
-one_letter_bangs = ['a', 'd', 'g', 'i', 'm', 't', 'w', ]
-two_letter_bangs = ['gm', 'wa', 'yt', ]
-long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
-included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
+def bang_pttrn():
+    """Returns regex pattern that matches DuckDuckGo bangs that I like to use."""
+    one_letter_bangs = ['a', 'd', 'g', 'i', 'm', 't', 'w', ]
+    two_letter_bangs = ['gm', 'wa', 'yt', ]
+    long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
+    included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
 
-bang_fmt = '^({}) '
-bang_pttrn = bang_fmt.format('|'.join(included_bangs))
+    bang_fmt = '^({}) '
+    return bang_fmt.format('|'.join(included_bangs))
+
 
 c.url.searchengines = {
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
@@ -32,7 +35,7 @@ c.url.searchengines = {
     'cc': SE.static.stackoverflow(5, prefix='C++'),
     'DEFAULT': SE.SearchEngine(SE.static.google('{}'),
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),
-                               SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn),
+                               SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
                                SE.URL(SE.LuckyQuery.url('{}'),
                                       SE.LuckyQuery.pattern,
                                       SE.LuckyQuery.filter)),
