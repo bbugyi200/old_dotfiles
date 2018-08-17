@@ -107,8 +107,4 @@ for tag in ['annually', 'biannually', '3years',
             '4years', '5years', '6years']:
     tags[tag]['consistent'] = 'yes'
 
-# Due dates of Daily Tasks should be respected (higher urgency)
-tags['daily']['strict'] = 'yes'
-tags['bidaily']['strict'] = 'yes'
-
 logger.vdebug('repeats: %s', repr(repeats))
