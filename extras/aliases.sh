@@ -9,15 +9,17 @@ alias Jdb='jdb -classpath "../bin"'
 alias PyDoc='LangDoc -e py -m'
 alias actvenv='source venv/bin/activate'
 alias ag='ag --hidden'
+ainit() { printf "#!/bin/awk -f\n\n" > "$1.awk" && chmod +x "$1.awk" && clinks && vim + "$1.awk"; }
 alias alg='alias | grep -e'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
+binit() { printf "#!/bin/bash\n\n" > "$1" && chmod +x "$1" && clinks && vim + "$1"; }
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 alias cower='cower -c'
 alias cp="cp -i"
 alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
-alias del='sudo pacman -Rs'
+alias del='sudo emerge -cav'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias dfs='dropbox-cli filestatus'
 alias dst='dropbox-cli status'
@@ -25,6 +27,7 @@ alias dstart='dropbox-cli start'
 alias dstop='dropbox-cli stop'
 alias du='ncdu --color dark'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
+alias get='sudo emerge --ask'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias ghc='stack ghc --'
 alias ghci='stack ghci --'
@@ -48,7 +51,7 @@ alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/"$1".txt; }
 alias pg='pacman -Q | grep'
 alias pdb='ipdb'
-alias psgrep='ps -aux | grep -E'
+alias psg='ps -aux | grep -E'
 pvar() { set | grep -i -e "^$1"; }
 alias rg='ranger'
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
