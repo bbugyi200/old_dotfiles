@@ -8,7 +8,7 @@ URxvt*loginShell:             true            ! to load shell profiles
 URxvt*print-pipe:             cat > $HOME/tmp/$(echo urxvt.dump.$(date +'%s'))
 URxvt*saveLines:              9999            ! non-tmux window scroll back
 ! Text
-URxvt*font:                   xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
+URxvt*font:                   xft:Hack:pixelsize=13:antialias=true:hinting=true
 URxvt*internalBorder:         6               ! pixels from frame edge
 URxvt*lineSpace:              4               ! pixels between lines for added readability
 ! UI
@@ -59,6 +59,8 @@ URxvt*geometry:               100x39
 URxvt.perl-ext-common: default,url-select,clipboard
 ! Clipboard
 URxvt.clipboard.autocopy: true
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.keysym.C-S-C: perl:clipboard:copy
 URxvt.keysym.C-v: perl:clipboard:paste
 ! Matcher

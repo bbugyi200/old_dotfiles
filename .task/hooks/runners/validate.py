@@ -21,7 +21,7 @@ def run(new_task, old_task=None):
 
     # Don't let task be created without project
     if 'project' not in new_task.keys():
-        out = sp.check_output(['prompt', 'Select a Project'])
+        out = sp.check_output(['tproject'])
         project = out.decode().strip()
 
         if project == '':

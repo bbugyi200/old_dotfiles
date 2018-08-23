@@ -35,10 +35,16 @@ tin () { task +inbox -DELETED -COMPLETED all; }
 
 # All functions that use 'to' REQUIRE their first argument to
 # be an ID.
+alias ta='task add'
+alias tcn='task context none && task_refresh -F rename,config'
+alias tcomp='task limit:10 \( status:completed or status:deleted \) rc.report.all.sort:end- all'
+alias td='task done'
+alias tdue='tga +OVERDUE'
+alias tdel='task delete'
 tdi () { task "$(task _ids +inbox -DELETED -COMPLETED | sort | paste -sd ' ' | cut -d' ' -f1)" done; }
 ti () { task rc._forcecolor:on "$@" info | less; }
+alias tlat='task rc._forcecolor:on +LATEST info | less'
 tl () { task "$1" | less; }
-tpi () { task "$1" mod -inbox "${@:2}"; }
 tg () { eval "tcsn $@ rc.verbose=blank,label list"; }
 tgw () { eval "tcsn $@ rc.verbose=blank,label waiting"; }
 tga () { eval "tcsn rc.verbose=blank,label rc.defaultwidth:$COLUMNS $@ -COMPLETED -DELETED all"; }
@@ -48,18 +54,11 @@ tgcd () { eval "tcsn rc.verbose=blank,label $@ \( +COMPLETED or +DELETED \) all"
 tget () { task _get "$@"; }
 tnall () { tcsn "next +READY"; }
 tnl () { task next +READY limit:none; }  # no limit
+tpa () { tga project:$(tproject); }
+tpi () { task "$1" mod -inbox "${@:2}"; }
 tsub () { task $1 modify "/$2/$3/g"; }
 trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS limit:none \( +PENDING or +WAITING \) | less; }
-twm () { timew move @1 "$1" :adjust; }
 
-alias ta='task add'
-alias td='task done'
-alias qtrev='trev'
-alias tlat='task rc._forcecolor:on +LATEST info | less'
-alias tdue='tga +OVERDUE'
-alias tdel='task delete'
-alias tcn='task context none && task_refresh -F rename,config'
-alias tcomp='task limit:10 \( status:completed or status:deleted \) rc.report.all.sort:end- all'
 
 # ---------- TimeWarrior
 twc () {
@@ -78,6 +77,7 @@ alias timd='tim delete'
 #  khal  #
 ##########
 restart_khal_alarms() { setsid calalrms -d &> /dev/null; }
+ka() { /usr/local/bin/ka "$@" && restart_khal_alarms; }
 kc() { clear && khal calendar --notstarted --format '{start-time} {title}' now && echo; }
 kn() { khal new -a daily ""$*"" && restart_khal_alarms; }
 knt() { khal new -a daily tomorrow ""$*"" && restart_khal_alarms; }

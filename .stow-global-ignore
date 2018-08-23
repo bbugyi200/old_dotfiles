@@ -1,33 +1,21 @@
 # Comments and blank lines are allowed.
 
-RCS
-.+,v
-
-CVS
-\.\#.+       # CVS conflict files / emacs lock files
-\.cvsignore
-
-\.svn
-_darcs
-\.hg
-
+# git files
 \.git
 \.gitignore
 
-.+~          # emacs backup files
-\#.*\#       # emacs autosave files
-
+# bad extensions
 /*\.swo
 /*\.swp
+/*\.pyc
 
-^/README.*
-^/LICENSE.*
-^/COPYING
+# specific files
 \.lshrc
-clinks
-
+^/sudoers
 \.archive.tar.gz
+^/README.*
 
+# data directories
 ^/extras/*
 ^/img/*
 ^/__pycache__/*

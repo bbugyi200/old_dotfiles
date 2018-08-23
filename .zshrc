@@ -7,12 +7,14 @@ DEFAULT_USER="bryan"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 
-plugins=(git z zsh-autosuggestions vi-mode systemd sudo)
+plugins=(git z zsh-autosuggestions vi-mode systemd sudo lpass)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
+
+ZSH_DISABLE_COMPFIX="true"  # disable warning messages whenever I use 'su' to login as root
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,7 +42,7 @@ source /home/bryan/Dropbox/dotfiles/home/extras/eternal_history.sh
 ##############
 #  Settings  #
 ##############
-setopt null_glob  # disables errors when GLOB pattern doesn't match
+setopt null_glob  # disables errors when GLOB pattern does not match
 setopt globdots
 
 #################
@@ -105,10 +107,9 @@ _git 2> /dev/null  # hack to make git branch completion work
 _pacman 2> /dev/null  # hack to make pacman completion work
 compdef __git_branch_names gco
 compdef _command_names wim
-compdef _pacman_completions_all_packages get
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
 
-autoload -U +X compinit && compinit
+autoload -U +X compinit && compinit -u
 autoload -U +X bashcompinit && bashcompinit
 for filename in ~/.bash-completions/*; do
     source "$filename"
@@ -145,6 +146,12 @@ if (( $+commands[tag] )); then
   tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
   alias ag=tag  # replace with rg for ripgrep
 fi
+
+if [[ "$(id -u)" = 0 ]]; then
+    export PATH="/root/.local/bin:$PATH"
+fi
+
+compinit -u
 
 # added by travis gem
 [ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh

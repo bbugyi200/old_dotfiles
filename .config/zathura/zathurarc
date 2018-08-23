@@ -1,9 +1,10 @@
 # ---------- Settings
+set continuous-hist-save true
+set link-zoom false
 set selection-clipboard clipboard
+set show-recent 25
 set window-title-basename true
 set window-title-page true
-set show-recent 25
-set link-zoom false
 
 # ---------- Bookmark Bindings
 # Set Mark
@@ -46,11 +47,11 @@ map bK feedkeys ":bmark K<Return>"
 map bL feedkeys ":bmark L<Return>"
 map bM feedkeys ":bmark M<Return>"
 map bN feedkeys ":bmark N<Return>"
-map bO feedkeys ":offset<Return>:bmark O<Return>"
+map bO feedkeys ":bmark O<Return>"
 map bP feedkeys ":bmark P<Return>"
 map bQ feedkeys ":bmark Q<Return>"
 map bR feedkeys ":bmark R<Return>"
-map bS feedkeys ":bmark S<Return>"
+map bS feedkeys ":offset<Return>:bmark S<Return>"
 map bT feedkeys ":bmark T<Return>"
 map bU feedkeys ":bmark U<Return>"
 map bV feedkeys ":bmark V<Return>"
@@ -163,24 +164,21 @@ map .z feedkeys ":bmark .<Return>:blist Z<Return>"
 # ---------- Miscellaneous Bindings
 map <C-[> feedkeys ":nohlsearch<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
-map <Return> goto
+map ; goto
 map ,l feedkeys ":blist <Tab><C-u>blist"  # List Marks
 map ,b focus_inputbar ":bmark "
 map ,d feedkeys ":bdelete <Tab>"
-map D feedkeys ":exec xzath adL<Return>"
-map e feedkeys ":exec xzath ZdJH<Return>"
-map E feedkeys ":exec xzath ZdJL<Return>"
+map e feedkeys ":exec xtype ZdJH<Return>"
+map E feedkeys ":exec xtype ZdJL<Return>"
 map s feedkeys ":exec zsearch<Return>"
 map S feedkeys ":exec zsearch --keys<Return>"
 map R feedkeys ":exec zopen -R<Return>"
 map o feedkeys ":exec zopen -x<Return>"
 map O feedkeys ":exec zopen<Return>"
-map w feedkeys ":exec xzath ZdH<Return>"
-map W feedkeys ":exec xzath ZdL<Return>"
+map w feedkeys ":exec xtype ZdH<Return>"
+map W feedkeys ":exec xtype ZdL<Return>"
+map q feedkeys ":exec xtype adL<Return>"
 map x quit
-map Z feedkeys "200zz"
-
-# ---------- Disabled Bindings
-unmap q
+map Z feedkeys "150zz"
 
 # vim: set ft=conf:

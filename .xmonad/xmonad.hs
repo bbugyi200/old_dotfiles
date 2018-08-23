@@ -18,6 +18,7 @@ import qualified Control.Monad as Monad
 import qualified Data.Char as DataChar
 import qualified Data.List as DataList
 import qualified Network.HostName as HostName
+import qualified System.Exit as Exit
 import qualified XMonad.Actions.CycleWS as CW
 import qualified XMonad.Actions.DynamicWorkspaces as DW
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
@@ -54,9 +55,9 @@ xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc
 
 getXmobarTemplate :: String -> String
 getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%    (%window_count%)}%timew%{ %pia%  %volume%  |  %date%"
-getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader% }%timew%{ %pia%  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
-getXmobarTemplate "2-top" = "}%weather%      [%sunrise% / %sunset%]{"
+getXmobarTemplate "2-top" = "}%weather%{"
 getXmobarTemplate "2-bottom" = "}{"
 
 removeEmptyWorkspaceAfter' :: X () -> X ()
@@ -165,6 +166,7 @@ myAdditionalKeys = [
    , ((alpha .|. shift, v), launchApp "CAST" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cnciopoikihiagdjbjpnocolokfelagl")
    , ((alpha, x), launchApp "TERM" myTerminal)
    , ((alpha .|. beta, x), launchApp "TERM'" myTerminal)
+   , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, z), launchApp "ZATH" "zathura")
    , ((alpha .|. beta, z), launchApp "ZATH'" "zathura")
@@ -227,13 +229,8 @@ myTerminal = "urxvt -e zsh -c 'tm Terminal'"
 myFocusFollowsMouse = False
 myClickJustFocuses = False
 
--- Colors --
-yellow = "#F8FB27"
-blue = "#0000FF"
-------------
-
 myBorderWidth = 5
-myFocusedBorderColor = blue
+myFocusedBorderColor = "#0000FF"
 
 myWorkspaces :: [String]
 myWorkspaces = ["NSP", "TERM","WEB"]
@@ -266,7 +263,6 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
               , NSP.NS "gtd" gtd (appName =? "GTD")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh) ]
             where 
-                role = stringProperty "WM_WINDOW_ROLE"
                 calculator = "urxvt -name calculator -e zsh -c 'bc -l'"
                 scratchpad = "urxvt -name scratchpad -e zsh -c 'tmuxinator start ScratchPad root=$(tmdir --get ScratchPad)'"
                 weechat = "urxvt -name weechat -e zsh -c 'tmuxinator start WeeChat root=$(tmdir --get WeeChat)'"
@@ -290,9 +286,9 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "init-bg"
                 >> spawn "sleep 2 && volume-xmonad"
                 >> spawn "sleep 2 && calalrms"
-                >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " --position=Bottom")
+                >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=2")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=1")
-                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " --position=Bottom --screen=1")
+                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=1")
 
 ------------
 --  Main  --
@@ -300,7 +296,7 @@ myStartupHook = ewmhDesktopsStartup
 main :: IO ()
 main = do
     hostname <- HostName.getHostName
-    xmproc <- spawnPipe (xmobarTempFmt $ getXmobarTemplate $ "1-top-" ++ hostname)
+    xmproc <- spawnPipe (xmobarTempFmt (getXmobarTemplate $ "1-top-" ++ hostname) ++ " --screen=2")
     xmonad . Docks.docks . ewmh $ desktopConfig
         {
             terminal                = myTerminal

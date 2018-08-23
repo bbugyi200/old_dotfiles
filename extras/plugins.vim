@@ -67,6 +67,12 @@ Plugin 'jez/vim-superman'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+""""""""""""""""""
+"  vim-easytags  "
+""""""""""""""""""
+" doesn't work with universal-ctags
+let g:easytags_suppress_ctags_warning = 1
+
 """""""""""""""""""""""""""""""""""""""""
 "  Haskell-vim + ghcmod-vim + neoc-ghc  "
 """""""""""""""""""""""""""""""""""""""""
@@ -225,6 +231,8 @@ let g:syntastic_cpp_compiler_options = '-std=c++14'
 " Enables Syntastic to work with Java
 " let g:syntastic_java_checker = 'javac'
 let g:syntastic_java_javac_classpath=fnamemodify(getcwd(), ':h')."/bin:".getcwd()
+
+
 
 """""""""""""""""""
 "  ClangComplete  "

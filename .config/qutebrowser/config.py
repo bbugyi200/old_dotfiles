@@ -39,6 +39,7 @@ c.url.searchengines = {
                                SE.LuckyURL('{}')),
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
                           SE.OneIntURL(SE.static.google('Season {0} {1} episodes'))),
+    'ge': SE.static.google('gentoo {}'),
     'gh': SE.SearchEngine(SE.static.site('github.com'),
                           SE.LuckyURL('{} site:github.com'),
                           SE.URL('https://github.com/bbugyi200/{}',
@@ -124,13 +125,22 @@ pbind('<Ctrl-o>', 'prompt-open-download xdg-open {}')
 cbind('<Ctrl-f>', 'edit-command --run')
 
 # >>> NORMAL
+bind(',1', 'buffer 1')
+bind(',2', 'buffer 2')
+bind(',3', 'buffer 3')
+bind(',4', 'buffer 4')
+bind(',5', 'buffer 5')
+bind(',6', 'buffer 6')
+bind(',7', 'buffer 7')
+bind(',8', 'buffer 8')
+bind(',9', 'buffer 9')
 bind(',b', 'set-cmd-text :bookmark-add {url} "')
 bind(',dp', 'spawn -v pockyt-delete {url}')
 bind(',D', 'set-cmd-text -s :session-delete')
 bind(',e', 'spawn --userscript searchbar-command')
 bind(',h', 'set-cmd-text -s :help')
 bind(',H', 'set-cmd-text -s :help -t')
-bind(',L', 'set-cmd-text -s :session-load -c')
+bind(',L', 'set-cmd-text -s :session-load')
 bind(',m', 'spawn --userscript view_in_umpv -d')
 bind(',p', 'open -p')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
