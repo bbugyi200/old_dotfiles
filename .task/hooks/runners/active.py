@@ -14,26 +14,28 @@ def run(new_task, old_task=None):
     This hook contains functions that are run when a task is start and/or stopped. This includes:
        - Starting/stopping TimeWarrior
        - Starting xtaskidle
+       - Run xmonad-poll-timew
        - Writing last task UUID to file (used by 'last_task' script).
     """
-    if old_task is None:
+    if (old_task is None) or ('start' not in new_task) and ('start' not in old_task):
         return new_task
 
     # Extract attributes for use as tags.
     log.running(logger)
-    timew_tags = []
-
-    if 'project' in new_task:
-        project = new_task['project']
-        timew_tags.append(project)
-        while '.' in project:
-            project = project[:project.rfind('.')]
-            timew_tags.append(project)
-
-    combined_timew_tags = ' '.join(['"%s"' % tag for tag in timew_tags]).encode('utf-8').strip()
 
     # Started task.
     if 'start' in new_task and 'start' not in old_task:
+        timew_tags = []
+
+        if 'project' in new_task:
+            project = new_task['project']
+            timew_tags.append(project)
+            while '.' in project:
+                project = project[:project.rfind('.')]
+                timew_tags.append(project)
+
+        combined_timew_tags = ' '.join(['"%s"' % tag for tag in timew_tags]).encode('utf-8').strip()
+
         logger.debug('Task Started: {}'.format(new_task['description']))
         cmd = 'timew start "[Project: {project}]" {tags}'
         sp.check_call(cmd.format(project=new_task['description'], tags=combined_timew_tags.decode()),
@@ -49,4 +51,5 @@ def run(new_task, old_task=None):
             with open('/home/bryan/.task/.last_task', 'w') as f:
                 f.write(new_task['uuid'])
 
+    sp.Popen('sleep 0.5 && xmonad-poll-timew', shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
     return new_task

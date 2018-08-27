@@ -54,7 +54,7 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%    (%window_count%)}%timew%{ %pia%  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%    (%window_count%)}%poll-timew%{ %pia%  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%weather%{"
@@ -286,6 +286,8 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "sleep 2 && volume-xmonad"
                 >> spawn "sleep 2 && calalrms -d"
                 >> spawn "sleep 2 && xmonad-weather"
+                >> spawn "sleep 2 && xmonad-poll-timew"
+                >> spawn "maintCheck"
                 >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=2")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=1")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=1")
