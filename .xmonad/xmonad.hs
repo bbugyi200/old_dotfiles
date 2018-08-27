@@ -272,7 +272,7 @@ myManageHook = composeAll
     [ manageSpawn
     , NSP.namedScratchpadManageHook scratchpads
     , appName=? "peek"        --> doFloat
-    , className=? "Pinentry"  --> doFloat
+    , className=? "Pinentry-gtk-2"  --> doFloat
     , appName=? "calculator"  --> doRectFloat (W.RationalRect l t w h)
     , className=? "Clipster"  --> doRectFloat (W.RationalRect bigl bigt bigw bigh)
     , appName=? "floater"     --> doRectFloat (W.RationalRect l t w h)
@@ -282,10 +282,10 @@ myManageHook = composeAll
 
 myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
-                >> spawn "maintCheck"
                 >> spawn "init-bg"
                 >> spawn "sleep 2 && volume-xmonad"
-                >> spawn "sleep 2 && calalrms"
+                >> spawn "sleep 2 && calalrms -d"
+                >> spawn "sleep 2 && xmonad-weather"
                 >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=2")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=1")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=1")

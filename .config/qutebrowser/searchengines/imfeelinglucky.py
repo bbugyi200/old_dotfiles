@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 
 import searchengines.utils as utils
 
-USER_AGENT = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36}'}
+USER_AGENT = {'User-Agent': 'Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.63 Safari/534.3'}
 
 
 def get_top_link(query):
@@ -31,6 +31,9 @@ def get_top_link(query):
 
 
 def _fetch_results(query):
+    # dynamic import needed to work around weird qutebrowser bug with 'cryptography' module
+    import requests
+
     try:
         assert isinstance(query, str), 'Search term must be a string'
     except AssertionError as e:

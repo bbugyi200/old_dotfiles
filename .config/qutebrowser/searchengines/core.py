@@ -88,10 +88,9 @@ class LuckyURL(URL):
 
         super().__init__(self.make_lucky(url, suffix=suffix), self.pattern, self.filter)
 
-    @classmethod
-    def make_lucky(cls, query, suffix=''):
+    def make_lucky(self, query, suffix=''):
         query = utils.encode(query)
-        fmt_url = '{}{{}}{}{}'.format(cls.start_mark, cls.end_mark, re.sub(r'\{(\d*)\}', r'{{\1}}', suffix))
+        fmt_url = '{}{{}}{}{}'.format(self.start_mark, self.end_mark, re.sub(r'\{(\d*)\}', r'{{\1}}', suffix))
         return fmt_url.format(query)
 
     @classmethod

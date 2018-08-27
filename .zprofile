@@ -18,6 +18,8 @@ extra_path_dirs=(
     "/usr/local/bin"
     "$(ruby -e 'print Gem.user_dir')/bin"
     "/home/bryan/.local/bin"
+    "/sbin"
+    "/usr/sbin"
 )
 
 extra_pythonpath_dirs=(

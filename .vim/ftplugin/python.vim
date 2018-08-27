@@ -58,4 +58,5 @@ nnoremap <Leader>' 100\|Bi'<CR>'<Esc>
 nnoremap <Leader><Leader>' :call JoinMultilineString()<CR>:call BreakMultlineString("'")<CR>
 
 nmap <Leader>t :call SwitchToTest('py')<CR>
+nmap <Leader><Leader>t :!cd ../tests && pyinit -n -t epuse<CR>
 nmap <Leader>T :call VSwitchToTest('py')<CR>

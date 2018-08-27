@@ -94,11 +94,11 @@ bindkey "^N" down-line-or-search
 # I set this so the crontab would use vim for editing
 export EDITOR=$(which vim)
 
-export PROMPT_COMMAND="log_bash_history" 
+# export PROMPT_COMMAND="log_bash_history" 
 # Removed to fix double history log # ; $PROMPT_COMMAND"
 
 # Fixes Mutt Background Issue (stays transparent) in TMUX
-export TERM="screen-256color"
+export TERM="rxvt-unicode-256color"
 
 ####################
 #  Autocompletion  #
@@ -108,6 +108,7 @@ _pacman 2> /dev/null  # hack to make pacman completion work
 compdef __git_branch_names gco
 compdef _command_names wim
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
+compdef get=emerge
 
 autoload -U +X compinit && compinit -u
 autoload -U +X bashcompinit && bashcompinit

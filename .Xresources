@@ -8,7 +8,8 @@ URxvt*loginShell:             true            ! to load shell profiles
 URxvt*print-pipe:             cat > $HOME/tmp/$(echo urxvt.dump.$(date +'%s'))
 URxvt*saveLines:              9999            ! non-tmux window scroll back
 ! Text
-URxvt*font:                   xft:Hack:pixelsize=13:antialias=true:hinting=true
+URxvt*font:                   xft:Hack:style=Regular:pixelsize=13:antialias=true:hinting=true
+URxvt*letterSpace: 0
 URxvt*internalBorder:         6               ! pixels from frame edge
 URxvt*lineSpace:              4               ! pixels between lines for added readability
 ! UI

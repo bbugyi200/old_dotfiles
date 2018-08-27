@@ -34,10 +34,10 @@ Config { font = "xft:Dina:pixelsize=13"
                                  , "--normal",  "green"
                                  , "--high",    "red"] 10
 					, Run Com "poll-timew" [] "timew" 10
-                    , Run Com "poll-weather" ["-d", "-q"] "weather" 9000
                     , Run Com "pia-xmonad" [] "pia" 50
                     , Run Com "sunrise" [] "sunrise" 864000
                     , Run Com "sunset" [] "sunset" 864000
+                    , Run PipeReader ":/tmp/poll-weather/fifo" "weather"
                     , Run PipeReader ":/tmp/calalrms/fifo" "calevent"
                     , Run PipeReader ":/tmp/volume.fifo" "volume"
                     , Run PipeReader ":/tmp/alarm/fifo" "counter"

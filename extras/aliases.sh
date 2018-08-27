@@ -13,21 +13,26 @@ ainit() { printf "#!/bin/awk -f\n\n" > "$1.awk" && chmod +x "$1.awk" && clinks &
 alias alg='alias | grep -e'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 binit() { printf "#!/bin/bash\n\n" > "$1" && chmod +x "$1" && clinks && vim + "$1"; }
+alias bmutt='neomutt -f /var/spool/mail/bryan'
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 alias cower='cower -c'
 alias cp="cp -i"
 alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
-alias del='sudo emerge -cav'
+alias del='sudo emerge --ask --rage-clean'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias dfs='dropbox-cli filestatus'
 alias dst='dropbox-cli status'
 alias dstart='dropbox-cli start'
 alias dstop='dropbox-cli stop'
+alias epuse='sudo -i epuse'
+alias epkey='sudo vim /etc/portage/package.accept_keywords'
 alias eup='sudo dispatch-conf'
-alias euse='equery uses'
-alias emake='vim /etc/portage/make.conf'
+alias eupdate='sudo emerge --ask --update --deep --newuse @world'
+alias eu='equery uses'
+alias eq='equery'
+alias flaggie='sudo -i flaggie'
 alias du='ncdu --color dark'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 get() { sudo emerge --ask "$@" && nmw "The following packages are finished installing: $*."; }
@@ -53,7 +58,8 @@ alias mutt="neomutt"
 alias mv="mv -i"
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/"$1".txt; }
-alias pg='pacman -Q | grep'
+alias pg='equery list "*" | grep'
+alias pipget='pip install --user'
 alias pdb='ipdb'
 alias psg='ps -aux | grep -E'
 pvar() { set | grep -i -e "^$1"; }
@@ -72,6 +78,7 @@ alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
 alias ssh-artemis="ssh root@67.207.92.152"
 alias ssh-athena="ssh -p $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
+alias su='su -'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias sudoers='sudo vim /etc/sudoers'
 alias time='/usr/bin/time'

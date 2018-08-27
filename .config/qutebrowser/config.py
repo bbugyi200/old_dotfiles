@@ -30,6 +30,7 @@ def bang_pttrn():
 
 
 c.url.searchengines = {
+    '37x': 'https://1337x.unblocked.vet/search/{}/1/',
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
     'al': SE.static.google('arch linux {}'),
     'cc': SE.static.stackoverflow(5, prefix='C++'),
@@ -40,6 +41,8 @@ c.url.searchengines = {
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
                           SE.OneIntURL(SE.static.google('Season {0} {1} episodes'))),
     'ge': SE.static.google('gentoo {}'),
+    'gep': SE.SearchEngine(SE.static.site('packages.gentoo.org'),
+                           SE.LuckyURL('{} site:packages.gentoo.org')),
     'gh': SE.SearchEngine(SE.static.site('github.com'),
                           SE.LuckyURL('{} site:github.com'),
                           SE.URL('https://github.com/bbugyi200/{}',
@@ -48,14 +51,14 @@ c.url.searchengines = {
     'ghi': SE.SearchEngine('https://github.com/bbugyi200/{}/issues',
                            SE.URL('https://github.com/bbugyi200/scripts/issues/{}', '^[0-9]+$'),
                            SE.OneIntURL('https://github.com/bbugyi200/{1}/issues/{0}'),
-                           SE.LuckyURL('{} site:github.com',
+                           SE.LuckyURL('{0} site:github.com',
                                        '{}{}'.format(SE.LuckyURL.pattern, r'([A-z]| )+@'),
                                        lambda x: re.split(SE.utils.encode(' @'), SE.LuckyURL.filter(x), maxsplit=1),
-                                       suffix='issues?&q=is%3Aissue+{}'),
-                           SE.LuckyURL('{} site:github.com',
+                                       suffix='issues?&q=is%3Aissue+{1}'),
+                           SE.LuckyURL('{0} site:github.com',
                                        '{}{}'.format(SE.LuckyURL.pattern, '([A-z]| )+#'),
                                        lambda x: re.split(SE.utils.encode(' #'), SE.LuckyURL.filter(x), maxsplit=1),
-                                       suffix='issues/{}'),
+                                       suffix='issues/{1}'),
                            SE.LuckyURL('{} site:github.com', suffix='issues')),
     'li': SE.SearchEngine(SE.static.site('linkedin.com'),
                           SE.URL(SE.static.site('linkedin.com', prefix='software'),
@@ -143,11 +146,13 @@ bind(',H', 'set-cmd-text -s :help -t')
 bind(',L', 'set-cmd-text -s :session-load')
 bind(',m', 'spawn --userscript view_in_umpv -d')
 bind(',p', 'open -p')
+bind(',P', 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
 bind(',rss', 'spawn --userscript openfeeds')
 bind(',sp', "spawn -v pockyt put -f '{link}' -i {url}")
 bind(',S', 'set-cmd-text -s :session-save -o')
 bind(',t', 'config-cycle tabs.position left top')
+bind(',v', 'fake-key --global v$y')
 bind(';m', 'hint links spawn -v umpv {hint-url}', 'message-info "Select video to load with umpv."')
 bind(';M', 'hint links spawn -v umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
 bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
