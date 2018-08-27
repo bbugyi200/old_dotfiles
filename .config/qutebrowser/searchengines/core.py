@@ -56,7 +56,7 @@ class URL:
     Args:
         url (str): url string with braces ({}) to represent the search query
         pattern (str): regex pattern used to identify when this URL should be used
-        filter_ (opt): a callable object used to filter out garbage in the search query
+        filter_ (callable): used to filter out garbage in the search query
     """
     def __init__(self, url, pattern, filter_=None):
         self.url = url
@@ -72,7 +72,7 @@ class URL:
 
 
 class LuckyURL(URL):
-    """Queries that Utilize Google's I'm Feeling Lucky Feature"""
+    """Queries that Utilize Google's 'I'm Feeling Lucky' Feature"""
     pattern = r'^(\|/)'
 
     # dummy url is needed to pass qutebrowser's validation checks
@@ -109,7 +109,7 @@ class LuckyURL(URL):
 
 
 def IntURLFactory(n):
-    """Template for URL Queries that start with Int Arguments"""
+    """Factory for URL Objects with patterns that start with Int Arguments"""
     pttrn_fmt = '^{}[A-z]'
     int_pttrn = '[0-9]+ '
     for i in range(n - 1):
