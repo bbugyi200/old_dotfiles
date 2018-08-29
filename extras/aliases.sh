@@ -14,9 +14,9 @@ ainit() { printf "#!/bin/awk -f\n\n" > "$1.awk" && chmod +x "$1.awk" && clinks &
 alias alg='alias | grep -e'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 binit() { printf "#!/bin/bash\n\n" > "$1" && chmod +x "$1" && clinks && vim + "$1"; }
-alias bmutt='neomutt -f /var/spool/mail/bryan'
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
+alias chx='chmod +x'
 alias cower='cower -c'
 alias cp="cp -i"
 alias cppinit='cinit ++'
@@ -32,7 +32,6 @@ alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gho='ghi open'
 alias ghooks='rm -rf .git/hooks && git init' 
-alias gmutt="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
 alias gnlog="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias gpf='git push -f'
 alias grc='git rebase --continue'
@@ -47,7 +46,6 @@ alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 mkcd() { mkdir -p $1 && cd $1; }
 alias mkdir='mkdir'
 alias mkpkg='makepkg -si'
-alias mutt="neomutt"
 alias mv="mv -i"
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/"$1".txt; }
@@ -60,7 +58,6 @@ alias reboot='sudo /sbin/reboot'
 alias rg='ranger'
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 alias rm="safe-rm"
-alias rmutt='sudo neomutt -f /var/spool/mail/root'
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
 alias sc='systemctl'
 alias scu='systemctl --user'

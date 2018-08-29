@@ -27,6 +27,7 @@ alias eqs='equery s'  # (s)ize                  display total size of all files 
 alias equ='equery u'  # (u)ses                  display USE flags for PKG
 alias eqw='equery w'  # (w)hich                 print full path to ebuild for PKG
 alias eqy='equery y'  # ke(y)words              display keywords for specified PKG
+alias eup='sudo emerge --ask --update --deep --newuse @world'
 get() { sudo emerge --ask "$@" && nmw "The following packages are finished installing: $*."; }
 alias pg='equery list "*" | grep'
 alias rcs='sudo rc-service'
