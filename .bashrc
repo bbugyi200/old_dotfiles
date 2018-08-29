@@ -1,6 +1,6 @@
 PROMPT_COMMAND=
 shopt -s expand_aliases
-source /home/bryan/Dropbox/dotfiles/home/extras/aliases.sh
+source /home/bryan/Dropbox/dotfiles/extras/aliases.sh
 
 [ -f /home/bryan/.config/localalias/localalias.sh ] && source /home/bryan/.config/localalias/localalias.sh
 

@@ -35,9 +35,9 @@ disable r
 #####################
 #  Source Commands  #
 #####################
-source /home/bryan/Dropbox/dotfiles/home/extras/aliases.sh
-source /home/bryan/Dropbox/dotfiles/home/extras/eternal_history.sh
-source /home/bryan/Dropbox/dotfiles/home/extras/tmuxinator.zsh
+source /home/bryan/Dropbox/dotfiles/extras/aliases.sh
+source /home/bryan/Dropbox/dotfiles/extras/eternal_history.sh
+source /home/bryan/Dropbox/dotfiles/extras/tmuxinator.zsh
 
 ##############
 #  Settings  #
@@ -109,6 +109,7 @@ compdef __git_branch_names gco
 compdef _command_names wim
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
 compdef get=emerge
+compdef _tmuxinator tm
 
 autoload -U +X compinit && compinit -u
 autoload -U +X bashcompinit && bashcompinit

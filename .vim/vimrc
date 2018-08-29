@@ -360,5 +360,5 @@ call AddPWDtoPath()
 if filereadable($CONFIG . "/plugins.vim")
 	source $CONFIG/plugins.vim
 else
-	source /home/bryan/Dropbox/dotfiles/home/extras/plugins.vim
+	source /home/bryan/Dropbox/dotfiles/extras/plugins.vim
 endif
