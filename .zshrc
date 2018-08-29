@@ -35,9 +35,9 @@ disable r
 #####################
 #  Source Commands  #
 #####################
-source /home/bryan/Dropbox/dotfiles/home/extras/tmuxinator.zsh
 source /home/bryan/Dropbox/dotfiles/home/extras/aliases.sh
 source /home/bryan/Dropbox/dotfiles/home/extras/eternal_history.sh
+source /home/bryan/Dropbox/dotfiles/home/extras/tmuxinator.zsh
 
 ##############
 #  Settings  #

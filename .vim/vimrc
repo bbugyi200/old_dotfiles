@@ -80,9 +80,6 @@ set viminfo+=n~/.vim/viminfo
 " Appends the open file's directory to PATH
 let tempPath=expand("%:p:h") . "/**"
 exec "set path+=" . tempPath
-" Appends the current working directory to PATH
-let tempPath=getcwd() . "/**"
-exec "set path+=" . tempPath
 " Sets LaTeX as default for .tex files
 let g:tex_flavor = "latex"
 " The <Leader> key can be used for extra mappings
@@ -114,6 +111,7 @@ hi Normal guibg=NONE ctermbg=NONE
 """"""""""""""""""
 "  Key Bindings  "
 """"""""""""""""""
+noremap <Leader>. :cd ..<CR>:call AddPWDtoPath()<CR>:pwd<CR>
 " Shortcuts for quiting vim
 noremap <Leader>e :quit<CR>
 " Shortcuts for saving vim
@@ -263,6 +261,8 @@ autocmd BufRead,BufNewFile CMakeLists.txt set ft=cmake
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost /usr/include/c++/**/* set ft=cpp
 
+let s:default_path = escape(&path, '\ ') " store default value of 'path'
+
 """""""""""""""""""""
 "  Custom Commands  "
 """""""""""""""""""""
@@ -345,6 +345,14 @@ set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ 
+
+function AddPWDtoPath()
+    " Appends the current working directory to PATH
+    let tempPath=getcwd() . "/**"
+    exec "set path+=" . tempPath
+endfunction
+
+call AddPWDtoPath()
 
 """"""""""""""""""
 "  Load Plugins  "
