@@ -1,3 +1,4 @@
+source /home/bryan/Dropbox/dotfiles/home/extras/gentoo.sh
 source /home/bryan/Dropbox/dotfiles/home/extras/GTD.sh
 
 alias CDoc='LangDoc -e c -m'
@@ -20,22 +21,14 @@ alias cower='cower -c'
 alias cp="cp -i"
 alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
-alias del='sudo emerge --ask --rage-clean'
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias dfs='dropbox-cli filestatus'
 alias dst='dropbox-cli status'
 alias dstart='dropbox-cli start'
 alias dstop='dropbox-cli stop'
-alias epuse='sudo -i epuse'
-alias epkey='sudo vim /etc/portage/package.accept_keywords'
-alias eup='sudo dispatch-conf'
-alias eupdate='sudo emerge --ask --update --deep --newuse @world'
-alias eu='equery uses'
-alias eq='equery'
 alias flaggie='sudo -i flaggie'
 alias du='ncdu --color dark'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
-get() { sudo emerge --ask "$@" && nmw "The following packages are finished installing: $*."; }
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gho='ghi open'
 alias ghooks='rm -rf .git/hooks && git init' 
@@ -58,11 +51,11 @@ alias mutt="neomutt"
 alias mv="mv -i"
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/"$1".txt; }
-alias pg='equery list "*" | grep'
 alias pipget='pip install --user'
 alias pdb='ipdb'
 alias psg='ps -aux | grep -E'
 pvar() { set | grep -i -e "^$1"; }
+rchown() { sudo chown -R "$2":"$2" "$1"; }
 alias reboot='sudo /sbin/reboot'
 alias rg='ranger'
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
@@ -78,7 +71,7 @@ alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
 alias ssh-artemis="ssh root@67.207.92.152"
 alias ssh-athena="ssh -p $ATHENAS_SSH_PORT bryan@$ATHENAS_DDNS_HOSTNAME"
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
-alias su='su -'
+alias su='su - -p'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias sudoers='sudo vim /etc/sudoers'
 alias time='/usr/bin/time'
@@ -94,6 +87,10 @@ tsm-stop() { killall -9 transmission-daemon; }
 tsm-watch() { watch -n 1 transmission-remote -l; }
 tws() { timew shorten @1 "$1"mins; }
 alias updatedb='sudo updatedb'
+vab() { vim $(find /home/bryan/Dropbox/scripts/bin/cron.jobs -type f | tr '\n' ' '); }
+alias vdb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.daily/*'
+alias vwb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.weekly/*'
+alias vmb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.monthly/*'
 alias vcplug="vim -c ':PluginClean'"
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
 alias vip="vim -c 'execute \"normal \\<c-p>\" '"
