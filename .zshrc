@@ -159,3 +159,6 @@ compinit -u
 [ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh
 
 [ -f /home/bryan/.config/localalias/localalias.zsh ] && source /home/bryan/.config/localalias/localalias.zsh
+
+# ensures that the above few lines don't result in a nonzero exit status upon sourcing this file
+return 0

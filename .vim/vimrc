@@ -255,13 +255,12 @@ autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
 " Disables auto-comments on newlines and disables autowrap
 autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro
 autocmd FileType * setlocal formatoptions-=t
+autocmd FileType man setlocal nowrap
 autocmd BufRead,BufNewFile config set ft=cfg
 autocmd BufRead,BufNewFile .coveragerc set ft=cfg
 autocmd BufRead,BufNewFile CMakeLists.txt set ft=cmake
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost /usr/include/c++/**/* set ft=cpp
-
-let s:default_path = escape(&path, '\ ') " store default value of 'path'
 
 """""""""""""""""""""
 "  Custom Commands  "

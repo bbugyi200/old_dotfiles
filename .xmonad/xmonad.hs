@@ -152,7 +152,7 @@ myAdditionalKeys = [
    , ((alpha, q), spawn "tm-send --action=quit") -- Quit Screen
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
-   , ((alpha .|. beta .|. ctrl, r), spawn "confirm --dmenu 'systemctl reboot -i'") -- Restart
+   , ((alpha .|. beta .|. ctrl, r), spawn "confirm --dmenu 'sudo reboot'") -- Restart
    , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
    , ((alpha, s), sequence_ seqSwap) -- Swap
    , ((alpha .|. beta, s), sequence_ $ seqSwap ++ [CW.nextScreen]) -- Swap and Follow
