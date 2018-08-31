@@ -103,19 +103,20 @@ export TERM="rxvt-unicode-256color"
 ####################
 #  Autocompletion  #
 ####################
-_git 2> /dev/null  # hack to make git branch completion work
-_pacman 2> /dev/null  # hack to make pacman completion work
-compdef __git_branch_names gco
-compdef _command_names wim
-compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
-compdef get=emerge
-compdef _tmuxinator tm
-
 autoload -U +X compinit && compinit -u
 autoload -U +X bashcompinit && bashcompinit
 for filename in ~/.bash-completions/*; do
     source "$filename"
 done
+
+_git 2> /dev/null  # hack to make git branch completion work
+_pacman 2> /dev/null  # hack to make pacman completion work
+compdef __git_branch_names gco
+compdef _command_names wim
+compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
+compdef _tmuxinator tm
+compdef get=emerge
+compdef del=emerge
 
 ###################
 #  Miscellaneous  #
@@ -153,12 +154,7 @@ if [[ "$(id -u)" = 0 ]]; then
     export PATH="/root/.local/bin:$PATH"
 fi
 
-compinit -u
-
 # added by travis gem
 [ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh
 
 [ -f /home/bryan/.config/localalias/localalias.zsh ] && source /home/bryan/.config/localalias/localalias.zsh
-
-# ensures that the above few lines don't result in a nonzero exit status upon sourcing this file
-return 0
