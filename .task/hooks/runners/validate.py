@@ -14,6 +14,7 @@ def run(new_task, old_task=None):
         - Remove 'M' priority. This priority is not supported.
         - Prompt the user for a project name if none was given.
         - If due/wait time is midnight, change to 6AM.
+        - Capitalize description field.
     """
     # Medium priority should not exist
     if ('priority' in new_task.keys()) and (new_task['priority'] == 'M'):
@@ -28,6 +29,8 @@ def run(new_task, old_task=None):
             project = 'Misc'
 
         new_task['project'] = project
+
+    new_task['description'] = new_task['description'].capitalize()
 
     for tag in ['due', 'wait']:
         if tag in new_task.keys() and new_task[tag][-7:] == '040000Z':
