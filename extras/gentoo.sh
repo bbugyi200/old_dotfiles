@@ -7,6 +7,7 @@ ebi() { sudo ebuild "$1" clean merge; }
 ecd () { cd "$(find /usr/local/portage -type d -name "*$1*" | head -n 1)" || return 1; }
 evcd () { cd "$(find /var/tmp/portage -type d -name "*$1*" 2> /dev/null)" || return 1; }
 alias edc='sudo dispatch-conf'
+alias edups='comm -12 <(sudo cat /etc/portage/sets/shared) <(sudo cat /var/lib/portage/world) 2> /dev/null'
 alias epu='sudo -i epuse'
 alias epk='sudo vim /etc/portage/package.accept_keywords'
 alias epm='sudo vim /etc/portage/package.mask'
@@ -34,4 +35,4 @@ alias pg='equery list "*" | grep'
 alias rcs='sudo rc-service'
 alias rcst='rc-status'
 alias rcu='sudo rc-update'
-alias vworld='sudo vim /etc/portage/sets/shared /var/lib/portage/world /var/lib/portage/world_sets'
+alias vw='sudo vim /etc/portage/sets/shared /var/lib/portage/world /var/lib/portage/world_sets'

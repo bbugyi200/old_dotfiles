@@ -117,6 +117,7 @@ compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
 compdef _tmuxinator tm
 compdef get=emerge
 compdef del=emerge
+compdef vman=man
 
 ###################
 #  Miscellaneous  #

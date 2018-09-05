@@ -1,14 +1,9 @@
 source /home/bryan/Dropbox/dotfiles/extras/gentoo.sh
 source /home/bryan/Dropbox/dotfiles/extras/GTD.sh
 
-alias CDoc='LangDoc -e c -m'
-alias Doc='LangDoc -e sh -m'
 alias Java='java -classpath .:../bin'
-alias JavaDoc='LangDoc -e java -m'
 alias Javac='javac -d ../bin'
 alias Jdb='jdb -classpath "../bin"'
-alias PyDoc='LangDoc -e py -m'
-alias actvenv='source venv/bin/activate'
 alias ag='ag --hidden'
 ainit() { printf "#!/bin/awk -f\n\n" > "$1.awk" && chmod +x "$1.awk" && clinks && vim + "$1.awk"; }
 alias alg='alias | grep -e'

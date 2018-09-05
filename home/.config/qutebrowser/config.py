@@ -20,7 +20,7 @@ config.load_autoconfig()
 ####################
 def bang_pttrn():
     """Returns regex pattern that matches DuckDuckGo bangs that I like to use."""
-    one_letter_bangs = ['a', 'd', 'g', 'i', 'm', 't', 'w', ]
+    one_letter_bangs = ['a', 'd', 'g', 'm', 't', 'w', ]
     two_letter_bangs = ['gm', 'wa', 'yt', ]
     long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
     included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
@@ -30,6 +30,7 @@ def bang_pttrn():
 
 
 c.url.searchengines = {
+    '2': SE.static.google('417 Cripps Drive, Mount Holly, NJ to {}'),
     '37x': 'https://1337x.unblocked.vet/search/{}/1/',
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
     'al': SE.static.google('arch linux {}'),
@@ -60,6 +61,7 @@ c.url.searchengines = {
                                        lambda x: re.split(SE.utils.encode(' #'), SE.LuckyURL.filter(x), maxsplit=1),
                                        suffix='issues/{1}'),
                            SE.LuckyURL('{} site:github.com', suffix='issues')),
+    'i': 'https://www.google.com/search?&tbm=isch&q={}',
     'li': SE.SearchEngine(SE.static.site('linkedin.com'),
                           SE.URL(SE.static.site('linkedin.com', prefix='software'),
                                  '^@',

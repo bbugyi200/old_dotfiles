@@ -1,76 +1,102 @@
-" ------------------ BEGIN:: Vundle Configurations -----------------------------
-filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
+""""""""""""""""
+"  BufTabLine  "
+""""""""""""""""
+hi! link BufTabLineCurrent PmenuSel
+hi! link BufTabLineActive TabLine
+let g:buftabline_numbers = 1
+let g:buftabline_indicators = 1
 
-call vundle#begin()
+"""""""""""""""""""
+"  ClangComplete  "
+"""""""""""""""""""
 
-" ~~~~~ tpope ~~~~~
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
+let g:clang_user_options = '-Iinclude'
 
-" ~~~~~ Shougo ~~~~~
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/neoinclude.vim'
-Plugin 'Shougo/unite.vim'
+"""""""""""
+"  CtrlP  "
+"""""""""""
+let g:ctrlp_follow_symlinks=1
 
-" ~~~~~ TaskWarrior ~~~~~
-Plugin 'vimwiki/vimwiki'
-Plugin 'tbabej/taskwiki'
-Plugin 'blindFS/vim-taskwarrior'
-Plugin 'powerman/vim-plugin-AnsiEsc'
+" Setup some default ignores
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|coverage|venv|var)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
 
-" ~~~~~ HASKELL ~~~~~~
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'neovimhaskell/haskell-vim'
+" Use the nearest .git directory as the cwd
+" This makes a lot of sense if you are working on a project that is in version
+" control. It also supports works with .svn, .hg, .bzr.
+let g:ctrlp_working_path_mode = 'r'
 
-" "~~~~~ MISC ~~~~~
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'danro/rename.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'benmills/vimux'
-Plugin 'jamessan/vim-gnupg'
-Plugin 'shime/vim-livedown'
-Plugin 'Raimondi/delimitMate'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'Rip-Rip/clang_complete'
-Plugin 'scrooloose/syntastic'
-Plugin 'embear/vim-localvimrc'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'ap/vim-buftabline'
-Plugin 'KabbAmine/zeavim.vim'
-Plugin 'gu-fan/riv.vim'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'scrooloose/nerdtree'
-Plugin 'godlygeek/tabular'
-Plugin 'pboettch/vim-cmake-syntax'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
+    \ 'PrtHistory(-1)':       ['<down>'],
+    \ 'PrtHistory(1)':        ['<up>'],
+    \ }
 
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+""""""""""""
+"  CtrlSF  "
+""""""""""""
+let g:ctrlsf_regex_pattern = 1
+let g:ctrlsf_default_root = 'project'
 
-Plugin 'vim-utils/vim-man'
-Plugin 'jez/vim-superman'
+""""""""""""""
+"  Deoplete  "
+""""""""""""""
+set completeopt-=preview
 
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 1
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+" Use smartcase.
+let g:deoplete#enable_smart_case = 1
 
-" -------------------- END:: Vundle Configurations -----------------------------
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" Set minimum syntax keyword length.
+let g:deoplete#sources#syntax#min_keyword_length = 3
+let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
 
-""""""""""""""""""
-"  vim-easytags  "
-""""""""""""""""""
+" Define dictionary.
+let g:deoplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:deoplete#keyword_patterns')
+    let g:deoplete#keyword_patterns = {}
+endif
+let g:deoplete#keyword_patterns['default'] = '\h\w*'
+
+" Enable omni completion.
+autocmd FileType c,cpp,cc,h setlocal omnifunc=ClangComplete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=jedi#completions
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:deoplete#sources#omni#input_patterns')
+  let g:deoplete#sources#omni#input_patterns = {}
+endif
+
+if !exists('g:deoplete#force_omni_input_patterns')
+	let g:deoplete#force_omni_input_patterns = {}
+endif
+
+call g:deoplete#custom#option('omni_patterns', {
+            \ 'python': '[^. \t]\.\w*',
+            \ 'cpp': '[^. \t]:\w*',
+            \})
+
+""""""""""""*
+"  EasyTags "
+"""""""""""""
 " doesn't work with universal-ctags
 let g:easytags_suppress_ctags_warning = 1
 
@@ -90,58 +116,6 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:necoghc_enable_detailed_browse = 1
-
-"""""""""""""
-"  Tabular  "
-"""""""""""""
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
-
-"""""""""""""""""""
-"  vim-solarized  "
-"""""""""""""""""""
-colorscheme solarized
-
-""""""""""""""
-"  NerdTree  "
-""""""""""""""
-nmap <Leader>n :NERDTreeToggle<CR>
-
-"""""""""""""""""""""
-"  vim-taskwarrior  "
-"""""""""""""""""""""
-let g:task_rc_override = 'rc._forcecolor=off'
-
-"""""""""""""
-"  riv.vim  "
-"""""""""""""
-let g:riv_disable_folding = 1
-let g:riv_ignored_imaps = "<Tab>,<S-Tab>"
-let g:riv_ignored_maps = "<CR>"
-autocmd FileType txt setlocal commentstring=//\ %s
-
-"""""""""""""
-"  vimwiki  "
-"""""""""""""
-let g:vimwiki_list = [{'path': '~/.vimwiki/', 'path_html': '~/.vimwiki-html/'}]
-" Disables ,swp mapping created by AnsiEsc plugin
-let g:no_cecutil_maps = 1 
-
-""""""""""""""""
-"  BufTabLine  "
-""""""""""""""""
-hi! link BufTabLineCurrent PmenuSel
-hi! link BufTabLineActive TabLine
-let g:buftabline_numbers = 1
-let g:buftabline_indicators = 1
-
-""""""""""""
-"  CtrlSF  "
-""""""""""""
-let g:ctrlsf_regex_pattern = 1
-let g:ctrlsf_default_root = 'project'
 
 """"""""""""""
 "  Jedi-vim  "
@@ -171,65 +145,18 @@ let g:jedi#rename_command = ""
 let g:localvimrc_sandbox=0
 let g:localvimrc_ask=0
 
-"""""""""""
-"  CtrlP  "
-"""""""""""
-let g:ctrlp_follow_symlinks=1
-
-" Setup some default ignores
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|coverage|venv|var)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
-
-" Use the nearest .git directory as the cwd
-" This makes a lot of sense if you are working on a project that is in version
-" control. It also supports works with .svn, .hg, .bzr.
-let g:ctrlp_working_path_mode = 'r'
-
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
-    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
-    \ 'PrtHistory(-1)':       ['<down>'],
-    \ 'PrtHistory(1)':        ['<up>'],
-    \ }
+"""""""""
+"  Riv  "
+"""""""""
+let g:riv_disable_folding = 1
+let g:riv_ignored_imaps = "<Tab>,<S-Tab>"
+let g:riv_ignored_maps = "<CR>"
+autocmd FileType txt setlocal commentstring=//\ %s
 
 """""""""""""""
-"  UltiSnips  "
+"  Solarized  "
 """""""""""""""
-" Allows other directories to be searched for snippet files
-" let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/bryan/Dropbox/dotfiles/extra/UltiSnips"]
-let g:UltiSnipsSnippetDirectories=["UltiSnips"]
-
-" ~~~~~ UltiSnips Integration w/ Autocomplete ~~~~~
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-e>"
-
-" this mapping Enter key to <C-y> to chose the current highlight item
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
+colorscheme solarized
 
 """""""""""""""
 "  Syntastic  "
@@ -270,56 +197,50 @@ let g:syntastic_cpp_compiler_options = '-std=c++14'
 " let g:syntastic_java_checker = 'javac'
 let g:syntastic_java_javac_classpath=fnamemodify(getcwd(), ':h')."/bin:".getcwd()
 
-"""""""""""""""""""
-"  ClangComplete  "
-"""""""""""""""""""
+"""""""""""""""""
+"  TaskWarrior  "
+"""""""""""""""""
+let g:task_rc_override = 'rc._forcecolor=off'
 
-let g:clang_user_options = '-Iinclude'
+"""""""""""""""
+"  UltiSnips  "
+"""""""""""""""
+" Allows other directories to be searched for snippet files
+" let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/bryan/Dropbox/dotfiles/extra/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["/home/bryan/Dropbox/dotfiles/extras/vim-snippets"]
 
-""""""""""""""
-"  Deoplete  "
-""""""""""""""
+" ~~~~~ UltiSnips Integration w/ Autocomplete ~~~~~
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
 
-set completeopt-=preview
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
 
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-" Use smartcase.
-let g:deoplete#enable_smart_case = 1
+" this mapping Enter key to <C-y> to chose the current highlight item
+" and close the selection list, same as other IDEs.
+" CONFLICT with some plugins like tpope/Endwise
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Set minimum syntax keyword length.
-let g:deoplete#sources#syntax#min_keyword_length = 3
-let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" Define dictionary.
-let g:deoplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:deoplete#keyword_patterns')
-    let g:deoplete#keyword_patterns = {}
-endif
-let g:deoplete#keyword_patterns['default'] = '\h\w*'
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd FileType c,cpp,cc,h setlocal omnifunc=ClangComplete
-
-" Enable heavy omni completion.
-if !exists('g:deoplete#sources#omni#input_patterns')
-  let g:deoplete#sources#omni#input_patterns = {}
-endif
-
-if !exists('g:deoplete#force_omni_input_patterns')
-	let g:deoplete#force_omni_input_patterns = {}
-endif
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:deoplete#force_omni_input_patterns.python = '[^. \t]\.\w*'
+"""""""""""""
+"  Vimwiki  "
+"""""""""""""
+let g:vimwiki_list = [{'path': '~/.vimwiki/', 'path_html': '~/.vimwiki-html/'}]
+" Disables ,swp mapping created by AnsiEsc plugin
+let g:no_cecutil_maps = 1 
