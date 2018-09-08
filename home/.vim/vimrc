@@ -180,6 +180,12 @@ function s:_MkNonExDir(file, buf)
 	endif
 endfunction
 
+function! _SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
 function! _StatuslineGit()
   let l:branchname = _GitBranch()
   return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
@@ -282,10 +288,4 @@ let &winheight = &lines * 6 / 10  " Sets minimum size of active split (by percen
 """"""""""""""""""""
 "  Source Modules  "
 """"""""""""""""""""
-function! SourceIfExists(file)
-  if filereadable(expand(a:file))
-    exe 'source' a:file
-  endif
-endfunction
-
-call SourceIfExists("/home/bryan/Dropbox/dotfiles/extras/plugins.vim")
+call _SourceIfExists("/home/bryan/Dropbox/dotfiles/extras/plugins.vim")
