@@ -1,230 +1,110 @@
-""""""""""""""""""""
-"  Enable Plugins  "
-""""""""""""""""""""
-filetype plugin indent on
-filetype plugin on
-runtime macros/matchit.vim
-
-""""""""""
-"  gVim  "
-""""""""""
-if has("gui_running")
-	colo desert
-	cd $HOME
-else
-	set background=dark
-endif
-
 """"""""""""""
 "  Settings  "
 """"""""""""""
-set tw=99
+set autoindent
 set autoread
-" Status Line Settings (mode display)
-set nrformats+=alpha
-set number
-set laststatus=2
+set background=dark
+set backspace=2
+set breakindent  " Indents wraps
 set clipboard=unnamedplus
 set colorcolumn=100
-set autoindent
-set backspace=2
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set nocompatible
-" Allows Local .vimrc to be loaded
-set exrc
-set secure
-" Enables Modeline Magic
-set modeline
-" Allows me to use the mouse
-set mouse=a
-" An attempt to fix the issue where mouse-clicks cause random output to screen
-set ttymouse=sgr
-" Allows me to highlight using a colon (:)
-set iskeyword+=:
-" Search Settings
-set incsearch
-set ignorecase
-set smartcase
-" Improves tab completion from normal mode
-set wildmenu
-set wildmode=full
-" 'find'/ctrlp should ignore these folders
-set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*
-" Increase command history limit
-set history=200
-" Always show one line above/below cursor
-set scrolloff=1
-" Allows you to change buffers without first saving the current buffer
-set hidden
-" Change default program for :grep to ack
-set grepprg=ack\ --nogroup\ --column\ $*
-set grepformat=%f:%l:%c:%m
-" Autocompletion will only recommend completions that match the typed case
-set infercase
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
-set nolist
-set cursorline
 set cursorcolumn
-" Indents wraps
-set breakindent
-" Disables search highlighting
-set nohlsearch
-" Changes location of viminfo file
-set viminfo+=n~/.vim/viminfo
-
-""""""""""""""""""""""""""
-"  Variable Assignments  "
-""""""""""""""""""""""""""
-" Appends the open file's directory to PATH
-let tempPath=expand("%:p:h") . "/**"
-exec "set path+=" . tempPath
-" Sets LaTeX as default for .tex files
-let g:tex_flavor = "latex"
-" The <Leader> key can be used for extra mappings
-let mapleader = ","
-noremap \ ,
-" Sets minimum size of active split (by percentage)
-" let &winwidth = &columns * 6 / 10
-let &winheight = &lines * 6 / 10
-
-"""""""""""""""""""""""""
-"  Syntax Highlighting  "
-"""""""""""""""""""""""""
-syntax on
-syntax enable
-set background=dark
-" Enables syntax highlighting to work properly for certain filetypes
-au BufRead,BufNewFile *.nasm set filetype=nasm
-au BufRead,BufNewFile *.txt set filetype=txt
-au BufRead,BufNewFile *.xmobarrc set syntax=haskell
-au BufRead,BufNewFile *.lshrc set syntax=zsh
-au BufRead,BufNewFile *.lzshrc set syntax=zsh
-au BufRead,BufNewFile *.conf set syntax=cfg
-" Used to make syntax highlighting more readable when using Linux
-" transparent terminal
-hi Constant ctermfg=lightmagenta 
-hi SpellBad cterm=underline
-hi Normal guibg=NONE ctermbg=NONE
+set cursorline
+set expandtab
+set exrc  " Allows Local .vimrc to be loaded
+set grepformat=%f:%l:%c:%m
+set grepprg=ack\ --nogroup\ --column\ $*  " Change default program for :grep to ack
+set hidden  " Allows you to change buffers without first saving the current buffer
+set history=200  " Increase command history limit
+set ignorecase
+set incsearch
+set infercase  " Autocompletion will only recommend completions that match the typed case
+set iskeyword+=:  " Allows me to highlight using a colon (:)
+set laststatus=2
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
+set modeline  " Enables Modeline Magic
+set mouse=a  " Allows me to use the mouse
+set nocompatible
+set nohlsearch  " Disables search highlighting
+set nolist
+set nrformats+=alpha  " Status Line Settings (mode display)
+set number
+set scrolloff=1  " Always show one line above/below cursor
+set secure
+set shiftwidth=4
+set smartcase
+set tabstop=4
+set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
+set tw=99
+set viminfo+=n~/.vim/viminfo  " Changes location of viminfo file
+set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore these folders
+set wildmenu  " Improves tab completion from normal mode
+set wildmode=full
 
 """"""""""""""""""
 "  Key Bindings  "
 """"""""""""""""""
-noremap <Leader>. :cd ..<CR>:call AddPWDtoPath()<CR>:pwd<CR>
-" Shortcuts for quiting vim
-noremap <Leader>e :quit<CR>
-" Shortcuts for saving vim
-noremap <Leader>s :w<CR>
-" Makes ix.io snippet using highlighted text and sends ix.io link to clipboard
-noremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
-noremap <silent> <Leader><Leader>i :w !ix \| xclip -sel clipboard<CR>
-" Preserves flags when repeating the last substitute command.
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
-" Allows for visual search
-xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-" Allows space to work in Normal-Mode
-nnoremap <space> i<space><esc>l
-" Put space before and after character under cursor
-nnoremap <Leader><space> a<space><esc>hi<space><esc>l
-" NOTE:: Just use ZZ in normal mode to save and quit.
-" Makes enter key work right in Normal mode
-nnoremap <CR> o<Esc>
-" Plugin Mappings
-nmap <C-N> :cd %:h<CR>:NERDTree<CR><S-B>
-nmap <Leader>p :CtrlPMRU<CR>
-nmap <Leader>f :CtrlSF 
-nmap <C-g> :Gstatus<CR>
-" Swap highlighted word with last word in buffer
-vnoremap <Leader>x <Esc>`.``gvP``P
-nmap <Leader>x ve<Leader>x
-" Will execute the 'Run' command which varies based on the file type
-nmap <Leader>r :w<CR>:Run<CR>
-imap <Leader>r <Esc><Leader>r
-nmap <Leader>R :w<CR>:Run2<CR>
-imap <Leader>R <Esc><Leader>R
-" Improve up/down movement on wrapped lines
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
-" Used to recall commands from history
-cnoremap <C-p> <Up>
+let mapleader = ","  " The <Leader> key can be used for extra mappings
 cnoremap <C-n> <Down>
-" mapping to wrap paragraph
-nnoremap <Leader>g gqap
-" deletes current file and buffer
-nnoremap <C-Del> :call delete(expand('%'))<CR>
-nnoremap <C-s> :SyntasticToggleMode<CR>
-" Edit Snippet File
-nnoremap <Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
-" Edit ftplugin File
-nnoremap <Leader>F :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>
-" Delete Buffer
-nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
-" Vertical Buffer
-nmap <Leader>v :vert sb
-imap <Leader>v <Esc><Leader>v
-" Omnicompletion shortcut
-inoremap <C-o> <C-x><C-o>
-" Toggles LiveDown for Markdown (e.g. README.md)
-nmap <Leader>md :LivedownToggle<CR>
+cnoremap <C-p> <Up>| " Used to recall commands from history
+cnoremap w!! w !sudo tee > /dev/null %| " Allow saving of files as sudo when I forgot to start vim using sudo.
 imap <C-h> <Esc><C-h>
-imap <C-l> <Esc><C-l>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
-" bind <Leader>N to ':bN'
-nmap <Leader>1 :b1<CR>
-nmap <Leader>2 :b2<CR>
-nmap <Leader>3 :b3<CR>
-nmap <Leader>4 :b4<CR>
-nmap <Leader>5 :b5<CR>
-nmap <Leader>6 :b6<CR>
-nmap <Leader>7 :b7<CR>
-nmap <Leader>8 :b8<CR>
-nmap <Leader>9 :b9<CR>
-" cd to current working directory
-nnoremap <Leader>0 :cd %:h<CR>:pwd<CR>
-" fugitive mappings
-nmap gd :Gdiff 
-nmap gs :Gstatus<CR>
-
-""""""""""""""""""""""""""""
-"  Split and Tab Settings  "
-""""""""""""""""""""""""""""
-" See: http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits "
-if exists('$TMUX')
-  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-    let previous_winnr = winnr()
-    silent! execute "wincmd " . a:wincmd
-    if previous_winnr == winnr()
-      call system("tmux select-pane -" . a:tmuxdir)
-      redraw!
-    endif
-  endfunction
-
-  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
-
-  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
-else
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
-endif
+imap <C-l> <Esc><C-l>
+inoremap <C-o> <C-x><C-o>| " Omnicompletion shortcut
+nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
+nnoremap <C-Del> :call delete(expand('%'))<CR>| " deletes current file and buffer
+nnoremap <C-g> :Gstatus<CR>
+nnoremap <C-s> :SyntasticToggleMode<CR>
+nnoremap <CR> o<Esc>| " Makes enter key work right in Normal mode
+nnoremap <Leader>. :cd ..<CR>:call AddPWDtoPath()<CR>:pwd<CR>
+nnoremap <Leader>0 :cd %:h<CR>:pwd<CR>| " cd to current working directory
+nnoremap <Leader>1 :b1<CR>
+nnoremap <Leader>2 :b2<CR>
+nnoremap <Leader>3 :b3<CR>
+nnoremap <Leader>4 :b4<CR>
+nnoremap <Leader>5 :b5<CR>
+nnoremap <Leader>6 :b6<CR>
+nnoremap <Leader>7 :b7<CR>
+nnoremap <Leader>8 :b8<CR>
+nnoremap <Leader>9 :b9<CR>
+nnoremap <Leader><space> a<space><esc>hi<space><esc>l| " Put space before and after character under cursor
+nnoremap <Leader>F :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
+nnoremap <Leader>R :w<CR>:Run2<CR>| imap <Leader>R <Esc><Leader>R
+nnoremap <Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>| " Edit Snippet File
+nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>| " Delete Buffer
+nnoremap <Leader>e :quit<CR>| " Shortcut for quiting vim
+nnoremap <Leader>f :CtrlSF 
+nnoremap <Leader>g gqap| " mapping to wrap paragraph
+nnoremap <Leader>p :CtrlPMRU<CR>
+nnoremap <Leader>r :w<CR>:Run<CR>| imap <Leader>r <Esc><Leader>r
+nnoremap <Leader>s :w<CR>| " Shortcut for saving vim
+nnoremap <Leader>v :vert sb| imap <Leader>v <Esc><Leader>v
+nnoremap <silent> <Leader><Leader>i :w !ix \| xclip -sel clipboard<CR>
+nnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>| " Makes ix.io snippet using highlighted text and sends ix.io link to clipboard
+nnoremap <space> i<space><esc>l| " Allows space to work in Normal-Mode
+nnoremap \ ,
+nnoremap gd :Gdiff 
+nnoremap gj j
+nnoremap gk k
+nnoremap gs :Gstatus<CR>
+nnoremap j gj
+nnoremap k gk
+vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
+xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+xnoremap & :&&<CR>
+xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
 
 """"""""""""""
 "  AutoCmds  "
 """"""""""""""
+autocmd BufRead,BufNewFile *.nasm set filetype=nasm
+autocmd BufRead,BufNewFile *.txt set filetype=txt
+autocmd BufRead,BufNewFile *.xmobarrc set syntax=haskell
+autocmd BufRead,BufNewFile *.lshrc set syntax=zsh
+autocmd BufRead,BufNewFile *.lzshrc set syntax=zsh
+autocmd BufRead,BufNewFile *.conf set syntax=cfg
 " Reloads buffer on buffer changes
 autocmd FocusGained,BufEnter * :checktime
 " Turns spellcheck on for certain file extensions
@@ -242,13 +122,7 @@ autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
 " http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
 autocmd CmdwinEnter * nnoremap <CR> <CR>
 autocmd BufReadPost quickfix nnoremap <CR> <CR>
-
-" Detects mutt filetypes
-augroup filetypedetect
-  " Mail
-  autocmd BufRead,BufNewFile *mutt-*			  setfiletype mail
-augroup END
-
+autocmd BufRead,BufNewFile *mutt-* setfiletype mail
 autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
 " Disables auto-comments on newlines and disables autowrap
 autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro
@@ -351,7 +225,63 @@ endfunction
 
 call AddPWDtoPath()
 
-""""""""""""""""""
-"  Load Plugins  "
-""""""""""""""""""
-source /home/bryan/Dropbox/dotfiles/extras/plugins.vim
+"""""""""""""""""""
+"  Miscellaneous  "
+"""""""""""""""""""
+" ----- Enable Plugins -----
+filetype plugin indent on
+runtime macros/matchit.vim
+
+" ----- Appends the open file's directory to PATH -----
+let tempPath=expand("%:p:h") . "/**"
+exec "set path+=" . tempPath
+
+" ----- Split and Tab Settings -----
+" See: http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits "
+if exists('$TMUX')
+  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+    let previous_winnr = winnr()
+    silent! execute "wincmd " . a:wincmd
+    if previous_winnr == winnr()
+      call system("tmux select-pane -" . a:tmuxdir)
+      redraw!
+    endif
+  endfunction
+
+  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
+
+  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+else
+  map <C-h> <C-w>h
+  map <C-j> <C-w>j
+  map <C-k> <C-w>k
+  map <C-l> <C-w>l
+endif
+
+" ----- Variable Assignments -----
+let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
+let &winheight = &lines * 6 / 10  " Sets minimum size of active split (by percentage)
+
+" ----- Syntax Highlighting -----
+syntax on
+syntax enable
+hi Constant ctermfg=lightmagenta 
+hi SpellBad cterm=underline
+hi Normal guibg=NONE ctermbg=NONE
+
+
+""""""""""""""""""""
+"  Source Modules  "
+""""""""""""""""""""
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
+call SourceIfExists("/home/bryan/Dropbox/dotfiles/extras/plugins.vim")

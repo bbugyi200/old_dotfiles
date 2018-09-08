@@ -30,7 +30,7 @@ def run(new_task, old_task=None):
 
         new_task['project'] = project
 
-    new_task['description'] = new_task['description'].capitalize()
+    new_task['description'] = new_task['description'][0].upper() + new_task['description'][1:]
 
     for tag in ['due', 'wait']:
         if tag in new_task.keys() and new_task[tag][-7:] == '040000Z':

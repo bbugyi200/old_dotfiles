@@ -3,8 +3,17 @@ priority -50
 ###########################################################################
 #                            SnipMate Snippets                            #
 ###########################################################################
+snippet map "nnoremap"
+nnoremap ${1:KEY(S)} ${2:BINDING}
+endsnippet
+
+snippet -- "----- Heading -----"
+" ----- $1 -----
+endsnippet
+
 snippet "if " "if ... endif" rA
 if $0
+	${1:${VISUAL}}
 endif
 endsnippet
 

@@ -30,10 +30,11 @@ def bang_pttrn():
 
 
 c.url.searchengines = {
-    '2': SE.static.google('417 Cripps Drive, Mount Holly, NJ to {}'),
-    '37x': 'https://1337x.unblocked.vet/search/{}/1/',
+    '2': 'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}',
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
     'al': SE.static.google('arch linux {}'),
+    'bmo': SE.SearchEngine(SE.static.google('best movies of 20{}'),
+                           SE.OneIntURL(SE.static.google('best {1} movies of 20{0}'))),
     'cc': SE.static.stackoverflow(5, prefix='C++'),
     'DEFAULT': SE.SearchEngine(SE.static.google('{}'),
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),
@@ -68,8 +69,6 @@ c.url.searchengines = {
                                  lambda x: x.replace(SE.utils.encode('@'), ''))),
     'lib': 'http://libgen.io/search.php?req={}',
     'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
-    'pir': SE.SearchEngine('https://thepiratebay.org/search/{}',
-                           SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}')),
     'p': SE.static.stackoverflow(7, prefix='Python'),
     'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.static.site('reddit.com'),
@@ -79,7 +78,12 @@ c.url.searchengines = {
                            SE.LuckyURL('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com',
                                        SE.TwoIntURL.pattern,
                                        SE.TwoIntURL.filter)),
+    'tpb': SE.SearchEngine('https://thepiratebay.org/search/{}',
+                           SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}')),
+    'tub': SE.SearchEngine('https://1337x.unblocked.vet/search/{}/1/',
+                           SE.TwoIntURL('https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/')),
     'ud': SE.static.site('idioms.thefreedictionary.com', 'en.wiktionary.org', 'urbandictionary.com'),
+    'ytt': 'https://www.youtube.com/results?search_query={}+Trailer'
 }
 
 #############

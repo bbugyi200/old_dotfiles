@@ -55,7 +55,7 @@ xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc
 
 getXmobarTemplate :: String -> String
 getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%    (%window_count%)}%timew%{ %pia%  %volume%  |  %date%"
-getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}%timew%{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%weather%{"
 getXmobarTemplate "2-bottom" = "}{"
