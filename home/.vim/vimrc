@@ -45,15 +45,28 @@ set wildmode=full
 "  Key Bindings  "
 """"""""""""""""""
 let mapleader = ","  " The <Leader> key can be used for extra mappings
+
+" >>> COMMAND
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>| " Used to recall commands from history
 cnoremap w!! w !sudo tee > /dev/null %| " Allow saving of files as sudo when I forgot to start vim using sudo.
+
+" >>> INSERT
 imap <C-h> <Esc><C-h>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
 imap <C-l> <Esc><C-l>
 inoremap <C-o> <C-x><C-o>| " Omnicompletion shortcut
+
+" >>> VISUAL
+vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
+xnoremap # :<C-u>call <SID>_VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+xnoremap & :&&<CR>
+xnoremap * :<C-u>call <SID>_VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
+
+" >>> NORMAL
 nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
+nnoremap \ ,
 nnoremap <C-Del> :call delete(expand('%'))<CR>| " deletes current file and buffer
 nnoremap <C-g> :Gstatus<CR>
 nnoremap <C-s> :SyntasticToggleMode<CR>
@@ -84,78 +97,92 @@ nnoremap <Leader>v :vert sb| imap <Leader>v <Esc><Leader>v
 nnoremap <silent> <Leader><Leader>i :w !ix \| xclip -sel clipboard<CR>
 nnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>| " Makes ix.io snippet using highlighted text and sends ix.io link to clipboard
 nnoremap <space> i<space><esc>l| " Allows space to work in Normal-Mode
-nnoremap \ ,
 nnoremap gd :Gdiff 
 nnoremap gj j
 nnoremap gk k
 nnoremap gs :Gstatus<CR>
 nnoremap j gj
 nnoremap k gk
-vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
-xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-xnoremap & :&&<CR>
-xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
 
 """"""""""""""
 "  AutoCmds  "
 """"""""""""""
-autocmd BufRead,BufNewFile *.nasm set filetype=nasm
-autocmd BufRead,BufNewFile *.txt set filetype=txt
-autocmd BufRead,BufNewFile *.xmobarrc set syntax=haskell
+autocmd BufRead,BufNewFile *.conf set syntax=cfg
+autocmd BufRead,BufNewFile *.html set colorcolumn=
+autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.lshrc set syntax=zsh
 autocmd BufRead,BufNewFile *.lzshrc set syntax=zsh
-autocmd BufRead,BufNewFile *.conf set syntax=cfg
-" Reloads buffer on buffer changes
-autocmd FocusGained,BufEnter * :checktime
-" Turns spellcheck on for certain file extensions
-" 2nd line disables the colorcolumn
-autocmd BufRead,BufNewFile *.txt set colorcolumn=
-autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.md set colorcolumn=
-autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
-autocmd BufRead,BufNewFile *.html set colorcolumn=
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+autocmd BufRead,BufNewFile *.nasm set filetype=nasm
 autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us
-autocmd FileType mail setlocal spell spelllang=en_us
-autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
-" Automatic rewriting of .vimrc
- autocmd! bufwritepost .vimrc source %
-" http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
-autocmd CmdwinEnter * nnoremap <CR> <CR>
-autocmd BufReadPost quickfix nnoremap <CR> <CR>
-autocmd BufRead,BufNewFile *mutt-* setfiletype mail
 autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
-" Disables auto-comments on newlines and disables autowrap
-autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro
-autocmd FileType * setlocal formatoptions-=t
-autocmd FileType man setlocal nowrap
-autocmd BufRead,BufNewFile config set ft=cfg
+autocmd BufRead,BufNewFile *.txt set colorcolumn=
+autocmd BufRead,BufNewFile *.txt set filetype=txt
+autocmd BufRead,BufNewFile *.xmobarrc set syntax=haskell
+autocmd BufRead,BufNewFile *mutt-* setfiletype mail
 autocmd BufRead,BufNewFile .coveragerc set ft=cfg
 autocmd BufRead,BufNewFile CMakeLists.txt set ft=cmake
-autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd BufRead,BufNewFile config set ft=cfg
 autocmd BufReadPost /usr/include/c++/**/* set ft=cpp
+autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd BufReadPost quickfix nnoremap <CR> <CR>
+autocmd CmdwinEnter * nnoremap <CR> <CR>| " http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
+autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
+autocmd FileType * setlocal formatoptions-=t
+autocmd FileType mail setlocal spell spelllang=en_us
+autocmd FileType man setlocal nowrap
+autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro  " Disables auto-comments on newlines and disables autowrap
+autocmd FocusGained,BufEnter * :checktime  " Reloads buffer on buffer changes
+autocmd! BufWritePost .vimrc source %  " Automatic rewriting of .vimrc
 
-"""""""""""""""""""""
-"  Custom Commands  "
-"""""""""""""""""""""
-" Redraws screen after silent command
-command! -nargs=1 Silent
-\   execute 'silent !' . <q-args>
-\ | execute 'redraw!'
+" Creates current file's parent directory if it doesn't already exist
+augroup BWCCreateDir
+	autocmd!
+	autocmd BufWritePre * :call s:_MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 
 """""""""""""""
 "  Functions  "
 """""""""""""""
-let g:S = 0  "result in global variable S
+" ----- PUBLIC -----
+" Boolean function which checks if @plugin is installed
+function PluginInstalled(plugin)
+    return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
+endfunction
+
 function! Sum(number)
   let g:S = g:S + a:number
   return a:number
 endfunction
 
-function! s:VSetSearch(cmdtype)
-	let temp = @s
-	norm! gv"sy
-	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
-	let @s = temp
+function! SwitchToTest(ext)
+    call _SwitchToTest(a:ext, 'find')
+endfunction
+
+function! VSwitchToTest(ext)
+    call _SwitchToTest(a:ext, 'vert sf')
+endfunction
+
+" ----- PRIVATE -----
+function! _GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+" Automatically creates directory if it does not already exist
+" https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
+function s:_MkNonExDir(file, buf)
+	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+		let dir=fnamemodify(a:file, ':h')
+		if !isdirectory(dir)
+			call mkdir(dir, 'p')
+		endif
+	endif
+endfunction
+
+function! _StatuslineGit()
+  let l:branchname = _GitBranch()
+  return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
 endfunction
 
 " Used to switch to and from test files
@@ -169,72 +196,32 @@ function! _SwitchToTest(ext, fcmd)
     endif
 endfunction
 
-function! SwitchToTest(ext)
-    call _SwitchToTest(a:ext, 'find')
+function! s:_VSetSearch(cmdtype)
+	let temp = @s
+	norm! gv"sy
+	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+	let @s = temp
 endfunction
-
-function! VSwitchToTest(ext)
-    call _SwitchToTest(a:ext, 'vert sf')
-endfunction
-
-" Automatically creates directory if it does not already exist
-" https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
-function s:MkNonExDir(file, buf)
-	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-		let dir=fnamemodify(a:file, ':h')
-		if !isdirectory(dir)
-			call mkdir(dir, 'p')
-		endif
-	endif
-endfunction
-augroup BWCCreateDir
-	autocmd!
-	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
-
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
-endfunction
-
-highlight VertSplit ctermfg=DarkGrey ctermbg=227
-highlight StatusLine cterm=NONE ctermfg=black ctermbg=227
-highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
-
-set statusline=
-set statusline+=%{StatuslineGit()}
-set statusline+=\ %f
-set statusline+=%m\ 
-set statusline+=%=
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
-set statusline+=\ 
-
-function AddPWDtoPath()
-    " Appends the current working directory to PATH
-    let tempPath=getcwd() . "/**"
-    exec "set path+=" . tempPath
-endfunction
-
-call AddPWDtoPath()
 
 """""""""""""""""""
 "  Miscellaneous  "
 """""""""""""""""""
+" ----- Appends the open file's directory and the CWD to PATH -----
+let tempPath=getcwd() . "/**"
+exec "set path+=" . tempPath
+
+let tempPath=expand("%:p:h") . "/**"
+exec "set path+=" . tempPath
+
+" ----- Custom Commands -----
+" Redraws screen after silent command
+command! -nargs=1 Silent
+\   execute 'silent !' . <q-args>
+\ | execute 'redraw!'
+
 " ----- Enable Plugins -----
 filetype plugin indent on
 runtime macros/matchit.vim
-
-" ----- Appends the open file's directory to PATH -----
-let tempPath=expand("%:p:h") . "/**"
-exec "set path+=" . tempPath
 
 " ----- Split and Tab Settings -----
 " See: http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits "
@@ -263,10 +250,6 @@ else
   map <C-l> <C-w>l
 endif
 
-" ----- Variable Assignments -----
-let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
-let &winheight = &lines * 6 / 10  " Sets minimum size of active split (by percentage)
-
 " ----- Syntax Highlighting -----
 syntax on
 syntax enable
@@ -274,6 +257,27 @@ hi Constant ctermfg=lightmagenta
 hi SpellBad cterm=underline
 hi Normal guibg=NONE ctermbg=NONE
 
+" STATUS LINE
+highlight VertSplit ctermfg=DarkGrey ctermbg=227
+highlight StatusLine cterm=NONE ctermfg=black ctermbg=227
+highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
+
+set statusline=
+set statusline+=%{_StatuslineGit()}
+set statusline+=\ %f
+set statusline+=%m\ 
+set statusline+=%=
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ 
+
+" ----- Variable Assignments -----
+let g:S = 0  " Used in 'Sum()' function
+let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
+let &winheight = &lines * 6 / 10  " Sets minimum size of active split (by percentage)
 
 """"""""""""""""""""
 "  Source Modules  "

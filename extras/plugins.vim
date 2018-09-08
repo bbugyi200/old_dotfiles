@@ -1,8 +1,3 @@
-" Boolean function which checks if @plugin is installed
-function PluginInstalled(plugin)
-    return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
-endfunction
-
 """"""""""""""""
 "  BufTabLine  "
 """"""""""""""""
