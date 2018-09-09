@@ -3,7 +3,9 @@
 root: <%%= @settings['root'] %>
 name: <%= name %>
 
+on_project_start:
 on_project_stop:
+pre_window:
 
 windows:
     - I:

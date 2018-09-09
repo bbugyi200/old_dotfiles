@@ -43,73 +43,6 @@ set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore 
 set wildmenu  " Improves tab completion from normal mode
 set wildmode=full
 
-"""""""""""""""
-"  Functions  "
-"""""""""""""""
-" ----- PUBLIC FUNCTIONS -----
-" Boolean function which checks if @plugin is installed
-function PluginInstalled(plugin)
-    return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
-endfunction
-
-function! Sum(number)
-  let g:S = g:S + a:number
-  return a:number
-endfunction
-
-function! SwitchToTest(ext)
-    call _SwitchToTest(a:ext, 'find')
-endfunction
-
-function! VSwitchToTest(ext)
-    call _SwitchToTest(a:ext, 'vert sf')
-endfunction
-
-" ----- PRIVATE FUNCTIONS -----
-function! _GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-" Automatically creates directory if it does not already exist
-" https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
-function s:_MkNonExDir(file, buf)
-	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-		let dir=fnamemodify(a:file, ':h')
-		if !isdirectory(dir)
-			call mkdir(dir, 'p')
-		endif
-	endif
-endfunction
-
-function! _SourceIfExists(file)
-  if filereadable(expand(a:file))
-    exe 'source' a:file
-  endif
-endfunction
-
-function! _StatuslineGit()
-  let l:branchname = _GitBranch()
-  return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
-endfunction
-
-" Used to switch to and from test files
-function! _SwitchToTest(ext, fcmd)
-    let basename = expand('%:t:r')
-    if basename =~ 'test_.*'
-        let pyfile = split(basename, "_")[1]
-        exec a:fcmd . " " . pyfile . "." . a:ext
-    else
-        exec a:fcmd . " test_" . basename . "." . a:ext
-    endif
-endfunction
-
-function! s:_VSetSearch(cmdtype)
-	let temp = @s
-	norm! gv"sy
-	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
-	let @s = temp
-endfunction
-
 """"""""""""""""""
 "  Key Bindings  "
 """"""""""""""""""
@@ -210,6 +143,73 @@ augroup BWCCreateDir
 	autocmd!
 	autocmd BufWritePre * :call s:_MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+"""""""""""""""
+"  Functions  "
+"""""""""""""""
+" ----- PUBLIC FUNCTIONS -----
+" Boolean function which checks if @plugin is installed
+function PluginInstalled(plugin)
+    return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
+endfunction
+
+function! Sum(number)
+  let g:S = g:S + a:number
+  return a:number
+endfunction
+
+function! SwitchToTest(ext)
+    call _SwitchToTest(a:ext, 'find')
+endfunction
+
+function! VSwitchToTest(ext)
+    call _SwitchToTest(a:ext, 'vert sf')
+endfunction
+
+" ----- PRIVATE FUNCTIONS -----
+function! _GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+" Automatically creates directory if it does not already exist
+" https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
+function s:_MkNonExDir(file, buf)
+	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+		let dir=fnamemodify(a:file, ':h')
+		if !isdirectory(dir)
+			call mkdir(dir, 'p')
+		endif
+	endif
+endfunction
+
+function! _SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
+function! _StatuslineGit()
+  let l:branchname = _GitBranch()
+  return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
+endfunction
+
+" Used to switch to and from test files
+function! _SwitchToTest(ext, fcmd)
+    let basename = expand('%:t:r')
+    if basename =~ 'test_.*'
+        let pyfile = split(basename, "_")[1]
+        exec a:fcmd . " " . pyfile . "." . a:ext
+    else
+        exec a:fcmd . " test_" . basename . "." . a:ext
+    endif
+endfunction
+
+function! s:_VSetSearch(cmdtype)
+	let temp = @s
+	norm! gv"sy
+	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+	let @s = temp
+endfunction
 
 """""""""""""""""""
 "  Miscellaneous  "

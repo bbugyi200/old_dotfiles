@@ -18,7 +18,7 @@ alias tcn='task context none && task_refresh -F rename,config'
 tc () { clear && task next rc.verbose=blank,label rc.defaultwidth:$COLUMNS +READY limit:page; }
 alias td='task done'
 alias tdel='task delete'
-tdi () { task "$(task _ids +inbox -DELETED -COMPLETED | sort | paste -sd ' ' | cut -d' ' -f1)" done; }
+tdi () { task "$(tnext_inbox_id)" done; }
 alias tdue='tga +OVERDUE'
 alias tcomp='task limit:10 \( status:completed or status:deleted \) rc.report.all.sort:end- all'
 tcs () { task rc.context="$1" "${@:2}"; }
@@ -38,7 +38,6 @@ alias tlat='task rc._forcecolor:on +LATEST info | less'
 tnall () { tcsn "next +READY"; }
 tnl () { task next +READY limit:none; }  # no limit
 tpa () { tga project:$(tproject); }
-tpi () { task "$1" mod -inbox "${@:2}"; }
 tsub () { task $1 modify "/$2/$3/g"; }
 trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS limit:none \( +PENDING or +WAITING \) | less; }
 alias tw='timew'
