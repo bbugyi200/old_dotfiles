@@ -1,4 +1,6 @@
-################################## Aliases and Functions for GTD ##################################
+###################################
+#  Aliases and Functions for GTD  #
+###################################
 
 ka() { /usr/local/bin/ka "$@" && krestart_alarms; }
 kc() { clear && khal calendar --notstarted --format '{start-time} {title}' now && echo; }
@@ -11,7 +13,6 @@ alias m="neomutt"
 alias mb='neomutt -f /var/spool/mail/bryan'
 alias mg="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
 alias mr='sudo neomutt -f /var/spool/mail/root'
-alias mrc='vim /home/bryan/.mutt/muttrc'
 alias p='pass'
 alias ta='task add'
 alias tcn='task context none && task_refresh -F rename,config'
@@ -41,3 +42,4 @@ tpa () { tga project:$(tproject); }
 tsub () { task $1 modify "/$2/$3/g"; }
 trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS limit:none \( +PENDING or +WAITING \) | less; }
 alias tw='timew'
+alias vm='vim /home/bryan/.mutt/muttrc'

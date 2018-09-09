@@ -1,3 +1,7 @@
+#################################
+#  Shell Aliases and Functions  #
+#################################
+
 source /home/bryan/Dropbox/dotfiles/extras/gentoo.sh
 source /home/bryan/Dropbox/dotfiles/extras/GTD.sh
 

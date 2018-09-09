@@ -221,7 +221,7 @@ exec "set path+=" . tempPath
 let tempPath=expand("%:p:h") . "/**"
 exec "set path+=" . tempPath
 
-" ----- Custom Commands -----
+" ----- Custom Command Definitions -----
 " Redraws screen after silent command
 command! -nargs=1 Silent
 \   execute 'silent !' . <q-args>
@@ -275,7 +275,7 @@ let g:S = 0  " Used in 'Sum()' function
 let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
 let &winheight = &lines * 6 / 10  " Sets minimum size of active split (by percentage)
 
-""""""""""""""""""""
-"  Source Modules  "
-""""""""""""""""""""
+"""""""""""""""""""
+"  Extra Modules  "
+"""""""""""""""""""
 call _SourceIfExists("/home/bryan/Dropbox/dotfiles/extras/plugins.vim")

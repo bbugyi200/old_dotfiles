@@ -220,7 +220,7 @@ endif
 """""""""""""""
 "  UltiSnips  "
 """""""""""""""
-" ~~~~~ UltiSnips Integration w/ Autocomplete ~~~~~
+" Facilitates Integration between UltiSnips and Autocomplete
 function! g:UltiSnips_Complete()
     call UltiSnips#ExpandSnippet()
     if g:ulti_expand_res == 0

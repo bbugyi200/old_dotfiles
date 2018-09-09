@@ -37,7 +37,9 @@ tags = {
     'call': {
         'tags': fields.ModTags('note', '+'),
     },
-    'const': _ghost_tag('const', consistent='yes'),
+    'const': {
+        'consistent': 'yes',
+    },
     'dev': _ghost_tag('dev', project='Dev'),
     'errand': {
         'tags': fields.ModTags('note', '+'),
