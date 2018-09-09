@@ -1,4 +1,48 @@
 " ############################## VIMRC ##############################
+""""""""""""""
+"  Settings  "
+""""""""""""""
+set autoindent
+set autoread
+set background=dark
+set backspace=2
+set breakindent  " Indents wraps
+set clipboard=unnamedplus
+set colorcolumn=100
+set cursorcolumn
+set cursorline
+set expandtab
+set exrc  " Allows Local .vimrc to be loaded
+set grepformat=%f:%l:%c:%m
+set grepprg=ack\ --nogroup\ --column\ $*  " Change default program for :grep to ack
+set hidden  " Allows you to change buffers without first saving the current buffer
+set history=200  " Increase command history limit
+set ignorecase
+set incsearch
+set infercase  " Autocompletion will only recommend completions that match the typed case
+set iskeyword+=:  " Allows me to highlight using a colon (:)
+set laststatus=2
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
+set modeline  " Enables Modeline Magic
+set mouse=a  " Allows me to use the mouse
+set nocompatible
+set nohlsearch  " Disables search highlighting
+set nolist
+set nrformats+=alpha  " Status Line Settings (mode display)
+set number
+set scrolloff=1  " Always show one line above/below cursor
+set secure
+set shiftwidth=4
+set smartcase
+let &statusline = "%{_StatuslineGit()} %f %m %= %y %p%% %l:%c"
+set tabstop=4
+set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
+set tw=99
+set viminfo+=n~/.vim/viminfo  " Changes location of viminfo file
+set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore these folders
+set wildmenu  " Improves tab completion from normal mode
+set wildmode=full
+
 """""""""""""""
 "  Functions  "
 """""""""""""""
@@ -37,19 +81,6 @@ function s:_MkNonExDir(file, buf)
 	endif
 endfunction
 
-function! _SetStatusLine()
-    let &statusline = ""
-    let &statusline = &statusline . "%{_StatuslineGit()}"
-    let &statusline = &statusline . "\ %f"
-    let &statusline = &statusline . "%m\ "
-    let &statusline = &statusline . "%="
-    let &statusline = &statusline . "\ %y"
-    let &statusline = &statusline . "\ %{&fileencoding?&fileencoding:&encoding}"
-    let &statusline = &statusline . "\[%{&fileformat}\]"
-    let &statusline = &statusline . "\ %p%%"
-    let &statusline = &statusline . "\ %l:%c"
-endfunction
-
 function! _SourceIfExists(file)
   if filereadable(expand(a:file))
     exe 'source' a:file
@@ -78,51 +109,6 @@ function! s:_VSetSearch(cmdtype)
 	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
 	let @s = temp
 endfunction
-
-""""""""""""""
-"  Settings  "
-""""""""""""""
-set autoindent
-set autoread
-set background=dark
-set backspace=2
-set breakindent  " Indents wraps
-set clipboard=unnamedplus
-set colorcolumn=100
-set cursorcolumn
-set cursorline
-set expandtab
-set exrc  " Allows Local .vimrc to be loaded
-set grepformat=%f:%l:%c:%m
-set grepprg=ack\ --nogroup\ --column\ $*  " Change default program for :grep to ack
-set hidden  " Allows you to change buffers without first saving the current buffer
-set history=200  " Increase command history limit
-set ignorecase
-set incsearch
-set infercase  " Autocompletion will only recommend completions that match the typed case
-set iskeyword+=:  " Allows me to highlight using a colon (:)
-set laststatus=2
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
-set modeline  " Enables Modeline Magic
-set mouse=a  " Allows me to use the mouse
-set nocompatible
-set nohlsearch  " Disables search highlighting
-set nolist
-set nrformats+=alpha  " Status Line Settings (mode display)
-set number
-set scrolloff=1  " Always show one line above/below cursor
-set secure
-set shiftwidth=4
-set smartcase
-set tabstop=4
-set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
-set tw=99
-set viminfo+=n~/.vim/viminfo  " Changes location of viminfo file
-set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore these folders
-set wildmenu  " Improves tab completion from normal mode
-set wildmode=full
-
-call _SetStatusLine()
 
 """"""""""""""""""
 "  Key Bindings  "
