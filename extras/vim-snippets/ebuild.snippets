@@ -2,6 +2,13 @@ priority -50
 extends sh
 priority -49
 
+snippet "(pyinst|pypack)" "Python Distutils src_install()" r
+src_install() {
+	cd "${P}"
+	python setup.py install --prefix=/usr --root="${D}"
+}
+endsnippet
+
 snippet dep "DEPEND"
 DEPEND="
 $0
@@ -11,14 +18,12 @@ endsnippet
 snippet user "Find Current User"
 user="$(who am i | awk '{print \$1}')"
 
-if [[ -z "$user" ]]; then
+if [[ -z "$user" ]] || [[ "$user" == "root" ]]; then
 	user="$(getent passwd 1000 | awk -F: '{print \$1}')"
 fi
 
-if [[ "$user" != "root" ]]; then
-	home="/home/$user"
-	${1:${VISUAL}}
-fi
+home="/home/$user"
+${1:${VISUAL}}
 endsnippet
 
 snippet locals "Print Ebuild Variables"
@@ -72,7 +77,7 @@ src_compile() {
 }
 endsnippet
 
-snippet "(inst|pack)" "src_install" r
+snippet "(^|[^A-z]+)(inst|pack)" "src_install" r
 src_install() {
 	$1
 }

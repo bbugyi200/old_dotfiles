@@ -3,7 +3,7 @@
 ####################################################
 
 alias del='sudo -i del'
-Ebi() { eposync "$1" && get -f "$1"; }
+Ebi() { eposync "$1" && sudo -i /usr/local/bin/get -f "$1"; }
 ebi() { erm && sudo ebuild "$1" clean merge; }
 ecd () { cd "$(find /usr/local/portage -type d -name "*$1*" | head -n 1)" || return 1; }
 evcd () { cd "$(find /var/tmp/portage -type d -name "*$1*" 2> /dev/null)" || return 1; }
