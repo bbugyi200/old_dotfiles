@@ -34,6 +34,7 @@ alias ghooks='rm -rf .git/hooks && git init'
 alias gnlog="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias gpf='git push -f'
 alias grc='git rebase --continue'
+gpup() { git add . && git commit -m "Update $(grepo)" && git push; }
 gri() { git rebase -i HEAD~$1; }
 alias ipython='TERM=linux ipython'
 alias lay='sudo layman'
