@@ -57,11 +57,9 @@ alias -s epub="zathura"
 alias -s djvu="zathura"
 alias -s ps="zathura"
 # LibreOffice
-alias -s doc="/usr/lib/libreoffice/program/soffice.bin --writer"
-alias -s docx="/usr/lib/libreoffice/program/soffice.bin --writer"
-alias -s odt="/usr/lib/libreoffice/program/soffice.bin --writer"
-alias -s ppt="/usr/lib/libreoffice/program/soffice.bin --impress"
-alias -s pptx="/usr/lib/libreoffice/program/soffice.bin --impress"
+alias -s doc="/usr/bin/abiword"
+alias -s docx="/usr/bin/abiword"
+alias -s odt="/usr/bin/abiword"
 # Imv
 alias -s xbm="imv -d"
 alias -s png="imv -d"
@@ -158,4 +156,4 @@ fi
 # added by travis gem
 [ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh
 
-[ -f /home/bryan/.config/localalias/localalias.zsh ] && source /home/bryan/.config/localalias/localalias.zsh
+[ -f /home/bryan/.local/share/localalias/localalias.zsh ] && source /home/bryan/.local/share/localalias/localalias.zsh

@@ -3,14 +3,12 @@
 ####################################################
 
 alias del='sudo -i del'
-ebi() { sudo ebuild "$1" clean merge; }
+Ebi() { eposync "$1" && get -f "$1"; }
+ebi() { erm && sudo ebuild "$1" clean merge; }
 ecd () { cd "$(find /usr/local/portage -type d -name "*$1*" | head -n 1)" || return 1; }
 evcd () { cd "$(find /var/tmp/portage -type d -name "*$1*" 2> /dev/null)" || return 1; }
 alias edc='sudo dispatch-conf'
 alias epu='sudo -i epuse'
-alias epk='sudo vim /etc/portage/package.accept_keywords'
-alias epm='sudo vim /etc/portage/package.mask'
-alias epmk='sudo vim /etc/portage/make.conf /etc/portage/make.shared'
 alias epum='sudo vim /etc/portage/package.unmask'
 alias erm='sudo repoman manifest'
 alias eq='equery'
@@ -35,5 +33,9 @@ alias pg='equery list "*" | grep'
 alias rcs='sudo rc-service'
 alias rcst='rc-status'
 alias rcu='sudo rc-update'
-alias vw='sudo vim /etc/portage/sets/shared /var/lib/portage/world /var/lib/portage/world_sets'
 alias vj='sudo vim + /var/log/syslog'
+alias vmk='sudo vim /etc/portage/make.conf /etc/portage/make.shared'
+alias vpk='sudo vim /etc/portage/package.accept_keywords'
+alias vpm='sudo vim /etc/portage/package.mask'
+alias vpu='sudo vim /etc/portage/package.use'
+alias vw='sudo vim /etc/portage/sets/shared /var/lib/portage/world /var/lib/portage/world_sets'

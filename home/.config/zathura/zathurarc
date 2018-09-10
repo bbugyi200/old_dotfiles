@@ -179,6 +179,6 @@ map w feedkeys ":exec xtype ZdH<Return>"
 map W feedkeys ":exec xtype ZdL<Return>"
 map q feedkeys ":exec xtype adL<Return>"
 map x quit
-map Z feedkeys "150zz"
+map Z feedkeys "200zz"
 
 # vim: set ft=conf:

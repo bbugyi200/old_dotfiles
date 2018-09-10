@@ -59,7 +59,6 @@ tags = {
         'description': fields.Wrap(start='Add "', end='" to notebook tasks'),
     },
     'remind': {
-        'project': 'Meta',
         'due': _tomorrow_due_time,
         'delta': 1,
         'tags': fields.ModTags(('remind', 'tickle'), ('-', '+')),

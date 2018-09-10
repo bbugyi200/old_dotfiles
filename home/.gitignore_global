@@ -4,6 +4,9 @@
 *.pyc
 *.tar
 *.gz
+*.out
+*.log
+*.aux
 
 venv/*
 .venv

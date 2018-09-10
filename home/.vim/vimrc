@@ -61,6 +61,8 @@ imap <C-l> <Esc><C-l>
 inoremap <C-o> <C-x><C-o>| " Omnicompletion shortcut
 
 " >>> VISUAL
+vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>| " Makes ix.io snippet using highlighted text and sends ix.io link to clipboard
+vnoremap <silent> <Leader><Leader>i :w !ix \| xclip -sel clipboard<CR>
 vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
 xnoremap # :<C-u>call <SID>_VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 xnoremap & :&&<CR>
@@ -96,8 +98,6 @@ nnoremap <Leader>p :CtrlPMRU<CR>
 nnoremap <Leader>r :w<CR>:Run<CR>| imap <Leader>r <Esc><Leader>r
 nnoremap <Leader>s :w<CR>| " Shortcut for saving vim
 nnoremap <Leader>v :vert sb| imap <Leader>v <Esc><Leader>v
-nnoremap <silent> <Leader><Leader>i :w !ix \| xclip -sel clipboard<CR>
-nnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>| " Makes ix.io snippet using highlighted text and sends ix.io link to clipboard
 nnoremap <space> i<space><esc>l| " Allows space to work in Normal-Mode
 nnoremap gd :Gdiff 
 nnoremap gj j
