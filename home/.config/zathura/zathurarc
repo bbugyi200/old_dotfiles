@@ -162,22 +162,26 @@ map .y feedkeys ":bmark .<Return>:blist Y<Return>"
 map .z feedkeys ":bmark .<Return>:blist Z<Return>"
 
 # ---------- Miscellaneous Bindings
+map <C-h> scroll page-top
+map <C-j> exec "xtype JH"
+map <C-k> exec "xtype KL"
+map <C-l> scroll page-bottom
 map <C-[> feedkeys ":nohlsearch<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
 map ; goto
 map ,l feedkeys ":blist <Tab><C-u>blist"  # List Marks
 map ,b focus_inputbar ":bmark "
 map ,d feedkeys ":bdelete <Tab>"
-map e feedkeys ":exec xtype ZdJH<Return>"
-map E feedkeys ":exec xtype ZdJL<Return>"
-map s feedkeys ":exec zsearch<Return>"
-map S feedkeys ":exec zsearch --keys<Return>"
-map R feedkeys ":exec zopen -R<Return>"
-map o feedkeys ":exec zopen -x<Return>"
-map O feedkeys ":exec zopen<Return>"
-map w feedkeys ":exec xtype ZdH<Return>"
-map W feedkeys ":exec xtype ZdL<Return>"
-map q feedkeys ":exec xtype adL<Return>"
+map e exec "xtype ZdJH"
+map E exec "xtype ZdJL"
+map s exec "zsearch"
+map S exec "zsearch --keys"
+map R exec "zopen -R"
+map o exec "zopen -x"
+map O exec "zopen"
+map w exec "xtype ZdH"
+map W exec "xtype ZdL"
+map q exec "xtype adL"
 map x quit
 map Z feedkeys "200zz"
 
