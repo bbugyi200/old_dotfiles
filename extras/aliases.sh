@@ -21,6 +21,7 @@ alias cp="cp -i"
 alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
+alias diff='diff --color'
 alias dfs='dropbox-cli filestatus'
 alias dst='dropbox-cli status'
 alias dstart='dropbox-cli start'
@@ -54,7 +55,6 @@ alias pdb='ipdb'
 alias psg='ps -aux | grep -E'
 pvar() { set | grep -i -e "^$1"; }
 cho() { sudo chown -R "$2":"$2" "$1"; }
-alias reboot='sudo /sbin/reboot'
 alias rg='ranger'
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 alias rm="safe-rm"
@@ -62,10 +62,9 @@ alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
 alias sc='systemctl'
 alias scu='systemctl --user'
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
-alias shutdown='sudo poweroff'
 alias snapshots='find /home/bryan/Dropbox/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 ss() { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
-alias ssh-aphrodite='ssh -p 34588 bryan@aphrodite'
+alias ssh-aphrodite='ssh 192.168.1.193'
 alias ssh-artemis="ssh root@67.207.92.152"
 ssh-athena() { ssh -p "$ATHENAS_SSH_PORT" bryan@"$ATHENAS_DDNS_HOSTNAME"; }
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'

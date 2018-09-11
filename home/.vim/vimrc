@@ -87,15 +87,16 @@ nnoremap <Leader>7 :b7<CR>
 nnoremap <Leader>8 :b8<CR>
 nnoremap <Leader>9 :b9<CR>
 nnoremap <Leader><space> a<space><esc>hi<space><esc>l| " Put space before and after character under cursor
-nnoremap <Leader>F :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
-nnoremap <Leader>R :w<CR>:Run2<CR>| imap <Leader>R <Esc><Leader>R
-nnoremap <Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>| " Edit Snippet File
+nnoremap <Leader>a :AnsiEsc<CR>
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>| " Delete Buffer
 nnoremap <Leader>e :quit<CR>| " Shortcut for quiting vim
+nnoremap <Leader>F :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>f :CtrlSF 
 nnoremap <Leader>g gqap| " mapping to wrap paragraph
 nnoremap <Leader>p :CtrlPMRU<CR>
+nnoremap <Leader>R :w<CR>:Run2<CR>| imap <Leader>R <Esc><Leader>R
 nnoremap <Leader>r :w<CR>:Run<CR>| imap <Leader>r <Esc><Leader>r
+nnoremap <Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>| " Edit Snippet File
 nnoremap <Leader>s :w<CR>| " Shortcut for saving vim
 nnoremap <Leader>v :vert sb| imap <Leader>v <Esc><Leader>v
 nnoremap <space> i<space><esc>l| " Allows space to work in Normal-Mode

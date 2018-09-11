@@ -287,7 +287,7 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "sleep 2 && xmonad-volume"
                 >> spawn "sleep 2 && xmonad-weather"
                 >> spawn "sleep 2 && xmonad-poll-timew"
-                >> spawn "emanage --check"
+                >> spawn "sleep 5 && emanage -m"
                 >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=2")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=1")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=1")
