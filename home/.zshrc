@@ -156,4 +156,4 @@ fi
 # added by travis gem
 [ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh
 
-[ -f /home/bryan/.local/share/localalias/localalias.zsh ] && source /home/bryan/.local/share/localalias/localalias.zsh
+[ -f /usr/share/localalias/localalias.zsh ] && source /usr/share/localalias/localalias.zsh

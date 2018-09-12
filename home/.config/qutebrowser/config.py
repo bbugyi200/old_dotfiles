@@ -86,6 +86,10 @@ c.url.searchengines = {
     'ytt': 'https://www.youtube.com/results?search_query={}+Trailer'
 }
 
+for i in range(1, 10):
+    c.url.searchengines['s{}'.format(i)] = SE.static.stackoverflow(i)
+
+
 #############
 #  Aliases  #
 #############

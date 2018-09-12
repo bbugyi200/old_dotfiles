@@ -3,9 +3,9 @@
 ####################################################
 
 alias del='sudo -i del'
-Ebi() { eposync "$1" && sudo -i /usr/local/bin/get -f "$1"; }
+Ebi() { eposync "$1" && sudo -i /usr/local/bin/get "$1"; }
 Epatch() { cd "$(epatch "$@")" || return 1; }
-ebi() { erm && sudo ebuild "$1" clean merge; }
+ebi() { sudo repoman manifest && sudo ebuild "$1" clean merge; }
 ecd () { cd "$(find /usr/local/portage -type d -name "*$1*" | head -n 1)" || return 1; }
 evcd () { cd "$(find /var/tmp/portage -type d -name "*$1*" 2> /dev/null)" || return 1; }
 alias edc='sudo dispatch-conf'
@@ -30,13 +30,12 @@ alias eqy='equery y'  # ke(y)words              display keywords for specified P
 alias eup='sudo emerge --ask --update --deep --newuse @world'
 alias ewdups='comm -12 <(sudo cat /etc/portage/sets/shared) <(sudo cat /var/lib/portage/world) 2> /dev/null'
 alias get='sudo -i get'
-alias hibernate='epcsync -q && sudo s2ram'
 alias pg='equery list "*" | grep'
 alias rcs='sudo rc-service'
 alias rcst='rc-status'
 alias rcu='sudo rc-update'
 alias reboot='epcsync -q && sudo /sbin/reboot'
-alias shutdown='epcsync -q && sudo poweroff'
+alias shutdown='epcsync -q && sudo shutdown -h now'
 vblog() { vim "$(sudo find /var/tmp/portage -type f -regex ".*$1.*/build\.log")"; }
 alias vj='sudo vim + /var/log/syslog'
 alias vmk='sudo vim /etc/portage/make.conf /etc/portage/make.shared'

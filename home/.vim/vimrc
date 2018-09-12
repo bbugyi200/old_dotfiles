@@ -98,6 +98,7 @@ nnoremap <Leader>R :w<CR>:Run2<CR>| imap <Leader>R <Esc><Leader>R
 nnoremap <Leader>r :w<CR>:Run<CR>| imap <Leader>r <Esc><Leader>r
 nnoremap <Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>| " Edit Snippet File
 nnoremap <Leader>s :w<CR>| " Shortcut for saving vim
+nnoremap <Leader><Leader>s :w !sudo tee > /dev/null %<CR>
 nnoremap <Leader>v :vert sb| imap <Leader>v <Esc><Leader>v
 nnoremap <space> i<space><esc>l| " Allows space to work in Normal-Mode
 nnoremap gd :Gdiff 

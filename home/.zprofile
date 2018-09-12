@@ -3,7 +3,6 @@
 ###############################
 #  XDG Environment Variables  #
 ###############################
-export XDG_CONFIG_HOME=/home/bryan/.config
 export XDG_RUNTIME_DIR=/tmp
 
 ################################
