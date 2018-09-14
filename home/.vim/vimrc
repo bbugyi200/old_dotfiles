@@ -93,6 +93,8 @@ nnoremap <Leader>e :quit<CR>| " Shortcut for quiting vim
 nnoremap <Leader>F :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>f :CtrlSF 
 nnoremap <Leader>g gqap| " mapping to wrap paragraph
+nnoremap <Leader>O O<C-u>
+nnoremap <Leader>o o<C-u>
 nnoremap <Leader>p :CtrlPMRU<CR>
 nnoremap <Leader>R :w<CR>:Run2<CR>| imap <Leader>R <Esc><Leader>R
 nnoremap <Leader>r :w<CR>:Run<CR>| imap <Leader>r <Esc><Leader>r

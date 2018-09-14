@@ -14,10 +14,7 @@ venv/*
 .coverage
 **/coverage/*
 
-.lvimrc
-**/.lshrc
 **/.lzshrc
-**/.localalias
 
 var/*
 **/dist/*

@@ -33,6 +33,7 @@ c.url.searchengines = {
     '2': 'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}',
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
     'al': SE.static.google('arch linux {}'),
+    'b': SE.static.stackoverflow(7, prefix='Bash'),
     'bmo': SE.SearchEngine(SE.static.google('best movies of 20{}'),
                            SE.OneIntURL(SE.static.google('best {1} movies of 20{0}'))),
     'cc': SE.static.stackoverflow(5, prefix='C++'),
@@ -63,6 +64,7 @@ c.url.searchengines = {
                                        suffix='issues/{1}'),
                            SE.LuckyURL('{} site:github.com', suffix='issues')),
     'i': 'https://www.google.com/search?&tbm=isch&q={}',
+    'l': SE.static.stackoverflow(7, prefix='Linux'),
     'li': SE.SearchEngine(SE.static.site('linkedin.com'),
                           SE.URL(SE.static.site('linkedin.com', prefix='software'),
                                  '^@',
@@ -162,7 +164,7 @@ bind(',rss', 'spawn --userscript openfeeds')
 bind(',sp', "spawn -v pockyt put -f '{link}' -i {url}")
 bind(',S', 'set-cmd-text -s :session-save -o')
 bind(',t', 'config-cycle tabs.position left top')
-bind(',v', 'fake-key --global v$y')
+bind(',y', 'fake-key --global v$y')
 bind(';m', 'hint links spawn -v umpv {hint-url}', 'message-info "Select video to load with umpv."')
 bind(';M', 'hint links spawn -v umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
 bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")

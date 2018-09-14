@@ -6,7 +6,7 @@ alias del='sudo -i del'
 Ebi() { eposync "$1" && sudo -i /usr/local/bin/get "$1"; }
 Epatch() { cd "$(epatch "$@")" || return 1; }
 ebi() { sudo repoman manifest && sudo ebuild "$1" clean merge; }
-ecd () { cd "$(find /usr/local/portage -type d -name "*$1*" | head -n 1)" || return 1; }
+ecd () { cd "$(find "$(portageq get_repo_path / bbugyi200)" -type d -name "*$1*" | head -n 1)" || return 1; }
 evcd () { cd "$(find /var/tmp/portage -type d -name "*$1*" 2> /dev/null)" || return 1; }
 alias edc='sudo dispatch-conf'
 alias epu='sudo -i epuse'
@@ -31,10 +31,13 @@ alias eup='sudo emerge --ask --update --deep --newuse @world'
 alias ewdups='comm -12 <(sudo cat /etc/portage/sets/shared) <(sudo cat /var/lib/portage/world) 2> /dev/null'
 alias get='sudo -i get'
 alias pg='equery list "*" | grep'
+rcrest() { sudo rc-service "$1" restart; };  compdef rcrest=rc-service
 alias rcs='sudo rc-service'
-alias rcst='rc-status'
+rcstart() { sudo rc-service "$1" start; };  compdef rcstart=rc-service
+rcstop() { sudo rc-service "$1" stop; };  compdef rcstop=rc-service
 alias rcu='sudo rc-update'
 alias reboot='epcsync -q && sudo /sbin/reboot'
+alias rstwifi='sudo rc-service net.wlo1 restart; sudo dhcpcd'
 alias shutdown='epcsync -q && sudo shutdown -h now'
 vblog() { vim "$(sudo find /var/tmp/portage -type f -regex ".*$1.*/build\.log")"; }
 alias vj='sudo vim + /var/log/syslog'

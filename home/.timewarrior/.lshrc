@@ -1,0 +1,3 @@
+alias vila='vim ~/Dropbox/scripts/bin/xmonad/poll-timew ~/Dropbox/scripts/bin/tests/test_poll_timew.py'
+alias vicfg='vim timewarrior.cfg'
+alias h='timew help'

@@ -1,0 +1,1 @@
+alias cda='tmux send-keys "cd ~/Dropbox/dotfiles/.config/qutebrowser" "Enter"'

@@ -3,7 +3,7 @@
 ###################################
 
 ka() { /usr/local/bin/ka "$@" && krestart_alarms; }
-kc() { clear && khal calendar --notstarted --format '{start-time} {title}' now && echo; }
+kc() { clear && khal calendar --notstarted --format '{start-time} {title} [{location}]' now && echo; }
 ke() { khal edit "$@" && krestart_alarms; }
 ki() { ikhal "$@" && krestart_alarms; }
 kn() { khal new -a daily ""$*"" && krestart_alarms; }

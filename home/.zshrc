@@ -32,6 +32,26 @@ done
 # Disable builtins
 disable r
 
+####################
+#  Autocompletion  #
+####################
+autoload -U +X compinit && compinit -u
+autoload -U +X bashcompinit && bashcompinit
+for filename in ~/.bash-completions/*; do
+    source "$filename"
+done
+
+_git 2> /dev/null  # hack to make git branch completion work
+_pacman 2> /dev/null  # hack to make pacman completion work
+compdef __git_branch_names gco
+compdef _command_names wim
+compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
+compdef _tmuxinator tm
+compdef del=emerge
+compdef get=emerge
+compdef rcst=rc-service
+compdef vman=man
+
 #####################
 #  Source Commands  #
 #####################
@@ -97,25 +117,6 @@ export EDITOR=$(which vim)
 
 # Fixes Mutt Background Issue (stays transparent) in TMUX
 export TERM="rxvt-unicode-256color"
-
-####################
-#  Autocompletion  #
-####################
-autoload -U +X compinit && compinit -u
-autoload -U +X bashcompinit && bashcompinit
-for filename in ~/.bash-completions/*; do
-    source "$filename"
-done
-
-_git 2> /dev/null  # hack to make git branch completion work
-_pacman 2> /dev/null  # hack to make pacman completion work
-compdef __git_branch_names gco
-compdef _command_names wim
-compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
-compdef _tmuxinator tm
-compdef get=emerge
-compdef del=emerge
-compdef vman=man
 
 ###################
 #  Miscellaneous  #
