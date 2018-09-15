@@ -16,6 +16,10 @@ def run(*task_dicts):
         task_dicts: Either (new_task,) or (new_task, old_task).
     """
     log.init_logger()
+    logger = log.getLogger()
+
+    for T in task_dicts:
+        logger.vdebug('Task Dictionary: %s', T)
 
     from hooks.runners import active
     from hooks.runners import github

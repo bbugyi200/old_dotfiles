@@ -21,7 +21,19 @@ def run(new_task, old_task=None):
     else:
         new_task = _set_delta(new_task)
 
-    if old_task is not None and utils.is_done(new_task) and not utils.is_done(old_task):
+    revival_conditions = [utils.is_done(new_task)]
+    if old_task is not None:
+        revival_conditions.append(not utils.is_done(old_task))
+        logger.vdebug('Revival Predicate Added: OLD_TASK NOT DONE')
+        if all(field in old_task for field in ['due', 'until']):
+            logger.vdebug('Revival Predicate Added: UNTIL < DUE')
+            due_dt = utils.dates.convert_to_dt(old_task['due'])
+            until_dt = utils.dates.convert_to_dt(old_task['until'])
+            revival_conditions.append(due_dt < until_dt)
+
+    logger.debug('revival_conditions: %s', revival_conditions)
+
+    if all(P for P in revival_conditions):
         logger.debug('Task has been marked COMPLETED: {}'.format(new_task['description'][:40]))
         new_task = _revive_repeat(new_task)
 

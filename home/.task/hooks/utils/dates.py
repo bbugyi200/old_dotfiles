@@ -13,7 +13,7 @@ def get_tomorrow():
 
 def get_today_dt():
     """Returns Datetime for Today (at 6AM)"""
-    return _convert_to_dt(get_today())
+    return convert_to_dt(get_today())
 
 
 def _style_dt(old_dt):
@@ -24,7 +24,7 @@ def _style_dt(old_dt):
     return new_dt.astimezone(tz=dt.timezone.utc)
 
 
-def _convert_to_dt(date_string):
+def convert_to_dt(date_string):
     date = dt.datetime.strptime(date_string, date_fmt)
     return date.replace(tzinfo=dt.timezone.utc)
 
