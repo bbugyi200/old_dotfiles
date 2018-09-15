@@ -117,7 +117,7 @@ myAdditionalKeys = [
    ((alpha, xK_0), spawn "tmux -L $(tm-socket) switchc -n") -- Tmux Next Session
    , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
    , ((alpha .|. beta, a), spawn "alarm") -- Alarm
-   , ((alpha, a), spawn "sleep 0.2 && xdotool key alt+a") -- Tmux Prefix
+   , ((alpha, a), spawn "sleep 0.2 && xdotool key ctrl+a && xdotool key ctrl+a") -- Tmux Prefix
    , ((alpha .|. beta, a), launchApp "ANKI" "anki")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")

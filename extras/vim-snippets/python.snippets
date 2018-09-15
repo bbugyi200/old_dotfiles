@@ -3,6 +3,14 @@ priority -50
 ###########################################################################
 #                            TEXTMATE SNIPPETS                            #
 ###########################################################################
+snippet ft ".format(...)" iA
+format($1)
+endsnippet
+
+snippet spsh "sp.check_call('...', shell=True)"
+sp.check_call('$1', shell=True)
+endsnippet
+
 snippet ee "Print (echo) and Exit"
 print("${1}:: %s" % ($1,))
 import sys; sys.exit(0)

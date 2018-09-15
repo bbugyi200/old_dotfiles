@@ -9,6 +9,7 @@ ebi() { sudo repoman manifest && sudo ebuild "$1" clean merge; }
 ecd () { cd "$(find "$(portageq get_repo_path / bbugyi200)" -type d -name "*$1*" | head -n 1)" || return 1; }
 evcd () { cd "$(find /var/tmp/portage -type d -name "*$1*" 2> /dev/null)" || return 1; }
 alias edc='sudo dispatch-conf'
+alias edep='sudo emerge --ask --depclean'
 alias epu='sudo -i epuse'
 alias epum='sudo vim /etc/portage/package.unmask'
 alias erm='sudo repoman manifest'
@@ -45,4 +46,4 @@ alias vmk='sudo vim /etc/portage/make.conf /etc/portage/make.shared'
 alias vpk='sudo vim /etc/portage/package.accept_keywords'
 alias vpm='sudo vim /etc/portage/package.mask'
 alias vpu='sudo vim /etc/portage/package.use'
-alias vw='sudo vim /etc/portage/sets/shared /var/lib/portage/world /var/lib/portage/world_sets'
+alias vw='sudo vim /etc/portage/sets/shared /etc/portage/sets/* /var/lib/portage/world /var/lib/portage/world_sets'

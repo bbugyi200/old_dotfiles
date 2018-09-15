@@ -12,7 +12,6 @@ alias ag='ag --hidden'
 ainit() { printf "#!/bin/awk -f\n\n" > "$1.awk" && chmod +x "$1.awk" && clinks && vim + "$1.awk"; }
 alias alg='alias | grep -e'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
-binit() { printf "#!/bin/bash\n\n" > "$1" && chmod +x "$1" && clinks && vim + "$1"; }
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 alias chx='sudo chmod +x'
@@ -50,12 +49,14 @@ alias mkpkg='makepkg -si'
 alias mv="mv -i"
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/"$1".txt; }
+alias pim="vim -c 'execute \"normal \\<c-p>\" '"
 alias pipget='pip install --user'
 alias pdb='ipdb'
 alias psg='ps -aux | grep -E'
 pvar() { set | grep -i -e "^$1"; }
 cho() { sudo chown -R "$2":"$2" "$1"; }
 alias rg='ranger'
+alias rim="vim -c 'normal ,p'"
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 alias rm="safe-rm"
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
@@ -66,7 +67,6 @@ alias snapshots='find /home/bryan/Dropbox/var/aphrodite-motion -name "*$(date +%
 ss() { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
 alias ssh-aphrodite='ssh 192.168.1.193'
 alias ssh-artemis="ssh root@67.207.92.152"
-ssh-athena() { ssh -p "$ATHENAS_SSH_PORT" bryan@"$ATHENAS_DDNS_HOSTNAME"; }
 alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
 alias su='su - -p'
 alias sudo='sudo '  # makes aliases visible to sudo
@@ -90,7 +90,6 @@ alias vwb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.weekly/*'
 alias vmb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.monthly/*'
 alias vcplug="vim -c ':PluginClean'"
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
-alias vip="vim -c 'execute \"normal \\<c-p>\" '"
 alias vplug="vim -c ':PluginInstall'"
 vuse() { vim /etc/portage/package.use/"$1"; }
 alias w='which'
