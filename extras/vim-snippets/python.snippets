@@ -3,8 +3,12 @@ priority -50
 ###########################################################################
 #                            TEXTMATE SNIPPETS                            #
 ###########################################################################
-snippet ft ".format(...)" iA
+snippet ft "format(...)" iA
 format($1)
+endsnippet
+
+snippet fmt "''.format(...)" i
+'$1'.format(${2:${VISUAL}})
 endsnippet
 
 snippet spsh "sp.check_call('...', shell=True)"

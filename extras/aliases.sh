@@ -9,11 +9,13 @@ alias Java='java -classpath .:../bin'
 alias Javac='javac -d ../bin'
 alias Jdb='jdb -classpath "../bin"'
 alias ag='ag --hidden'
-ainit() { printf "#!/bin/awk -f\n\n" > "$1.awk" && chmod +x "$1.awk" && clinks && vim + "$1.awk"; }
+alias ainit='script-init -f awk -D awk -x'
 alias alg='alias | grep -e'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
+alias binit='script-init -f bash'
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
+cho() { sudo chown -R "$2":"$2" "$1"; }
 alias chx='sudo chmod +x'
 alias cower='cower -c'
 alias cp="cp -i"
@@ -31,9 +33,9 @@ alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gho='ghi open'
 alias ghooks='rm -rf .git/hooks && git init' 
+alias git='hub'
 alias gnlog="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias gpf='git push -f'
-gpup() { git add . && git commit -m "Update $(grepo)" && git push; }
 alias grc='git rebase --continue'
 gri() { git rebase -i HEAD~"$1"; }
 alias ipython='TERM=linux ipython'
@@ -54,9 +56,9 @@ alias pipget='pip install --user'
 alias pdb='ipdb'
 alias psg='ps -aux | grep -E'
 pvar() { set | grep -i -e "^$1"; }
-cho() { sudo chown -R "$2":"$2" "$1"; }
+alias pyinit='script-init -f python'
 alias rg='ranger'
-alias rim="vim -c 'normal ,p'"
+rim() { vim -c "normal ,p$*"; }
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 alias rm="safe-rm"
 alias sch='vim ~/Dropbox/notes/Rutgers/course_schedule.txt'
@@ -88,9 +90,8 @@ vab() { vim "$(find /home/bryan/Dropbox/scripts/bin/cron.jobs -type f | tr '\n' 
 alias vdb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.daily/*'
 alias vwb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.weekly/*'
 alias vmb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.monthly/*'
-alias vcplug="vim -c ':PluginClean'"
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
-alias vplug="vim -c ':PluginInstall'"
+alias vstudy='vim /home/bryan/.vimwiki/TaskWarrior.wiki'
 vuse() { vim /etc/portage/package.use/"$1"; }
 alias w='which'
 alias wm='wmctrl -lx'

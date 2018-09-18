@@ -7,7 +7,7 @@ DEFAULT_USER="bryan"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 
-plugins=(git z zsh-autosuggestions vi-mode systemd sudo lpass)
+plugins=(git lpass sudo systemd vi-mode z zsh-autosuggestions)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then

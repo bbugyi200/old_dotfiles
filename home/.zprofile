@@ -26,9 +26,9 @@ extra_pythonpath_dirs=(
     "/usr/local/python"
 )
 
-export PYTHONPATH="$(join_path ${extra_pythonpath_dirs[@]}):$PYTHONPATH"
 export MATLABPATH=$HOME/.matlab
 export PATH="$(join_path ${extra_path_dirs[@]}):$PATH"
+export PYTHONPATH="$(join_path ${extra_pythonpath_dirs[@]}):$PYTHONPATH"
 
 #########################################
 #  Miscellaneous Environment Variables  #

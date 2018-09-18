@@ -63,6 +63,7 @@ c.url.searchengines = {
                                        lambda x: re.split(SE.utils.encode(' #'), SE.LuckyURL.filter(x), maxsplit=1),
                                        suffix='issues/{1}'),
                            SE.LuckyURL('{} site:github.com', suffix='issues')),
+    'gi': SE.static.stackoverflow(7, prefix='git'),
     'i': 'https://www.google.com/search?&tbm=isch&q={}',
     'l': SE.static.stackoverflow(7, prefix='Linux'),
     'li': SE.SearchEngine(SE.static.site('linkedin.com'),

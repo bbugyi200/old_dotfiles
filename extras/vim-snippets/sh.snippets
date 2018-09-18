@@ -25,11 +25,14 @@ endglobal
 ###########################################################################
 #                            TextMate Snippets                            #
 ###########################################################################
-snippet die "die()"
-function die() {
-    echo "\$1" | tee >(logger -t "$(basename "\$0")")
-    exit "\$2"
-}
+snippet mread "Initialize Multiline String with 'read'"
+read -r -d '' ${1:VAR} << EOM
+$0
+EOM
+endsnippet
+
+snippet gutils "source gutils"
+source /home/bryan/Dropbox/scripts/templates/gutils.sh
 endsnippet
 
 snippet fu "Inline Function Definition"
@@ -73,7 +76,9 @@ fi
 endsnippet
 
 snippet getopt "parse arguments with getopt"
-eval set -- "$(getopt -o "d,${1}" -l "debug,${2}" -- "$@")"
+eval set -- "$(getopt -o "d,h,${1}" -l "debug,help,${2}" -- "$@")"
+
+USAGE="usage: $(basename "\$0") [-d] [-h]"
 
 while [[ -n "\$1" ]]; do
     case \$1 in
@@ -81,8 +86,11 @@ while [[ -n "\$1" ]]; do
 	       PS4='$LINENO: '
 		   set -x
 		   ;;
-	   -$1|--$2 )
-	       $0
+       -h|--help )
+           echo "$USAGE"
+           exit 0
+           ;;
+	   -$3|--$4 )
 		   ;;
 	   -- )
 	       shift

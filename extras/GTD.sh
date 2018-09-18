@@ -14,6 +14,7 @@ alias mb='neomutt -f /var/spool/mail/bryan'
 alias mg="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
 alias mr='sudo neomutt -f /var/spool/mail/root'
 alias p='pass'
+alias pi='pass insert'
 alias ta='task add'
 tas() { tmux send-keys "ta project:Study.$*" "Enter"; };  compdef tas=task
 alias tcn='task context none && task_refresh -F rename,config'

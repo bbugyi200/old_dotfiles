@@ -241,7 +241,7 @@ myXPConfig = P.def {
   P.position = P.CenteredAt 0.2 0.4
 }
 
-myLayout = resizableTall ||| Full
+myLayout = Full ||| resizableTall
   where
     resizableTall = smartSpacing 5 $ RT.ResizableTall nmaster delta ratio []
     nmaster = 1
@@ -265,7 +265,7 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
             where 
                 calculator = "urxvt -name calculator -e zsh -c 'bc -l'"
                 scratchpad = "urxvt -name scratchpad -e zsh -c 'tmuxinator start ScratchPad root=$(tmdir --get ScratchPad)'"
-                weechat = "urxvt -name weechat -e zsh -c 'tmuxinator start WeeChat root=$(tmdir --get WeeChat)'"
+                weechat = "weechat-launcher"
                 gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD root=$(tmdir --get GTD)'"
 
 myManageHook = composeAll

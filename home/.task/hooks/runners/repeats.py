@@ -33,7 +33,7 @@ def run(new_task, old_task=None):
 
     logger.debug('revival_conditions: %s', revival_conditions)
 
-    if all(P for P in revival_conditions):
+    if all(revival_conditions):
         logger.debug('Task has been marked COMPLETED: {}'.format(new_task['description'][:40]))
         new_task = _revive_repeat(new_task)
 
