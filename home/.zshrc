@@ -7,6 +7,7 @@ DEFAULT_USER="bryan"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 
+alias log_bash_history='echo'
 plugins=(git lpass sudo systemd vi-mode z zsh-autosuggestions)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
@@ -56,7 +57,6 @@ compdef vman=man
 #  Source Commands  #
 #####################
 source /home/bryan/Dropbox/dotfiles/extras/aliases.sh
-source /home/bryan/Dropbox/dotfiles/extras/eternal_history.sh
 source /home/bryan/Dropbox/dotfiles/extras/tmuxinator.zsh
 
 ##############
@@ -112,9 +112,6 @@ bindkey "^N" down-line-or-search
 # I set this so the crontab would use vim for editing
 export EDITOR=$(which vim)
 
-# export PROMPT_COMMAND="log_bash_history" 
-# Removed to fix double history log # ; $PROMPT_COMMAND"
-
 # Fixes Mutt Background Issue (stays transparent) in TMUX
 export TERM="rxvt-unicode-256color"
 
@@ -137,7 +134,7 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 fi
 
 # Needed for Eternal Command History
-precmd() { eval "$PROMPT_COMMAND" }
+preexec() { log_shell_history "$1"; }
 
 if [[ -f $PWD/.lzshrc ]]; then
     printf "\n*** ALERT: A Local zshrc File has been Sourced ***\n\n"

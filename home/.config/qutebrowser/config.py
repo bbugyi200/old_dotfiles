@@ -76,6 +76,7 @@ c.url.searchengines = {
     'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.static.site('reddit.com'),
     'so': SE.static.site('stackoverflow.com'),
+    'sql': SE.static.stackoverflow(7, prefix='SQL Queries'),
     'sub': SE.SearchEngine(SE.static.google('{} inurl:english site:subscene.com'),
                            SE.LuckyURL('{0} inurl:english site:subscene.com'),
                            SE.LuckyURL('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com',
@@ -89,15 +90,21 @@ c.url.searchengines = {
     'ytt': 'https://www.youtube.com/results?search_query={}+Trailer'
 }
 
-for i in range(1, 10):
+for i in range(1, 11):
     c.url.searchengines['s{}'.format(i)] = SE.static.stackoverflow(i)
 
 
 #############
 #  Aliases  #
 #############
-c.aliases['libget'] = 'jseval -q document.querySelector("h2").click()'  # click GET on libgen
-c.aliases['vs'] = 'open -w'
+aliases = {
+    'get': 'jseval -q document.querySelector("h2").click()',  # click GET on libgen
+    'pockyt': "spawn -v pockyt put -f '{link}' -i {url}",
+    'vs': 'open -w',
+}
+
+for k, v in aliases.items():
+    c.aliases[k] = v
 
 
 ##############
@@ -151,18 +158,15 @@ bind(',7', 'buffer 7')
 bind(',8', 'buffer 8')
 bind(',9', 'buffer 9')
 bind(',b', 'set-cmd-text :bookmark-add {url} "')
-bind(',dp', 'spawn -v pockyt-delete {url}')
 bind(',D', 'set-cmd-text -s :session-delete')
 bind(',e', 'spawn --userscript searchbar-command')
 bind(',h', 'set-cmd-text -s :help')
 bind(',H', 'set-cmd-text -s :help -t')
 bind(',L', 'set-cmd-text -s :session-load')
 bind(',m', 'spawn --userscript view_in_umpv -d')
-bind(',p', 'open -p')
-bind(',P', 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/')
+bind(',p', 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
 bind(',rss', 'spawn --userscript openfeeds')
-bind(',sp', "spawn -v pockyt put -f '{link}' -i {url}")
 bind(',S', 'set-cmd-text -s :session-save -o')
 bind(',t', 'config-cycle tabs.position left top')
 bind(',y', 'fake-key --global v$y')

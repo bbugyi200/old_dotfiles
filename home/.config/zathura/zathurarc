@@ -175,6 +175,7 @@ map \\ exec "znav -z T ZH aH"
 map [ exec "xdotool key Super+u"
 map ] exec "xdotool key Super+d"
 map ; goto
+map = zoom in
 map ,l feedkeys ":blist <Tab><C-u>blist"  # List Marks
 map ,b focus_inputbar ":bmark "
 map ,d feedkeys ":bdelete <Tab>"

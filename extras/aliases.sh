@@ -9,10 +9,10 @@ alias Java='java -classpath .:../bin'
 alias Javac='javac -d ../bin'
 alias Jdb='jdb -classpath "../bin"'
 alias ag='ag --hidden'
-alias ainit='script-init -f awk -D awk -x'
+alias ainit='script-init -F awk -D awk -x'
 alias alg='alias | grep -e'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
-alias binit='script-init -f bash'
+alias binit='script-init -F bash'
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 cho() { sudo chown -R "$2":"$2" "$1"; }
@@ -56,7 +56,7 @@ alias pipget='pip install --user'
 alias pdb='ipdb'
 alias psg='ps -aux | grep -E'
 pvar() { set | grep -i -e "^$1"; }
-alias pyinit='script-init -f python'
+alias pyinit='script-init -F python'
 alias rg='ranger'
 rim() { vim -c "normal ,p$*"; }
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
