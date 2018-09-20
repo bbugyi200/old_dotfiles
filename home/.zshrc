@@ -7,8 +7,8 @@ DEFAULT_USER="bryan"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 
-alias log_bash_history='echo'
-plugins=(git lpass sudo systemd vi-mode z zsh-autosuggestions)
+# 'sudo' plugin MUST remain near the end or (for some reason) it won't work
+plugins=(git lpass vi-mode z zsh-autosuggestions sudo)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then

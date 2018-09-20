@@ -73,6 +73,7 @@ alias ssh-rutgers='ssh bmb181@less.cs.rutgers.edu'
 alias su='su - -p'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias sudoers='sudo vim /etc/sudoers'
+alias sqlite3='rlwrap -a -N -c -i sqlite3'
 alias time='/usr/bin/time'
 tmd() { tmux display-message -p "#{$1}"; }
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
