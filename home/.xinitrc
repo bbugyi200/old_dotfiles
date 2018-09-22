@@ -6,4 +6,4 @@ numlockx &
 dunst &
 xbindkeys
 clipster -d &
-exec xmonad
+exec xmonad > /var/tmp/xmonad.log

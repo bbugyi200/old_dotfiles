@@ -20,8 +20,12 @@ print("${1}:: %s" % ($1,))
 import sys; sys.exit(0)
 endsnippet
 
-snippet debug "Print debug log message of variable value."
-log.debug('${1:VARIABLE}: %s', $1)
+snippet var "Print message with variable value."
+print('${1:VARIABLE}: {}'.format($1))
+endsnippet
+
+snippet "(lvar|vdebug)" "Print vdebug log message of variable value." r
+log.vdebug('${1:VARIABLE}: %s', $1)
 endsnippet
 
 snippet pdebug "Print debug message"

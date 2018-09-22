@@ -82,7 +82,7 @@ c.url.searchengines = {
                            SE.LuckyURL('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com',
                                        SE.TwoIntURL.pattern,
                                        SE.TwoIntURL.filter)),
-    'tpb': SE.SearchEngine('https://thepiratebay.org/search/{}',
+    'tpb': SE.SearchEngine('https://thepiratebay3.com/search/{}',
                            SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}')),
     'tub': SE.SearchEngine('https://1337x.unblocked.vet/search/{}/1/',
                            SE.TwoIntURL('https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/')),
@@ -148,6 +148,7 @@ pbind('<Ctrl-o>', 'prompt-open-download xdg-open {}')
 cbind('<Ctrl-f>', 'edit-command --run')
 
 # >>> NORMAL
+bind('<Escape>', 'search', 'clear-messages')
 bind(',1', 'buffer 1')
 bind(',2', 'buffer 2')
 bind(',3', 'buffer 3')
@@ -170,8 +171,8 @@ bind(',rss', 'spawn --userscript openfeeds')
 bind(',S', 'set-cmd-text -s :session-save -o')
 bind(',t', 'config-cycle tabs.position left top')
 bind(',y', 'fake-key --global v$y')
-bind(';m', 'hint links spawn -v umpv {hint-url}', 'message-info "Select video to load with umpv."')
-bind(';M', 'hint links spawn -v umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
+bind(';m', 'hint all spawn -v umpv {hint-url}', 'message-info "Select video to load with umpv."')
+bind(';M', 'hint all spawn -v umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
 bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
 bind(';T', 'hint links spawn -v torrent -d {hint-url}', 'message-info "Select magnet link to torrent."')
 bind(';Y', 'hint links spawn -v ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')

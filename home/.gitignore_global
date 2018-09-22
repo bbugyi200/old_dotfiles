@@ -30,3 +30,4 @@ __pycache__/*
 .stow-local-ignore
 passwd
 tags
+epatch.info

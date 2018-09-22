@@ -41,7 +41,7 @@ gri() { git rebase -i HEAD~"$1"; }
 alias ipython='TERM=linux ipython'
 alias lay='sudo layman'
 alias lim='vim -c "normal \`0" -c "bdelete 1"'
-alias loc='locate -r'
+alias loc='sudo locate --regex'
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
 alias matlab='matlab -nojvm -nodisplay -nosplash'
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
@@ -57,7 +57,6 @@ alias pdb='ipdb'
 alias psg='ps -aux | grep -E'
 pvar() { set | grep -i -e "^$1"; }
 alias pyinit='script-init -F python'
-alias rg='ranger'
 rim() { vim -c "normal ,p$*"; }
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 alias rm="safe-rm"
@@ -74,6 +73,7 @@ alias su='su - -p'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias sudoers='sudo vim /etc/sudoers'
 alias sqlite3='rlwrap -a -N -c -i sqlite3'
+tpbs() { torrench -t \""$*"\"; }
 alias time='/usr/bin/time'
 tmd() { tmux display-message -p "#{$1}"; }
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'

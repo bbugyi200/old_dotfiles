@@ -25,6 +25,22 @@ endglobal
 ###########################################################################
 #                            TextMate Snippets                            #
 ###########################################################################
+snippet arg "assign command-line argument to variable"
+${1:var}="\$1"; shift
+endsnippet
+
+snippet source "source /home/bryan/Dropbox/scripts/modules/bash"
+source /home/bryan/Dropbox/scripts/modules/bash
+endsnippet
+
+snippet $ "Description" i
+"${$0}"
+endsnippet
+
+snippet #> "# >>> HEADING"
+# >>> $0
+endsnippet
+
 snippet mread "Initialize Multiline String with 'read'"
 read -r -d '' ${1:VAR} << EOM
 $0
@@ -75,10 +91,63 @@ if [ "$(id -u)" != "0" ]; then
 fi
 endsnippet
 
+snippet vgetopt "parse arguments (verbosely) with getopt"
+# ---------- Command-line Arguments ----------
+eval set -- "$(getopt -o "d,h,q" -l "debug,help,quiet" -- "$@")"
+
+USAGE="usage: $(basename "$0") [-d] [-h] [-q]"
+
+read -r -d '' HELP << EOM
+$USAGE
+EOM
+
+while [[ -n "$1" ]]; do
+    case $1 in
+       -d|--debug )
+           debug=true
+           ;;
+       -h|--help )
+           echo "$HELP"
+           exit 0
+           ;;
+       -q|--quiet )
+           quiet=true
+           ;;
+       -- )
+           shift
+           break
+           ;;
+    esac
+    shift
+done
+
+LOG_FILE=/var/tmp/"$(basename "$0")".log
+if [[ "$debug" = true ]] && [[ "$quiet" = true ]]; then
+    exec > "$LOG_FILE"
+elif [[ "$debug" = true ]]; then
+    exec > >(tee "$LOG_FILE")
+elif [[ "$quiet" = true ]]; then
+    exec > /dev/null
+fi
+
+if [[ "$debug" = true ]] || [[ "$quiet" = true ]]; then
+    exec 2>&1
+fi
+
+if [[ "$debug" = true ]]; then
+    PS4='$LINENO: '
+    set -x
+fi
+endsnippet
+
 snippet getopt "parse arguments with getopt"
 eval set -- "$(getopt -o "d,h,${1}" -l "debug,help,${2}" -- "$@")"
 
 USAGE="usage: $(basename "\$0") [-d] [-h]"
+
+read -r -d '' HELP << EOM
+$USAGE
+EOM
 
 while [[ -n "\$1" ]]; do
     case \$1 in
@@ -87,7 +156,7 @@ while [[ -n "\$1" ]]; do
 		   set -x
 		   ;;
        -h|--help )
-           echo "$USAGE"
+           echo "$HELP"
            exit 0
            ;;
 	   -$3|--$4 )

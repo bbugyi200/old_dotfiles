@@ -13,7 +13,6 @@ def run(new_task, old_task=None):
 
     This hook contains functions that are run when a task is start and/or stopped. This includes:
        - Starting/stopping TimeWarrior
-       - Starting xtaskidle
        - Run xmonad-poll-timew
        - Writing last task UUID to file (used by 'last_task' script).
     """
@@ -40,8 +39,6 @@ def run(new_task, old_task=None):
         cmd = 'timew start "[Project: {project}]" {tags}'
         sp.check_call(cmd.format(project=new_task['description'], tags=combined_timew_tags.decode()),
                 shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
-
-        sp.Popen('xtaskidle -d', shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
 
     # Stopped task.
     elif ('start' not in new_task) and ('start' in old_task):
