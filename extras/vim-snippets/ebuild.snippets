@@ -2,6 +2,10 @@ priority -50
 extends sh
 priority -49
 
+snippet npm "inherit node-module"
+inherit node-module
+endsnippet
+
 snippet "(pyinst|pypack)" "Python Distutils src_install()" r
 src_install() {
 	cd "${P}"

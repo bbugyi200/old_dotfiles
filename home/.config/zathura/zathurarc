@@ -3,7 +3,7 @@ set continuous-hist-save true
 set link-zoom false
 set selection-clipboard clipboard
 set show-recent 25
-set window-title-basename true
+set window-title-basename false
 set window-title-page true
 
 # ---------- Bookmark Bindings
@@ -179,13 +179,14 @@ map = zoom in
 map ,l feedkeys ":blist <Tab><C-u>blist"  # List Marks
 map ,b focus_inputbar ":bmark "
 map ,d feedkeys ":bdelete <Tab>"
+map ,n exec "zsearch --new-workspace --no-search"
 map h exec "znav -z + ZdL"
 map i exec "znav -z + ZdJH"
-map j exec "znav -d -D down"
-map k exec "znav -d -D up"
+map j exec "znav -D down"
+map k exec "znav -D up"
 map l exec "znav -z + ZdJL"
 map s exec "zsearch"
-map S exec "zsearch --keys"
+map S exec "zsearch --new-workspace"
 map R exec "zopen -R"
 map o exec "zopen -x"
 map O exec "zopen"

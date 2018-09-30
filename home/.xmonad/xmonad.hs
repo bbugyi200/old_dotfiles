@@ -23,7 +23,6 @@ import qualified System.Exit as Exit
 import qualified XMonad.Actions.CycleWS as CW
 import qualified XMonad.Actions.DynamicWorkspaces as DW
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
-import qualified XMonad.Actions.FloatSnap as FS
 import qualified XMonad.Actions.FloatKeys as FK
 import qualified XMonad.Actions.Navigation2D as N2D
 import qualified XMonad.Hooks.DynamicLog as DL
@@ -79,6 +78,9 @@ removeEmptyWorkspace' = do
 launchApp :: String -> String -> X ()
 launchApp ws cmd = sequence_ [DW.addWorkspace ws, spawnHere $ "hide_nsp && WS_is_Empty && " ++ cmd]
 
+launchFullApp :: String -> String -> X ()
+launchFullApp ws cmd = launchApp ws ("xdotool key super+f && " ++ cmd)
+
 -- Only shows layout when fullscreen mode is enabled
 myPpOrder :: [String] -> [String]
 myPpOrder (ws:l:t:_) = 
@@ -94,6 +96,9 @@ seqPush = [CW.swapNextScreen, CW.toggleWS' ["NSP"]]
 
 seqSwap :: [X ()]
 seqSwap = [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']
+
+pushDesktop :: String -> X ()
+pushDesktop key = spawn $ "xmonad-scratch-bind " ++ key ++ " 0.15"
 
 --------------------
 --  Key Bindings  --
@@ -128,26 +133,19 @@ myAdditionalKeys = [
    , ((alpha, d), windows W.focusDown)
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
+   , ((alpha, g), spawn "qb_prompt")
    , ((alpha, h), sequence_ [N2D.windowGo N2D.L False])
    , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tm-root $(tmux display-message -p \"#{session_name} #{window_index}\")) && ll'")  -- cd to Tmuxinator Window-Specific Root
    , ((alpha .|. ctrl, h), spawn "tm-send --action 'cd $(tmdir --get $(tmux display-message -p \"#{session_name}\")) && ll'")  -- cd to Tmuxinator Project Root
-   , ((alpha .|. beta, h), spawn "xmonad-scratch-bind h 0.75")
-   , ((alpha .|. beta .|. ctrl, h), sendMessage Shrink)
-   , ((alpha .|. beta .|. ctrl .|. shift, h), withFocused $ FK.keysMoveWindow (-100, 0))
+   , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
    , ((alpha, j), sequence_ [N2D.windowGo N2D.D False])
-   , ((alpha .|. beta, j), spawn "xmonad-scratch-bind j 0.75")
-   , ((alpha .|. beta .|. ctrl, j), sendMessage Shrink)
-   , ((alpha .|. beta .|. ctrl .|. shift, j), withFocused $ FK.keysMoveWindow (0, 100))
+   , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [N2D.windowGo N2D.U False])
+   , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
    , ((alpha .|. shift, k), spawn "tm-kill") -- Kill Screen
-   , ((alpha .|. beta, k), spawn "xmonad-scratch-bind k 0.75")
-   , ((alpha .|. beta .|. ctrl, k), sendMessage Shrink)
-   , ((alpha .|. beta .|. ctrl .|. shift, k), withFocused $ FK.keysMoveWindow (0, -100))
    , ((alpha, l), sequence_ [N2D.windowGo N2D.R False])
+   , ((alpha .|. beta, l), sendMessage Expand)
    , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
-   , ((alpha .|. beta, l), spawn "xmonad-scratch-bind l 0.75")
-   , ((alpha .|. beta .|. ctrl, l), sendMessage Expand)
-   , ((alpha .|. beta .|. ctrl .|. shift, l), withFocused $ FK.keysMoveWindow (100, 0))
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
    , ((alpha .|. shift, m), sequence_ $ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"] ++ seqPush) -- Shift current window to MISC
@@ -161,6 +159,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
    , ((alpha .|. shift, p), spawn "pause_task")
    , ((alpha, q), spawn "tm-send --action=quit") -- Quit Screen
+   , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha .|. beta .|. ctrl, r), spawn "confirm --dmenu 'sudo reboot'") -- Restart
@@ -175,40 +174,39 @@ myAdditionalKeys = [
    , ((alpha, u), windows W.focusUp)
    , ((alpha, v), launchApp "MPV" "mpvlc")
    , ((alpha .|. shift, v), launchApp "CAST" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cnciopoikihiagdjbjpnocolokfelagl")
+   , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, x), launchApp "TERM" myTerminal)
    , ((alpha .|. beta, x), launchApp "TERM'" myTerminal)
-   , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
-   , ((alpha, w), spawn "close-window") -- Close Focused Window
-   , ((alpha, z), launchApp "ZATH" "zathura")
-   , ((alpha .|. beta, z), launchApp "ZATH'" "zathura")
+   , ((alpha, z), launchFullApp "ZATH" "zathura")
+   , ((alpha .|. beta, z), launchFullApp "ZATH'" "zathura")
    , ((alpha .|. shift, z), launchApp "ZEAL" "zeal")
-   , ((alpha .|. beta .|. shift, z), sequence_ [CW.nextScreen, launchApp "ZATH'" "zsearch --new"])
+   , ((alpha .|. beta .|. shift, z), sequence_ [CW.nextScreen, launchFullApp "ZATH'" "zsearch --new-instance --no-search"])
 
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
    , ((alpha, xK_KP_Add), spawn "next_task")
-   , ((alpha, xK_KP_Begin), withFocused $ FK.keysMoveWindowTo (800, 450) (0.5, 0.2))
+   , ((alpha, xK_KP_Begin), withFocused $ windows . W.sink)
    , ((alpha, xK_KP_Delete), spawn "timew delete @1 && task start.any: stop && task_refresh")
    , ((alpha, xK_KP_Divide), spawn "wait_task -N")
-   , ((alpha, xK_Down), withFocused $ FK.keysResizeWindow (0, 50) (0, 0))
-   , ((alpha .|. beta, xK_Down), withFocused $ FK.keysResizeWindow (0, -50) (0, 1))
+   , ((alpha, xK_KP_Down), withFocused $ FK.keysMoveWindow (0, 100))
+   , ((alpha .|. ctrl, xK_KP_Down), withFocused $ FK.keysResizeWindow (0, -50) (0, 1))
    , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
-   , ((alpha, xK_Left), withFocused $ FK.keysResizeWindow (50, 0) (1, 0))
-   , ((alpha .|. beta, xK_Left), withFocused $ FK.keysResizeWindow (-50, 0) (0, 0))
+   , ((alpha, xK_KP_Left), withFocused $ FK.keysMoveWindow (-100, 0))
+   , ((alpha .|. ctrl, xK_KP_Left), withFocused $ FK.keysResizeWindow (-50, 0) (0, 0))
    , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
    , ((alpha, xK_KP_Subtract), spawn "last_task")
    , ((alpha, xK_KP_Multiply), spawn "wait_task -D 1h -N --purge")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
-   , ((alpha, xK_Right), withFocused $ FK.keysResizeWindow (50, 0) (0, 0))
-   , ((alpha .|. beta, xK_Right), withFocused $ FK.keysResizeWindow (-50, 0) (1, 0))
+   , ((alpha, xK_KP_Right), withFocused $ FK.keysMoveWindow (100, 0))
+   , ((alpha .|. ctrl, xK_KP_Right), withFocused $ FK.keysResizeWindow (50, 0) (0, 0))
    , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
-   , ((alpha, xK_Up), withFocused $ FK.keysResizeWindow (0, 50) (0, 1))
-   , ((alpha .|. beta, xK_Up), withFocused $ FK.keysResizeWindow (0, -50) (0, 0))
+   , ((alpha, xK_KP_Up), withFocused $ FK.keysMoveWindow (0, -100))
+   , ((alpha .|. ctrl, xK_KP_Up), withFocused $ FK.keysResizeWindow (0, 50) (0, 1))
    , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "weechat") -- Scratchpad Add Task to Inbox
    , ((alpha, xK_backslash), CW.nextScreen) -- Next Screen
-   , ((alpha .|. beta, xK_backslash), spawn "xmonad-scratch-bind backslash 0.1")
+   , ((alpha .|. beta, xK_backslash), pushDesktop "backslash")
    , ((alpha .|. beta .|. ctrl, xK_backslash), sequence_ seqPush)
    , ((alpha .|. beta .|. ctrl .|. shift, xK_backslash), CW.shiftNextScreen)
    , ((alpha, xK_bracketleft), sequence_ [DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)]) -- Prev Hidden NonEmpty Workspace
@@ -221,7 +219,7 @@ myAdditionalKeys = [
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
    , ((alpha, xK_semicolon), spawn "shellPrompt -d")
    , ((alpha, xK_slash), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
-   , ((alpha .|. beta, xK_slash), spawn "xmonad-scratch-bind slash 0.1")
+   , ((alpha .|. beta, xK_slash), pushDesktop "slash")
    , ((alpha .|. beta .|. ctrl, xK_slash), sequence_ $ seqPush ++ [CW.nextScreen])
    , ((alpha .|. beta .|. ctrl .|. shift, xK_slash), sequence_ [CW.shiftNextScreen, CW.nextScreen])
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
@@ -273,10 +271,10 @@ myLayout = resizableTall ||| Full
     delta = 3/100
 
 -- Measurements used by Floating Windows
-l = 0.25; bigl = 0.05  -- Distance from left edge
-t = 0.4; bigt = 0.05  -- Distance from top edge
-w = 0.5; bigw = 0.9
-h = 0.5; bigh = 0.9
+l = 0.25; bigl = 0.015  -- Distance from left edge
+t = 0.3; bigt = 0.03  -- Distance from top edge
+w = 0.5; bigw = 0.97  -- Total Width of Window
+h = 0.6; bigh = 0.94  -- Total Height of Window
 
 scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad") 
                     (NSP.customFloating $ W.RationalRect l t w h)

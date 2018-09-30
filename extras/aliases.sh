@@ -73,7 +73,6 @@ alias su='su - -p'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias sudoers='sudo vim /etc/sudoers'
 alias sqlite3='rlwrap -a -N -c -i sqlite3'
-tpbs() { torrench -t \""$*"\"; }
 alias time='/usr/bin/time'
 tmd() { tmux display-message -p "#{$1}"; }
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
@@ -85,7 +84,6 @@ tsm-rm() { transmission-remote -t"$1" -r; }
 tsm-start() { transmission-daemon; }
 tsm-stop() { killall -9 transmission-daemon; }
 tsm-watch() { watch -n 1 transmission-remote -l; }
-tws() { timew shorten @1 "$1"mins; }
 alias updatedb='sudo updatedb'
 vab() { vim "$(find /home/bryan/Dropbox/scripts/bin/cron.jobs -type f | tr '\n' ' ')"; }
 alias vdb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.daily/*'
@@ -97,3 +95,4 @@ vuse() { vim /etc/portage/package.use/"$1"; }
 alias w='which'
 alias wm='wmctrl -lx'
 alias watdst='watch -n 5 dropbox-cli status'
+alias xc='xclip -sel clipboard'

@@ -1,19 +1,21 @@
 tabs:
-    position: left
-    mousewheel_switching: false
-    show: always
     last_close: startpage
-    select_on_remove: next
+    mousewheel_switching: false
     new_position:
         related: next
         unrelated: next
+    position: left
+    select_on_remove: next
+    show: always
+    title:
+        format_pinned: "[{index}]: {title}"
 
 url:
     start_pages: https://www.google.com
 
 editor:
     command: ['urxvt', '-name', 'qute-editor', '-e', 'zsh', '-c',
-              'vim -S ~/.config/qutebrowser/editor.vimrc {}']
+              'vim --noplugin -N -u ~/.config/qutebrowser/editor.vimrc {}']
 
 content:
     geolocation: true

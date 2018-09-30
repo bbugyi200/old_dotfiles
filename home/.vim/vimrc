@@ -9,12 +9,13 @@ set backspace=2
 set breakindent  " Indents wraps
 set clipboard=unnamedplus
 set colorcolumn=100
+set completeopt-=preview
 set cursorcolumn
 set cursorline
 set expandtab
 set exrc  " Allows Local .vimrc to be loaded
 set grepformat=%f:%l:%c:%m
-set grepprg=ack\ --nogroup\ --column\ $*  " Change default program for :grep to ack
+set grepprg=ag\ --nogroup\ --nocolor
 set hidden  " Allows you to change buffers without first saving the current buffer
 set history=200  " Increase command history limit
 set ignorecase
@@ -62,8 +63,8 @@ imap <C-k> <Esc><C-k>
 imap <C-l> <Esc><C-l>
 
 " >>> VISUAL
-vnoremap <silent> <Leader>i :w !wgetpaste -l "$(wgplang <C-R>=&syntax<CR>)" --xclippaste<CR>
-vnoremap <silent> <Leader><Leader>i :w !wgetpaste --xclippaste<CR>
+vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
+vnoremap <silent> <Leader><Leader>i :w !ix \| xclip -sel clipboard<CR>
 vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
 xnoremap # :<C-u>call <SID>_VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 xnoremap & :&&<CR>

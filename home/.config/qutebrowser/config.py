@@ -21,7 +21,7 @@ config.load_autoconfig()
 def bang_pttrn():
     """Returns regex pattern that matches DuckDuckGo bangs that I like to use."""
     one_letter_bangs = ['a', 'd', 'g', 'm', 't', 'w', ]
-    two_letter_bangs = ['gm', 'wa', 'yt', ]
+    two_letter_bangs = ['gm', 'ho', 'wa', 'yt', ]
     long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
     included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
 
@@ -36,6 +36,7 @@ c.url.searchengines = {
     'b': SE.static.stackoverflow(7, prefix='Bash'),
     'bmo': SE.SearchEngine(SE.static.google('best movies of 20{}'),
                            SE.OneIntURL(SE.static.google('best {1} movies of 20{0}'))),
+    'c': SE.static.stackoverflow(7, prefix='C++'),
     'cc': SE.static.stackoverflow(5, prefix='C++'),
     'DEFAULT': SE.SearchEngine(SE.static.google('{}'),
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),

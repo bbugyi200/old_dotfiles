@@ -53,8 +53,6 @@ endif
 "  Deoplete  "
 """"""""""""""
 if PluginInstalled("deoplete")
-    set completeopt-=preview
-    
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 1
     " Use deoplete.
@@ -117,6 +115,11 @@ if filereadable("/usr/share/vim/vimfiles/after/ftplugin/haskell.vim")
     let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
     let g:haskellmode_completion_ghc = 0  " Disable haskell-vim omnifunc
 endif
+
+""""""""""""""""""""""
+"  Instant-Markdown  "
+""""""""""""""""""""""
+let g:instant_markdown_autostart = 0
 
 """"""""""""""
 "  Jedi-vim  "

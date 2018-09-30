@@ -5,8 +5,18 @@
 priority -50
 
 #################################### CUSTOM ####################################
+snippet /* "multi-line comment" 
+/* $0 */
+endsnippet
+
+snippet /** "doxygen comment" 
+/** $0 **/
+endsnippet
+
 snippet if "if statement"
-if ($1) {$0}
+if ($1) {
+	${2:${VISUAL}}
+}
 endsnippet
 
 snippet inc "includes header"
@@ -67,7 +77,7 @@ $0
 endsnippet
 
 snippet main "main() (main)"
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 	${VISUAL}$0
 	return 0;

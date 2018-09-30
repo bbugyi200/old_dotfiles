@@ -1,5 +1,14 @@
 priority -50
 
+snippet img "Image"
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=${2:1.0}, angle=0]{$1}
+	\caption{$3}
+	\label{fig:$4}
+\end{figure}
+endsnippet
+
 snippet claim "\begin{claim} ... \end{claim}"
 \begin{claim}
     $1
@@ -127,20 +136,14 @@ snippet abs "abstract environment" b
 \end{abstract}
 endsnippet
 
-snippet tab "tabular / array environment" b
-\begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
-$0${2/(?<=.)(c|l|r)|./(?1: & )/g}
-\end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
-endsnippet
-
-snippet table "Table environment" b
+snippet tab "Table environment" b
 \begin{table}[${1:htpb}]
 	\centering
-	\caption{${2:caption}}
-	\label{tab:${3:label}}
 	\begin{${4:t}${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${5:c}}
 	$0${5/(?<=.)(c|l|r)|./(?1: & )/g}
 	\end{$4${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
 \end{table}
 endsnippet
 

@@ -3,6 +3,15 @@ priority -50
 ###########################################################################
 #                            TEXTMATE SNIPPETS                            #
 ###########################################################################
+snippet sh "shell"
+gutils.shell('$1')
+endsnippet
+
+snippet out "check_output"
+out = sp.check_output(${2:[${1:cmd}]})
+${3:var} = out.decode().strip()
+endsnippet
+
 snippet ft "format(...)" iA
 format($1)
 endsnippet

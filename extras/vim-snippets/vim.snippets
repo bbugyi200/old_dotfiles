@@ -3,6 +3,22 @@ priority -50
 ###########################################################################
 #                            SnipMate Snippets                            #
 ###########################################################################
+snippet com "command!"
+command! -nargs=0 ${1:Command} ${2:cmd1 | cmd2 | ...}
+endsnippet
+
+snippet ch "Get character under cursor"
+let ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
+endsnippet
+
+snippet col "let c = col('.')"
+let c = col('.')
+endsnippet
+
+snippet exec "execute"
+execute "normal $1"
+endsnippet
+
 snippet map "nnoremap"
 nnoremap ${1:KEY(S)} ${2:BINDING}
 endsnippet
