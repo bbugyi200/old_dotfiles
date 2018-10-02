@@ -148,7 +148,7 @@ myAdditionalKeys = [
    , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
-   , ((alpha .|. shift, m), sequence_ $ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"] ++ seqPush) -- Shift current window to MISC
+   , ((alpha .|. shift, m), sequence_ $ [DW.addHiddenWorkspace "MPV", windows $ W.shift "MPV", removeEmptyWorkspaceAfter' $ windows $ W.view "MPV"] ++ seqPush)
    , ((alpha, n), spawn "tmux -L $(tm-socket) next-window") -- Tmux Next
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,

@@ -178,8 +178,10 @@ map ; goto
 map = zoom in
 map ,l feedkeys ":blist <Tab><C-u>blist"  # List Marks
 map ,b focus_inputbar ":bmark "
+map ,D feedkeys ":set first-page-column 1:2<Return>"
 map ,d feedkeys ":bdelete <Tab>"
 map ,n exec "zsearch --new-workspace --no-search"
+map D feedkeys ":set first-page-column 1:1<Return>"
 map h exec "znav -z + ZdL"
 map i exec "znav -z + ZdJH"
 map j exec "znav -D down"

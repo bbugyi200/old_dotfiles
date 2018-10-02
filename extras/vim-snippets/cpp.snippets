@@ -199,5 +199,13 @@ TEST_F(${1:fixture}, ${2:test}) {
 endsnippet
 
 snippet x "EXPECT_???"
-EXPECT_${1:EQ}($0)
+EXPECT_${1:EQ}($2, $3);
+endsnippet
+
+snippet xe "EXPECT_EQ"
+EXPECT_EQ($1, $2);
+endsnippet
+
+snippet xs "EXPECT_STREQ"
+EXPECT_STREQ($1, "$2");
 endsnippet
