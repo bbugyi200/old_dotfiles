@@ -2,7 +2,7 @@
 
 # ----- CONTEXTS -----
 context.dev=project:Dev project.not:Dev.localalias or (urg>6)
-context.study=project:Study
+context.study=project:Study or start.any:
 context.algebra=project:Study.Algebra or (urg>6)
 context.localalias=project:Dev.localalias or (urg>6)
 context.compilers=project:Study.Compilers or (urg>6)

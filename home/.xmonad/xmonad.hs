@@ -25,6 +25,7 @@ import qualified XMonad.Actions.DynamicWorkspaces as DW
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
 import qualified XMonad.Actions.FloatKeys as FK
 import qualified XMonad.Actions.Navigation2D as N2D
+import qualified XMonad.Actions.UpdatePointer as UP
 import qualified XMonad.Hooks.DynamicLog as DL
 import qualified XMonad.Hooks.ManageDocks as Docks
 import qualified XMonad.Layout.ResizableTile as RT
@@ -75,8 +76,14 @@ removeEmptyWorkspace' = do
     let n = length workspaceList
     Monad.when (n > 3) DW.removeEmptyWorkspace
 
+_launchSeq :: String -> String -> [X ()]
+_launchSeq ws cmd = [DW.addWorkspace ws, spawnHere $ "hide_nsp && WS_is_Empty && " ++ cmd]
+
 launchApp :: String -> String -> X ()
-launchApp ws cmd = sequence_ [DW.addWorkspace ws, spawnHere $ "hide_nsp && WS_is_Empty && " ++ cmd]
+launchApp ws cmd = sequence_ $ _launchSeq ws cmd
+
+launchAppAndUP :: String -> String -> X ()
+launchAppAndUP ws cmd = sequence_ $ UP.updatePointer (0.5, 0.5) (0, 0) : _launchSeq ws cmd
 
 launchFullApp :: String -> String -> X ()
 launchFullApp ws cmd = launchApp ws ("xdotool key super+f && " ++ cmd)
@@ -126,7 +133,7 @@ myAdditionalKeys = [
    , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
    , ((alpha .|. beta, a), spawn "alarm") -- Alarm
    , ((alpha, a), spawn "sleep 0.2 && xdotool key ctrl+a && xdotool key ctrl+a") -- Tmux Prefix
-   , ((alpha .|. beta, a), launchApp "ANKI" "anki")
+   , ((alpha .|. beta, a), launchAppAndUP "ANKI" "anki")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), launchApp "WEB" "qutebrowser --enable-webengine-inspector")
@@ -134,10 +141,12 @@ myAdditionalKeys = [
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
    , ((alpha, g), spawn "qb_prompt")
+   , ((alpha .|. beta, g), spawn "qb_prompt --next-screen")
    , ((alpha, h), sequence_ [N2D.windowGo N2D.L False])
-   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tm-root $(tmux display-message -p \"#{session_name} #{window_index}\")) && ll'")  -- cd to Tmuxinator Window-Specific Root
    , ((alpha .|. ctrl, h), spawn "tm-send --action 'cd $(tmdir --get $(tmux display-message -p \"#{session_name}\")) && ll'")  -- cd to Tmuxinator Project Root
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
+   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tm-root $(tmux display-message -p \"#{session_name} #{window_index}\")) && ll'")  -- cd to Tmuxinator Window-Specific Root
+   , ((alpha .|. beta .|. shift, h), spawn "tm-send --action 'tm-root $(tmux display-message -p \"#{session_name} #{window_index}\") -s $(pwd) && ll'")  -- set Tmuxinator Window-Specific Root
    , ((alpha, j), sequence_ [N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [N2D.windowGo N2D.U False])
@@ -178,9 +187,9 @@ myAdditionalKeys = [
    , ((alpha, x), launchApp "TERM" myTerminal)
    , ((alpha .|. beta, x), launchApp "TERM'" myTerminal)
    , ((alpha, z), launchFullApp "ZATH" "zathura")
-   , ((alpha .|. beta, z), launchFullApp "ZATH'" "zathura")
+   , ((alpha .|. beta, z), launchApp "ZATH'" "zathura")
    , ((alpha .|. shift, z), launchApp "ZEAL" "zeal")
-   , ((alpha .|. beta .|. shift, z), sequence_ [CW.nextScreen, launchFullApp "ZATH'" "zsearch --new-instance --no-search"])
+   , ((alpha .|. beta .|. shift, z), sequence_ [CW.nextScreen, launchApp "ZATH'" "zsearch --new-instance --no-search"])
 
    ---------- SPECIAL CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)

@@ -36,7 +36,7 @@ c.url.searchengines = {
     'b': SE.static.stackoverflow(7, prefix='Bash'),
     'bmo': SE.SearchEngine(SE.static.google('best movies of 20{}'),
                            SE.OneIntURL(SE.static.google('best {1} movies of 20{0}'))),
-    'c': SE.static.stackoverflow(7, prefix='C++'),
+    'c': SE.static.stackoverflow(7, prefix='C'),
     'cc': SE.static.stackoverflow(5, prefix='C++'),
     'DEFAULT': SE.SearchEngine(SE.static.google('{}'),
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),
