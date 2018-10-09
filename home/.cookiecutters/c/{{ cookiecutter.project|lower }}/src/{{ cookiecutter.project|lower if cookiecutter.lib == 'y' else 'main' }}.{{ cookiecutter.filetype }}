@@ -1,0 +1,6 @@
+#include "{{ cookiecutter.project|lower }}.h"
+
+int main(int argc, char **argv)
+{
+    
+}

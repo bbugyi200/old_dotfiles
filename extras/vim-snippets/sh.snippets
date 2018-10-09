@@ -35,7 +35,7 @@ snippet &> "&> /dev/null"
 endsnippet
 
 snippet sc "Inline ShellCheck Ignore"
-# shellcheck disable=SC$0
+# shellcheck disable=SC${1:2034}
 endsnippet
 
 snippet arg "assign command-line argument to variable"
@@ -101,6 +101,7 @@ fi
 endsnippet
 
 snippet getopt "parse arguments with getopt"
+# ---------- Command-line Arguments ----------
 eval set -- "$(getopt -o "d,h$1" -l "debug,help$2" -- "$@")"
 
 usage="usage: ${scriptname} [-d] [-h]"

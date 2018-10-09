@@ -6,8 +6,6 @@ ka() { /usr/local/bin/ka "$@" && krestart_alarms; }
 kc() { clear && khal calendar --notstarted --format '{start-time} {title} [{location}]' now && echo; }
 ke() { khal edit "$@" && krestart_alarms; }
 ki() { ikhal "$@" && krestart_alarms; }
-kn() { khal new -a daily ""$*"" && krestart_alarms; }
-knt() { khal new -a daily tomorrow ""$*"" && krestart_alarms; }
 krestart_alarms() { setsid calalrms -d &> /dev/null; }
 alias m="neomutt"
 alias mb='neomutt -f /var/spool/mail/bryan'

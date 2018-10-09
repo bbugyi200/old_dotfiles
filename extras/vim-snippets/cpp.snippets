@@ -5,11 +5,15 @@ extends c
 # We want to overwrite everything in parent ft.
 priority -49
 
+snippet dv "dvmsg"
+dvmsg($1);
+endsnippet
+
 snippet ";:" "basename" rA
 `!p snip.rv = snip.basename`:
 endsnippet
 
-snippet "s:" "std::" rA
+snippet "s:" "std::" r
 std:
 endsnippet
 
@@ -48,7 +52,7 @@ snippet Inc "C++ #include" b
 endsnippet
 
 snippet cout "std::cout << ... << std::endl;"
-std::cout << $0 << std::endl;
+std::cout << ${1:${VISUAL}} << std::endl;
 endsnippet
 
 snippet "cout " "std::cout << ...;" rA
@@ -180,7 +184,7 @@ snippet ifndef "ifndef ... define ... endif"
 #ifndef ${1:`!p snip.rv = "INCLUDED_" + snip.basename.upper()`}
 #define $1
 
-${2:}
+${2:${VISUAL}}
 
 #endif /* $1 */
 endsnippet

@@ -61,6 +61,6 @@ def _validate_prefix(prefix):
     if prefix is None:
         return ''
     elif prefix[-1] != ' ':
-        return prefix + ' '
-    else:
-        return prefix
+        prefix = prefix + ' '
+
+    return utils.encode(prefix)

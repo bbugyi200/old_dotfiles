@@ -2,9 +2,9 @@
 "             \ ." cd \"" .expand("%:p:h") ."\" && pdflatex " .expand("%:t") 
 "             \ ." && clear ; tmux select-pane -t top")<CR>
 
-command! -nargs=0 Run cd %:p:h | exec ":!pdflatex -file-line-error " .expand('%:t')
+command! -nargs=0 Run cd %:p:h | exec ":!pdflatex -file-line-error " . expand('%:t') . " && rm *.out *.aux *.log"
 
-command! -nargs=0 Run2 call VimuxRunCommand("(zathura \"" .expand("%:p:r") .".pdf\" &> /dev/null &) && exit")
+command! -nargs=0 Run2 call VimuxRunCommand("(zathura \"" . expand("%:p:r") . ".pdf\" &> /dev/null &) && exit")
 
 setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
 if filereadable('Makefile')

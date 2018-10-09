@@ -3,6 +3,10 @@ priority -50
 ###########################################################################
 #                            SnipMate Snippets                            #
 ###########################################################################
+snippet T "custom T command"
+command! -nargs=0 T exec ":e ~/Dropbox/scripts/templates/template.$1"
+endsnippet
+
 snippet com "command!"
 command! -nargs=0 ${1:Command} ${2:cmd1 | cmd2 | ...}
 endsnippet

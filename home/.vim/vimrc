@@ -77,6 +77,7 @@ nnoremap <C-Del> :call delete(expand('%'))<CR>| " deletes current file and buffe
 nnoremap <C-g> :Gstatus<CR>
 nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <CR> o<Esc>| " Makes enter key work right in Normal mode
+nnoremap <Leader>/ /\v<><Left>
 nnoremap <Leader>. :cd ..<CR>:call AddPWDtoPath()<CR>:pwd<CR>
 nnoremap <Leader>0 :cd %:h<CR>:pwd<CR>| " cd to current working directory
 nnoremap <Leader>1 :b1<CR>

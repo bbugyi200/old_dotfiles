@@ -5,6 +5,60 @@
 priority -50
 
 #################################### CUSTOM ####################################
+snippet getopt "getopt"
+static int debug_flag;
+const char* usage = "usage: $1 [-h] [-d]$2"
+
+int choice;
+while (1)
+{
+	static struct option long_options[] =
+	{
+		/* Use flags like so:
+		{"verbose",	no_argument,	&verbose_flag, 'V'}*/
+		/* Argument styles: no_argument, required_argument, optional_argument */
+		{"debug", no_argument, 0, 'd'},
+		{"help", no_argument, 0, 'h'},
+		{"$3"},
+		{0,0,0,0}
+	};
+
+	int option_index = 0;
+
+	/* Argument parameters:
+		no_argument: " "
+		required_argument: ":"
+		optional_argument: "::" */
+
+	choice = getopt_long(argc, argv, "dh$4",
+				long_options, &option_index);
+
+	if (choice == -1)
+		break;
+
+	switch(choice)
+	{
+		case 'd':
+			debug_flag = 1;
+			break;
+		case 'h':
+			puts(usage);
+			exit(0);
+			break;$5
+		case '?':
+			/* getopt_long will have already printed an error */
+			break;
+		default:
+			/* Not sure how to get here... */
+			return EXIT_FAILURE;
+	}
+}
+
+if (debug_flag) {
+	puts("[DEBUG] Debug Mode Enabled")
+}
+endsnippet
+
 snippet mal "malloc"
 malloc(${1:256}${1/.+/ * /}sizeof(${2:char}));
 endsnippet
@@ -119,7 +173,7 @@ ${VISUAL}$0
 #endif /* end of include guard: $1 */
 endsnippet
 
-snippet fprintf "fprintf ..."
+snippet fp "fprintf ..."
 fprintf(${1:stderr}, "${2:%s}\n"${2/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$3${2/([^%]|%%)*(%.)?.*/(?2:\);)/}
 endsnippet
 
@@ -129,7 +183,7 @@ else if (${1:/* condition */}) {
 }
 endsnippet
 
-snippet printf "printf .. (printf)"
+snippet p "printf .. (printf)"
 printf("${1:%s}\n"${1/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$2${1/([^%]|%%)*(%.)?.*/(?2:\);)/}
 endsnippet
 

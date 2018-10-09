@@ -45,3 +45,5 @@ endfunction
 
 nnoremap <Leader># :call EndOfBox()<CR>
 nnoremap <Leader><Leader># :call MakeBox()<CR>
+
+command! -nargs=0 T exec ":e ~/Dropbox/scripts/templates/template.sh"
