@@ -1,6 +1,6 @@
 #include "{{ cookiecutter.project|lower }}.h"
 
-int main(int argc, char **argv)
+{% if cookiecutter.lib == 'n' %}int main(int argc, char **argv)
 {
     
-}
+}{% endif %}
