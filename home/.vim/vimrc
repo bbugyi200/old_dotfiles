@@ -37,6 +37,7 @@ set shiftwidth=4
 set smartcase
 let &statusline = "%{_StatuslineGit()} %f %m %= %y %p%% %l:%c"
 set tabstop=4
+set tags+=tags
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
 set tw=99
 set undodir=/home/bryan/.vim/undo
@@ -75,6 +76,7 @@ nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command
 nnoremap \ ,
 nnoremap <C-Del> :call delete(expand('%'))<CR>| " deletes current file and buffer
 nnoremap <C-g> :Gstatus<CR>
+inoremap <C-o> <C-x><C-o>
 nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <CR> o<Esc>| " Makes enter key work right in Normal mode
 nnoremap <Leader>/ /\v<><Left>
@@ -110,6 +112,8 @@ nnoremap gd :Gdiff
 nnoremap gj j
 nnoremap gk k
 nnoremap gs :Gstatus<CR>
+nmap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
+nmap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
 nnoremap j gj
 nnoremap k gk
 

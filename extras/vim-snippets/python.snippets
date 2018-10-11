@@ -16,10 +16,6 @@ out = sp.check_output(${2:[${1:cmd}]})
 ${3:var} = out.decode().strip()
 endsnippet
 
-snippet ft "format(...)" iA
-format($1)
-endsnippet
-
 snippet fmt "''.format(...)" i
 '$1'.format(${2:${VISUAL}})
 endsnippet
@@ -33,16 +29,12 @@ print("${1}:: %s" % ($1,))
 import sys; sys.exit(0)
 endsnippet
 
-snippet var "Print message with variable value."
-print('${1:VARIABLE}: {}'.format($1))
+snippet dv "Print message with variable value."
+print('${1:VARIABLE}: {}'.format(repr($1)))
 endsnippet
 
-snippet "(lvar|vdebug)" "Print vdebug log message of variable value." r
-log.vdebug('${1:VARIABLE}: %s', $1)
-endsnippet
-
-snippet pdebug "Print debug message"
-print("${1}:: %s" % ($1,))
+snippet "ldv" "Print vdebug log message of variable value."
+log.vdebug('${1:VARIABLE}: %s', repr($1))
 endsnippet
 
 snippet e0 "sys.exit(0)"

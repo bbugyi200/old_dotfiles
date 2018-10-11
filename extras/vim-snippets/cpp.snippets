@@ -5,8 +5,24 @@ extends c
 # We want to overwrite everything in parent ft.
 priority -49
 
-snippet dv "dvmsg"
-dvmsg($1);
+snippet die "die(...)"
+die("$1");
+endsnippet
+
+snippet usage "Usage Message"
+const string usage = "usage: " + PROJECT_NAME + " [-d] [-h]$1";
+endsnippet
+
+snippet d "DMSG"
+DMSG($1);
+endsnippet
+
+snippet dv "DVAR"
+DVAR($1);
+endsnippet
+
+snippet dvm "DVMSG"
+DVMSG($1);
 endsnippet
 
 snippet ";:" "basename" rA
@@ -23,14 +39,6 @@ endsnippet
 
 snippet vec "std::vector" i
 std::vector<$0
-endsnippet
-
-snippet str "std::string" i
-std::string
-endsnippet
-
-snippet "str " "std::string" rA
-std::string $0
 endsnippet
 
 snippet fore "foreach loop"

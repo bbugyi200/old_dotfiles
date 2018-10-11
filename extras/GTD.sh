@@ -33,7 +33,7 @@ tgp () { eval "tga project:$@"; }
 tgps () { eval "tgp Study.$@"; }
 tgw () { eval "tcsn $@ rc.verbose=blank,label waiting"; }
 ti () { task rc._forcecolor:on "$@" info | less; }
-tin () { task +inbox -DELETED -COMPLETED all; }
+tin () { task rc.context=none +inbox -DELETED -COMPLETED all; }
 tl () { task "$1" | less; }
 alias tlat='task rc._forcecolor:on +LATEST info | less'
 tnall () { tcsn "next +READY"; }

@@ -13,7 +13,7 @@ endif
 "  ClangComplete  "
 """""""""""""""""""
 if PluginInstalled("clang_complete")
-    let g:clang_user_options = '-Iinclude'
+    let g:clang_use_library=1
 endif
 
 """""""""""
@@ -87,10 +87,13 @@ if PluginInstalled("deoplete")
     autocmd FileType python setlocal omnifunc=jedi#completions
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     
-    call g:deoplete#custom#option('omni_patterns', {
-                \ 'python': '[^. \t]\.\w*',
-                \ 'cpp': '[^. \t]::\w*',
-                \})
+    call g:deoplete#custom#option({
+                \ 'auto_complete': v:false,
+                \ 'omni_patterns': {
+                    \ 'python': '[^. \t]\.\w*',
+                    \ 'cpp': '[^. *\t](\.|\::|\->)\w*|[<"].*/',
+                    \},
+                \ })
 endif
 
 """"""""""""*

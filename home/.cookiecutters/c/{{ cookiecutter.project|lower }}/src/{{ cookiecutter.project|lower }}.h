@@ -6,4 +6,6 @@
 {% if cookiecutter.filetype == 'c' %}#include <string.h>{% endif %}
 {% if cookiecutter.filetype == 'c' %}#include <unistd.h>{% endif %}
 
+const {{ 'char*' if cookiecutter-filetype == 'c' else 'string' }} PROJECT_NAME = "{{ cookiecutter.project|lower }}";
+
 #endif /* INCLUDED_{{ cookiecutter.project|upper }} */

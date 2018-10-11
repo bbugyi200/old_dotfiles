@@ -5,6 +5,23 @@
 priority -50
 
 #################################### CUSTOM ####################################
+snippet doc "docstring"
+/* $1 */
+endsnippet
+
+snippet docs "multi-line docstring"
+/*  $1
+ *
+ * $2
+ * */
+endsnippet
+
+snippet st "struct"
+typedef struct ${1} {
+	$2
+} $1;
+endsnippet
+
 snippet getopt "getopt"
 static int debug_flag;
 const char* usage = "usage: $1 [-h] [-d]$2"
@@ -18,6 +35,7 @@ while (1)
 		{"verbose",	no_argument,	&verbose_flag, 'V'}*/
 		/* Argument styles: no_argument, required_argument, optional_argument */
 		{"debug", no_argument, 0, 'd'},
+		{"verbose", no_argument, 0, 'v'},
 		{"help", no_argument, 0, 'h'},
 		{"$3"},
 		{0,0,0,0}
@@ -30,7 +48,7 @@ while (1)
 		required_argument: ":"
 		optional_argument: "::" */
 
-	choice = getopt_long(argc, argv, "dh$4",
+	choice = getopt_long(argc, argv, "dhv$4",
 				long_options, &option_index);
 
 	if (choice == -1)
@@ -45,6 +63,9 @@ while (1)
 			puts(usage);
 			exit(0);
 			break;$5
+		case 'v':
+			verbose_flag = 1;
+			break;
 		case '?':
 			/* getopt_long will have already printed an error */
 			break;
@@ -185,12 +206,6 @@ endsnippet
 
 snippet p "printf .. (printf)"
 printf("${1:%s}\n"${1/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$2${1/([^%]|%%)*(%.)?.*/(?2:\);)/}
-endsnippet
-
-snippet st "struct"
-struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`} {
-	${0:/* data */}
-};
 endsnippet
 
 snippet fun "function" b

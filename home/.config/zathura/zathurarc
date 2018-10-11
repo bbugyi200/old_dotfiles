@@ -166,7 +166,7 @@ map .z exec "znav -b Z"
 unmap q
 
 # BINDS
-map <BackSpace> feedkeys "x"
+map <BackSpace> feedkeys ":nohlsearch<Return>"
 map <Button2> navigate previous
 map <Button3> navigate next
 map <C-[> feedkeys ":nohlsearch<Return>"

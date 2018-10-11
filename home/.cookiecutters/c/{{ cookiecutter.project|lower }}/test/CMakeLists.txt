@@ -1,5 +1,7 @@
 find_package(Threads REQUIRED)
 
+include(../shared.cmake)
+
 # Enable ExternalProject CMake module
 include(ExternalProject)
 
@@ -44,5 +46,5 @@ file(GLOB TESTS "*.cc")
 add_executable(runtests ${SOURCES} ${TESTS})
 
 target_link_libraries(runtests libgtest libgmock)
-{% if cookiecutter.filetype == 'cc' %}target_link_libraries(runtests gutils){% endif %}
+{% if cookiecutter.filetype == 'cc' %}setup_gutils(runtests){% endif %}
 target_include_directories(runtests PUBLIC ../include)

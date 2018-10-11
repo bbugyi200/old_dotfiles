@@ -145,7 +145,7 @@ myAdditionalKeys = [
    , ((alpha, h), sequence_ [N2D.windowGo N2D.L False])
    , ((alpha .|. ctrl, h), spawn "tm-send --action 'cd $(tmdir --get $(tmux display-message -p \"#{session_name}\")) && ll'")  -- cd to Tmuxinator Project Root
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha .|. shift, h), spawn "tm-send --action 'cd $(tm-root $(tmux display-message -p \"#{session_name} #{window_index}\")) && ll'")  -- cd to Tmuxinator Window-Specific Root
+   , ((alpha .|. shift, h), spawn "tm-send --action 'cd \"$(tm-root $(tmux display-message -p \"#{session_name} #{window_index}\"))\" && ll'")  -- cd to Tmuxinator Window-Specific Root
    , ((alpha .|. beta .|. shift, h), spawn "tm-send --action 'tm-root $(tmux display-message -p \"#{session_name} #{window_index}\") -s \"$(pwd)\" && ll'")  -- set Tmuxinator Window-Specific Root
    , ((alpha, j), sequence_ [N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
@@ -196,7 +196,7 @@ myAdditionalKeys = [
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
    , ((alpha, xK_KP_Add), spawn "next_task")
    , ((alpha, xK_KP_Begin), withFocused $ windows . W.sink)
-   , ((alpha, xK_KP_Delete), spawn "timew delete @1 && task start.any: stop && task_refresh")
+   , ((alpha, xK_KP_Delete), spawn "twd")
    , ((alpha, xK_KP_Divide), spawn "wait_task -N")
    , ((alpha, xK_KP_Down), withFocused $ FK.keysMoveWindow (0, 100))
    , ((alpha .|. ctrl, xK_KP_Down), withFocused $ FK.keysResizeWindow (0, -50) (0, 1))
