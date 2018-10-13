@@ -1,11 +1,19 @@
-NeoIncludeMakeCache
+command! -nargs=0 Run exec "make"
+command! -nargs=0 Run2 exec "make build-release"
+command! -nargs=0 CacheHeaders !cache_cheaders
 
+imap :: ::<C-x><C-o><C-p>
+imap :/ /:k
+imap :h :k
+imap :I #include <><Left>:k
 nnoremap <Leader>m :Man 3 <C-r><C-w><CR>/^[A-Z]\+<CR>gg
 nnoremap <Leader>M :e Makefile<CR>
-nnoremap <Leader>N :NeoIncludeMakeCache<CR>
 nmap <Leader>h :call SwitchSourceHeader()<CR>
 nmap <Leader>t :call SwitchToCTest()<CR>
 nmap <Leader>T :call VSwitchToCTest()<CR>
+
+setlocal dictionary+=/home/bryan/Dropbox/var/cheaders.txt
+setlocal iskeyword+=.,/,-
 
 " Do NOT place anything else below this conditional.
 if exists('*SwitchSourceHeader')

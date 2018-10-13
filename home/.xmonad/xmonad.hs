@@ -185,7 +185,7 @@ myAdditionalKeys = [
    , ((alpha .|. shift, v), launchApp "CAST" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cnciopoikihiagdjbjpnocolokfelagl")
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, x), launchApp "TERM" myTerminal)
-   , ((alpha .|. beta, x), launchApp "TERM'" myTerminal)
+   , ((alpha .|. beta, x), launchApp "TERM'" "urxvt -e zsh -c 'tm Terminal\\`'")
    , ((alpha, z), launchFullApp "ZATH" "zathura")
    , ((alpha .|. beta, z), launchApp "ZATH'" "zathura")
    , ((alpha .|. shift, z), launchApp "ZEAL" "zeal")

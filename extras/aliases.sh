@@ -22,7 +22,7 @@ alias cp="cp -i"
 alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
 alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
-alias diff='diff --color'
+alias diff='colordiff'
 alias dfs='dropbox-cli filestatus'
 alias dst='dropbox-cli status'
 alias dstart='dropbox-cli start'

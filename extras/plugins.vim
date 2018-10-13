@@ -54,11 +54,19 @@ endif
 """"""""""""""
 if PluginInstalled("deoplete")
     " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 1
+    let g:acp_enableAtStartup = 0
     " Use deoplete.
     let g:deoplete#enable_at_startup = 1
     " Use smartcase.
     let g:deoplete#enable_smart_case = 1
+
+    let g:deoplete#auto_complete_start_length = 1
+    let g:deoplete#sources#clang#libclang_path = "/usr/lib64/llvm/6/lib64/libclang.so"
+    let g:deoplete#sources#clang#std#cpp = 'c++1z'
+    let g:deoplete#sources#clang#sort_algo = 'priority'
+    let g:deoplete#sources#clang#flags = [
+        \ "-stdlib=libc++",
+        \ ]
     
     " Set minimum syntax keyword length.
     let g:deoplete#sources#syntax#min_keyword_length = 3
@@ -89,10 +97,6 @@ if PluginInstalled("deoplete")
     
     call g:deoplete#custom#option({
                 \ 'auto_complete': v:false,
-                \ 'omni_patterns': {
-                    \ 'python': '[^. \t]\.\w*',
-                    \ 'cpp': '[^. *\t](\.|\::|\->)\w*|[<"].*/',
-                    \},
                 \ })
 endif
 
@@ -101,7 +105,7 @@ endif
 """""""""""""
 if PluginInstalled("easytags")
     " doesn't work with universal-ctags
-    let g:easytags_suppress_ctags_warning = 1
+    let g:easytags_events = ['BufWritePost']
 endif
 
 """"""""""""""""
@@ -196,11 +200,13 @@ if PluginInstalled("syntastic")
     " Set checkers for specific filetypes
     " You can disable specific warnings for <checker> by using
     " the 'g:syntastic_<ext>_<checker>_args' variable
+    let g:syntastic_cpp_checkers=['cppcheck']
     let g:syntastic_python_checkers=['flake8']
     let g:syntastic_tex_checkers=['chktex']
     let g:syntastic_sh_checkers=['shellcheck']
     let g:syntastic_rst_checkers=['sphinx']
-    
+
+    let g:syntastic_cpp_cppcheck_args="--language=c++"
     let g:syntastic_tex_chktex_args='-n 1'
     
     " Forces Syntastic to check header files for errors

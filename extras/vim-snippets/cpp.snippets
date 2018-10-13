@@ -5,6 +5,14 @@ extends c
 # We want to overwrite everything in parent ft.
 priority -49
 
+snippet sc "string const" i
+string const 
+endsnippet
+
+snippet rtt "return gutils::TwoTuple(...)"
+return gutils::TwoTuple<$1>($2);
+endsnippet
+
 snippet die "die(...)"
 die("$1");
 endsnippet
@@ -13,12 +21,20 @@ snippet usage "Usage Message"
 const string usage = "usage: " + PROJECT_NAME + " [-d] [-h]$1";
 endsnippet
 
+snippet em "EMSG"
+EMSG($1);
+endsnippet
+
+snippet im "IMSG"
+IMSG($1);
+endsnippet
+
 snippet d "DMSG"
 DMSG($1);
 endsnippet
 
-snippet dv "DVAR"
-DVAR($1);
+snippet dv "DVEVAL"
+DVEVAL($1);
 endsnippet
 
 snippet dvm "DVMSG"

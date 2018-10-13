@@ -5,14 +5,49 @@
 priority -50
 
 #################################### CUSTOM ####################################
-snippet doc "docstring"
+
+snippet mdoc "File Docstring"
+/** @mainpage ${1:`!p snip.rv = snip.basename`}
+ *
+ * $2
+ * */
+endsnippet
+
+snippet fdoc "File Docstring"
+/** @file `!p snip.rv = snip.fn` */
+endsnippet
+
+snippet doc "Docstring"
+/** $1 */
+endsnippet
+
+snippet docs "Multi-line Docstring"
+/**  $1
+ *
+ * @${2:param} $0
+ * */
+endsnippet
+
+snippet Docs "Multi-line Docstring with NO Heading"
+/**
+ * @${1:param} $0
+ * */
+endsnippet
+
+snippet *< "Member Doxygen Comment" i
+  /**< $1 */
+endsnippet
+
+snippet /* "Multi-line Comment"
 /* $1 */
 endsnippet
 
-snippet docs "multi-line docstring"
-/*  $1
- *
- * $2
+snippet /** "Doxygen Docstring"
+/** $1 */
+endsnippet
+
+snippet /*** "Multi-line Doxygen Docstring"
+/**  $1 
  * */
 endsnippet
 
@@ -86,14 +121,6 @@ endsnippet
 
 snippet ui "unsigned int" i
 unsigned int
-endsnippet
-
-snippet /* "multi-line comment" 
-/* $0 */
-endsnippet
-
-snippet /** "doxygen comment" 
-/** $0 **/
 endsnippet
 
 snippet if "if statement"

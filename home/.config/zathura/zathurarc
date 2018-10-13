@@ -1,5 +1,5 @@
 # ---------- Settings
-set continuous-hist-save true
+set continuous-hist-save false
 set link-zoom false
 set selection-clipboard clipboard
 set show-recent 25
@@ -172,8 +172,8 @@ map <Button3> navigate next
 map <C-[> feedkeys ":nohlsearch<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
 map \\ exec "znav -z T ZH aH"
-map [ exec "xdotool key Super+u"
-map ] exec "xdotool key Super+d"
+map [ exec "xdotool key Super+d"
+map ] exec "xdotool key Super+u"
 map ; goto
 map = zoom in
 map ,l feedkeys ":blist <Tab><C-u>blist"  # List Marks

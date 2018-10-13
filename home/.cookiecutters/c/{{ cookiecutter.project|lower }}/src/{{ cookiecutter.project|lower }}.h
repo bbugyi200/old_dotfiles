@@ -1,3 +1,5 @@
+/** @file {{ cookiecutter.project|lower }} */
+
 #ifndef INCLUDED_{{ cookiecutter.project|upper }}
 #define INCLUDED_{{ cookiecutter.project|upper }}
 

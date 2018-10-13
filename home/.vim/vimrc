@@ -37,7 +37,6 @@ set shiftwidth=4
 set smartcase
 let &statusline = "%{_StatuslineGit()} %f %m %= %y %p%% %l:%c"
 set tabstop=4
-set tags+=tags
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
 set tw=99
 set undodir=/home/bryan/.vim/undo
@@ -58,6 +57,20 @@ cnoremap <C-p> <Up>| " Used to recall commands from history
 cnoremap w!! w !sudo tee > /dev/null %| " Allow saving of files as sudo when I forgot to start vim using sudo.
 
 " >>> INSERT
+inoremap :] <C-x><C-]><C-p>
+inoremap :d <C-x><C-d><C-p>
+inoremap <silent><expr> :D deoplete#mappings#manual_complete()
+inoremap :f <C-x><C-f><C-p>
+inoremap :i <C-x><C-i><C-p>
+inoremap :k <C-x><C-k><C-p>
+inoremap :l <C-x><C-l><C-p>
+inoremap :n <C-x><C-n><C-p>
+inoremap :N <C-n><C-p>
+inoremap :o <C-x><C-o><C-p>
+inoremap :s <C-x>s<C-p>
+inoremap :S <BS><C-x>s<C-p>
+inoremap :u <C-x><C-u><C-p>
+inoremap :v <C-x><C-v><C-p>
 imap <C-h> <Esc><C-h>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
@@ -76,7 +89,6 @@ nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command
 nnoremap \ ,
 nnoremap <C-Del> :call delete(expand('%'))<CR>| " deletes current file and buffer
 nnoremap <C-g> :Gstatus<CR>
-inoremap <C-o> <C-x><C-o>
 nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <CR> o<Esc>| " Makes enter key work right in Normal mode
 nnoremap <Leader>/ /\v<><Left>
@@ -94,6 +106,7 @@ nnoremap <Leader>9 :b9<CR>
 nnoremap <Leader><space> a<space><esc>hi<space><esc>l| " Put space before and after character under cursor
 nnoremap <Leader>a :AnsiEsc<CR>
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>| " Delete Buffer
+nnoremap <Leader>D :call _RemoveFile()<CR>
 nnoremap <Leader>e :quit<CR>| " Shortcut for quiting vim
 nnoremap <Leader>F :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>f :CtrlSF 
@@ -192,6 +205,12 @@ function s:_MkNonExDir(file, buf)
 			call mkdir(dir, 'p')
 		endif
 	endif
+endfunction
+
+function! _RemoveFile()
+    let filename = expand('%')
+    execute "normal ,d"
+    call system("safe-rm " . filename)
 endfunction
 
 function! _TmuxOrSplitSwitch(wincmd, tmuxdir)

@@ -18,6 +18,15 @@ function! EndOfBox()
     execute "normal a#"
 endfunction
 
+function! BoxBar()
+    let _ = cursor(line('.'), 99)
+    let c = col('.')
+    while c != 99
+        execute "normal a#"   
+        let c = col('.')
+    endw
+endf
+
 function! MakeBox()
     execute "normal 0"
     let ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
@@ -30,6 +39,8 @@ function! MakeBox()
         let och = matchstr(getline('.'), '\%' . col('.') . 'c.')
     endwhile
 
+    call BoxBar()
+
     execute "normal j0"
     let ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
     execute "normal l"
@@ -41,9 +52,12 @@ function! MakeBox()
         execute "normal l"
         let och = matchstr(getline('.'), '\%' . col('.') . 'c.')
     endw
+
+    call BoxBar()
 endfunction
 
 nnoremap <Leader># :call EndOfBox()<CR>
 nnoremap <Leader><Leader># :call MakeBox()<CR>
+nnoremap <Leader><Leader><Leader># :call BoxBar()<CR>
 
 command! -nargs=0 T exec ":e ~/Dropbox/scripts/templates/template.sh"
