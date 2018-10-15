@@ -3,6 +3,11 @@ priority -50
 ###########################################################################
 #                            TEXTMATE SNIPPETS                            #
 ###########################################################################
+
+snippet paa "parser.add_argument()"
+parser.add_argument($1)
+endsnippet
+
 snippet now "dt.datetime.now()"
 now = dt.datetime.now()
 endsnippet
@@ -27,6 +32,10 @@ endsnippet
 snippet ee "Print (echo) and Exit"
 print("${1}:: %s" % ($1,))
 import sys; sys.exit(0)
+endsnippet
+
+snippet d "log.debug"
+log.debug($1)
 endsnippet
 
 snippet dv "Print message with variable value."

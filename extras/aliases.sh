@@ -76,6 +76,8 @@ alias sqlite3='rlwrap -a -N -c -i sqlite3'
 alias texinit='script-init -F latex -N -f -x'
 alias time='/usr/bin/time'
 tmd() { tmux display-message -p "#{$1}"; }
+# shellcheck disable=SC2142
+alias tm-layout="tmux lsw | grep '*' | awk '{gsub(/\\]/, \"\"); print \$7}'"
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
 tsm() { transmission-remote -l; }
 tsm-add() { transmission-remote -a "$1"; }
@@ -85,6 +87,7 @@ tsm-rm() { transmission-remote -t"$1" -r; }
 tsm-start() { transmission-daemon; }
 tsm-stop() { killall -9 transmission-daemon; }
 tsm-watch() { watch -n 1 transmission-remote -l; }
+alias undow='dow -u'
 alias updatedb='sudo updatedb'
 vab() { vim "$(find /home/bryan/Dropbox/scripts/bin/cron.jobs -type f | tr '\n' ' ')"; }
 alias vdb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.daily/*'

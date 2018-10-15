@@ -163,7 +163,8 @@ myAdditionalKeys = [
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
                            removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
    , ((alpha, o), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
-   , ((alpha .|. beta, o), spawn "zopen") -- Open New Book in Zathura
+   , ((alpha .|. beta, o), launchApp "OKULAR" "okular") -- Open New Book in Zathura
+   , ((alpha .|. ctrl, o), spawn "zopen")
    , ((alpha, p), spawn "tmux -L $(tm-socket) previous-window") -- Tmux Previous
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
    , ((alpha .|. shift, p), spawn "pause_task")
@@ -219,9 +220,9 @@ myAdditionalKeys = [
    , ((alpha .|. beta .|. ctrl, xK_backslash), sequence_ seqPush)
    , ((alpha .|. beta .|. ctrl .|. shift, xK_backslash), CW.shiftNextScreen)
    , ((alpha, xK_bracketleft), sequence_ [DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)]) -- Prev Hidden NonEmpty Workspace
-   , ((alpha .|. ctrl, xK_bracketleft), sequence_ [CW.nextScreen, DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
-   , ((alpha .|. ctrl, xK_bracketright), sequence_ [CW.nextScreen, DW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, DW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); ll'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; ll'") -- cd to Last Dir
@@ -314,6 +315,7 @@ myManageHook = composeAll
 myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
                 >> spawn "init-bg"
+                >> spawn "xrandr --output HDMI2 --auto --rotate right"
                 >> spawn "sleep 2 && calalrms -d"
                 >> spawn "sleep 2 && xmonad-volume"
                 >> spawn "sleep 2 && xmonad-weather"

@@ -2,10 +2,8 @@ command! -nargs=0 Run exec "make"
 command! -nargs=0 Run2 exec "make build-release"
 command! -nargs=0 CacheHeaders !cache_cheaders
 
-imap :: ::<C-x><C-o><C-p>
-imap :/ /:k
 imap :h :k
-imap :I #include <><Left>:k
+imap :H #include <><Left>:k
 nnoremap <Leader>m :Man 3 <C-r><C-w><CR>/^[A-Z]\+<CR>gg
 nnoremap <Leader>M :e Makefile<CR>
 nmap <Leader>h :call SwitchSourceHeader()<CR>

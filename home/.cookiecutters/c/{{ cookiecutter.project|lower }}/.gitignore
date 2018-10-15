@@ -1,4 +1,6 @@
 build
+bin
+*.snippets
 Makefile
 docs/html/*
 docs/latex/*

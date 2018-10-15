@@ -4,7 +4,7 @@ tabs:
     new_position:
         related: next
         unrelated: next
-    position: left
+    position: top
     select_on_remove: next
     show: always
     title:

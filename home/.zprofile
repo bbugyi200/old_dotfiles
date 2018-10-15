@@ -30,6 +30,7 @@ export MATLABPATH=$HOME/.matlab
 export PATH="$(join_path ${extra_path_dirs[@]}):$PATH"
 export PYTHONPATH="$(join_path ${extra_pythonpath_dirs[@]}):$PYTHONPATH"
 export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}
+export QT_QPA_PLATFORMTHEME="qt5ct"  # Fixes: missing okular icons
 
 #########################################
 #  Miscellaneous Environment Variables  #

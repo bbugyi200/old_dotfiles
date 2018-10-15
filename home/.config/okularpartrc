@@ -1,0 +1,20 @@
+[Core General]
+ObeyDRM=false
+
+[Dlg Performance]
+EnableCompositing=false
+
+[General]
+DisplayDocumentNameOrPath=Path
+ShellOpenFileInTabs=true
+ShowOSD=false
+
+[Nav Panel]
+SidebarIconSize=22
+SidebarShowText=false
+
+[PageView]
+ShowScrollBars=false
+
+[Reviews]
+AnnotationTools=<tool type="highlight" id="1"><engine type="TextSelector" color="#ffff00"><annotation type="Highlight" color="#ffff00"/></engine><shortcut>1</shortcut></tool>,<tool type="highlight" id="2"><engine type="TextSelector" color="#f8ffa4"><annotation type="Highlight" color="#f8ffa4"/></engine><shortcut>2</shortcut></tool>,<tool type="ink" id="3"><engine type="SmoothLine" color="#00ff00"><annotation type="Ink" color="#00ff00" width="2"/></engine><shortcut>3</shortcut></tool>,<tool type="highlight" id="4"><engine type="TextSelector" color="#8fffb3"><annotation type="Highlight" color="#8fffb3"/></engine><shortcut>4</shortcut></tool>,<tool type="highlight" id="5"><engine type="TextSelector" color="#ff0000"><annotation type="Highlight" color="#ff0000"/></engine><shortcut>5</shortcut></tool>,<tool type="highlight" id="6"><engine type="TextSelector" color="#ffa190"><annotation type="Highlight" color="#ffa190"/></engine><shortcut>6</shortcut></tool>,<tool type="straight-line" id="7"><engine type="PolyLine" color="#ffe000" points="2"><annotation type="Line" color="#ffe000" width="1"/></engine><shortcut>7</shortcut></tool>,<tool type="straight-line" id="8"><engine type="PolyLine" color="#55ff00" points="2"><annotation type="Line" color="#55ff00" width="1"/></engine><shortcut>8</shortcut></tool>,<tool type="straight-line" id="9"><engine type="PolyLine" color="#ff0000" points="2"><annotation type="Line" color="#ff0000" width="1"/></engine><shortcut>9</shortcut></tool>,<tool type="note-linked" id="10"><engine type="PickPoint" color="#ffff00" hoverIcon="tool-note"><annotation type="Text" icon="Note" color="#ffff00"/></engine></tool>,<tool type="note-linked" id="11"><engine type="PickPoint" color="#ff0000" hoverIcon="tool-note"><annotation type="Text" icon="Note" color="#ff0000"/></engine></tool>

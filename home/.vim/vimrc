@@ -58,19 +58,22 @@ cnoremap w!! w !sudo tee > /dev/null %| " Allow saving of files as sudo when I f
 
 " >>> INSERT
 inoremap :] <C-x><C-]><C-p>
+inoremap :A <Esc>A
 inoremap :d <C-x><C-d><C-p>
 inoremap <silent><expr> :D deoplete#mappings#manual_complete()
 inoremap :f <C-x><C-f><C-p>
 inoremap :i <C-x><C-i><C-p>
+inoremap :I <Esc>I
 inoremap :k <C-x><C-k><C-p>
 inoremap :l <C-x><C-l><C-p>
 inoremap :n <C-x><C-n><C-p>
 inoremap :N <C-n><C-p>
 inoremap :o <C-x><C-o><C-p>
 inoremap :s <C-x>s<C-p>
-inoremap :S <BS><C-x>s<C-p>
 inoremap :u <C-x><C-u><C-p>
 inoremap :v <C-x><C-v><C-p>
+imap :/ /:f
+imap <expr> / _InterpretForwardSlash()
 imap <C-h> <Esc><C-h>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
@@ -80,6 +83,7 @@ imap <C-l> <Esc><C-l>
 vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
 vnoremap <silent> <Leader><Leader>i :w !ix \| xclip -sel clipboard<CR>
 vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
+vnoremap <Space> $<Left>
 xnoremap # :<C-u>call <SID>_VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 xnoremap & :&&<CR>
 xnoremap * :<C-u>call <SID>_VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
@@ -117,6 +121,8 @@ nnoremap <Leader>p :CtrlPMRU<CR>
 nnoremap <Leader>R :w<CR>:Run2<CR>| imap <Leader>R <Esc><Leader>R
 nnoremap <Leader>r :w<CR>:Run<CR>| imap <Leader>r <Esc><Leader>r
 nnoremap <Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>| " Edit Snippet File
+nnoremap <Leader><Leader>S :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>| " Edit Snippet File
+nnoremap <Leader><Leader><Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/all.snippets<CR>
 nnoremap <Leader>s :w<CR>| " Shortcut for saving vim
 nnoremap <Leader><Leader>s :w !sudo tee > /dev/null %<CR>
 nnoremap <Leader>v :vert sb| imap <Leader>v <Esc><Leader>v
@@ -172,7 +178,9 @@ augroup END
 """""""""""""""
 "  Functions  "
 """""""""""""""
-" ----- PUBLIC FUNCTIONS -----
+" --------------------------------------------------
+" ----- PUBLIC FUNCTIONS (used in other files) -----
+" --------------------------------------------------
 " Boolean function which checks if @plugin is installed
 function PluginInstalled(plugin)
     return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
@@ -191,9 +199,39 @@ function! VSwitchToTest(ext)
     call _SwitchToTest(a:ext, 'vert sf')
 endfunction
 
-" ----- PRIVATE FUNCTIONS -----
+" ------------------------------------------------------
+" ----- PRIVATE FUNCTIONS (used only in this file) -----
+" ------------------------------------------------------
 function! _GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+" Returns an expression that will replace a forward slash when one is typed
+" in INSERT mode. Used to enable automatic file completion (and sometimes
+" header completion in C/C++).
+function! _InterpretForwardSlash()
+    let last_ch = matchstr(getline('.'), '\%' . (col('.') - 1) . 'c.')
+
+    if (&filetype == 'c' || &filetype == 'cpp')
+        let ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
+        if (ch == '>')
+            if (last_ch == "/")
+                return ":h" " ':h' is a mapping that should be defined in ftplugin/c.vim
+            endif
+
+            return "/:h"
+        endif
+    endif
+
+    if ((last_ch == "/") && pumvisible())
+        return ":f"
+    endif
+
+    if (((last_ch == "~") || last_ch == ".") || pumvisible())
+        return "/:f"
+    endif
+
+    return "/"
 endfunction
 
 " Automatically creates directory if it does not already exist
@@ -304,7 +342,6 @@ highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
 " ----- Global Variable Assignments -----
 let g:S = 0  " Used in 'Sum()' function
 let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
-let &winheight = &lines * 6 / 10  " Sets minimum size of active split (by percentage)
 
 """""""""""""""""""
 "  Extra Modules  "

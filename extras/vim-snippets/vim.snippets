@@ -3,6 +3,10 @@ priority -50
 ###########################################################################
 #                            SnipMate Snippets                            #
 ###########################################################################
+snippet l "<Leader>" i
+<Leader>
+endsnippet
+
 snippet T "custom T command"
 command! -nargs=0 T exec ":e ~/Dropbox/scripts/templates/template.$1"
 endsnippet
@@ -23,8 +27,8 @@ snippet exec "execute"
 execute "normal $1"
 endsnippet
 
-snippet map "nnoremap"
-nnoremap ${1:KEY(S)} ${2:BINDING}
+snippet map "new mapping"
+${2:${1:n}noremap} ${3:KEY(S)} ${4:BINDING}
 endsnippet
 
 snippet -- "----- Heading -----"
@@ -32,8 +36,8 @@ snippet -- "----- Heading -----"
 endsnippet
 
 snippet if "if ... endif"
-if $0
-	${1:${VISUAL}}
+if $1
+	${2:${VISUAL}}
 endif
 endsnippet
 

@@ -47,7 +47,7 @@ source /home/bryan/Dropbox/scripts/modules/bash
 endsnippet
 
 snippet $ "Description" i
-"${$0}"
+"${$1}"
 endsnippet
 
 snippet mread "Initialize Multiline String with 'read'"
@@ -86,7 +86,7 @@ fi
 endsnippet
 
 snippet usage "Print Usage Info"
-echo "usage: $(basename "\$0") $1"
+usage="usage: ${scriptname} $1"
 endsnippet
 
 snippet log "Log to STDIN and System Log"
@@ -103,8 +103,6 @@ endsnippet
 snippet getopt "parse arguments with getopt"
 # ---------- Command-line Arguments ----------
 eval set -- "$(getopt -o "d,h$1" -l "debug,help$2" -- "$@")"
-
-usage="usage: ${scriptname} [-d] [-h]"
 
 read -r -d '' help << EOM
 ${usage}
@@ -221,14 +219,14 @@ elif ${2:[[ ${1:condition} ]]}; then
 	${0:#statements}
 endsnippet
 
-snippet for "for ... done (for)"
-for (( i = 0; i < ${1:10}; i++ )); do
+snippet for "for ... in ... done (forin)"
+for ${1:i}${2/.+/ in /}${2:words}; do
 	${0:#statements}
 done
 endsnippet
 
-snippet forin "for ... in ... done (forin)"
-for ${1:i}${2/.+/ in /}${2:words}; do
+snippet fori "for ... done (for)"
+for (( i = 0; i < ${1:10}; i++ )); do
 	${0:#statements}
 done
 endsnippet

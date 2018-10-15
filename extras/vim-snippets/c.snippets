@@ -6,6 +6,30 @@ priority -50
 
 #################################### CUSTOM ####################################
 
+snippet em "EMSG"
+EMSG($1);
+endsnippet
+
+snippet im "IMSG"
+IMSG($1);
+endsnippet
+
+snippet d "DMSG"
+DMSG($1);
+endsnippet
+
+snippet dv "DVEVAL"
+DVEVAL($1);
+endsnippet
+
+snippet dvm "DVMSG"
+DVMSG($1);
+endsnippet
+
+snippet cc "char const" i
+char const
+endsnippet
+
 snippet mdoc "File Docstring"
 /** @mainpage ${1:`!p snip.rv = snip.basename`}
  *
@@ -42,37 +66,27 @@ snippet /* "Multi-line Comment"
 /* $1 */
 endsnippet
 
-snippet /** "Doxygen Docstring"
-/** $1 */
-endsnippet
-
-snippet /*** "Multi-line Doxygen Docstring"
-/**  $1 
- * */
-endsnippet
-
 snippet st "struct"
 typedef struct ${1} {
 	$2
 } $1;
 endsnippet
 
+snippet opt "getopt long option"
+{"$1", ${2:no_argument}, 0, '$3'},
+endsnippet
+
 snippet getopt "getopt"
-static int debug_flag;
 const char* usage = "usage: $1 [-h] [-d]$2"
 
-int choice;
-while (1)
+while (true)
 {
 	static struct option long_options[] =
 	{
-		/* Use flags like so:
-		{"verbose",	no_argument,	&verbose_flag, 'V'}*/
 		/* Argument styles: no_argument, required_argument, optional_argument */
 		{"debug", no_argument, 0, 'd'},
 		{"verbose", no_argument, 0, 'v'},
 		{"help", no_argument, 0, 'h'},
-		{"$3"},
 		{0,0,0,0}
 	};
 
@@ -83,7 +97,7 @@ while (1)
 		required_argument: ":"
 		optional_argument: "::" */
 
-	choice = getopt_long(argc, argv, "dhv$4",
+	int choice = getopt_long(argc, argv, "dhv$4",
 				long_options, &option_index);
 
 	if (choice == -1)
@@ -92,14 +106,14 @@ while (1)
 	switch(choice)
 	{
 		case 'd':
-			debug_flag = 1;
+			debug_flag = true;
 			break;
 		case 'h':
 			puts(usage);
 			exit(0);
 			break;$5
 		case 'v':
-			verbose_flag = 1;
+			verbose_flag = true;
 			break;
 		case '?':
 			/* getopt_long will have already printed an error */
@@ -111,7 +125,7 @@ while (1)
 }
 
 if (debug_flag) {
-	puts("[DEBUG] Debug Mode Enabled")
+	DMSG("Debug mode is enabled.");
 }
 endsnippet
 
@@ -130,7 +144,7 @@ if ($1) {
 endsnippet
 
 snippet inc "includes header"
-#include <${1:stdio}.h>
+#include <${1:stdio.h}>
 endsnippet
 
 snippet ifs "single-line if"

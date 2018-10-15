@@ -13,6 +13,7 @@ endif
 "  ClangComplete  "
 """""""""""""""""""
 if PluginInstalled("clang_complete")
+    let g:clang_complete_auto = 1
     let g:clang_use_library=1
 endif
 
@@ -45,6 +46,7 @@ endif
 "  CtrlSF  "
 """"""""""""
 if PluginInstalled("ctrlsf")
+    let g:ctrlsf_position = 'top'
     let g:ctrlsf_regex_pattern = 1
     let g:ctrlsf_default_root = 'project'
 endif
@@ -60,7 +62,6 @@ if PluginInstalled("deoplete")
     " Use smartcase.
     let g:deoplete#enable_smart_case = 1
 
-    let g:deoplete#auto_complete_start_length = 1
     let g:deoplete#sources#clang#libclang_path = "/usr/lib64/llvm/6/lib64/libclang.so"
     let g:deoplete#sources#clang#std#cpp = 'c++1z'
     let g:deoplete#sources#clang#sort_algo = 'priority'
@@ -132,6 +133,8 @@ let g:instant_markdown_autostart = 0
 "  Jedi-vim  "
 """"""""""""""
 if PluginInstalled("jedi")
+    let g:jedi#auto_initialization = 1
+
     " Add the virtualenv's site-packages to vim path
     if has('python')
     py << EOF
@@ -146,6 +149,7 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
     endif
     
+    let g:jedi#popup_select_first = 0
     let g:jedi#show_call_signatures = 0
     let g:jedi#goto_command = "<C-]>"
     let g:jedi#goto_assignments_command = ""
@@ -211,7 +215,7 @@ if PluginInstalled("syntastic")
     
     " Forces Syntastic to check header files for errors
     " By default, Syntastic does not check .h file types
-    let g:syntastic_c_include_dirs=['../../include','../include', 'include']
+    let g:syntastic_c_include_dirs=['../../include','../include', 'include', 'src']
     let g:syntastic_c_check_header=1
     
     " Adds c++14 support to error checking logic

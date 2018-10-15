@@ -41,10 +41,11 @@ set_target_properties(libgmock PROPERTIES
 include_directories("${source_dir}/googletest/include"
                     "${source_dir}/googlemock/include")
 
-file(GLOB SOURCES "../src/[^main]*.{{ cookiecutter.filetype }}")
+file(GLOB SOURCES "../src/[^main]*.{{ cookiecutter.filetype|lower }}")
 file(GLOB TESTS "*.cc")
 add_executable(runtests ${SOURCES} ${TESTS})
 
 target_link_libraries(runtests libgtest libgmock)
 {% if cookiecutter.filetype == 'cc' %}setup_gutils(runtests){% endif %}
 target_include_directories(runtests PUBLIC ../include)
+
