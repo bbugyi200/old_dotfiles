@@ -60,7 +60,7 @@ getXmobarTemplate :: String -> String
 getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%    (%window_count%)}%timew%{ %pia%  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}%timew%{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
-getXmobarTemplate "2-top" = "}%weather%{"
+getXmobarTemplate "2-top" = "}%weather%     (☀ %suntimes%){"
 getXmobarTemplate "2-bottom" = "}{"
 
 removeEmptyWorkspaceAfter' :: X () -> X ()
@@ -143,10 +143,10 @@ myAdditionalKeys = [
    , ((alpha, g), spawn "qb_prompt")
    , ((alpha .|. beta, g), spawn "qb_prompt --next-screen")
    , ((alpha, h), sequence_ [N2D.windowGo N2D.L False])
-   , ((alpha .|. ctrl, h), spawn "tm-send --action 'cd $(tmdir --get $(tmux display-message -p \"#{session_name}\")) && ll'")  -- cd to Tmuxinator Project Root
+   , ((alpha .|. ctrl, h), spawn "tm-send --action 'cd $(tm-session-root --get $(tmux display-message -p \"#{session_name}\")) && ll'")  -- cd to Tmuxinator Project Root
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha .|. shift, h), spawn "tm-send --action 'cd \"$(tm-root $(tmux display-message -p \"#{session_name} #{window_index}\"))\" && ll'")  -- cd to Tmuxinator Window-Specific Root
-   , ((alpha .|. beta .|. shift, h), spawn "tm-send --action 'tm-root $(tmux display-message -p \"#{session_name} #{window_index}\") -s \"$(pwd)\" && ll'")  -- set Tmuxinator Window-Specific Root
+   , ((alpha .|. shift, h), spawn "tm-send --action 'cd \"$(tm-window-root $(tmux display-message -p \"#{session_name} #{window_index}\"))\" && ll'")  -- cd to Tmuxinator Window-Specific Root
+   , ((alpha .|. beta .|. shift, h), spawn "tm-send --action 'tm-window-root $(tmux display-message -p \"#{session_name} #{window_index}\") -s \"$(pwd)\" && ll'")  -- set Tmuxinator Window-Specific Root
    , ((alpha, j), sequence_ [N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [N2D.windowGo N2D.U False])
@@ -186,7 +186,7 @@ myAdditionalKeys = [
    , ((alpha .|. shift, v), launchApp "CAST" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cnciopoikihiagdjbjpnocolokfelagl")
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, x), launchApp "TERM" myTerminal)
-   , ((alpha .|. beta, x), launchApp "TERM'" "urxvt -e zsh -c 'tm Terminal\\`'")
+   , ((alpha .|. beta, x), launchApp "TERM'" "urxvt -name primes -e zsh -c 'tm-init-prime'")
    , ((alpha, z), launchFullApp "ZATH" "zathura")
    , ((alpha .|. beta, z), launchApp "ZATH'" "zathura")
    , ((alpha .|. shift, z), launchApp "ZEAL" "zeal")
@@ -296,9 +296,9 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh) ]
             where 
                 calculator = "urxvt -name calculator -e zsh -c 'bc -l'"
-                scratchpad = "urxvt -name scratchpad -e zsh -c 'tmuxinator start ScratchPad root=$(tmdir --get ScratchPad)'"
+                scratchpad = "urxvt -name scratchpad -e zsh -c 'tmuxinator start ScratchPad root=$(tm-session-root --get ScratchPad)'"
                 weechat = "weechat-launcher"
-                gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD root=$(tmdir --get GTD)'"
+                gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD root=$(tm-session-root --get GTD)'"
 
 myManageHook = composeAll
     [ manageSpawn
@@ -317,9 +317,10 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn "init-bg"
                 >> spawn "xrandr --output HDMI2 --auto --rotate right"
                 >> spawn "sleep 2 && calalrms -d"
+                >> spawn "sleep 2 && xmonad-suntimes"
                 >> spawn "sleep 2 && xmonad-volume"
                 >> spawn "sleep 2 && xmonad-weather"
-                >> spawn "sleep 2 && xmonad-poll-timew"
+                >> spawn "sleep 2 && xmonad-timew"
                 >> spawn "sleep 5 && emanage -m"
                 >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=2")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=1")

@@ -13,7 +13,7 @@ application/xhtml+xml=qutebrowser.desktop
 application/x-extension-xhtml=qutebrowser.desktop
 application/x-extension-xht=qutebrowser.desktop
 application/postscript=zathura.desktop
-application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+application/pdf=zathura-pdf-mupdf.desktop
 application/zip=unzip-subtitles.desktop
 
 [Added Associations]

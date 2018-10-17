@@ -1,5 +1,6 @@
 tabs:
     last_close: startpage
+    max_width: 250
     mousewheel_switching: false
     new_position:
         related: next

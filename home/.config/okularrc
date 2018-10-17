@@ -3,37 +3,38 @@ State=AAAA/wAAAAD9AAAAAAAAB3YAAAPHAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG
 Width 1920=1910
 
 [Desktop Entry]
-FullScreen=true
+FullScreen=false
 shouldShowMenuBarComingFromFullScreen=true
 shouldShowToolBarComingFromFullScreen=false
 
 [MainWindow]
 Height 1080=1028
 Height 1920=1868
-State=AAAA/wAAAAD9AAAAAAAABC4AAAc0AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+MenuBar=Enabled
+State=AAAA/wAAAAD9AAAAAAAAB3YAAAPsAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 Width 1080=1070
 Width 1920=1910
 
 [Recent Files]
 File1[$e]=$HOME/Dropbox/books/Programming/Operating_Systems/Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
-File2[$e]=$HOME/Dropbox/books/Programming/Tools/ProGit.pdf
-File3[$e]=$HOME/Dropbox/books/Programming/Tools/A_First_Course_in_Database_Systems-(Widom).djvu
-File4[$e]=$HOME/Dropbox/books/Programming/Tools/Linux_Command_Line_and_Shell_Scripting-(Bresnahan).pdf
-File5[$e]=$HOME/Dropbox/books/Programming/Programming_Languages/Compilers:Principles_Techniques_and_Tools-(Aho).djvu
-File6[$e]=$HOME/Dropbox/books/Programming/C++/Advanced_Metaprogramming_in_C++-(Gennaro).pdf
-File7[$e]=$HOME/Downloads/pdf.pdf
-File8[$e]=$HOME/Dropbox/books/Programming/C/21st_Century_C-(Klemens).pdf
-File9[$e]=$HOME/Dropbox/books/Programming/C++/The C++ Standard Template Library (Nicholas Josuttis).pdf
+File2[$d]
+File3[$d]
+File4[$d]
+File5[$d]
+File6[$d]
+File7[$d]
+File8[$d]
+File9[$d]
 Name1[$e]=Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
-Name2[$e]=ProGit.pdf
-Name3[$e]=A_First_Course_in_Database_Systems-(Widom).djvu
-Name4[$e]=Linux_Command_Line_and_Shell_Scripting-(Bresnahan).pdf
-Name5[$e]=Compilers:Principles_Techniques_and_Tools-(Aho).djvu
-Name6[$e]=Advanced_Metaprogramming_in_C++-(Gennaro).pdf
-Name7[$e]=pdf.pdf
-Name8[$e]=21st_Century_C-(Klemens).pdf
-Name9[$e]=The C++ Standard Template Library (Nicholas Josuttis).pdf
+Name2[$d]
+Name3[$d]
+Name4[$d]
+Name5[$d]
+Name6[$d]
+Name7[$d]
+Name8[$d]
+Name9[$d]
 
 [Shortcut Schemes]
 Current Scheme=VimBindings

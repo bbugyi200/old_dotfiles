@@ -57,7 +57,7 @@ EOM
 endsnippet
 
 snippet gutils "source gutils"
-source /home/bryan/Dropbox/scripts/templates/gutils.sh
+source /home/bryan/Dropbox/scripts/modules/bash/gutils.sh
 endsnippet
 
 snippet fu "Inline Function Definition"
@@ -102,7 +102,7 @@ endsnippet
 
 snippet getopt "parse arguments with getopt"
 # ---------- Command-line Arguments ----------
-eval set -- "$(getopt -o "d,h$1" -l "debug,help$2" -- "$@")"
+eval set -- "$(getopt -o "d,h,v$1" -l "debug,help,verbose$2" -- "$@")"
 
 read -r -d '' help << EOM
 ${usage}
@@ -111,13 +111,15 @@ EOM
 while [[ -n "\$1" ]]; do
     case \$1 in
 	   -d|--debug )
-	       PS4='$LINENO: '
-		   set -x
+           debug=true
 		   ;;
        -h|--help )
            echo "${help}"
            exit 0
            ;;$3
+       -v|--verbose )
+           verbose=true
+           ;;
 	   -- )
 	       shift
 		   break
@@ -125,6 +127,11 @@ while [[ -n "\$1" ]]; do
 	esac
 	shift
 done
+
+if [[ "${debug}" = true && "${verbose}" = true ]]; then
+    PS4='$LINENO: '
+    set -x
+fi
 endsnippet
 
 snippet vgetopt "parse arguments (verbosely) with getopt"

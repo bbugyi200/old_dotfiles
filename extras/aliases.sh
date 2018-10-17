@@ -38,6 +38,7 @@ alias gnlog="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias gpf='git push -f'
 alias grc='git rebase --continue'
 gri() { git rebase -i HEAD~"$1"; }
+alias K='kill -9'
 alias ipython='TERM=linux ipython'
 alias lay='sudo layman'
 alias lim='vim -c "normal \`0" -c "bdelete 1"'
@@ -54,7 +55,9 @@ onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/
 alias pim="vim -c 'execute \"normal \\<c-p>\" '"
 alias pipget='pip install --user'
 alias pdb='ipdb'
-alias psg='ps -aux | grep -E'
+pgr() { pgrep -f ".*$1.*"; }
+# shellcheck disable=SC2009
+psg() { ps -aux | grep "$1" | grep -v grep; }
 pvar() { set | grep -i -e "^$1"; }
 alias pyinit='script-init -F python'
 rim() { vim -c "normal ,p$*"; }
@@ -87,13 +90,14 @@ tsm-rm() { transmission-remote -t"$1" -r; }
 tsm-start() { transmission-daemon; }
 tsm-stop() { killall -9 transmission-daemon; }
 tsm-watch() { watch -n 1 transmission-remote -l; }
-alias undow='dow -u'
+alias undow='dow --reverse'
 alias updatedb='sudo updatedb'
 vab() { vim "$(find /home/bryan/Dropbox/scripts/bin/cron.jobs -type f | tr '\n' ' ')"; }
 alias vdb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.daily/*'
 alias vwb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.weekly/*'
 alias vmb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.monthly/*'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
+alias vsl='vshlog -u -H all -G '
 alias vstudy='vim /home/bryan/.vimwiki/TaskWarrior.wiki'
 vuse() { vim /etc/portage/package.use/"$1"; }
 alias w='which'

@@ -34,11 +34,12 @@ Config { font = "xft:Dina:pixelsize=13"
                                  , "--normal",  "green"
                                  , "--high",    "red"] 10
                     , Run Com "xmonad-pia" [] "pia" 50
-					, Run PipeReader ":/tmp/poll-timew/fifo" "timew"
-                    , Run PipeReader ":/tmp/poll-weather/fifo" "weather"
-                    , Run PipeReader ":/tmp/calalrms/fifo" "calevent"
-                    , Run PipeReader ":/tmp/volume.fifo" "volume"
-                    , Run PipeReader ":/tmp/alarm/fifo" "counter"
+					, Run PipeReader ":/var/run/user/1000/xmonad-timew/fifo" "timew"
+                    , Run PipeReader ":/var/run/user/1000/xmonad-weather/fifo" "weather"
+                    , Run PipeReader ":/var/run/user/1000/calalrms/fifo" "calevent"
+                    , Run PipeReader ":/var/run/user/1000/volume.fifo" "volume"
+                    , Run PipeReader ":/var/run/user/1000/alarm/fifo" "counter"
+                    , Run PipeReader ":/var/run/user/1000/xmonad-suntimes/fifo" "suntimes"
                     , Run UnsafeStdinReader
                     ]
        , sepChar = "%"

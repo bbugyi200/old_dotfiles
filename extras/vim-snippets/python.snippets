@@ -3,6 +3,14 @@ priority -50
 ###########################################################################
 #                            TEXTMATE SNIPPETS                            #
 ###########################################################################
+snippet noqa "# noqa: ..." i
+  # noqa: F${1:401}
+endsnippet
+
+snippet wo "with open(...)"
+with open($1, '${2:r}') as f:
+	$0
+endsnippet
 
 snippet paa "parser.add_argument()"
 parser.add_argument($1)
@@ -19,6 +27,10 @@ endsnippet
 snippet out "check_output"
 out = sp.check_output(${2:[${1:cmd}]})
 ${3:var} = out.decode().strip()
+endsnippet
+
+snippet ft "format" i
+format($1)
 endsnippet
 
 snippet fmt "''.format(...)" i
@@ -38,12 +50,12 @@ snippet d "log.debug"
 log.debug($1)
 endsnippet
 
-snippet dv "Print message with variable value."
-print('${1:VARIABLE}: {}'.format(repr($1)))
+snippet dv "Print vdebug log message of variable value."
+log.vdebug('${1:VARIABLE}: %s', repr($1))
 endsnippet
 
-snippet "ldv" "Print vdebug log message of variable value."
-log.vdebug('${1:VARIABLE}: %s', repr($1))
+snippet pdv "Print message with variable value."
+print('${1:VARIABLE}: {}'.format(repr($1)))
 endsnippet
 
 snippet e0 "sys.exit(0)"

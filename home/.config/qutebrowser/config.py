@@ -37,7 +37,7 @@ c.url.searchengines = {
     'bmo': SE.SearchEngine(SE.static.google('best movies of 20{}'),
                            SE.OneIntURL(SE.static.google('best {1} movies of 20{0}'))),
     'c': SE.static.stackoverflow(7, prefix='C'),
-    'cc': SE.static.stackoverflow(5, prefix='C++'),
+    'cc': SE.static.stackoverflow(5, prefix='C\\+\\+'),
     'DEFAULT': SE.SearchEngine(SE.static.google('{}'),
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),
                                SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
@@ -149,6 +149,10 @@ pbind('<Ctrl-o>', 'prompt-open-download xdg-open {}')
 cbind('<Ctrl-f>', 'edit-command --run')
 
 # >>> NORMAL
+bind('\\', 'set-cmd-text :open /')
+bind('|', 'set-cmd-text :open -t /')
+bind('[b', 'tab-prev')
+bind(']b', 'tab-next')
 bind('<Alt-p>', 'open -p')
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
