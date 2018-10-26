@@ -47,6 +47,7 @@ tags = {
     'GTD': {
         'priority': 'H',
     },
+    'H': _ghost_tag('H', priority='H'),
     'inbox': {
         'project': 'Meta',
         'due': _tomorrow_due_time,

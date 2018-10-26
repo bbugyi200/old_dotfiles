@@ -1,1 +1,11 @@
-command! -nargs=0 Run exec ":source " .expand("%")
+noreabbrev <b <buffer>
+noreabbrev <s <silent>
+noreabbrev <e <expr>
+noreabbrev cna cnoreabbrev
+noreabbrev cnm cnoremap
+noreabbrev exe execute
+noreabbrev ina inoreabbrev
+noreabbrev inm inoremap
+noreabbrev na noreabbrev
+noreabbrev nnm nnoremap
+noreabbrev vnm vnoremap

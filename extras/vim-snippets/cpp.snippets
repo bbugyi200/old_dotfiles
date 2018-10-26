@@ -5,6 +5,10 @@ extends c
 # We want to overwrite everything in parent ft.
 priority -49
 
+snippet str "string"
+string 
+endsnippet
+
 snippet sc "string const" i
 string const 
 endsnippet
@@ -200,6 +204,19 @@ snippet tf "TEST_F"
 TEST_F(${1:fixture}, ${2:test}) {
 	$0
 }
+endsnippet
+
+snippet fix "TestFixture class"
+class ${1:Test}Fixture : public ::testing::Test {
+	protected:
+		void SetUp() {
+			$2
+		}
+
+		void TearDown() {
+			$3
+		}
+};
 endsnippet
 
 snippet x "EXPECT_???"

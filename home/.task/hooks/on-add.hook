@@ -3,6 +3,7 @@
 """This hook runs when a new TaskWarrior task is added"""
 
 import getpass
+import io
 import sys
 import json
 
@@ -10,7 +11,10 @@ sys.path.insert(0, '/home/{}/.task'.format(getpass.getuser()))
 
 import hooks.runners  # noqa
 
-new_task = json.loads(sys.stdin.readline())
+# Used to force STDIN to ignore unicode errors.
+stdin_stream = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8', errors='ignore')
+
+new_task = json.loads(stdin_stream.readline())
 
 if __name__ == "__main__":
     new_task = hooks.runners.run(new_task)

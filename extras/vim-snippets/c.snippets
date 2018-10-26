@@ -6,6 +6,12 @@ priority -50
 
 #################################### CUSTOM ####################################
 
+snippet exc "extern C"
+extern "C" {
+	${1:${VISUAL}}
+}
+endsnippet
+
 snippet va "__VA_ARGS__" i
 __VA_ARGS__
 endsnippet
@@ -183,9 +189,16 @@ snippet def "#define ..."
 #define $1
 endsnippet
 
-snippet #ifndef "#ifndef ... #define ... #endif"
+snippet ifn "#ifndef ... #endif"
+#ifndef ${1:SYMBOL}
+${2:${VISUAL}}
+#endif /* ifndef $1 */
+endsnippet
+
+snippet ifnd "#ifndef ... #define ... #endif"
 #ifndef ${1/([A-Za-z0-9_]+).*/$1/}
 #define ${1:SYMBOL} ${2:value}
+${3:${VISUAL}}
 #endif /* ifndef $1 */
 endsnippet
 

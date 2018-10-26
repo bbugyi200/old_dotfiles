@@ -57,10 +57,10 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%    (%window_count%)}%timew%{ %pia%  %volume%  |  %date%"
-getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}%timew%{ %pia%  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%    (%window_count%)}%timew%%xtimew%{ %pia%  %volume%  |  %date%"
+getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}%timew%%xtimew%{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
-getXmobarTemplate "2-top" = "}%weather%     (☀ %suntimes%){"
+getXmobarTemplate "2-top" = "}%weather%%xweather%     (☀ %suntimes%%xsuntimes%){"
 getXmobarTemplate "2-bottom" = "}{"
 
 removeEmptyWorkspaceAfter' :: X () -> X ()
@@ -140,8 +140,8 @@ myAdditionalKeys = [
    , ((alpha, d), windows W.focusDown)
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
-   , ((alpha, g), spawn "qb_prompt")
-   , ((alpha .|. beta, g), spawn "qb_prompt --next-screen")
+   , ((alpha, g), spawn "qb_prompt --next-screen")
+   , ((alpha .|. beta, g), spawn "qb_prompt")
    , ((alpha, h), sequence_ [N2D.windowGo N2D.L False])
    , ((alpha .|. ctrl, h), spawn "tm-send --action 'cd $(tm-session-root --get $(tmux display-message -p \"#{session_name}\")) && ll'")  -- cd to Tmuxinator Project Root
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
@@ -170,10 +170,10 @@ myAdditionalKeys = [
    , ((alpha .|. shift, p), spawn "pause_task")
    , ((alpha, q), spawn "tm-send --action=quit") -- Quit Screen
    , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
+   , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart") -- Restarts XMonad
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha .|. beta .|. ctrl, r), spawn "confirm --dmenu 'sudo reboot'") -- Restart
-   , ((alpha, r), spawn "killall xmobar; xmonad --recompile && xmonad --restart") -- Restarts XMonad
    , ((alpha, s), sequence_ seqSwap) -- Swap
    , ((alpha .|. beta, s), sequence_ $ seqSwap ++ [CW.nextScreen]) -- Swap and Follow
    , ((alpha .|. shift, s), windows W.swapDown)    -- Shift Local
@@ -192,9 +192,7 @@ myAdditionalKeys = [
    , ((alpha .|. shift, z), launchApp "ZEAL" "zeal")
    , ((alpha .|. beta .|. shift, z), sequence_ [CW.nextScreen, launchApp "ZATH'" "zsearch --new-instance --no-search"])
 
-   ---------- SPECIAL CHARACTERS ----------
-   -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
-   , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
+   ---------- KEYPAD CHARACTERS ----------
    , ((alpha, xK_KP_Add), spawn "next_task")
    , ((alpha, xK_KP_Begin), withFocused $ windows . W.sink)
    , ((alpha, xK_KP_Delete), spawn "twd")
@@ -202,18 +200,19 @@ myAdditionalKeys = [
    , ((alpha, xK_KP_Down), withFocused $ FK.keysMoveWindow (0, 100))
    , ((alpha .|. ctrl, xK_KP_Down), withFocused $ FK.keysResizeWindow (0, -50) (0, 1))
    , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
+   , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
    , ((alpha, xK_KP_Left), withFocused $ FK.keysMoveWindow (-100, 0))
    , ((alpha .|. ctrl, xK_KP_Left), withFocused $ FK.keysResizeWindow (-50, 0) (0, 0))
-   , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
-   , ((alpha, xK_KP_Subtract), spawn "last_task")
    , ((alpha, xK_KP_Multiply), spawn "wait_task -D 1h -N --purge")
-   , ((alpha, xK_Print), spawn "sshot") -- Screenshot
-   , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
    , ((alpha, xK_KP_Right), withFocused $ FK.keysMoveWindow (100, 0))
    , ((alpha .|. ctrl, xK_KP_Right), withFocused $ FK.keysResizeWindow (50, 0) (0, 0))
-   , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
+   , ((alpha, xK_KP_Subtract), spawn "last_task")
    , ((alpha, xK_KP_Up), withFocused $ FK.keysMoveWindow (0, -100))
    , ((alpha .|. ctrl, xK_KP_Up), withFocused $ FK.keysResizeWindow (0, 50) (0, 1))
+
+   ---------- MISCELLANEOUS CHARACTERS ----------
+   -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
+   , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
    , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "weechat") -- Scratchpad Add Task to Inbox
    , ((alpha, xK_backslash), CW.nextScreen) -- Next Screen
    , ((alpha .|. beta, xK_backslash), pushDesktop "backslash")
@@ -227,13 +226,17 @@ myAdditionalKeys = [
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); ll'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; ll'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
-   , ((alpha, xK_semicolon), spawn "shellPrompt -d")
+   , ((alpha, xK_Print), spawn "sshot") -- Screenshot
+   , ((alpha .|. beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
+   , ((alpha, xK_semicolon), spawn "shellPrompt")
+   , ((alpha .|. beta, xK_semicolon), spawn "shellPrompt -L")
    , ((alpha, xK_slash), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
    , ((alpha .|. beta, xK_slash), pushDesktop "slash")
    , ((alpha .|. beta .|. ctrl, xK_slash), sequence_ $ seqPush ++ [CW.nextScreen])
    , ((alpha .|. beta .|. ctrl .|. shift, xK_slash), sequence_ [CW.shiftNextScreen, CW.nextScreen])
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
+   , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
    ]
 
    -- View WS

@@ -50,5 +50,5 @@ def run(new_task, old_task=None):
             with open('/home/bryan/.task/.last_task', 'w') as f:
                 f.write(new_task['uuid'])
 
-    sp.Popen('sleep 0.5 && xmonad-poll-timew', shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
+    sp.Popen('sleep 0.5 && xmonad-timew', shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
     return new_task

@@ -8,9 +8,10 @@ Epatch() { cd "$(epatch "$@")" || return 1; }
 ebi() { sudo repoman manifest && sudo ebuild "$1" clean merge; }
 ecd () { cd "$(find /home/bryan/projects/portage-overlay -type d -name "*$1*" | head -n 1)" || return 1; }
 egcd () { cd "$(find "$(portageq get_repo_path / gentoo)" -type d -name "*$1*" | head -n 1)" || return 1; }
-evcd () { cd "$(find /var/tmp/portage -type d -name "*$1*" 2> /dev/null)" || return 1; }
 alias edc='sudo dispatch-conf'
 alias edep='sudo emerge --ask --depclean && sudo revdep-rebuild'
+# shellcheck disable=SC2142
+alias edsl='printf "$(hostname):%d,%d\n%s,%d" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
 alias epu='sudo -i epuse'
 alias epum='sudo vim /etc/portage/package.unmask'
 alias erm='sudo repoman manifest'
@@ -42,8 +43,9 @@ alias reboot='epcsync -q && sudo /sbin/reboot'
 alias rstwifi='sudo rc-service net.wlo1 restart; sudo dhcpcd'
 alias shutdown='epcsync -q && sudo shutdown -h now'
 vblog() { vim "$(sudo find /var/tmp/portage -type f -regex ".*$1.*/build\.log")"; }
+alias velog='vim /var/log/emerge.log'
 alias vgentoo='sudo vim /etc/portage/make.{conf,shared} /etc/portage/package.{accept_keywords,mask,unmask,use}'
-alias vj='sudo vim + /var/log/syslog'
+alias vj='sudo vim + /var/log/syslog*'
 alias vmk='sudo vim /etc/portage/make.conf /etc/portage/make.shared'
 alias vp='sudo vim /etc/portage/package.{accept_keywords,env,mask,unmask,use}'
 alias vpe='sudo vim /etc/portage/package.env /etc/portage/env/*.conf'

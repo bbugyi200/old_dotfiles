@@ -25,6 +25,14 @@ endglobal
 ###########################################################################
 #                            TextMate Snippets                            #
 ###########################################################################
+snippet a "Alias Definition"
+alias ${1:ANAME}='$2'
+endsnippet
+
+snippet f "Single Line Function Definition"
+${1:FNAME}() { $2; }
+endsnippet
+
 snippet data "data_dir"
 data_dir=/tmp/"$(basename "\$0")"
 [[ -d "${data_dir}" ]] || mkdir "${data_dir}"

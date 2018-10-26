@@ -7,4 +7,4 @@ dunst &
 xbindkeys
 clipster -d &
 generate_xmobar_config &
-exec xmonad > /var/tmp/xmonad.log
+exec xmonad

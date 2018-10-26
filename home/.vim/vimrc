@@ -31,7 +31,7 @@ set nohlsearch  " Disables search highlighting
 set nolist
 set nrformats+=alpha  " Status Line Settings (mode display)
 set number
-set scrolloff=1  " Always show one line above/below cursor
+set scrolloff=5  " Always show N line(s) above/below cursor
 set secure
 set shiftwidth=4
 set smartcase
@@ -50,20 +50,75 @@ set wildmode=full
 "  Key Bindings  "
 """"""""""""""""""
 let mapleader = ","  " The <Leader> key can be used for extra mappings
+let maplocalleader = "\\"
 
-" >>> COMMAND
-cnoremap <C-n> <Down>
-cnoremap <C-p> <Up>| " Used to recall commands from history
-cnoremap w!! w !sudo tee > /dev/null %| " Allow saving of files as sudo when I forgot to start vim using sudo.
+" >>> NORMAL
+" ----- Numeric -----
+nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>| " cd to current working directory
+nnoremap <Leader>0s :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
+nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
+nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
+nnoremap <Leader>0lv :e <C-R>=getcwd()<CR>/.lvimrc<CR>
+" ----- Alphabetic -----
+nnoremap <Leader>a :AnsiEsc<CR>
+nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>| " Delete Buffer
+nnoremap <Leader>D :call _RemoveFile()<CR>
+nnoremap <Leader>e :quit<CR>| " Shortcut for quiting vim
+nnoremap <Leader>f :find 
+nnoremap gd :Gdiff 
+nnoremap gj j
+nnoremap gk k
+nnoremap gs :Gstatus<CR>
+nnoremap <Leader>g gqap| " mapping to wrap paragraph
+nnoremap j gj
+nnoremap k gk
+nnoremap <Leader><Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/all.snippets<CR>
+nnoremap <Leader>O O<C-u>
+nnoremap <Leader>o o<C-u>
+nnoremap <Leader>p :CtrlPMRU<CR>
+nnoremap <Leader>r :update<CR>:Run<CR>| imap <Leader>r <Esc><Leader>r
+nnoremap <Leader>R :update<CR>:Run2<CR>| imap <Leader>R <Esc><Leader>R
+nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
+nnoremap <Leader>s :update<CR>| " Shortcut for saving vim
+nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
+nmap S ys
+nnoremap <Leader>v :vert sfind 
+nnoremap Y y$
+nnoremap <Leader>Y ma^y$`a
+" ----- Non-Alphanumeric -----
+nnoremap _ :<C-u>execute "sbuffer " . v:count1<CR>
+nnoremap \| :<C-u>execute "vert sbuffer " . v:count1<CR>
+nnoremap + :<C-u>execute "tab sbuffer " . v:count<CR>
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap - :<C-u>execute "buffer " . v:count1<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
+nnoremap ]t :tabnext<CR>
+nnoremap [t :tabprevious<CR>
+nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
+nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
+" ----- Special Characters -----
+" ~ Mouse Events ~
+nnoremap <2-LeftMouse> :exe "tag " . expand("<cword>")<CR>
+nnoremap <RightMouse> <LeftMouse>""p
+map <MiddleMouse> <Nop>
+" ~ Miscellaneous ~
+nnoremap <Del> :<C-u>execute "bdelete " . v:count<CR>
+nnoremap <C-g> :Gstatus<CR>
+nnoremap <C-s> :SyntasticToggleMode<CR>
+nnoremap <CR> o<Esc>
+nnoremap <LocalLeader><LocalLeader> /\v<><Left>
+nnoremap <Space> :ls<CR>
+nnoremap <Tab> <C-^>
 
 " >>> INSERT
 inoremap :] <C-x><C-]><C-p>
 inoremap :A <Esc>A
 inoremap :d <C-x><C-d><C-p>
-inoremap <silent><expr> :D deoplete#mappings#manual_complete()
 inoremap :f <C-x><C-f><C-p>
 inoremap :i <C-x><C-i><C-p>
 inoremap :I <Esc>I
+inoremap :k <C-x><C-k><C-p>
 inoremap :k <C-x><C-k><C-p>
 inoremap :l <C-x><C-l><C-p>
 inoremap :n <C-x><C-n><C-p>
@@ -72,8 +127,7 @@ inoremap :o <C-x><C-o><C-p>
 inoremap :s <C-x>s<C-p>
 inoremap :u <C-x><C-u><C-p>
 inoremap :v <C-x><C-v><C-p>
-imap :/ /:f
-imap <expr> / _InterpretForwardSlash()
+inoremap <expr> / _InterpretForwardSlash()
 imap <C-h> <Esc><C-h>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
@@ -81,60 +135,27 @@ imap <C-l> <Esc><C-l>
 
 " >>> VISUAL
 vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
-vnoremap <silent> <Leader><Leader>i :w !ix \| xclip -sel clipboard<CR>
+vnoremap <silent> <Leader>.i :w !ix \| xclip -sel clipboard<CR>
+vnoremap <Leader>s :sort ri //<Left>
 vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
 vnoremap <Space> $<Left>
 xnoremap # :<C-u>call <SID>_VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-xnoremap & :&&<CR>
 xnoremap * :<C-u>call <SID>_VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
+xnoremap & :&&<CR>
 
-" >>> NORMAL
-nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
-nnoremap \ ,
-nnoremap <C-Del> :call delete(expand('%'))<CR>| " deletes current file and buffer
-nnoremap <C-g> :Gstatus<CR>
-nnoremap <C-s> :SyntasticToggleMode<CR>
-nnoremap <CR> o<Esc>| " Makes enter key work right in Normal mode
-nnoremap <Leader>/ /\v<><Left>
-nnoremap <Leader>. :cd ..<CR>:call AddPWDtoPath()<CR>:pwd<CR>
-nnoremap <Leader>0 :cd %:h<CR>:pwd<CR>| " cd to current working directory
-nnoremap <Leader>1 :b1<CR>
-nnoremap <Leader>2 :b2<CR>
-nnoremap <Leader>3 :b3<CR>
-nnoremap <Leader>4 :b4<CR>
-nnoremap <Leader>5 :b5<CR>
-nnoremap <Leader>6 :b6<CR>
-nnoremap <Leader>7 :b7<CR>
-nnoremap <Leader>8 :b8<CR>
-nnoremap <Leader>9 :b9<CR>
-nnoremap <Leader><space> a<space><esc>hi<space><esc>l| " Put space before and after character under cursor
-nnoremap <Leader>a :AnsiEsc<CR>
-nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>| " Delete Buffer
-nnoremap <Leader>D :call _RemoveFile()<CR>
-nnoremap <Leader>e :quit<CR>| " Shortcut for quiting vim
-nnoremap <Leader>F :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
-nnoremap <Leader>f :CtrlSF 
-nnoremap <Leader>g gqap| " mapping to wrap paragraph
-nnoremap <Leader>O O<C-u>
-nnoremap <Leader>o o<C-u>
-nnoremap <Leader>p :CtrlPMRU<CR>
-nnoremap <Leader>R :w<CR>:Run2<CR>| imap <Leader>R <Esc><Leader>R
-nnoremap <Leader>r :w<CR>:Run<CR>| imap <Leader>r <Esc><Leader>r
-nnoremap <Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>| " Edit Snippet File
-nnoremap <Leader><Leader>S :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>| " Edit Snippet File
-nnoremap <Leader><Leader><Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/all.snippets<CR>
-nnoremap <Leader>s :w<CR>| " Shortcut for saving vim
-nnoremap <Leader><Leader>s :w !sudo tee > /dev/null %<CR>
-nnoremap <Leader>v :vert sb| imap <Leader>v <Esc><Leader>v
-nnoremap <space> i<space><esc>l| " Allows space to work in Normal-Mode
-nnoremap gd :Gdiff 
-nnoremap gj j
-nnoremap gk k
-nnoremap gs :Gstatus<CR>
-nmap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
-nmap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
-nnoremap j gj
-nnoremap k gk
+" >>> COMMAND
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap w!! w !sudo tee > /dev/null %
+
+" >>> OPERATOR
+onoremap @ iW
+
+"""""""""""""""""""
+"  Abbreviations  "
+"""""""""""""""""""
+cnoreabbrev F find
+cnoreabbrev S CtrlSF
 
 """"""""""""""
 "  AutoCmds  "
@@ -153,13 +174,17 @@ autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
 autocmd BufRead,BufNewFile *.txt set colorcolumn=
 autocmd BufRead,BufNewFile *.txt set filetype=txt
 autocmd BufRead,BufNewFile *.xmobarrc set syntax=haskell
-autocmd BufRead,BufNewFile *mutt-* setfiletype mail
-autocmd BufRead,BufNewFile .coveragerc set ft=cfg
-autocmd BufRead,BufNewFile CMakeLists.txt set ft=cmake
-autocmd BufRead,BufNewFile config set ft=cfg
-autocmd BufReadPost /usr/include/c++/**/* set ft=cpp
+autocmd BufRead,BufNewFile *mutt-* set filetype=mail
+autocmd BufRead,BufNewFile .coveragerc set filetype=cfg
+autocmd BufRead,BufNewFile CMakeLists.txt set filetype=cmake
+autocmd BufRead,BufNewFile config set filetype=cfg
+autocmd BufReadPost /etc/portage/sets/* set filetype=txt
+autocmd BufReadPost /usr/include/c++/**/* set filetype=cpp
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost quickfix nnoremap <CR> <CR>
+autocmd BufReadPost fcr-* set filetype=crontab
+autocmd! BufWritePost vimrc source %  " Automatic rewriting of .vimrc
+autocmd! BufWritePost .Xresources :Silent xrdb merge /home/bryan/.Xresources
 autocmd CmdwinEnter * nnoremap <CR> <CR>| " http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
 autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
 autocmd FileType * setlocal formatoptions-=t
@@ -167,7 +192,9 @@ autocmd FileType mail setlocal spell spelllang=en_us
 autocmd FileType man setlocal nowrap
 autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro  " Disables auto-comments on newlines and disables autowrap
 autocmd FocusGained,BufEnter * :checktime  " Reloads buffer on buffer changes
-autocmd! BufWritePost .vimrc source %  " Automatic rewriting of .vimrc
+autocmd InsertEnter * set timeoutlen=500
+autocmd InsertLeave * set timeoutlen=1000
+
 
 " Creates current file's parent directory if it doesn't already exist
 augroup BWCCreateDir
@@ -178,11 +205,22 @@ augroup END
 """""""""""""""
 "  Functions  "
 """""""""""""""
-" --------------------------------------------------
 " ----- PUBLIC FUNCTIONS (used in other files) -----
-" --------------------------------------------------
+function! DeleteEmptyBuffers()
+    let [i, n; empty] = [1, bufnr('$')]
+    while i <= n
+        if bufexists(i) && bufname(i) == ''
+            call add(empty, i)
+        endif
+        let i += 1
+    endwhile
+    if len(empty) > 0
+        exe 'bdelete' join(empty)
+    endif
+endfunction
+
 " Boolean function which checks if @plugin is installed
-function PluginInstalled(plugin)
+function! PluginInstalled(plugin)
     return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
 endfunction
 
@@ -199,9 +237,7 @@ function! VSwitchToTest(ext)
     call _SwitchToTest(a:ext, 'vert sf')
 endfunction
 
-" ------------------------------------------------------
 " ----- PRIVATE FUNCTIONS (used only in this file) -----
-" ------------------------------------------------------
 function! _GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
@@ -216,19 +252,19 @@ function! _InterpretForwardSlash()
         let ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
         if (ch == '>')
             if (last_ch == "/")
-                return ":h" " ':h' is a mapping that should be defined in ftplugin/c.vim
+                return ",.h" " ':h' is a mapping that should be defined in ftplugin/c.vim
             endif
 
-            return "/:h"
+            return "/,.h"
         endif
     endif
 
-    if ((last_ch == "/") && pumvisible())
-        return ":f"
+    if (last_ch == "/" && pumvisible())
+        return "\<C-x>\<C-f>\<C-p>"
     endif
 
-    if (((last_ch == "~") || last_ch == ".") || pumvisible())
-        return "/:f"
+    if (((last_ch == "~") || last_ch == ".") || pumvisible() || last_ch =~ "[A-z0-9]")
+        return "/\<C-x>\<C-f>\<C-p>"
     endif
 
     return "/"
@@ -236,7 +272,7 @@ endfunction
 
 " Automatically creates directory if it does not already exist
 " https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
-function s:_MkNonExDir(file, buf)
+function! s:_MkNonExDir(file, buf)
 	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
 		let dir=fnamemodify(a:file, ':h')
 		if !isdirectory(dir)
@@ -276,9 +312,9 @@ function! _SwitchToTest(ext, fcmd)
     let basename = expand('%:t:r')
     if basename =~ 'test_.*'
         let pyfile = split(basename, "_")[1]
-        exec a:fcmd . " " . pyfile . "." . a:ext
+        execute a:fcmd . " " . pyfile . "." . a:ext
     else
-        exec a:fcmd . " test_" . basename . "." . a:ext
+        execute a:fcmd . " test_" . basename . "." . a:ext
     endif
 endfunction
 
@@ -289,21 +325,26 @@ function! s:_VSetSearch(cmdtype)
 	let @s = temp
 endfunction
 
+""""""""""""""""""""""""""""""""
+"  Custom Command Definitions  "
+""""""""""""""""""""""""""""""""
+" Redraws screen after silent command
+command! -nargs=1 Silent
+\   execute 'silent !' . <q-args>
+\ | execute 'redraw!'
+
+" Removes all swap files in the current working directory
+command! RmSwap execute "Silent rm " . expand('%:h') . "/.*.swp"
+
 """""""""""""""""""
 "  Miscellaneous  "
 """""""""""""""""""
 " ----- Appends the open file's directory and the CWD to PATH -----
 let tempPath=getcwd() . "/**"
-exec "set path+=" . tempPath
+execute "set path+=" . tempPath
 
 let tempPath=expand("%:p:h") . "/**"
-exec "set path+=" . tempPath
-
-" ----- Custom Command Definitions -----
-" Redraws screen after silent command
-command! -nargs=1 Silent
-\   execute 'silent !' . <q-args>
-\ | execute 'redraw!'
+execute "set path+=" . tempPath
 
 " ----- Enable Plugins -----
 filetype plugin indent on

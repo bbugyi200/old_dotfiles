@@ -92,12 +92,14 @@ tsm-stop() { killall -9 transmission-daemon; }
 tsm-watch() { watch -n 1 transmission-remote -l; }
 alias undow='dow --reverse'
 alias updatedb='sudo updatedb'
-vab() { vim "$(find /home/bryan/Dropbox/scripts/bin/cron.jobs -type f | tr '\n' ' ')"; }
-alias vdb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.daily/*'
-alias vwb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.weekly/*'
-alias vmb='vim /home/bryan/Dropbox/scripts/bin/cron.jobs/cron.monthly/*'
+alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
+# shellcheck disable=SC2046
+vab() { vim $(find /home/bryan/Dropbox/scripts/bin/cron -type f | tr '\n' ' '); }
+alias vdb='vim /home/bryan/Dropbox/scripts/bin/cron/cron.daily/*'
+alias vwb='vim /home/bryan/Dropbox/scripts/bin/cron/cron.weekly/*'
+alias vmb='vim /home/bryan/Dropbox/scripts/bin/cron/cron.monthly/*'
 alias vihor='vim ~/Dropbox/notes/Horizons_of_Focus/*'
-alias vsl='vshlog -u -H all -G '
+alias vsl='vshlog -u -D BOT EOT -H all -G'
 alias vstudy='vim /home/bryan/.vimwiki/TaskWarrior.wiki'
 vuse() { vim /etc/portage/package.use/"$1"; }
 alias w='which'

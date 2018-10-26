@@ -2,13 +2,13 @@ command! -nargs=0 Run exec "make"
 command! -nargs=0 Run2 exec "make build-release"
 command! -nargs=0 CacheHeaders !cache_cheaders
 
-imap :h :k
-imap :H #include <><Left>:k
-nnoremap <Leader>m :Man 3 <C-r><C-w><CR>/^[A-Z]\+<CR>gg
-nnoremap <Leader>M :e Makefile<CR>
-nmap <Leader>h :call SwitchSourceHeader()<CR>
-nmap <Leader>t :call SwitchToCTest()<CR>
-nmap <Leader>T :call VSwitchToCTest()<CR>
+imap <buffer> <Leader>.h :k
+imap <buffer> <Leader>.H #include <><Left>:k
+nnoremap <buffer> <Leader>m :Man 3 <C-r><C-w><CR>/^[A-Z]\+<CR>gg
+nnoremap <buffer> <Leader>M :e Makefile<CR>
+nnoremap <buffer> <Leader>h :execute "find " . expand('%:t:r') . ".h"<CR>
+nnoremap <buffer> <Leader>t :execute "find test_" . expand('%:t:r') . ".cc"<CR>
+nnoremap <buffer> <Leader>T :execute "tabfind test_" . expand('%:t:r') . ".cc"<CR>
 
 setlocal dictionary+=/home/bryan/Dropbox/var/cheaders.txt
 setlocal iskeyword+=.,/,-

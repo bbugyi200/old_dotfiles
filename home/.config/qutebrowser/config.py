@@ -18,17 +18,6 @@ config.load_autoconfig()
 ####################
 #  Search Engines  #
 ####################
-def bang_pttrn():
-    """Returns regex pattern that matches DuckDuckGo bangs that I like to use."""
-    one_letter_bangs = ['a', 'd', 'g', 'm', 't', 'w', ]
-    two_letter_bangs = ['gm', 'ho', 'wa', 'yt', ]
-    long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
-    included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
-
-    bang_fmt = '^({}) '
-    return bang_fmt.format('|'.join(included_bangs))
-
-
 c.url.searchengines = {
     '2': 'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}',
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
@@ -40,7 +29,7 @@ c.url.searchengines = {
     'cc': SE.static.stackoverflow(5, prefix='C\\+\\+'),
     'DEFAULT': SE.SearchEngine(SE.static.google('{}'),
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),
-                               SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
+                               SE.URL(SE.static.duckduckgo('!{}'), SE.utils.bang_pttrn()),
                                SE.LuckyURL('{}')),
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
                           SE.OneIntURL(SE.static.google('Season {0} {1} episodes'))),
@@ -77,6 +66,7 @@ c.url.searchengines = {
     'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.static.site('reddit.com'),
     'so': SE.static.site('stackoverflow.com'),
+    'st': SE.static.google('set timer for {}'),
     'sql': SE.static.stackoverflow(7, prefix='SQL Queries'),
     'sub': SE.SearchEngine(SE.static.google('{} inurl:english site:subscene.com'),
                            SE.LuckyURL('{0} inurl:english site:subscene.com'),
@@ -147,17 +137,10 @@ pbind('<Ctrl-o>', 'prompt-open-download xdg-open {}')
 
 # >>> COMMAND
 cbind('<Ctrl-f>', 'edit-command --run')
+cbind('<Ctrl-y>', 'fake-key --global <Return>v$y')
 
 # >>> NORMAL
-bind('\\', 'set-cmd-text :open /')
-bind('|', 'set-cmd-text :open -t /')
-bind('[b', 'tab-prev')
-bind(']b', 'tab-next')
-bind('<Alt-p>', 'open -p')
-bind('<Ctrl-l>', 'edit-url')
-bind('<Ctrl-r>', 'restart')
-bind('<Ctrl-t>', 'spawn --userscript taskadd tags:inbox')
-bind('<Escape>', 'search', 'clear-messages')
+# ----- Alphanumeric -----
 bind(',1', 'buffer 1')
 bind(',2', 'buffer 2')
 bind(',3', 'buffer 3')
@@ -167,41 +150,52 @@ bind(',6', 'buffer 6')
 bind(',7', 'buffer 7')
 bind(',8', 'buffer 8')
 bind(',9', 'buffer 9')
-bind(',b', 'set-cmd-text :bookmark-add {url} "')
-bind(',D', 'set-cmd-text -s :session-delete')
-bind(',e', 'spawn --userscript searchbar-command')
-bind(',h', 'set-cmd-text -s :help')
-bind(',H', 'set-cmd-text -s :help -t')
-bind(',L', 'set-cmd-text -s :session-load')
-bind(',m', 'spawn --userscript view_in_umpv -d')
-bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
-bind(',rss', 'spawn --userscript openfeeds')
-bind(',S', 'set-cmd-text -s :session-save -o')
-bind(',t', 'config-cycle tabs.position left top')
-bind(',y', 'fake-key --global v$y')
-bind(';m', 'hint all spawn -v umpv {hint-url}', 'message-info "Select video to load with umpv."')
-bind(';M', 'hint all spawn -v umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
-bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
-bind(';T', 'hint links spawn -v torrent -d {hint-url}', 'message-info "Select magnet link to torrent."')
-bind(';Y', 'hint links spawn -v ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
-bind('a', 'set-cmd-text -s :quickmark-load')
 bind('A', 'set-cmd-text -s :quickmark-load -t')
+bind('a', 'set-cmd-text -s :quickmark-load')
+bind(',b', 'set-cmd-text :bookmark-add {url} "')
 bind('b', 'quickmark-save')
 bind('B', 'bookmark-add --toggle')
 bind('cd', 'download-cancel')
 bind('C', 'tab-clone')
+bind(',D', 'set-cmd-text -s :session-delete')
 bind('D', 'download')
+bind(',e', 'spawn --userscript searchbar-command')
 bind('gi', 'hint inputs')
+bind(',h', 'set-cmd-text -s :help')
+bind(',H', 'set-cmd-text -s :help -t')
+bind(',L', 'set-cmd-text -s :session-load')
+bind(',m', 'spawn --userscript view_in_umpv -d')
+bind(';m', 'hint all spawn -v umpv {hint-url}', 'message-info "Select video to load with umpv."')
+bind(';M', 'hint all spawn -v umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
 bind('m', 'enter-mode set_mark')
+bind(',p', 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/')
+bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
 bind('p', 'open -- {clipboard}')
 bind('P', 'open -t -- {clipboard}')
+bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
+bind(',rss', 'spawn --userscript openfeeds')
+bind(',S', 'set-cmd-text -s :session-save -o')
+bind(',t', 'config-cycle tabs.position left top')
+bind(';T', 'hint links spawn -v torrent -d {hint-url}', 'message-info "Select magnet link to torrent."')
 bind('t-', 'tab-only')
 bind('tt', 'set-cmd-text -s :tab-take')
 bind('tg', 'set-cmd-text -s :tab-give')
+bind('w-', 'window-only')
 bind('x', 'tab-close')
 bind('X', 'tab-close -o')
-bind('w-', 'window-only')
-bind('Y', 'spawn ytcast {url}', 'message-info "Casting YouTube to chromecast..."')
+bind(',Y', 'spawn ytcast {url}', 'message-info "Casting YouTube to chromecast..."')
+bind(';Y', 'hint links spawn -v ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
+bind('Y', 'fake-key --global v$y')
+# ----- Miscellaneous -----
+bind('\\', 'set-cmd-text :open /')
+bind('|', 'set-cmd-text :open -t /')
+bind('[b', 'tab-prev')
+bind(']b', 'tab-next')
+bind('<Alt-p>', 'open -p')
+bind('<Ctrl-l>', 'edit-url')
+bind('<Ctrl-r>', 'restart')
+bind('<Ctrl-y>', 'fake-key --global v$y')
+bind('<Escape>', 'search', 'clear-messages')
 
 ######################
 #  Load yaml Config  #

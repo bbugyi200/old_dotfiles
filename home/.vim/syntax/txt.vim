@@ -6,7 +6,7 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syn cluster txtContains add=Todo,BeginWS,Underlined
+syn cluster txtContains add=Todo,BeginWS,Underlined,WildMenu
 
 " Title
 syn region WildMenu start="###" end="###$" contains=@NoSpell oneline
@@ -29,12 +29,13 @@ syn match Underlined "http\S*" contains=@NoSpell,EndP
 
 " Comments
 syn region Comment start="\/\/" end="$" contains=@txtContains,@NoSpell oneline
+syn region Comment start="#" end="$" contains=@txtContains,@NoSpell oneline
 syn region Comment start="\/\*" end="\*\/" contains=@txtContains,@NoSpell
 
 " Highlights
 " 'keepend' prevents contains items from extending the outer item
 syn keyword Todo TODO NOTE FIXME
-syn region Todo start="\([A-Z]\{2,\}:\|:\)::" end="$" contains=@NoSpell oneline
+syn region Todo start="::" end="$" contains=@NoSpell oneline
 
 syn region Todo start="<\[" end="\]>" oneline
 " syn region ErrorMsg start="{" end="}" oneline

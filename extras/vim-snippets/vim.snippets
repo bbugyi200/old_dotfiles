@@ -3,8 +3,24 @@ priority -50
 ###########################################################################
 #                            SnipMate Snippets                            #
 ###########################################################################
+snippet exp "expand('%')"
+expand('%$1')
+endsnippet
+
+snippet - "Comment Heading"
+" ----- $1 -----
+endsnippet
+
+snippet ~ "Comment Sub-heading"
+" ~ $1 ~
+endsnippet
+
 snippet l "<Leader>" i
 <Leader>
+endsnippet
+
+snippet lo "<LocalLeader>" i
+<LocalLeader>
 endsnippet
 
 snippet T "custom T command"
@@ -28,7 +44,7 @@ execute "normal $1"
 endsnippet
 
 snippet map "new mapping"
-${2:${1:n}noremap} ${3:KEY(S)} ${4:BINDING}
+${2:${1:n}noremap}${3/.+/ </m}${3:nowait}${3/.+/>/m} $4 $5
 endsnippet
 
 snippet -- "----- Heading -----"

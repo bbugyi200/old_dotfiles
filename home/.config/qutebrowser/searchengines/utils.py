@@ -19,3 +19,14 @@ def encode(query):
     encoded = re.sub(r'{(\d)%3A', r'{\1:', encoded)
 
     return encoded
+
+
+def bang_pttrn():
+    """Returns regex pattern that matches DuckDuckGo bangs that I like to use."""
+    one_letter_bangs = ['a', 'd', 'g', 'm', 't', 'w', ]
+    two_letter_bangs = ['gm', 'ho', 'wa', 'yt', ]
+    long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
+    included_bangs = one_letter_bangs + two_letter_bangs + long_bangs
+
+    bang_fmt = '^({}) '
+    return bang_fmt.format('|'.join(included_bangs))
