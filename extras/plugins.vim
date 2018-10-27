@@ -271,13 +271,6 @@ if PluginInstalled("UltiSnips")
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 endif
 
-""""""""""""""""
-"  Unimpaired  "
-""""""""""""""""
-if PluginInstalled("unimpaired")
-    let g:nremap = {'[t': '[T', ']t': ']T'}
-endif
-
 """""""""""""
 "  Vimwiki  "
 """""""""""""

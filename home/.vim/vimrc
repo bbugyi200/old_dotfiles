@@ -65,6 +65,9 @@ nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>| " Delete Buffer
 nnoremap <Leader>D :call _RemoveFile()<CR>
 nnoremap <Leader>e :quit<CR>| " Shortcut for quiting vim
 nnoremap <Leader>f :find 
+nnoremap <LocalLeader>fs :sfind 
+nnoremap <LocalLeader>fv :vert sfind 
+nnoremap <LocalLeader>ft :tabfind 
 nnoremap gd :Gdiff 
 nnoremap gj j
 nnoremap gk k
@@ -93,8 +96,6 @@ nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap - :<C-u>execute "buffer " . v:count1<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
-nnoremap ]t :tabnext<CR>
-nnoremap [t :tabprevious<CR>
 nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
 nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
 " ----- Special Characters -----
@@ -104,7 +105,6 @@ nnoremap <RightMouse> <LeftMouse>""p
 map <MiddleMouse> <Nop>
 " ~ Miscellaneous ~
 nnoremap <Del> :<C-u>execute "bdelete " . v:count<CR>
-nnoremap <C-g> :Gstatus<CR>
 nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <CR> o<Esc>
 nnoremap <LocalLeader><LocalLeader> /\v<><Left>

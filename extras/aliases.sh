@@ -94,7 +94,7 @@ alias undow='dow --reverse'
 alias updatedb='sudo updatedb'
 alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
 # shellcheck disable=SC2046
-vab() { vim $(find /home/bryan/Dropbox/scripts/bin/cron -type f | tr '\n' ' '); }
+vab() { vim $(find /home/bryan/Dropbox/scripts/bin/cron.jobs -type f | tr '\n' ' '); }
 alias vdb='vim /home/bryan/Dropbox/scripts/bin/cron/cron.daily/*'
 alias vwb='vim /home/bryan/Dropbox/scripts/bin/cron/cron.weekly/*'
 alias vmb='vim /home/bryan/Dropbox/scripts/bin/cron/cron.monthly/*'
