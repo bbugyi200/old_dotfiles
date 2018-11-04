@@ -30,7 +30,7 @@ ${3:var} = out.decode().strip()
 endsnippet
 
 snippet ft "format" i
-format($1)
+format(${1:${VISUAL}})
 endsnippet
 
 snippet fmt "''.format(...)" i
@@ -41,24 +41,23 @@ snippet spsh "sp.check_call('...', shell=True)"
 sp.check_call('$1', shell=True)
 endsnippet
 
-snippet ee "Print (echo) and Exit"
-print("${1}:: %s" % ($1,))
-import sys; sys.exit(0)
-endsnippet
-
 snippet d "log.debug"
 log.debug($1)
 endsnippet
 
+snippet pd "print(..., file=sys.stderr)"
+print($1, file=sys.stderr)
+endsnippet
+
 snippet dv "Print vdebug log message of variable value."
-log.vdebug('${1:VARIABLE}: %s', repr($1))
+log.vdebug('${1:VARIABLE} => %s', repr($1))
 endsnippet
 
 snippet pdv "Print message with variable value."
-print('${1:VARIABLE}: {}'.format(repr($1)))
+print('${1:VARIABLE} => {}'.format(repr($1)), file=sys.stderr)
 endsnippet
 
-snippet e0 "sys.exit(0)"
+snippet ex "sys.exit(0)"
 import sys; sys.exit(0)
 endsnippet
 
@@ -719,8 +718,8 @@ endsnippet
 snippet try "Try / Except" b
 try:
 	${1:${VISUAL:pass}}
-except ${2:Exception} as ${3:e}:
-	${4:raise $3}
+except ${2:Exception}:
+	${3:pass}
 endsnippet
 
 snippet trye "Try / Except / Else" b

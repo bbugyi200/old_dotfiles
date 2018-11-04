@@ -107,6 +107,9 @@ seqSwap = [removeEmptyWorkspace', CW.swapNextScreen, removeEmptyWorkspace']
 pushDesktop :: String -> X ()
 pushDesktop key = spawn $ "xmonad-scratch-bind " ++ key ++ " 0.15"
 
+delayedSpawn :: Int -> String -> X ()
+delayedSpawn seconds cmd = spawn $ "sleep " ++ show seconds ++ " && " ++ cmd
+
 --------------------
 --  Key Bindings  --
 --------------------
@@ -222,7 +225,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, DW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
+   , ((alpha, xK_comma), sequence_ [NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); ll'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; ll'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
@@ -319,12 +322,12 @@ myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
                 >> spawn "init-bg"
                 >> spawn "xrandr --output HDMI2 --auto --rotate right"
-                >> spawn "sleep 2 && calalrms -d"
-                >> spawn "sleep 2 && xmonad-suntimes"
-                >> spawn "sleep 2 && xmonad-volume"
-                >> spawn "sleep 2 && xmonad-weather"
-                >> spawn "sleep 2 && xmonad-timew"
-                >> spawn "sleep 5 && emanage -m"
+                >> delayedSpawn 2 "calalrms"
+                >> delayedSpawn 2 "xmonad-suntimes"
+                >> delayedSpawn 2 "xmonad-volume"
+                >> delayedSpawn 2 "xmonad-weather"
+                >> delayedSpawn 2 "xmonad-timew"
+                >> delayedSpawn 5 "emanage -m"
                 >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=2")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=1")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=1")

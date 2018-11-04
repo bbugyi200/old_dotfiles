@@ -70,7 +70,7 @@ setopt globdots
 #################
 alias so='unalias -a && source ~/.zshrc'
 
-# --- Suffix Aliases
+# ---------- Suffix Aliases ----------
 # Zathura
 alias -s pdf="zathura"
 alias -s epub="zathura"
@@ -98,12 +98,14 @@ alias -s html="google-chrome-stable"
 alias -s avi="vlc"
 alias -s txt="vim"
 
-# --- Global Aliases
-alias -g @@="&> /dev/null & disown"
-alias -g ::="| grep -i -e"
-alias -g %="| less"
-alias -g %%="tmux send-keys '!-2 | less' Enter Enter"
-alias -g X="clear &&"
+# ---------- Global Aliases ----------
+alias -g :c="clear &&"
+alias -g :d="&> /dev/null & disown"
+alias -g :g="| grep -i -e"
+alias -g :G="| grep -A 5 -B 5 -i -e"
+alias -g :l="| less"
+alias -g :L="tmux send-keys '!-2 | less' Enter Enter"
+alias -g :w="watch -n 1"
 
 ##############
 #  Bindings  #

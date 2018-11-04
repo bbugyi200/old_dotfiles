@@ -1,3 +1,7 @@
+completion:
+    web_history:
+        max_items: -1
+
 tabs:
     last_close: startpage
     max_width: 250

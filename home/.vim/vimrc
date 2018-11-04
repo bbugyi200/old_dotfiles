@@ -54,7 +54,7 @@ let maplocalleader = "\\"
 
 " >>> NORMAL
 " ----- Numeric -----
-nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>| " cd to current working directory
+nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
 nnoremap <Leader>0s :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
@@ -107,7 +107,8 @@ map <MiddleMouse> <Nop>
 nnoremap <Del> :<C-u>execute "bdelete " . v:count<CR>
 nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <CR> o<Esc>
-nnoremap <LocalLeader><LocalLeader> /\v<><Left>
+nnoremap <Leader>/ /\v
+nnoremap <Leader>< /\v<><Left>
 nnoremap <Space> :ls<CR>
 nnoremap <Tab> <C-^>
 
@@ -206,19 +207,6 @@ augroup END
 "  Functions  "
 """""""""""""""
 " ----- PUBLIC FUNCTIONS (used in other files) -----
-function! DeleteEmptyBuffers()
-    let [i, n; empty] = [1, bufnr('$')]
-    while i <= n
-        if bufexists(i) && bufname(i) == ''
-            call add(empty, i)
-        endif
-        let i += 1
-    endwhile
-    if len(empty) > 0
-        exe 'bdelete' join(empty)
-    endif
-endfunction
-
 " Boolean function which checks if @plugin is installed
 function! PluginInstalled(plugin)
     return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
@@ -238,6 +226,19 @@ function! VSwitchToTest(ext)
 endfunction
 
 " ----- PRIVATE FUNCTIONS (used only in this file) -----
+function! _DeleteEmptyBuffers()
+    let [i, n; empty] = [1, bufnr('$')]
+    while i <= n
+        if bufexists(i) && bufname(i) == ''
+            call add(empty, i)
+        endif
+        let i += 1
+    endwhile
+    if len(empty) > 0
+        exe 'bdelete' join(empty)
+    endif
+endfunction
+
 function! _GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction

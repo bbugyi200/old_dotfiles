@@ -65,9 +65,8 @@ c.url.searchengines = {
     'p': SE.static.stackoverflow(7, prefix='Python'),
     'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.static.site('reddit.com'),
-    'so': SE.static.site('stackoverflow.com'),
+    's0': SE.static.site('stackoverflow.com'),
     'st': SE.static.google('set timer for {}'),
-    'sql': SE.static.stackoverflow(7, prefix='SQL Queries'),
     'sub': SE.SearchEngine(SE.static.google('{} inurl:english site:subscene.com'),
                            SE.LuckyURL('{0} inurl:english site:subscene.com'),
                            SE.LuckyURL('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com',
@@ -186,13 +185,17 @@ bind('X', 'tab-close -o')
 bind(',Y', 'spawn ytcast {url}', 'message-info "Casting YouTube to chromecast..."')
 bind(';Y', 'hint links spawn -v ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
 bind('Y', 'fake-key --global v$y')
-# ----- Miscellaneous -----
+# ----- Non-Alphanumeric -----
 bind('\\', 'set-cmd-text :open /')
 bind('|', 'set-cmd-text :open -t /')
 bind('[b', 'tab-prev')
+bind('[B', 'tab-focus 1')
 bind(']b', 'tab-next')
+bind(']B', 'tab-focus -1')
+# ----- Miscellaneous -----
 bind('<Alt-p>', 'open -p')
 bind('<Ctrl-l>', 'edit-url')
+bind('<Ctrl-p>', 'print')
 bind('<Ctrl-r>', 'restart')
 bind('<Ctrl-y>', 'fake-key --global v$y')
 bind('<Escape>', 'search', 'clear-messages')

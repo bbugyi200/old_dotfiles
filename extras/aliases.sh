@@ -5,9 +5,6 @@
 source /home/bryan/Dropbox/dotfiles/extras/gentoo.sh
 source /home/bryan/Dropbox/dotfiles/extras/GTD.sh
 
-alias Java='java -classpath .:../bin'
-alias Javac='javac -d ../bin'
-alias Jdb='jdb -classpath "../bin"'
 alias ag='ag --hidden'
 alias ainit='script-init -F awk -D awk -x'
 alias alg='alias | grep -e'
@@ -38,7 +35,7 @@ alias gnlog="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
 alias gpf='git push -f'
 alias grc='git rebase --continue'
 gri() { git rebase -i HEAD~"$1"; }
-alias K='kill -9'
+alias K='sudo kill -9'
 alias ipython='TERM=linux ipython'
 alias lay='sudo layman'
 alias lim='vim -c "normal \`0" -c "bdelete 1"'
@@ -103,6 +100,7 @@ alias vsl='vshlog -u -D BOT EOT -H all -G'
 alias vstudy='vim /home/bryan/.vimwiki/TaskWarrior.wiki'
 vuse() { vim /etc/portage/package.use/"$1"; }
 alias w='which'
-alias wm='wmctrl -lx'
 alias watdst='watch -n 5 dropbox-cli status'
+alias wm='wmctrl -lx'
+alias wsensors='watch -n 1 sensors -f'
 alias xc='xclip -sel clipboard'

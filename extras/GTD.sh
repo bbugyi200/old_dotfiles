@@ -7,10 +7,11 @@ kc() { clear && khal calendar --notstarted --format '{start-time} {title} [{loca
 ke() { khal edit "$@" && krestart_alarms; }
 ki() { ikhal "$@" && krestart_alarms; }
 krestart_alarms() { setsid calalrms -d &> /dev/null; }
-alias m="neomutt"
-alias mb='neomutt -f /var/spool/mail/bryan'
-alias mg="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
-alias mr='sudo neomutt -f /var/spool/mail/root'
+alias kstop='kdel "START BREAK" && kdel "END BREAK" && kdel EOS && krestart_alarms'
+alias mutt="neomutt"
+alias bmutt='neomutt -f /var/spool/mail/bryan'
+alias gmutt="neomutt -e 'source ~/.mutt/hooks/bryanbugyi34.gmail'"
+alias rmutt='sudo neomutt -f /var/spool/mail/root'
 alias p='pass'
 alias pi='pass insert'
 alias pmi='pass insert -m'
