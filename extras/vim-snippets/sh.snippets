@@ -59,8 +59,8 @@ snippet $ "Description" i
 endsnippet
 
 snippet mread "Initialize Multiline String with 'read'"
-read -r -d '' ${1:VAR} << EOM
-$0
+read -r -d '' ${1:var_name} << EOM
+${2:${VISUAL}}
 EOM
 endsnippet
 
@@ -94,7 +94,7 @@ fi
 endsnippet
 
 snippet usage "Print Usage Info"
-usage="usage: ${scriptname} $1"
+usage="${usage} $1"
 endsnippet
 
 snippet log "Log to STDIN and System Log"
@@ -113,6 +113,8 @@ snippet getopt "parse arguments with getopt"
 eval set -- "$(getopt -o "d,h,v$1" -l "debug,help,verbose$2" -- "$@")"
 
 read -r -d '' help << EOM
+${doc}
+
 ${usage}
 EOM
 

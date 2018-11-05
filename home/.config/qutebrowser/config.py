@@ -34,6 +34,7 @@ c.url.searchengines = {
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
                           SE.OneIntURL(SE.static.google('Season {0} {1} episodes'))),
     'ge': SE.static.google('gentoo {}'),
+    'geb': 'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific',
     'gep': SE.SearchEngine(SE.static.site('packages.gentoo.org', 'gpo.zugaina.org'),
                            SE.LuckyURL('{} site:packages.gentoo.org')),
     'gh': SE.SearchEngine(SE.static.site('github.com'),

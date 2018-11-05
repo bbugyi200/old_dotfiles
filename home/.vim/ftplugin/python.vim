@@ -1,7 +1,6 @@
-" -------------------------------------------------------------------------------------------------
 command! -nargs=0 Run exec "!pytest -v %"
-command! -nargs=0 T exec ":e ~/Dropbox/scripts/templates/template.py"
-command! -nargs=0 TT exec ":e ~/Dropbox/scripts/templates/test_template.py"
+command! -nargs=0 T exec ":e ~/Dropbox/scripts/templates/script-init/template.1.py"
+command! -nargs=0 TT exec ":e ~/Dropbox/scripts/templates/script-init/template.2.py"
 
 
 " ------------------------------------- MULTILINE STRINGS -----------------------------------------

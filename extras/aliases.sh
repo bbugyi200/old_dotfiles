@@ -6,10 +6,11 @@ source /home/bryan/Dropbox/dotfiles/extras/gentoo.sh
 source /home/bryan/Dropbox/dotfiles/extras/GTD.sh
 
 alias ag='ag --hidden'
-alias ainit='script-init -F awk -D awk -x'
+alias ainit='script-init -F awk -D awk --use-extension=y'
 alias alg='alias | grep -e'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 alias binit='script-init -F bash'
+alias Binit='script-init -F bash -T 2'
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 cho() { sudo chown -R "$2":"$2" "$1"; }
@@ -31,7 +32,7 @@ alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gho='ghi open'
 alias ghooks='rm -rf .git/hooks && git init' 
 alias git='hub'
-alias gnlog="git log --oneline --color=always | nl -s ':  ' -v 0 | less"
+alias gnlog="git log --oneline --decorate --graph --color=always | nl -s ':  ' -v 0 | less"
 alias gpf='git push -f'
 alias grc='git rebase --continue'
 gri() { git rebase -i HEAD~"$1"; }
@@ -57,6 +58,7 @@ pgr() { pgrep -f ".*$1.*"; }
 psg() { ps -aux | grep "$1" | grep -v grep; }
 pvar() { set | grep -i -e "^$1"; }
 alias pyinit='script-init -F python'
+alias Pyinit='script-init -F python -T 2 --executable=n --use-extension=y'
 rim() { vim -c "normal ,p$*"; }
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 alias rm="safe-rm"
@@ -73,7 +75,7 @@ alias su='su - -p'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias sudoers='sudo vim /etc/sudoers'
 alias sqlite3='rlwrap -a -N -c -i sqlite3'
-alias texinit='script-init -F latex -N -f -x'
+alias texinit='script-init -F latex -f --executable=n --use-extension=y'
 alias time='/usr/bin/time'
 tmd() { tmux display-message -p "#{$1}"; }
 # shellcheck disable=SC2142

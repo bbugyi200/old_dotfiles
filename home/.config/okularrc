@@ -20,23 +20,23 @@ Width 1920=1910
 
 [Recent Files]
 File1[$e]=$HOME/Dropbox/books/Programming/C/21st_Century_C-(Klemens).pdf
-File10[$e]=$HOME/Dropbox/books/Programming/Tools/Databases/A_First_Course_in_Database_Systems-(Widom).okular
+File10[$e]=$HOME/Dropbox/books/Programming/Programming_Languages/Compilers:Principles_Techniques_and_Tools-(Aho).djvu
 File2[$e]=$HOME/Dropbox/study/Databases/lectures/week5/RelationalDesign.pdf
 File3[$e]=$HOME/Dropbox/study/Databases/lectures/week4/lec8_ER_to_relations.pdf
 File4[$e]=$HOME/Dropbox/books/Programming/Operating_Systems/Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
 File5[$e]=$HOME/Downloads/Mapping_Keys_in_Vim-1.pdf
 File6[$e]=$HOME/Dropbox/books/Programming/Tools/vim/Mapping_Keys_in_Vim.pdf
-File7[$e]=$HOME/Dropbox/books/Programming/Programming_Languages/Compilers:Principles_Techniques_and_Tools-(Aho).djvu
+File7[$e]=$HOME/Dropbox/books/Programming/Tools/Databases/A_First_Course_in_Database_Systems-(Widom).okular
 File8[$e]=$HOME/Dropbox/books/Programming/Programming_Languages/Programming_Language_Pragmatics-(Scott).pdf
 File9[$e]=$HOME/Dropbox/books/Programming/Programming_Languages/PLP_Supplementary_Sections.pdf
 Name1[$e]=21st_Century_C-(Klemens).pdf
-Name10[$e]=A_First_Course_in_Database_Systems-(Widom).okular
+Name10[$e]=Compilers:Principles_Techniques_and_Tools-(Aho).djvu
 Name2[$e]=RelationalDesign.pdf
 Name3[$e]=lec8_ER_to_relations.pdf
 Name4[$e]=Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
 Name5[$e]=Mapping_Keys_in_Vim-1.pdf
 Name6[$e]=Mapping_Keys_in_Vim.pdf
-Name7[$e]=Compilers:Principles_Techniques_and_Tools-(Aho).djvu
+Name7[$e]=A_First_Course_in_Database_Systems-(Widom).okular
 Name8[$e]=Programming_Language_Pragmatics-(Scott).pdf
 Name9[$e]=PLP_Supplementary_Sections.pdf
 

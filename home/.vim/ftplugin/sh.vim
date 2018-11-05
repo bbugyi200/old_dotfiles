@@ -60,4 +60,4 @@ nnoremap <Leader># :call EndOfBox()<CR>
 nnoremap <Leader><Leader># :call MakeBox()<CR>
 nnoremap <Leader><Leader><Leader># :call BoxBar()<CR>
 
-command! -nargs=0 T exec ":e ~/Dropbox/scripts/templates/template.sh"
+command! -nargs=0 T exec ":e ~/Dropbox/scripts/templates/script-init/template.1.sh"

@@ -49,6 +49,11 @@ if PluginInstalled("ctrlsf")
     let g:ctrlsf_position = 'top'
     let g:ctrlsf_regex_pattern = 1
     let g:ctrlsf_default_root = 'project'
+    
+    let g:ctrlsf_mapping = {
+                \ "next": "n",
+                \ "prev": "N",
+                \ }
 endif
 
 """"""""""""""
