@@ -9,8 +9,8 @@ alias ag='ag --hidden'
 alias ainit='script-init -F awk -D awk --use-extension=y'
 alias alg='alias | grep -e'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
-alias binit='script-init -F bash'
-alias Binit='script-init -F bash -T 2'
+alias binit='script-init -F sh'
+alias Binit='script-init -F sh -T 2'
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 cho() { sudo chown -R "$2":"$2" "$1"; }
@@ -58,7 +58,7 @@ pgr() { pgrep -f ".*$1.*"; }
 psg() { ps -aux | grep "$1" | grep -v grep; }
 pvar() { set | grep -i -e "^$1"; }
 alias pyinit='script-init -F python'
-alias Pyinit='script-init -F python -T 2 --executable=n --use-extension=y'
+alias Pyinit='script-init -F python -T 2 -f --executable=n --use-extension=y'
 rim() { vim -c "normal ,p$*"; }
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 alias rm="safe-rm"
@@ -75,7 +75,7 @@ alias su='su - -p'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias sudoers='sudo vim /etc/sudoers'
 alias sqlite3='rlwrap -a -N -c -i sqlite3'
-alias texinit='script-init -F latex -f --executable=n --use-extension=y'
+alias texinit='script-init -F tex -f --executable=n --use-extension=y'
 alias time='/usr/bin/time'
 tmd() { tmux display-message -p "#{$1}"; }
 # shellcheck disable=SC2142

@@ -106,6 +106,12 @@ if PluginInstalled("deoplete")
                 \ })
 endif
 
+"""""""""""""""""
+"  DelimitMate  "
+"""""""""""""""""
+if PluginInstalled('delimitMate')
+endif
+
 """"""""""""*
 "  EasyTags "
 """""""""""""

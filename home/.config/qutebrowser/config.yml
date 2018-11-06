@@ -13,7 +13,7 @@ tabs:
     select_on_remove: next
     show: always
     title:
-        format_pinned: "[{index}]: {title}"
+        format_pinned: "[{index}]"
 
 url:
     start_pages: https://www.google.com

@@ -56,6 +56,8 @@ let maplocalleader = "\\"
 nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
 nnoremap <Leader>0s :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
+nnoremap <Leader>0t :e ~/Dropbox/scripts/templates/script-init/template.1.<C-R>=&filetype<CR><CR>
+nnoremap <Leader>0T :e ~/Dropbox/scripts/templates/script-init/template.2.<C-R>=&filetype<CR><CR>
 nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>0lv :e <C-R>=getcwd()<CR>/.lvimrc<CR>
 " ----- Alphabetic -----
@@ -77,7 +79,7 @@ nnoremap <Leader>p :CtrlPMRU<CR>
 nnoremap <Leader>r :update<CR>:Run<CR>| imap <Leader>r <Esc><Leader>r
 nnoremap <Leader>R :update<CR>:Run2<CR>| imap <Leader>R <Esc><Leader>R
 nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
-nnoremap <Leader>s :update<CR> | imap <Leader>s <Esc><Leader>s
+nnoremap <Leader>s :update<CR>| imap <Leader>s <Esc><Leader>s
 nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
 nmap S ys
 nnoremap <Leader>v :vert sfind 
@@ -112,21 +114,6 @@ nnoremap <Space> :ls<CR>
 nnoremap <Tab> <C-^>
 
 " >>> INSERT
-inoremap :] <C-x><C-]><C-p>
-inoremap :A <Esc>A
-inoremap :d <C-x><C-d><C-p>
-inoremap :f <C-x><C-f><C-p>
-inoremap :i <C-x><C-i><C-p>
-inoremap :I <Esc>I
-inoremap :k <C-x><C-k><C-p>
-inoremap :k <C-x><C-k><C-p>
-inoremap :l <C-x><C-l><C-p>
-inoremap :n <C-x><C-n><C-p>
-inoremap :N <C-n><C-p>
-inoremap :o <C-x><C-o><C-p>
-inoremap :s <C-x>s<C-p>
-inoremap :u <C-x><C-u><C-p>
-inoremap :v <C-x><C-v><C-p>
 inoremap <expr> / _InterpretForwardSlash()
 imap <C-h> <Esc><C-h>
 imap <C-j> <Esc><C-j>
@@ -168,6 +155,7 @@ autocmd BufRead,BufNewFile *.lzshrc set syntax=zsh
 autocmd BufRead,BufNewFile *.md set colorcolumn=
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.nasm set filetype=nasm
+autocmd BufRead,BufNewFile *.python set filetype=python
 autocmd BufRead,BufNewFile *.rst setlocal spell
 autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
@@ -191,6 +179,7 @@ autocmd FileType * setlocal formatoptions-=t
 autocmd FileType mail setlocal spell spelllang=en_us
 autocmd FileType man setlocal nowrap
 autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro  " Disables auto-comments on newlines and disables autowrap
+autocmd FileType scheme let b:delimitMate_quotes = "\""
 autocmd FocusGained,BufEnter * :checktime  " Reloads buffer on buffer changes
 autocmd InsertEnter * set timeoutlen=500
 autocmd InsertLeave * set timeoutlen=1000

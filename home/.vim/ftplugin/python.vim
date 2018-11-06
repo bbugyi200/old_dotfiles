@@ -1,7 +1,4 @@
 command! -nargs=0 Run exec "!pytest -v %"
-command! -nargs=0 T exec ":e ~/Dropbox/scripts/templates/script-init/template.1.py"
-command! -nargs=0 TT exec ":e ~/Dropbox/scripts/templates/script-init/template.2.py"
-
 
 " ------------------------------------- MULTILINE STRINGS -----------------------------------------
 function! BreakMultlineString(quote)
