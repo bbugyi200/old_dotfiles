@@ -100,3 +100,4 @@ color.blocked=white on gray4
 color.tagged=  # A task should not be colored for just any tag
 
 # ----- DYNAMICALLY SET AT RUNTIME -----
+context=study

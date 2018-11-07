@@ -10,7 +10,7 @@ home/.local/share/*
 !home/.local/share/qutebrowser
 home/.local/share/qutebrowser/*
 !home/.local/share/qutebrowser/userscripts
-!home/.local/share/script-init
+!home/.local/share/minicc
 
 home/.xmonad/*
 !home/.xmonad/xmonad.hs

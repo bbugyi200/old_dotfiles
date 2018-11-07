@@ -1,0 +1,3 @@
+PARENT_BIN_DIR="/home/bryan/Dropbox/bin"
+DEFAULT_BIN_SUBDIR="main"
+EXEC_HOOK_CMD=/usr/local/bin/clinks

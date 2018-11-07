@@ -116,7 +116,6 @@ endif
 "  EasyTags "
 """""""""""""
 if PluginInstalled("easytags")
-    " doesn't work with universal-ctags
     let g:easytags_events = ['BufWritePost']
 endif
 

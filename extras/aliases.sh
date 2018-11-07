@@ -5,14 +5,14 @@
 source /home/bryan/Dropbox/dotfiles/extras/gentoo.sh
 source /home/bryan/Dropbox/dotfiles/extras/GTD.sh
 
-# ---------- minycc Aliases / Functions ----------
-alias ainit='minycc -F awk -D awk --use-extension=y'
-alias binit='minycc -F sh'
-alias Binit='minycc -F sh -T full'
-hw() { ASSIGNMENT_NUMBER="$1" minycc -F tex -T hw -f -x -N "${@:2}" HW"$1"/hw"$1"; }
-alias pyinit='minycc -F python'
-alias Pyinit='minycc -F python -T test -f --executable=n --use-extension=y'
-alias texinit='minycc -F tex -f --executable=n --use-extension=y'
+# ---------- minicc Aliases / Functions ----------
+alias ainit='minicc -F awk -D awk --use-extension=y'
+alias binit='minicc -F sh'
+alias Binit='minicc -F sh -T full'
+hw() { ASSIGNMENT_NUMBER="$1" minicc -F tex -T hw -f -x -N "${@:2}" HW"$1"/hw"$1"; }
+alias pyinit='minicc -F python'
+alias Pyinit='minicc -F python -T test -f --executable=n --use-extension=y'
+alias texinit='minicc -F tex -f --executable=n --use-extension=y'
 
 # ---------- Miscellaneous Aliases / Functions ----------
 alias ag='ag --hidden'
@@ -56,6 +56,7 @@ mkcd() { mkdir -p "$1" && cd "$1" || return 1; }
 alias mkdir='mkdir'
 alias mkpkg='makepkg -si'
 alias mv="mv -i"
+alias myip='ip addr | grep -P -o "192.168.1.[0-9]+" | grep -v 192.168.1.255'
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/notes/Onething/"$1".txt; }
 alias pim="vim -c 'execute \"normal \\<c-p>\" '"

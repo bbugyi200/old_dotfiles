@@ -1,3 +1,0 @@
-BIN_DIR="/home/bryan/Dropbox/scripts/bin"
-DEFAULT_BIN_SUBDIR="main"
-EXEC_HOOK_CMD=clinks
