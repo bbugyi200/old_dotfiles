@@ -150,7 +150,6 @@ myAdditionalKeys = [
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
    , ((alpha .|. shift, h), spawn "tm-send --action 'cd \"$(tm-window-root $(tmux display-message -p \"#{session_name} #{window_index}\"))\" && ll'")  -- cd to Tmuxinator Window-Specific Root
    , ((alpha .|. beta .|. shift, h), spawn "tm-send --action 'tm-window-root $(tmux display-message -p \"#{session_name} #{window_index}\") -s \"$(pwd)\" && ll'")  -- set Tmuxinator Window-Specific Root
-   , ((alpha, i), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
    , ((alpha, j), sequence_ [N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [N2D.windowGo N2D.U False])
@@ -166,8 +165,9 @@ myAdditionalKeys = [
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
                            removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
-   , ((alpha, o), launchApp "OKULAR" "okular & WS_is_Empty && zopen") -- Open New Book in Zathura
-   , ((alpha .|. beta, o), spawn "zopen")
+   , ((alpha, o), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
+   , ((alpha .|. beta, o), launchApp "OKULAR" "okular & WS_is_Empty && zopen") -- Open New Book in Zathura
+   , ((alpha .|. ctrl, o), spawn "zopen")
    , ((alpha, p), spawn "tmux -L $(tm-socket) previous-window") -- Tmux Previous
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
    , ((alpha .|. shift, p), spawn "pause_task")

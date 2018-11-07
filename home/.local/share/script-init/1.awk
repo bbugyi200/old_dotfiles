@@ -1,3 +1,0 @@
-#!/bin/awk -f
-
-{# START #}

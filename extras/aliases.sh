@@ -5,14 +5,22 @@
 source /home/bryan/Dropbox/dotfiles/extras/gentoo.sh
 source /home/bryan/Dropbox/dotfiles/extras/GTD.sh
 
+# ---------- minycc Aliases / Functions ----------
+alias ainit='minycc -F awk -D awk --use-extension=y'
+alias binit='minycc -F sh'
+alias Binit='minycc -F sh -T full'
+hw() { ASSIGNMENT_NUMBER="$1" minycc -F tex -T hw -f -x -N "${@:2}" HW"$1"/hw"$1"; }
+alias pyinit='minycc -F python'
+alias Pyinit='minycc -F python -T test -f --executable=n --use-extension=y'
+alias texinit='minycc -F tex -f --executable=n --use-extension=y'
+
+# ---------- Miscellaneous Aliases / Functions ----------
 alias ag='ag --hidden'
-alias ainit='script-init -F awk -D awk --use-extension=y'
 alias alg='alias | grep -e'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
-alias binit='script-init -F sh'
-alias Binit='script-init -F sh -T 2'
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
+ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
 cho() { sudo chown -R "$2":"$2" "$1"; }
 alias chx='sudo chmod +x'
 alias cower='cower -c'
@@ -36,7 +44,6 @@ alias gnlog="git log --oneline --decorate --graph --color=always | nl -s ':  ' -
 alias gpf='git push -f'
 alias grc='git rebase --continue'
 gri() { git rebase -i HEAD~"$1"; }
-hw() { mkdir HW"$1" &> /dev/null; N="$1" script-init -F tex -T 2 -f -x -N HW"$1"/hw"$1"; }
 alias K='sudo kill -9'
 alias ipython='TERM=linux ipython'
 alias lay='sudo layman'
@@ -58,8 +65,6 @@ pgr() { pgrep -f ".*$1.*"; }
 # shellcheck disable=SC2009
 psg() { ps -aux | grep "$1" | grep -v grep; }
 pvar() { set | grep -i -e "^$1"; }
-alias pyinit='script-init -F python'
-Pyinit() { script-init -F python -T 2 -f --executable=n --use-extension=y test_"$1"; }
 rim() { vim -c "normal ,p$*"; }
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 alias rm="safe-rm"
@@ -76,7 +81,6 @@ alias su='su - -p'
 alias sudo='sudo '  # makes aliases visible to sudo
 alias sudoers='sudo vim /etc/sudoers'
 alias sqlite3='rlwrap -a -N -c -i sqlite3'
-alias texinit='script-init -F tex -f --executable=n --use-extension=y'
 alias time='/usr/bin/time'
 tmd() { tmux display-message -p "#{$1}"; }
 # shellcheck disable=SC2142
