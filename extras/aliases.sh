@@ -36,6 +36,7 @@ alias gnlog="git log --oneline --decorate --graph --color=always | nl -s ':  ' -
 alias gpf='git push -f'
 alias grc='git rebase --continue'
 gri() { git rebase -i HEAD~"$1"; }
+hw() { mkdir HW"$1" &> /dev/null; N="$1" script-init -F tex -T 2 -f -x -N HW"$1"/hw"$1"; }
 alias K='sudo kill -9'
 alias ipython='TERM=linux ipython'
 alias lay='sudo layman'
@@ -58,7 +59,7 @@ pgr() { pgrep -f ".*$1.*"; }
 psg() { ps -aux | grep "$1" | grep -v grep; }
 pvar() { set | grep -i -e "^$1"; }
 alias pyinit='script-init -F python'
-alias Pyinit='script-init -F python -T 2 -f --executable=n --use-extension=y'
+Pyinit() { script-init -F python -T 2 -f --executable=n --use-extension=y test_"$1"; }
 rim() { vim -c "normal ,p$*"; }
 rip() { nohup torrent -d "$@" &> /dev/null & disown; }
 alias rm="safe-rm"

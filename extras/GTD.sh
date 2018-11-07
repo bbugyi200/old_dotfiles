@@ -6,6 +6,7 @@ ka() { /usr/local/bin/ka "$@" && krestart_alarms; }
 kc() { clear && khal calendar --notstarted --format '{start-time} {title} [{location}]' now && echo; }
 ke() { khal edit "$@" && krestart_alarms; }
 ki() { ikhal "$@" && krestart_alarms; }
+alias knh='khal new -a home'
 krestart_alarms() { setsid calalrms -d &> /dev/null; }
 alias kstop='kdel "START BREAK" && kdel "END BREAK" && kdel EOS && krestart_alarms'
 alias mutt="neomutt"

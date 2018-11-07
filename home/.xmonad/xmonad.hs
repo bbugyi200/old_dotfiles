@@ -76,14 +76,14 @@ removeEmptyWorkspace' = do
     let n = length workspaceList
     Monad.when (n > 3) DW.removeEmptyWorkspace
 
-_launchSeq :: String -> String -> [X ()]
-_launchSeq ws cmd = [DW.addWorkspace ws, spawnHere $ "hide_nsp && WS_is_Empty && " ++ cmd]
+launchSeq :: String -> String -> [X ()]
+launchSeq ws cmd = [DW.addWorkspace ws, spawnHere $ "hide_nsp && WS_is_Empty && " ++ cmd]
 
 launchApp :: String -> String -> X ()
-launchApp ws cmd = sequence_ $ _launchSeq ws cmd
+launchApp ws cmd = sequence_ $ launchSeq ws cmd
 
 launchAppAndUP :: String -> String -> X ()
-launchAppAndUP ws cmd = sequence_ $ UP.updatePointer (0.5, 0.5) (0, 0) : _launchSeq ws cmd
+launchAppAndUP ws cmd = sequence_ $ UP.updatePointer (0.5, 0.5) (0, 0) : launchSeq ws cmd
 
 launchFullApp :: String -> String -> X ()
 launchFullApp ws cmd = launchApp ws ("xdotool key super+f && " ++ cmd)
@@ -150,6 +150,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
    , ((alpha .|. shift, h), spawn "tm-send --action 'cd \"$(tm-window-root $(tmux display-message -p \"#{session_name} #{window_index}\"))\" && ll'")  -- cd to Tmuxinator Window-Specific Root
    , ((alpha .|. beta .|. shift, h), spawn "tm-send --action 'tm-window-root $(tmux display-message -p \"#{session_name} #{window_index}\") -s \"$(pwd)\" && ll'")  -- set Tmuxinator Window-Specific Root
+   , ((alpha, i), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
    , ((alpha, j), sequence_ [N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [N2D.windowGo N2D.U False])
@@ -165,9 +166,8 @@ myAdditionalKeys = [
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
                            removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
-   , ((alpha, o), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
-   , ((alpha .|. beta, o), launchApp "OKULAR" "okular") -- Open New Book in Zathura
-   , ((alpha .|. ctrl, o), spawn "zopen")
+   , ((alpha, o), launchApp "OKULAR" "okular & WS_is_Empty && zopen") -- Open New Book in Zathura
+   , ((alpha .|. beta, o), spawn "zopen")
    , ((alpha, p), spawn "tmux -L $(tm-socket) previous-window") -- Tmux Previous
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
    , ((alpha .|. shift, p), spawn "pause_task")
@@ -230,7 +230,7 @@ myAdditionalKeys = [
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; ll'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
-   , ((alpha .|. beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
+   , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
    , ((alpha, xK_semicolon), spawn "shellPrompt")
    , ((alpha .|. beta, xK_semicolon), spawn "shellPrompt -L")
    , ((alpha, xK_slash), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad

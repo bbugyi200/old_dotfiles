@@ -1,3 +1,13 @@
+############################
+#  High Priority Snippets  #
+############################
+snippet $$ "Shell Process Substitution" i
+"$($1)"
+endsnippet
+
+###########################
+#  Low Priority Snippets  #
+###########################
 priority -50
 
 global !p
@@ -54,7 +64,7 @@ snippet source "source /home/bryan/Dropbox/scripts/modules/bash"
 source /home/bryan/Dropbox/scripts/modules/bash
 endsnippet
 
-snippet $ "Description" i
+snippet $ "Shell Variable" i
 "${$1}"
 endsnippet
 
@@ -261,7 +271,7 @@ endsnippet
 
 snippet if "if ... then (if)"
 if ${2:[[ ${1:condition} ]]}; then
-	${VISUAL:#statements}
+	${3:${VISUAL}}
 fi
 endsnippet
 

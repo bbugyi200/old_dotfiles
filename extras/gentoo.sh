@@ -34,6 +34,7 @@ alias eup='sudo emerge --ask --update --deep --newuse @world'
 alias ewdups='comm -12 <(sudo cat /etc/portage/sets/shared) <(sudo cat /var/lib/portage/world) 2> /dev/null'
 alias get='sudo -i get'
 alias pg='equery list "*" | grep -i'
+pwg() { ag "$@" /etc/portage/sets; }
 rc-restart() { sudo /sbin/rc-service "$1" restart; };  compdef rc-restart=rc-service
 alias rc-service='sudo /sbin/rc-service'
 rc-start() { sudo /sbin/rc-service "$1" start; };  compdef rc-start=rc-service

@@ -56,16 +56,16 @@ let maplocalleader = "\\"
 nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
 nnoremap <Leader>0s :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
-nnoremap <Leader>0t :e ~/Dropbox/scripts/templates/script-init/template.1.<C-R>=&filetype<CR><CR>
-nnoremap <Leader>0T :e ~/Dropbox/scripts/templates/script-init/template.2.<C-R>=&filetype<CR><CR>
+nnoremap <Leader>0t :n ~/Dropbox/scripts/templates/script-init/*1.<C-R>=&filetype<CR><CR>
+nnoremap <Leader>0T :n ~/Dropbox/scripts/templates/script-init/*2.<C-R>=&filetype<CR><CR>
 nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>0lv :e <C-R>=getcwd()<CR>/.lvimrc<CR>
 " ----- Alphabetic -----
 nnoremap <Leader>a :AnsiEsc<CR>
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>| " Delete Buffer
 nnoremap <Leader>D :call _RemoveFile()<CR>
-nnoremap <Leader>e :x<CR> | imap <Leader>e <Esc><Leader>e
-nnoremap <Leader>E :xa<CR> | imap <Leader>E <Esc><Leader>E
+nnoremap <Leader>e :x!<CR> | imap <Leader>e <Esc><Leader>e
+nnoremap <Leader>E :xa!<CR> | imap <Leader>E <Esc><Leader>E
 nnoremap gd :Gdiff 
 nnoremap gj j
 nnoremap gk k
