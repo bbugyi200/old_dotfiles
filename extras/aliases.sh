@@ -42,6 +42,7 @@ alias ghooks='rm -rf .git/hooks && git init'
 alias git='hub'
 alias gnlog="git log --oneline --decorate --graph --color=always | nl -s ':  ' -v 0 | less"
 alias gpf='git push -f'
+alias gprm='gpup "Docs: Update README"'
 alias grc='git rebase --continue'
 gri() { git rebase -i HEAD~"$1"; }
 alias K='sudo kill -9'

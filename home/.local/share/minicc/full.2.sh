@@ -1,7 +1,7 @@
 #!/bin/bash
 
 read -r -d '' doc << EOM
-{# START #}
+{% START HERE %}
 EOM
 
 # ---------- Modules ----------
