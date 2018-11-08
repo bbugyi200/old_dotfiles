@@ -5,14 +5,14 @@ CXXFLAGS += -g -Wall -Wextra -pthread
 CFILES=../src/[^main]*.c
 OFILES=$(addsuffix .o,$(filter-out ../src/main, $(basename $(wildcard ../src/*.c))))
 
-buildtests: *.cc bin ${CFILES} ${OFILES}
-	g++ ${OFILES} ${CPPFLAGS} ${CXXFLAGS} -lgtest -o ${bin}/runtests *.cc
+buildtests: *.cc $(bin) $(CFILES) $(OFILES)
+	g++ $(OFILES) $(CPPFLAGS) $(CXXFLAGS) -lgtest -o $(bin)/runtests *.cc
 
-%.o: build %.c
+%.o: $(build) %.c
 	gcc -DGOOGLE_TEST -g -c $*.c -o $@
 
-bin:
-	[ -d ${bin} ] || mkdir ${bin}
+$(bin):
+	@mkdir -p $(bin)
 
-build:
-	[ -d ${build} ] || mkdir ${build}
+$(build):
+	@mkdir -p $(build)
