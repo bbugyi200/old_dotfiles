@@ -369,4 +369,4 @@ let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
 """""""""""""""""""
 "  Extra Modules  "
 """""""""""""""""""
-call _SourceIfExists("/home/bryan/Dropbox/dotfiles/extras/plugins.vim")
+call _SourceIfExists("/home/bryan/.vim/plugins.vim")

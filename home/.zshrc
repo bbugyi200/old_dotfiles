@@ -56,8 +56,8 @@ compdef vman=man
 #####################
 #  Source Commands  #
 #####################
-source /home/bryan/Dropbox/dotfiles/extras/aliases.sh
-source /home/bryan/Dropbox/dotfiles/extras/tmuxinator.zsh
+source /usr/local/lib/aliases.sh
+source /usr/local/lib/tmuxinator.zsh
 
 ##############
 #  Settings  #
