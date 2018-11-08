@@ -54,10 +54,10 @@ let maplocalleader = "\\"
 " >>> NORMAL
 " ----- Numeric -----
 nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
-nnoremap <Leader>0s :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
+nnoremap <Leader>0s :e /home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
-nnoremap <Leader>0t :n ~/.local/share/minycc/*1.<C-R>=&filetype<CR><CR>
-nnoremap <Leader>0T :n ~/.local/share/minycc/*2.<C-R>=&filetype<CR><CR>
+nnoremap <Leader>0t :n ~/.local/share/rookiecc/*1.<C-R>=&filetype<CR><CR>
+nnoremap <Leader>0T :n ~/.local/share/rookiecc/*2.<C-R>=&filetype<CR><CR>
 nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>0lv :e <C-R>=getcwd()<CR>/.lvimrc<CR>
 " ----- Alphabetic -----
