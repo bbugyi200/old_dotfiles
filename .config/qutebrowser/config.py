@@ -22,7 +22,7 @@ c.url.searchengines = {
     '2': 'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}',
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
     'al': SE.static.google('arch linux {}'),
-    'b': SE.static.stackoverflow(7, prefix='Bash'),
+    'b': SE.static.stackoverflow(10, prefix='Bash'),
     'bmo': SE.SearchEngine(SE.static.google('best movies of 20{}'),
                            SE.OneIntURL(SE.static.google('best {1} movies of 20{0}'))),
     'c': SE.static.stackoverflow(7, prefix='C'),

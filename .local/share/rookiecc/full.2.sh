@@ -10,12 +10,9 @@ source /home/bryan/Dropbox/scripts/modules/bash/gutils.sh
 # ---------- Command-line Arguments ----------
 eval set -- "$(getopt -o "d,h,v" -l "debug,help,verbose" -- "$@")"
 
-scriptname="${scriptname}"
-usage="${usage}"
-
 # shellcheck disable=SC2154
 read -r -d '' help << EOM
-${usage^}
+${USAGE^}
 
 ${doc}
 
