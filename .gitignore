@@ -1,50 +1,50 @@
 *swp
 *swo
 *~
-home/.mutt/aliases
-home/.mutt/.vimrc
-home/.ipython/*
-home/.xournal/*
+.mutt/aliases
+.mutt/.vimrc
+.ipython/*
+.xournal/*
 
-home/.local/share/*
-!home/.local/share/qutebrowser
-home/.local/share/qutebrowser/*
-!home/.local/share/qutebrowser/userscripts
-!home/.local/share/minicc
+.local/share/*
+!.local/share/qutebrowser
+.local/share/qutebrowser/*
+!.local/share/qutebrowser/userscripts
+!.local/share/minicc
 
-home/.xmonad/*
-!home/.xmonad/xmonad.hs
-home/.weechat/*
-home/.timewarrior/data/*
-home/.timewarrior/extensions/*
+.xmonad/*
+!.xmonad/xmonad.hs
+.weechat/*
+.timewarrior/data/*
+.timewarrior/extensions/*
 
-home/.task/*
-!home/.task/hooks
+.task/*
+!.task/hooks
 
-home/.password-store
+.password-store
 
-home/.fetchmailrc
+.fetchmailrc
 
-home/.config/watson/*
-!home/.config/watson/config
+.config/watson/*
+!.config/watson/config
 
-home/.config/qutebrowser/bookmarks/*
-home/.config/qutebrowser/qsettings/*
-home/.config/qutebrowser/quickmarks
-home/.config/qutebrowser/autoconfig.yml 
+.config/qutebrowser/bookmarks/*
+.config/qutebrowser/qsettings/*
+.config/qutebrowser/quickmarks
+.config/qutebrowser/autoconfig.yml 
 
-home/.vim/*
-!home/.vim/vimrc
-!home/.vim/ftplugin/
-!home/.vim/syntax/
+.vim/*
+!.vim/vimrc
+!.vim/ftplugin/
+!.vim/syntax/
 
-home/.config/tmuxinator/*
-!home/.config/tmuxinator/default.yml
+.config/tmuxinator/*
+!.config/tmuxinator/default.yml
 
-home/.config/mpv/watch_later/*
+.config/mpv/watch_later/*
 
-home/.vimwiki/*
+.vimwiki/*
 
-home/.cookiecutters/cookiecutter-pypackage
+.cookiecutters/cookiecutter-pypackage
 
 usr/*

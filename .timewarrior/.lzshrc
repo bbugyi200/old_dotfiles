@@ -1,0 +1,3 @@
+precmd() {
+    tmux -L GTD send-keys -t GTD:1.0 "twc" "Enter"
+}
