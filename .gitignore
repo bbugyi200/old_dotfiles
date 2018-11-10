@@ -10,7 +10,7 @@
 !.local/share/qutebrowser
 .local/share/qutebrowser/*
 !.local/share/qutebrowser/userscripts
-!.local/share/rookiecc
+!.local/share/cookie
 
 .xmonad/*
 !.xmonad/xmonad.hs
