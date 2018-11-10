@@ -54,10 +54,12 @@ let maplocalleader = "\\"
 " >>> NORMAL
 " ----- Numeric -----
 nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
+nnoremap <Leader>0cc :execute 'edit' _CookieCutter('c')<CR>
 nnoremap <Leader>0s :e /home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
-nnoremap <Leader>0t :n ~/.local/share/rookiecc/*1.<C-R>=&filetype<CR><CR>
-nnoremap <Leader>0T :n ~/.local/share/rookiecc/*2.<C-R>=&filetype<CR><CR>
+nnoremap <Leader>0S :e /home/bryan/.vim/vim-snippets/all.snippets<CR>
+nnoremap <Leader>0t :n ~/.local/share/cookie/*1.<C-R>=&filetype<CR><CR>
+nnoremap <Leader>0T :n ~/.local/share/cookie/*2.<C-R>=&filetype<CR><CR>
 nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>0lv :e <C-R>=getcwd()<CR>/.lvimrc<CR>
 " ----- Alphabetic -----
@@ -215,6 +217,12 @@ function! VSwitchToTest(ext)
 endfunction
 
 " ----- PRIVATE FUNCTIONS (used only in this file) -----
+function! _CookieCutter(project)
+    let local_file_path = substitute(expand('%:p'), getcwd(), '', 0)
+    return '/home/bryan/.cookiecutters/' . a:project . 
+                \ '/\{\{\ cookiecutter.project\|lower\ }}/' . local_file_path
+endfunction
+
 function! _DeleteEmptyBuffers()
     let [i, n; empty] = [1, bufnr('$')]
     while i <= n

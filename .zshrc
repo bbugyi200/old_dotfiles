@@ -125,6 +125,9 @@ export TERM="rxvt-unicode-256color"
 ###################
 #  Miscellaneous  #
 ###################
+# Enable Core Dumps
+ulimit -c unlimited
+
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 

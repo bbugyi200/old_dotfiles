@@ -59,3 +59,7 @@ endfunction
 nnoremap <Leader># :call EndOfBox()<CR>
 nnoremap <Leader><Leader># :call MakeBox()<CR>
 nnoremap <Leader><Leader><Leader># :call BoxBar()<CR>
+
+" Convert a bash alias to a single-line function
+let @a = "Ialias wEhc3l=$hhxlcs{'"
+let @f = "^dwf=s() lcs'{$hi;"

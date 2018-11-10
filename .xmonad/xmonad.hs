@@ -134,9 +134,7 @@ myAdditionalKeys = [
    -- (you can sort these bindings with `<range>sort r /, [A-z]),/`)
    ((alpha, xK_0), spawn "tmux -L $(tm-socket) switchc -n") -- Tmux Next Session
    , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
-   , ((alpha .|. beta, a), spawn "alarm") -- Alarm
-   , ((alpha, a), spawn "sleep 0.2 && xdotool key ctrl+a && xdotool key ctrl+a") -- Tmux Prefix
-   , ((alpha .|. beta, a), launchAppAndUP "ANKI" "anki")
+   , ((alpha, a), launchAppAndUP "ANKI" "anki")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), launchApp "WEB" "qutebrowser --enable-webengine-inspector")
@@ -165,8 +163,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
                            removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
-   , ((alpha, o), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
-   , ((alpha .|. beta, o), launchApp "OKULAR" "okular & WS_is_Empty && zopen") -- Open New Book in Zathura
+   , ((alpha, o), launchApp "OKULAR" "okular & WS_is_Empty && zopen") -- Open New Book in Zathura
    , ((alpha .|. ctrl, o), spawn "zopen")
    , ((alpha, p), spawn "tmux -L $(tm-socket) previous-window") -- Tmux Previous
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
@@ -239,7 +236,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta .|. ctrl .|. shift, xK_slash), sequence_ [CW.shiftNextScreen, CW.nextScreen])
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun") -- Program Launcher
    , ((alpha .|. beta, xK_space), sequence_ [DW.addWorkspace "MISC", spawn "rofi -modi drun -show drun"]) -- Program Launcher (MISC)
-   , ((alpha, xK_Tab), CW.nextScreen) -- Next Screen
+   , ((alpha, xK_Tab), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
    ]
 
    -- View WS
