@@ -130,11 +130,9 @@ ctrl = controlMask
 shift = shiftMask
 
 myAdditionalKeys = [
-   ---------- ALPHANUMERIC CHARACTERS ----------
+   ---------- ALPHABETIC CHARACTERS ----------
    -- (you can sort these bindings with `<range>sort r /, [A-z]),/`)
-   ((alpha, xK_0), spawn "tmux -L $(tm-socket) switchc -n") -- Tmux Next Session
-   , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
-   , ((alpha, a), launchAppAndUP "ANKI" "anki")
+   ((alpha, a), launchAppAndUP "ANKI" "anki")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), launchApp "WEB" "qutebrowser --enable-webengine-inspector")
@@ -192,6 +190,11 @@ myAdditionalKeys = [
    , ((alpha .|. shift, z), launchApp "ZEAL" "zeal")
    , ((alpha .|. beta .|. shift, z), sequence_ [CW.nextScreen, launchApp "ZATH'" "zsearch --new-instance --no-search"])
 
+   ---------- NUMERIC CHARACTERS ----------
+   , ((alpha, xK_0), spawn "tmux -L $(tm-socket) switchc -n") -- Tmux Next Session
+   , ((alpha, xK_1), spawn "tm-new-window")
+   , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
+
    ---------- KEYPAD CHARACTERS ----------
    , ((alpha, xK_KP_Add), spawn "next_task")
    , ((alpha, xK_KP_Begin), withFocused $ windows . W.sink)
@@ -218,6 +221,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_backslash), pushDesktop "backslash")
    , ((alpha .|. beta .|. ctrl, xK_backslash), sequence_ seqPush)
    , ((alpha .|. beta .|. ctrl .|. shift, xK_backslash), CW.shiftNextScreen)
+   , ((alpha, xK_BackSpace), spawn "tmux -L $(tm-socket) kill-window")
    , ((alpha, xK_bracketleft), sequence_ [DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)]) -- Prev Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
@@ -239,14 +243,9 @@ myAdditionalKeys = [
    , ((alpha, xK_Tab), CW.toggleWS' ["NSP"]) -- Toggle to Last Workspace
    ]
 
-   -- View WS
-   ++ [((alpha, k), withNthWorkspace' W.view i)
-       | (i, k) <- zip [0..7] [xK_1 .. xK_8]
-      ]
-
    -- Shift to WS; then Focus WS
    ++ [((alpha .|. beta, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
-       | (i, k) <- zip [0..7] [xK_1 .. xK_8]
+       | (i, k) <- zip [0..7] [xK_1 .. xK_9]
       ]
 
    where
