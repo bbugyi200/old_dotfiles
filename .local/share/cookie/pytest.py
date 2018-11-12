@@ -1,4 +1,4 @@
-{% START HERE %}
+{% START INSERT MODE %}
 
 import unittest.mock as mock
 

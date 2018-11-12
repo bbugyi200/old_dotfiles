@@ -100,9 +100,9 @@ alias -s txt="vim"
 
 # ---------- Global Aliases ----------
 alias -g :c="clear &&"
-alias -g :d="&> /dev/null & disown"
-alias -g :g="| grep -i -e"
-alias -g :G="| grep -A 5 -B 5 -i -e"
+alias -g @@="&> /dev/null & disown"
+alias -g ::="| grep -i -e"
+alias -g :::="| grep -A 5 -B 5 -i -e"
 alias -g :l="| less"
 alias -g :L="tmux send-keys '!-2 | less' Enter Enter"
 alias -g :w="watch -n 1"
@@ -164,4 +164,4 @@ fi
 # added by travis gem
 [ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh
 
-[ -f /usr/share/localalias/localalias.zsh ] && source /usr/share/localalias/localalias.zsh
+[ -f /usr/share/funky/funky.zsh ] && source /usr/share/funky/funky.zsh

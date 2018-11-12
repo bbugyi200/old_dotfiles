@@ -19,26 +19,26 @@ Width 1600=1590
 Width 1920=1910
 
 [Recent Files]
-File1[$e]=$HOME/Dropbox/study/Databases/lectures/week4/lec8_ER_to_relations.pdf
+File1[$e]=$HOME/Dropbox/var/books/Programming/Tools/Managing_Projects_with_GNU_Make-(Mecklenburg).pdf
 File10[$d]
-File2[$e]=$HOME/Dropbox/books/Programming/Tools/vim/Mapping_Keys_in_Vim.pdf
-File3[$e]=$HOME/Dropbox/books/Programming/Tools/Databases/A_First_Course_in_Database_Systems-(Widom).okular
-File4[$e]=$HOME/Dropbox/books/Programming/C/21st_Century_C-(Klemens).pdf
-File5[$e]=$HOME/Dropbox/books/Programming/Operating_Systems/Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
-File6[$e]=$HOME/Dropbox/books/Math/Analysis/Functional Analysis (Rudin).pdf
-File7[$e]=$HOME/Dropbox/books/Programming/Programming_Languages/Compilers:Principles_Techniques_and_Tools-(Aho).djvu
-File8[$e]=$HOME/Dropbox/books/Programming/Programming_Languages/PLP_Supplementary_Sections.pdf
-File9[$e]=$HOME/Dropbox/books/Programming/Programming_Languages/Programming_Language_Pragmatics-(Scott).pdf
-Name1[$e]=lec8_ER_to_relations.pdf
+File2[$e]=$HOME/Dropbox/var/books/Programming/Philosophy/The_Pragmatic_Programmer-(Hunt).epub
+File3[$e]=$HOME/Dropbox/var/books/Programming/Programming_Languages/Programming_Language_Pragmatics-(Scott).pdf
+File4[$d]
+File5[$d]
+File6[$d]
+File7[$d]
+File8[$d]
+File9[$d]
+Name1[$e]=Managing_Projects_with_GNU_Make-(Mecklenburg).pdf
 Name10[$d]
-Name2[$e]=Mapping_Keys_in_Vim.pdf
-Name3[$e]=A_First_Course_in_Database_Systems-(Widom).okular
-Name4[$e]=21st_Century_C-(Klemens).pdf
-Name5[$e]=Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
-Name6[$e]=Functional Analysis (Rudin).pdf
-Name7[$e]=Compilers:Principles_Techniques_and_Tools-(Aho).djvu
-Name8[$e]=PLP_Supplementary_Sections.pdf
-Name9[$e]=Programming_Language_Pragmatics-(Scott).pdf
+Name2[$e]=The_Pragmatic_Programmer-(Hunt).epub
+Name3[$e]=Programming_Language_Pragmatics-(Scott).pdf
+Name4[$d]
+Name5[$d]
+Name6[$d]
+Name7[$d]
+Name8[$d]
+Name9[$d]
 
 [Shortcut Schemes]
 Current Scheme=VimBindings

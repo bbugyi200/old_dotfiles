@@ -1,3 +1,3 @@
 #!/bin/bash
 
-{% START HERE %}
+{% START INSERT MODE %}

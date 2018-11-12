@@ -1,3 +1,3 @@
 #!/bin/awk -f
 
-{% START HERE %}
+{% START INSERT MODE %}

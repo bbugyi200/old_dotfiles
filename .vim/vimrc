@@ -8,7 +8,7 @@ set background=dark
 set backspace=2
 set breakindent  " Indents wraps
 set clipboard=unnamedplus
-set colorcolumn=100
+set colorcolumn=80
 set completeopt-=preview
 set cursorcolumn
 set cursorline
@@ -37,7 +37,7 @@ set smartcase
 let &statusline = "%{_StatuslineGit()} %f %m %= %y %p%% %l:%c"
 set tabstop=4
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
-set tw=99
+set tw=79
 set undodir=/home/bryan/.vim/undo
 set undofile
 set viminfo+=n~/.vim/viminfo  " Changes location of viminfo file

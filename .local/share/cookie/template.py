@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-{% START HERE %}
+{% START INSERT MODE %}
 
 import datetime as dt  # noqa: F401
 import os  # noqa: F401
