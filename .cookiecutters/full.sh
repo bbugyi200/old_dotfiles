@@ -5,7 +5,7 @@ read -r -d '' doc << EOM
 EOM
 
 # ---------- Modules ----------
-source /home/bryan/Dropbox/scripts/modules/bash/gutils.sh
+source /usr/lib/gutils.sh
 
 # ---------- Command-line Arguments ----------
 eval set -- "$(getopt -o "d,h,v" -l "debug,help,verbose" -- "$@")"

@@ -149,6 +149,7 @@ cnoreabbrev :s CtrlSF
 """"""""""""""
 "  AutoCmds  "
 """"""""""""""
+autocmd BufReadPost,BufNewFile *.auto set filetype=auto
 autocmd BufRead,BufNewFile *.conf set syntax=cfg
 autocmd BufRead,BufNewFile *.html set colorcolumn=
 autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
