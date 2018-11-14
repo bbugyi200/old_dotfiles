@@ -44,6 +44,4 @@
 
 .vimwiki/*
 
-.cookiecutters/cookiecutter-pypackage
-
 usr/*

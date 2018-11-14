@@ -37,7 +37,6 @@ set smartcase
 let &statusline = "%{_StatuslineGit()} %f %m %= %y %p%% %l:%c"
 set tabstop=4
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
-set tw=79
 set undodir=/home/bryan/.vim/undo
 set undofile
 set viminfo+=n~/.vim/viminfo  " Changes location of viminfo file
@@ -55,11 +54,12 @@ let maplocalleader = "\\"
 " ----- Numeric -----
 nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
 nnoremap <Leader>0cc :execute 'edit' _CookieCutter('c')<CR>
+nnoremap <Leader>0cg :execute 'edit' _CookieCutter('github')<CR>
 nnoremap <Leader>0s :e /home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0S :e /home/bryan/.vim/vim-snippets/all.snippets<CR>
-nnoremap <Leader>0t :n ~/.local/share/cookie/*1.<C-R>=&filetype<CR><CR>
-nnoremap <Leader>0T :n ~/.local/share/cookie/*2.<C-R>=&filetype<CR><CR>
+nnoremap <Leader>0t :execute 'edit' _Cookie(0)<CR>
+nnoremap <Leader>0T :execute 'edit' _Cookie(1)<CR>
 nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>0lv :e <C-R>=getcwd()<CR>/.lvimrc<CR>
 " ----- Alphabetic -----
@@ -88,6 +88,8 @@ nnoremap <Leader>v :vert sfind
 nnoremap Y y$
 nnoremap <Leader>Y ma^y$`a
 " ----- Non-Alphanumeric -----
+nnoremap <Leader>/ /\v
+nnoremap <Leader>< /\v\C<><Left>
 nnoremap ,.fs :sfind 
 nnoremap ,.fv :vert sfind 
 nnoremap ,.ft :tabfind 
@@ -110,8 +112,6 @@ nnoremap <Del> :<C-u>execute "bdelete " . v:count<CR>
 nnoremap <C-g> :Gstatus<CR>
 nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <CR> o<Esc>
-nnoremap <Leader>/ /\v
-nnoremap <Leader>< /\v<><Left>
 nnoremap <Space> :ls<CR>
 nnoremap <Tab> <C-^>
 
@@ -218,10 +218,21 @@ function! VSwitchToTest(ext)
 endfunction
 
 " ----- PRIVATE FUNCTIONS (used only in this file) -----
+function! _Cookie(N)
+    let ext = &filetype
+
+    if &filetype == "python"
+        let ext = 'py'
+    endif
+
+    let templates = systemlist('cookie -l | grep \.' . ext)
+    return '/home/bryan/.cookiecutters/' . templates[a:N]
+endfunction
+
 function! _CookieCutter(project)
     let local_file_path = substitute(expand('%:p'), getcwd(), '', 0)
     return '/home/bryan/.cookiecutters/' . a:project . 
-                \ '/\{\{\ cookiecutter.project\|lower\ }}/' . local_file_path
+                \ '/\{\{cookiecutter.project}}/' . local_file_path
 endfunction
 
 function! _DeleteEmptyBuffers()
