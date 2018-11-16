@@ -1,7 +1,7 @@
 #!/bin/bash
 
 read -r -d '' doc << EOM
-{% START INSERT HERE %}
+{% START INSERT MODE %}
 EOM
 
 # ---------- Modules ----------
@@ -25,11 +25,11 @@ Optional Arguments:
     -d | --debug
         Enable debug mode.
 
-    -v | --verbose
-        Enable verbose output.
-
     -h | --help
         View this help message.
+
+    -v | --verbose
+        Enable verbose output.
 EOM
 
 while [[ -n "$1" ]]; do

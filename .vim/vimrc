@@ -34,7 +34,7 @@ set scrolloff=5  " Always show N line(s) above/below cursor
 set secure
 set shiftwidth=4
 set smartcase
-let &statusline = "%{_StatuslineGit()} %f %m %= %y %p%% %l:%c"
+let &statusline = "%{StatuslineGit()} %f %m %= %y %p%% %l:%c"
 set tabstop=4
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
 set undodir=/home/bryan/.vim/undo
@@ -53,20 +53,20 @@ let maplocalleader = "\\"
 " >>> NORMAL
 " ----- Numeric -----
 nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
-nnoremap <Leader>0cc :execute 'edit' _CookieCutter('c')<CR>
-nnoremap <Leader>0cg :execute 'edit' _CookieCutter('github')<CR>
+nnoremap <Leader>0cc :execute 'edit' CookieCutter('c')<CR>
+nnoremap <Leader>0cg :execute 'edit' CookieCutter('github')<CR>
 nnoremap <Leader>0s :e /home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0S :e /home/bryan/.vim/vim-snippets/all.snippets<CR>
-nnoremap <Leader>0t1 :execute 'edit' _Cookie(0)<CR>
-nnoremap <Leader>0t2 :execute 'edit' _Cookie(1)<CR>
-nnoremap <Leader>0t3 :execute 'edit' _Cookie(2)<CR>
+nnoremap <Leader>0t1 :execute 'edit' Cookie(0)<CR>
+nnoremap <Leader>0t2 :execute 'edit' Cookie(1)<CR>
+nnoremap <Leader>0t3 :execute 'edit' Cookie(2)<CR>
 nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>0lv :e <C-R>=getcwd()<CR>/.lvimrc<CR>
 " ----- Alphabetic -----
 nnoremap <Leader>a :AnsiEsc<CR>
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>| " Delete Buffer
-nnoremap <Leader>D :call _RemoveFile()<CR>
+nnoremap <Leader>D :call RemoveFile()<CR>
 nnoremap <Leader>e :x!<CR> | imap <Leader>e <Esc><Leader>e
 nnoremap <Leader>E :xa!<CR> | imap <Leader>E <Esc><Leader>E
 nnoremap gd :Gdiff 
@@ -116,7 +116,7 @@ nnoremap <Space> :ls<CR>
 nnoremap <Tab> <C-^>
 
 " >>> INSERT
-inoremap <expr> / _InterpretForwardSlash()
+inoremap <expr> / InterpretForwardSlash()
 imap <C-h> <Esc><C-h>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
@@ -128,8 +128,8 @@ vnoremap <silent> <Leader>.i :w !ix \| xclip -sel clipboard<CR>
 vnoremap <Leader>s :sort ri //<Left>
 vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
 vnoremap <Space> $<Left>
-xnoremap # :<C-u>call <SID>_VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-xnoremap * :<C-u>call <SID>_VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
+xnoremap # :<C-u>call <SID>s:VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+xnoremap * :<C-u>call <SID>s:VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
 xnoremap & :&&<CR>
 
 " >>> COMMAND
@@ -192,33 +192,14 @@ autocmd InsertLeave * set timeoutlen=1000
 " Creates current file's parent directory if it doesn't already exist
 augroup BWCCreateDir
 	autocmd!
-	autocmd BufWritePre * :call s:_MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
 """""""""""""""
 "  Functions  "
 """""""""""""""
 " ----- PUBLIC FUNCTIONS (used in other files) -----
-" Boolean function which checks if @plugin is installed
-function! PluginInstalled(plugin)
-    return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
-endfunction
-
-function! Sum(number)
-  let g:S = g:S + a:number
-  return a:number
-endfunction
-
-function! SwitchToTest(ext)
-    call _SwitchToTest(a:ext, 'find')
-endfunction
-
-function! VSwitchToTest(ext)
-    call _SwitchToTest(a:ext, 'vert sf')
-endfunction
-
-" ----- PRIVATE FUNCTIONS (used only in this file) -----
-function! _Cookie(N)
+function! Cookie(N)
     let ext = &filetype
 
     if &filetype == "python"
@@ -229,13 +210,52 @@ function! _Cookie(N)
     return '/home/bryan/.cookiecutters/' . templates[a:N]
 endfunction
 
-function! _CookieCutter(project)
+function! CookieCutter(project)
     let local_file_path = substitute(expand('%:p'), getcwd(), '', 0)
     return '/home/bryan/.cookiecutters/' . a:project . 
                 \ '/\{\{cookiecutter.project}}/' . local_file_path
 endfunction
 
-function! _DeleteEmptyBuffers()
+" Boolean function which checks if @plugin is installed
+function! PluginInstalled(plugin)
+    return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
+endfunction
+
+function! RemoveFile()
+    let filename = expand('%')
+    execute "normal ,d"
+    call system("safe-rm " . filename)
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = s:GitBranch()
+  return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
+endfunction
+
+function! Sum(number)
+  let g:S = g:S + a:number
+  return a:number
+endfunction
+
+function! SwitchToTest(ext)
+    call s:SwitchToTest(a:ext, 'find')
+endfunction
+
+function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+  let previous_winnr = winnr()
+  silent! execute "wincmd " . a:wincmd
+  if previous_winnr == winnr()
+    call system("tmux select-pane -" . a:tmuxdir)
+    redraw!
+  endif
+endfunction
+
+function! VSwitchToTest(ext)
+    call s:SwitchToTest(a:ext, 'vert sf')
+endfunction
+
+" ----- PRIVATE FUNCTIONS (used only in this file) -----
+function! s:DeleteEmptyBuffers()
     let [i, n; empty] = [1, bufnr('$')]
     while i <= n
         if bufexists(i) && bufname(i) == ''
@@ -248,14 +268,14 @@ function! _DeleteEmptyBuffers()
     endif
 endfunction
 
-function! _GitBranch()
+function! s:GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
 
 " Returns an expression that will replace a forward slash when one is typed
 " in INSERT mode. Used to enable automatic file completion (and sometimes
 " header completion in C/C++).
-function! _InterpretForwardSlash()
+function! InterpretForwardSlash()
     let last_ch = matchstr(getline('.'), '\%' . (col('.') - 1) . 'c.')
 
     if (&filetype == 'c' || &filetype == 'cpp')
@@ -282,7 +302,7 @@ endfunction
 
 " Automatically creates directory if it does not already exist
 " https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
-function! s:_MkNonExDir(file, buf)
+function! s:MkNonExDir(file, buf)
 	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
 		let dir=fnamemodify(a:file, ':h')
 		if !isdirectory(dir)
@@ -291,34 +311,14 @@ function! s:_MkNonExDir(file, buf)
 	endif
 endfunction
 
-function! _RemoveFile()
-    let filename = expand('%')
-    execute "normal ,d"
-    call system("safe-rm " . filename)
-endfunction
-
-function! _TmuxOrSplitSwitch(wincmd, tmuxdir)
-  let previous_winnr = winnr()
-  silent! execute "wincmd " . a:wincmd
-  if previous_winnr == winnr()
-    call system("tmux select-pane -" . a:tmuxdir)
-    redraw!
-  endif
-endfunction
-
-function! _SourceIfExists(file)
+function! s:SourceIfExists(file)
   if filereadable(expand(a:file))
     exe 'source' a:file
   endif
 endfunction
 
-function! _StatuslineGit()
-  let l:branchname = _GitBranch()
-  return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
-endfunction
-
 " Used to switch to and from test files
-function! _SwitchToTest(ext, fcmd)
+function! s:SwitchToTest(ext, fcmd)
     let basename = expand('%:t:r')
     if basename =~ 'test_.*'
         let pyfile = split(basename, "_")[1]
@@ -328,7 +328,7 @@ function! _SwitchToTest(ext, fcmd)
     endif
 endfunction
 
-function! s:_VSetSearch(cmdtype)
+function! s:VSetSearch(cmdtype)
 	let temp = @s
 	norm! gv"sy
 	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
@@ -360,10 +360,10 @@ if exists('$TMUX')
   let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
   let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
 
-  nnoremap <silent> <C-h> :call _TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call _TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call _TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call _TmuxOrSplitSwitch('l', 'R')<cr>
+  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
 else
   map <C-h> <C-w>h
   map <C-j> <C-w>j
@@ -390,4 +390,4 @@ let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
 """""""""""""""""""
 "  Extra Modules  "
 """""""""""""""""""
-call _SourceIfExists("/home/bryan/.vim/plugins.vim")
+call s:SourceIfExists("/home/bryan/.vim/plugins.vim")

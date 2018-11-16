@@ -24,6 +24,9 @@ editor:
 
 content:
     geolocation: true
+    host_blocking:
+        enabled: false
+        whitelist: ['analytics.google.com']
 
 downloads:
     remove_finished: 10000
