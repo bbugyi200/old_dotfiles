@@ -1,0 +1,3 @@
+.cookiecutter/template.yml
+--- # yaml file, that does not need quotes around variables
+    variable: {{ VARIABLE }}

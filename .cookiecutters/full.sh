@@ -1,7 +1,7 @@
 #!/bin/bash
 
 read -r -d '' doc << EOM
-{% START INSERT MODE %}
+{% START INSERT HERE %}
 EOM
 
 # ---------- Modules ----------
@@ -10,13 +10,18 @@ source gutils.sh
 # ---------- Command-line Arguments ----------
 eval set -- "$(getopt -o "d,h,v" -l "debug,help,verbose" -- "$@")"
 
+export USAGE_GRAMMAR=(
+    "[-d] [-v]"
+    "[-h]"
+)
+
 # shellcheck disable=SC2154
 read -r -d '' help << EOM
-${USAGE^}
+$(usage)
 
 ${doc}
 
-Command-line Options:
+Optional Arguments:
     -d | --debug
         Enable debug mode.
 

@@ -58,8 +58,9 @@ nnoremap <Leader>0cg :execute 'edit' _CookieCutter('github')<CR>
 nnoremap <Leader>0s :e /home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0S :e /home/bryan/.vim/vim-snippets/all.snippets<CR>
-nnoremap <Leader>0t :execute 'edit' _Cookie(0)<CR>
-nnoremap <Leader>0T :execute 'edit' _Cookie(1)<CR>
+nnoremap <Leader>0t1 :execute 'edit' _Cookie(0)<CR>
+nnoremap <Leader>0t2 :execute 'edit' _Cookie(1)<CR>
+nnoremap <Leader>0t3 :execute 'edit' _Cookie(2)<CR>
 nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>0lv :e <C-R>=getcwd()<CR>/.lvimrc<CR>
 " ----- Alphabetic -----
@@ -74,7 +75,6 @@ nnoremap gk k
 nnoremap <Leader>g gqap| " mapping to wrap paragraph
 nnoremap j gj
 nnoremap k gk
-nnoremap <Leader><Leader>S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/all.snippets<CR>
 nnoremap <Leader>O O<C-u>
 nnoremap <Leader>o o<C-u>
 nnoremap <Leader>p :CtrlPMRU<CR>
