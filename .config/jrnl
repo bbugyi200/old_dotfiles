@@ -1,7 +1,7 @@
 {
   "journals": {
     "default": {
-      "journal": "/home/bryan/Dropbox/notes/notes.txt"
+      "journal": "/home/bryan/Dropbox/var/notes/jrnl.txt"
     }
   },
   "editor": "/usr/bin/vim",

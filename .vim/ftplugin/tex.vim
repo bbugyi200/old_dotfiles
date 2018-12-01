@@ -1,10 +1,5 @@
-" command! -nargs=0 Run call VimuxRunCommand("tmux select-pane -t bottom ;" 
-"             \ ." cd \"" .expand("%:p:h") ."\" && pdflatex " .expand("%:t") 
-"             \ ." && clear ; tmux select-pane -t top")<CR>
-
-command! -nargs=0 Run cd %:p:h | exec ":!pdflatex -file-line-error " . expand('%:t') . " && rm *.out *.aux *.log"
-
-command! -nargs=0 Run2 call VimuxRunCommand("(zathura \"" . expand("%:p:r") . ".pdf\" &> /dev/null &) && exit")
+let w:run_cmd = "cd %:p:h | !pdflatex -file-line-error " . expand('%:t') . " && rm *.out *.aux *.log"
+let w:Run_cmd = 'call VimuxRunCommand("(zathura \"' . expand("%:p:r") . '.pdf\" &> /dev/null &) && exit")'
 
 setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
 if filereadable('Makefile')

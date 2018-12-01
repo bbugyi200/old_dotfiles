@@ -43,7 +43,6 @@ for filename in ~/.bash-completions/*; do
 done
 
 _git 2> /dev/null  # hack to make git branch completion work
-_pacman 2> /dev/null  # hack to make pacman completion work
 compdef __git_branch_names gco
 compdef _command_names wim
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
@@ -68,7 +67,7 @@ setopt globdots
 #################
 #  ZSH Aliases  #
 #################
-alias so='unalias -a && source ~/.zshrc'
+so() { unalias -a && source ~/.zshrc; }
 
 # ---------- Suffix Aliases ----------
 # Zathura
@@ -161,7 +160,23 @@ if [[ "$(id -u)" = 0 ]]; then
     export PATH="/root/.local/bin:$PATH"
 fi
 
+function command_not_found_handler() {
+    cmd="$1"; shift
+    if [[ "${cmd}" == "+"* ]]; then
+        funky_cmd="fu -a ${cmd:1}"
+    elif [[ "${cmd}" == "-"* ]]; then
+        funky_cmd="fu -r ${cmd:1}"
+    elif [[ "${cmd}" == "@"* ]]; then
+        funky_cmd="fu -e ${cmd:1}"
+    else
+        >&2 printf "%s\n" "zsh: command not found: ${cmd}"
+        exit 127
+    fi
+
+    tmux send-keys "${funky_cmd}" "Enter"
+}
+
 # added by travis gem
 [ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh
 
-[ -f /usr/share/funky/funky.zsh ] && source /usr/share/funky/funky.zsh
+[ -f ~/.local/share/funky/funky.sh ] && source ~/.local/share/funky/funky.sh

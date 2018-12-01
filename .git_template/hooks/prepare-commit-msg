@@ -1,7 +1,0 @@
-#!/bin/bash
-
-ISSUE_LABEL=$(git branch | grep '*' | sed 's/* \([0-9]\+\)-\(.*\)/(#\1)/' | sed 's/*.*//g')
-
-if [[ -z "$3" ]] && [[ "$2" == "template" ]]; then
-    sed -i "1s/^/${ISSUE_LABEL}/" $1
-fi

@@ -1,3 +1,5 @@
+let g:comment_char = '-'
+
 " for hacking on xmonad
 autocmd BufRead,BufNewFile ~/.xmonad/* call s:add_xmonad_path()
 function! s:add_xmonad_path()

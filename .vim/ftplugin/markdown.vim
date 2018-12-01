@@ -1,1 +1,1 @@
-command! -nargs=0 Run execute ":InstantMarkdownPreview"
+let w:run_cmd = "InstantMarkdownPreview"

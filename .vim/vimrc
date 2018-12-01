@@ -37,6 +37,7 @@ set smartcase
 let &statusline = "%{StatuslineGit()} %f %m %= %y %p%% %l:%c"
 set tabstop=4
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
+set tw=0
 set undodir=/home/bryan/.vim/undo
 set undofile
 set viminfo+=n~/.vim/viminfo  " Changes location of viminfo file
@@ -44,11 +45,15 @@ set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore 
 set wildmenu  " Improves tab completion from normal mode
 set wildmode=full
 
+""""""""""""""""""""""""""
+"  Variable Definitions  "
+""""""""""""""""""""""""""
+let mapleader = ","  " The <Leader> key can be used for extra mappings
+let maplocalleader = "\\"
+
 """"""""""""""""""
 "  Key Bindings  "
 """"""""""""""""""
-let mapleader = ","  " The <Leader> key can be used for extra mappings
-let maplocalleader = "\\"
 
 " >>> NORMAL
 " ----- Numeric -----
@@ -58,15 +63,14 @@ nnoremap <Leader>0cg :execute 'edit' CookieCutter('github')<CR>
 nnoremap <Leader>0s :e /home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
 nnoremap <Leader>0S :e /home/bryan/.vim/vim-snippets/all.snippets<CR>
-nnoremap <Leader>0t1 :execute 'edit' Cookie(0)<CR>
-nnoremap <Leader>0t2 :execute 'edit' Cookie(1)<CR>
-nnoremap <Leader>0t3 :execute 'edit' Cookie(2)<CR>
+nnoremap <Leader>0t :execute 'edit' Cookie(0)<CR>
+nnoremap <Leader>0T :execute 'edit' Cookie(1)<CR>
 nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
 nnoremap <Leader>0lv :e <C-R>=getcwd()<CR>/.lvimrc<CR>
 " ----- Alphabetic -----
 nnoremap <Leader>a :AnsiEsc<CR>
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>| " Delete Buffer
-nnoremap <Leader>D :call RemoveFile()<CR>
+nnoremap <Leader>D :update<CR>:call RemoveFile()<CR>
 nnoremap <Leader>e :x!<CR> | imap <Leader>e <Esc><Leader>e
 nnoremap <Leader>E :xa!<CR> | imap <Leader>E <Esc><Leader>E
 nnoremap gd :Gdiff 
@@ -78,8 +82,8 @@ nnoremap k gk
 nnoremap <Leader>O O<C-u>
 nnoremap <Leader>o o<C-u>
 nnoremap <Leader>p :CtrlPMRU<CR>
-nnoremap <Leader>r :update<CR>:Run<CR>| imap <Leader>r <Esc><Leader>r
-nnoremap <Leader>R :update<CR>:Run2<CR>| imap <Leader>R <Esc><Leader>R
+nnoremap <Leader>r :update<CR>:execute w:run_cmd<CR>| imap <Leader>r <Esc><Leader>r
+nnoremap <Leader>R :update<CR>:execute w:Run_cmd<CR>| imap <Leader>R <Esc><Leader>R
 nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
 nnoremap <Leader>s :update<CR>| imap <Leader>s <Esc><Leader>s
 nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
@@ -88,6 +92,7 @@ nnoremap <Leader>v :vert sfind
 nnoremap Y y$
 nnoremap <Leader>Y ma^y$`a
 " ----- Non-Alphanumeric -----
+nnoremap <Leader># :call MakeBox()<CR> | imap <Leader># <Esc><Leader>#
 nnoremap <Leader>/ /\v
 nnoremap <Leader>< /\v\C<><Left>
 nnoremap ,.fs :sfind 
@@ -188,7 +193,6 @@ autocmd FocusGained,BufEnter * :checktime  " Reloads buffer on buffer changes
 autocmd InsertEnter * set timeoutlen=500
 autocmd InsertLeave * set timeoutlen=1000
 
-
 " Creates current file's parent directory if it doesn't already exist
 augroup BWCCreateDir
 	autocmd!
@@ -216,6 +220,148 @@ function! CookieCutter(project)
                 \ '/\{\{cookiecutter.project}}/' . local_file_path
 endfunction
 
+" Returns an expression that will replace a forward slash when one is typed
+" in INSERT mode. Used to enable automatic file completion (and sometimes
+" header completion in C/C++).
+function! InterpretForwardSlash()
+    let last_ch = matchstr(getline('.'), '\%' . (col('.') - 1) . 'c.')
+
+    if (&filetype == 'c' || &filetype == 'cpp')
+        let current_ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
+        if (current_ch == '>')
+            if (last_ch == "/")
+                return ",.h" " ':h' is a mapping that should be defined in ftplugin/c.vim
+            endif
+
+            return "/,.h"
+        endif
+    endif
+
+    if (last_ch == "/" && pumvisible())
+        return "\<C-x>\<C-f>\<C-p>"
+    endif
+
+    if (((last_ch == "~") || last_ch == ".") || pumvisible() || last_ch =~ "[A-z0-9]")
+        return "/\<C-x>\<C-f>\<C-p>"
+    endif
+
+    return "/"
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Close comment box.                                                          "
+"                                                                             "
+" Beginning comment bar and ending comment bar must both be defined already   "
+" and the cursor needs to be between the bars when 'MakeBox' is called.       "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! MakeBox()
+    " Mark starting position
+    normal! mm
+
+    if index(['sh', 'python', 'ruby', 'snippets'], &ft) >= 0
+        let g:comment_char = '#'
+    elseif index(['c', 'cpp', 'java', 'javascript', 'php'], &ft) >= 0
+        let g:comment_char = '/'
+    elseif index(['haskell', 'sql'], &ft) >= 0
+        let g:comment_char = '-'
+    elseif index(['tex'], &ft) >= 0
+        let g:comment_char = '%'
+    elseif index(['scheme'], &ft) >= 0
+        let g:comment_char = ';'
+    elseif index(['vim'], &ft) >= 0
+        let g:comment_char = '"'
+    endif
+
+    let triple_comment = g:comment_char . g:comment_char . g:comment_char
+
+    let curr_line = getline('.')
+    while curr_line[0:2] != triple_comment
+        normal! k
+        let curr_line = getline('.')
+    endw
+
+    normal! $
+    let max_line = col('.')
+
+    call MakeBoxBar(max_line)
+
+    normal! j
+    let curr_line = getline('.')
+    let first_line = 1
+    while curr_line[0:2] != triple_comment
+        if first_line == 1
+            let first_line = 0
+        else
+            normal! j
+        endif
+
+        let curr_line = getline('.')
+        call MakeBoxLine(max_line)
+    endw
+
+    call MakeBoxBar(max_line)
+
+    " Return cursor to starting position
+    normal! `mh
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Construct one of the bars that goes at the beginning and end of a           "
+" comment-box.                                                                "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! MakeBoxBar(max_line)
+    let _ = cursor(line('.'), a:max_line)
+    let column_number = col('.')
+    while column_number != a:max_line
+        execute "normal! a" . g:comment_char
+        let column_number = col('.')
+    endw
+endf
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Format a single line inside of a comment box                                "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! MakeBoxLine(max_line)
+    normal! ^
+    let current_ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
+
+    if current_ch == ' ' || current_ch == ''
+        execute "normal! xi" . g:comment_char . " "
+    elseif current_ch != g:comment_char
+        execute "normal! i" . g:comment_char . " "
+    endif
+
+    let do_double = index(['/', '-', ';'], g:comment_char) >= 0
+
+    if do_double
+        normal! 0l
+        let ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
+        let column_number = col('.')
+        if ch != g:comment_char
+            execute "normal! i" . g:comment_char
+        endif
+    endif
+
+    let _ = cursor(line('.'), a:max_line)
+    let column_number = col('.')
+    let current_ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
+    if column_number != 1 && (do_double != 1 || column_number != 2)
+        if current_ch == g:comment_char || column_number == a:max_line
+            normal! D
+            let column_number = col('.')
+        endif
+    endif
+    while column_number < (a:max_line - 2)
+        let column_number = col('.')
+        execute "normal! a "
+    endwhile
+    execute "normal! a" . g:comment_char
+
+    if do_double
+        execute "normal! hr" . g:comment_char
+    endif
+endfunction
+
 " Boolean function which checks if @plugin is installed
 function! PluginInstalled(plugin)
     return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
@@ -223,7 +369,7 @@ endfunction
 
 function! RemoveFile()
     let filename = expand('%')
-    execute "normal ,d"
+    normal ,d
     call system("safe-rm " . filename)
 endfunction
 
@@ -270,34 +416,6 @@ endfunction
 
 function! s:GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-" Returns an expression that will replace a forward slash when one is typed
-" in INSERT mode. Used to enable automatic file completion (and sometimes
-" header completion in C/C++).
-function! InterpretForwardSlash()
-    let last_ch = matchstr(getline('.'), '\%' . (col('.') - 1) . 'c.')
-
-    if (&filetype == 'c' || &filetype == 'cpp')
-        let ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
-        if (ch == '>')
-            if (last_ch == "/")
-                return ",.h" " ':h' is a mapping that should be defined in ftplugin/c.vim
-            endif
-
-            return "/,.h"
-        endif
-    endif
-
-    if (last_ch == "/" && pumvisible())
-        return "\<C-x>\<C-f>\<C-p>"
-    endif
-
-    if (((last_ch == "~") || last_ch == ".") || pumvisible() || last_ch =~ "[A-z0-9]")
-        return "/\<C-x>\<C-f>\<C-p>"
-    endif
-
-    return "/"
 endfunction
 
 " Automatically creates directory if it does not already exist

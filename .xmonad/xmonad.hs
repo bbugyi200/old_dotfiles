@@ -4,6 +4,7 @@
 import Data.Ratio
 import Graphics.X11.ExtraTypes.XF86
 import XMonad
+import XMonad.Layout.Accordion
 
 import XMonad.Actions.SpawnOn (spawnOn,spawnHere,manageSpawn)
 import XMonad.Config.Desktop (desktopConfig)
@@ -137,6 +138,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), launchApp "WEB" "qutebrowser --enable-webengine-inspector")
    , ((alpha, d), windows W.focusDown)
+   , ((alpha .|. shift, d), spawn "tmux -L $(tm-socket) kill-window")
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), sendMessage NextLayout) -- Next Layout
    , ((alpha, g), spawn "qb_prompt --next-screen")
@@ -161,7 +163,8 @@ myAdditionalKeys = [
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
                            removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
-   , ((alpha, o), launchApp "OKULAR" "okular & WS_is_Empty && zopen") -- Open New Book in Zathura
+   , ((alpha .|. shift, n), spawn "tm-new-window")
+   , ((alpha, o), launchApp "OKULAR" "okular & new_okular_instance && zopen") -- Open New Book in Zathura
    , ((alpha .|. ctrl, o), spawn "zopen")
    , ((alpha, p), spawn "tmux -L $(tm-socket) previous-window") -- Tmux Previous
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
@@ -192,7 +195,6 @@ myAdditionalKeys = [
 
    ---------- NUMERIC CHARACTERS ----------
    , ((alpha, xK_0), spawn "tmux -L $(tm-socket) switchc -n") -- Tmux Next Session
-   , ((alpha, xK_1), spawn "tm-new-window")
    , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
 
    ---------- KEYPAD CHARACTERS ----------
@@ -226,7 +228,8 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), sequence_ [DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)]) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, DW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha, xK_comma), sequence_ [NSP.namedScratchpadAction scratchpads "gtd"]) -- Scratchpad GTD
+   , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"])
+   , ((alpha .|. beta, xK_comma), sequence_ [NSP.namedScratchpadAction scratchpads "gtd"])
    , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); ll'") -- cd to Next Dir
    , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; ll'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
@@ -275,7 +278,7 @@ myXPConfig = P.def {
   P.position = P.CenteredAt 0.2 0.4
 }
 
-myLayout = resizableTall ||| Full
+myLayout = resizableTall ||| Full ||| Accordion
   where
     resizableTall = smartSpacing 5 $ RT.ResizableTall nmaster delta ratio []
     nmaster = 1
@@ -283,13 +286,13 @@ myLayout = resizableTall ||| Full
     delta = 3/100
 
 -- Measurements used by Floating Windows
-l = 0.25; bigl = 0.015  -- Distance from left edge
+l = 0.05; bigl = 0.015  -- Distance from left edge
 t = 0.3; bigt = 0.03  -- Distance from top edge
-w = 0.5; bigw = 0.97  -- Total Width of Window
-h = 0.6; bigh = 0.94  -- Total Height of Window
+w = 0.9; bigw = 0.97  -- Total Width of Window
+h = 0.3; bigh = 0.94  -- Total Height of Window
 
 scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad") 
-                    (NSP.customFloating $ W.RationalRect l t w h)
+                    (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh)
               , NSP.NS "calculator" calculator (appName =? "calculator")
                     (NSP.customFloating $ W.RationalRect l t w h)
               , NSP.NS "weechat" weechat (appName =? "weechat")

@@ -1,0 +1,15 @@
+{% INSERT %}
+
+import datetime as dt
+import importlib.util
+import importlib.machinery
+import sys  # noqa
+import os  # noqa
+import unittest.mock as mock
+
+loader = importlib.machinery.SourceFileLoader("{{ SCRIPT }}", "/home/bryan/Dropbox/bin/main/{{ SCRIPT }}")
+spec = importlib.util.spec_from_loader("{{ SCRIPT }}", loader)
+S = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(S)
+
+import pytest  # noqa

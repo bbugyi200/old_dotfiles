@@ -90,7 +90,8 @@ for i in range(1, 11):
 #############
 aliases = {
     'get': 'jseval -q document.querySelector("h2").click()',  # click GET on libgen
-    'pockyt': "spawn -v pockyt put -f '{link}' -i {url}",
+    'P': "spawn -v pockyt put -f '{link}' -i {url}",
+    'rss': 'spawn --userscript openfeeds',
     'vs': 'open -w',
 }
 
@@ -139,6 +140,9 @@ pbind('<Ctrl-o>', 'prompt-open-download xdg-open {}')
 cbind('<Ctrl-f>', 'edit-command --run')
 cbind('<Ctrl-y>', 'fake-key --global <Return>v$y')
 
+# >>> PASSTHROUGH
+bind('<Esc>', 'leave-mode', mode='passthrough')
+
 # >>> NORMAL
 # ----- Alphanumeric -----
 bind(',1', 'buffer 1')
@@ -171,7 +175,6 @@ bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
 bind('p', 'open -- {clipboard}')
 bind('P', 'open -t -- {clipboard}')
 bind(',q', 'set-cmd-text :', 'run-with-count 2 command-history-prev', 'edit-command --run')
-bind(',rss', 'spawn --userscript openfeeds')
 bind(',sd', 'set-cmd-text -s :session-delete')
 bind(',sl', 'set-cmd-text -s :session-load -c')
 bind(',ss', 'set-cmd-text -s :session-save -o')

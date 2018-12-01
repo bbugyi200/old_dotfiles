@@ -1,7 +1,7 @@
 #!/bin/bash
 
 read -r -d '' doc << EOM
-{% START INSERT MODE %}
+{% INSERT %}
 EOM
 
 # ---------- Modules ----------
@@ -12,7 +12,7 @@ eval set -- "$(getopt -o "d,h,v" -l "debug,help,verbose" -- "$@")"
 
 export USAGE_GRAMMAR=(
     "[-d] [-v]"
-    "[-h]"
+    "-h"
 )
 
 # shellcheck disable=SC2154

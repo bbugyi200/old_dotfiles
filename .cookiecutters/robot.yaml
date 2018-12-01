@@ -1,0 +1,13 @@
+# vim: set ft=yaml:
+
+start_on: "{{ DATE }}"
+url: ""
+title:
+
+# ===== Subreddits =====
+# programming
+# linux
+# SideProject
+# ScriptSwap (text only)
+# commandline
+# bash
