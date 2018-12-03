@@ -1,2 +1,2 @@
-nnoremap <buffer> <Leader>0S :e /home/bryan/Dropbox/dotfiles/extras/vim-snippets/c.snippets<CR>
-nnoremap <buffer> <Leader>0V :e ~/.vim/ftplugin/c.vim<CR>
+nnoremap <buffer> <Leader>0cs :e /home/bryan/Dropbox/home/.vim/vim-snippets/c.snippets<CR>
+nnoremap <buffer> <Leader>0cv :e /home/bryan/Dropbox/home/.vim/ftplugin/c.vim<CR>

@@ -1,14 +1,14 @@
+let w:run_cmd = "!make"
 let g:comment_char = '/'
 
 command! -nargs=0 Run exec "make"
 command! -nargs=0 Run2 exec "make build-release"
 command! -nargs=0 CacheHeaders !cache_cheaders
 
-imap <buffer> <Leader>.h :k
-imap <buffer> <Leader>.H #include <><Left>:k
+imap <buffer> <Leader>i <C-x><C-k><C-p>
+imap <buffer> <Leader>I #include <><Left><Leader>i
 nnoremap <buffer> <Leader>m :Man 3 <C-r><C-w><CR>/^[A-Z]\+<CR>gg
 nnoremap <buffer> <Leader>M :e Makefile<CR>
-nnoremap <buffer> <Leader>h :execute "find " . expand('%:t:r') . ".h"<CR>
 nnoremap <buffer> <Leader>t :execute "find test_" . expand('%:t:r') . ".cc"<CR>
 nnoremap <buffer> <Leader>T :execute "tabfind test_" . expand('%:t:r') . ".cc"<CR>
 

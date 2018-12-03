@@ -1,5 +1,6 @@
 #include "{{ PROJECT }}.h"
 
+#include <stdbool.h>
 #include <getopt.h>
 
 bool debug_flag;
@@ -34,7 +35,7 @@ int main(int argc, char **argv)
         switch(choice)
         {
             case 'd':
-                indir = optarg;
+                debug_flag = true;
                 break;
             case 'h':
                 printf("%s\n", usage);

@@ -163,11 +163,9 @@ fi
 function command_not_found_handler() {
     cmd="$1"; shift
     if [[ "${cmd}" == "+"* ]]; then
-        funky_cmd="fu -a ${cmd:1}"
+        funky_cmd="funky -a ${cmd:1}"
     elif [[ "${cmd}" == "-"* ]]; then
-        funky_cmd="fu -r ${cmd:1}"
-    elif [[ "${cmd}" == "@"* ]]; then
-        funky_cmd="fu -e ${cmd:1}"
+        funky_cmd="funky -r ${cmd:1}"
     else
         >&2 printf "%s\n" "zsh: command not found: ${cmd}"
         exit 127
@@ -175,8 +173,5 @@ function command_not_found_handler() {
 
     tmux send-keys "${funky_cmd}" "Enter"
 }
-
-# added by travis gem
-[ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh
 
 [ -f ~/.local/share/funky/funky.sh ] && source ~/.local/share/funky/funky.sh

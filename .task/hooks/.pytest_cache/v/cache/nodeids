@@ -1,5 +1,0 @@
-[
-  "tests/test_dates.py::test_get_today",
-  "tests/test_dates.py::test_get_today_dt",
-  "tests/test_dates.py::test_get_tomorrow"
-]

@@ -29,8 +29,8 @@ clean:  ## Clean up build files.
 	@find . -name "*.o" -delete
 	@find . -name "core" -delete
 	@rm -f $(project)
-	@make -C test clean &> /dev/null
+	@make -C tests clean &> /dev/null
 
 .PHONY: check
 check:  ## Run all unit tests.
-	@$(MAKE) --no-print-directory -C test run
+	@$(MAKE) --no-print-directory -C tests run

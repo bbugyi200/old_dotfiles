@@ -184,7 +184,8 @@ myAdditionalKeys = [
    , ((alpha .|. shift, t), spawn "task_hotstart")
    , ((alpha, u), windows W.focusUp)
    , ((alpha, v), launchApp "MPV" "mpvlc")
-   , ((alpha .|. shift, v), launchApp "CAST" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cnciopoikihiagdjbjpnocolokfelagl")
+   , ((alpha .|. shift, v), launchApp "VIDEOSTREAM" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cnciopoikihiagdjbjpnocolokfelagl")
+   , ((alpha .|. shift, v), NSP.namedScratchpadAction scratchpads "videostream")
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, x), launchApp "TERM" myTerminal)
    , ((alpha .|. beta, x), launchApp "TERM'" "urxvt -name primes -e zsh -c 'tm-init-prime'")
@@ -298,12 +299,15 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
               , NSP.NS "weechat" weechat (appName =? "weechat")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh)
               , NSP.NS "gtd" gtd (appName =? "GTD")
+                    (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh)
+              , NSP.NS "videostream" videostream (appName =? "crx_cnciopoikihiagdjbjpnocolokfelagl")
                     (NSP.customFloating $ W.RationalRect bigl bigt bigw bigh) ]
             where 
                 calculator = "urxvt -name calculator -e zsh -c 'bc -l'"
                 scratchpad = "urxvt -name scratchpad -e zsh -c 'tmuxinator start ScratchPad root=$(tm-session-root --get ScratchPad)'"
                 weechat = "weechat-launcher"
                 gtd = "urxvt -name GTD -e zsh -c 'tmuxinator start GTD root=$(tm-session-root --get GTD)'"
+                videostream = "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cnciopoikihiagdjbjpnocolokfelagl"
 
 myManageHook = composeAll
     [ manageSpawn

@@ -1,7 +1,0 @@
-build
-bin
-runtests
-*.snippets
-Makefile
-docs/html/*
-docs/latex/*

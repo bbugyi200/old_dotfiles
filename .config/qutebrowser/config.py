@@ -134,7 +134,7 @@ ibind('<Ctrl-Shift-u>', 'spawn --userscript qute-pass --username-only')
 ibind('<Ctrl-Shift-p>', 'spawn --userscript qute-pass --password-only')
 
 # >>> PROMPT
-pbind('<Ctrl-o>', 'prompt-open-download xdg-open {}')
+pbind('<Ctrl-o>', 'prompt-open-download rifle {}')
 
 # >>> COMMAND
 cbind('<Ctrl-f>', 'edit-command --run')

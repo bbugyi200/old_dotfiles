@@ -2,6 +2,19 @@ completion:
     web_history:
         max_items: -1
 
+content:
+    geolocation: true
+    host_blocking:
+        enabled: false
+        whitelist: ['analytics.google.com']
+
+downloads:
+    remove_finished: 10000
+
+editor:
+    command: ['urxvt', '-name', 'qute-editor', '-e', 'zsh', '-c',
+              'vim --noplugin -N -u ~/.config/qutebrowser/editor.vimrc {}']
+
 tabs:
     last_close: startpage
     max_width: 250
@@ -17,16 +30,3 @@ tabs:
 
 url:
     start_pages: https://www.google.com
-
-editor:
-    command: ['urxvt', '-name', 'qute-editor', '-e', 'zsh', '-c',
-              'vim --noplugin -N -u ~/.config/qutebrowser/editor.vimrc {}']
-
-content:
-    geolocation: true
-    host_blocking:
-        enabled: false
-        whitelist: ['analytics.google.com']
-
-downloads:
-    remove_finished: 10000

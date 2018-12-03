@@ -1,7 +1,5 @@
 " ############################## VIMRC ##############################
-""""""""""""""
-"  Settings  "
-""""""""""""""
+" ########## Settings ##########
 set autoindent
 set autoread
 set background=dark
@@ -45,34 +43,50 @@ set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore 
 set wildmenu  " Improves tab completion from normal mode
 set wildmode=full
 
-""""""""""""""""""""""""""
-"  Variable Definitions  "
-""""""""""""""""""""""""""
+" ########## Variable Definitions ##########
 let mapleader = ","  " The <Leader> key can be used for extra mappings
 let maplocalleader = "\\"
 
-""""""""""""""""""
-"  Key Bindings  "
-""""""""""""""""""
+" ########## Key Bindings ##########
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Create mappings to open 'file_expr' in current window, to open 'file_expr' "
+" using a horizontal split, and to open 'file_expr' using a vertical split.  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! s:MapEditCommands(chars, file_expr)
+    execute "nnoremap <Leader>0" . a:chars . " :execute 'edit' " . a:file_expr . "<CR>"
+    execute "nnoremap <Leader>_" . a:chars . " :execute 'split' " . a:file_expr . "<CR>"
+    execute "nnoremap <Leader>\\|" . a:chars . " :execute 'vsplit' " . a:file_expr . "<CR>"
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Create the same mapping for both NORMAL and INSERT modes.                   "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! s:MapNIModes(lhs, rhs)
+    execute "nnoremap " . a:lhs . " " . a:rhs
+    execute "imap " . a:lhs . " <Esc>" . a:lhs
+endfunction
 
 " >>> NORMAL
 " ----- Numeric -----
-nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
-nnoremap <Leader>0cc :execute 'edit' CookieCutter('c')<CR>
-nnoremap <Leader>0cg :execute 'edit' CookieCutter('github')<CR>
-nnoremap <Leader>0s :e /home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets<CR>
-nnoremap <Leader>0ls :e <C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets<CR>
-nnoremap <Leader>0S :e /home/bryan/.vim/vim-snippets/all.snippets<CR>
-nnoremap <Leader>0t :execute 'edit' Cookie(0)<CR>
-nnoremap <Leader>0T :execute 'edit' Cookie(1)<CR>
-nnoremap <Leader>0v :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>| " Edit ftplugin File
-nnoremap <Leader>0lv :e <C-R>=getcwd()<CR>/.lvimrc<CR>
+call s:MapEditCommands("cc", "CookieMirror('C')")
+call s:MapEditCommands("cg", "CookieMirror('github')")
+call s:MapEditCommands("ls", "'<C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets'")
+call s:MapEditCommands("lv", "'<C-R>=getcwd()<CR>/.lvimrc'")
+call s:MapEditCommands("s", "'/home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets'")
+call s:MapEditCommands("S", "'/home/bryan/.vim/vim-snippets/all.snippets'")
+call s:MapEditCommands("t1", "NthCookie('1')")
+call s:MapEditCommands("t2", "NthCookie('2')")
+call s:MapEditCommands("t3", "NthCookie('3')")
+call s:MapEditCommands("v", "'/home/bryan/.vim/ftplugin/<C-R>=&filetype<CR>.vim'")
+call s:MapEditCommands("V", "'/home/bryan/.vim/vimrc'")
+
 " ----- Alphabetic -----
 nnoremap <Leader>a :AnsiEsc<CR>
-nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>| " Delete Buffer
+nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
+nnoremap <LocalLeader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Leader>D :update<CR>:call RemoveFile()<CR>
-nnoremap <Leader>e :x!<CR> | imap <Leader>e <Esc><Leader>e
-nnoremap <Leader>E :xa!<CR> | imap <Leader>E <Esc><Leader>E
+call s:MapNIModes('<Leader>e', ':x!<CR>')
+call s:MapNIModes('<Leader>E', ':xa!<CR>')
 nnoremap gd :Gdiff 
 nnoremap gj j
 nnoremap gk k
@@ -82,17 +96,20 @@ nnoremap k gk
 nnoremap <Leader>O O<C-u>
 nnoremap <Leader>o o<C-u>
 nnoremap <Leader>p :CtrlPMRU<CR>
-nnoremap <Leader>r :update<CR>:execute w:run_cmd<CR>| imap <Leader>r <Esc><Leader>r
-nnoremap <Leader>R :update<CR>:execute w:Run_cmd<CR>| imap <Leader>R <Esc><Leader>R
+call s:MapNIModes('<Leader>r', ':update<CR>:execute w:run_cmd<CR>')
+call s:MapNIModes('<Leader>R', ':update<CR>:execute w:Run_cmd<CR>')
 nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
-nnoremap <Leader>s :update<CR>| imap <Leader>s <Esc><Leader>s
+call s:MapNIModes('<Leader>s', ':update<CR>')
+call s:MapNIModes('<Leader>S', ':update<CR>:mksession!<CR>')
 nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
 nmap S ys
 nnoremap <Leader>v :vert sfind 
 nnoremap Y y$
 nnoremap <Leader>Y ma^y$`a
+
 " ----- Non-Alphanumeric -----
-nnoremap <Leader># :call MakeBox()<CR> | imap <Leader># <Esc><Leader>#
+nnoremap <Leader><LocalLeader> :cd %:h<CR>:pwd<CR>
+call s:MapNIModes('<Leader>#', ':call MakeBox()<CR>')
 nnoremap <Leader>/ /\v
 nnoremap <Leader>< /\v\C<><Left>
 nnoremap ,.fs :sfind 
@@ -107,6 +124,7 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
 nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
 nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
+
 " ----- Special Characters -----
 " ~ Mouse Events ~
 nnoremap <2-LeftMouse> :exe "tag " . expand("<cword>")<CR>
@@ -145,15 +163,11 @@ cnoremap w!! w !sudo tee > /dev/null %
 " >>> OPERATOR
 onoremap @ iW
 
-"""""""""""""""""""
-"  Abbreviations  "
-"""""""""""""""""""
+" ########## Abbreviations ##########
 cnoreabbrev :f find
 cnoreabbrev :s CtrlSF
 
-""""""""""""""
-"  AutoCmds  "
-""""""""""""""
+" ########## AutoCmds ##########
 autocmd BufReadPost,BufNewFile *.auto set filetype=auto
 autocmd BufRead,BufNewFile *.conf set syntax=cfg
 autocmd BufRead,BufNewFile *.html set colorcolumn=
@@ -199,11 +213,9 @@ augroup BWCCreateDir
 	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
-"""""""""""""""
-"  Functions  "
-"""""""""""""""
+" ########## Functions ##########
 " ----- PUBLIC FUNCTIONS (used in other files) -----
-function! Cookie(N)
+function! NthCookie(N)
     let ext = &filetype
 
     if &filetype == "python"
@@ -211,13 +223,12 @@ function! Cookie(N)
     endif
 
     let templates = systemlist('cookie -l | grep \.' . ext)
-    return '/home/bryan/.cookiecutters/' . templates[a:N]
+    return '/home/bryan/.cookiecutters/' . templates[a:N - 1]
 endfunction
 
-function! CookieCutter(project)
+function! CookieMirror(project)
     let local_file_path = substitute(expand('%:p'), getcwd(), '', 0)
-    return '/home/bryan/.cookiecutters/' . a:project . 
-                \ '/\{\{cookiecutter.project}}/' . local_file_path
+    return '/home/bryan/.cookiecutters/' . a:project . local_file_path
 endfunction
 
 " Returns an expression that will replace a forward slash when one is typed
@@ -230,10 +241,10 @@ function! InterpretForwardSlash()
         let current_ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
         if (current_ch == '>')
             if (last_ch == "/")
-                return ",.h" " ':h' is a mapping that should be defined in ftplugin/c.vim
+                return "\<C-x>\<C-k>\<C-p>"
             endif
 
-            return "/,.h"
+            return "/\<C-x>\<C-k>\<C-p>"
         endif
     endif
 
@@ -453,9 +464,7 @@ function! s:VSetSearch(cmdtype)
 	let @s = temp
 endfunction
 
-""""""""""""""""""""""""""""""""
-"  Custom Command Definitions  "
-""""""""""""""""""""""""""""""""
+" ########## Custom Command Definitions ##########
 " Redraws screen after silent command
 command! -nargs=1 Silent
 \   execute 'silent !' . <q-args>
@@ -464,9 +473,7 @@ command! -nargs=1 Silent
 " Removes all swap files in the current working directory
 command! RmSwap execute "Silent rm " . expand('%:h') . "/.*.swp"
 
-"""""""""""""""""""
-"  Miscellaneous  "
-"""""""""""""""""""
+" ########## Miscellaneous ##########
 " ----- Enable Plugins -----
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -505,7 +512,5 @@ highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
 let g:S = 0  " Used in 'Sum()' function
 let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
 
-"""""""""""""""""""
-"  Extra Modules  "
-"""""""""""""""""""
+" ########## Extra Modules ##########
 call s:SourceIfExists("/home/bryan/.vim/plugins.vim")
