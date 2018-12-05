@@ -1,26 +1,25 @@
 {-# LANGUAGE DeriveDataTypeable, TypeSynonymInstances, MultiParamTypeClasses #-}
 
+-------------------------------------------------------------------------------
+-- IMPORTED LIBRARIES                                                        --
+-------------------------------------------------------------------------------
 import Data.Ratio
 import Graphics.X11.ExtraTypes.XF86
 import XMonad
 import XMonad.Core
 import XMonad.Layout
-import XMonad.Layout.Accordion
 import XMonad.Layout.Grid
-import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.TwoPane
 import XMonad.Layout.Tabbed
 import XMonad.Layout.MultiToggle
-import XMonad.Layout.NoBorders (noBorders,smartBorders,withBorder)
-import XMonad.Layout.Minimize
 import XMonad.Layout.Named
-import XMonad.Layout.Gaps
 
 import XMonad.Actions.SpawnOn (spawnOn,spawnHere,manageSpawn)
 import XMonad.Config.Desktop (desktopConfig)
 import XMonad.Hooks.EwmhDesktops (ewmh,ewmhDesktopsLogHook,ewmhDesktopsStartup)
 import XMonad.Hooks.ManageHelpers (doRectFloat,doFullFloat)
 import XMonad.Hooks.SetWMName (setWMName)
+import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Spacing (smartSpacing)
 import XMonad.Util.Run (spawnPipe,hPutStrLn)
 import XMonad.Util.EZConfig (additionalKeys)
@@ -47,9 +46,9 @@ import qualified XMonad.Util.NamedScratchpad as NSP
 -- hlint directives
 {-# ANN module "HLint: ignore Evaluate" #-}
 
------------------
---  Functions  --
------------------
+-------------------------------------------------------------------------------
+-- UTILITY FUNCTIONS                                                         --
+-------------------------------------------------------------------------------
 -- Function that prevents cycling to workspaces available on other screens
 hiddenNotNSP :: X (WindowSpace -> Bool)
 hiddenNotNSP = do
@@ -121,9 +120,9 @@ pushDesktop key = spawn $ "xmonad-scratch-bind " ++ key ++ " 0.15"
 delayedSpawn :: Int -> String -> X ()
 delayedSpawn seconds cmd = spawn $ "sleep " ++ show seconds ++ " && " ++ cmd
 
---------------------
---  Key Bindings  --
---------------------
+-------------------------------------------------------------------------------
+-- KEY BINDINGS                                                              --
+-------------------------------------------------------------------------------
 ------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
 --
 -- The `alpha` and `beta` keys should be set to either 'super' or 'alt', depending on which
@@ -270,9 +269,9 @@ myAdditionalKeys = [
        s = xK_s; t = xK_t; u = xK_u; v = xK_v; w = xK_w; x = xK_x
        y = xK_y; z = xK_z
 
-----------------------
---  Layout Options  --
-----------------------
+-------------------------------------------------------------------------------
+-- LAYOUT CONFIG                                                             --
+-------------------------------------------------------------------------------
 myFull = named "TS" $ smartBorders simpleTabbed
 
 -- Transformers (W+f)
@@ -284,9 +283,9 @@ myLayout = id
     $ mkToggle (single TABBED)
     $ TwoPane (3/100) (1/2) ||| Grid
 
-------------------------------------
---  Miscellaneous Configurations  --
-------------------------------------
+-------------------------------------------------------------------------------
+-- MISCELLANEOUS CONFIGURATIONS                                              --
+-------------------------------------------------------------------------------
 myFont = "xft:Source Code Pro"
 myTerminal = "urxvt -e zsh -c 'tm Terminal'"
 
@@ -354,9 +353,9 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=1")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=1")
 
-------------
---  Main  --
-------------
+-------------------------------------------------------------------------------
+-- MAIN                                                                      --
+-------------------------------------------------------------------------------
 main :: IO ()
 main = do
     hostname <- HostName.getHostName
