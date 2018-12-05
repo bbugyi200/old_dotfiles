@@ -1,10 +1,20 @@
----------------
---  Imports  --
----------------
+{-# LANGUAGE DeriveDataTypeable, TypeSynonymInstances, MultiParamTypeClasses #-}
+
 import Data.Ratio
 import Graphics.X11.ExtraTypes.XF86
 import XMonad
+import XMonad.Core
+import XMonad.Layout
 import XMonad.Layout.Accordion
+import XMonad.Layout.Grid
+import XMonad.Layout.ToggleLayouts
+import XMonad.Layout.TwoPane
+import XMonad.Layout.Tabbed
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.NoBorders (noBorders,smartBorders,withBorder)
+import XMonad.Layout.Minimize
+import XMonad.Layout.Named
+import XMonad.Layout.Gaps
 
 import XMonad.Actions.SpawnOn (spawnOn,spawnHere,manageSpawn)
 import XMonad.Config.Desktop (desktopConfig)
@@ -33,6 +43,9 @@ import qualified XMonad.Layout.ResizableTile as RT
 import qualified XMonad.Prompt as P
 import qualified XMonad.StackSet as W
 import qualified XMonad.Util.NamedScratchpad as NSP
+
+-- hlint directives
+{-# ANN module "HLint: ignore Evaluate" #-}
 
 -----------------
 --  Functions  --
@@ -91,10 +104,7 @@ launchFullApp ws cmd = launchApp ws ("xdotool key super+f && " ++ cmd)
 
 -- Only shows layout when fullscreen mode is enabled
 myPpOrder :: [String] -> [String]
-myPpOrder (ws:l:t:_) = 
-    if "Full" `DataList.isInfixOf` l
-        then [ws, DL.xmobarColor "white" "" "<icon=full.xbm/>"]
-        else [ws]
+myPpOrder (ws:l:t:_) = [ws]
 
 strToUpper :: String -> String
 strToUpper = map DataChar.toUpper
@@ -114,7 +124,6 @@ delayedSpawn seconds cmd = spawn $ "sleep " ++ show seconds ++ " && " ++ cmd
 --------------------
 --  Key Bindings  --
 --------------------
-
 ------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
 --
 -- The `alpha` and `beta` keys should be set to either 'super' or 'alt', depending on which
@@ -140,7 +149,7 @@ myAdditionalKeys = [
    , ((alpha, d), windows W.focusDown)
    , ((alpha .|. shift, d), spawn "tmux -L $(tm-socket) kill-window")
    , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
-   , ((alpha, f), sendMessage NextLayout) -- Next Layout
+   , ((alpha, f), sendMessage $ XMonad.Layout.MultiToggle.Toggle TABBED)
    , ((alpha, g), spawn "qb_prompt --next-screen")
    , ((alpha .|. beta, g), spawn "qb_prompt")
    , ((alpha, h), sequence_ [N2D.windowGo N2D.L False])
@@ -152,10 +161,12 @@ myAdditionalKeys = [
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [N2D.windowGo N2D.U False])
    , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
-   , ((alpha .|. shift, k), spawn "tm-kill") -- Kill Screen
+   , ((alpha .|. shift, k), spawn "tm-kill")
+   , ((alpha .|. ctrl, k), spawn "tmux copy-mode")
    , ((alpha, l), sequence_ [N2D.windowGo N2D.R False])
    , ((alpha .|. beta, l), sendMessage Expand)
    , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
+   , ((alpha .|. ctrl, l), sendMessage NextLayout)
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "MISC", windows $ W.shift "MISC", removeEmptyWorkspaceAfter' $ windows $ W.view "MISC"]) -- Shift current window to MISC
    , ((alpha .|. beta, m), spawn "toggle_monitor && sleep 1 && killall xmobar; xmonad --restart") -- Toggle External Monitor
    , ((alpha .|. shift, m), sequence_ $ [DW.addHiddenWorkspace "MPV", windows $ W.shift "MPV", removeEmptyWorkspaceAfter' $ windows $ W.view "MPV"] ++ seqPush)
@@ -259,9 +270,24 @@ myAdditionalKeys = [
        s = xK_s; t = xK_t; u = xK_u; v = xK_v; w = xK_w; x = xK_x
        y = xK_y; z = xK_z
 
+----------------------
+--  Layout Options  --
+----------------------
+myFull = named "TS" $ smartBorders simpleTabbed
+
+-- Transformers (W+f)
+data TABBED = TABBED deriving (Read, Show, Eq, Typeable)
+instance Transformer TABBED Window where
+	transform TABBED x k = k myFull (const x)
+
+myLayout = id
+    $ mkToggle (single TABBED)
+    $ TwoPane (3/100) (1/2) ||| Grid
+
 ------------------------------------
 --  Miscellaneous Configurations  --
 ------------------------------------
+myFont = "xft:Source Code Pro"
 myTerminal = "urxvt -e zsh -c 'tm Terminal'"
 
 myFocusFollowsMouse = False
@@ -275,16 +301,9 @@ myWorkspaces = ["NSP", "TERM","WEB"]
 
 myXPConfig :: P.XPConfig
 myXPConfig = P.def {
-  P.font = "xft:Source Code Pro",
+  P.font = myFont,
   P.position = P.CenteredAt 0.2 0.4
 }
-
-myLayout = resizableTall ||| Full ||| Accordion
-  where
-    resizableTall = smartSpacing 5 $ RT.ResizableTall nmaster delta ratio []
-    nmaster = 1
-    ratio = 1/2
-    delta = 3/100
 
 -- Measurements used by Floating Windows
 l = 0.05; bigl = 0.015  -- Distance from left edge
