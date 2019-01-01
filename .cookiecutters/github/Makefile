@@ -3,9 +3,9 @@
 PREFIX ?= /usr
 BINDIR ?= $(PREFIX)/bin
 
-bindir=$(DESTDIR)/$(BINDIR)
-runtests=
-project={{PROJECT}}
+bindir = $(DESTDIR)/$(BINDIR)
+runtests = 
+project = {{PROJECT}}
 
 
 .PHONY: help

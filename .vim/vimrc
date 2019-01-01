@@ -68,6 +68,7 @@ endfunction
 
 " >>> NORMAL
 " ----- Numeric -----
+nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
 call s:MapEditCommands("cc", "CookieMirror('C')")
 call s:MapEditCommands("cg", "CookieMirror('github')")
 call s:MapEditCommands("ls", "'<C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets'")
@@ -87,19 +88,20 @@ nnoremap <LocalLeader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Leader>D :update<CR>:call RemoveFile()<CR>
 call s:MapNIModes('<Leader>e', ':x!<CR>')
 call s:MapNIModes('<Leader>E', ':xa!<CR>')
-nnoremap gd :Gdiff 
 nnoremap gj j
 nnoremap gk k
 nnoremap <Leader>g gqap| " mapping to wrap paragraph
 nnoremap j gj
 nnoremap k gk
+nnoremap K K<CR>
+vnoremap K K<CR>
 nnoremap <Leader>O O<C-u>
 nnoremap <Leader>o o<C-u>
 nnoremap <Leader>p :CtrlPMRU<CR>
 call s:MapNIModes('<Leader>r', ':update<CR>:execute w:run_cmd<CR>')
 call s:MapNIModes('<Leader>R', ':update<CR>:execute w:Run_cmd<CR>')
 nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
-call s:MapNIModes('<Leader>s', ':update<CR>')
+call s:MapNIModes('<Leader>s', ':write<CR>')
 call s:MapNIModes('<Leader>S', ':update<CR>:mksession!<CR>')
 nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
 nmap S ys
@@ -108,7 +110,6 @@ nnoremap Y y$
 nnoremap <Leader>Y ma^y$`a
 
 " ----- Non-Alphanumeric -----
-nnoremap <Leader><LocalLeader> :cd %:h<CR>:pwd<CR>
 call s:MapNIModes('<Leader>#', ':call MakeBox()<CR>')
 nnoremap <Leader>/ /\v
 nnoremap <Leader>< /\v\C<><Left>
@@ -118,9 +119,7 @@ nnoremap ,.ft :tabfind
 nnoremap _ :<C-u>execute "sbuffer " . v:count1<CR>
 nnoremap \| :<C-u>execute "vert sbuffer " . v:count1<CR>
 nnoremap + :<C-u>execute "tab sbuffer " . v:count<CR>
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap - :<C-u>execute "buffer " . v:count1<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
 nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
 nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
@@ -135,8 +134,12 @@ nnoremap <Del> :<C-u>execute "bdelete " . v:count<CR>
 nnoremap <C-g> :Gstatus<CR>
 nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <CR> o<Esc>
+nnoremap <silent> <Down> :resize +5<CR>
+nnoremap <silent> <Left> :vert resize +5<CR>
+nnoremap <silent> <Right> :vert resize -5<CR>
 nnoremap <Space> :ls<CR>
 nnoremap <Tab> <C-^>
+nnoremap <silent> <Up> :resize -5<CR>
 
 " >>> INSERT
 inoremap <expr> / InterpretForwardSlash()
@@ -169,7 +172,6 @@ cnoreabbrev :s CtrlSF
 
 " ########## AutoCmds ##########
 autocmd BufReadPost,BufNewFile *.auto set filetype=auto
-autocmd BufRead,BufNewFile *.conf set syntax=cfg
 autocmd BufRead,BufNewFile *.html set colorcolumn=
 autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.lshrc set syntax=zsh
@@ -271,7 +273,7 @@ function! MakeBox()
 
     if index(['sh', 'python', 'ruby', 'snippets'], &ft) >= 0
         let g:comment_char = '#'
-    elseif index(['c', 'cpp', 'java', 'javascript', 'php'], &ft) >= 0
+    elseif index(['c', 'cpp', 'java', 'javascript', 'php', 'txt'], &ft) >= 0
         let g:comment_char = '/'
     elseif index(['haskell', 'sql'], &ft) >= 0
         let g:comment_char = '-'
@@ -394,10 +396,6 @@ function! Sum(number)
   return a:number
 endfunction
 
-function! SwitchToTest(ext)
-    call s:SwitchToTest(a:ext, 'find')
-endfunction
-
 function! TmuxOrSplitSwitch(wincmd, tmuxdir)
   let previous_winnr = winnr()
   silent! execute "wincmd " . a:wincmd
@@ -407,24 +405,7 @@ function! TmuxOrSplitSwitch(wincmd, tmuxdir)
   endif
 endfunction
 
-function! VSwitchToTest(ext)
-    call s:SwitchToTest(a:ext, 'vert sf')
-endfunction
-
 " ----- PRIVATE FUNCTIONS (used only in this file) -----
-function! s:DeleteEmptyBuffers()
-    let [i, n; empty] = [1, bufnr('$')]
-    while i <= n
-        if bufexists(i) && bufname(i) == ''
-            call add(empty, i)
-        endif
-        let i += 1
-    endwhile
-    if len(empty) > 0
-        exe 'bdelete' join(empty)
-    endif
-endfunction
-
 function! s:GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
@@ -444,17 +425,6 @@ function! s:SourceIfExists(file)
   if filereadable(expand(a:file))
     exe 'source' a:file
   endif
-endfunction
-
-" Used to switch to and from test files
-function! s:SwitchToTest(ext, fcmd)
-    let basename = expand('%:t:r')
-    if basename =~ 'test_.*'
-        let pyfile = split(basename, "_")[1]
-        execute a:fcmd . " " . pyfile . "." . a:ext
-    else
-        execute a:fcmd . " test_" . basename . "." . a:ext
-    endif
 endfunction
 
 function! s:VSetSearch(cmdtype)

@@ -8,37 +8,37 @@ shouldShowMenuBarComingFromFullScreen=true
 shouldShowToolBarComingFromFullScreen=false
 
 [MainWindow]
-Height 1080=898
+Height 1080=1028
 Height 1920=1868
 Height 900=848
 MenuBar=Enabled
-State=AAAA/wAAAAD9AAAAAAAABC4AAAc0AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB3YAAAPsAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 Width 1080=1070
 Width 1600=1590
 Width 1920=1910
 
 [Recent Files]
-File1[$e]=$HOME/Dropbox/var/books/Programming/Philosophy/The_Pragmatic_Programmer-(Hunt).epub
-File10[$d]
-File2[$e]=$HOME/Dropbox/var/books/Programming/Programming_Languages/Programming_Language_Pragmatics-(Scott).pdf
-File3[$e]=$HOME/Dropbox/var/books/Programming/Web_Development/Flask Web Development (Miguel Grinberg).pdf
-File4[$e]=$HOME/Dropbox/var/books/Programming/Programming_Languages/Functional_Programming/The_Little_Schemer-(Friedman).pdf
-File5[$e]=$HOME/Dropbox/var/books/Programming/Tools/Managing_Projects_with_GNU_Make-(Mecklenburg).pdf
-File6[$e]=$HOME/Dropbox/var/notes/Christmas_Lists/Christmas_List-2018.pdf
-File7[$e]=$HOME/Dropbox/var/books/Programming/Operating_Systems/Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
-File8[$d]
-File9[$d]
-Name1[$e]=The_Pragmatic_Programmer-(Hunt).epub
-Name10[$d]
-Name2[$e]=Programming_Language_Pragmatics-(Scott).pdf
-Name3[$e]=Flask Web Development (Miguel Grinberg).pdf
-Name4[$e]=The_Little_Schemer-(Friedman).pdf
-Name5[$e]=Managing_Projects_with_GNU_Make-(Mecklenburg).pdf
-Name6[$e]=Christmas_List-2018.pdf
-Name7[$e]=Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
-Name8[$d]
-Name9[$d]
+File1[$e]=$HOME/Dropbox/var/books/Programming/Programming_Languages/Programming_Language_Pragmatics-(Scott).pdf
+File10[$e]=$HOME/Dropbox/var/books/Programming/Operating_Systems/Operating_System_Concepts-(Silberschatz).pdf
+File2[$e]=$HOME/Dropbox/var/books/Programming/Web_Development/Flask Web Development (Miguel Grinberg).pdf
+File3[$e]=$HOME/Dropbox/var/books/Programming/Programming_Languages/Functional_Programming/The_Little_Schemer-(Friedman).pdf
+File4[$e]=$HOME/Dropbox/var/books/Programming/Tools/Managing_Projects_with_GNU_Make-(Mecklenburg).pdf
+File5[$e]=$HOME/Dropbox/var/notes/Christmas_Lists/Christmas_List-2018.pdf
+File6[$e]=$HOME/Dropbox/var/books/Programming/Operating_Systems/Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
+File7[$e]=$HOME/Dropbox/var/books/Programming/Programming_Languages/Compilers:Principles_Techniques_and_Tools-(Aho).okular
+File8[$e]=$HOME/Dropbox/var/books/Programming/Programming_Languages/Engineering_a_Compiler-(Cooper).pdf
+File9[$e]=$HOME/Dropbox/var/books/Math/Probability/Mathematical_Statistics_with_Applications-(Freund).pdf
+Name1[$e]=Programming_Language_Pragmatics-(Scott).pdf
+Name10[$e]=Operating_System_Concepts-(Silberschatz).pdf
+Name2[$e]=Flask Web Development (Miguel Grinberg).pdf
+Name3[$e]=The_Little_Schemer-(Friedman).pdf
+Name4[$e]=Managing_Projects_with_GNU_Make-(Mecklenburg).pdf
+Name5[$e]=Christmas_List-2018.pdf
+Name6[$e]=Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
+Name7[$e]=Compilers:Principles_Techniques_and_Tools-(Aho).okular
+Name8[$e]=Engineering_a_Compiler-(Cooper).pdf
+Name9[$e]=Mathematical_Statistics_with_Applications-(Freund).pdf
 
 [Shortcut Schemes]
 Current Scheme=VimBindings

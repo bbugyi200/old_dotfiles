@@ -4,7 +4,6 @@ set link-zoom false
 set selection-clipboard clipboard
 set show-recent 25
 set window-title-basename false
-set window-title-page true
 
 # ---------- Bookmark Bindings
 # Set Mark
@@ -172,8 +171,8 @@ map <Button3> navigate next
 map <C-[> feedkeys ":nohlsearch<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
 map \\ exec "znav -z T ZH aH"
-map [ exec "xdotool key Super+d"
-map ] exec "xdotool key Super+u"
+map [ exec "xdotool key Super+u"
+map ] exec "xdotool key Super+d"
 map ; goto
 map = zoom in
 map ,l feedkeys ":blist <Tab><C-u>blist"  # List Marks

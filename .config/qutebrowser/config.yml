@@ -30,3 +30,6 @@ tabs:
 
 url:
     start_pages: https://www.google.com
+
+window:
+    title_format: qutebrowser

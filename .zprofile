@@ -42,5 +42,10 @@ source /usr/bin/virtualenvwrapper_lazy.sh
 #  Start X Window System  #
 ###########################
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]] && [[ "$(id -u)" != 0 ]]; then
-  exec startx
+    exec startx
+else
+    map_file=/home/bryan/.Caps2Ctrl.map
+    sudo dumpkeys | head -1 > "${map_file}"
+    sudo printf "\n%s\n" "keycode 58 = Control" >> "${map_file}"
+    sudo loadkeys "${map_file}"
 fi

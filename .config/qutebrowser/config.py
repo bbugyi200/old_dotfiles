@@ -64,6 +64,7 @@ c.url.searchengines = {
     'lib': 'http://libgen.io/search.php?req={}',
     'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
     'p': SE.static.stackoverflow(7, prefix='Python'),
+    'pss': 'https://store.playstation.com/en-us/search/{}',
     'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.static.site('reddit.com'),
     's0': SE.static.site('stackoverflow.com'),
@@ -73,10 +74,10 @@ c.url.searchengines = {
                            SE.LuckyURL('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com',
                                        SE.TwoIntURL.pattern,
                                        SE.TwoIntURL.filter)),
-    'tpb': SE.SearchEngine('https://thepiratebay3.com/search/{}',
+    'T': SE.SearchEngine('https://1337x.unblocked.vet/search/{}/1/',
+                         SE.TwoIntURL('https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/')),
+    'Tpb': SE.SearchEngine('https://thepiratebay3.com/search/{}',
                            SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}')),
-    'tub': SE.SearchEngine('https://1337x.unblocked.vet/search/{}/1/',
-                           SE.TwoIntURL('https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/')),
     'ud': SE.static.site('idioms.thefreedictionary.com', 'en.wiktionary.org', 'urbandictionary.com'),
     'ytt': 'https://www.youtube.com/results?search_query={}+Trailer'
 }
@@ -93,6 +94,8 @@ aliases = {
     'P': "spawn -v pockyt put -f '{link}' -i {url}",
     'rss': 'spawn --userscript openfeeds',
     'vs': 'open -w',
+    'wt': 'spawn wtitle',
+    'wtitle': 'spawn wtitle',
 }
 
 for k, v in aliases.items():
@@ -140,9 +143,6 @@ pbind('<Ctrl-o>', 'prompt-open-download rifle {}')
 cbind('<Ctrl-f>', 'edit-command --run')
 cbind('<Ctrl-y>', 'fake-key --global <Return>v$y')
 
-# >>> PASSTHROUGH
-bind('<Esc>', 'leave-mode', mode='passthrough')
-
 # >>> NORMAL
 # ----- Alphanumeric -----
 bind(',1', 'buffer 1')
@@ -180,7 +180,10 @@ bind(',sl', 'set-cmd-text -s :session-load -c')
 bind(',ss', 'set-cmd-text -s :session-save -o')
 bind(',S', 'session-save -c')
 bind(',t', 'config-cycle tabs.position left top')
-bind(';T', 'hint links spawn -v torrent -d {hint-url}', 'message-info "Select magnet link to torrent."')
+bind(';Tm', 'hint links spawn -d -v torrent {hint-url} -w /media/bryan/hercules/media/Entertainment/Movies', 'message-info "Select movie to torrent."')
+bind(';TM', 'hint links spawn --userscript add-to-torrent-file movies.txt "{hint-url}"', 'message-info "Select movie to add to torrent list."')
+bind(';Tt', 'hint links spawn -d -v torrent {hint-url} -w /media/bryan/hercules/media/Entertainment/TV', 'message-info "Select TV show to torrent."')
+bind(';TT', 'hint links spawn --userscript add-to-torrent-file tv.txt "{hint-url}"', 'message-info "Select TV show to add to torrent list."')
 bind('t-', 'tab-only')
 bind('tt', 'set-cmd-text -s :tab-take')
 bind('tg', 'set-cmd-text -s :tab-give')

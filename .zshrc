@@ -8,7 +8,7 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 
 # 'sudo' plugin MUST remain near the end or (for some reason) it won't work
-plugins=(git lpass vi-mode z zsh-autosuggestions sudo)
+plugins=(git lpass vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -25,7 +25,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 #  Disable Aliases / Builtins  #
 ################################
 # Disable aliases
-arr=("ll" "gco")
+arr=("ll" "gco", "gsta")
 for i in "${arr[@]}"; do
     unalias "$i" &> /dev/null
 done
@@ -70,38 +70,34 @@ setopt globdots
 so() { unalias -a && source ~/.zshrc; }
 
 # ---------- Suffix Aliases ----------
-# Zathura
-alias -s pdf="zathura"
-alias -s epub="zathura"
-alias -s djvu="zathura"
-alias -s ps="zathura"
-# LibreOffice
+alias -s avi="vlc"
 alias -s csv="libreoffice"
-alias -s xls="libreoffice"
-alias -s xlsx="libreoffice"
+alias -s djvu="zathura"
 alias -s doc="libreoffice"
 alias -s docx="libreoffice"
-alias -s odt="libreoffice"
-alias -s ppt="libreoffice"
-alias -s pptx="libreoffice"
-# Imv
-alias -s xbm="imv -d"
-alias -s png="imv -d"
-alias -s pcx="imv -d"
-alias -s jpg="imv -d"
-alias -s jpeg="imv -d"
+alias -s epub="zathura"
 alias -s gif="imv -d"
-# Miscellaneous
 alias -s git="git clone"
 alias -s html="google-chrome-stable"
-alias -s avi="vlc"
+alias -s jpeg="imv -d"
+alias -s jpg="imv -d"
+alias -s odt="libreoffice"
+alias -s pcx="imv -d"
+alias -s pdf="zathura"
+alias -s png="imv -d"
+alias -s ppt="libreoffice"
+alias -s pptx="libreoffice"
+alias -s ps="zathura"
 alias -s txt="vim"
+alias -s xbm="imv -d"
+alias -s xls="libreoffice"
+alias -s xlsx="libreoffice"
 
 # ---------- Global Aliases ----------
-alias -g :c="clear &&"
 alias -g @@="&> /dev/null & disown"
 alias -g ::="| grep -i -e"
 alias -g :::="| grep -A 5 -B 5 -i -e"
+alias -g :c="clear &&"
 alias -g :l="| less"
 alias -g :L="tmux send-keys '!-2 | less' Enter Enter"
 alias -g :w="watch -n 1"
@@ -162,12 +158,21 @@ fi
 
 function command_not_found_handler() {
     cmd="$1"; shift
-    if [[ "${cmd}" == "+"* ]]; then
+
+    if [[ "${cmd}" == "+" ]]; then
+        tm-send --action='cd $(popu); ll'
+        return
+    elif [[ "${cmd}" == "+"* ]]; then
         funky_cmd="funky -a ${cmd:1}"
+    elif [[ "${cmd}" == "-" ]]; then
+        tm-send --action='pushu && popd; ll'
+        return
     elif [[ "${cmd}" == "-"* ]]; then
         funky_cmd="funky -r ${cmd:1}"
+    elif [[ "${cmd}" == "@"* ]]; then
+        funky_cmd="funky -R ${cmd:1} $1"
     else
-        >&2 printf "%s\n" "zsh: command not found: ${cmd}"
+        >&2 printf "%s: %s\n" "zsh: command not found" "${cmd}"
         exit 127
     fi
 

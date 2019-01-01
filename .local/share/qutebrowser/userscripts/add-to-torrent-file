@@ -1,0 +1,6 @@
+#!/bin/bash
+
+filename="$1"; shift
+magnet="$1"; shift
+
+echo "${magnet}" >> /home/bryan/.local/share/torrent/"${filename}"

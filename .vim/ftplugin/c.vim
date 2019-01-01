@@ -5,6 +5,8 @@ command! -nargs=0 Run exec "make"
 command! -nargs=0 Run2 exec "make build-release"
 command! -nargs=0 CacheHeaders !cache_cheaders
 
+nnoremap <buffer> <Leader>; A;<Esc>
+imap <buffer> <Leader>; <Esc><Leader>;
 imap <buffer> <Leader>i <C-x><C-k><C-p>
 imap <buffer> <Leader>I #include <><Left><Leader>i
 nnoremap <buffer> <Leader>m :Man 3 <C-r><C-w><CR>/^[A-Z]\+<CR>gg
