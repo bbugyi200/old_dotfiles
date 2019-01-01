@@ -252,35 +252,26 @@ shift = shiftMask
 myAdditionalKeys = [
    ---------- ALPHANUMERIC CHARACTERS ----------
    -- (you can sort these bindings with `<range>sort r /, [A-z]),/`)
-   -- ((alpha, xK_0), spawn "tmux -L $(tm-socket) switchc -n") -- Tmux Next Session
-   -- , ((alpha, xK_9), spawn "tmux -L $(tm-socket) switchc -p") -- Tmux Previous Session
    ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), launchFullApp "web" "qutebrowser --enable-webengine-inspector")
    , ((alpha, d), windows W.focusDown)
-   -- , ((alpha .|. shift, d), spawn "tmux -L $(tm-socket) kill-window")
-   -- , ((alpha, e), spawn "tm-send --action=clear") -- clear screen
    , ((alpha, f), sendMessage $ Toggle TABBED)
    , ((alpha, g), spawn "qb_prompt --next-screen")
    , ((alpha .|. beta, g), spawn "qb_prompt")
    , ((alpha, h), sequence_ [N2D.windowGo N2D.L False])
    , ((alpha .|. ctrl, h), spawn "tm-send --action 'cd $(tm-session-root --get $(tmux display-message -p \"#{session_name}\")) && ll'")  -- cd to Tmuxinator Project Root
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   -- , ((alpha .|. shift, h), spawn "tm-send --action 'cd \"$(tm-window-root $(tmux display-message -p \"#{session_name} #{window_index}\"))\" && ll'")  -- cd to Tmuxinator Window-Specific Root
-   -- , ((alpha .|. beta .|. shift, h), spawn "tm-send --action 'tm-window-root $(tmux display-message -p \"#{session_name} #{window_index}\") -s \"$(pwd)\" && ll'")  -- set Tmuxinator Window-Specific Root
    , ((alpha, j), sequence_ [N2D.windowGo N2D.D False])
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), sequence_ [N2D.windowGo N2D.U False])
    , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
-   -- , ((alpha .|. shift, k), spawn "tm-kill")
    , ((alpha, l), sequence_ [N2D.windowGo N2D.R False])
    , ((alpha .|. beta, l), sendMessage Expand)
    , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
    , ((alpha .|. ctrl, l), sendMessage NextLayout)
    , ((alpha, m), sequence_ [DW.addHiddenWorkspace "misc", windows $ W.shift "misc", removeEmptyWorkspaceAfter' $ windows $ W.view "misc"]) -- Shift current window to MISC
    , ((alpha .|. shift, m), sequence_ $ [DW.addHiddenWorkspace "mpv", windows $ W.shift "mpv", removeEmptyWorkspaceAfter' $ windows $ W.view "mpv"] ++ seqPush)
-   -- , ((alpha, n), spawn "tmux -L $(tm-socket) next-window") -- Tmux Next
-   -- , ((alpha .|. shift, n), spawn "tm-new-window")
    , ((alpha .|. beta .|. shift, n), do
            raw_ws_name <- io $ readFile "/tmp/xmonad.workspace"
            let ws_name = filter (/= '\n') raw_ws_name
@@ -292,13 +283,11 @@ myAdditionalKeys = [
      )
    , ((alpha, o), CW.toggleWS' ["NSP"])
    , ((alpha .|. ctrl, o), spawn "zopen")
-   -- , ((alpha, p), spawn "tmux -L $(tm-socket) previous-window") -- Tmux Previous
    , ((alpha, p), spawn ":")
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
    , ((alpha .|. shift, p), spawn "pause_task")
-   -- , ((alpha, q), spawn "tm-send --action=quit") -- Quit Screen
    , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
-   , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart") -- Restarts XMonad
+   , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha .|. beta .|. ctrl, r), spawn "confirm --dmenu 'sudo reboot'") -- Restart
@@ -341,7 +330,6 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_backslash), pushDesktop "backslash")
    , ((alpha .|. beta .|. ctrl, xK_backslash), sequence_ seqPush)
    , ((alpha .|. beta .|. ctrl .|. shift, xK_backslash), CW.shiftNextScreen)
-   -- , ((alpha, xK_BackSpace), spawn "tmux -L $(tm-socket) kill-window")
    , ((alpha, xK_bracketleft), sequence_ [DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)]) -- Prev Hidden NonEmpty Workspace
    , ((beta, xK_bracketleft), windows W.focusUp)
    , ((alpha .|. beta, xK_bracketleft), sequence_ [CW.nextScreen, DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
@@ -350,8 +338,6 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_bracketright), sequence_ [CW.nextScreen, DW.moveTo CW.Next (CW.WSIs hiddenNotNSP), CW.prevScreen]) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_comma), sequence_ [spawn "task_refresh", NSP.namedScratchpadAction scratchpads "gtd"])
    , ((alpha .|. beta, xK_comma), sequence_ [NSP.namedScratchpadAction scratchpads "gtd"])
-   -- , ((alpha, xK_equal), spawn "tm-send --action='cd $(popu); ll'") -- cd to Next Dir
-   -- , ((alpha, xK_minus), spawn "tm-send --action='pushu && popd; ll'") -- cd to Last Dir
    , ((alpha, xK_period), sequence_ [NSP.namedScratchpadAction scratchpads "scratchpad"])
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
