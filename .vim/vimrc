@@ -46,6 +46,8 @@ set wildmode=full
 " ########## Variable Definitions ##########
 let mapleader = ","  " The <Leader> key can be used for extra mappings
 let maplocalleader = "\\"
+let g:S = 0  " Used in 'Sum()' function
+let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
 
 " ########## Key Bindings ##########
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -477,10 +479,6 @@ hi Normal guibg=NONE ctermbg=NONE
 highlight VertSplit ctermfg=DarkGrey ctermbg=227
 highlight StatusLine cterm=NONE ctermfg=black ctermbg=227
 highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
-
-" ----- Global Variable Assignments -----
-let g:S = 0  " Used in 'Sum()' function
-let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
 
 " ########## Extra Modules ##########
 call s:SourceIfExists("/home/bryan/.vim/plugins.vim")

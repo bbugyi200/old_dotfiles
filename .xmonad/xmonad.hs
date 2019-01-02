@@ -3,6 +3,7 @@
 -------------------------------------------------------------------------------
 -- IMPORTED LIBRARIES                                                        --
 -------------------------------------------------------------------------------
+import Control.Monad
 import Data.Ratio
 import Graphics.X11.ExtraTypes.XF86
 import XMonad
@@ -24,7 +25,6 @@ import XMonad.Util.Run (spawnPipe,hPutStrLn)
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.WorkspaceCompare (getSortByIndex)
 
-import Control.Monad
 import qualified Data.Char as DataChar
 import qualified Data.List as DataList
 import qualified Network.HostName as HostName
@@ -44,6 +44,39 @@ import qualified XMonad.Util.NamedScratchpad as NSP
 
 -- hlint ignore directives
 {-# ANN module "HLint: ignore Evaluate" #-}
+
+-------------------------------------------------------------------------------
+-- MAIN                                                                      --
+-------------------------------------------------------------------------------
+main :: IO ()
+main = do
+    hostname <- HostName.getHostName
+    xmproc <- spawnPipe (xmobarTempFmt (getXmobarTemplate $ "1-top-" ++ hostname) ++ " --screen=2")
+    xmonad . Docks.docks . ewmh $ desktopConfig
+        {
+            terminal                = myTerminal
+          , modMask                 = alpha
+          , borderWidth             = myBorderWidth
+          , focusedBorderColor      = myFocusedBorderColor
+          , focusFollowsMouse       = myFocusFollowsMouse
+          , clickJustFocuses        = myClickJustFocuses
+          , workspaces              = myWorkspaces
+          , manageHook              = myManageHook
+          , layoutHook              = Docks.avoidStruts myLayout
+          , startupHook             = myStartupHook
+          , logHook                 = DL.dynamicLogWithPP DL.xmobarPP
+            { DL.ppOutput                = hPutStrLn xmproc
+            , DL.ppOrder                 = myPpOrder
+            , DL.ppSep                   = DL.xmobarColor "white" "" "    "
+            , DL.ppCurrent               = DL.xmobarColor "yellow" "" . strToUpper . DL.wrap "[" "]"
+            , DL.ppVisible               = DL.xmobarColor "yellow" "" . strToUpper
+            , DL.ppHidden                = DL.xmobarColor "white" "" . strToUpper
+            , DL.ppHiddenNoWindows       = DL.xmobarColor "darkgrey" "" . strToUpper
+            , DL.ppWsSep                 = "    "
+            , DL.ppTitle                 = DL.xmobarColor "green"  "" . DL.shorten 40
+            , DL.ppSort                  = (NSP.namedScratchpadFilterOutWorkspace .) `liftM` DW.getSortByOrder
+            } >> ewmhDesktopsLogHook <+> DL.dynamicLogXinerama
+      } `additionalKeys` myAdditionalKeys
 
 -------------------------------------------------------------------------------
 -- UTILITY FUNCTIONS                                                         --
@@ -120,39 +153,6 @@ delayedSpawn :: Int -> String -> X ()
 delayedSpawn seconds cmd = spawn $ "sleep " ++ show seconds ++ " && " ++ cmd
 
 -------------------------------------------------------------------------------
--- MAIN                                                                      --
--------------------------------------------------------------------------------
-main :: IO ()
-main = do
-    hostname <- HostName.getHostName
-    xmproc <- spawnPipe (xmobarTempFmt (getXmobarTemplate $ "1-top-" ++ hostname) ++ " --screen=2")
-    xmonad . Docks.docks . ewmh $ desktopConfig
-        {
-            terminal                = myTerminal
-          , modMask                 = alpha
-          , borderWidth             = myBorderWidth
-          , focusedBorderColor      = myFocusedBorderColor
-          , focusFollowsMouse       = myFocusFollowsMouse
-          , clickJustFocuses        = myClickJustFocuses
-          , workspaces              = myWorkspaces
-          , manageHook              = myManageHook
-          , layoutHook              = Docks.avoidStruts myLayout
-          , startupHook             = myStartupHook
-          , logHook                 = DL.dynamicLogWithPP DL.xmobarPP
-            { DL.ppOutput                = hPutStrLn xmproc
-            , DL.ppOrder                 = myPpOrder
-            , DL.ppSep                   = DL.xmobarColor "white" "" "    "
-            , DL.ppCurrent               = DL.xmobarColor "yellow" "" . strToUpper . DL.wrap "[" "]"
-            , DL.ppVisible               = DL.xmobarColor "yellow" "" . strToUpper
-            , DL.ppHidden                = DL.xmobarColor "white" "" . strToUpper
-            , DL.ppHiddenNoWindows       = DL.xmobarColor "darkgrey" "" . strToUpper
-            , DL.ppWsSep                 = "    "
-            , DL.ppTitle                 = DL.xmobarColor "green"  "" . DL.shorten 40
-            , DL.ppSort                  = (NSP.namedScratchpadFilterOutWorkspace .) `liftM` DW.getSortByOrder
-            } >> ewmhDesktopsLogHook <+> DL.dynamicLogXinerama
-      } `additionalKeys` myAdditionalKeys
-
--------------------------------------------------------------------------------
 -- LAYOUT CONFIGS                                                            --
 -------------------------------------------------------------------------------
 myFull = smartBorders simpleTabbed
@@ -170,7 +170,7 @@ myLayout = id
 -- MISCELLANEOUS CONFIGS                                                     --
 -------------------------------------------------------------------------------
 myFont = "xft:Source Code Pro"
-myTerminal = "urxvt -e zsh -c 'tm Terminal'"
+myTerminal = "tm-init"
 
 myFocusFollowsMouse = False
 myClickJustFocuses = False
@@ -226,7 +226,6 @@ myStartupHook = ewmhDesktopsStartup
                 >> delayedSpawn 2 "xmonad-volume"
                 >> delayedSpawn 2 "xmonad-weather"
                 >> delayedSpawn 2 "xmonad-timew"
-                >> delayedSpawn 5 "emanage -m"
                 >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=2")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=1")
                 >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=1")
@@ -276,9 +275,7 @@ myAdditionalKeys = [
            raw_ws_name <- io $ readFile "/tmp/xmonad.workspace"
            let ws_name = filter (/= '\n') raw_ws_name
            DW.addHiddenWorkspace ws_name
-           let isChosenWS = CW.WSIs $ return ((== ws_name) . W.tag)
-           CW.shiftTo CW.Next isChosenWS
-           CW.moveTo CW.Next isChosenWS
+           CW.moveTo CW.Next (CW.WSIs $ return ((== ws_name) . W.tag))
            sendMessage $ Toggle TABBED  -- Start workspace using Full layout.
      )
    , ((alpha, o), CW.toggleWS' ["NSP"])
@@ -286,6 +283,7 @@ myAdditionalKeys = [
    , ((alpha, p), spawn ":")
    , ((alpha .|. beta, p), spawn "PIA") -- Toggle PIA
    , ((alpha .|. shift, p), spawn "pause_task")
+   , ((alpha, q), spawn ":")
    , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
    , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
@@ -347,8 +345,8 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_slash), pushDesktop "slash")
    , ((alpha .|. beta .|. ctrl, xK_slash), sequence_ $ seqPush ++ [CW.nextScreen])
    , ((alpha .|. beta .|. ctrl .|. shift, xK_slash), sequence_ [CW.shiftNextScreen, CW.nextScreen])
-   , ((alpha, xK_space), spawn "rofi -modi drun -show drun")
-   , ((beta, xK_space), spawn "prompt 'xspawn' | xargs xspawn")
+   , ((alpha, xK_space), spawn "prompt 'xspawn' | xargs xspawn")
+   , ((beta, xK_space), spawn "rofi -modi drun -show drun")
    , ((alpha, xK_Tab), do
            DW.addWorkspacePrompt myXPConfig
            DW.setWorkspaceIndex 1
@@ -361,7 +359,7 @@ myAdditionalKeys = [
 
    -- Shift to WS; then Focus WS
    ++ [((alpha, k), sequence_ [withNthWorkspace' W.shift i, withNthWorkspace' W.view i])
-       | (i, k) <- zip [0..8] [xK_1 .. xK_9]
+       | (i, k) <- zip [0..9] [xK_1 .. xK_9]
       ]
 
    where
