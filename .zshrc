@@ -47,14 +47,16 @@ compdef __git_branch_names gco
 compdef _command_names wim
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
 compdef _tmuxinator tm
-compdef del=emerge
-compdef get=emerge
-compdef rcst=rc-service
+[ command emerge &> /dev/null ] && compdef del=emerge
+[ command emerge &> /dev/null ] && compdef get=emerge
+[ command rc-service &> /dev/null ] && compdef rcst=rc-service
 compdef vman=man
 
 #####################
 #  Source Commands  #
 #####################
+[ -f /etc/environment ] && source /etc/environment
+[ -f /etc/profile.d/private.sh ] && source /etc/profile.d/private.sh
 source /usr/local/lib/aliases.sh
 source /usr/local/lib/tmuxinator.zsh
 
@@ -70,26 +72,36 @@ setopt globdots
 so() { unalias -a && source ~/.zshrc; }
 
 # ---------- Suffix Aliases ----------
+if [[ "$(uname -a)" == *"Debian"* ]]; then
+    alias -s gif="imvr -d"
+    alias -s jpeg="imvr -d"
+    alias -s jpg="imvr -d"
+    alias -s pcx="imvr -d"
+    alias -s png="imvr -d"
+    alias -s xbm="imvr -d"
+else
+    alias -s gif="imv -d"
+    alias -s jpeg="imv -d"
+    alias -s jpg="imv -d"
+    alias -s pcx="imv -d"
+    alias -s png="imv -d"
+    alias -s xbm="imv -d"
+fi
+
 alias -s avi="vlc"
 alias -s csv="libreoffice"
 alias -s djvu="zathura"
 alias -s doc="libreoffice"
 alias -s docx="libreoffice"
 alias -s epub="zathura"
-alias -s gif="imv -d"
 alias -s git="git clone"
 alias -s html="google-chrome-stable"
-alias -s jpeg="imv -d"
-alias -s jpg="imv -d"
 alias -s odt="libreoffice"
-alias -s pcx="imv -d"
 alias -s pdf="zathura"
-alias -s png="imv -d"
 alias -s ppt="libreoffice"
 alias -s pptx="libreoffice"
 alias -s ps="zathura"
 alias -s txt="vim"
-alias -s xbm="imv -d"
 alias -s xls="libreoffice"
 alias -s xlsx="libreoffice"
 
@@ -180,3 +192,5 @@ function command_not_found_handler() {
 }
 
 [ -f ~/.local/share/funky/funky.sh ] && source ~/.local/share/funky/funky.sh
+
+test 0  # so exit status is always 0 when starting shell

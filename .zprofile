@@ -31,12 +31,13 @@ export QT_QPA_PLATFORMTHEME="qt5ct"  # Fixes: missing okular icons
 #########################################
 export SHELLCHECK_OPTS="-e SC1091 -e SC1117 -e SC2001 -e SC2059 -e SC2129 -e SC2162"
 export RECENTLY_EDITED_FILES_LOG=/home/bryan/Dropbox/var/recently_edited_files.log
+export PYTHONPATH='/usr/local/lib/python'
 
 #######################
 #  virtualenvwrapper  #
 #######################
 export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper_lazy.sh
+[ -f /usr/bin/virtualenvwrapper_lazy.sh ] && source /usr/bin/virtualenvwrapper_lazy.sh
 
 ###########################
 #  Start X Window System  #

@@ -2,6 +2,7 @@
 !       to this config file: `xrdb merge ~/.Xresources`
 
 ! ----- SETTINGS
+URxvt*secondaryWheel: true
 URxvt*buffered:               true            ! double buffer for xtf
 URxvt*hold:                   false           ! kill window on shell exit
 URxvt*loginShell:             true            ! to load shell profiles
@@ -62,8 +63,8 @@ URxvt.perl-ext-common: default,url-select,clipboard
 URxvt.clipboard.autocopy: true
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
-URxvt.keysym.M-y: perl:clipboard:copy
-URxvt.keysym.M-p: perl:clipboard:paste
+URxvt.keysym.Meta-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Meta-Control-V: eval:paste_clipboard
 ! Matcher
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1

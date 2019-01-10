@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo "spawn --userscript blackout_yt" >> $QUTE_FIFO
-echo "message-info 'Sending video to umpv...'" >> $QUTE_FIFO
-umpv $QUTE_URL
+echo "spawn --userscript blackout_yt" >> "$QUTE_FIFO"
+echo "message-info 'Sending video to umpv...'" >> "$QUTE_FIFO"
+qb_umpv "$QUTE_URL"

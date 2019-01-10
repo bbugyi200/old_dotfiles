@@ -31,6 +31,7 @@ c.url.searchengines = {
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),
                                SE.URL(SE.static.duckduckgo('!{}'), SE.utils.bang_pttrn()),
                                SE.LuckyURL('{}')),
+    'de': SE.static.google('debian {}'),
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
                           SE.OneIntURL(SE.static.google('Season {0} {1} episodes'))),
     'ge': SE.static.google('gentoo {}'),
@@ -67,6 +68,7 @@ c.url.searchengines = {
     'pss': 'https://store.playstation.com/en-us/search/{}',
     'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.static.site('reddit.com'),
+    'rl': SE.static.google('rocket league {}'),
     's0': SE.static.site('stackoverflow.com'),
     'st': SE.static.google('set timer for {}'),
     'sub': SE.SearchEngine(SE.static.google('{} inurl:english site:subscene.com'),
@@ -167,8 +169,8 @@ bind('gi', 'hint inputs')
 bind(',h', 'set-cmd-text -s :help')
 bind(',H', 'set-cmd-text -s :help -t')
 bind(',m', 'spawn --userscript view_in_umpv -d')
-bind(';m', 'hint all spawn -v umpv {hint-url}', 'message-info "Select video to load with umpv."')
-bind(';M', 'hint all spawn -v umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
+bind(';m', 'hint all spawn -v qb_umpv {hint-url}', 'message-info "Select video to load with umpv."')
+bind(';M', 'hint all spawn -v qb_umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
 bind('m', 'enter-mode set_mark')
 bind(',p', 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/')
 bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")

@@ -36,8 +36,8 @@ let &statusline = "%{StatuslineGit()} %f %m %= %y %p%% %l:%c"
 set tabstop=4
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
 set tw=0
-set undodir=/home/bryan/.vim/undo
 set undofile
+set undodir=$HOME/.vim/undo
 set viminfo+=n~/.vim/viminfo  " Changes location of viminfo file
 set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore these folders
 set wildmenu  " Improves tab completion from normal mode
@@ -379,7 +379,31 @@ endfunction
 
 " Boolean function which checks if @plugin is installed
 function! PluginInstalled(plugin)
-    return filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
+    if filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
+        return 1
+    endif
+
+    if !empty(glob("/home/bryan/.vim/bundle/" . a:plugin))
+        return 1
+    endif
+
+    if !empty(glob("/home/bryan/.vim/bundle/vim-" . a:plugin))
+        return 1
+    endif
+
+    if !empty(glob("/home/bryan/.vim/bundle/" . a:plugin . "-vim"))
+        return 1
+    endif
+
+    if !empty(glob("/home/bryan/.vim/bundle/" . a:plugin . ".vim"))
+        return 1
+    endif
+
+    if !empty(glob("/home/bryan/.vim/bundle/" . tolower(a:plugin)))
+        return 1
+    endif
+
+    return 0
 endfunction
 
 function! RemoveFile()
