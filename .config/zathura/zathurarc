@@ -182,10 +182,12 @@ map ,d feedkeys ":bdelete <Tab>"
 map ,n exec "zsearch --new-workspace --no-search"
 map D feedkeys ":set first-page-column 1:1<Return>"
 # map h exec "znav -z + ZdL"
+map h navigate previous
 map i exec "znav -z + ZdJH"
 # map j exec "znav -D down"
 # map k exec "znav -D up"
 # map l exec "znav -z + ZdJL"
+map l navigate next
 map s exec "zsearch"
 map S exec "zsearch --new-workspace"
 map o exec "zopen -x"

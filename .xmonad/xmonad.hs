@@ -135,7 +135,7 @@ myAdditionalKeys = [
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha, s), swapScreens) -- Swap Screens
    , ((alpha .|. beta, s), windows W.swapDown) -- Swap Windows
-   , ((alpha, t), spawn "task_new_inbox_item") -- taskwarrior (inbox)
+   , ((alpha, t), spawn "DISPLAY=:0 task_new_inbox_item") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add +today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
    , ((alpha, u), windows W.focusUp)
@@ -191,7 +191,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_comma), NSP.namedScratchpadAction scratchpads "gtd")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
-   , ((beta, xK_Print), spawn "receipt_sshot") -- Screenshot (saved as receipt)
+   , ((beta, xK_Print), spawn "saved_sshot") -- Saved Screenshot
    , ((alpha, xK_semicolon), spawn "shellPrompt")
    , ((alpha .|. beta, xK_semicolon), spawn "shellPrompt -L")
    , ((alpha, xK_slash), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
@@ -356,7 +356,7 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                 calculator = "urxvt -name calculator -e zsh -c 'wtitle Calculator && bc -l'"
                 scratchpad = "urxvt -name scratchpad -e zsh -c 'wtitle ScratchPad && tmuxinator start ScratchPad root=$(tm-session-root --get ScratchPad)'"
                 weechat = "weechat-launcher"
-                gtd = "urxvt -name GTD -e zsh -c 'wtitle GTD && tmuxinator start GTD root=$(tm-session-root --get GTD)'"
+                gtd = "gtd-launcher"
 
 myManageHook = composeAll
     [ manageSpawn

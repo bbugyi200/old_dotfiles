@@ -23,6 +23,7 @@ c.url.searchengines = {
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
     'al': SE.static.google('arch linux {}'),
     'b': SE.static.stackoverflow(10, prefix='Bash'),
+    'bb': SE.static.google('bloodborne {}'),
     'bmo': SE.SearchEngine(SE.static.google('best movies of 20{}'),
                            SE.OneIntURL(SE.static.google('best {1} movies of 20{0}'))),
     'c': SE.static.stackoverflow(7, prefix='C'),
@@ -57,6 +58,8 @@ c.url.searchengines = {
                            SE.LuckyURL('{} site:github.com', suffix='issues')),
     'gi': SE.static.stackoverflow(7, prefix='git'),
     'i': 'https://www.google.com/search?&tbm=isch&q={}',
+    'j': 'https://www.google.com/search?q={}&ibp=htl;jobs#fpstate=tldetail',
+    'js': 'https://www.google.com/search?q=Software+Engineer+{}&ibp=htl;jobs#fpstate=tldetail',
     'l': SE.static.stackoverflow(7, prefix='Linux'),
     'li': SE.SearchEngine(SE.static.site('linkedin.com'),
                           SE.URL(SE.static.site('linkedin.com', prefix='software'),
@@ -81,6 +84,7 @@ c.url.searchengines = {
     'Tpb': SE.SearchEngine('https://thepiratebay3.com/search/{}',
                            SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}')),
     'ud': SE.static.site('idioms.thefreedictionary.com', 'en.wiktionary.org', 'urbandictionary.com'),
+    'ytrl': 'https://www.youtube.com/results?search_query=rocket+league+{}',
     'ytt': 'https://www.youtube.com/results?search_query={}+Trailer'
 }
 
@@ -93,7 +97,7 @@ for i in range(1, 11):
 #############
 aliases = {
     'get': 'jseval -q document.querySelector("h2").click()',  # click GET on libgen
-    'P': "spawn -v pockyt put -f '{link}' -i {url}",
+    'P': "spawn -v pockyt-add {url}",
     'rss': 'spawn --userscript openfeeds',
     'vs': 'open -w',
     'wt': 'spawn wtitle',

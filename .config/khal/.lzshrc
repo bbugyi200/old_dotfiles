@@ -1,5 +1,9 @@
+#!/bin/bash
+
 precmd() {
-    tmux -L GTD send-keys -t GTD:2.0 "kc" "Enter"
+    if ! tmux -L GTD send-keys -t GTD:2.0 "kc" "Enter" &> /dev/null; then
+        tmux send-keys -t GTD:2.0 "kc" "Enter" &> /dev/null
+    fi
 }
 
 alias ki='tmux send-keys -t 2.0 "ikhal && tmux select-pane -t 2.1 && nohup khal-alarms &> /dev/null & disown && krestart_alarms && kc" "Enter" && tmux select-pane -t 2.0'

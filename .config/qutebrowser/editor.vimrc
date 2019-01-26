@@ -1,4 +1,5 @@
 set backspace=2
+set clipboard=unnamedplus
 
 nnoremap <CR> :wq<CR> | imap <CR> <Esc><CR>
 nnoremap dS maviwo<Esc>hx<Esc>elx<Esc>`ah
