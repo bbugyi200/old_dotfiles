@@ -171,14 +171,8 @@ fi
 function command_not_found_handler() {
     cmd="$1"; shift
 
-    if [[ "${cmd}" == "+" ]]; then
-        tm-send --action='cd $(popu); ll'
-        return
-    elif [[ "${cmd}" == "+"* ]]; then
+    if [[ "${cmd}" == "+"* ]]; then
         funky_cmd="funky -a ${cmd:1}"
-    elif [[ "${cmd}" == "-" ]]; then
-        tm-send --action='pushu && popd; ll'
-        return
     elif [[ "${cmd}" == "-"* ]]; then
         funky_cmd="funky -r ${cmd:1}"
     elif [[ "${cmd}" == "@"* ]]; then

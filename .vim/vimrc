@@ -1,5 +1,4 @@
-" ############################## VIMRC ##############################
-" ########## Settings ##########
+" #################### Settings ####################
 set autoindent
 set autoread
 set background=dark
@@ -43,13 +42,15 @@ set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore 
 set wildmenu  " Improves tab completion from normal mode
 set wildmode=full
 
-" ########## Variable Definitions ##########
+
+" #################### Variable Definitions ####################
 let mapleader = ","  " The <Leader> key can be used for extra mappings
 let maplocalleader = "\\"
 let g:S = 0  " Used in 'Sum()' function
 let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
 
-" ########## Key Bindings ##########
+
+" #################### Key Bindings ####################
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Create mappings to open 'file_expr' in current window, to open 'file_expr' "
 " using a horizontal split, and to open 'file_expr' using a vertical split.  "
@@ -168,11 +169,13 @@ cnoremap w!! w !sudo tee > /dev/null %
 " >>> OPERATOR
 onoremap @ iW
 
-" ########## Abbreviations ##########
+
+" #################### Abbreviations ####################
 cnoreabbrev :f find
 cnoreabbrev :s CtrlSF
 
-" ########## AutoCmds ##########
+
+" #################### AutoCmds ####################
 autocmd BufReadPost,BufNewFile *.auto set filetype=auto
 autocmd BufRead,BufNewFile *.html set colorcolumn=
 autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
@@ -217,7 +220,8 @@ augroup BWCCreateDir
 	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
-" ########## Functions ##########
+
+" #################### Functions ####################
 " ----- PUBLIC FUNCTIONS (used in other files) -----
 function! NthCookie(N)
     let ext = &filetype
@@ -460,7 +464,8 @@ function! s:VSetSearch(cmdtype)
 	let @s = temp
 endfunction
 
-" ########## Custom Command Definitions ##########
+
+" #################### Custom Command Definitions ####################
 " Redraws screen after silent command
 command! -nargs=1 Silent
 \   execute 'silent !' . <q-args>
@@ -469,7 +474,8 @@ command! -nargs=1 Silent
 " Removes all swap files in the current working directory
 command! RmSwap execute "Silent rm " . expand('%:h') . "/.*.swp"
 
-" ########## Miscellaneous ##########
+
+" #################### Miscellaneous ####################
 " ----- Enable Plugins -----
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -504,5 +510,6 @@ highlight VertSplit ctermfg=DarkGrey ctermbg=227
 highlight StatusLine cterm=NONE ctermfg=black ctermbg=227
 highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
 
-" ########## Extra Modules ##########
+
+" #################### Extra Modules ####################
 call s:SourceIfExists("/home/bryan/.vim/plugins.vim")

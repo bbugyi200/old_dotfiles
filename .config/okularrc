@@ -3,47 +3,47 @@ State=AAAA/wAAAAD9AAAAAAAAB3YAAAPHAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG
 Width 1920=1910
 
 [Desktop Entry]
-FullScreen=true
+FullScreen=false
 shouldShowMenuBarComingFromFullScreen=true
 shouldShowToolBarComingFromFullScreen=false
 
 [MainWindow]
-Height 1080=1080
+Height 1080=1017
 Height 1920=1868
 Height 900=848
 MenuBar=Enabled
-State=AAAA/wAAAAD9AAAAAAAAB4AAAAQiAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPmAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 Width 1080=1070
 Width 1600=1590
-Width 1920=1920
-Window-Maximized 1080x1920=false
+Width 1920=954
+Window-Maximized 1080x1920=true
 
 [Print Preview]
 Height 1080=490
 Width 1920=590
 
 [Recent Files]
-File1[$e]=$HOME/Dropbox/var/books/Programming/Operating_Systems/Operating_System_Concepts-(Silberschatz).pdf
+File1[$e]=$HOME/Dropbox/var/books/Programming/Operating_Systems/Linux_Kernel_Development-(Love).pdf
 File10[$e]=$HOME/projects/CV/BryanBugyi_CV.pdf
-File2[$e]=$HOME/Dropbox/var/books/Programming/Operating_Systems/Operating_Systems__Three_Easy_Pieces-(Dusseau).pdf
-File3[$e]=$HOME/Dropbox/.dropbox.cache/2019-01-23/All_Statistics_Lecture_Notes (deleted b'29d2e4e784884b547185d46a1a59adfa').pdf
-File4[$e]=$HOME/Dropbox/var/notes/Rocketbook/Statistics/My_Statistics_Lecture_Notes.pdf
-File5[$e]=$HOME/Dropbox/var/books/Math/Probability/Mathematical_Statistics_with_Applications-(Freund).pdf
-File6[$e]=$HOME/Dropbox/var/books/Math/Probability/Think_Stats-Exploratory_Data_Analysis.pdf
-File7[$e]=$HOME/Dropbox/var/books/Programming/Operating_Systems/Linux_Kernel_Development-(Love).pdf
-File8[$e]=$HOME/Downloads/eSaveTheDate2019.pdf
-File9[$e]=$HOME/Dropbox/var/notes/Rocketbook/Operating_Systems/My_Operating_Systems_Notes.pdf
-Name1[$e]=Operating_System_Concepts-(Silberschatz).pdf
+File2[$e]=$HOME/Downloads/eSaveTheDate2019.pdf
+File3[$e]=$HOME/Dropbox/var/notes/Rocketbook/Statistics/My_Statistics_Lecture_Notes.pdf
+File4[$e]=$HOME/Dropbox/var/notes/Rocketbook/Operating_Systems/My_Operating_Systems_Lecture_Notes.pdf
+File5[$e]=$HOME/Dropbox/var/notes/Rocketbook/Operating_Systems/My_Operating_Systems_Notes.pdf
+File6[$e]=$HOME/Dropbox/var/books/Programming/Operating_Systems/Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
+File7[$e]=$HOME/Dropbox/var/books/Math/Probability/Think_Stats-(Downey).pdf
+File8[$e]=$HOME/Dropbox/var/books/Math/Probability/Mathematical_Statistics_with_Applications-(Freund).pdf
+File9[$e]=$HOME/Dropbox/var/books/Programming/Python/Natural_Language_Processing_with_Python-(Bird).pdf
+Name1[$e]=Linux_Kernel_Development-(Love).pdf
 Name10[$e]=BryanBugyi_CV.pdf
-Name2[$e]=Operating_Systems__Three_Easy_Pieces-(Dusseau).pdf
-Name3[$e]=All_Statistics_Lecture_Notes (deleted b'29d2e4e784884b547185d46a1a59adfa').pdf
-Name4[$e]=My_Statistics_Lecture_Notes.pdf
-Name5[$e]=Mathematical_Statistics_with_Applications-(Freund).pdf
-Name6[$e]=Think_Stats-Exploratory_Data_Analysis.pdf
-Name7[$e]=Linux_Kernel_Development-(Love).pdf
-Name8[$e]=eSaveTheDate2019.pdf
-Name9[$e]=My_Operating_Systems_Notes.pdf
+Name2[$e]=eSaveTheDate2019.pdf
+Name3[$e]=My_Statistics_Lecture_Notes.pdf
+Name4[$e]=My_Operating_Systems_Lecture_Notes.pdf
+Name5[$e]=My_Operating_Systems_Notes.pdf
+Name6[$e]=Advanced_Programming_in_the_UNIX_Environment_(Stevens).pdf
+Name7[$e]=Think_Stats-(Downey).pdf
+Name8[$e]=Mathematical_Statistics_with_Applications-(Freund).pdf
+Name9[$e]=Natural_Language_Processing_with_Python-(Bird).pdf
 
 [Shortcut Schemes]
 Current Scheme=VimBindings
