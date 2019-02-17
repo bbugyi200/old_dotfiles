@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "open $1 google.com" >> "$QUTE_FIFO"
+sleep 0.5
+xdotool key i

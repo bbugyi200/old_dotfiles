@@ -1,0 +1,45 @@
+#!/bin/bash
+
+delay=0.6
+
+function next_page() {
+    echo "search Next " >> "$QUTE_FIFO"
+
+    sleep 0.2
+    echo "search-prev" >> "$QUTE_FIFO"
+
+    sleep "${delay}"
+    echo "fake-key -g <Enter>" >> "$QUTE_FIFO"
+}
+
+if [[ -n "$1" ]]; then
+    count="$1"
+else
+    count=1
+fi
+
+i=1
+while ((i <= count)); do
+    echo "search Connect" >> "$QUTE_FIFO"
+
+    sleep "${delay}"
+    echo "fake-key -g <Enter>" >> "$QUTE_FIFO"
+
+    sleep "${delay}"
+    echo "search Send now" >> "$QUTE_FIFO"
+
+    sleep "${delay}"
+    echo "fake-key -g <Enter>" >> "$QUTE_FIFO"
+
+    sleep "${delay}"
+    i=$((i+1))
+
+    if ((i % 10 == 0)); then
+        next_page
+        sleep 5
+    fi
+done
+
+if [[ "${count}" -gt 1 ]] && [[ "${count}" -lt 10 ]]; then
+    next_page
+fi

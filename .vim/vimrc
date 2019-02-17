@@ -69,6 +69,38 @@ function! s:MapNIModes(lhs, rhs)
     execute "imap " . a:lhs . " <Esc>" . a:lhs
 endfunction
 
+" >>> INSERT
+inoremap <expr> / InterpretForwardSlash()
+imap <C-h> <Esc><C-h>
+imap <C-j> <Esc><C-j>
+imap <C-k> <Esc><C-k>
+imap <C-l> <Esc><C-l>
+
+" >>> VISUAL
+vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
+vnoremap <silent> <Leader>.i :w !ix \| xclip -sel clipboard<CR>
+vnoremap <Leader>s :sort ri //<Left>
+vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
+vnoremap <Space> $<Left>
+xnoremap # :<C-u>call <SID>s:VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+xnoremap * :<C-u>call <SID>s:VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
+xnoremap & :&&<CR>
+
+" >>> COMMAND
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap w!! w !sudo tee > /dev/null %
+
+" >>> OPERATOR
+onoremap @ iW
+
+" >>> TERMINAL
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+
 " >>> NORMAL
 " ----- Numeric -----
 nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
@@ -83,7 +115,6 @@ call s:MapEditCommands("t2", "NthCookie('2')")
 call s:MapEditCommands("t3", "NthCookie('3')")
 call s:MapEditCommands("v", "'/home/bryan/.vim/ftplugin/<C-R>=&filetype<CR>.vim'")
 call s:MapEditCommands("V", "'/home/bryan/.vim/vimrc'")
-
 " ----- Alphabetic -----
 nnoremap <Leader>a :AnsiEsc<CR>
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
@@ -111,7 +142,6 @@ nmap S ys
 nnoremap <Leader>v :vert sfind 
 nnoremap Y y$
 nnoremap <Leader>Y ma^y$`a
-
 " ----- Non-Alphanumeric -----
 call s:MapNIModes('<Leader>#', ':call MakeBox()<CR>')
 nnoremap <Leader>/ /\v
@@ -126,7 +156,6 @@ nnoremap - :<C-u>execute "buffer " . v:count1<CR>
 nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
 nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
 nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
-
 " ----- Special Characters -----
 " ~ Mouse Events ~
 nnoremap <2-LeftMouse> :exe "tag " . expand("<cword>")<CR>
@@ -143,31 +172,6 @@ nnoremap <silent> <Right> :vert resize -5<CR>
 nnoremap <Space> :ls<CR>
 nnoremap <Tab> <C-^>
 nnoremap <silent> <Up> :resize -5<CR>
-
-" >>> INSERT
-inoremap <expr> / InterpretForwardSlash()
-imap <C-h> <Esc><C-h>
-imap <C-j> <Esc><C-j>
-imap <C-k> <Esc><C-k>
-imap <C-l> <Esc><C-l>
-
-" >>> VISUAL
-vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
-vnoremap <silent> <Leader>.i :w !ix \| xclip -sel clipboard<CR>
-vnoremap <Leader>s :sort ri //<Left>
-vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
-vnoremap <Space> $<Left>
-xnoremap # :<C-u>call <SID>s:VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-xnoremap * :<C-u>call <SID>s:VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
-xnoremap & :&&<CR>
-
-" >>> COMMAND
-cnoremap <C-n> <Down>
-cnoremap <C-p> <Up>
-cnoremap w!! w !sudo tee > /dev/null %
-
-" >>> OPERATOR
-onoremap @ iW
 
 
 " #################### Abbreviations ####################
@@ -192,7 +196,7 @@ autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
 autocmd BufRead,BufNewFile *.txt set colorcolumn=
 autocmd BufRead,BufNewFile *.txt set filetype=txt
 autocmd BufRead,BufNewFile *.xmobarrc set syntax=haskell
-autocmd BufRead,BufNewFile *mutt-* set filetype=mail
+autocmd BufRead,BufNewFile *mutt-* set filetype=mail tw=80
 autocmd BufRead,BufNewFile .coveragerc set filetype=cfg
 autocmd BufRead,BufNewFile CMakeLists.txt set filetype=cmake
 autocmd BufRead,BufNewFile config set filetype=cfg
@@ -265,120 +269,6 @@ function! InterpretForwardSlash()
     endif
 
     return "/"
-endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Close comment box.                                                          "
-"                                                                             "
-" Beginning comment bar and ending comment bar must both be defined already   "
-" and the cursor needs to be between the bars when 'MakeBox' is called.       "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! MakeBox()
-    " Mark starting position
-    normal! mm
-
-    if index(['sh', 'python', 'ruby', 'snippets'], &ft) >= 0
-        let g:comment_char = '#'
-    elseif index(['c', 'cpp', 'java', 'javascript', 'php', 'txt'], &ft) >= 0
-        let g:comment_char = '/'
-    elseif index(['haskell', 'sql'], &ft) >= 0
-        let g:comment_char = '-'
-    elseif index(['tex'], &ft) >= 0
-        let g:comment_char = '%'
-    elseif index(['scheme'], &ft) >= 0
-        let g:comment_char = ';'
-    elseif index(['vim'], &ft) >= 0
-        let g:comment_char = '"'
-    endif
-
-    let triple_comment = g:comment_char . g:comment_char . g:comment_char
-
-    let curr_line = getline('.')
-    while curr_line[0:2] != triple_comment
-        normal! k
-        let curr_line = getline('.')
-    endw
-
-    normal! $
-    let max_line = col('.')
-
-    call MakeBoxBar(max_line)
-
-    normal! j
-    let curr_line = getline('.')
-    let first_line = 1
-    while curr_line[0:2] != triple_comment
-        if first_line == 1
-            let first_line = 0
-        else
-            normal! j
-        endif
-
-        let curr_line = getline('.')
-        call MakeBoxLine(max_line)
-    endw
-
-    call MakeBoxBar(max_line)
-
-    " Return cursor to starting position
-    normal! `mh
-endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Construct one of the bars that goes at the beginning and end of a           "
-" comment-box.                                                                "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! MakeBoxBar(max_line)
-    let _ = cursor(line('.'), a:max_line)
-    let column_number = col('.')
-    while column_number != a:max_line
-        execute "normal! a" . g:comment_char
-        let column_number = col('.')
-    endw
-endf
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Format a single line inside of a comment box                                "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! MakeBoxLine(max_line)
-    normal! ^
-    let current_ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
-
-    if current_ch == ' ' || current_ch == ''
-        execute "normal! xi" . g:comment_char . " "
-    elseif current_ch != g:comment_char
-        execute "normal! i" . g:comment_char . " "
-    endif
-
-    let do_double = index(['/', '-', ';'], g:comment_char) >= 0
-
-    if do_double
-        normal! 0l
-        let ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
-        let column_number = col('.')
-        if ch != g:comment_char
-            execute "normal! i" . g:comment_char
-        endif
-    endif
-
-    let _ = cursor(line('.'), a:max_line)
-    let column_number = col('.')
-    let current_ch = matchstr(getline('.'), '\%' . col('.') . 'c.')
-    if column_number != 1 && (do_double != 1 || column_number != 2)
-        if current_ch == g:comment_char || column_number == a:max_line
-            normal! D
-            let column_number = col('.')
-        endif
-    endif
-    while column_number < (a:max_line - 2)
-        let column_number = col('.')
-        execute "normal! a "
-    endwhile
-    execute "normal! a" . g:comment_char
-
-    if do_double
-        execute "normal! hr" . g:comment_char
-    endif
 endfunction
 
 " Boolean function which checks if @plugin is installed
@@ -512,4 +402,5 @@ highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
 
 
 " #################### Extra Modules ####################
+call s:SourceIfExists("/home/bryan/.vim/makebox.vim")
 call s:SourceIfExists("/home/bryan/.vim/plugins.vim")

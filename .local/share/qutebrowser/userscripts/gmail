@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "open -w gmail.com" >> "$QUTE_FIFO"
+
+sleep 0.5
+xdotool key super+f
+
+sleep 0.2
+xdotool key ctrl+v
+wtitle gmail

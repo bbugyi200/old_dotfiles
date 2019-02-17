@@ -9,7 +9,13 @@ import re
 import searchengines.imfeelinglucky as IFL
 import searchengines.utils as utils
 
-__all__ = ['SearchEngine', 'URL', 'LuckyURL', 'OneIntURL', 'TwoIntURL']
+__all__ = [
+    'SearchEngine',
+    'URL',
+    'LuckyURL',
+    'OneIntURL',
+    'TwoIntURL',
+]
 
 
 class SearchEngine(str):

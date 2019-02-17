@@ -13,7 +13,7 @@ downloads:
 
 editor:
     command: ['urxvt', '-name', 'qute-editor', '-e', 'zsh', '-c',
-              'vim --noplugin -N -u ~/.config/qutebrowser/editor.vimrc {}']
+              'vim -N -u ~/.config/qutebrowser/editor.vimrc {}']
 
 tabs:
     last_close: startpage

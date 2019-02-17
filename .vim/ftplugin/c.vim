@@ -1,8 +1,8 @@
+packadd termdebug
+
 let w:run_cmd = "!make"
 let g:comment_char = '/'
 
-command! -nargs=0 Run exec "make"
-command! -nargs=0 Run2 exec "make build-release"
 command! -nargs=0 CacheHeaders !cache_cheaders
 
 nnoremap <buffer> <Leader>; A;<Esc>

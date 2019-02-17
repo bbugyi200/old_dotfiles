@@ -15,6 +15,18 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 config.load_autoconfig()
 
 
+def bang_pttrn():
+    """Returns regex pattern that matches DuckDuckGo bangs that I like to use."""
+    one_letter_bangs = ['a', 'd', 'g', 'm', 't', 'w', ]
+    two_letter_bangs = ['gm', 'ho', 'wa', 'yt', ]
+    long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
+
+    all_bangs = one_letter_bangs + two_letter_bangs + long_bangs
+
+    bang_fmt = '^({}) '
+    return bang_fmt.format('|'.join(all_bangs))
+
+
 ####################
 #  Search Engines  #
 ####################
@@ -30,7 +42,7 @@ c.url.searchengines = {
     'cc': SE.static.stackoverflow(5, prefix='C\\+\\+'),
     'DEFAULT': SE.SearchEngine(SE.static.google('{}'),
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),
-                               SE.URL(SE.static.duckduckgo('!{}'), SE.utils.bang_pttrn()),
+                               SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
                                SE.LuckyURL('{}')),
     'de': SE.static.google('debian {}'),
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
@@ -68,7 +80,7 @@ c.url.searchengines = {
     'lib': 'http://libgen.io/search.php?req={}',
     'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
     'p': SE.static.stackoverflow(7, prefix='Python'),
-    'pss': 'https://store.playstation.com/en-us/search/{}',
+    'ps4': 'https://store.playstation.com/en-us/search/{}',
     'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.static.site('reddit.com'),
     'rl': SE.static.google('rocket league {}'),
@@ -96,7 +108,9 @@ for i in range(1, 11):
 #  Aliases  #
 #############
 aliases = {
+    'G': 'spawn --userscript gmail',
     'get': 'jseval -q document.querySelector("h2").click()',  # click GET on libgen
+    'lic': 'spawn --userscript linkedin_connect',
     'P': "spawn -v pockyt-add {url}",
     'rss': 'spawn --userscript openfeeds',
     'vs': 'open -w',
@@ -111,21 +125,11 @@ for k, v in aliases.items():
 ##############
 #  Bindings  #
 ##############
+########## Unbinds
 def unbind(keys, mode='normal'):
     config.unbind(keys, mode=mode)
 
 
-def bind(keys, *commands, mode='normal'):
-    config.bind(keys, ' ;; '.join(commands), mode=mode)
-
-
-# bind functions for different modes
-ibind = functools.partial(bind, mode='insert')
-pbind = functools.partial(bind, mode='prompt')
-cbind = functools.partial(bind, mode='command')
-
-
-########## Unbinds
 unbound_nkeys = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'M', ]
 for keys in unbound_nkeys:
     unbind(keys)
@@ -134,20 +138,43 @@ unbound_ikeys = ['<Ctrl-e>', ]
 for keys in unbound_ikeys:
     unbind(keys, mode='insert')
 
+
 ########## Binds
+def bind(keys, *commands, mode='normal'):
+    config.bind(keys, ' ;; '.join(commands), mode=mode)
+
+
+# bind functions for different modes
+cbind = functools.partial(bind, mode='command')
+ibind = functools.partial(bind, mode='insert')
+pbind = functools.partial(bind, mode='prompt')
+ptbind = functools.partial(bind, mode='passthrough')
+
+
 # >>> INSERT
 ibind('<Ctrl-f>', 'open-editor')
 ibind('<Ctrl-i>', 'spawn -d qute-pass-add {url}')
-ibind('<Ctrl-p>', 'spawn --userscript qute-pass')
-ibind('<Ctrl-Shift-u>', 'spawn --userscript qute-pass --username-only')
-ibind('<Ctrl-Shift-p>', 'spawn --userscript qute-pass --password-only')
+ibind('<Alt-i>', 'spawn --userscript qute-pass')
+ibind('<Alt-u>', 'spawn --userscript qute-pass --username-only')
+ibind('<Alt-p>', 'spawn --userscript qute-pass --password-only')
+ibind('<Ctrl-n>', 'fake-key -g <Down>')
+ibind('<Ctrl-p>', 'fake-key -g <Up>')
+
 
 # >>> PROMPT
 pbind('<Ctrl-o>', 'prompt-open-download rifle {}')
 
 # >>> COMMAND
 cbind('<Ctrl-f>', 'edit-command --run')
-cbind('<Ctrl-y>', 'fake-key --global <Return>v$y')
+cbind('<Ctrl-y>', 'fake-key --global <Return>V$y')
+
+# >>> PASSTHROUGH
+ptbind('<Escape>', 'leave-mode')
+ptbind('<Ctrl-]>', 'fake-key <Escape>')
+ptbind('[', 'spawn xdotool key super+shift+Tab')
+ptbind(']', 'spawn xdotool key super+Tab')
+ptbind('<Alt-[>', 'fake-key [')
+ptbind('<Alt-]>', 'fake-key ]')
 
 # >>> NORMAL
 # ----- Alphanumeric -----
@@ -169,6 +196,8 @@ bind('cd', 'download-cancel')
 bind('C', 'tab-clone')
 bind('D', 'download')
 bind(',e', 'spawn --userscript searchbar-command')
+bind(',g', 'spawn --userscript google')
+bind(',G', 'spawn --userscript google -t')
 bind('gi', 'hint inputs')
 bind(',h', 'set-cmd-text -s :help')
 bind(',H', 'set-cmd-text -s :help -t')
@@ -202,17 +231,21 @@ bind('Y', 'fake-key --global v$y')
 # ----- Non-Alphanumeric -----
 bind('\\', 'set-cmd-text :open /')
 bind('|', 'set-cmd-text :open -t /')
-bind('[b', 'tab-prev')
-bind('[B', 'tab-focus 1')
-bind(']b', 'tab-next')
-bind(']B', 'tab-focus -1')
+bind('[', 'spawn xdotool key super+shift+Tab')
+bind(']', 'spawn xdotool key super+Tab')
+bind('(', 'navigate prev')
+bind(')', 'navigate next')
+bind('}', 'navigate next -t')
+bind('{', 'navigate prev -t')
 # ----- Miscellaneous -----
-bind('<Ctrl-p>', 'print')
+bind('<Alt-i>', 'enter-mode insert', 'spawn --userscript qute-pass')
 bind('<Alt-p>', 'tab-pin')
+bind('<Ctrl-p>', 'print')
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
 bind('<Ctrl-y>', 'fake-key --global v$y')
 bind('<Escape>', 'search', 'clear-messages')
+
 
 ######################
 #  Load yaml Config  #

@@ -101,13 +101,13 @@ myAdditionalKeys = [
    -- (you can sort these bindings with `<range>sort r /, [A-z]),/`)
    ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
-   , ((alpha, c), launchApp "web" "qutebrowser --enable-webengine-inspector")
    , ((alpha, d), windows W.focusDown)
    , ((alpha, f), sendMessage $ Toggle TABBED)
    , ((alpha, g), spawn "qb_prompt --next-screen")
    , ((alpha .|. beta, g), spawn "qb_prompt")
    , ((alpha, h), N2D.windowGo N2D.L False)
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
+   , ((alpha, i), launchApp "web" "qutebrowser --enable-webengine-inspector")
    , ((alpha, j), N2D.windowGo N2D.D False)
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), N2D.windowGo N2D.U False)
@@ -354,7 +354,7 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                     NSP.nonFloating ]
             where 
                 calculator = "urxvt -name calculator -e zsh -c 'wtitle Calculator && bc -l'"
-                scratchpad = "urxvt -name scratchpad -e zsh -c 'wtitle ScratchPad && tmuxinator start ScratchPad root=$(tm-session-root --get ScratchPad)'"
+                scratchpad = "scratchpad-launcher"
                 weechat = "weechat-launcher"
                 gtd = "gtd-launcher"
 

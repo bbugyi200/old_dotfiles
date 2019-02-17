@@ -120,8 +120,16 @@ fi
 # If there's no 'open with' then we can let preview do it's thing.
 # Otherwise we've been told what to use.  So do an open -a.
 
+if [[ "$(hostname)" == *"athena"* ]]; then
+    term_desk=1
+    web_desk=2
+else
+    term_desk=0
+    web_desk=1
+fi
+
 if [ -z "$open_with" ]; then
-    xdg-open "$newfile" && wmctrl -s 1 && xdotool key q && xdotool key q && wmctrl -s 2
+    xdg-open "$newfile" && wmctrl -s "${term_desk}" && xdotool key q && xdotool key q && wmctrl -s "${web_desk}"
 else
     "$open_with" "$newfile"
 fi
