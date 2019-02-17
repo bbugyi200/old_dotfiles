@@ -24,26 +24,26 @@ Height 1080=490
 Width 1920=590
 
 [Recent Files]
-File1[$e]=$HOME/projects/CV/BryanBugyi_CV.pdf
-File10[$e]=$HOME/Dropbox/var/notes/Rocketbook/Statistics/My_Statistics_Notes.pdf
-File2[$e]=$HOME/Dropbox/var/study/Compilers/hw2_instructions.pdf
-File3[$e]=$HOME/Dropbox/var/study/OperatingSystems/hw2_instructions.pdf
-File4[$e]=$HOME/Dropbox/var/books/Math/Probability/Mathematical_Statistics_with_Applications-(Freund).pdf
-File5[$e]=$HOME/Dropbox/var/books/Math/Probability/probability_cheatsheet.pdf
-File6[$e]=$HOME/Dropbox/var/study/Statistics/HW3/hw3.pdf
-File7[$e]=$HOME/Dropbox/var/books/Math/Probability/Think_Stats-(Downey).pdf
-File8[$e]=$HOME/Dropbox/var/study/Statistics/Textbook_Solutions.pdf
-File9[$e]=$HOME/Dropbox/var/notes/Rocketbook/Statistics/My_Statistics_Lecture_Notes.pdf
-Name1[$e]=BryanBugyi_CV.pdf
-Name10[$e]=My_Statistics_Notes.pdf
+File1[$e]=$HOME/Dropbox/var/study/Compilers/hw2_instructions.pdf
+File10[$e]=$HOME/Dropbox/var/books/Programming/Programming_Languages/Engineering_a_Compiler-(Cooper).pdf
+File2[$e]=$HOME/Dropbox/var/study/OperatingSystems/hw2_instructions.pdf
+File3[$e]=$HOME/Dropbox/var/books/Math/Probability/probability_cheatsheet.pdf
+File4[$e]=$HOME/Dropbox/var/books/Math/Probability/Think_Stats-(Downey).pdf
+File5[$e]=$HOME/Dropbox/var/study/Statistics/Textbook_Solutions.pdf
+File6[$e]=$HOME/Dropbox/var/notes/Rocketbook/Statistics/My_Statistics_Lecture_Notes.pdf
+File7[$e]=$HOME/Dropbox/var/notes/Rocketbook/Statistics/My_Statistics_Notes.pdf
+File8[$e]=$HOME/Dropbox/var/books/Math/Probability/Mathematical_Statistics_with_Applications-(Freund).pdf
+File9[$e]=$HOME/Dropbox/var/study/Statistics/HW3/hw3.pdf
+Name1[$e]=hw2_instructions.pdf
+Name10[$e]=Engineering_a_Compiler-(Cooper).pdf
 Name2[$e]=hw2_instructions.pdf
-Name3[$e]=hw2_instructions.pdf
-Name4[$e]=Mathematical_Statistics_with_Applications-(Freund).pdf
-Name5[$e]=probability_cheatsheet.pdf
-Name6[$e]=hw3.pdf
-Name7[$e]=Think_Stats-(Downey).pdf
-Name8[$e]=Textbook_Solutions.pdf
-Name9[$e]=My_Statistics_Lecture_Notes.pdf
+Name3[$e]=probability_cheatsheet.pdf
+Name4[$e]=Think_Stats-(Downey).pdf
+Name5[$e]=Textbook_Solutions.pdf
+Name6[$e]=My_Statistics_Lecture_Notes.pdf
+Name7[$e]=My_Statistics_Notes.pdf
+Name8[$e]=Mathematical_Statistics_with_Applications-(Freund).pdf
+Name9[$e]=hw3.pdf
 
 [Shortcut Schemes]
 Current Scheme=VimBindings

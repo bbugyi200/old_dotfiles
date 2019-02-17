@@ -126,17 +126,13 @@ for k, v in aliases.items():
 #  Bindings  #
 ##############
 ########## Unbinds
-def unbind(keys, mode='normal'):
-    config.unbind(keys, mode=mode)
-
-
 unbound_nkeys = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'M', ]
 for keys in unbound_nkeys:
-    unbind(keys)
+    config.unbind(keys)
 
 unbound_ikeys = ['<Ctrl-e>', ]
 for keys in unbound_ikeys:
-    unbind(keys, mode='insert')
+    config.unbind(keys, mode='insert')
 
 
 ########## Binds
@@ -155,11 +151,10 @@ ptbind = functools.partial(bind, mode='passthrough')
 ibind('<Ctrl-f>', 'open-editor')
 ibind('<Ctrl-i>', 'spawn -d qute-pass-add {url}')
 ibind('<Alt-i>', 'spawn --userscript qute-pass')
-ibind('<Alt-u>', 'spawn --userscript qute-pass --username-only')
-ibind('<Alt-p>', 'spawn --userscript qute-pass --password-only')
 ibind('<Ctrl-n>', 'fake-key -g <Down>')
+ibind('<Alt-p>', 'spawn --userscript qute-pass --password-only')
 ibind('<Ctrl-p>', 'fake-key -g <Up>')
-
+ibind('<Alt-u>', 'spawn --userscript qute-pass --username-only')
 
 # >>> PROMPT
 pbind('<Ctrl-o>', 'prompt-open-download rifle {}')
@@ -178,15 +173,6 @@ ptbind('<Alt-]>', 'fake-key ]')
 
 # >>> NORMAL
 # ----- Alphanumeric -----
-bind(',1', 'buffer 1')
-bind(',2', 'buffer 2')
-bind(',3', 'buffer 3')
-bind(',4', 'buffer 4')
-bind(',5', 'buffer 5')
-bind(',6', 'buffer 6')
-bind(',7', 'buffer 7')
-bind(',8', 'buffer 8')
-bind(',9', 'buffer 9')
 bind('A', 'set-cmd-text -s :quickmark-load -t')
 bind('a', 'set-cmd-text -s :quickmark-load')
 bind(',b', 'set-cmd-text :bookmark-add {url} "')

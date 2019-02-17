@@ -135,7 +135,7 @@ nnoremap <Leader>p :CtrlPMRU<CR>
 call s:MapNIModes('<Leader>r', ':update<CR>:execute w:run_cmd<CR>')
 call s:MapNIModes('<Leader>R', ':update<CR>:execute w:Run_cmd<CR>')
 nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
-call s:MapNIModes('<Leader>s', ':write<CR>')
+call s:MapNIModes('<Leader>s', ':update<CR>')
 call s:MapNIModes('<Leader>S', ':update<CR>:mksession!<CR>')
 nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
 nmap S ys

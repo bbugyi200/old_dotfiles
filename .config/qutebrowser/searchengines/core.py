@@ -117,9 +117,7 @@ class LuckyURL(URL):
 def IntURLFactory(n):
     """Factory for URL Objects with patterns that start with Int Arguments"""
     pttrn_fmt = '^{}[A-z]'
-    int_pttrn = '[0-9]+ '
-    for i in range(n - 1):
-        int_pttrn = int_pttrn + int_pttrn
+    int_pttrn = '[0-9]+ ' * n
 
     class IntURL(URL):
         pattern = pttrn_fmt.format(int_pttrn)
