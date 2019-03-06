@@ -6,6 +6,7 @@ import re
 import yaml
 
 import searchengines as SE
+import searchengines.utils as utils
 
 # pylint: disable=C0111
 c = c  # noqa: F821 pylint: disable=E0602,C0103
@@ -15,9 +16,57 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 config.load_autoconfig()
 
 
+######################
+#  Search Aliases    #
+######################
+# These aliases will be substituted with their definitions when found
+# anywhere in the query of an ':open' command.
+search_aliases = {
+    'al': 'Arch Linux',
+    'b': 'Bash',
+    'bb': 'Bloodborne',
+    'cl': 'command-line',
+    'co': 'Compilers',
+    'cs': 'Computer Science',
+    'de': 'Debian',
+    'di': 'distribution',
+    'ge': 'Gentoo',
+    'gh': 'GitHub',
+    'gt': 'Georgia Tech',
+    'GT': 'Graph Theory',
+    'ha': 'Haskell',
+    'js': 'JavaScript',
+    'lx': 'Linux',
+    'ml': 'Machine Learning',
+    'ms': "master's degree",
+    'oms': "online master's degree",
+    'os': 'Operating Systems',
+    'py': 'Python',
+    'qb': 'qutebrowser',
+    'rl': 'Rocket League',
+    'ru': 'Rutgers',
+    'sal': 'average salary',
+    'se': 'Software Engineer',
+    'sts': 'Statistics',
+    'tex': 'LaTeX',
+    'tw': 'Python Twisted',
+    'v': 'vim',
+}
+
+# Google's AROUND(N) Search Operator
+for i in range(1, 51):
+    search_aliases['a{}'.format(i)] = 'AROUND({})'.format(i)
+
+# Set the utils module's alias dictionaries.
+utils.search_aliases = search_aliases
+
+
+####################
+#  Search Engines  #
+####################
 def bang_pttrn():
     """Returns regex pattern that matches DuckDuckGo bangs that I like to use."""
-    one_letter_bangs = ['a', 'd', 'g', 'm', 't', 'w', ]
+    one_letter_bangs = ['a', 'd', 'g', 'm', 't', ]
     two_letter_bangs = ['gm', 'ho', 'wa', 'yt', ]
     long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
 
@@ -27,15 +76,10 @@ def bang_pttrn():
     return bang_fmt.format('|'.join(all_bangs))
 
 
-####################
-#  Search Engines  #
-####################
 c.url.searchengines = {
     '2': 'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}',
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
-    'al': SE.static.google('arch linux {}'),
     'b': SE.static.stackoverflow(10, prefix='Bash'),
-    'bb': SE.static.google('bloodborne {}'),
     'bmo': SE.SearchEngine(SE.static.google('best movies of 20{}'),
                            SE.OneIntURL(SE.static.google('best {1} movies of 20{0}'))),
     'c': SE.static.stackoverflow(7, prefix='C'),
@@ -44,10 +88,10 @@ c.url.searchengines = {
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),
                                SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
                                SE.LuckyURL('{}')),
-    'de': SE.static.google('debian {}'),
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
                           SE.OneIntURL(SE.static.google('Season {0} {1} episodes'))),
-    'ge': SE.static.google('gentoo {}'),
+    'G': SE.static.google('"{}"'),
+    'g4g': SE.static.site('www.geeksforgeeks.org'),
     'geb': 'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific',
     'gep': SE.SearchEngine(SE.static.site('packages.gentoo.org', 'gpo.zugaina.org'),
                            SE.LuckyURL('{} site:packages.gentoo.org')),
@@ -61,15 +105,19 @@ c.url.searchengines = {
                            SE.OneIntURL('https://github.com/bbugyi200/{1}/issues/{0}'),
                            SE.LuckyURL('{0} site:github.com',
                                        '{}{}'.format(SE.LuckyURL.pattern, r'([A-z]| )+@'),
-                                       lambda x: re.split(SE.utils.encode(' @'), SE.LuckyURL.filter(x), maxsplit=1),
+                                       lambda x: re.split(SE.utils.encode(' @'),
+                                                          SE.LuckyURL.filter(x),
+                                                          maxsplit=1),
                                        suffix='issues?&q=is%3Aissue+{1}'),
                            SE.LuckyURL('{0} site:github.com',
                                        '{}{}'.format(SE.LuckyURL.pattern, '([A-z]| )+#'),
-                                       lambda x: re.split(SE.utils.encode(' #'), SE.LuckyURL.filter(x), maxsplit=1),
+                                       lambda x: re.split(SE.utils.encode(' #'),
+                                                          SE.LuckyURL.filter(x),
+                                                          maxsplit=1),
                                        suffix='issues/{1}'),
                            SE.LuckyURL('{} site:github.com', suffix='issues')),
     'gi': SE.static.stackoverflow(7, prefix='git'),
-    'i': 'https://www.google.com/search?&tbm=isch&q={}',
+    'i': SE.SearchEngine('https://www.google.com/search?&tbm=isch&q={}'),
     'j': 'https://www.google.com/search?q={}&ibp=htl;jobs#fpstate=tldetail',
     'js': 'https://www.google.com/search?q=Software+Engineer+{}&ibp=htl;jobs#fpstate=tldetail',
     'l': SE.static.stackoverflow(7, prefix='Linux'),
@@ -80,10 +128,10 @@ c.url.searchengines = {
     'lib': 'http://libgen.io/search.php?req={}',
     'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
     'p': SE.static.stackoverflow(7, prefix='Python'),
+    'pl': 'https://docs.python.org/3.6/library/{}',
     'ps4': 'https://store.playstation.com/en-us/search/{}',
-    'py': 'https://docs.python.org/3.6/library/{}',
     'r': SE.static.site('reddit.com'),
-    'rl': SE.static.google('rocket league {}'),
+    'rlp': 'https://rocketleague.tracker.network/profile/ps/{}',
     's0': SE.static.site('stackoverflow.com'),
     'st': SE.static.google('set timer for {}'),
     'sub': SE.SearchEngine(SE.static.google('{} inurl:english site:subscene.com'),
@@ -96,7 +144,8 @@ c.url.searchengines = {
     'Tpb': SE.SearchEngine('https://thepiratebay3.com/search/{}',
                            SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}')),
     'ud': SE.static.site('idioms.thefreedictionary.com', 'en.wiktionary.org', 'urbandictionary.com'),
-    'ytrl': 'https://www.youtube.com/results?search_query=rocket+league+{}',
+    'q': SE.static.google('"{}"'),
+    'w': SE.static.site('en.wikipedia.org'),
     'ytt': 'https://www.youtube.com/results?search_query={}+Trailer'
 }
 
@@ -104,13 +153,14 @@ for i in range(1, 11):
     c.url.searchengines['s{}'.format(i)] = SE.static.stackoverflow(i)
 
 
-#############
-#  Aliases  #
-#############
-aliases = {
+######################
+#  Commande Aliases  #
+######################
+command_aliases = {
     'G': 'spawn --userscript gmail',
     'get': 'jseval -q document.querySelector("h2").click()',  # click GET on libgen
     'lic': 'spawn --userscript linkedin_connect',
+    'mkpdf': 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/',
     'P': "spawn -v pockyt-add {url}",
     'rss': 'spawn --userscript openfeeds',
     'vs': 'open -w',
@@ -118,21 +168,19 @@ aliases = {
     'wtitle': 'spawn wtitle',
 }
 
-for k, v in aliases.items():
+for k, v in command_aliases.items():
     c.aliases[k] = v
 
 
 ##############
 #  Bindings  #
 ##############
+c.bindings.commands = {}  # Clears all previously set user bindings.
+
 ########## Unbinds
 unbound_nkeys = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'M', ]
 for keys in unbound_nkeys:
     config.unbind(keys)
-
-unbound_ikeys = ['<Ctrl-e>', ]
-for keys in unbound_ikeys:
-    config.unbind(keys, mode='insert')
 
 
 ########## Binds
@@ -147,8 +195,7 @@ pbind = functools.partial(bind, mode='prompt')
 ptbind = functools.partial(bind, mode='passthrough')
 
 
-# >>> INSERT
-ibind('<Ctrl-f>', 'open-editor')
+# >>>>>>> INSERT
 ibind('<Ctrl-i>', 'spawn -d qute-pass-add {url}')
 ibind('<Alt-i>', 'spawn --userscript qute-pass')
 ibind('<Ctrl-n>', 'fake-key -g <Down>')
@@ -156,29 +203,36 @@ ibind('<Alt-p>', 'spawn --userscript qute-pass --password-only')
 ibind('<Ctrl-p>', 'fake-key -g <Up>')
 ibind('<Alt-u>', 'spawn --userscript qute-pass --username-only')
 
-# >>> PROMPT
+# >>>>>>> PROMPT
 pbind('<Ctrl-o>', 'prompt-open-download rifle {}')
 
-# >>> COMMAND
-cbind('<Ctrl-f>', 'edit-command --run')
+# >>>>>>> COMMAND
+cbind("<Alt-j>", 'spawn --userscript add_quotes 1')
+cbind("<Alt-k>", 'spawn --userscript add_quotes 2')
+cbind("<Alt-l>", 'spawn --userscript add_quotes 3')
+cbind("<Alt-u>", 'spawn --userscript add_quotes -1')
+cbind("<Alt-i>", 'spawn --userscript add_quotes -2')
+cbind("<Alt-o>", 'spawn --userscript add_quotes -3')
+cbind('<Ctrl-e>', 'edit-command --run')
 cbind('<Ctrl-y>', 'fake-key --global <Return>V$y')
 
-# >>> PASSTHROUGH
+# >>>>>>> PASSTHROUGH
 ptbind('<Escape>', 'leave-mode')
 ptbind('<Ctrl-]>', 'fake-key <Escape>')
-ptbind('[', 'spawn xdotool key super+shift+Tab')
-ptbind(']', 'spawn xdotool key super+Tab')
+ptbind('<Ctrl-x>', 'tab-close', 'enter-mode passthrough')
+ptbind('[', 'tab-prev')
+ptbind(']', 'tab-next')
 ptbind('<Alt-[>', 'fake-key [')
 ptbind('<Alt-]>', 'fake-key ]')
 
-# >>> NORMAL
+# >>>>>>> NORMAL
 # ----- Alphanumeric -----
 bind('A', 'set-cmd-text -s :quickmark-load -t')
 bind('a', 'set-cmd-text -s :quickmark-load')
 bind(',b', 'set-cmd-text :bookmark-add {url} "')
 bind('b', 'quickmark-save')
 bind('B', 'bookmark-add --toggle')
-bind('cd', 'download-cancel')
+bind('c', 'yank selection')
 bind('C', 'tab-clone')
 bind('D', 'download')
 bind(',e', 'spawn --userscript searchbar-command')
@@ -191,7 +245,6 @@ bind(',m', 'spawn --userscript view_in_umpv -d')
 bind(';m', 'hint all spawn -v qb_umpv {hint-url}', 'message-info "Select video to load with umpv."')
 bind(';M', 'hint all spawn -v qb_umpv --append {hint-url}', 'message-info "Select video to append to umpv playlist."')
 bind('m', 'enter-mode set_mark')
-bind(',p', 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/')
 bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
 bind('p', 'open -- {clipboard}')
 bind('P', 'open -t -- {clipboard}')
@@ -208,28 +261,34 @@ bind(';TT', 'hint links spawn --userscript add-to-torrent-file tv.txt "{hint-url
 bind('t-', 'tab-only')
 bind('tt', 'set-cmd-text -s :tab-take')
 bind('tg', 'set-cmd-text -s :tab-give')
+bind('v', 'enter-mode passthrough')
+bind('V', 'enter-mode caret')
 bind('w-', 'window-only')
 bind('x', 'tab-close')
 bind('X', 'tab-close -o')
 bind(',Y', 'spawn ytcast {url}', 'message-info "Casting YouTube to chromecast..."')
 bind(';Y', 'hint links spawn -v ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
 bind('Y', 'fake-key --global v$y')
+
 # ----- Non-Alphanumeric -----
+bind('=', 'zoom-in')
 bind('\\', 'set-cmd-text :open /')
 bind('|', 'set-cmd-text :open -t /')
-bind('[', 'spawn xdotool key super+shift+Tab')
-bind(']', 'spawn xdotool key super+Tab')
 bind('(', 'navigate prev')
 bind(')', 'navigate next')
-bind('}', 'navigate next -t')
 bind('{', 'navigate prev -t')
+bind('}', 'navigate next -t')
+bind('[', 'tab-prev')
+bind(']', 'tab-next')
+
 # ----- Miscellaneous -----
 bind('<Alt-i>', 'enter-mode insert', 'spawn --userscript qute-pass')
-bind('<Alt-p>', 'tab-pin')
-bind('<Ctrl-p>', 'print')
+bind('<Alt-p>', 'enter-mode insert', 'spawn --userscript qute-pass --password-only')
+bind('<Alt-u>', 'enter-mode insert', 'spawn --userscript qute-pass --username-only')
+bind('<Ctrl-p>', 'tab-pin')
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
-bind('<Ctrl-y>', 'fake-key --global v$y')
+bind('<Ctrl-y>', 'fake-key --global V$y')
 bind('<Escape>', 'search', 'clear-messages')
 
 

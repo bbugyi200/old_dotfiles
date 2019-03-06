@@ -1,1 +1,2 @@
-let w:run_cmd = "!xrdb merge /home/bryan/.Xresources && echo 'Xdefaults have been refreshed.'"
+let b:run_cmd = "!xrdb merge /home/bryan/.Xresources && echo 'Xdefaults have been refreshed.'"
+

@@ -3,6 +3,11 @@
 import re
 
 
+# Defined in the config.py file.
+search_aliases = {}
+global_search_aliases = {}
+
+
 def encode(query):
     """Encodes @query using HTML URL Codes
 
@@ -19,3 +24,15 @@ def encode(query):
     encoded = re.sub(r'{(\d)%3A', r'{\1:', encoded)
 
     return encoded
+
+
+def filter_aliases(search_term):
+    """Checks for and Substitutes Aliases with their Definitions"""
+    new_search_term = search_term
+    for alias, definition in search_aliases.items():
+        new_search_term = re.sub(r'\b{}\b'.format(alias), definition, new_search_term)
+        new_search_term = re.sub(r'%20{}%20'.format(alias), '%20' + definition + '%20', new_search_term)
+        new_search_term = re.sub(r'^{}%20'.format(alias), definition + '%20', new_search_term)
+        new_search_term = re.sub(r'%20{}$'.format(alias), '%20' + definition, new_search_term)
+
+    return new_search_term

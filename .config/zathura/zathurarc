@@ -3,7 +3,7 @@ set continuous-hist-save false
 set link-zoom false
 set selection-clipboard clipboard
 set show-recent 25
-set window-title-basename false
+set window-title-basename true
 
 # ---------- Bookmark Bindings
 # Set Mark
@@ -165,14 +165,16 @@ map .z exec "znav -b Z"
 unmap q
 
 # BINDS
+map 0 exec "xdotool key ctrl+d"
+map 9 exec "xdotool key ctrl+u"
 map <BackSpace> feedkeys ":nohlsearch<Return>"
 map <Button2> navigate previous
 map <Button3> navigate next
 map <C-[> feedkeys ":nohlsearch<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
-map \\ exec "znav -z T ZH aH"
-map [ exec "xdotool key Super+u"
-map ] exec "xdotool key Super+d"
+# map \\ exec "znav -z T ZH aH"
+map [ exec "winstack prev"
+map ] exec "winstack next"
 map ; goto
 map = zoom in
 map ,l feedkeys ":blist <Tab><C-u>blist"  # List Marks
@@ -181,20 +183,13 @@ map ,D feedkeys ":set first-page-column 1:2<Return>"
 map ,d feedkeys ":bdelete <Tab>"
 map ,n exec "zsearch --new-workspace --no-search"
 map D feedkeys ":set first-page-column 1:1<Return>"
-# map h exec "znav -z + ZdL"
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
 map h navigate previous
-map i exec "znav -z + ZdJH"
-# map j exec "znav -D down"
-# map k exec "znav -D up"
-# map l exec "znav -z + ZdJL"
 map l navigate next
-map s exec "zsearch"
-map S exec "zsearch --new-workspace"
 map o exec "zopen -x"
 map O exec "zopen"
-map p exec "znav -z - adL"
-map u exec "znav -z + ZdH"
-map x exec "xdotool key Super+w"
+map x exec "wmctrl -c :ACTIVE:"
 map Z feedkeys "200zz"
 
 # vim: set ft=conf:

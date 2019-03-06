@@ -1,5 +1,5 @@
-let w:run_cmd = "cd %:p:h | !pdflatex -file-line-error " . expand('%:t') . " && rm *.out *.aux *.log"
-let w:Run_cmd = 'call VimuxRunCommand("(zathura \"' . expand("%:p:r") . '.pdf\" &> /dev/null &) && exit")'
+let b:run_cmd = "cd %:p:h | !pdflatex -file-line-error " . expand('%:t') . " && rm *.out *.aux *.log"
+let b:Run_cmd = 'call VimuxRunCommand("(zathura \"' . expand("%:p:r") . '.pdf\" &> /dev/null &) && exit")'
 
 setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
 if filereadable('Makefile')

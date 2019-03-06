@@ -42,7 +42,10 @@ class SearchEngine(str):
     def format(self, term, *args, **kwargs):
         for url, pttrn, filter_ in self.url_objects:
             if re.match(pttrn, term):
-                filtered = filter_(term)
+                filtered = filter_(utils.filter_aliases(term))
+                with open('/var/tmp/qutebrowser.log', 'a+') as f:
+                    f.write(term)
+
                 if isinstance(filtered, str):
                     filtered = (filtered,)
 

@@ -5,7 +5,12 @@ classes, functions, or variables defined here MUST be included in __all__ or the
 made available.
 """
 
-__all__ = ['has_tag', 'is_done', 'fields_equiv', 'field_equals']
+__all__ = [
+    'has_tag',
+    'is_done',
+    'fields_equiv',
+    'field_equals',
+]
 
 
 def has_tag(task, tag):

@@ -2,6 +2,7 @@
 
 import datetime as dt
 
+import searchengines as SE
 import searchengines.utils as utils
 
 
@@ -34,12 +35,12 @@ def site(*domains, prefix=None):
 
 def google(query):
     encoded_query = utils.encode(query)
-    return 'https://google.com/search?q={}'.format(encoded_query)
+    return SE.SearchEngine('https://google.com/search?q={}'.format(encoded_query))
 
 
 def duckduckgo(query):
     encoded_query = utils.encode(query)
-    return 'https://duckduckgo.com/?q={}'.format(encoded_query)
+    return SE.SearchEngine('https://duckduckgo.com/?q={}'.format(encoded_query))
 
 
 #############

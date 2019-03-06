@@ -6,6 +6,7 @@ nnoremap ,q :s/\(-t \\|\/\)//g<CR><CR>
 nnoremap ,/ :s/\(:open \(-t \)\?\)/\1\//<CR>A
 nnoremap ] /\v:open (-t )?\zs.<CR>
 nmap [ ]hi 
+nnoremap <C-]> 04W<C-a>
 
 " #################### VIM PLUGIN CONFIGURATIONS ####################
 set nocompatible

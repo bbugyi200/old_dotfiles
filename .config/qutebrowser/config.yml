@@ -4,9 +4,21 @@ completion:
 
 content:
     geolocation: true
+    desktop_capture: true
+    geolocation: true
     host_blocking:
         enabled: false
         whitelist: ['analytics.google.com']
+    javascript:
+        can_access_clipboard: true
+        can_close_tabs: true
+        can_open_tabs_automatically: true
+    mouse_lock: true
+    media_capture: true
+    notifications: true
+    persistent_storage: true
+    register_protocol_handler: true
+    ssl_strict: true
 
 downloads:
     remove_finished: 10000

@@ -27,9 +27,11 @@ def run(*task_dicts):
     from hooks.runners import tags
     from hooks.runners import validate
 
-    new_task = tags.run(*task_dicts)
-    new_task = validate.run(*task_dicts)
-    new_task = github.run(*task_dicts)
-    new_task = active.run(*task_dicts)
-    new_task = repeats.run(*task_dicts)
+    new_task = task_dicts[0]
+    new_task = tags.run(new_task, *task_dicts[1:])
+    new_task = validate.run(new_task, *task_dicts[1:])
+    new_task = github.run(new_task, *task_dicts[1:])
+    new_task = active.run(new_task, *task_dicts[1:])
+    new_task = repeats.run(new_task, *task_dicts[1:])
+
     return new_task

@@ -1,4 +1,4 @@
-let w:run_cmd = "!pytest -v %"
+let b:run_cmd = "!pytest -v %"
 
 " ------------------------------------- MULTILINE STRINGS -----------------------------------------
 function! BreakMultlineString(quote)

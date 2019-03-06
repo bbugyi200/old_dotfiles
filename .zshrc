@@ -25,7 +25,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 #  Disable Aliases / Builtins  #
 ################################
 # Disable aliases
-arr=("ll" "gco", "gsta")
+arr=("ll" "gcl" "gco", "gsta")
 for i in "${arr[@]}"; do
     unalias "$i" &> /dev/null
 done
@@ -55,10 +55,14 @@ compdef vman=man
 #####################
 #  Source Commands  #
 #####################
-[ -f /etc/environment ] && source /etc/environment
-[ -f /etc/profile.d/private.sh ] && source /etc/profile.d/private.sh
-source /usr/local/lib/aliases.sh
-source /usr/local/lib/tmuxinator.zsh
+function source_if_exists() {
+    [[ -f "$1" ]] && source "$1"
+}
+
+source_if_exists /usr/local/lib/aliases.sh
+source_if_exists /usr/local/lib/tmuxinator.zsh
+source_if_exists /home/bryan/.local/share/funky/funky.sh
+source_if_exists /home/bryan/.zprofile
 
 ##############
 #  Settings  #
@@ -102,6 +106,7 @@ alias -s ppt="libreoffice"
 alias -s pptx="libreoffice"
 alias -s ps="zathura"
 alias -s txt="vim"
+alias -s wav="paplay"
 alias -s xls="libreoffice"
 alias -s xlsx="libreoffice"
 
@@ -120,25 +125,20 @@ alias -g :w="watch -n 1"
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 
-#############
-#  Exports  #
-#############
-# I set this so the crontab would use vim for editing
-export EDITOR=$(which vim)
-
-# Fixes Mutt Background Issue (stays transparent) in TMUX
-export TERM="rxvt-unicode-256color"
-
 ###################
 #  Miscellaneous  #
 ###################
-# ulimit -c unlimited  # Enables Core Dumps
+ulimit -c unlimited  # Enables Core Dumps
 
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 
 if [[ -d $PWD/.git ]] && [[ -d ~/.virtualenvs/$(basename $PWD) ]]; then
     workon $(basename $PWD) &> /dev/null
+fi
+
+if [[ -d venv ]]; then
+    source venv/bin/activate
 fi
 
 # Starts ssh-agent automatically
@@ -163,10 +163,6 @@ if (( $+commands[tag] )); then
   alias ag=tag  # replace with rg for ripgrep
 fi
 
-if [[ "$(id -u)" = 0 ]]; then
-    export PATH="/root/.local/bin:$PATH"
-fi
-
 function command_not_found_handler() {
     cmd="$1"; shift
 
@@ -183,7 +179,5 @@ function command_not_found_handler() {
 
     tmux send-keys "${funky_cmd}" "Enter"
 }
-
-[ -f ~/.local/share/funky/funky.sh ] && source ~/.local/share/funky/funky.sh
 
 test 0  # so exit status is always 0 when starting shell

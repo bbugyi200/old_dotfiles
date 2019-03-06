@@ -1,4 +1,16 @@
-" #################### Settings ####################
+" #################### SETTINGS ###############################################
+" 'nocompatible' must be set first because it overwrites some other settings.
+set nocompatible
+
+function! s:GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = s:GitBranch()
+  return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
+endfunction
+
 set autoindent
 set autoread
 set background=dark
@@ -22,7 +34,6 @@ set laststatus=2
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
 set modeline  " Enables Modeline Magic
 set mouse=a  " Allows me to use the mouse
-set nocompatible
 set nohlsearch  " Disables search highlighting
 set nolist
 set nrformats+=alpha  " Status Line Settings (mode display)
@@ -31,213 +42,27 @@ set scrolloff=5  " Always show N line(s) above/below cursor
 set secure
 set shiftwidth=4
 set smartcase
+set relativenumber
 let &statusline = "%{StatuslineGit()} %f %m %= %y %p%% %l:%c"
 set tabstop=4
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
 set tw=0
 set undofile
 set undodir=$HOME/.vim/undo
-set viminfo+=n~/.vim/viminfo  " Changes location of viminfo file
+set viminfo+=n~/Dropbox/home/.vim/viminfo  " since viminfo file CANNOT be a symlink
 set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore these folders
 set wildmenu  " Improves tab completion from normal mode
 set wildmode=full
 
 
-" #################### Variable Definitions ####################
+" #################### VARIABLE DEFINITIONS ###################################
 let mapleader = ","  " The <Leader> key can be used for extra mappings
 let maplocalleader = "\\"
 let g:S = 0  " Used in 'Sum()' function
 let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
 
 
-" #################### Key Bindings ####################
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Create mappings to open 'file_expr' in current window, to open 'file_expr' "
-" using a horizontal split, and to open 'file_expr' using a vertical split.  "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! s:MapEditCommands(chars, file_expr)
-    execute "nnoremap <Leader>0" . a:chars . " :execute 'edit' " . a:file_expr . "<CR>"
-    execute "nnoremap <Leader>_" . a:chars . " :execute 'split' " . a:file_expr . "<CR>"
-    execute "nnoremap <Leader>\\|" . a:chars . " :execute 'vsplit' " . a:file_expr . "<CR>"
-endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Create the same mapping for both NORMAL and INSERT modes.                   "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! s:MapNIModes(lhs, rhs)
-    execute "nnoremap " . a:lhs . " " . a:rhs
-    execute "imap " . a:lhs . " <Esc>" . a:lhs
-endfunction
-
-" >>> INSERT
-inoremap <expr> / InterpretForwardSlash()
-imap <C-h> <Esc><C-h>
-imap <C-j> <Esc><C-j>
-imap <C-k> <Esc><C-k>
-imap <C-l> <Esc><C-l>
-
-" >>> VISUAL
-vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
-vnoremap <silent> <Leader>.i :w !ix \| xclip -sel clipboard<CR>
-vnoremap <Leader>s :sort ri //<Left>
-vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
-vnoremap <Space> $<Left>
-xnoremap # :<C-u>call <SID>s:VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-xnoremap * :<C-u>call <SID>s:VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
-xnoremap & :&&<CR>
-
-" >>> COMMAND
-cnoremap <C-n> <Down>
-cnoremap <C-p> <Up>
-cnoremap w!! w !sudo tee > /dev/null %
-
-" >>> OPERATOR
-onoremap @ iW
-
-" >>> TERMINAL
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
-
-" >>> NORMAL
-" ----- Numeric -----
-nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
-call s:MapEditCommands("cc", "CookieMirror('C')")
-call s:MapEditCommands("cg", "CookieMirror('github')")
-call s:MapEditCommands("ls", "'<C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets'")
-call s:MapEditCommands("lv", "'<C-R>=getcwd()<CR>/.lvimrc'")
-call s:MapEditCommands("s", "'/home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets'")
-call s:MapEditCommands("S", "'/home/bryan/.vim/vim-snippets/all.snippets'")
-call s:MapEditCommands("t1", "NthCookie('1')")
-call s:MapEditCommands("t2", "NthCookie('2')")
-call s:MapEditCommands("t3", "NthCookie('3')")
-call s:MapEditCommands("v", "'/home/bryan/.vim/ftplugin/<C-R>=&filetype<CR>.vim'")
-call s:MapEditCommands("V", "'/home/bryan/.vim/vimrc'")
-" ----- Alphabetic -----
-nnoremap <Leader>a :AnsiEsc<CR>
-nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
-nnoremap <LocalLeader>d :bp<bar>sp<bar>bn<bar>bd<CR>
-nnoremap <Leader>D :update<CR>:call RemoveFile()<CR>
-call s:MapNIModes('<Leader>e', ':x!<CR>')
-call s:MapNIModes('<Leader>E', ':xa!<CR>')
-nnoremap gj j
-nnoremap gk k
-nnoremap <Leader>g gqap| " mapping to wrap paragraph
-nnoremap j gj
-nnoremap k gk
-nnoremap K K<CR>
-vnoremap K K<CR>
-nnoremap <Leader>O O<C-u>
-nnoremap <Leader>o o<C-u>
-nnoremap <Leader>p :CtrlPMRU<CR>
-call s:MapNIModes('<Leader>r', ':update<CR>:execute w:run_cmd<CR>')
-call s:MapNIModes('<Leader>R', ':update<CR>:execute w:Run_cmd<CR>')
-nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
-call s:MapNIModes('<Leader>s', ':update<CR>')
-call s:MapNIModes('<Leader>S', ':update<CR>:mksession!<CR>')
-nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
-nmap S ys
-nnoremap <Leader>v :vert sfind 
-nnoremap Y y$
-nnoremap <Leader>Y ma^y$`a
-" ----- Non-Alphanumeric -----
-call s:MapNIModes('<Leader>#', ':call MakeBox()<CR>')
-nnoremap <Leader>/ /\v
-nnoremap <Leader>< /\v\C<><Left>
-nnoremap ,.fs :sfind 
-nnoremap ,.fv :vert sfind 
-nnoremap ,.ft :tabfind 
-nnoremap _ :<C-u>execute "sbuffer " . v:count1<CR>
-nnoremap \| :<C-u>execute "vert sbuffer " . v:count1<CR>
-nnoremap + :<C-u>execute "tab sbuffer " . v:count<CR>
-nnoremap - :<C-u>execute "buffer " . v:count1<CR>
-nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
-nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
-nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
-" ----- Special Characters -----
-" ~ Mouse Events ~
-nnoremap <2-LeftMouse> :exe "tag " . expand("<cword>")<CR>
-nnoremap <RightMouse> <LeftMouse>""p
-map <MiddleMouse> <Nop>
-" ~ Miscellaneous ~
-nnoremap <Del> :<C-u>execute "bdelete " . v:count<CR>
-nnoremap <C-g> :Gstatus<CR>
-nnoremap <C-s> :SyntasticToggleMode<CR>
-nnoremap <CR> o<Esc>
-nnoremap <silent> <Down> :resize +5<CR>
-nnoremap <silent> <Left> :vert resize +5<CR>
-nnoremap <silent> <Right> :vert resize -5<CR>
-nnoremap <Space> :ls<CR>
-nnoremap <Tab> <C-^>
-nnoremap <silent> <Up> :resize -5<CR>
-
-
-" #################### Abbreviations ####################
-cnoreabbrev :f find
-cnoreabbrev :s CtrlSF
-
-
-" #################### AutoCmds ####################
-autocmd BufReadPost,BufNewFile *.auto set filetype=auto
-autocmd BufRead,BufNewFile *.html set colorcolumn=
-autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
-autocmd BufRead,BufNewFile *.lshrc set syntax=zsh
-autocmd BufRead,BufNewFile *.lzshrc set syntax=zsh
-autocmd BufRead,BufNewFile *.make set filetype=make
-autocmd BufRead,BufNewFile *.md set colorcolumn=
-autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
-autocmd BufRead,BufNewFile *.nasm set filetype=nasm
-autocmd BufRead,BufNewFile *.python set filetype=python
-autocmd BufRead,BufNewFile *.rst setlocal spell
-autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us
-autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
-autocmd BufRead,BufNewFile *.txt set colorcolumn=
-autocmd BufRead,BufNewFile *.txt set filetype=txt
-autocmd BufRead,BufNewFile *.xmobarrc set syntax=haskell
-autocmd BufRead,BufNewFile *mutt-* set filetype=mail tw=80
-autocmd BufRead,BufNewFile .coveragerc set filetype=cfg
-autocmd BufRead,BufNewFile CMakeLists.txt set filetype=cmake
-autocmd BufRead,BufNewFile config set filetype=cfg
-autocmd BufReadPost /etc/portage/sets/* set filetype=txt
-autocmd BufReadPost /usr/include/c++/**/* set filetype=cpp
-autocmd BufReadPost fugitive://* set bufhidden=delete
-autocmd BufReadPost quickfix nnoremap <CR> <CR>
-autocmd BufReadPost fcr-* set filetype=crontab
-autocmd! BufWritePost vimrc source %  " Automatic rewriting of .vimrc
-autocmd! BufWritePost .Xresources :Silent xrdb merge /home/bryan/.Xresources
-autocmd CmdwinEnter * nnoremap <CR> <CR>| " http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
-autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
-autocmd FileType * setlocal formatoptions-=t
-autocmd FileType mail setlocal spell spelllang=en_us
-autocmd FileType man setlocal nowrap
-autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro  " Disables auto-comments on newlines and disables autowrap
-autocmd FileType scheme let b:delimitMate_quotes = "\""
-autocmd FocusGained,BufEnter * :checktime  " Reloads buffer on buffer changes
-autocmd InsertEnter * set timeoutlen=500
-autocmd InsertLeave * set timeoutlen=1000
-
-" Creates current file's parent directory if it doesn't already exist
-augroup BWCCreateDir
-	autocmd!
-	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
-
-
-" #################### Functions ####################
-" ----- PUBLIC FUNCTIONS (used in other files) -----
-function! NthCookie(N)
-    let ext = &filetype
-
-    if &filetype == "python"
-        let ext = 'py'
-    endif
-
-    let templates = systemlist('cookie -l | grep \.' . ext)
-    return '/home/bryan/.cookiecutters/' . templates[a:N - 1]
-endfunction
-
+" #################### KEY BINDINGS ###########################################
 function! CookieMirror(project)
     let local_file_path = substitute(expand('%:p'), getcwd(), '', 0)
     return '/home/bryan/.cookiecutters/' . a:project . local_file_path
@@ -271,33 +96,29 @@ function! InterpretForwardSlash()
     return "/"
 endfunction
 
-" Boolean function which checks if @plugin is installed
-function! PluginInstalled(plugin)
-    if filereadable("/usr/share/vim/vimfiles/plugin/" . a:plugin . ".vim")
-        return 1
+" Create mappings to open 'file_expr' in current window, to open 'file_expr'
+" using a horizontal split, and to open 'file_expr' using a vertical split.
+function! s:MapEditCommands(chars, file_expr)
+    execute "nnoremap <Leader>0" . a:chars . " :execute 'edit' " . a:file_expr . "<CR>"
+    execute "nnoremap <Leader>_" . a:chars . " :execute 'split' " . a:file_expr . "<CR>"
+    execute "nnoremap <Leader>\\|" . a:chars . " :execute 'vsplit' " . a:file_expr . "<CR>"
+endfunction
+
+" Create the same mapping for both NORMAL and INSERT modes.
+function! s:MapNIModes(lhs, rhs)
+    execute "nnoremap " . a:lhs . " " . a:rhs
+    execute "imap " . a:lhs . " <Esc>" . a:lhs
+endfunction
+
+function! NthCookie(N)
+    let ext = &filetype
+
+    if &filetype == "python"
+        let ext = 'py'
     endif
 
-    if !empty(glob("/home/bryan/.vim/bundle/" . a:plugin))
-        return 1
-    endif
-
-    if !empty(glob("/home/bryan/.vim/bundle/vim-" . a:plugin))
-        return 1
-    endif
-
-    if !empty(glob("/home/bryan/.vim/bundle/" . a:plugin . "-vim"))
-        return 1
-    endif
-
-    if !empty(glob("/home/bryan/.vim/bundle/" . a:plugin . ".vim"))
-        return 1
-    endif
-
-    if !empty(glob("/home/bryan/.vim/bundle/" . tolower(a:plugin)))
-        return 1
-    endif
-
-    return 0
+    let templates = systemlist('cookie -l | grep \.' . ext)
+    return '/home/bryan/.cookiecutters/' . templates[a:N - 1]
 endfunction
 
 function! RemoveFile()
@@ -306,33 +127,128 @@ function! RemoveFile()
     call system("safe-rm " . filename)
 endfunction
 
-function! StatuslineGit()
-  let l:branchname = s:GitBranch()
-  return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
+function! VSetSearch(cmdtype)
+	let temp = @s
+	norm! gv"sy
+	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+	let @s = temp
 endfunction
 
-function! Sum(number)
-  let g:S = g:S + a:number
-  return a:number
-endfunction
+" >>>>>>>>>>>>> INSERT
+inoremap <expr> / InterpretForwardSlash()
+imap <C-h> <Esc><C-h>
+imap <C-j> <Esc><C-j>
+imap <C-k> <Esc><C-k>
+imap <C-l> <Esc><C-l>
 
-function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-  let previous_winnr = winnr()
-  silent! execute "wincmd " . a:wincmd
-  if previous_winnr == winnr()
-    call system("tmux select-pane -" . a:tmuxdir)
-    redraw!
-  endif
-endfunction
+" >>>>>>>>>>>>> VISUAL
+vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
+vnoremap <silent> <Leader>.i :w !ix \| xclip -sel clipboard<CR>
+vnoremap <Leader>s :sort ri //<Left>
+vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
+vnoremap <Space> $<Left>
+xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
+xnoremap & :&&<CR>
 
-" ----- PRIVATE FUNCTIONS (used only in this file) -----
-function! s:GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
+" >>>>>>>>>>>>> COMMAND
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap w!! w !sudo tee > /dev/null %
 
-" Automatically creates directory if it does not already exist
-" https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
-function! s:MkNonExDir(file, buf)
+" >>>>>>>>>>>>> OPERATOR
+onoremap @ iW
+
+" >>>>>>>>>>>>> TERMINAL
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+
+" >>>>>>>>>>>>> NORMAL
+" ----- Numeric -----
+nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
+call s:MapEditCommands("cc", "CookieMirror('C')")
+call s:MapEditCommands("cg", "CookieMirror('github')")
+call s:MapEditCommands("ls", "'<C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets'")
+call s:MapEditCommands("lv", "'<C-R>=getcwd()<CR>/.lvimrc'")
+call s:MapEditCommands("s", "'/home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets'")
+call s:MapEditCommands("S", "'/home/bryan/.vim/vim-snippets/all.snippets'")
+call s:MapEditCommands("t1", "NthCookie('1')")
+call s:MapEditCommands("t2", "NthCookie('2')")
+call s:MapEditCommands("t3", "NthCookie('3')")
+call s:MapEditCommands("v", "'/home/bryan/.vim/ftplugin/<C-R>=&filetype<CR>.vim'")
+call s:MapEditCommands("V", "'/home/bryan/.vim/vimrc'")
+
+" ----- Alphabetic -----
+nnoremap <Leader>a :AnsiEsc<CR>
+nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
+nnoremap <LocalLeader>d :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <Leader>D :update<CR>:call RemoveFile()<CR>
+call s:MapNIModes('<Leader>e', ':x!<CR>')
+call s:MapNIModes('<Leader>E', ':xa!<CR>')
+nnoremap gj j
+nnoremap gk k
+nnoremap <Leader>g gqap| " mapping to wrap paragraph
+nnoremap j gj
+nnoremap k gk
+nnoremap K K<CR>
+vnoremap K K<CR>
+nnoremap <Leader>O O<C-u>
+nnoremap <Leader>o o<C-u>
+nnoremap <Leader>p :CtrlPMRU<CR>
+call s:MapNIModes('<Leader>r', ':update<CR>:execute b:run_cmd<CR>')
+call s:MapNIModes('<Leader>R', ':update<CR>:execute b:Run_cmd<CR>')
+nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
+call s:MapNIModes('<Leader>s', ':update<CR>')
+call s:MapNIModes('<Leader>S', ':update<CR>:mksession!<CR>')
+nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
+nmap S ys
+nnoremap <Leader>v :vert sfind 
+nnoremap Y y$
+nnoremap <Leader>Y ma^y$`a
+
+" ----- Non-Alphanumeric -----
+call s:MapNIModes('<Leader>#', ':call MakeBox()<CR>')
+nnoremap <Leader>/ /\v
+nnoremap <Leader>< /\v\C<><Left>
+nnoremap ,.fs :sfind 
+nnoremap ,.fv :vert sfind 
+nnoremap ,.ft :tabfind 
+nnoremap _ :<C-u>execute "sbuffer " . v:count1<CR>
+nnoremap \| :<C-u>execute "vert sbuffer " . v:count1<CR>
+nnoremap + :<C-u>execute "tab sbuffer " . v:count<CR>
+nnoremap - :<C-u>execute "buffer " . v:count1<CR>
+nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
+nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
+nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
+
+" ----- Special Characters -----
+" ~ Mouse Events ~
+nnoremap <2-LeftMouse> :exe "tag " . expand("<cword>")<CR>
+nnoremap <RightMouse> <LeftMouse>""p
+map <MiddleMouse> <Nop>
+" ~ Miscellaneous ~
+nnoremap <Del> :<C-u>execute "bdelete " . v:count<CR>
+nnoremap <C-g> :Gstatus<CR>
+nnoremap <C-s> :SyntasticToggleMode<CR>
+nnoremap <CR> o<Esc>
+nnoremap <silent> <Down> :resize +5<CR>
+nnoremap <silent> <Left> :vert resize +5<CR>
+nnoremap <silent> <Right> :vert resize -5<CR>
+nnoremap <Space> :ls<CR>
+nnoremap <Tab> <C-^>
+nnoremap <silent> <Up> :resize -5<CR>
+
+
+" #################### ABBREVIATIONS ##########################################
+cnoreabbrev :f find
+cnoreabbrev :s CtrlSF
+
+
+" #################### AUTOCMDS ###############################################
+function! s:CreateDir(file, buf)
 	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
 		let dir=fnamemodify(a:file, ':h')
 		if !isdirectory(dir)
@@ -341,21 +257,73 @@ function! s:MkNonExDir(file, buf)
 	endif
 endfunction
 
-function! s:SourceIfExists(file)
-  if filereadable(expand(a:file))
-    exe 'source' a:file
-  endif
+autocmd BufReadPost,BufNewFile *.auto set filetype=auto
+autocmd BufRead,BufNewFile *.html set colorcolumn=
+autocmd BufRead,BufNewFile *.html setlocal spell spelllang=en_us
+autocmd BufRead,BufNewFile *.lshrc set syntax=zsh
+autocmd BufRead,BufNewFile *.lzshrc set syntax=zsh
+autocmd BufRead,BufNewFile *.make set filetype=make
+autocmd BufRead,BufNewFile *.md set colorcolumn=
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+autocmd BufRead,BufNewFile *mutt-* set filetype=mail tw=80
+autocmd BufRead,BufNewFile *.nasm set filetype=nasm
+autocmd BufRead,BufNewFile *.python set filetype=python
+autocmd BufRead,BufNewFile *.rst setlocal spell
+autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us
+autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
+autocmd BufRead,BufNewFile *.txt set colorcolumn=
+autocmd BufRead,BufNewFile *.txt set filetype=txt
+autocmd BufRead,BufNewFile *.xmobarrc set syntax=haskell
+autocmd BufRead,BufNewFile .coveragerc set filetype=cfg
+autocmd BufRead,BufNewFile CMakeLists.txt set filetype=cmake
+autocmd BufRead,BufNewFile config set filetype=cfg
+autocmd BufReadPost /etc/portage/sets/* set filetype=txt
+autocmd BufReadPost /usr/include/c++/**/* set filetype=cpp
+autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd BufReadPost quickfix nnoremap <CR> <CR>
+autocmd BufReadPost fcr-* set filetype=crontab
+autocmd! BufWritePost vimrc source %  " Automatic rewriting of .vimrc
+autocmd! BufWritePost .Xresources :Silent xrdb merge /home/bryan/.Xresources
+autocmd CmdwinEnter * nnoremap <CR> <CR>| " http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
+autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
+autocmd FileType * setlocal formatoptions-=t
+autocmd FileType mail setlocal spell spelllang=en_us
+autocmd FileType man setlocal nowrap
+autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro  " Disables auto-comments on newlines and disables autowrap
+autocmd FileType scheme let b:delimitMate_quotes = "\""
+autocmd FocusGained,BufEnter * :checktime  " Reloads buffer on buffer changes
+autocmd InsertEnter * set timeoutlen=500
+autocmd InsertLeave * set timeoutlen=1000
+
+" Creates current file's parent directory if it doesn't already exist
+" https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
+augroup BWCCreateDir
+	autocmd!
+	autocmd BufWritePre * :call s:CreateDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+" #################### PUBLIC FUNCTIONS #######################################
+function! Bar(ch)
+    let c = col('.')
+    while c != 79
+        exec "normal! A" . a:ch
+        let c = col('.')
+    endw
 endfunction
 
-function! s:VSetSearch(cmdtype)
-	let temp = @s
-	norm! gv"sy
-	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
-	let @s = temp
+function! Sum(number)
+  let g:S = g:S + a:number
+  return a:number
 endfunction
 
 
-" #################### Custom Command Definitions ####################
+" #################### CUSTOM COMMAND DEFINITIONS #############################
 " Redraws screen after silent command
 command! -nargs=1 Silent
 \   execute 'silent !' . <q-args>
@@ -365,13 +333,21 @@ command! -nargs=1 Silent
 command! RmSwap execute "Silent rm " . expand('%:h') . "/.*.swp"
 
 
-" #################### Miscellaneous ####################
+" #################### MISCELLANEOUS ##########################################
 " ----- Enable Plugins -----
 filetype plugin indent on
 runtime macros/matchit.vim
 
 " ----- Split and Tab Settings -----
-" See: http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits "
+function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+  let previous_winnr = winnr()
+  silent! execute "wincmd " . a:wincmd
+  if previous_winnr == winnr()
+    call system("tmux select-pane -" . a:tmuxdir)
+    redraw!
+  endif
+endfunction
+
 if exists('$TMUX')
   let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
   let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
@@ -401,6 +377,12 @@ highlight StatusLine cterm=NONE ctermfg=black ctermbg=227
 highlight StatusLineNC cterm=NONE ctermfg=black ctermbg=DarkGrey
 
 
-" #################### Extra Modules ####################
+" #################### EXTRA MODULES ##########################################
+function! s:SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
 call s:SourceIfExists("/home/bryan/.vim/makebox.vim")
 call s:SourceIfExists("/home/bryan/.vim/plugins.vim")

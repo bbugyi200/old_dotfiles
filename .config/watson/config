@@ -1,8 +1,0 @@
-# Watson Config File
-
-[options]
-stop_on_start = true
-log_current = true
-report_current = true
-
-# vim: ft=cfg:

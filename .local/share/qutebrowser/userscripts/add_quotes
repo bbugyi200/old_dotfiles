@@ -1,0 +1,30 @@
+#!/bin/bash
+
+N="$1"; shift
+
+function press_key() {
+	if [[ "${N}" -ge 0 ]]; then
+		echo 'fake-key -g \"' >> "$QUTE_FIFO"
+	else
+		xdotool key BackSpace
+	fi
+}
+
+press_key
+
+sleep 0.1
+xdotool keyup Control_L Control_R
+
+if [[ "${N}" -ge 0 ]]; then
+	M="$((N + 1))"
+else
+	M="${N#-}"
+fi
+
+for (( i = 0; i < M; i++ )); do
+	xdotool key alt+b
+done
+press_key
+
+sleep 0.1
+xdotool key End

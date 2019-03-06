@@ -95,6 +95,8 @@ macro attach O \
 <shell-escape> /tmp/mutt-attach &^A\
 "
 
+macro attach s <save-entry><kill-line>/home/bryan/Downloads/
+
 ############################ HOOKS ############################################
 account-hook $folder 'source ~/.mutt/hooks/status_format'
 folder-hook imaps://bryanbugyi34@imap.gmail.com:993/ 'source ~/.mutt/hooks/bryanbugyi34.gmail'

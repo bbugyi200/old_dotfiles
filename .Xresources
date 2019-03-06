@@ -63,8 +63,8 @@ URxvt.perl-ext-common: default,url-select,clipboard
 URxvt.clipboard.autocopy: true
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
-URxvt.keysym.Meta-Control-C: eval:selection_to_clipboard
-URxvt.keysym.Meta-Control-V: eval:paste_clipboard
+URxvt.keysym.Control-y: eval:selection_to_clipboard
+URxvt.keysym.Control-v: eval:paste_clipboard
 ! Matcher
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1

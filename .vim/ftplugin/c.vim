@@ -1,6 +1,6 @@
 packadd termdebug
 
-let w:run_cmd = "!make"
+let b:run_cmd = "!make"
 let g:comment_char = '/'
 
 command! -nargs=0 CacheHeaders !cache_cheaders

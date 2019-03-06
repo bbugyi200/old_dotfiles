@@ -1,1 +1,2 @@
-let w:run_cmd = "InstantMarkdownPreview"
+let b:run_cmd = "InstantMarkdownPreview"
+
