@@ -28,17 +28,20 @@ search_aliases = {
     'cl': 'command-line',
     'co': 'Compilers',
     'cs': 'Computer Science',
+    'dd': 'DD-WRT',
     'de': 'Debian',
     'di': 'distribution',
     'ge': 'Gentoo',
     'gh': 'GitHub',
     'gt': 'Georgia Tech',
     'GT': 'Graph Theory',
+    'gtest': '"Google Test" OR gtest',
     'ha': 'Haskell',
     'js': 'JavaScript',
     'lx': 'Linux',
     'ml': 'Machine Learning',
     'ms': "master's degree",
+    'ocl': 'on the command-line',
     'oms': "online master's degree",
     'os': 'Operating Systems',
     'py': 'Python',
@@ -57,7 +60,7 @@ search_aliases = {
 for i in range(1, 51):
     search_aliases['a{}'.format(i)] = 'AROUND({})'.format(i)
 
-# Set the utils module's alias dictionaries.
+# Set the utils module's search alias dictionary.
 utils.search_aliases = search_aliases
 
 
@@ -68,7 +71,7 @@ def bang_pttrn():
     """Returns regex pattern that matches DuckDuckGo bangs that I like to use."""
     one_letter_bangs = ['a', 'd', 'g', 'm', 't', ]
     two_letter_bangs = ['gm', 'ho', 'wa', 'yt', ]
-    long_bangs = ['gt[A-z][A-z]+', 'ddg', 'bang', 'giphy', ]
+    long_bangs = ['ddg', 'bang', 'giphy', ]
 
     all_bangs = one_letter_bangs + two_letter_bangs + long_bangs
 
@@ -157,7 +160,6 @@ for i in range(1, 11):
 #  Commande Aliases  #
 ######################
 command_aliases = {
-    'G': 'spawn --userscript gmail',
     'get': 'jseval -q document.querySelector("h2").click()',  # click GET on libgen
     'lic': 'spawn --userscript linkedin_connect',
     'mkpdf': 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/',
@@ -179,8 +181,11 @@ c.bindings.commands = {}  # Clears all previously set user bindings.
 
 ########## Unbinds
 unbound_nkeys = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'M', ]
-for keys in unbound_nkeys:
-    config.unbind(keys)
+unbound_ikeys = []
+
+for unbound_keys, mode in [(unbound_nkeys, 'normal'), (unbound_ikeys, 'insert')]:
+    for keys in unbound_keys:
+        config.unbind(keys, mode=mode)
 
 
 ########## Binds
@@ -236,6 +241,7 @@ bind('c', 'yank selection')
 bind('C', 'tab-clone')
 bind('D', 'download')
 bind(',e', 'spawn --userscript searchbar-command')
+bind('gc', 'spawn google-chrome {url}')
 bind(',g', 'spawn --userscript google')
 bind(',G', 'spawn --userscript google -t')
 bind('gi', 'hint inputs')

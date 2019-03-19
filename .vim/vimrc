@@ -105,7 +105,7 @@ function! s:MapEditCommands(chars, file_expr)
 endfunction
 
 " Create the same mapping for both NORMAL and INSERT modes.
-function! s:MapNIModes(lhs, rhs)
+function! s:nimap(lhs, rhs)
     execute "nnoremap " . a:lhs . " " . a:rhs
     execute "imap " . a:lhs . " <Esc>" . a:lhs
 endfunction
@@ -186,8 +186,8 @@ nnoremap <Leader>a :AnsiEsc<CR>
 nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
 nnoremap <LocalLeader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Leader>D :update<CR>:call RemoveFile()<CR>
-call s:MapNIModes('<Leader>e', ':x!<CR>')
-call s:MapNIModes('<Leader>E', ':xa!<CR>')
+call s:nimap('<Leader>e', ':x!<CR>')
+call s:nimap('<Leader>E', ':xa!<CR>')
 nnoremap gj j
 nnoremap gk k
 nnoremap <Leader>g gqap| " mapping to wrap paragraph
@@ -198,11 +198,11 @@ vnoremap K K<CR>
 nnoremap <Leader>O O<C-u>
 nnoremap <Leader>o o<C-u>
 nnoremap <Leader>p :CtrlPMRU<CR>
-call s:MapNIModes('<Leader>r', ':update<CR>:execute b:run_cmd<CR>')
-call s:MapNIModes('<Leader>R', ':update<CR>:execute b:Run_cmd<CR>')
+call s:nimap('<Leader>r', ':update<CR>:execute b:run_cmd<CR>')
+call s:nimap('<Leader>R', ':update<CR>:execute b:Run_cmd<CR>')
 nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
-call s:MapNIModes('<Leader>s', ':update<CR>')
-call s:MapNIModes('<Leader>S', ':update<CR>:mksession!<CR>')
+call s:nimap('<Leader>s', ':update<CR>')
+call s:nimap('<Leader>S', ':update<CR>:mksession!<CR>')
 nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
 nmap S ys
 nnoremap <Leader>v :vert sfind 
@@ -210,7 +210,7 @@ nnoremap Y y$
 nnoremap <Leader>Y ma^y$`a
 
 " ----- Non-Alphanumeric -----
-call s:MapNIModes('<Leader>#', ':call MakeBox()<CR>')
+call s:nimap('<Leader>#', ':call MakeBox()<CR>')
 nnoremap <Leader>/ /\v
 nnoremap <Leader>< /\v\C<><Left>
 nnoremap ,.fs :sfind 
@@ -269,6 +269,8 @@ autocmd BufRead,BufNewFile *mutt-* set filetype=mail tw=80
 autocmd BufRead,BufNewFile *.nasm set filetype=nasm
 autocmd BufRead,BufNewFile *.python set filetype=python
 autocmd BufRead,BufNewFile *.rst setlocal spell
+autocmd BufRead,BufNewFile */syslog	set filetype=syslog 
+autocmd BufRead,BufNewFile */syslog-* set filetype=syslog 
 autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.tex,*.anki_vim let b:delimitMate_quotes = "\" ' $"
 autocmd BufRead,BufNewFile *.txt set colorcolumn=
@@ -306,6 +308,8 @@ augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  autocmd FocusLost * redraw
+  autocmd FocusGained * redraw
 augroup END
 
 " #################### PUBLIC FUNCTIONS #######################################

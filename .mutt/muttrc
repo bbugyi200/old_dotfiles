@@ -8,7 +8,7 @@ mailboxes imaps://bryanbugyi34@imap.gmail.com:993/ imaps://bryan_bugyi@mymail.rc
 # source "gpg2 -dq ~/.my-mutt-pwds.gpg |"
 source ~/.mutt/passwd
 # source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc
-source ~/.mutt/hooks/bmb181@scarletmail.rutgers
+source ~/.mutt/hooks/bryanbugyi34.gmail
 
 ################################ SETS #########################################
 set realname = "Bryan Bugyi"
@@ -74,6 +74,7 @@ bind attach <return>    view-mailcap
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
 macro index,pager D "<save-message>=[Gmail]/All Mail<enter>" "Delete"
 macro index,pager S "<save-message>=Saved<enter>" "Save"
+macro index,pager !  "<save-message>=[Gmail]/Spam<enter><enter>" "Report spam"
 
 ### Inspired by Vim ###
 bind index g noop
@@ -82,6 +83,7 @@ macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to All Mail"
 macro index gt "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail (Outbox)"
 macro index gs "<change-folder>=Saved<enter>" "Go to Saved Label"
+macro index gp "<change-folder>=[Gmail]/Spam<enter>" "Go to Spam Label"
 macro index gg <first-entry> "Go to top email"
 macro pager gg <top> "Go to top"
 macro index,pager ,e quit "Quit"

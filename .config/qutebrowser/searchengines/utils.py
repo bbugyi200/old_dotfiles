@@ -5,7 +5,6 @@ import re
 
 # Defined in the config.py file.
 search_aliases = {}
-global_search_aliases = {}
 
 
 def encode(query):

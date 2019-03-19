@@ -32,8 +32,8 @@ class SearchEngine(str):
 
     def __init__(self, default_url, *url_objects):
         try:
-            for U in url_objects:
-                assert isinstance(U, URL), "{} is NOT a URL object.".format(U)
+            for url in url_objects:
+                assert isinstance(url, URL), "{} is NOT a URL object.".format(url)
         except AssertionError as e:
             raise ValueError(str(e))
 
@@ -43,8 +43,6 @@ class SearchEngine(str):
         for url, pttrn, filter_ in self.url_objects:
             if re.match(pttrn, term):
                 filtered = filter_(utils.filter_aliases(term))
-                with open('/var/tmp/qutebrowser.log', 'a+') as f:
-                    f.write(term)
 
                 if isinstance(filtered, str):
                     filtered = (filtered,)
@@ -65,7 +63,7 @@ class URL:
     Args:
         url (str): url string with braces ({}) to represent the search query
         pattern (str): regex pattern used to identify when this URL should be used
-        filter_ (callable): used to filter out garbage in the search query
+        filter_ (callable, optional): used to filter out garbage in the search query
     """
     def __init__(self, url, pattern, filter_=None):
         self.url = url
@@ -118,7 +116,11 @@ class LuckyURL(URL):
 
 
 def IntURLFactory(n):
-    """Factory for URL Objects with patterns that start with Int Arguments"""
+    """Factory for URL Objects with patterns that start with Int Arguments
+
+    Args:
+        n (int): number of integers that the pattern starts with
+    """
     pttrn_fmt = '^{}[A-z]'
     int_pttrn = '[0-9]+ ' * n
 
