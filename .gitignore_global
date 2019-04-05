@@ -11,6 +11,8 @@ core
 **/dist/*
 *.egg-info/*
 epatch.info
+gdb.log
+.gdbinit
 *.gz
 htmlcov
 **/.lzshrc

@@ -58,15 +58,14 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;x" type="string" value="debian-launcher &quot;zsh:athena&quot; &quot;init-athena&quot; 0 &quot;-F&quot;"/>
       <property name="&lt;Alt&gt;comma" type="string" value="debian-launcher &quot;GTD&quot; &quot;gtd-launcher&quot; 0:0.1"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;comma" type="string" value="debian-launcher &quot;GTD&quot; &quot;gtd-launcher&quot; 0:2.1"/>
-      <property name="&lt;Alt&gt;g" type="string" value="debian-qb-search &quot;comma&quot; &quot;G&quot;"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="debian-suspend -1"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;i" type="string" value="debian-qb-search &quot;O&quot;"/>
       <property name="&lt;Alt&gt;minus" type="string" value="wnotify"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;minus" type="string" value="wtoggle"/>
       <property name="&lt;Alt&gt;slash" type="string" value="urxvt -e bc -l /home/bryan/.bcrc"/>
       <property name="&lt;Alt&gt;l" type="string" value="winstack next"/>
       <property name="&lt;Alt&gt;h" type="string" value="winstack prev"/>
       <property name="&lt;Alt&gt;z" type="string" value="debian-launcher &quot;zathura&quot; &quot;zathura&quot; 2 &quot;-x&quot;"/>
+      <property name="&lt;Alt&gt;q" type="string" value="debian-qb-search &quot;O&quot;"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

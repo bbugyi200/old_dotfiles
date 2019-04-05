@@ -8,42 +8,42 @@ shouldShowMenuBarComingFromFullScreen=true
 shouldShowToolBarComingFromFullScreen=false
 
 [MainWindow]
-Height 1080=1017
+Height 1080=1008
 Height 1920=1868
 Height 900=848
 MenuBar=Enabled
-State=AAAA/wAAAAD9AAAAAAAAB4AAAAQDAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB3YAAAPYAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 Width 1080=1070
 Width 1600=1590
-Width 1920=954
-Window-Maximized 1080x1920=true
+Width 1920=1910
+Window-Maximized 1080x1920=false
 
 [Print Preview]
 Height 1080=490
 Width 1920=590
 
 [Recent Files]
-File1[$e]=$HOME/Dropbox/var/books/Programming/Programming_Languages/Engineering_a_Compiler-(Cooper).pdf
-File10[$e]=$HOME/Dropbox/var/books/Programming/Operating_Systems/Operating_System_Concepts-(Silberschatz).pdf
-File2[$e]=$HOME/Dropbox/var/study/Compilers/syllabus.pdf
-File3[$e]=$HOME/Dropbox/var/study/Compilers/hw2_instructions.pdf
-File4[$e]=$HOME/Dropbox/var/notes/Rocketbook/Compilers/My_Compilers_Lecture_Notes.pdf
-File5[$e]=$HOME/Dropbox/var/notes/Rocketbook/Operating_Systems/My_Operating_Systems_Notes.pdf
-File6[$e]=$HOME/Dropbox/var/notes/Rocketbook/Graph_Theory/My_Graph_Theory_Notes.pdf
-File7[$e]=$HOME/Dropbox/var/study/Statistics/HW5/hw5.pdf
-File8[$e]=$HOME/Dropbox/var/notes/Rocketbook/Statistics/My_Statistics_Notes.pdf
-File9[$e]=$HOME/projects/CV/BryanBugyi_CV.pdf
-Name1[$e]=Engineering_a_Compiler-(Cooper).pdf
-Name10[$e]=Operating_System_Concepts-(Silberschatz).pdf
-Name2[$e]=syllabus.pdf
-Name3[$e]=hw2_instructions.pdf
-Name4[$e]=My_Compilers_Lecture_Notes.pdf
-Name5[$e]=My_Operating_Systems_Notes.pdf
-Name6[$e]=My_Graph_Theory_Notes.pdf
-Name7[$e]=hw5.pdf
-Name8[$e]=My_Statistics_Notes.pdf
-Name9[$e]=BryanBugyi_CV.pdf
+File1[$e]=$HOME/Dropbox/var/study/Compilers/hw2_instructions.pdf
+File10[$e]=$HOME/Dropbox/var/study/GraphTheory/ExamTwoPrep/ExamTwoPrep.pdf
+File2[$e]=$HOME/Dropbox/var/notes/Rocketbook/Compilers/My_Compilers_Lecture_Notes.pdf
+File3[$e]=$HOME/Dropbox/var/notes/Rocketbook/Operating_Systems/My_Operating_Systems_Notes.pdf
+File4[$e]=$HOME/Dropbox/var/notes/Rocketbook/Graph_Theory/My_Graph_Theory_Notes.pdf
+File5[$e]=$HOME/Dropbox/var/study/Statistics/HW5/hw5.pdf
+File6[$e]=$HOME/Dropbox/var/notes/Rocketbook/Statistics/My_Statistics_Notes.pdf
+File7[$e]=$HOME/projects/CV/BryanBugyi_CV.pdf
+File8[$e]=$HOME/Dropbox/var/books/Programming/Operating_Systems/Operating_System_Concepts-(Silberschatz).pdf
+File9[$e]=$HOME/Dropbox/var/books/Math/Combinatorics/A_First_Course_in_Graph_Theory-(Zhang).pdf
+Name1[$e]=hw2_instructions.pdf
+Name10[$e]=ExamTwoPrep.pdf
+Name2[$e]=My_Compilers_Lecture_Notes.pdf
+Name3[$e]=My_Operating_Systems_Notes.pdf
+Name4[$e]=My_Graph_Theory_Notes.pdf
+Name5[$e]=hw5.pdf
+Name6[$e]=My_Statistics_Notes.pdf
+Name7[$e]=BryanBugyi_CV.pdf
+Name8[$e]=Operating_System_Concepts-(Silberschatz).pdf
+Name9[$e]=A_First_Course_in_Graph_Theory-(Zhang).pdf
 
 [Shortcut Schemes]
 Current Scheme=VimBindings

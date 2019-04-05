@@ -1,7 +1,7 @@
 vpath % ./$(src)
 
-export CFLAGS += -std=c11
-export CPPFLAGS += -ggdb -Wall -Wextra
+export CFLAGS += -ggdb3 -std=c11
+export CPPFLAGS += -Wall -Wextra
 export LDFLAGS =
 export LDLIBS =
 

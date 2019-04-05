@@ -28,7 +28,7 @@ editor:
               'vim -N -u ~/.config/qutebrowser/editor.vimrc {}']
 
 tabs:
-    last_close: startpage
+    last_close: close
     max_width: 250
     mousewheel_switching: false
     new_position:

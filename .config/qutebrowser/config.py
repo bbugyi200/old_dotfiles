@@ -25,23 +25,29 @@ search_aliases = {
     'al': 'Arch Linux',
     'b': 'Bash',
     'bb': 'Bloodborne',
+    'bbt': 'Big Bang Theory',
+    'bnn': 'Brooklyn Nine-Nine',
     'cl': 'command-line',
     'co': 'Compilers',
     'cs': 'Computer Science',
     'dd': 'DD-WRT',
     'de': 'Debian',
     'di': 'distribution',
+    'fcl': 'from the command-line',
     'ge': 'Gentoo',
     'gh': 'GitHub',
-    'gt': 'Georgia Tech',
-    'GT': 'Graph Theory',
+    'gt': 'Graph Theory',
+    'GT': 'Georgia Tech',
     'gtest': '"Google Test" OR gtest',
     'ha': 'Haskell',
+    'hzd': 'Horizon: Zero Dawn',
     'js': 'JavaScript',
     'lx': 'Linux',
+    'mf': 'Modern Family',
     'ml': 'Machine Learning',
     'ms': "master's degree",
-    'ocl': 'on the command-line',
+    'n': 'AND',
+    'o': 'OR',
     'oms': "online master's degree",
     'os': 'Operating Systems',
     'py': 'Python',
@@ -93,7 +99,6 @@ c.url.searchengines = {
                                SE.LuckyURL('{}')),
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
                           SE.OneIntURL(SE.static.google('Season {0} {1} episodes'))),
-    'G': SE.static.google('"{}"'),
     'g4g': SE.static.site('www.geeksforgeeks.org'),
     'geb': 'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific',
     'gep': SE.SearchEngine(SE.static.site('packages.gentoo.org', 'gpo.zugaina.org'),
@@ -119,7 +124,7 @@ c.url.searchengines = {
                                                           maxsplit=1),
                                        suffix='issues/{1}'),
                            SE.LuckyURL('{} site:github.com', suffix='issues')),
-    'gi': SE.static.stackoverflow(7, prefix='git'),
+    'ght': 'https://github.com/bbugyi200/{}/graphs/traffic',
     'i': SE.SearchEngine('https://www.google.com/search?&tbm=isch&q={}'),
     'j': 'https://www.google.com/search?q={}&ibp=htl;jobs#fpstate=tldetail',
     'js': 'https://www.google.com/search?q=Software+Engineer+{}&ibp=htl;jobs#fpstate=tldetail',
@@ -131,11 +136,12 @@ c.url.searchengines = {
     'lib': 'http://libgen.io/search.php?req={}',
     'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
     'p': SE.static.stackoverflow(7, prefix='Python'),
-    'pl': 'https://docs.python.org/3.6/library/{}',
-    'ps4': 'https://store.playstation.com/en-us/search/{}',
+    'pyl': 'https://docs.python.org/3.6/library/{}',
+    'pss': 'https://store.playstation.com/en-us/search/{}',
     'r': SE.static.site('reddit.com'),
     'rlp': 'https://rocketleague.tracker.network/profile/ps/{}',
     's0': SE.static.site('stackoverflow.com'),
+    'shr': 'https://shop.shoprite.com/store/1627666/search?displayType=&query={}&recipe=0&sponsored=5',
     'st': SE.static.google('set timer for {}'),
     'sub': SE.SearchEngine(SE.static.google('{} inurl:english site:subscene.com'),
                            SE.LuckyURL('{0} inurl:english site:subscene.com'),
@@ -167,7 +173,6 @@ command_aliases = {
     'rss': 'spawn --userscript openfeeds',
     'vs': 'open -w',
     'wt': 'spawn wtitle',
-    'wtitle': 'spawn wtitle',
 }
 
 for k, v in command_aliases.items():
@@ -218,7 +223,7 @@ cbind("<Alt-l>", 'spawn --userscript add_quotes 3')
 cbind("<Alt-u>", 'spawn --userscript add_quotes -1')
 cbind("<Alt-i>", 'spawn --userscript add_quotes -2')
 cbind("<Alt-o>", 'spawn --userscript add_quotes -3')
-cbind('<Ctrl-e>', 'edit-command --run')
+cbind('<Ctrl-f>', 'edit-command --run')
 cbind('<Ctrl-y>', 'fake-key --global <Return>V$y')
 
 # >>>>>>> PASSTHROUGH
@@ -242,6 +247,7 @@ bind('C', 'tab-clone')
 bind('D', 'download')
 bind(',e', 'spawn --userscript searchbar-command')
 bind('gc', 'spawn google-chrome {url}')
+bind('gh', 'home')
 bind(',g', 'spawn --userscript google')
 bind(',G', 'spawn --userscript google -t')
 bind('gi', 'hint inputs')

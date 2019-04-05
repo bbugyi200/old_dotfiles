@@ -127,6 +127,12 @@ function! RemoveFile()
     call system("safe-rm " . filename)
 endfunction
 
+function! SwapWords(type)
+    exec 'normal! `.mm``'
+    exec 'normal! v`]P'
+    exec 'normal! `mP'
+endfunction
+
 function! VSetSearch(cmdtype)
 	let temp = @s
 	norm! gv"sy
@@ -145,7 +151,7 @@ imap <C-l> <Esc><C-l>
 vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
 vnoremap <silent> <Leader>.i :w !ix \| xclip -sel clipboard<CR>
 vnoremap <Leader>s :sort ri //<Left>
-vnoremap <Leader>x <Esc>`.``gvP``P| nmap <Leader>x ve<Leader>x| " Swap highlighted word with last word in buffer
+vnoremap dx <Esc>`.``gvP``P
 vnoremap <Space> $<Left>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
@@ -190,6 +196,7 @@ call s:nimap('<Leader>e', ':x!<CR>')
 call s:nimap('<Leader>E', ':xa!<CR>')
 nnoremap gj j
 nnoremap gk k
+nnoremap gV ggVG
 nnoremap <Leader>g gqap| " mapping to wrap paragraph
 nnoremap j gj
 nnoremap k gk
@@ -206,6 +213,7 @@ call s:nimap('<Leader>S', ':update<CR>:mksession!<CR>')
 nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
 nmap S ys
 nnoremap <Leader>v :vert sfind 
+nnoremap dx :set opfunc=SwapWords<CR>g@
 nnoremap Y y$
 nnoremap <Leader>Y ma^y$`a
 
@@ -223,6 +231,8 @@ nnoremap - :<C-u>execute "buffer " . v:count1<CR>
 nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
 nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
 nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
+nnoremap [oe :SyntasticToggleMode<CR>
+nnoremap ]oe :SyntasticToggleMode<CR>
 
 " ----- Special Characters -----
 " ~ Mouse Events ~
@@ -232,7 +242,6 @@ map <MiddleMouse> <Nop>
 " ~ Miscellaneous ~
 nnoremap <Del> :<C-u>execute "bdelete " . v:count<CR>
 nnoremap <C-g> :Gstatus<CR>
-nnoremap <C-s> :SyntasticToggleMode<CR>
 nnoremap <CR> o<Esc>
 nnoremap <silent> <Down> :resize +5<CR>
 nnoremap <silent> <Left> :vert resize +5<CR>
@@ -289,8 +298,8 @@ autocmd! BufWritePost .Xresources :Silent xrdb merge /home/bryan/.Xresources
 autocmd CmdwinEnter * nnoremap <CR> <CR>| " http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
 autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
 autocmd FileType * setlocal formatoptions-=t
+autocmd FileType c,cpp setlocal commentstring=//%s
 autocmd FileType mail setlocal spell spelllang=en_us
-autocmd FileType man setlocal nowrap
 autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro  " Disables auto-comments on newlines and disables autowrap
 autocmd FileType scheme let b:delimitMate_quotes = "\""
 autocmd FocusGained,BufEnter * :checktime  " Reloads buffer on buffer changes

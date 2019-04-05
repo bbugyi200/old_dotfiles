@@ -51,7 +51,7 @@ import qualified XMonad.Util.NamedScratchpad as NSP
 main :: IO ()
 main = do
     hostname <- HostName.getHostName
-    xmproc <- spawnPipe (xmobarTempFmt (getXmobarTemplate $ "1-top-" ++ hostname) ++ " --screen=2")
+    xmproc <- spawnPipe (xmobarTempFmt (getXmobarTemplate $ "1-top-" ++ hostname) ++ " --screen=1")
     xmonad . Docks.docks . ewmh $ desktopConfig
         {
             terminal                = myTerminal
@@ -79,157 +79,6 @@ main = do
       } `additionalKeys` myAdditionalKeys
 
 -------------------------------------------------------------------------------
--- KEY BINDING CONFIGS                                                       --
--------------------------------------------------------------------------------
-------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
---
--- The `alpha` and `beta` keys should be set to either 'super' or 'alt', depending on which
--- key you want as your primary meta key.
---
--- NOTE: I have used Xmodmap to swap the 'super' and 'alt' keys on my keyboard.  This has no effect
--- on this configuration (i.e. the alt key still corresponds to `mod1Mask`), but most other
--- programs will recognize 'super' as 'alt' and vice-versa.
-
--- KeyMask Aliases
-alpha = mod1Mask
-beta = mod4Mask
-ctrl = controlMask
-shift = shiftMask
-
-myAdditionalKeys = [
-   ---------- ALPHANUMERIC CHARACTERS ----------
-   -- (you can sort these bindings with `<range>sort r /, [A-z]),/`)
-   ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
-   , ((alpha .|. beta, b), spawn "clipster_gtk")
-   , ((alpha, d), windows W.focusDown)
-   , ((alpha, f), sendMessage $ Toggle TABBED)
-   , ((alpha, g), spawn "qb_prompt --next-screen")
-   , ((alpha .|. beta, g), spawn "qb_prompt")
-   , ((alpha, h), N2D.windowGo N2D.L False)
-   , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha, i), launchApp "web" "qutebrowser --enable-webengine-inspector")
-   , ((alpha, j), N2D.windowGo N2D.D False)
-   , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
-   , ((alpha, k), N2D.windowGo N2D.U False)
-   , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
-   , ((alpha, l), N2D.windowGo N2D.R False)
-   , ((alpha .|. beta, l), sendMessage Expand)
-   , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
-   , ((alpha .|. ctrl, l), sendMessage NextLayout)
-   , ((alpha, m), do
-           DW.addHiddenWorkspace "misc"
-           windows $ W.shift "misc"
-           removeEmptyWorkspaceAfter' $ windows $ W.view "misc"
-     ) -- Shift current window to MISC
-   , ((alpha .|. beta .|. shift, n), do
-           ws_name <- io $ readFile "/tmp/xmonad.workspace"
-           DW.addWorkspace ws_name
-     )
-   , ((alpha, o), CW.toggleWS' ["NSP"])
-   , ((alpha .|. ctrl, o), spawn "zopen")
-   , ((alpha, p), spawn ":")
-   , ((alpha, q), spawn ":")
-   , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
-   , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
-   , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
-   , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
-   , ((alpha, s), swapScreens) -- Swap Screens
-   , ((alpha .|. beta, s), windows W.swapDown) -- Swap Windows
-   , ((alpha, t), spawn "DISPLAY=:0 task_new_inbox_item") -- taskwarrior (inbox)
-   , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add +today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
-   , ((alpha .|. shift, t), spawn "task_hotstart")
-   , ((alpha, u), windows W.focusUp)
-   , ((alpha, v), launchApp "mpv" "mpvlc")
-   , ((alpha, w), spawn "close-window") -- Close Focused Window
-   , ((alpha, x), launchApp "term" myTerminal)
-   , ((alpha .|. beta, x), launchApp "term'" "urxvt -name primes -e zsh -c 'tm-init-prime'")
-
-   ---------- KEYPAD CHARACTERS ----------
-   , ((alpha, xK_KP_Add), spawn "next_task")
-   , ((alpha, xK_KP_Begin), withFocused $ windows . W.sink)
-   , ((alpha, xK_KP_Delete), spawn "twd")
-   , ((alpha, xK_KP_Divide), spawn "wait_task -N")
-   , ((alpha, xK_KP_Down), withFocused $ FK.keysMoveWindow (0, 100))
-   , ((alpha .|. ctrl, xK_KP_Down), withFocused $ FK.keysResizeWindow (0, -50) (0, 1))
-   , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
-   , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
-   , ((alpha, xK_KP_Left), withFocused $ FK.keysMoveWindow (-100, 0))
-   , ((alpha .|. ctrl, xK_KP_Left), withFocused $ FK.keysResizeWindow (-50, 0) (0, 0))
-   , ((alpha, xK_KP_Multiply), spawn "wait_task -D 1h -N --purge")
-   , ((alpha, xK_KP_Right), withFocused $ FK.keysMoveWindow (100, 0))
-   , ((alpha .|. ctrl, xK_KP_Right), withFocused $ FK.keysResizeWindow (50, 0) (0, 0))
-   , ((alpha, xK_KP_Subtract), spawn "last_task")
-   , ((alpha, xK_KP_Up), withFocused $ FK.keysMoveWindow (0, -100))
-   , ((alpha .|. ctrl, xK_KP_Up), withFocused $ FK.keysResizeWindow (0, 50) (0, 1))
-
-   ---------- MISCELLANEOUS CHARACTERS ----------
-   -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
-   , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
-   , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "weechat") -- Scratchpad Add Task to Inbox
-   , ((alpha, xK_backslash), CW.nextScreen) -- Next Screen
-   , ((alpha .|. beta, xK_backslash), pushDesktop "backslash")
-   , ((alpha .|. beta .|. ctrl, xK_backslash), pushWindow)
-   , ((alpha .|. beta .|. ctrl .|. shift, xK_backslash), CW.shiftNextScreen)
-   , ((alpha, xK_bracketleft), DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)) -- Prev Hidden NonEmpty Workspace
-   , ((beta, xK_bracketleft), windows W.focusUp)
-   , ((alpha .|. beta, xK_bracketleft), do
-           CW.nextScreen
-           DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)
-           CW.prevScreen
-     ) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha, xK_bracketright), DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)) -- Next Hidden NonEmpty Workspace
-   , ((beta, xK_bracketright), windows W.focusDown)
-   , ((alpha .|. beta, xK_bracketright), do
-           CW.nextScreen
-           DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)
-           CW.prevScreen
-     ) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha, xK_comma), do
-           spawn "task_refresh"
-           NSP.namedScratchpadAction scratchpads "gtd"
-     )
-   , ((alpha .|. beta, xK_comma), NSP.namedScratchpadAction scratchpads "gtd")
-   , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
-   , ((alpha, xK_Print), spawn "sshot") -- Screenshot
-   , ((beta, xK_Print), spawn "saved_sshot") -- Saved Screenshot
-   , ((alpha, xK_semicolon), spawn "shellPrompt")
-   , ((alpha .|. beta, xK_semicolon), spawn "shellPrompt -L")
-   , ((alpha, xK_slash), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
-   , ((alpha .|. beta, xK_slash), pushDesktop "slash")
-   , ((alpha .|. beta .|. ctrl, xK_slash), do
-           pushWindow
-           CW.nextScreen
-     )
-   , ((alpha .|. beta .|. ctrl .|. shift, xK_slash), do
-           CW.shiftNextScreen
-           CW.nextScreen
-     )
-   , ((alpha, xK_space), spawn "rofi -modi drun -show drun")
-   , ((alpha, xK_Tab), do
-           DW.addWorkspacePrompt myXPConfig
-           DW.setWorkspaceIndex 1
-           CW.toggleWS' ["NSP"]
-           DW.withWorkspaceIndex W.shift 1
-           removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1
-     )
-   ]
-
-   -- Shift to WS; then Focus WS
-   ++ [((alpha, k), do
-           withNthWorkspace' W.shift i
-           withNthWorkspace' W.view i
-       )
-       | (i, k) <- zip [0..9] [xK_1 .. xK_9]
-      ]
-
-   where
-       a = xK_a; b = xK_b; c = xK_c; d = xK_d; e = xK_e; f = xK_f
-       g = xK_g; h = xK_h; i = xK_i; j = xK_j; k = xK_k; l = xK_l
-       m = xK_m; n = xK_n; o = xK_o; p = xK_p; q = xK_q; r = xK_r
-       s = xK_s; t = xK_t; u = xK_u; v = xK_v; w = xK_w; x = xK_x
-       y = xK_y; z = xK_z
-
--------------------------------------------------------------------------------
 -- UTILITY FUNCTIONS                                                         --
 -------------------------------------------------------------------------------
 -- Function that prevents cycling to workspaces available on other screens
@@ -253,11 +102,13 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}%timew%%xtimew%{ %pia%  %volume%  |  %date%"
-getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}%timew%%xtimew%{ %pia%  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}{ %pia%  %volume%  |  %date%"
+getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%weather%%xweather%     (☀ %suntimes%%xsuntimes%){"
 getXmobarTemplate "2-bottom" = "}{"
+getXmobarTemplate "3-top" = "}{"
+getXmobarTemplate "3-bottom" = "}{"
 
 removeEmptyWorkspaceAfter' :: X () -> X ()
 removeEmptyWorkspaceAfter' f = do
@@ -297,10 +148,13 @@ pushWindow = do
     CW.swapNextScreen
     CW.toggleWS' ["NSP"]
 
-swapScreens :: X ()
-swapScreens = do
+swapScreens :: String -> X ()
+swapScreens dir = do
     removeEmptyWorkspace'
-    CW.swapNextScreen
+    if dir == "next"
+        then CW.swapNextScreen
+    else
+        CW.swapPrevScreen
     removeEmptyWorkspace'
 
 pushDesktop :: String -> X ()
@@ -336,7 +190,7 @@ myBorderWidth = 5
 myFocusedBorderColor = "#0000FF"
 
 myWorkspaces :: [String]
-myWorkspaces = ["NSP", "term","web"]
+myWorkspaces = ["NSP", "term","web", "zathura"]
 
 myXPConfig :: P.XPConfig
 myXPConfig = P.def {
@@ -377,11 +231,179 @@ h = 0.3; bigh = 0.94  -- Total Height of Window
 myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
                 >> spawn "init-bg"
+                >> spawn "xrandr --output DisplayPort-1 --right-of DisplayPort-0"
                 >> delayedSpawn 2 "calalrms"
                 >> delayedSpawn 2 "xmonad-suntimes"
                 >> delayedSpawn 2 "xmonad-volume"
                 >> delayedSpawn 2 "xmonad-weather"
                 >> delayedSpawn 2 "xmonad-timew"
-                >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=2")
-                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=1")
-                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=1")
+                >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=1")
+                >> spawn ("[[ $(x11screens) -ge 0 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=0")
+                >> spawn ("[[ $(x11screens) -ge 0 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=0")
+                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "3-top") ++ " --screen=2")
+                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "3-bottom") ++ " -b --screen=2")
+
+-------------------------------------------------------------------------------
+-- KEY BINDING CONFIGS                                                       --
+-------------------------------------------------------------------------------
+------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
+--
+-- The `alpha` and `beta` keys should be set to either 'super' or 'alt', depending on which
+-- key you want as your primary meta key.
+--
+-- NOTE: I have used Xmodmap to swap the 'super' and 'alt' keys on my keyboard.  This has no effect
+-- on this configuration (i.e. the alt key still corresponds to `mod1Mask`), but most other
+-- programs will recognize 'super' as 'alt' and vice-versa.
+
+-- KeyMask Aliases
+alpha = mod1Mask
+beta = mod4Mask
+ctrl = controlMask
+shift = shiftMask
+
+myAdditionalKeys = [
+   ---------- ALPHANUMERIC CHARACTERS ----------
+   -- (you can sort these bindings with `<range>sort r /, [A-z]),/`)
+   ((alpha, xK_0), do
+           swapScreens "next"
+           CW.nextScreen
+     )
+   , ((alpha .|. ctrl, xK_0), swapScreens "next")
+   , ((alpha, xK_9), do
+           swapScreens "prev"
+           CW.prevScreen
+     )
+   , ((alpha .|. ctrl, xK_9), swapScreens "prev")
+   , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
+   , ((alpha .|. beta, b), spawn "clipster_gtk")
+   , ((alpha, d), windows W.focusDown)
+   , ((alpha, f), sendMessage $ Toggle TABBED)
+   , ((alpha .|. beta, g), spawn "qb_prompt")
+   , ((alpha, h), N2D.windowGo N2D.L True)
+   , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
+   , ((alpha, i), launchApp "web" "qutebrowser --enable-webengine-inspector")
+   , ((alpha, j), N2D.windowGo N2D.D True)
+   , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
+   , ((alpha, k), N2D.windowGo N2D.U True)
+   , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
+   , ((alpha, l), N2D.windowGo N2D.R True)
+   , ((alpha .|. beta, l), sendMessage Expand)
+   , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
+   , ((alpha .|. ctrl, l), sendMessage NextLayout)
+   , ((alpha, m), launchApp "mpv" "umpv")
+   , ((alpha .|. beta, m), do
+           DW.addHiddenWorkspace "misc"
+           windows $ W.shift "misc"
+           removeEmptyWorkspaceAfter' $ windows $ W.view "misc"
+     ) -- Shift current window to MISC
+   , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
+                           CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
+                           removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
+   , ((alpha .|. beta .|. shift, n), do
+           ws_name <- io $ readFile "/tmp/xmonad.workspace"
+           DW.addWorkspace ws_name
+     )
+   , ((alpha, o), CW.toggleWS' ["NSP"])
+   , ((alpha .|. ctrl, o), spawn "zopen")
+   , ((alpha, p), spawn ":")
+   , ((alpha, q), spawn "qb_prompt")
+   , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
+   , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
+   , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
+   , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
+   , ((alpha, s), swapScreens "next")
+   , ((alpha .|. beta, s), windows W.swapDown) -- Swap Windows
+   , ((alpha, t), spawn "DISPLAY=:0 task_new_inbox_item") -- taskwarrior (inbox)
+   , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add +today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
+   , ((alpha .|. shift, t), spawn "task_hotstart")
+   , ((alpha .|. ctrl, t), spawn "notify-send 'Torrent Downloads' \"$(transmission-remote -l | head -n -1 | tail -n +2)\"")
+   , ((alpha, u), windows W.focusUp)
+   , ((alpha, v), launchApp "mpv" "mpvlc")
+   , ((alpha, w), spawn "close-window") -- Close Focused Window
+   , ((alpha, x), launchApp "term" myTerminal)
+   , ((alpha .|. beta, x), launchApp "term'" "urxvt -name primes -e zsh -c 'tm-init-prime'")
+   , ((alpha, z), launchApp "zathura" "zathura")
+
+   ---------- KEYPAD CHARACTERS ----------
+   , ((alpha, xK_KP_Add), spawn "next_task")
+   , ((alpha, xK_KP_Begin), withFocused $ windows . W.sink)
+   , ((alpha, xK_KP_Delete), spawn "twd")
+   , ((alpha, xK_KP_Divide), spawn "wait_task -N")
+   , ((alpha, xK_KP_Down), withFocused $ FK.keysMoveWindow (0, 100))
+   , ((alpha .|. ctrl, xK_KP_Down), withFocused $ FK.keysResizeWindow (0, -50) (0, 1))
+   , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
+   , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
+   , ((alpha, xK_KP_Left), withFocused $ FK.keysMoveWindow (-100, 0))
+   , ((alpha .|. ctrl, xK_KP_Left), withFocused $ FK.keysResizeWindow (-50, 0) (0, 0))
+   , ((alpha, xK_KP_Multiply), spawn "wait_task -D 1h -N --purge")
+   , ((alpha, xK_KP_Right), withFocused $ FK.keysMoveWindow (100, 0))
+   , ((alpha .|. ctrl, xK_KP_Right), withFocused $ FK.keysResizeWindow (50, 0) (0, 0))
+   , ((alpha, xK_KP_Subtract), spawn "last_task")
+   , ((alpha, xK_KP_Up), withFocused $ FK.keysMoveWindow (0, -100))
+   , ((alpha .|. ctrl, xK_KP_Up), withFocused $ FK.keysResizeWindow (0, 50) (0, 1))
+
+   ---------- MISCELLANEOUS CHARACTERS ----------
+   -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
+   , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
+   , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "weechat") -- Scratchpad Add Task to Inbox
+   , ((alpha .|. beta .|. ctrl, xK_backslash), pushWindow)
+   , ((alpha .|. beta .|. ctrl .|. shift, xK_backslash), CW.shiftNextScreen)
+   , ((alpha, xK_bracketleft), CW.prevScreen)
+   , ((beta, xK_bracketleft), windows W.focusUp)
+   , ((alpha .|. beta, xK_bracketleft), do
+           CW.nextScreen
+           DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)
+           CW.prevScreen
+     ) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha, xK_bracketright), CW.nextScreen)
+   , ((beta, xK_bracketright), windows W.focusDown)
+   , ((alpha .|. beta, xK_bracketright), do
+           CW.nextScreen
+           DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)
+           CW.prevScreen
+     ) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
+   , ((alpha, xK_comma), do
+           spawn "task_refresh"
+           NSP.namedScratchpadAction scratchpads "gtd"
+     )
+   , ((alpha .|. beta, xK_comma), NSP.namedScratchpadAction scratchpads "gtd")
+   , ((alpha, xK_equal), DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)) -- Next Hidden NonEmpty Workspace
+   , ((alpha, xK_minus), spawn "wtoggle && wnotify")
+   , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
+   , ((alpha, xK_Print), spawn "sshot") -- Screenshot
+   , ((beta, xK_Print), spawn "saved_sshot") -- Saved Screenshot
+   , ((alpha, xK_semicolon), spawn "shellPrompt")
+   , ((alpha .|. beta, xK_semicolon), spawn "shellPrompt -L")
+   , ((alpha, xK_slash), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
+   , ((alpha .|. beta .|. ctrl, xK_slash), do
+           pushWindow
+           CW.nextScreen
+     )
+   , ((alpha .|. beta .|. ctrl .|. shift, xK_slash), do
+           CW.shiftNextScreen
+           CW.nextScreen
+     )
+   , ((alpha, xK_space), spawn "rofi -modi drun -show drun")
+   , ((alpha, xK_Tab), do
+           DW.addWorkspacePrompt myXPConfig
+           DW.setWorkspaceIndex 1
+           CW.toggleWS' ["NSP"]
+           DW.withWorkspaceIndex W.shift 1
+           removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1
+     )
+   ]
+
+   -- Shift to WS; then Focus WS
+   ++ [((alpha, k), do
+           withNthWorkspace' W.shift i
+           withNthWorkspace' W.view i
+       )
+       | (i, k) <- zip [0..] [xK_1 .. xK_8]
+      ]
+
+   where
+       a = xK_a; b = xK_b; c = xK_c; d = xK_d; e = xK_e; f = xK_f
+       g = xK_g; h = xK_h; i = xK_i; j = xK_j; k = xK_k; l = xK_l
+       m = xK_m; n = xK_n; o = xK_o; p = xK_p; q = xK_q; r = xK_r
+       s = xK_s; t = xK_t; u = xK_u; v = xK_v; w = xK_w; x = xK_x
+       y = xK_y; z = xK_z

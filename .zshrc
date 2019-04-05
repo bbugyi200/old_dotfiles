@@ -47,9 +47,9 @@ compdef __git_branch_names gco
 compdef _command_names wim
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
 compdef _tmuxinator tm
-[ command emerge &> /dev/null ] && compdef del=emerge
-[ command emerge &> /dev/null ] && compdef get=emerge
-[ command rc-service &> /dev/null ] && compdef rcst=rc-service
+command -v emerge &> /dev/null && compdef del=emerge
+command -v emerge &> /dev/null && compdef get=emerge
+command -v rc-service &> /dev/null && compdef rcst=rc-service
 compdef vman=man
 
 #####################

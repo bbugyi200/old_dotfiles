@@ -8,7 +8,7 @@ set imap_pass=$my_mutt_gmail_pwd
 ##REMOTE GMAIL FOLDERS
 set folder = "imaps://bryanbugyi34@imap.gmail.com:993"
 set spoolfile = "+INBOX"
-set postponed ="+[Google Mail]/Drafts"
+set postponed ="Drafts"
 set trash = "+[Google Mail]/Trash"
 
 ##SMTP Settings to sent email

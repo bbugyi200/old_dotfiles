@@ -1,5 +1,6 @@
 # ---------- Settings
 set continuous-hist-save false
+set first-page-column 1:1
 set link-zoom false
 set selection-clipboard clipboard
 set show-recent 25
@@ -172,6 +173,7 @@ map <Button2> navigate previous
 map <Button3> navigate next
 map <C-[> feedkeys ":nohlsearch<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
+map <Space> exec "zsave"
 # map \\ exec "znav -z T ZH aH"
 map [ exec "winstack prev"
 map ] exec "winstack next"
@@ -179,16 +181,19 @@ map ; goto
 map = zoom in
 map ,l feedkeys ":blist <Tab><C-u>blist"  # List Marks
 map ,b focus_inputbar ":bmark "
-map ,D feedkeys ":set first-page-column 1:2<Return>"
 map ,d feedkeys ":bdelete <Tab>"
-map ,n exec "zsearch --new-workspace --no-search"
 map D feedkeys ":set first-page-column 1:1<Return>"
+map ,D feedkeys ":set first-page-column 1:2<Return>"
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
 map h navigate previous
 map l navigate next
+map ,n exec "zsearch --new-workspace --no-search"
 map o exec "zopen -x"
+map ,o exec "zopen -C -x"
 map O exec "zopen"
+map ,O exec "zopen -C"
+map R exec "zopen -R"
 map x exec "wmctrl -c :ACTIVE:"
 map Z feedkeys "200zz"
 
