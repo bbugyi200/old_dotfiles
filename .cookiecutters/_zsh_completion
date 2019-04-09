@@ -1,0 +1,3 @@
+#compdef {{ scriptname }}
+
+_alternative "files:filename:_files -W {% INSERT %}"

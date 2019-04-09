@@ -583,7 +583,6 @@ local binding_name_map = {
 -- List of input bindings. This is a weird mashup between common GUI text-input
 -- bindings and readline bindings.
 local bindings = {
-	{ 'ctrl+[',         function() set_active(false) end       },
 	{ 'esc',         function() set_active(false) end       },
 	{ 'enter',       handle_enter                           },
 	{ 'shift+enter', function() handle_char_input('\n') end },
@@ -611,10 +610,14 @@ local bindings = {
 	{ 'end',         go_end                                 },
 	{ 'pgup',        handle_pgup                            },
 	{ 'pgdwn',       handle_pgdown                          },
+	{ 'ctrl+[',      function() set_active(false) end       },
+	{ 'ctrl+;',      function() set_active(false) end       },
 	{ 'ctrl+c',      clear                                  },
 	{ 'ctrl+d',      maybe_exit                             },
 	{ 'ctrl+k',      del_to_eol                             },
 	{ 'ctrl+l',      clear_log_buffer                       },
+	{ 'ctrl+n',      function() move_history(1) end         },
+	{ 'ctrl+p',      function() move_history(-1) end        },
 	{ 'ctrl+u',      del_to_start                           },
 	{ 'ctrl+v',      function() paste(true) end             },
 	{ 'meta+v',      function() paste(true) end             },

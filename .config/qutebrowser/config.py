@@ -42,6 +42,7 @@ search_aliases = {
     'ha': 'Haskell',
     'hzd': 'Horizon: Zero Dawn',
     'js': 'JavaScript',
+    'lcl': 'on Linux from the command-line',
     'lx': 'Linux',
     'mf': 'Modern Family',
     'ml': 'Machine Learning',
@@ -171,6 +172,7 @@ command_aliases = {
     'mkpdf': 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/',
     'P': "spawn -v pockyt-add {url}",
     'rss': 'spawn --userscript openfeeds',
+    'TT': 'spawn --userscript Tsub',
     'vs': 'open -w',
     'wt': 'spawn wtitle',
 }

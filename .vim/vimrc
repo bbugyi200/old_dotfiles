@@ -2,12 +2,8 @@
 " 'nocompatible' must be set first because it overwrites some other settings.
 set nocompatible
 
-function! s:GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
 function! StatuslineGit()
-  let l:branchname = s:GitBranch()
+  let l:branchname = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
   return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
 endfunction
 
@@ -96,8 +92,8 @@ function! InterpretForwardSlash()
     return "/"
 endfunction
 
-" Create mappings to open 'file_expr' in current window, to open 'file_expr'
-" using a horizontal split, and to open 'file_expr' using a vertical split.
+" Create mappings to open @f in using the current window, a horizontal split,
+" and a vertical split; respectively.
 function! s:MapEditCommands(chars, file_expr)
     execute "nnoremap <Leader>0" . a:chars . " :execute 'edit' " . a:file_expr . "<CR>"
     execute "nnoremap <Leader>_" . a:chars . " :execute 'split' " . a:file_expr . "<CR>"
@@ -121,19 +117,27 @@ function! NthCookie(N)
     return '/home/bryan/.cookiecutters/' . templates[a:N - 1]
 endfunction
 
+function! RemoveBuffer()
+    exec 'b# | sp | b# | bd'
+endfunction
+
 function! RemoveFile()
     let filename = expand('%')
-    normal ,d
+    call RemoveBuffer()
     call system("safe-rm " . filename)
 endfunction
 
+" Swap the chosen word (specified via a motion) with the word that was deleted
+" prior to calling this function.
 function! SwapWords(type)
     exec 'normal! `.mm``'
     exec 'normal! v`]P'
     exec 'normal! `mP'
 endfunction
 
-function! VSetSearch(cmdtype)
+" Serves to enable the use of * and # in visual mode to search for the
+" selected word.
+function! s:VSetSearch(cmdtype)
 	let temp = @s
 	norm! gv"sy
 	let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
@@ -173,7 +177,9 @@ tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
 
 " >>>>>>>>>>>>> NORMAL
+" -------------------
 " ----- Numeric -----
+" -------------------
 nnoremap <Leader>00 :cd %:h<CR>:pwd<CR>
 call s:MapEditCommands("cc", "CookieMirror('C')")
 call s:MapEditCommands("cg", "CookieMirror('github')")
@@ -186,14 +192,19 @@ call s:MapEditCommands("t2", "NthCookie('2')")
 call s:MapEditCommands("t3", "NthCookie('3')")
 call s:MapEditCommands("v", "'/home/bryan/.vim/ftplugin/<C-R>=&filetype<CR>.vim'")
 call s:MapEditCommands("V", "'/home/bryan/.vim/vimrc'")
-
+" ----------------------
 " ----- Alphabetic -----
+" ----------------------
 nnoremap <Leader>a :AnsiEsc<CR>
-nnoremap <Leader>d :b#<bar>sp<bar>b#<bar>bd<CR>
+nnoremap <Leader>d :call RemoveBuffer()<CR>
 nnoremap <LocalLeader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Leader>D :update<CR>:call RemoveFile()<CR>
+nnoremap dx :set opfunc=SwapWords<CR>g@
 call s:nimap('<Leader>e', ':x!<CR>')
 call s:nimap('<Leader>E', ':xa!<CR>')
+nnoremap <Leader>.fs :sfind 
+nnoremap <Leader>.fv :vert sfind 
+nnoremap <Leader>.ft :tabfind 
 nnoremap gj j
 nnoremap gk k
 nnoremap gV ggVG
@@ -204,6 +215,8 @@ nnoremap K K<CR>
 vnoremap K K<CR>
 nnoremap <Leader>O O<C-u>
 nnoremap <Leader>o o<C-u>
+nnoremap [oe :SyntasticToggleMode<CR>
+nnoremap ]oe :SyntasticToggleMode<CR>
 nnoremap <Leader>p :CtrlPMRU<CR>
 call s:nimap('<Leader>r', ':update<CR>:execute b:run_cmd<CR>')
 call s:nimap('<Leader>R', ':update<CR>:execute b:Run_cmd<CR>')
@@ -213,28 +226,24 @@ call s:nimap('<Leader>S', ':update<CR>:mksession!<CR>')
 nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
 nmap S ys
 nnoremap <Leader>v :vert sfind 
-nnoremap dx :set opfunc=SwapWords<CR>g@
+nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
+nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
 nnoremap Y y$
 nnoremap <Leader>Y ma^y$`a
-
-" ----- Non-Alphanumeric -----
+" -------------------
+" ----- Symbols -----
+" -------------------
 call s:nimap('<Leader>#', ':call MakeBox()<CR>')
 nnoremap <Leader>/ /\v
 nnoremap <Leader>< /\v\C<><Left>
-nnoremap ,.fs :sfind 
-nnoremap ,.fv :vert sfind 
-nnoremap ,.ft :tabfind 
 nnoremap _ :<C-u>execute "sbuffer " . v:count1<CR>
 nnoremap \| :<C-u>execute "vert sbuffer " . v:count1<CR>
 nnoremap + :<C-u>execute "tab sbuffer " . v:count<CR>
 nnoremap - :<C-u>execute "buffer " . v:count1<CR>
 nnoremap & :&&<CR>| " Preserves flags when repeating the last substitute command.
-nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
-nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
-nnoremap [oe :SyntasticToggleMode<CR>
-nnoremap ]oe :SyntasticToggleMode<CR>
-
+" ------------------------------
 " ----- Special Characters -----
+" ------------------------------
 " ~ Mouse Events ~
 nnoremap <2-LeftMouse> :exe "tag " . expand("<cword>")<CR>
 nnoremap <RightMouse> <LeftMouse>""p

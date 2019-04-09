@@ -75,7 +75,7 @@ local function on_speed_change(_, speed)
 
         mp.unobserve_property(on_pause_change)
         mp.unobserve_property(on_speed_change)
-        mp.remove_key_binding("slowdown")
+        -- mp.remove_key_binding("slowdown")
 
         mp.set_property_bool("pause", paused)
         mp.set_property_number("speed", 1)
@@ -130,12 +130,15 @@ local function speed_up()
         paused = mp.get_property_bool("pause")
         mp.observe_property("pause", "bool", on_pause_change)
         mp.observe_property("speed", "number", on_speed_change)
-        mp.add_key_binding(",", "slowdown", slow_down, {repeatable=true})
+        -- mp.add_key_binding(",", "slowdown", slow_down, {repeatable=true})
 
         mp.set_property_bool("pause", false)
     end
 end
 
-mp.add_key_binding(".", "speedup", speed_up, {repeatable=true})
+-- mp.add_key_binding(".", "speedup", speed_up, {repeatable=true})
+
+mp.register_script_message("Rewind", slow_down)
+mp.register_script_message("FastForward", speed_up)
 
 -- vim: expandtab ts=4 sw=4

@@ -74,8 +74,9 @@
         <value type="string" value="system-config-printer"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="clipman"/>
-        <value type="string" value="skypeforlinux"/>
+        <value type="string" value="dropbox"/>
         <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="skypeforlinux"/>
       </property>
       <property name="names-hidden" type="array">
         <value type="string" value="notes"/>

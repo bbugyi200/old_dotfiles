@@ -102,7 +102,7 @@ xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}{ %pia%  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}%mpris2%{ %pia%  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%weather%%xweather%     (☀ %suntimes%%xsuntimes%){"
@@ -202,14 +202,14 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                     NSP.nonFloating
               , NSP.NS "calculator" calculator (appName =? "calculator")
                     NSP.nonFloating
-              , NSP.NS "weechat" weechat (appName =? "weechat")
+              , NSP.NS "spotify" spotify (appName =? "spotify")
                     NSP.nonFloating
               , NSP.NS "gtd" gtd (appName =? "GTD")
                     NSP.nonFloating ]
             where 
                 calculator = "urxvt -name calculator -e zsh -c 'wtitle Calculator && bc -l'"
                 scratchpad = "scratchpad-launcher"
-                weechat = "weechat-launcher"
+                spotify = "spotify"
                 gtd = "gtd-launcher"
 
 myManageHook = composeAll
@@ -268,12 +268,12 @@ myAdditionalKeys = [
            swapScreens "next"
            CW.nextScreen
      )
-   , ((alpha .|. ctrl, xK_0), swapScreens "next")
+   , ((alpha .|. beta, xK_0), swapScreens "next")
    , ((alpha, xK_9), do
            swapScreens "prev"
            CW.prevScreen
      )
-   , ((alpha .|. ctrl, xK_9), swapScreens "prev")
+   , ((alpha .|. beta, xK_9), swapScreens "prev")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, d), windows W.focusDown)
@@ -311,8 +311,7 @@ myAdditionalKeys = [
    , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
-   , ((alpha, s), swapScreens "next")
-   , ((alpha .|. beta, s), windows W.swapDown) -- Swap Windows
+   , ((alpha, s), windows W.swapDown) -- Swap Windows
    , ((alpha, t), spawn "DISPLAY=:0 task_new_inbox_item") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add +today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
@@ -345,7 +344,10 @@ myAdditionalKeys = [
    ---------- MISCELLANEOUS CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
    , ((0, xF86XK_Calculator), NSP.namedScratchpadAction scratchpads "calculator") -- Scratchpad Calculator
-   , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "weechat") -- Scratchpad Add Task to Inbox
+   , ((0, xF86XK_AudioPlay), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
+   , ((0, xF86XK_AudioPrev), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+   , ((0, xF86XK_AudioNext), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
+   , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "spotify") -- Scratchpad Add Task to Inbox
    , ((alpha .|. beta .|. ctrl, xK_backslash), pushWindow)
    , ((alpha .|. beta .|. ctrl .|. shift, xK_backslash), CW.shiftNextScreen)
    , ((alpha, xK_bracketleft), CW.prevScreen)
@@ -368,7 +370,10 @@ myAdditionalKeys = [
      )
    , ((alpha .|. beta, xK_comma), NSP.namedScratchpadAction scratchpads "gtd")
    , ((alpha, xK_equal), DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)) -- Next Hidden NonEmpty Workspace
+   , ((alpha .|. ctrl, xK_equal), spawn "set_volume 2%+")
    , ((alpha, xK_minus), spawn "wtoggle && wnotify")
+   , ((alpha .|. beta, xK_minus), spawn "wnotify")
+   , ((alpha .|. ctrl, xK_minus), spawn "set_volume 2%-")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((beta, xK_Print), spawn "saved_sshot") -- Saved Screenshot

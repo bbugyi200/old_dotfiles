@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "open -t sub /$*" >> "$QUTE_FIFO"
+echo "open -t T $*" >> "$QUTE_FIFO"
