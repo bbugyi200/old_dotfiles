@@ -66,6 +66,8 @@
       <property name="&lt;Alt&gt;h" type="string" value="winstack prev"/>
       <property name="&lt;Alt&gt;z" type="string" value="debian-launcher &quot;zathura&quot; &quot;zathura&quot; 2 &quot;-x&quot;"/>
       <property name="&lt;Alt&gt;q" type="string" value="debian-qb-search &quot;O&quot;"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;t" type="string" value="task_due_today"/>
+      <property name="&lt;Alt&gt;m" type="string" value="debian-launcher &quot;mpv&quot; &quot;umpv&quot; 1"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

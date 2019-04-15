@@ -74,7 +74,7 @@ setopt globdots
 #################
 #  ZSH Aliases  #
 #################
-so() { unalias -a && source ~/.zshrc; }
+so() { exec /bin/zsh; }
 
 # ---------- Suffix Aliases ----------
 if [[ "$(uname -a)" == *"Debian"* ]]; then
@@ -181,6 +181,6 @@ function command_not_found_handler() {
     tmux send-keys "${funky_cmd}" "Enter"
 }
 
-test 0  # so exit status is always 0 when starting shell
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+test 0  # so exit status is always 0 when starting shell

@@ -46,6 +46,18 @@ import qualified XMonad.Util.NamedScratchpad as NSP
 {-# ANN module "HLint: ignore Evaluate" #-}
 
 -------------------------------------------------------------------------------
+-- XMobar Templates                                                          --
+-------------------------------------------------------------------------------
+getXmobarTemplate :: String -> String
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}%mpris2%{ %pia%  %volume%  |  %date%"
+getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
+getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
+getXmobarTemplate "2-top" = "}%weather%%xweather%     (☀ %suntimes%%xsuntimes%){"
+getXmobarTemplate "2-bottom" = "}{"
+getXmobarTemplate "3-top" = "}{"
+getXmobarTemplate "3-bottom" = "}{"
+
+-------------------------------------------------------------------------------
 -- MAIN                                                                      --
 -------------------------------------------------------------------------------
 main :: IO ()
@@ -101,15 +113,6 @@ withNthWorkspace' job wnum = do
 xmobarTempFmt :: String -> String
 xmobarTempFmt temp = "xmobar --template=\"" ++ temp ++ "\" /home/bryan/.xmobarrc"
 
-getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}%mpris2%{ %pia%  %volume%  |  %date%"
-getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
-getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
-getXmobarTemplate "2-top" = "}%weather%%xweather%     (☀ %suntimes%%xsuntimes%){"
-getXmobarTemplate "2-bottom" = "}{"
-getXmobarTemplate "3-top" = "}{"
-getXmobarTemplate "3-bottom" = "}{"
-
 removeEmptyWorkspaceAfter' :: X () -> X ()
 removeEmptyWorkspaceAfter' f = do
     workspaceList <- gets (W.workspaces . windowset)
@@ -121,7 +124,7 @@ removeEmptyWorkspace' :: X ()
 removeEmptyWorkspace' = do
     workspaceList <- gets (W.workspaces . windowset)
     let n = length workspaceList
-    when (n > 3) DW.removeEmptyWorkspace
+    when (n > 4) DW.removeEmptyWorkspace
 
 launchApp :: String -> String -> X ()
 launchApp ws cmd = do
@@ -190,7 +193,7 @@ myBorderWidth = 5
 myFocusedBorderColor = "#0000FF"
 
 myWorkspaces :: [String]
-myWorkspaces = ["NSP", "term","web", "zathura"]
+myWorkspaces = ["NSP", "term","web", "zath"]
 
 myXPConfig :: P.XPConfig
 myXPConfig = P.def {
@@ -246,6 +249,11 @@ myStartupHook = ewmhDesktopsStartup
 -------------------------------------------------------------------------------
 -- KEY BINDING CONFIGS                                                       --
 -------------------------------------------------------------------------------
+alt = mod1Mask
+super = mod4Mask
+ctrl = controlMask
+shift = shiftMask
+
 ------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
 --
 -- The `alpha` and `beta` keys should be set to either 'super' or 'alt', depending on which
@@ -256,10 +264,8 @@ myStartupHook = ewmhDesktopsStartup
 -- programs will recognize 'super' as 'alt' and vice-versa.
 
 -- KeyMask Aliases
-alpha = mod1Mask
-beta = mod4Mask
-ctrl = controlMask
-shift = shiftMask
+alpha = alt
+beta = super
 
 myAdditionalKeys = [
    ---------- ALPHANUMERIC CHARACTERS ----------
@@ -313,7 +319,7 @@ myAdditionalKeys = [
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha, s), windows W.swapDown) -- Swap Windows
    , ((alpha, t), spawn "DISPLAY=:0 task_new_inbox_item") -- taskwarrior (inbox)
-   , ((alpha .|. beta, t), spawn "prompt 'Due Today' -format \"'q'\" | xargs task add +today | tail -1 | xargs -I _ notify-send -u low _ && task_refresh") -- taskwarrior (due today)
+   , ((alpha .|. beta, t), spawn "task_due_today") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
    , ((alpha .|. ctrl, t), spawn "notify-send 'Torrent Downloads' \"$(transmission-remote -l | head -n -1 | tail -n +2)\"")
    , ((alpha, u), windows W.focusUp)
@@ -321,7 +327,8 @@ myAdditionalKeys = [
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, x), launchApp "term" myTerminal)
    , ((alpha .|. beta, x), launchApp "term'" "urxvt -name primes -e zsh -c 'tm-init-prime'")
-   , ((alpha, z), launchApp "zathura" "zathura")
+   , ((alpha, z), launchApp "zath" "zathura")
+   , ((alpha .|. beta, z), launchApp "zath'" "zathura")
 
    ---------- KEYPAD CHARACTERS ----------
    , ((alpha, xK_KP_Add), spawn "next_task")
@@ -371,8 +378,8 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_comma), NSP.namedScratchpadAction scratchpads "gtd")
    , ((alpha, xK_equal), DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. ctrl, xK_equal), spawn "set_volume 2%+")
-   , ((alpha, xK_minus), spawn "wtoggle && wnotify")
-   , ((alpha .|. beta, xK_minus), spawn "wnotify")
+   , ((alpha, xK_minus), spawn "wnotify")
+   , ((alpha .|. beta, xK_minus), spawn "wtoggle && wnotify")
    , ((alpha .|. ctrl, xK_minus), spawn "set_volume 2%-")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
