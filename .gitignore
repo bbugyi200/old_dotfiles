@@ -38,6 +38,8 @@
 !.vim/vimrc
 !.vim/ftplugin/
 !.vim/syntax/
+!.vim/plugins.vim
+!.vim/makebox.vim
 
 .config/tmuxinator/*
 !.config/tmuxinator/default.yml
