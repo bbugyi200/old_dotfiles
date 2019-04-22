@@ -54,6 +54,7 @@ search_aliases = {
     'py': 'Python',
     'qb': 'qutebrowser',
     'rdr': 'Red Dead Redemption 2',
+    'rnm': 'Rick and Morty',
     'rl': 'Rocket League',
     'ru': 'Rutgers',
     'sal': 'average salary',
@@ -63,6 +64,7 @@ search_aliases = {
     'tex': 'LaTeX',
     'tlou': 'The Last of Us',
     'v': 'vim',
+    'YT': 'Young Sheldon',
 }
 
 # Google's AROUND(N) Search Operator

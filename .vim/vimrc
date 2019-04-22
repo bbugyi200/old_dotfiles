@@ -258,7 +258,6 @@ nnoremap <silent> <Down> :resize +5<CR>
 nnoremap <silent> <Left> :vert resize +5<CR>
 nnoremap <silent> <Right> :vert resize -5<CR>
 nnoremap <Space> :ls<CR>
-nnoremap <Tab> <C-^>
 nnoremap <silent> <Up> :resize -5<CR>
 
 

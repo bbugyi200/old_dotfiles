@@ -1,7 +1,21 @@
 # vim: set ft=cfg:
 
 [flake8]
-ignore = E126,E128,E131,E266,E402,E501,E702,E731,F403,F405
+# ----- PEP8 Errors and Warnings: https://pep8.readthedocs.io/en/latest/intro.html#error-codes
+# E126: continuation line over-indented for hanging indent
+# E128: continuation line under-indented for visual indent
+# E131: continuation line unaligned for hanging indent
+# E266: too many leading ‘#’ for block comment
+# E303: too many blank lines (3)
+# E402: module level import not at top of file
+# E501: line too long (82 > 79 characters)
+# E702: multiple statements on one line (semicolon)
+# E731: do not assign a lambda expression, use a def
+# ----- Flake8 Errors: http://flake8.pycqa.org/en/2.5.5/warnings.html
+# F401: module imported but unused
+# F403: ‘from module import *’ used; unable to detect undefined names
+# F405: Name may be undefined, or defined from star imports
+ignore = E126,E128,E131,E266,E303,E402,E501,E702,E731,F403,F405
 per-file-ignores =
   __init__.py: F401,F403,F405
   test_*.py: E402,F401
