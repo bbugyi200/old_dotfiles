@@ -53,13 +53,15 @@ search_aliases = {
     'os': 'Operating Systems',
     'py': 'Python',
     'qb': 'qutebrowser',
+    'rdr': 'Red Dead Redemption 2',
     'rl': 'Rocket League',
     'ru': 'Rutgers',
     'sal': 'average salary',
+    'sd': 'San Diego',
     'se': 'Software Engineer',
     'sts': 'Statistics',
     'tex': 'LaTeX',
-    'tw': 'Python Twisted',
+    'tlou': 'The Last of Us',
     'v': 'vim',
 }
 
@@ -172,7 +174,7 @@ command_aliases = {
     'mkpdf': 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/',
     'P': "spawn -v pockyt-add {url}",
     'rss': 'spawn --userscript openfeeds',
-    'TT': 'spawn --userscript Tsub',
+    'Tsub': 'spawn --userscript Tsub',
     'vs': 'open -w',
     'wt': 'spawn wtitle',
 }
@@ -232,13 +234,16 @@ cbind('<Ctrl-y>', 'fake-key --global <Return>V$y')
 ptbind('<Escape>', 'leave-mode')
 ptbind('<Ctrl-]>', 'fake-key <Escape>')
 ptbind('<Ctrl-x>', 'tab-close', 'enter-mode passthrough')
-ptbind('[', 'tab-prev')
-ptbind(']', 'tab-next')
+ptbind('[', 'spawn winstack prev')
+ptbind(']', 'spawn winstack next')
 ptbind('<Alt-[>', 'fake-key [')
 ptbind('<Alt-]>', 'fake-key ]')
 
 # >>>>>>> NORMAL
-# ----- Alphanumeric -----
+# ----- Numeric -----
+bind('9', 'scroll-page 0 -0.5')
+bind('0', 'scroll-page 0 0.5')
+# ----- Alphabetic -----
 bind('A', 'set-cmd-text -s :quickmark-load -t')
 bind('a', 'set-cmd-text -s :quickmark-load')
 bind(',b', 'set-cmd-text :bookmark-add {url} "')
@@ -292,8 +297,8 @@ bind('(', 'navigate prev')
 bind(')', 'navigate next')
 bind('{', 'navigate prev -t')
 bind('}', 'navigate next -t')
-bind('[', 'tab-prev')
-bind(']', 'tab-next')
+bind('[', 'spawn winstack prev')
+bind(']', 'spawn winstack next')
 
 # ----- Miscellaneous -----
 bind('<Alt-i>', 'enter-mode insert', 'spawn --userscript qute-pass')

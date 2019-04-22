@@ -16,7 +16,7 @@
     <property name="cycle_minimum" type="bool" value="true"/>
     <property name="cycle_preview" type="bool" value="true"/>
     <property name="cycle_tabwin_mode" type="int" value="1"/>
-    <property name="cycle_workspaces" type="bool" value="true"/>
+    <property name="cycle_workspaces" type="bool" value="false"/>
     <property name="double_click_action" type="string" value="maximize"/>
     <property name="double_click_distance" type="int" value="5"/>
     <property name="double_click_time" type="int" value="250"/>

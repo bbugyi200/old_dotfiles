@@ -60,7 +60,6 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;comma" type="string" value="debian-launcher &quot;GTD&quot; &quot;gtd-launcher&quot; 0:2.1"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="debian-suspend -1"/>
       <property name="&lt;Alt&gt;minus" type="string" value="wnotify"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;minus" type="string" value="wtoggle"/>
       <property name="&lt;Alt&gt;slash" type="string" value="urxvt -e bc -l /home/bryan/.bcrc"/>
       <property name="&lt;Alt&gt;l" type="string" value="winstack next"/>
       <property name="&lt;Alt&gt;h" type="string" value="winstack prev"/>
@@ -68,6 +67,7 @@
       <property name="&lt;Alt&gt;q" type="string" value="debian-qb-search &quot;O&quot;"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;t" type="string" value="task_due_today"/>
       <property name="&lt;Alt&gt;m" type="string" value="debian-launcher &quot;mpv&quot; &quot;umpv&quot; 1"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;minus" type="string" value="wtoggle"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

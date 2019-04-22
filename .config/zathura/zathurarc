@@ -174,7 +174,7 @@ map <Button3> navigate next
 map <C-[> feedkeys ":nohlsearch<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
 map <Space> exec "zsave"
-# map \\ exec "znav -z T ZH aH"
+map \\ feedkeys "gk"
 map [ exec "winstack prev"
 map ] exec "winstack next"
 map ; goto

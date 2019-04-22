@@ -39,6 +39,7 @@ set secure
 set shiftwidth=4
 set smartcase
 set relativenumber
+set rtp+=~/.fzf
 let &statusline = "%{StatuslineGit()} %f %m %= %y %p%% %l:%c"
 set tabstop=4
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
@@ -207,6 +208,7 @@ nnoremap <Leader>.fv :vert sfind
 nnoremap <Leader>.ft :tabfind 
 nnoremap gj j
 nnoremap gk k
+nnoremap gp :!git add --all && git commit && git push<CR>
 nnoremap gV ggVG
 nnoremap <Leader>g gqap| " mapping to wrap paragraph
 nnoremap j gj

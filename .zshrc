@@ -64,6 +64,7 @@ source_if_exists /usr/local/lib/aliases.sh
 source_if_exists /usr/local/lib/tmuxinator.zsh
 source_if_exists /home/bryan/.local/share/funky/funky.sh
 source_if_exists /home/bryan/.zprofile
+source_if_exists /home/bryan/.fzf.zsh
 
 ##############
 #  Settings  #
@@ -180,7 +181,5 @@ function command_not_found_handler() {
 
     tmux send-keys "${funky_cmd}" "Enter"
 }
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 test 0  # so exit status is always 0 when starting shell

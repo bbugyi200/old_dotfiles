@@ -49,7 +49,7 @@ import qualified XMonad.Util.NamedScratchpad as NSP
 -- XMobar Templates                                                          --
 -------------------------------------------------------------------------------
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}%mpris2%{ %pia%  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}<icon=note.xbm/> %mpris2%{ %pia%  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%weather%%xweather%     (☀ %suntimes%%xsuntimes%){"
@@ -323,7 +323,6 @@ myAdditionalKeys = [
    , ((alpha .|. shift, t), spawn "task_hotstart")
    , ((alpha .|. ctrl, t), spawn "notify-send 'Torrent Downloads' \"$(transmission-remote -l | head -n -1 | tail -n +2)\"")
    , ((alpha, u), windows W.focusUp)
-   , ((alpha, v), launchApp "mpv" "mpvlc")
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, x), launchApp "term" myTerminal)
    , ((alpha .|. beta, x), launchApp "term'" "urxvt -name primes -e zsh -c 'tm-init-prime'")
@@ -379,7 +378,7 @@ myAdditionalKeys = [
    , ((alpha, xK_equal), DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. ctrl, xK_equal), spawn "set_volume 2%+")
    , ((alpha, xK_minus), spawn "wnotify")
-   , ((alpha .|. beta, xK_minus), spawn "wtoggle && wnotify")
+   , ((alpha .|. beta, xK_minus), spawn "wtoggle")
    , ((alpha .|. ctrl, xK_minus), spawn "set_volume 2%-")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
