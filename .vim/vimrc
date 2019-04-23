@@ -17,6 +17,7 @@ set colorcolumn=80
 set completeopt-=preview
 set cursorcolumn
 set cursorline
+set diffopt+=iwhiteall
 set expandtab
 set exrc  " Allows Local .vimrc to be loaded
 set grepformat=%f:%l:%c:%m
@@ -236,6 +237,7 @@ nnoremap <Leader>Y ma^y$`a
 " ----- Symbols -----
 " -------------------
 call s:nimap('<Leader>#', ':call MakeBox()<CR>')
+nnoremap <C-=> <C-w>=
 nnoremap <Leader>/ /\v
 nnoremap <Leader>< /\v\C<><Left>
 nnoremap _ :<C-u>execute "sbuffer " . v:count1<CR>
