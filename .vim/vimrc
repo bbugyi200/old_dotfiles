@@ -238,8 +238,8 @@ nnoremap <Leader>Y ma^y$`a
 " -------------------
 call s:nimap('<Leader>#', ':call MakeBox()<CR>')
 nnoremap <C-=> <C-w>=
-nnoremap <Leader>/ /\v
-nnoremap <Leader>< /\v\C<><Left>
+nnoremap <Leader>/ /\v\C<><Left>
+nnoremap <Leader>% :so %<CR>
 nnoremap _ :<C-u>execute "sbuffer " . v:count1<CR>
 nnoremap \| :<C-u>execute "vert sbuffer " . v:count1<CR>
 nnoremap + :<C-u>execute "tab sbuffer " . v:count<CR>
@@ -253,6 +253,7 @@ nnoremap <2-LeftMouse> :exe "tag " . expand("<cword>")<CR>
 nnoremap <RightMouse> <LeftMouse>""p
 map <MiddleMouse> <Nop>
 " ~ Miscellaneous ~
+nnoremap <BS> <C-^>
 nnoremap <Del> :<C-u>execute "bdelete " . v:count<CR>
 nnoremap <C-g> :Gstatus<CR>
 nnoremap <CR> o<Esc>

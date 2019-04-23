@@ -44,7 +44,7 @@ done
 
 _git 2> /dev/null  # hack to make git branch completion work
 compdef __git_branch_names gco
-compdef _command_names wim
+compdef _command_names wim vinfo
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
 compdef _tmuxinator tm
 command -v emerge &> /dev/null && compdef sudo_del=emerge

@@ -1,5 +1,3 @@
-setlocal noexpandtab
-
 " Convert a bash alias to a single-line function
 let @a = "Ialias wEhc3l=$hhxlcs{'"
 
