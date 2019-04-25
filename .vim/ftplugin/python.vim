@@ -53,6 +53,7 @@ nnoremap <Leader><Leader>" :call JoinMultilineString()<CR>:call BreakMultlineStr
 nnoremap <Leader>' 100\|Bi'<CR>'<Esc>
 nnoremap <Leader><Leader>' :call JoinMultilineString()<CR>:call BreakMultlineString("'")<CR>
 
+nmap <Leader>K :!qutebrowser https://docs.python.org/3/library/<C-R><C-W> &> /dev/null &<CR><CR>
 nmap <Leader>t :call SwitchToTest('py')<CR>
 nmap <Leader><Leader>t :!pyinit -n -t <C-R>=expand('%:r')<CR><CR>
 nmap <Leader>T :call VSwitchToTest('py')<CR>

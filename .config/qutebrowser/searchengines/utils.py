@@ -4,10 +4,10 @@ import re
 
 
 # Defined in the config.py file.
-search_aliases = {}
+search_aliases: dict = {}
 
 
-def encode(query):
+def encode(query: str) -> str:
     """Encodes @query using HTML URL Codes
 
     A list of HTML URL Codes can be found at: https://www.w3schools.com/tags/ref_urlencode.asp
@@ -25,7 +25,7 @@ def encode(query):
     return encoded
 
 
-def filter_aliases(search_term):
+def filter_aliases(search_term: str) -> str:
     """Checks for and Substitutes Aliases with their Definitions"""
     new_search_term = search_term
     for alias, definition in search_aliases.items():

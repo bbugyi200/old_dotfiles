@@ -43,6 +43,7 @@ set relativenumber
 set rtp+=~/.fzf
 let &statusline = "%{StatuslineGit()} %f %m %= %y %p%% %l:%c"
 set tabstop=4
+set tags+=./.tags;,.tags;
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
 set tw=0
 set undofile
@@ -237,7 +238,7 @@ nnoremap <Leader>Y ma^y$`a
 " ----- Symbols -----
 " -------------------
 call s:nimap('<Leader>#', ':call MakeBox()<CR>')
-nnoremap <C-=> <C-w>=
+nnoremap <Leader>= <C-w>=
 nnoremap <Leader>/ /\v\C<><Left>
 nnoremap <Leader>% :so %<CR>
 nnoremap _ :<C-u>execute "sbuffer " . v:count1<CR>
@@ -308,6 +309,7 @@ autocmd BufReadPost quickfix nnoremap <CR> <CR>
 autocmd BufReadPost fcr-* set filetype=crontab
 autocmd! BufWritePost vimrc source %  " Automatic rewriting of .vimrc
 autocmd! BufWritePost .Xresources :Silent xrdb merge /home/bryan/.Xresources
+autocmd! BufWritePost *.c,*.cpp,*.h,*.y silent! !ctags -Rf .tags . &
 autocmd CmdwinEnter * nnoremap <CR> <CR>| " http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
 autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
 autocmd FileType * setlocal formatoptions-=t

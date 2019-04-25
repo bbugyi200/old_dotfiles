@@ -19,6 +19,7 @@ source <(sed 's/^\(.*\)="/export \1="${\1}:/' /etc/environment)
 
 export MATLABPATH="$HOME/.matlab"
 export LIBRARY_PATH="/usr/local/lib:${LIBRARY_PATH}"
+export MYPYPATH="$PYTHONPATH"
 
 if [[ "$(id -u)" = 0 ]]; then
     export PATH="/root/.local/bin:$PATH"

@@ -1,6 +1,8 @@
 """Static URL Helpers"""
 
 import datetime as dt
+from typing import *  # noqa: F401
+from types import *  # noqa: F401
 
 import searchengines as SE
 import searchengines.utils as utils
@@ -9,7 +11,7 @@ import searchengines.utils as utils
 ############
 #  Public  #
 ############
-def stackoverflow(n, *, prefix=None):
+def stackoverflow(n: int, *, prefix: str = None) -> 'SE.SearchEngine':
     """Returns stackoverflow google search string.
 
     The search results returned by Google will range from @n years ago until now.
@@ -23,7 +25,7 @@ def stackoverflow(n, *, prefix=None):
     return google(fmt.format(prefix, D.month, D.day, D.year))
 
 
-def site(*domains, prefix=None):
+def site(*domains: str, prefix: str = None) -> 'SE.SearchEngine':
     """Returns google search string using Google's advanced 'site' option.
 
     Args:
@@ -33,12 +35,12 @@ def site(*domains, prefix=None):
     return google('{0}{{}} {1}'.format(prefix, ' OR '.join(['site:' + D for D in domains])))
 
 
-def google(query):
+def google(query: str) -> 'SE.SearchEngine':
     encoded_query = utils.encode(query)
     return SE.SearchEngine('https://google.com/search?q={}'.format(encoded_query))
 
 
-def duckduckgo(query):
+def duckduckgo(query: str) -> 'SE.SearchEngine':
     encoded_query = utils.encode(query)
     return SE.SearchEngine('https://duckduckgo.com/?q={}'.format(encoded_query))
 
@@ -46,19 +48,14 @@ def duckduckgo(query):
 #############
 #  Private  #
 #############
-def _n_years_ago(n):
+def _n_years_ago(n: int) -> dt.date:
     """Return a datetime N years ago."""
     today = dt.date.today()
     return today.replace(year=(today.year - n))
 
 
-def _validate_prefix(prefix):
+def _validate_prefix(prefix: str = None) -> str:
     """Validates and Beautifies @prefix Argument"""
-    try:
-        assert isinstance(prefix, (str, type(None))), "@prefix argument must be a string."
-    except AssertionError as e:
-        raise ValueError(str(e))
-
     if prefix is None:
         return ''
     elif prefix[-1] != ' ':

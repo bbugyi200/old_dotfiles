@@ -312,7 +312,7 @@ if PluginInstalled("syntastic")
     " You can disable specific warnings for <checker> by using
     " the 'g:syntastic_<ext>_<checker>_args' variable
     let g:syntastic_cpp_checkers=['clang_check']
-    let g:syntastic_python_checkers=['flake8']
+    let g:syntastic_python_checkers=['flake8', 'mypy']
     let g:syntastic_tex_checkers=['chktex']
     let g:syntastic_sh_checkers=['shellcheck']
     let g:syntastic_rst_checkers=['sphinx']

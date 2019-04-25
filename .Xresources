@@ -25,6 +25,10 @@ URxvt*skipScroll:             true            ! favour scroll speed over listing
 URxvt*geometry:               100x39
 
 ! ----- COLORS
+!! Enable Dynamic Colors
+xterm*dynamicColors: true
+urxvt*dynamicColors: on
+
 *background: #002b36
 *foreground: #eeeeee
 !!*fading: 40

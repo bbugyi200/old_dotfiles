@@ -2,6 +2,8 @@
 
 import functools
 import re
+from typing import *  # noqa: F401
+from types import *  # noqa: F401
 
 import yaml
 
@@ -9,8 +11,8 @@ import searchengines as SE
 import searchengines.utils as utils
 
 # pylint: disable=C0111
-c = c  # noqa: F821 pylint: disable=E0602,C0103
-config = config  # noqa: F821 pylint: disable=E0602,C0103
+c = c  # type: ignore  # noqa: F821 pylint: disable=E0602,C0103
+config = config  # type: ignore  # noqa: F821 pylint: disable=E0602,C0103
 
 # Load autoconfig.yml
 config.load_autoconfig()
@@ -78,7 +80,7 @@ utils.search_aliases = search_aliases
 ####################
 #  Search Engines  #
 ####################
-def bang_pttrn():
+def bang_pttrn() -> str:
     """Returns regex pattern that matches DuckDuckGo bangs that I like to use."""
     one_letter_bangs = ['a', 'd', 'g', 'm', 't', ]
     two_letter_bangs = ['gm', 'ho', 'wa', 'yt', ]
@@ -141,7 +143,7 @@ c.url.searchengines = {
     'lib': 'http://libgen.io/search.php?req={}',
     'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
     'p': SE.static.stackoverflow(7, prefix='Python'),
-    'pyl': 'https://docs.python.org/3.6/library/{}',
+    'pyl': 'https://docs.python.org/3/library/{}',
     'pss': 'https://store.playstation.com/en-us/search/{}',
     'r': SE.static.site('reddit.com'),
     'rlp': 'https://rocketleague.tracker.network/profile/ps/{}',
@@ -191,8 +193,8 @@ for k, v in command_aliases.items():
 c.bindings.commands = {}  # Clears all previously set user bindings.
 
 ########## Unbinds
-unbound_nkeys = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'M', ]
-unbound_ikeys = []
+unbound_nkeys: List[str] = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'M', ]
+unbound_ikeys: List[str] = []
 
 for unbound_keys, mode in [(unbound_nkeys, 'normal'), (unbound_ikeys, 'insert')]:
     for keys in unbound_keys:
@@ -200,7 +202,7 @@ for unbound_keys, mode in [(unbound_nkeys, 'normal'), (unbound_ikeys, 'insert')]
 
 
 ########## Binds
-def bind(keys, *commands, mode='normal'):
+def bind(keys: str, *commands: str, mode: str = 'normal') -> None:
     config.bind(keys, ' ;; '.join(commands), mode=mode)
 
 
@@ -320,7 +322,7 @@ with (config.configdir / 'config.yml').open() as f:
     yaml_data = yaml.load(f)
 
 
-def dict_attrs(obj, path=''):
+def dict_attrs(obj: str, path: str = '') -> Generator[Tuple[str, str], None, None]:
     if isinstance(obj, dict):
         for k, v in obj.items():
             yield from dict_attrs(v, '{}.{}'.format(path, k) if path else k)

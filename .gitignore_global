@@ -29,6 +29,7 @@ Session.vim
 *.tar
 .tox/*
 tags
+.tags
 .venv
 var/*
 venv/*
