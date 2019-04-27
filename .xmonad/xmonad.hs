@@ -327,7 +327,7 @@ myAdditionalKeys = [
    , ((alpha, x), launchApp "term" myTerminal)
    , ((alpha .|. beta, x), launchApp "term'" "urxvt -name primes -e zsh -c 'tm-init-prime'")
    , ((alpha, z), launchApp "zath" "zathura")
-   , ((alpha .|. beta, z), launchApp "zath'" "zathura")
+   , ((alpha .|. beta, z), launchApp "zath'" "zcopy")
 
    ---------- KEYPAD CHARACTERS ----------
    , ((alpha, xK_KP_Add), spawn "next_task")

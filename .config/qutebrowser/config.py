@@ -156,9 +156,11 @@ c.url.searchengines = {
                                        SE.TwoIntURL.pattern,
                                        SE.TwoIntURL.filter)),
     'T': SE.SearchEngine('https://thepiratebay3.com/search/{}',
-                         SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}')),
+                         SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}'),
+                         SE.OneIntURL('https://thepiratebay.org/search/{1} Season')),
     'TT': SE.SearchEngine('https://1337x.unblocked.vet/search/{}/1/',
-                         SE.TwoIntURL('https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/')),
+                         SE.TwoIntURL('https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/'),
+                         SE.OneIntURL('https://1337x.unblocked.vet/search/{1} Season/1/')),
     'ud': SE.static.site('idioms.thefreedictionary.com', 'en.wiktionary.org', 'urbandictionary.com'),
     'q': SE.static.google('"{}"'),
     'w': SE.static.site('en.wikipedia.org'),
@@ -277,9 +279,9 @@ bind(',sl', 'set-cmd-text -s :session-load -c')
 bind(',ss', 'set-cmd-text -s :session-save -o')
 bind(',S', 'session-save -c')
 bind(',t', 'config-cycle tabs.position left top')
-bind(';Tm', 'hint links spawn -d -v torrent {hint-url} -w /media/bryan/hercules/media/Entertainment/Movies', 'message-info "Select movie to torrent."')
+bind(';Tm', 'hint links spawn -d -v torrent -d {hint-url} -w /media/bryan/hercules/media/Entertainment/Movies', 'message-info "Select movie to torrent."')
 bind(';TM', 'hint links spawn --userscript add-to-torrent-file movies.txt "{hint-url}"', 'message-info "Select movie to add to torrent list."')
-bind(';Tt', 'hint links spawn -d -v torrent {hint-url} -w /media/bryan/hercules/media/Entertainment/TV', 'message-info "Select TV show to torrent."')
+bind(';Tt', 'hint links spawn -d -v torrent -d {hint-url} -w /media/bryan/hercules/media/Entertainment/TV', 'message-info "Select TV show to torrent."')
 bind(';TT', 'hint links spawn --userscript add-to-torrent-file tv.txt "{hint-url}"', 'message-info "Select TV show to add to torrent list."')
 bind('t-', 'tab-only')
 bind('tt', 'set-cmd-text -s :tab-take')

@@ -64,5 +64,5 @@ main() {
 
 
 if [[ "${SCRIPTNAME}" == "$(basename "${BASH_SOURCE[0]}")" ]]; then
-	main
+	main "$@"
 fi
