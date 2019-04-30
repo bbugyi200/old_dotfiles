@@ -8,13 +8,12 @@
 
 # Type can be 
 #    Add:       add feature
-#    Rem:       remove feature
 #    Fix:       bug fix
-#    Mod:       modify production code; new behavior; new unit tests needed
-#    Ref:       refactor production code; same behavior; old unit tests pass
-#    Docs:      change documentation; docstrings, log messages, README, etc.
+#    Mod:       modified existing feature
+#    Sty:     style changes
+#    Doc:      change documentation; docstrings, log messages, README, etc.
 #    Meta:      change .gitignore, .flake8, *.ini, setup.py, binaries, etc.
-#    Tests:     add or modify test(s); no production code changed
+#    Test:     add or modify test(s); no production code changed
 # --------------------
 # Remember to
 #    Capitalize the subject line

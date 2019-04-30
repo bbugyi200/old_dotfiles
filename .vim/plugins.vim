@@ -12,7 +12,6 @@ Plugin 'Shougo/vimproc.vim'  " Required by: ghcmod-vim;  Install by running ':Vi
 Plugin 'SirVer/ultisnips'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'ap/vim-buftabline'
 Plugin 'benmills/vimux'
 Plugin 'blindFS/vim-taskwarrior'
@@ -26,7 +25,8 @@ Plugin 'gu-fan/riv.vim'
 Plugin 'hiphish/info.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'jez/vim-superman'
-Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'pboettch/vim-cmake-syntax'
 Plugin 'reconquest/vim-pythonx'  " vim must be compiled with '+python' feature
@@ -42,7 +42,6 @@ Plugin 'vim-scripts/AnsiEsc.vim'
 Plugin 'vim-scripts/cecutil'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'vimwiki/vimwiki'  " Required by: taskwiki
-Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'  " Required by: vim-easytags
 
 " All of your Plugins must be added before the following line
@@ -84,8 +83,6 @@ endfunction
 "  BufTabLine  "
 """"""""""""""""
 if PluginInstalled("buftabline")
-    hi! link BufTabLineCurrent PmenuSel
-    hi! link BufTabLineActive TabLine
     let g:buftabline_numbers = 1
     let g:buftabline_indicators = 1
 endif
@@ -292,7 +289,7 @@ endif
 "  Solarized  "
 """""""""""""""
 if PluginInstalled("vim-colors-solarized")
-    colorscheme solarized
+    " colorscheme solarized
 endif
 
 """""""""""""""

@@ -29,37 +29,24 @@ URxvt*geometry:               100x39
 xterm*dynamicColors: true
 urxvt*dynamicColors: on
 
-*background: #002b36
-*foreground: #eeeeee
-!!*fading: 40
-*fadeColor: #002b36
-*cursorColor: #93a1a1
-*pointerColorBackground: #586e75
-*pointerColorForeground: #93a1a1
-!! black dark/light
-*color0: #073642
-*color8: #002b36
-!! red dark/light
-*color1: #dc322f
-*color9: #cb4b16
-!! green dark/light
-*color2: #859900
-*color10: #586e75
-!! yellow dark/light
-*color3: #b58900
-*color11: #657b83
-!! blue dark/light
-*color4: #268bd2
-*color12: #839496
-!! magenta dark/light
-*color5: #d33682
-*color13: #6c71c4
-!! cyan dark/light
-*color6: #2aa198
-*color14: #93a1a1
-!! white dark/light
-*color7: #eee8d5
-*color15: #fdf6e3
+*background: #1d1f21
+*foreground: #c5c8c6
+*color0: #1d1f21
+*color1: #a54242
+*color2: #8c9440
+*color3: #de935f
+*color4: #5f819d
+*color5: #85678f
+*color6: #5e8d87
+*color7: #707880
+*color8: #373b41
+*color9: #cc6666
+*color10: #b5bd68
+*color11: #f0c674
+*color12: #81a2be
+*color13: #b294bb
+*color14: #8abeb7
+*color15: #c5c8c6
 
 ! ----- EXTENSIONS
 URxvt.perl-ext-common: default,url-select,clipboard

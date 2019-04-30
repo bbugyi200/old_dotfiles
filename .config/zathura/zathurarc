@@ -173,13 +173,12 @@ map <Button2> navigate previous
 map <Button3> navigate next
 map <C-[> feedkeys ":nohlsearch<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
-map <Space> exec "zsave"
+map <Space> focus_inputbar ":bmark "
 map \\ feedkeys "gk"
 map [ exec "winstack prev"
 map ] exec "winstack next"
-map ; goto
+map ; feedkeys ":blist <Tab><C-u>blist"  # List Marks
 map = zoom in
-map ,b focus_inputbar ":bmark "
 map ,d feedkeys ":bdelete <Tab>"
 map d feedkeys ":set first-page-column 1:2<Return>"
 map D feedkeys ":set first-page-column 1:1<Return>"
@@ -187,7 +186,6 @@ map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
 map h navigate previous
 map l navigate next
-map ,l feedkeys ":blist <Tab><C-u>blist"  # List Marks
 map ,n exec "zsearch --new-workspace --no-search"
 map o exec "zopen -x"
 map ,o exec "zopen -C -x"

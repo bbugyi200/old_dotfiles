@@ -119,11 +119,6 @@ function write_log(delete)
         end
     end
     if not delete then
-        if string.sub(cur_title, 1, string.len("magnet")) == "magnet" then
-            f:close()
-            return
-        end
-
         if string.sub(cur_title, 1, string.len("empty")) == "empty" then
             f:close()
             return

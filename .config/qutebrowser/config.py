@@ -141,6 +141,7 @@ c.url.searchengines = {
                                  '^@',
                                  lambda x: x.replace(SE.utils.encode('@'), ''))),
     'lib': 'http://libgen.io/search.php?req={}',
+    'Lib': 'https://libgen.me/search?q={}',
     'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
     'p': SE.static.stackoverflow(7, prefix='Python'),
     'pyl': 'https://docs.python.org/3/library/{}',

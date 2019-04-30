@@ -80,7 +80,7 @@ nag=
 
 # ----- COLORS -----
 color.tag.note=rgb020
-color.tag.inbox=underline white
+color.tag.inbox=underline gray23
 color.tag.research=blue
 color.tag.bug=rgb550
 color.tag.tickle=black on rgb440

@@ -49,7 +49,7 @@ import qualified XMonad.Util.NamedScratchpad as NSP
 -- XMobar Templates                                                          --
 -------------------------------------------------------------------------------
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}<icon=note.xbm/> %mpris2%{ %pia%  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}%wstatus% %wpoll%{ %pia%  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%weather%%xweather%     (☀ %suntimes%%xsuntimes%){"
@@ -239,7 +239,6 @@ myStartupHook = ewmhDesktopsStartup
                 >> delayedSpawn 2 "xmonad-suntimes"
                 >> delayedSpawn 2 "xmonad-volume"
                 >> delayedSpawn 2 "xmonad-weather"
-                >> delayedSpawn 2 "xmonad-timew"
                 >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=1")
                 >> spawn ("[[ $(x11screens) -ge 0 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=0")
                 >> spawn ("[[ $(x11screens) -ge 0 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=0")
@@ -371,14 +370,16 @@ myAdditionalKeys = [
            CW.prevScreen
      ) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_comma), do
-           spawn "task_refresh"
+           spawn "tmux -L GTD select-window -t0"
            NSP.namedScratchpadAction scratchpads "gtd"
      )
-   , ((alpha .|. beta, xK_comma), NSP.namedScratchpadAction scratchpads "gtd")
+   , ((alpha .|. ctrl, xK_comma), do
+           spawn "tmux -L GTD select-window -t2"
+           NSP.namedScratchpadAction scratchpads "gtd"
+     )
    , ((alpha, xK_equal), DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)) -- Next Hidden NonEmpty Workspace
    , ((alpha .|. ctrl, xK_equal), spawn "set_volume 2%+")
-   , ((alpha, xK_minus), spawn "wnotify")
-   , ((alpha .|. beta, xK_minus), spawn "wtoggle")
+   , ((alpha, xK_minus), spawn "wtoggle")
    , ((alpha .|. ctrl, xK_minus), spawn "set_volume 2%-")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot

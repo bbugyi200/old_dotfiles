@@ -116,19 +116,10 @@ color indicator default blue
 #Color messages based on basic state, for new, old, and to-be-deleted
 #  Notes: neither new nor old (saved to mbox): white
 #         one for mailing lists is useful, if you use them
-color index brightyellow black ~N
-color index yellow black ~O
+color index green black ~N
+color index yellow  black ~O
 color index red black ~D
 color normal white default
-
-
-# Colours for items in the index
-color index brightcyan black ~N
-# Hmm, don't like this.
-#color index brightgreen black "~N (~x byers.world)|(~x byers.x)|(~x langly.levallois123.axialys.net)|(~x the.earth.li)"
-color index brightyellow black ~F
-color index black green ~T
-color index brightred black ~D
 
 mono index bold ~N
 mono index bold ~F
@@ -186,8 +177,8 @@ color quoted7 green black
 # Default color definitions
 #color hdrdefault white green
 color signature brightmagenta black
-color indicator black cyan 
-color attachment black green
+color indicator black green 
+color attachment black yellow
 color error red black
 color message white black
 color search brightwhite magenta

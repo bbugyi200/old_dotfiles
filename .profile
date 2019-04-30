@@ -27,9 +27,12 @@ fi
 
 # >>> Miscellaneous
 export EDITOR="$(command -v vim)"  # I set this so the crontab would use vim for editing
+export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
+export FZF_DEFAULT_OPTS='--reverse --height 40% --border'
 export QT_QPA_PLATFORMTHEME="qt5ct"  # Fixes: missing okular icons
 export RECENTLY_EDITED_FILES_LOG=/home/bryan/Dropbox/var/recently_edited_files.log
 export SHELLCHECK_OPTS="-e SC1090 -e SC1091 -e SC1117 -e SC2001 -e SC2016 -e SC2059 -e SC2129 -e SC2155 -e SC2162"
+export RIPGREP_CONFIG_PATH=/home/bryan/.config/rgrc
 export TERM="rxvt-unicode-256color"  # Fixes Mutt Background Issue (stays transparent) in TMUX
 export WORKON_HOME=~/.virtualenvs
 export XDG_CONFIG_HOME="$HOME"/.config

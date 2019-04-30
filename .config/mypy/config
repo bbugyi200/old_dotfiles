@@ -2,4 +2,3 @@
 check_untyped_defs = True
 allow_redefinition = True
 ignore_missing_imports = True
-disallow_untyped_defs = True
