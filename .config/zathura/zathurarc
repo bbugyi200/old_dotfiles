@@ -168,22 +168,21 @@ unmap q
 # BINDS
 map 0 exec "xdotool key ctrl+d"
 map 9 exec "xdotool key ctrl+u"
-map <BackSpace> feedkeys "gj"
+map <BackSpace> feedkeys ":bdelete <Tab>"
 map <Button2> navigate previous
 map <Button3> navigate next
 map <C-[> feedkeys ":nohlsearch<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
-map <Space> focus_inputbar ":bmark "
 map \\ feedkeys "gk"
 map [ exec "winstack prev"
 map ] exec "winstack next"
-map ; feedkeys ":blist <Tab><C-u>blist"  # List Marks
 map = zoom in
-map ,d feedkeys ":bdelete <Tab>"
+map b, focus_inputbar ":bmark "
 map d feedkeys ":set first-page-column 1:2<Return>"
 map D feedkeys ":set first-page-column 1:1<Return>"
-map f toggle_fullscreen
-map [fullscreen] f toggle_fullscreen
+map <C-f> toggle_fullscreen
+map [fullscreen] <C-f> toggle_fullscreen
+map g, focus_inputbar ":blist "  # List Marks
 map h navigate previous
 map l navigate next
 map ,n exec "zsearch --new-workspace --no-search"

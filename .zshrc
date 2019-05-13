@@ -8,7 +8,7 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 
 # 'sudo' plugin MUST remain near the end or (for some reason) it won't work
-plugins=(git lpass vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
+plugins=(git emoji lpass vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -43,15 +43,16 @@ for filename in ~/.bash-completions/*; do
 done
 
 _git 2> /dev/null  # hack to make git branch completion work
+compdef _command_names wim vinfo
 compdef __git_branch_names gco gnext
 compdef _git-diff gd
-compdef _command_names wim vinfo
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
 compdef _tmuxinator tm
+compdef vman=man
+
 command -v emerge &> /dev/null && compdef sudo_del=emerge
 command -v emerge &> /dev/null && compdef sudo_get=emerge
 command -v rc-service &> /dev/null && compdef rcst=rc-service
-compdef vman=man
 
 
 
@@ -132,10 +133,9 @@ bindkey "^N" down-line-or-search
 ###################
 #  Miscellaneous  #
 ###################
-ulimit -c unlimited  # Enables Core Dumps
 
-#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
-stty -ixon
+# ulimit -c unlimited  # Enables Core Dumps
+stty -ixon  # So as not to be disturbed by Ctrl-S ctrl-Q in terminals.
 
 if [[ -d $PWD/.git ]] && [[ -d ~/.virtualenvs/$(basename $PWD) ]]; then
     workon $(basename $PWD) &> /dev/null
@@ -161,17 +161,15 @@ if [[ -f $PWD/.lzshrc ]]; then
     source ".lzshrc"
 fi
 
-if (( $+commands[tag] )); then
-  export TAG_SEARCH_PROG=ag  # replace with rg for ripgrep
-  tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
-  alias ag=tag  # replace with rg for ripgrep
-fi
-
 function command_not_found_handler() {
     cmd="$1"; shift
 
-    if [[ "${cmd}" == "+"* ]]; then
+    if [[ "${cmd}" == "++"* ]]; then
+        funky_cmd="pushd /home/bryan > /dev/null && funky -a ${cmd:2} && popd > /dev/null"
+    elif [[ "${cmd}" == "+"* ]]; then
         funky_cmd="funky -a ${cmd:1}"
+    elif [[ "${cmd}" == "--"* ]]; then
+        funky_cmd="pushd /home/bryan > /dev/null && funky -r ${cmd:2} && popd > /dev/null"
     elif [[ "${cmd}" == "-"* ]]; then
         funky_cmd="funky -r ${cmd:1}"
     elif [[ "${cmd}" == "@"* ]]; then

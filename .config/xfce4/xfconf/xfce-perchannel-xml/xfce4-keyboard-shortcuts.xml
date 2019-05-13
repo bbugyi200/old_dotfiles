@@ -41,7 +41,6 @@
       <property name="&lt;Shift&gt;&lt;Alt&gt;l" type="string" value="debian-suspend"/>
       <property name="&lt;Primary&gt;space" type="string" value="debian-close-notifications"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;x" type="string" value="debian-extra-terminal"/>
-      <property name="&lt;Alt&gt;p" type="string" value="kp"/>
       <property name="&lt;Alt&gt;n" type="string" value="debian-notes"/>
       <property name="&lt;Alt&gt;1" type="string" value="debian-send-window 0"/>
       <property name="&lt;Alt&gt;2" type="string" value="debian-send-window 1"/>
@@ -59,7 +58,6 @@
       <property name="&lt;Alt&gt;comma" type="string" value="debian-launcher &quot;GTD&quot; &quot;gtd-launcher&quot; 0:0.1"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;comma" type="string" value="debian-launcher &quot;GTD&quot; &quot;gtd-launcher&quot; 0:2.1"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="debian-suspend -1"/>
-      <property name="&lt;Alt&gt;minus" type="string" value="wnotify"/>
       <property name="&lt;Alt&gt;slash" type="string" value="urxvt -e bc -l /home/bryan/.bcrc"/>
       <property name="&lt;Alt&gt;l" type="string" value="winstack next"/>
       <property name="&lt;Alt&gt;h" type="string" value="winstack prev"/>
@@ -67,7 +65,11 @@
       <property name="&lt;Alt&gt;q" type="string" value="debian-qb-search &quot;O&quot;"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;t" type="string" value="task_due_today"/>
       <property name="&lt;Alt&gt;m" type="string" value="debian-launcher &quot;mpv&quot; &quot;umpv&quot; 1"/>
-      <property name="&lt;Alt&gt;&lt;Super&gt;minus" type="string" value="wtoggle"/>
+      <property name="&lt;Alt&gt;p" type="string" value="pkhal"/>
+      <property name="&lt;Alt&gt;d" type="string" value="winstack next"/>
+      <property name="&lt;Alt&gt;u" type="string" value="winstack prev"/>
+      <property name="&lt;Alt&gt;minus" type="string" value="wnotify"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;minus" type="string" value="wtoggle"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

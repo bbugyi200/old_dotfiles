@@ -14,7 +14,7 @@ set backspace=2
 set breakindent  " Indents wraps
 set clipboard=unnamedplus
 set colorcolumn=
-" set completeopt-=preview
+set completeopt-=preview
 set nocursorcolumn
 set nocursorline
 set diffopt+=iwhiteall
@@ -85,21 +85,23 @@ function! InterpretForwardSlash()
     endif
 
     if (last_ch == "/" && pumvisible())
-        return "\<C-x>\<C-f>"
+        return "\<C-x>\<C-f>\<C-p>"
     endif
 
     if (((last_ch == "~") || last_ch == ".") || pumvisible() || last_ch =~ "[A-z0-9]")
-        return "/\<C-x>\<C-f>"
+        return "/\<C-x>\<C-f>\<C-p>"
     endif
 
     return "/"
 endfunction
 
+" Returns an expression that will replace a forward slash when one is typed
+" in INSERT mode. Used to make file completion work better with hidden files.
 function! InterpretDot()
     let last_ch = matchstr(getline('.'), '\%' . (col('.') - 1) . 'c.')
 
     if (last_ch == "/")
-        return ".\<C-x>\<C-f>"
+        return ".\<C-x>\<C-f>\<C-p>"
     endif
 
     return "."
@@ -160,7 +162,7 @@ endfunction
 " >>>>>>>>>>>>> INSERT
 inoremap <expr> / InterpretForwardSlash()
 inoremap <expr> . InterpretDot()
-inoremap <expr> <C-d> pumvisible() ? "\<C-n>\<C-y>\<C-x>\<C-f>" : "\<C-x>\<C-f>"
+inoremap <expr> <C-d> pumvisible() ? "\<C-n>\<C-y>\<C-x>\<C-f>\<C-p>" : "\<C-x>\<C-f>\<C-p>"
 imap <C-h> <Esc><C-h>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
@@ -249,10 +251,10 @@ nnoremap <Leader>o o<C-u>
 nnoremap [oe :SyntasticToggleMode<CR>
 nnoremap ]oe :SyntasticToggleMode<CR>
 " P-P-P-P-P-P-P-P-P-P
-nnoremap <C-p> :Files<CR>
-nnoremap <Leader>pp :History<CR>
-nnoremap <Leader>ps :Rg<CR>
-nnoremap <Leader>pt :Tags<CR>
+nnoremap <C-p>f :Files<CR>
+nnoremap <C-p>h :History<CR>
+nnoremap <C-p>s :Rg<CR>
+nnoremap <C-p>t :Tags<CR>
 " Q-Q-Q-Q-Q-Q-Q-Q-Q-Q
 " R-R-R-R-R-R-R-R-R-R
 call s:nimap('<Leader>r', ':update<CR>:execute b:run_cmd<CR>')

@@ -34,6 +34,7 @@ search_aliases = {
     'cs': 'Computer Science',
     'dd': 'DD-WRT',
     'de': 'Debian',
+    'dep': 'Debian Buster',
     'di': 'distribution',
     'fcl': 'from the command-line',
     'ge': 'Gentoo',
@@ -66,7 +67,7 @@ search_aliases = {
     'tex': 'LaTeX',
     'tlou': 'The Last of Us',
     'v': 'vim',
-    'YT': 'Young Sheldon',
+    'ys': 'Young Sheldon',
 }
 
 # Google's AROUND(N) Search Operator
@@ -165,6 +166,7 @@ c.url.searchengines = {
     'ud': SE.static.site('idioms.thefreedictionary.com', 'en.wiktionary.org', 'urbandictionary.com'),
     'q': SE.static.google('"{}"'),
     'w': SE.static.site('en.wikipedia.org'),
+    'W': SE.static.google('weather in {}'),
     'ytt': 'https://www.youtube.com/results?search_query={}+Trailer'
 }
 
@@ -196,7 +198,7 @@ for k, v in command_aliases.items():
 c.bindings.commands = {}  # Clears all previously set user bindings.
 
 ########## Unbinds
-unbound_nkeys: List[str] = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'M', ]
+unbound_nkeys: List[str] = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'gf', 'M', ]
 unbound_ikeys: List[str] = []
 
 for unbound_keys, mode in [(unbound_nkeys, 'normal'), (unbound_ikeys, 'insert')]:
@@ -216,6 +218,16 @@ pbind = functools.partial(bind, mode='prompt')
 ptbind = functools.partial(bind, mode='passthrough')
 
 
+# >>>>>>> COMMAND
+cbind("<Alt-j>", 'spawn --userscript add_quotes 1')
+cbind("<Alt-k>", 'spawn --userscript add_quotes 2')
+cbind("<Alt-l>", 'spawn --userscript add_quotes 3')
+cbind("<Alt-u>", 'spawn --userscript add_quotes -1')
+cbind("<Alt-i>", 'spawn --userscript add_quotes -2')
+cbind("<Alt-o>", 'spawn --userscript add_quotes -3')
+cbind('<Ctrl-f>', 'edit-command --run')
+cbind('<Ctrl-y>', 'fake-key --global <Return>V$y')
+
 # >>>>>>> INSERT
 ibind('<Ctrl-i>', 'spawn -d qute-pass-add {url}')
 ibind('<Alt-i>', 'spawn --userscript qute-pass')
@@ -227,16 +239,6 @@ ibind('<Alt-u>', 'spawn --userscript qute-pass --username-only')
 # >>>>>>> PROMPT
 pbind('<Ctrl-o>', 'prompt-open-download rifle {}')
 
-# >>>>>>> COMMAND
-cbind("<Alt-j>", 'spawn --userscript add_quotes 1')
-cbind("<Alt-k>", 'spawn --userscript add_quotes 2')
-cbind("<Alt-l>", 'spawn --userscript add_quotes 3')
-cbind("<Alt-u>", 'spawn --userscript add_quotes -1')
-cbind("<Alt-i>", 'spawn --userscript add_quotes -2')
-cbind("<Alt-o>", 'spawn --userscript add_quotes -3')
-cbind('<Ctrl-f>', 'edit-command --run')
-cbind('<Ctrl-y>', 'fake-key --global <Return>V$y')
-
 # >>>>>>> PASSTHROUGH
 ptbind('<Escape>', 'leave-mode')
 ptbind('<Ctrl-]>', 'fake-key <Escape>')
@@ -247,10 +249,14 @@ ptbind('<Alt-[>', 'fake-key [')
 ptbind('<Alt-]>', 'fake-key ]')
 
 # >>>>>>> NORMAL
+# -------------------
 # ----- Numeric -----
+# -------------------
 bind('9', 'scroll-page 0 -0.5')
 bind('0', 'scroll-page 0 0.5')
+# ----------------------
 # ----- Alphabetic -----
+# ----------------------
 bind('A', 'set-cmd-text -s :quickmark-load -t')
 bind('a', 'set-cmd-text -s :quickmark-load')
 bind(',b', 'set-cmd-text :bookmark-add {url} "')
@@ -262,6 +268,7 @@ bind('D', 'download')
 bind(',e', 'spawn --userscript searchbar-command')
 bind('gc', 'spawn google-chrome {url}')
 bind('gh', 'home')
+bind('gs', 'view-source')
 bind(',g', 'spawn --userscript google')
 bind(',G', 'spawn --userscript google -t')
 bind('gi', 'hint inputs')
@@ -295,8 +302,9 @@ bind('X', 'tab-close -o')
 bind(',Y', 'spawn ytcast {url}', 'message-info "Casting YouTube to chromecast..."')
 bind(';Y', 'hint links spawn -v ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
 bind('Y', 'fake-key --global v$y')
-
+# ----------------------------
 # ----- Non-Alphanumeric -----
+# ----------------------------
 bind('=', 'zoom-in')
 bind('\\', 'set-cmd-text :open /')
 bind('|', 'set-cmd-text :open -t /')
@@ -306,8 +314,9 @@ bind('{', 'navigate prev -t')
 bind('}', 'navigate next -t')
 bind('[', 'spawn winstack prev')
 bind(']', 'spawn winstack next')
-
+# -------------------------
 # ----- Miscellaneous -----
+# -------------------------
 bind('<Alt-i>', 'enter-mode insert', 'spawn --userscript qute-pass')
 bind('<Alt-p>', 'enter-mode insert', 'spawn --userscript qute-pass --password-only')
 bind('<Alt-u>', 'enter-mode insert', 'spawn --userscript qute-pass --username-only')

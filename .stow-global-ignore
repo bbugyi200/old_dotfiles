@@ -5,9 +5,9 @@
 \.gitignore
 
 # bad extensions
-/*\.swo
-/*\.swp
-/*\.pyc
+/.*\.swo
+/.*\.swp
+/.*\.pyc
 
 # specific files
 \.lshrc

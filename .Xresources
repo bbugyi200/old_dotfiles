@@ -2,15 +2,18 @@
 !       to this config file: `xrdb merge ~/.Xresources`
 
 ! ----- SETTINGS
-URxvt*secondaryWheel: true
+URxvt*secondaryWheel:         true
 URxvt*buffered:               true            ! double buffer for xtf
 URxvt*hold:                   false           ! kill window on shell exit
 URxvt*loginShell:             true            ! to load shell profiles
 URxvt*print-pipe:             cat > $HOME/tmp/$(echo urxvt.dump.$(date +'%s'))
 URxvt*saveLines:              9999            ! non-tmux window scroll back
 ! Text
-URxvt*font:                   xft:Hack:style=Regular:pixelsize=13:antialias=true:hinting=true
-URxvt*letterSpace: 0
+URxvt*font:                   xft:Hack:style=Regular:pixelsize=13:antialias=true:hinting=true,\
+                              xft:DejaVu Sans Mono:pixelsize=18,\
+                              xft:Unifont:pixelsize=16,\
+                              xft:Emoji:pixelsize=15
+URxvt*letterSpace: 2
 URxvt*internalBorder:         6               ! pixels from frame edge
 URxvt*lineSpace:              4               ! pixels between lines for added readability
 ! UI
@@ -25,12 +28,13 @@ URxvt*skipScroll:             true            ! favour scroll speed over listing
 URxvt*geometry:               100x39
 
 ! ----- COLORS
-!! Enable Dynamic Colors
+! Enable Dynamic Colors
 xterm*dynamicColors: true
 urxvt*dynamicColors: on
-
+! Background and Foreground
 *background: #1d1f21
 *foreground: #c5c8c6
+! 16 Colors (http://terminal.sexy)
 *color0: #1d1f21
 *color1: #a54242
 *color2: #8c9440
