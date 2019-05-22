@@ -63,7 +63,7 @@ function source_if_exists() {
     [[ -f "$1" ]] && source "$1"
 }
 
-source_if_exists /usr/local/lib/aliases.sh
+source_if_exists "${HOME}"/.config/aliases.sh
 source_if_exists /usr/local/lib/tmuxinator.zsh
 source_if_exists /home/bryan/.local/share/funky/funky.sh
 source_if_exists /home/bryan/.zprofile
