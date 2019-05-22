@@ -12,7 +12,6 @@ set autoread
 set background=dark
 set backspace=2
 set breakindent  " Indents wraps
-set clipboard=unnamedplus
 set colorcolumn=
 set completeopt-=preview
 set nocursorcolumn
@@ -53,6 +52,14 @@ set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore 
 set wildmenu  " Improves tab completion from normal mode
 set wildmode=full
 
+" yank to clipboard
+if has("clipboard")
+  set clipboard=unnamed " copy to the system clipboard
+
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
 
 " #################### VARIABLE DEFINITIONS ###################################
 let mapleader = ","  " The <Leader> key can be used for extra mappings
@@ -64,7 +71,7 @@ let g:tex_flavor = "latex"  " Sets LaTeX as default for .tex files
 " #################### KEY BINDINGS ###########################################
 function! CookieMirror(project)
     let local_file_path = substitute(expand('%:p'), getcwd(), '', 0)
-    return '/home/bryan/.cookiecutters/' . a:project . local_file_path
+    return $HOME . '/.cookiecutters/' . a:project . local_file_path
 endfunction
 
 " Returns an expression that will replace a forward slash when one is typed
@@ -129,7 +136,7 @@ function! NthCookie(N)
     endif
 
     let templates = systemlist('cookie -l | grep \.' . ext)
-    return '/home/bryan/.cookiecutters/' . templates[a:N - 1]
+    return $HOME . '/.cookiecutters/' . templates[a:N - 1]
 endfunction
 
 function! RemoveBuffer()
@@ -202,13 +209,13 @@ call s:MapEditCommands("cc", "CookieMirror('C')")
 call s:MapEditCommands("cg", "CookieMirror('github')")
 call s:MapEditCommands("ls", "'<C-R>=getcwd()<CR>/<C-R>=&filetype<CR>.snippets'")
 call s:MapEditCommands("lv", "'<C-R>=getcwd()<CR>/.lvimrc'")
-call s:MapEditCommands("s", "'/home/bryan/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets'")
-call s:MapEditCommands("S", "'/home/bryan/.vim/vim-snippets/all.snippets'")
+call s:MapEditCommands("s", "'" . $HOME . "/.vim/vim-snippets/<C-R>=&filetype<CR>.snippets'")
+call s:MapEditCommands("S", "'" . $HOME . "/.vim/vim-snippets/all.snippets'")
 call s:MapEditCommands("t1", "NthCookie('1')")
 call s:MapEditCommands("t2", "NthCookie('2')")
 call s:MapEditCommands("t3", "NthCookie('3')")
-call s:MapEditCommands("v", "'/home/bryan/.vim/ftplugin/<C-R>=&filetype<CR>.vim'")
-call s:MapEditCommands("V", "'/home/bryan/.vim/vimrc'")
+call s:MapEditCommands("v", "'" . $HOME . "/.vim/ftplugin/<C-R>=&filetype<CR>.vim'")
+call s:MapEditCommands("V", "'" . $HOME . "/.vim/vimrc'")
 " ----------------------
 " ----- Alphabetic -----
 " ----------------------
@@ -350,7 +357,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost quickfix nnoremap <CR> <CR>
 autocmd BufReadPost fcr-* set filetype=crontab
 autocmd! BufWritePost vimrc source %  " Automatic rewriting of .vimrc
-autocmd! BufWritePost .Xresources :Silent xrdb merge /home/bryan/.Xresources
+autocmd! BufWritePost .Xresources :Silent xrdb merge $HOME/.Xresources
 autocmd! BufWritePost *.c,*.cpp,*.h,*.y silent! !ctags -Rf .tags . &
 autocmd CmdwinEnter * nnoremap <CR> <CR>| " http://stackoverflow.com/questions/16359878/vim-how-to-map-shift-enter
 autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
@@ -454,5 +461,5 @@ function! s:SourceIfExists(file)
   endif
 endfunction
 
-call s:SourceIfExists("/home/bryan/.vim/makebox.vim")
-call s:SourceIfExists("/home/bryan/.vim/plugins.vim")
+call s:SourceIfExists($HOME . "/.vim/makebox.vim")
+call s:SourceIfExists($HOME . "/.vim/plugins.vim")

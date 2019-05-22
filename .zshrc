@@ -1,11 +1,16 @@
 ###############
 #  Oh-My-Zsh  #
 ###############
-ZSH=/home/bryan/.oh-my-zsh/
+ZSH="$HOME"/.oh-my-zsh/
 ZSH_THEME="mytheme"
 DEFAULT_USER="bryan"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
+
+# Brew ZSH Completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
 
 # 'sudo' plugin MUST remain near the end or (for some reason) it won't work
 plugins=(git emoji lpass vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
@@ -65,9 +70,9 @@ function source_if_exists() {
 
 source_if_exists "${HOME}"/.config/aliases.sh
 source_if_exists /usr/local/lib/tmuxinator.zsh
-source_if_exists /home/bryan/.local/share/funky/funky.sh
-source_if_exists /home/bryan/.zprofile
-source_if_exists /home/bryan/.fzf.zsh
+source_if_exists "$HOME"/.local/share/funky/funky.sh
+source_if_exists "$HOME"/.zprofile
+source_if_exists "$HOME"/.fzf.zsh
 
 ##############
 #  Settings  #
@@ -165,11 +170,11 @@ function command_not_found_handler() {
     cmd="$1"; shift
 
     if [[ "${cmd}" == "++"* ]]; then
-        funky_cmd="pushd /home/bryan > /dev/null && funky -a ${cmd:2} && popd > /dev/null"
+        funky_cmd="pushd $HOME > /dev/null && funky -a ${cmd:2} && popd > /dev/null"
     elif [[ "${cmd}" == "+"* ]]; then
         funky_cmd="funky -a ${cmd:1}"
     elif [[ "${cmd}" == "--"* ]]; then
-        funky_cmd="pushd /home/bryan > /dev/null && funky -r ${cmd:2} && popd > /dev/null"
+        funky_cmd="pushd $HOME > /dev/null && funky -r ${cmd:2} && popd > /dev/null"
     elif [[ "${cmd}" == "-"* ]]; then
         funky_cmd="funky -r ${cmd:1}"
     elif [[ "${cmd}" == "@"* ]]; then

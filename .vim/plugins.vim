@@ -14,7 +14,6 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'benmills/vimux'
-Plugin 'blindFS/vim-taskwarrior'
 Plugin 'danro/rename.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'dyng/ctrlsf.vim'
@@ -29,9 +28,7 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'pboettch/vim-cmake-syntax'
-Plugin 'reconquest/vim-pythonx'  " vim must be compiled with '+python' feature
 Plugin 'suan/vim-instant-markdown'
-Plugin 'tbabej/taskwiki'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -56,23 +53,23 @@ function! PluginInstalled(plugin)
         return 1
     endif
 
-    if !empty(glob("/home/bryan/.vim/bundle/" . a:plugin))
+    if !empty(glob($HOME . "/.vim/bundle/" . a:plugin))
         return 1
     endif
 
-    if !empty(glob("/home/bryan/.vim/bundle/vim-" . a:plugin))
+    if !empty(glob($HOME . "/.vim/bundle/vim-" . a:plugin))
         return 1
     endif
 
-    if !empty(glob("/home/bryan/.vim/bundle/" . a:plugin . "-vim"))
+    if !empty(glob($HOME . "/.vim/bundle/" . a:plugin . "-vim"))
         return 1
     endif
 
-    if !empty(glob("/home/bryan/.vim/bundle/" . a:plugin . ".vim"))
+    if !empty(glob($HOME . "/.vim/bundle/" . a:plugin . ".vim"))
         return 1
     endif
 
-    if !empty(glob("/home/bryan/.vim/bundle/" . tolower(a:plugin)))
+    if !empty(glob($HOME . "/.vim/bundle/" . tolower(a:plugin)))
         return 1
     endif
 
@@ -358,8 +355,8 @@ endfunction
 
 if PluginInstalled("UltiSnips")
     " Allows other directories to be searched for snippet files
-    " let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/bryan/Dropbox/dotfiles/extra/UltiSnips"]
-    let g:UltiSnipsSnippetDirectories=["/home/bryan/.vim/vim-snippets", getcwd()]
+    " let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME . "/Dropbox/home/extra/UltiSnips"]
+    let g:UltiSnipsSnippetDirectories=[$HOME . "/.vim/vim-snippets", getcwd()]
 
     au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"

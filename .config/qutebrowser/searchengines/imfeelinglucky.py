@@ -6,8 +6,6 @@
 
 import argparse
 import re
-import requests
-from bs4 import BeautifulSoup
 
 import searchengines.utils as utils
 
@@ -15,6 +13,9 @@ USER_AGENT = {'User-Agent': 'Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit
 
 
 def get_top_link(query: str) -> str:
+    from bs4 import BeautifulSoup
+    import requests
+
     try:
         html = _fetch_results(query)
     except requests.exceptions.HTTPError as e:

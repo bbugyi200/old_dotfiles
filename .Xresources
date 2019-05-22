@@ -53,7 +53,7 @@ urxvt*dynamicColors: on
 *color15: #c5c8c6
 
 ! ----- EXTENSIONS
-URxvt.perl-ext-common: default,url-select,clipboard
+! URxvt.perl-ext-common: default,url-select,clipboard
 ! Clipboard
 URxvt.clipboard.autocopy: true
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard

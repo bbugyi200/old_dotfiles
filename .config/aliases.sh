@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #################################
 #  Shell Aliases and Functions  #
 #################################
@@ -34,7 +36,7 @@ zinit() { MY_SCRIPTNAME="$1" sudo -E cookie _zsh_completion -f /usr/share/zsh/si
 
 # ---------- GTD Aliases / Functions ----------
 # def marker: GTD
-ka() { /usr/local/bin/ka "$@" && krestart_alarms; }
+ka() { "$HOME"/.local/bin/ka "$@" && krestart_alarms; }
 kc() { clear && khal calendar --notstarted --format '{start-time} {title} [{location}]' now && echo; }
 ke() { khal edit "$@" && krestart_alarms; }
 ki() { ikhal "$@" && krestart_alarms; }
@@ -95,7 +97,7 @@ tim() { f=$(fc -e - -"${1:-1}" 2> /dev/null | fzf -q "$2"); if [[ -n "${f}" ]]; 
 alias v='vim'
 alias vi='vinfo'
 wim() { zim "wim" "$@"; }
-zim() { /usr/local/bin/zim "$@" || { EC="$?"; if [[ "${EC}" -eq 3 ]]; then so; else return "${EC}"; fi; }; }
+zim() { "$HOME"/.local/bin/zim "$@" || { EC="$?"; if [[ "${EC}" -eq 3 ]]; then so; else return "${EC}"; fi; }; }
 
 # ---------- File Copy / Cut / Paste ----------
 p() { echo "The following files have been pasted into ${PWD}/${1}:" && ls -A /tmp/copy && /bin/mv -i /tmp/copy/* "${PWD}"/"${1}"; }
@@ -157,7 +159,7 @@ forever() { while true; do eval "$*"; done; }
 alias ga='git add -v'
 alias gaa='git add -v --all'
 alias gau='git add -v --update'
-gcl() { cd "$(/usr/local/bin/gcl "$@")" || return 1; }
+gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
 alias gclp='cd ~/projects && gcl'
 alias gclt='cd /tmp && gcl'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
@@ -219,13 +221,12 @@ alias pdb='pudb3'
 pgr() { pgrep -f ".*$1.*"; }
 alias plex='xspawn -w plex plexmediaplayer'
 pname() { pass show | grep -i "$1" | awk '{print $2}'; }
-alias psg='ps -aux | grep -v grep | grep'
-alias pstrace="strace \$@ -p \$(ps -aux | fzf | awk '{print \$2}')"
+alias psg='ps -ax | grep -v grep | grep'
+alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
 pycov() { coverage run "$1" && coverage html && qutebrowser htmlcov/index.html; }
 alias python='python3'
 alias reboot='sudo reboot'
-alias rg='sudo rg'
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
 riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &> /dev/null & disown; }
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
@@ -271,7 +272,7 @@ alias vbox='xspawn sudo virtualbox'
 alias vbt='vim ~/.local/share/torrent/*.txt'
 alias vdb='vim /home/bryan/Dropbox/bin/cron/cron.daily/*'
 alias vdiff='vimdiff -n'
-alias venv='vim /home/bryan/.zprofile /home/bryan/.profile /home/bryan/Dropbox/etc/environment $(find /home/bryan/Dropbox/etc/profile.d -type f) /usr/local/bin/etc-generator'
+venv() { vim /home/bryan/.zprofile /home/bryan/.profile /home/bryan/Dropbox/etc/environment "$(find /home/bryan/Dropbox/etc/profile.d -type f)" "$HOME"/.local/bin/etc-generator; }
 alias vgdb-l='voltron view command "cmds set listsize $(tput lines) ; list *\$pc" --lexer c'
 alias vgdb='vim ~/.gdbinit .gdbinit'
 alias vgutils='vim /usr/bin/gutils.sh'
@@ -290,7 +291,7 @@ alias vsd='vshlog -H all -D'
 alias vstudy='vim /home/bryan/.vimwiki/TaskWarrior.wiki'
 alias vsu='vshlog -u -D BOT EOT -H all -G'
 alias vtorr='vim /home/bryan/.local/share/torrent/{tv.txt,movies.txt}'
-alias vtv='vim /usr/local/bin/tmux_view.sh /usr/local/bin/tv_*'
+alias vtv="vim \$HOME/.local/bin/tmux_view.sh \$HOME/.local/bin/tv_*"
 alias vwb='vim /home/bryan/Dropbox/bin/cron/cron.weekly/*'
 vrobot() { vim /home/bryan/.local/share/red_robot/pending/"$1"; }
 vuse() { vim /etc/portage/package.use/"$1"; }
