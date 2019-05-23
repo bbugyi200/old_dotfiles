@@ -1,6 +1,6 @@
 # ~/.config/tmuxinator/EdgeStream.yml
 
-root: <%= @settings['root'] %>
+root: /Users/bbugyi
 name: EdgeStream
 
 on_project_start:
@@ -8,17 +8,25 @@ on_project_stop:
 pre_window:
 
 windows:
-    - I:
+    - main:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - II:
+    - bin:
+        root: /Users/bbugyi/Dropbox/bin
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - III:
+    - home:
+        root: /Users/bbugyi/Dropbox/home
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - projects:
+        root: /Users/bbugyi/projects
         layout: even-horizontal
         panes:
             - 0:

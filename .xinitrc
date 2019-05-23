@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if [[ "$(uname -a)" != *"gentoo"* ]]; then
-    exit 0
-fi
-
 source /etc/X11/xinit/xinitrc
 
 numlockx &

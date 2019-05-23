@@ -3,6 +3,7 @@
 # git files
 \.git
 \.gitignore
+\.stow-local-ignore
 
 # bad extensions
 /.*\.swo

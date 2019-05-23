@@ -43,6 +43,7 @@
 !.vim/vimrc
 
 .config/mpv/watch_later/*
+.stow-local-ignore
 
 .vimwiki/*
 
