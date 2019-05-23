@@ -1,0 +1,21 @@
+# ~/.config/tmuxinator/mutt.yml
+
+root: <%= @settings['root'] %>
+name: mutt
+
+on_project_stop:
+
+windows:
+    - I:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - mutt
+            - 1:
+                - rmutt
+    - II:
+        layout: main-vertical
+        panes:
+    - III:
+        layout: main-vertical
+        panes:

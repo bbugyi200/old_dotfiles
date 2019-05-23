@@ -1,0 +1,22 @@
+# ~/.config/tmuxinator/xmonad.yml
+
+root: <%= @settings['root'] %>
+name: xmonad
+
+on_project_stop:
+
+windows:
+    - I:vim:
+        layout: main-vertical
+        panes:
+            - 0:
+                - vv
+    - II:scripts:
+        root: ~/Dropbox/scripts/bin/xmonad
+        layout: main-vertical
+        panes:
+            - tree
+    - III:configs:
+        layout: main-vertical
+        panes:
+            - tree

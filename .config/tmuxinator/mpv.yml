@@ -1,0 +1,30 @@
+# ~/.config/tmuxinator/mpv.yml
+
+root: <%= @settings['root'] %>
+name: mpv
+
+on_project_stop:
+
+windows:
+    - configs:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vim -c "vert sb2" ~/.config/mpv/{mpv.conf,input.conf}
+    - userscripts:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - sleep 2 && while true; do vim /home/bryan/.config/mpv/scripts/*; done
+            - 1:
+                - sleep 2 && vim /home/bryan/.config/mpv/script-opts/*
+    - bin:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - wim umpv mopen cmpv qb_umpv
+    - history:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vim ./history.log

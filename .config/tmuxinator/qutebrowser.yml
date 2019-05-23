@@ -1,0 +1,35 @@
+# ~/.config/tmuxinator/qutebrowser.yml
+
+root: <%= @settings['root'] %>
+name: qutebrowser
+
+on_project_stop:
+
+windows:
+    - config:
+        layout: main-horizontal
+        panes:
+            - 0:
+                - vv
+    - editor:
+        layout: main-horizontal
+        panes:
+            - 0:
+                - vim editor.vimrc
+    - config:
+        layout: main-horizontal
+        panes:
+            - 0:
+                - ll
+    - data:
+        layout: even-horizontal
+        root: ~/.local/share/qutebrowser
+        panes:
+            - 0:
+                - ll
+    - userscripts:
+        layout: even-horizontal
+        root: ~/.local/share/qutebrowser/userscripts
+        panes:
+            - 0:
+                - vim *

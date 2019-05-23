@@ -1,0 +1,32 @@
+# ~/.config/tmuxinator/funky.yml
+
+root: <%= @settings['root'] %>
+name: funky
+
+on_project_stop:
+
+windows:
+    - I:src:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - II:tests:
+        layout: b61e,237x47,0,0{129x47,0,0,57,107x47,130,0,59}
+        panes:
+            - 0:
+                - lls
+    - III:xdg:
+        layout: even-horizontal
+        root: ~/.local/share/funky
+        panes:
+            - 0:
+                - tree
+            - 1:
+                - cd ~/.config/funky
+                - tree
+    - IV:misc:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - lls

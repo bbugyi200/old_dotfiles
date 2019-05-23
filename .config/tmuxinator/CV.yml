@@ -1,0 +1,19 @@
+# ~/.config/tmuxinator/CV.yml
+
+root: <%= @settings['root'] %>
+name: CV
+
+on_project_stop:
+
+windows:
+    - I:
+        layout: main-vertical
+        panes:
+            - 0:
+                - vv
+    - II:
+        layout: main-vertical
+        panes:
+    - III:
+        layout: main-vertical
+        panes:

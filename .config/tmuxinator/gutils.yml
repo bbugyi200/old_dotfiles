@@ -1,0 +1,19 @@
+# ~/.config/tmuxinator/gutils.yml
+
+root: <%= @settings['root'] %>
+name: gutils
+
+on_project_stop:
+
+windows:
+    - src:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vv
+    - scripts:
+        layout: even-horizontal
+        root: ~/Dropbox/scripts/bin/main
+        panes:
+            - 0:
+                - lls

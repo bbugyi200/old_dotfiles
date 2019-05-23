@@ -1,0 +1,25 @@
+# ~/.config/tmuxinator/khal.yml
+
+root: <%= @settings['root'] %>
+name: khal
+
+on_project_stop:
+
+windows:
+    - config:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vim config
+    - data:
+        layout: even-horizontal
+        root: ~/.local/share/khal
+        panes:
+            - 0:
+                - lls
+    - vdirsyncer:
+        layout: even-horizontal
+        root: ~/.config/vdirsyncer
+        panes:
+            - 0:
+                - vim config

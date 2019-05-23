@@ -1,0 +1,21 @@
+# ~/.config/tmuxinator/ScratchPad.yml
+
+root: <%= @settings['root'] %>
+name: ScratchPad
+socket_name: scratchpad
+
+on_project_stop:
+
+windows:
+    - notes:
+        root: /home/bryan/Dropbox/var/notes
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+                - ranger
+    - study:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - S

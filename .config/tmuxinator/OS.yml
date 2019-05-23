@@ -1,24 +1,24 @@
-# ~/.config/tmuxinator/<%= name %>.yml
+# ~/.config/tmuxinator/OS.yml
 
-root: <%%= @settings['root'] %>
-name: <%= name %>
+root: <%= @settings['root'] %>
+name: OS
 
 on_project_start:
 on_project_stop:
 pre_window:
 
 windows:
-    - I:
+    - src:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - II:
+    - debug:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - III:
+    - tests:
         layout: even-horizontal
         panes:
             - 0:

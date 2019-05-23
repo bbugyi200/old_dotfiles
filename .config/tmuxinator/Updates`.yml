@@ -1,24 +1,25 @@
-# ~/.config/tmuxinator/<%= name %>.yml
+# ~/.config/tmuxinator/Updates`.yml
 
-root: <%%= @settings['root'] %>
-name: <%= name %>
+root: <%= @settings['root'] %>
+name: Updates`
+socket_name: primes
 
 on_project_start:
 on_project_stop:
 pre_window:
 
 windows:
-    - I:
+    - A:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - II:
+    - B:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - III:
+    - C:
         layout: even-horizontal
         panes:
             - 0:

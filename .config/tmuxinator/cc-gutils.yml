@@ -1,11 +1,9 @@
-# ~/.config/tmuxinator/<%= name %>.yml
+# ~/.config/tmuxinator/cc-gutils.yml
 
-root: <%%= @settings['root'] %>
-name: <%= name %>
+root: <%= @settings['root'] %>
+name: cc-gutils
 
-on_project_start:
 on_project_stop:
-pre_window:
 
 windows:
     - I:
@@ -13,6 +11,7 @@ windows:
         panes:
             - 0:
                 - ll
+                - vv
     - II:
         layout: even-horizontal
         panes:

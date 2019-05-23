@@ -1,0 +1,38 @@
+# ~/.config/tmuxinator/fcron.yml
+
+root: <%= @settings['root'] %>
+name: fcron
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - bryan:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - while true; do; clear && crontab -e && sleep 1; done
+    - root:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - while true; do; clear && sudo -E crontab -e && sleep 1; done
+    - cron.jobs:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vim ~/Dropbox/bin/cron.jobs/{cron.daily/daily_jobs,cron.weekly/weekly_jobs} ~/Dropbox/bin/cron.jobs/cron.{daily,weekly,monthly}/*
+    - man:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vman 5 fcrontab fcron.conf fcron
+    - logs:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vj
+            - 1:
+                - alias D='sudo rm /var/spool/mail/bryan && sudo touch /var/spool/mail/bryan && bmutt'
+                - bmutt

@@ -1,0 +1,33 @@
+# ~/.config/tmuxinator/Terminal`.yml
+
+root: <%= @settings['root'] %>
+name: Terminal`
+socket_name: primes
+
+on_project_stop:
+
+windows:
+    - main:
+        root: /home/bryan
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - bin:
+        root: /home/bryan/Dropbox/bin
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - home:
+        root: /home/bryan/Dropbox/home
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - projects:
+        root: ~/projects
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll

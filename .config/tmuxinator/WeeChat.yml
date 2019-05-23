@@ -1,0 +1,19 @@
+# ~/.config/tmuxinator/WeeChat.yml
+
+root: <%= @settings['root'] %>
+name: WeeChat
+socket_name: weechat
+
+on_project_stop:
+
+windows:
+    - WeeChat:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - weechat
+    - newsboat:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - newsboat

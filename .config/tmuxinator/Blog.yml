@@ -1,0 +1,44 @@
+# ~/.config/tmuxinator/Blog.yml
+
+root: <%= @settings['root'] %>
+name: Blog
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - main:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - partials:
+        root: /home/bryan/projects/bryanbugyi.com/layouts/partials
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - single:
+        root: /home/bryan/projects/bryanbugyi.com/layouts/_default
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vim single.html
+    - artemis:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ssh-artemis
+    - osprey:
+        root: /home/bryan/projects/osprey
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - static:
+        root: /home/bryan/projects/bryanbugyi.com/static
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll

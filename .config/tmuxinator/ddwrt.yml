@@ -1,0 +1,29 @@
+# ~/.config/tmuxinator/ddwrt.yml
+
+root: <%= @settings['root'] %>
+name: ddwrt
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - main:
+        layout: main-horizontal
+        panes:
+            - 0:
+                - ssh-ddwrt
+            - 1:
+                - watch -n 1 ifconfig enp4s0
+            - 2:
+                - ll
+    - logs:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - sim + /var/log/syslog-ddwrt
+    - III:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll

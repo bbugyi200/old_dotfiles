@@ -1,0 +1,31 @@
+# ~/.config/tmuxinator/zathura.yml
+
+root: <%= @settings['root'] %>
+name: zathura
+
+on_project_stop:
+
+windows:
+    - config:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vim ~/.config/zathura/zathurarc
+            - 1:
+                - vim /home/bryan/Dropbox/bin/zathura/*
+    - docs:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vman zathura zathurarc
+    - data:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vim *
+    - clone:
+        layout: even-horizontal
+        root: ~/projects/zathura
+        panes:
+            - 0:
+                - ll

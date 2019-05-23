@@ -1,24 +1,31 @@
-# ~/.config/tmuxinator/<%= name %>.yml
+# ~/.config/tmuxinator/cookie.yml
 
-root: <%%= @settings['root'] %>
-name: <%= name %>
+root: <%= @settings['root'] %>
+name: cookie
 
 on_project_start:
 on_project_stop:
 pre_window:
 
 windows:
-    - I:
+    - src:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - II:
+    - tests:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - III:
+    - templates:
+        root: /home/bryan/.cookiecutters
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - config:
+        root: /home/bryan/.config/cookie
         layout: even-horizontal
         panes:
             - 0:

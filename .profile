@@ -18,7 +18,7 @@ source_if_exists /usr/bin/virtualenvwrapper_lazy.sh
 if [[ -f /etc/environment ]]; then 
     source <(sed 's/^\(.*\)="/export \1="${\1}:/' /etc/environment)
 else
-    export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
+    export PATH="/usr/local/opt/gnu-getopt/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 fi
 
 export MATLABPATH="$HOME/.matlab"

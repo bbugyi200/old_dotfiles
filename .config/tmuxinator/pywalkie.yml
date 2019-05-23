@@ -1,7 +1,7 @@
-# ~/.config/tmuxinator/<%= name %>.yml
+# ~/.config/tmuxinator/pywalkie.yml
 
-root: <%%= @settings['root'] %>
-name: <%= name %>
+root: <%= @settings['root'] %>
+name: pywalkie
 
 on_project_start:
 on_project_stop:
@@ -13,6 +13,7 @@ windows:
         panes:
             - 0:
                 - ll
+                - vv
     - II:
         layout: even-horizontal
         panes:

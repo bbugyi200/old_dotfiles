@@ -1,0 +1,32 @@
+# ~/.config/tmuxinator/torrent.yml
+
+root: <%= @settings['root'] %>
+name: torrent
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - I:
+        layout: tiled
+        panes:
+            - 0:
+                - wim batch_torrent torrent PIA
+            - 1:
+                - watch -n 1 deluge-console info
+            - 2:
+                - forever "watch -d -n 1 'cat tv.txt | cut -c 1-$(tput cols)'; vim + tv.txt"
+            - 3:
+                - forever "watch -d -n 1 'cat movies.txt | cut -c 1-$(tput cols)'; vim + movies.txt"
+    - II:
+        root: /media/bryan/hercules/media/Entertainment
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - III:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll

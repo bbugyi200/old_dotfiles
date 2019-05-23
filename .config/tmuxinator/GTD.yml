@@ -1,0 +1,48 @@
+# ~/.config/tmuxinator/GTD.yml
+
+root: <%= @settings['root'] %>
+name: GTD
+socket_name: GTD
+on_project_start: rm ~/.vim/swap/*
+
+on_project_stop:
+
+windows:
+    - tasks:
+        layout: 5511,157x36,0,0[157x27,0,0,6,157x8,0,28,5]
+        panes:
+            - 0:
+                - tmux select-pane -t 0.1
+                - sleep 2 && task_refresh -F rename
+            - 1:
+                - cd ~/.task && so && clear
+    - timew:
+        layout: 5511,157x36,0,0[157x27,0,0,6,157x8,0,28,5]
+        panes:
+            - 0:
+                - tmux select-pane -t 1.1
+                - sleep 2
+            - 1:
+              - cd /home/bryan/Dropbox/home/.timewarrior && so && clear
+
+    - khal:
+        layout: 5511,157x36,0,0[157x27,0,0,6,157x8,0,28,5]
+        panes:
+            - 0:
+                - tmux select-pane -t 2.1
+            - 1: 
+              - cd /home/bryan/.config/khal && so && clear
+    - config:
+        layout: main-horizontal
+        root: /home/bryan/.task
+        panes:
+            - 0:
+                - rm -rf /home/bryan/Dropbox/home/.taskrc.swp
+                - sleep 2 && vc
+    - hooks:
+        layout: main-horizontal
+        root: /home/bryan/.task/hooks
+        panes:
+            - 0:
+                - del_swps
+                - sleep 1 && vvv

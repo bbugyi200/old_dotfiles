@@ -1,7 +1,7 @@
-# ~/.config/tmuxinator/<%= name %>.yml
+# ~/.config/tmuxinator/GraphTheory.yml
 
-root: <%%= @settings['root'] %>
-name: <%= name %>
+root: <%= @settings['root'] %>
+name: GraphTheory
 
 on_project_start:
 on_project_stop:

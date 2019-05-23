@@ -1,25 +1,26 @@
-# ~/.config/tmuxinator/<%= name %>.yml
+# ~/.config/tmuxinator/Statistics.yml
 
-root: <%%= @settings['root'] %>
-name: <%= name %>
+root: <%= @settings['root'] %>
+name: Statistics
 
 on_project_start:
 on_project_stop:
 pre_window:
 
 windows:
-    - I:
+    - HW:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - II:
+    - Misc:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - III:
+    - ThinkStats:
+        root: /home/bryan/projects/ThinkStats2/code
         layout: even-horizontal
         panes:
             - 0:
-                - ll
+                - ipython -i ipysession.py

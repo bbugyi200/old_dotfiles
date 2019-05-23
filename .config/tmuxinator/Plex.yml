@@ -1,7 +1,7 @@
-# ~/.config/tmuxinator/<%= name %>.yml
+# ~/.config/tmuxinator/Plex.yml
 
-root: <%%= @settings['root'] %>
-name: <%= name %>
+root: <%= @settings['root'] %>
+name: Plex
 
 on_project_start:
 on_project_stop:
@@ -12,7 +12,7 @@ windows:
         layout: even-horizontal
         panes:
             - 0:
-                - ll
+                - tsm-watch
     - II:
         layout: even-horizontal
         panes:

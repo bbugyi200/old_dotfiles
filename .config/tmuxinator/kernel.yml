@@ -1,0 +1,26 @@
+# ~/.config/tmuxinator/kernel.yml
+
+root: <%= @settings['root'] %>
+name: kernel
+
+on_project_stop:
+
+windows:
+    - src:
+        layout: 9058,210x47,0,0{124x47,0,0,27,85x47,125,0,30}
+        panes:
+            - 0:
+                - ll
+            - 1:
+                - jrnl @kernel
+    - lib:
+        layout: even-horizontal
+        root: /lib/modules
+        panes:
+            - 0:
+                - tree
+    - III:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll

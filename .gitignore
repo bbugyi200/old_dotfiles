@@ -42,9 +42,6 @@
 !.vim/syntax/
 !.vim/vimrc
 
-.config/tmuxinator/*
-!.config/tmuxinator/default.yml
-
 .config/mpv/watch_later/*
 
 .vimwiki/*

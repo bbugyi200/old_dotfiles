@@ -29,7 +29,7 @@ hw() { mkdir -p HW"$1"/img &> /dev/null && ASSIGNMENT_NUMBER="$1" cookie hw.tex 
 alias minit='cookie c.make -f Makefile'
 alias mtinit='cookie gtest.make -f Makefile'
 alias pyinit='cookie template.py -x'
-robinit() { DATE="$(date +%Y%m%d)" cookie robot.yaml -f /home/bryan/.local/share/red_robot/pending/"$1"; }
+robinit() { DATE="$(date +%Y%m%d)" cookie robot.yaml -f "$HOME"/.local/share/red_robot/pending/"$1"; }
 pytinit() { SCRIPT="$1" cookie pytest_script.py -f test_"$1".py; }
 alias texinit='cookie template.tex -f'
 zinit() { MY_SCRIPTNAME="$1" sudo -E cookie _zsh_completion -f /usr/share/zsh/site-functions/_"$1"; }
@@ -84,11 +84,11 @@ alias bmutt='TERM=rxvt-unicode-256color neomutt -f /var/spool/mail/bryan'
 alias mutt="TERM=rxvt-unicode-256color neomutt"
 alias rmutt="TERM=rxvt-unicode-256color neomutt -e 'source ~/.mutt/hooks/bmb181@scarletmail.rutgers'"
 alias sudo-mutt='TERM=rxvt-unicode-256color sudo neomutt -f /var/spool/mail/root'
-alias vmutt='vim /home/bryan/.mutt/muttrc'
+alias vmutt='vim $HOME/.mutt/muttrc'
 
 # ---------- Vim Wrapper Aliases / Functions ----------
 # def marker: VIM
-def() { zim "def" "$@" "/home/bryan/Dropbox/home/.zshrc" "/home/bryan/Dropbox/lib/zsh/aliases.sh" "/home/bryan/Dropbox/lib/zsh/debian.sh" "/home/bryan/Dropbox/lib/zsh/gentoo.sh"; }
+def() { zim "def" "$@" "$HOME/Dropbox/home/.zshrc" "$HOME/Dropbox/lib/zsh/aliases.sh" "$HOME/Dropbox/lib/zsh/debian.sh" "$HOME/Dropbox/lib/zsh/gentoo.sh"; }
 lim() { vim -c "normal '0" -c 'bd1'; }
 mim() { zim "mim" "$@"; }
 alias pim="F=\"\$(rg --files | fzf)\"; [[ -n \"\${F}\" ]] && vim \"\${F}\""
@@ -134,14 +134,14 @@ alias cp="cp -i"
 alias cplug='vim +PluginClean +qall'
 alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
-alias dayplan='cd /home/bryan/Dropbox/var/notes && vim dayplan.txt'
+alias dayplan='cd $HOME/Dropbox/var/notes && vim dayplan.txt'
 dc() { sudo -E deluge-console "${@}"; }
 dci() { dc info --sort=time_added | awk -F ':' "{if(\$1==\"$1\")print \$0}"; }
 alias ddef='def -m DEBIAN'
 alias ddwrt-logs='sim /var/log/syslog-ddwrt'
 alias deff='def -f'
 alias del_swps='find . -name "*.swp" -delete -print'
-alias delshots='confirm "find /home/bryan/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
+alias delshots='confirm "find $HOME/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias df='df -h'
 diff() { colordiff -wy -W "$(tput cols)" "$@" | less -R; }
 alias dfs='dropbox-cli filestatus'
@@ -236,7 +236,7 @@ alias sc='systemctl'
 alias scu='systemctl --user'
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias sim='sudo -E vim'
-alias snapshots='find /home/bryan/Dropbox/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
+alias snapshots='find $HOME/Dropbox/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 ss() { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
 alias ssh-aphrodite='ssh 192.168.1.193'
 alias ssh-artemis="ssh bryan@67.207.92.152"
@@ -265,14 +265,14 @@ u() { echo -e "\u$1"; }
 alias undow='dow --undo'
 alias updatedb='sudo updatedb'
 # shellcheck disable=SC2046
-vab() { vim $(find /home/bryan/Dropbox/bin/cron.jobs -type f | sort | tr '\n' ' '); }
+vab() { vim $(find "$HOME"/Dropbox/bin/cron.jobs -type f | sort | tr '\n' ' '); }
 alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
 alias Vgi='vim ~/.gitignore_global'
 alias vbox='xspawn sudo virtualbox'
 alias vbt='vim ~/.local/share/torrent/*.txt'
-alias vdb='vim /home/bryan/Dropbox/bin/cron/cron.daily/*'
+alias vdb='vim $HOME/Dropbox/bin/cron/cron.daily/*'
 alias vdiff='vimdiff -n'
-venv() { vim /home/bryan/.zprofile /home/bryan/.profile /home/bryan/Dropbox/etc/environment "$(find /home/bryan/Dropbox/etc/profile.d -type f)" "$HOME"/.local/bin/etc-generator; }
+venv() { vim "$HOME"/.zprofile "$HOME"/.profile "$HOME"/Dropbox/etc/environment "$(find "$HOME"/Dropbox/etc/profile.d -type f)" "$HOME"/.local/bin/etc-generator; }
 alias vgdb-l='voltron view command "cmds set listsize $(tput lines) ; list *\$pc" --lexer c'
 alias vgdb='vim ~/.gdbinit .gdbinit'
 alias vgutils='vim /usr/bin/gutils.sh'
@@ -281,19 +281,19 @@ alias vihor='vim ~/Dropbox/var/notes/Horizons_of_Focus/*'
 alias vimilla='vim -u ~/.vanilla-vimrc'
 vlog() { vim + /var/tmp/"$1"; }
 alias vm='vman'
-alias vmb='vim /home/bryan/Dropbox/bin/cron/cron.monthly/*'
+alias vmb='vim $HOME/Dropbox/bin/cron/cron.monthly/*'
 alias vmkrules='make -p > /tmp/make-rules && vim /tmp/make-rules'
 alias vpyutils='pushd ~/Dropbox/lib/python/gutils &> /dev/null && vv && popd &> /dev/null'
 alias vr='vim ${RECENTLY_EDITED_FILES_LOG}'
 alias vs='vshlog'
 alias vscratch='vim ~/Dropbox/var/notes/scratch.txt'
 alias vsd='vshlog -H all -D'
-alias vstudy='vim /home/bryan/.vimwiki/TaskWarrior.wiki'
+alias vstudy='vim $HOME/.vimwiki/TaskWarrior.wiki'
 alias vsu='vshlog -u -D BOT EOT -H all -G'
-alias vtorr='vim /home/bryan/.local/share/torrent/{tv.txt,movies.txt}'
+alias vtorr='vim $HOME/.local/share/torrent/{tv.txt,movies.txt}'
 alias vtv="vim \$HOME/.local/bin/tmux_view.sh \$HOME/.local/bin/tv_*"
-alias vwb='vim /home/bryan/Dropbox/bin/cron/cron.weekly/*'
-vrobot() { vim /home/bryan/.local/share/red_robot/pending/"$1"; }
+alias vwb='vim $HOME/Dropbox/bin/cron/cron.weekly/*'
+vrobot() { vim "$HOME"/.local/share/red_robot/pending/"$1"; }
 vuse() { vim /etc/portage/package.use/"$1"; }
 alias vq='vv_push ~/.config/qutebrowser'
 vv_push() { tmux send-keys "clear && pushd '$1' &> /dev/null && vv && popd &> /dev/null && clear" "Enter"; }
