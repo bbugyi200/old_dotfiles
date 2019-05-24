@@ -1,6 +1,6 @@
 # ~/.config/tmuxinator/EdgeStream.yml
 
-root: ~/projects/edgelp/prod
+root: ~/projects/edgelp
 name: EdgeStream
 
 on_project_start:

@@ -62,14 +62,14 @@ tgp () { eval "tga project:$*"; }
 tgps () { eval "tgp Study.$*"; }
 tgs() { tga project:Study."$*"; }
 tgw () { eval "tcsn $* rc.verbose=blank,label waiting"; }
-ti () { task rc._forcecolor:on "$@" info | less; }
+ti () { task rc._forcecolor:on "$@" info | less -F; }
 tin () { task rc.context=none +inbox -DELETED -COMPLETED all; }
-tl () { task "$1" | less; }
-alias tlat='task rc._forcecolor:on +LATEST info | less'
+tl () { task "$1" | less -F; }
+alias tlat='task rc._forcecolor:on +LATEST info | less -F'
 tnall () { tcsn "next +READY"; }
 tnl () { task next +READY limit:none; }  # no limit
 tpa () { tga project:"$(tproject)"; }
-trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS limit:none \( +PENDING or +WAITING \) | less; }
+trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS limit:none \( +PENDING or +WAITING \) | less -F; }
 alias tstudy='vim ~/.vimwiki/TaskWarrior.wiki'
 tsub () { task "$1" modify "/$2/$3/g"; }
 alias tw='timew'
@@ -88,14 +88,13 @@ alias vmutt='vim $HOME/.mutt/muttrc'
 
 # ---------- Vim Wrapper Aliases / Functions ----------
 # def marker: VIM
-def() { zim "def" "$@" "$HOME/Dropbox/home/.zshrc" "$HOME/Dropbox/lib/zsh/aliases.sh" "$HOME/Dropbox/lib/zsh/debian.sh" "$HOME/Dropbox/lib/zsh/gentoo.sh"; }
+def() { zim "def" "$@" "$HOME/Dropbox/home/.zshrc" "$HOME/Dropbox/home/.config/aliases.sh" "$HOME/Dropbox/home/.config/debian.sh" "$HOME/Dropbox/home/.config/gentoo.sh"; }
 lim() { vim -c "normal '0" -c 'bd1'; }
 mim() { zim "mim" "$@"; }
 alias pim="F=\"\$(rg --files | fzf)\"; [[ -n \"\${F}\" ]] && vim \"\${F}\""
 tam() { N="$(history -n | tail -n 100 | tac | nl | fzf --tiebreak=index | awk '{print $1}')"; if [[ -n "${N}" ]]; then tim "${N}" "$@"; fi; }
 tim() { f=$(fc -e - -"${1:-1}" 2> /dev/null | fzf -q "$2"); if [[ -n "${f}" ]]; then vim "${f}"; fi; }
 alias v='vim'
-alias vi='vinfo'
 wim() { zim "wim" "$@"; }
 zim() { "$HOME"/.local/bin/zim "$@" || { EC="$?"; if [[ "${EC}" -eq 3 ]]; then so; else return "${EC}"; fi; }; }
 
@@ -117,13 +116,12 @@ yearly_salary() { printf "%0.2f\n" $(($1 * 1000 * .7)); }
 alias activate='source venv/bin/activate'
 addgroup() { sudo usermod -aG "$1" bryan; }
 alias ag='ag --hidden'
-alg() { { alias | grep --color=always -e "$@" && echo; rg -s -C 5 -p "$@" ~/Dropbox/bin; } | less; }
+alg() { { alias | grep --color=always -e "$@" && echo; rg -s -C 5 -p "$@" ~/Dropbox/bin; } | less -F; }
 alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 alias c='cookie'
-alias T='echo pig'
-alias cal='cal -n 3 | less'
+alias cal='cal -n 3 | less -F'
 alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
 alias cdef='def -m COOKIE'
@@ -135,7 +133,7 @@ alias cower='cower -c'
 alias cp="cp -i"
 alias cplug='vim +PluginClean +qall'
 alias cppinit='cinit ++'
-cprof() { python -m cProfile -s "$@" | less; }
+cprof() { python -m cProfile -s "$@" | less -F; }
 alias dayplan='cd $HOME/Dropbox/var/notes && vim dayplan.txt'
 dc() { sudo -E deluge-console "${@}"; }
 dci() { dc info --sort=time_added | awk -F ':' "{if(\$1==\"$1\")print \$0}"; }
@@ -145,7 +143,7 @@ alias deff='def -f'
 alias del_swps='find . -name "*.swp" -delete -print'
 alias delshots='confirm "find $HOME/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias df='df -h'
-diff() { colordiff -wy -W "$(tput cols)" "$@" | less -R; }
+diff() { colordiff -wy -W "$(tput cols)" "$@" | less -F -R; }
 alias dfs='dropbox-cli filestatus'
 alias dst='dropbox-cli status'
 alias dstart='dropbox-cli start'
@@ -157,6 +155,8 @@ alias epuse='sudo -E epuse'
 alias flaggie='sudo -i flaggie'
 fn_() { if [[ "$1" == *"*"* ]]; then find . -iname "$@"; else find . -iname "*$**"; fi; }
 alias fn='noglob fn_'
+fp_() { if [[ "$1" == *"*"* ]]; then find . -ipath "$@"; else find . -ipath "*$**"; fi; }
+alias fp='noglob fp_'
 forever() { while true; do eval "$*"; done; }
 alias ga='git add -v'
 alias gaa='git add -v --all'
@@ -176,7 +176,7 @@ alias ginit='while true; do; watch -d -n 1 cat .gdbinit; vim .gdbinit; done'
 alias git='hub'
 alias Glg='git log -p -G'
 alias glg='git log --oneline --decorate --graph'
-alias glg="git log --oneline --decorate --graph --color=always | nl -s ':  ' -v 0 | less"
+alias glg="git log --oneline --decorate --graph --color=always | nl -s ':  ' -v 0 | less -F"
 alias gn='gnext'
 alias gN='git checkout HEAD~1'
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
@@ -221,11 +221,13 @@ alias pdb='pudb3'
 pgr() { pgrep -f ".*$1.*"; }
 alias plex='xspawn -w plex plexmediaplayer'
 pname() { pass show | grep -i "$1" | awk '{print $2}'; }
+alias pr1='ssh pr-dev-1'
 alias psg='ps -ax | grep -v grep | grep'
 alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
 pycov() { coverage run "$1" && coverage html && qutebrowser htmlcov/index.html; }
 alias reboot='sudo reboot'
+rg() { /usr/local/bin/rg -p "$@" | less -F; }
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
 riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &> /dev/null & disown; }
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
