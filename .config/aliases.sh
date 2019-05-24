@@ -114,13 +114,15 @@ yearly_salary() { printf "%0.2f\n" $(($1 * 1000 * .7)); }
 
 # ---------- Miscellaneous Aliases / Functions ----------
 # def marker: DEFAULT
+alias activate='source venv/bin/activate'
 addgroup() { sudo usermod -aG "$1" bryan; }
 alias ag='ag --hidden'
-alias alg='alias | grep -e'
+alg() { { alias | grep --color=always -e "$@" && echo; rg -s -C 5 -p "$@" ~/Dropbox/bin; } | less; }
 alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 alias c='cookie'
+alias T='echo pig'
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
@@ -193,7 +195,6 @@ alias issh='ssh -p 34857 athena-arch.ddns.net'
 K() { tmux switchc -n && tmux kill-session -t "$(tm-session-name)"; }
 alias k='sudo kill'
 alias k9='sudo kill -9'
-alias ipython='TERM=linux ipython3'
 alias kman='man -k'
 Kman() { man -wK "$@" | awk -F'/' '{print $NF}' | sed 's/\.\(.*\)\.bz2$/ (\1)/g' | sort; }
 alias lay='sudo layman'
@@ -215,7 +216,6 @@ alias nrg='pushd ~/Dropbox/var/notes && ranger && popd'
 alias ok='xspawn okular'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/var/notes/Onething/"$1".txt; }
 alias ping2all='(ping2life 10.1.1.1; ping2life google.com) @@'
-alias pip='pip3'
 alias pipget='pip install --user'
 alias pdb='pudb3'
 pgr() { pgrep -f ".*$1.*"; }
@@ -225,7 +225,6 @@ alias psg='ps -ax | grep -v grep | grep'
 alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
 pycov() { coverage run "$1" && coverage html && qutebrowser htmlcov/index.html; }
-alias python='python3'
 alias reboot='sudo reboot'
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
 riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &> /dev/null & disown; }

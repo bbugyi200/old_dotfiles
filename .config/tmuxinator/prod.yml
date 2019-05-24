@@ -1,24 +1,24 @@
-# ~/.config/tmuxinator/EdgeStream.yml
+# ~/.config/tmuxinator/prod.yml
 
-root: ~/projects/edgelp/prod
-name: EdgeStream
+root: <%= @settings['root'] %>
+name: prod
 
 on_project_start:
 on_project_stop:
 pre_window:
 
 windows:
-    - A:
+    - I:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - B:
+    - II:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - C:
+    - III:
         layout: even-horizontal
         panes:
             - 0:

@@ -18,6 +18,7 @@ gdb.log
 htmlcov
 **/.lzshrc
 *.log
+.lvimrc
 *.o
 *.out
 **/.pytest_cache/*
@@ -28,10 +29,11 @@ Session.vim
 *.snippets
 *.swp
 .stow-local-ignore
+.sync
 *.tar
 .tox/*
 tags
 .tags
 .venv
 var/*
-venv/*
+**/venv/*

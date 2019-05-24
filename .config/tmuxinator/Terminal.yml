@@ -7,19 +7,19 @@ on_project_stop:
 
 windows:
     - main:
-        root: /home/bryan
+        root: ~/
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - bin:
-        root: /home/bryan/Dropbox/bin
+        root: ~/Dropbox/bin
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - home:
-        root: /home/bryan/Dropbox/home
+        root: ~/Dropbox/home
         layout: even-horizontal
         panes:
             - 0:

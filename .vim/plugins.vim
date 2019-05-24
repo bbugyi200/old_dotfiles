@@ -36,6 +36,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/AnsiEsc.vim'
+Plugin 'vim-scripts/applescript.vim'
 Plugin 'vim-scripts/cecutil'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'vimwiki/vimwiki'  " Required by: taskwiki
