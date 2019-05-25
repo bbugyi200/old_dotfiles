@@ -10,11 +10,15 @@ row=6
 col=0
 
 [/home/bryan/projects]
-row=5
+row=7
 col=0
 
 [/home/bryan/Downloads]
 row=3
+col=0
+
+[/home/bryan/bio.txt]
+row=5
 col=0
 
 [Trash]

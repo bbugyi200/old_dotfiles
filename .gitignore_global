@@ -12,7 +12,6 @@ core
 *.egg-info/*
 epatch.info
 .funky
-gdb.log
 .gdbinit
 *.gz
 htmlcov
