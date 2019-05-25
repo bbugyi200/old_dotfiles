@@ -91,13 +91,15 @@ alias vmutt='vim $HOME/.mutt/muttrc'
 
 # ---------- Vim Wrapper Aliases / Functions ----------
 # def marker: VIM
-def() { zim "def" "$@" "$HOME/Dropbox/home/.zshrc" "$HOME/Dropbox/home/.config/aliases.sh" "$HOME/Dropbox/home/.config/debian.sh" "$HOME/Dropbox/home/.config/gentoo.sh"; }
+alias daf='def -a'
+def() { zim "def" "$@" "$HOME/Dropbox/home/.zshrc" "$HOME/Dropbox/home/.config/aliases.sh" "$HOME/Dropbox/home/.config/debian.sh" "$HOME/Dropbox/home/.config/gentoo.sh" "/home/bryan/Dropbox/home/.config/macos.sh"; }
 lim() { vim -c "normal '0" -c 'bd1'; }
 mim() { zim "mim" "$@"; }
 alias pim="F=\"\$(rg --files | fzf)\"; [[ -n \"\${F}\" ]] && vim \"\${F}\""
 tam() { N="$(history -n | tail -n 100 | tac | nl | fzf --tiebreak=index | awk '{print $1}')"; if [[ -n "${N}" ]]; then tim "${N}" "$@"; fi; }
 tim() { f=$(fc -e - -"${1:-1}" 2> /dev/null | fzf -q "$2"); if [[ -n "${f}" ]]; then vim "${f}"; fi; }
 alias v='vim'
+alias wam='wim -a'
 wim() { zim "wim" "$@"; }
 zim() { "$HOME"/.local/bin/zim "$@" || { EC="$?"; if [[ "${EC}" -eq 3 ]]; then so; else return "${EC}"; fi; }; }
 
