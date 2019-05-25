@@ -65,3 +65,5 @@ else
         sudo loadkeys "${map_file}"
     fi
 fi
+
+export PATH=~/.local/bin:"$PATH"

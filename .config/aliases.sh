@@ -8,13 +8,16 @@
 # shellcheck disable=SC2009
 # shellcheck disable=SC2079
 # shellcheck disable=SC2142
+# shellcheck disable=SC2230
 
 
 sys_info="$(uname -a)"
 if [[ "${sys_info}" == *"gentoo"* ]]; then
-    source "${HOME}"/.config/gentoo.sh
+    source "$HOME/.config/gentoo.sh"
 elif [[ "${sys_info}" == *"Debian"* ]]; then
-    source "${HOME}"/.config/debian.sh
+    source "$HOME/.config/debian.sh"
+elif [[ "${sys_info}" == *"Darwin"* ]]; then
+    source "$HOME/.config/macos.sh"
 fi
 
 
@@ -104,12 +107,16 @@ x() { mkdir /tmp/copy &> /dev/null; /bin/mv "$@" /tmp/copy/; }
 y() { mkdir /tmp/copy &> /dev/null; /bin/cp -r "$@" /tmp/copy/; }
 
 # ---------- Salary ----------
-hourly_salary() { printf "%0.2f\n" $(($1 * 1000 / 52.0 / 40)); }
-monthly_salary() { printf "%0.2f\n" $(($1 * 1000 * .7 / 12)); }
-alias sal='salary'
-salary() { printf "Hourly:   $%0.2f\nWeekly:   $%0.2f\nBiweekly: $%0.2f\nMonthly:  $%0.2f\nYearly:   $%0.2f\n" "$(hourly_salary "$1")" "$(weekly_salary "$1")" "$((2 * $(weekly_salary "$1")))" "$(monthly_salary "$1")" "$(yearly_salary "$1")"; }
-weekly_salary() { printf "%0.2f\n" $(($1 * 1000 * .7 / 52)); }
-yearly_salary() { printf "%0.2f\n" $(($1 * 1000 * .7)); }
+hourly_salary() { printf "%f\n" $(($(weekly_salary "$1") / 40.0)); }
+hsal() { sal "$(($1 * 40.0 * 52.0 / 1000.0))" "${@:2}"; }
+monthly_salary() { printf "%f\n" $(($(yearly_salary "$1") / 12.0)); }
+NET_P=$((1.0 - TAX_P))
+sal() { clear && salary "$@" && echo; }
+salary() { printf "======= BEFORE TAXES =======\n" && _salary "$1" 0 && printf "\n===== AFTER TAXES (%0.0f%%) =====\n" "${2:-$((TAX_P * 100))}" && _salary "$@"; }
+_salary() { { [[ -n "$2" ]] && NET_P=$((1.0 - ($2 / 100.0))); }; printf "Hourly:       $%0.2f\nWeekly:       $%0.2f\nBiweekly:     $%0.2f\nSemi-monthly: $%0.2f\nMonthly:      $%0.2f\nYearly:       $%0.2f\n" "$(hourly_salary "$1")" "$(weekly_salary "$1")" "$((2 * $(weekly_salary "$1")))" "$((0.5 * $(monthly_salary "$1")))" "$(monthly_salary "$1")" "$(yearly_salary "$1")"; NET_P=$((1.0 - TAX_P)); }
+TAX_P=0.33;  # Default tax percentage used for salary calculation.
+weekly_salary() { printf "%f\n" $(($(yearly_salary "$1") / 52.0)); }
+yearly_salary() { printf "%f\n" $(($1 * 1000.0 * NET_P)); }
 
 # ---------- Miscellaneous Aliases / Functions ----------
 # def marker: DEFAULT
@@ -227,7 +234,7 @@ alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
 pycov() { coverage run "$1" && coverage html && qutebrowser htmlcov/index.html; }
 alias reboot='sudo reboot'
-rg() { /usr/local/bin/rg -p "$@" | less -F; }
+rg() { "$(which -a rg | tail -n 1)" -p "$@" | less -F; }
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
 riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &> /dev/null & disown; }
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'

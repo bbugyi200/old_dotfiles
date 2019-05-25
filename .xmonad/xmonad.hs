@@ -304,6 +304,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
                            removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
+   , ((alpha, n), launchApp "notes" "nixnote2")
    , ((alpha .|. beta .|. shift, n), do
            ws_name <- io $ readFile "/tmp/xmonad.workspace"
            DW.addWorkspace ws_name
@@ -316,7 +317,8 @@ myAdditionalKeys = [
    , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
-   , ((alpha, s), windows W.swapDown) -- Swap Windows
+   , ((alpha, s), launchApp "slack" "slack")
+   , ((alpha .|. beta, s), windows W.swapDown) -- Swap Windows
    , ((alpha, t), spawn "DISPLAY=:0 task_new_inbox_item") -- taskwarrior (inbox)
    , ((alpha .|. beta, t), spawn "task_due_today") -- taskwarrior (due today)
    , ((alpha .|. shift, t), spawn "task_hotstart")
