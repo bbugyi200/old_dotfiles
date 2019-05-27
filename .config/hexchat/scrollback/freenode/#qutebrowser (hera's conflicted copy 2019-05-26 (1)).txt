@@ -1,0 +1,413 @@
+T 1558822691 19*	Now talking on 22#qutebrowser
+T 1558822691 22*	Topic for 22#qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558822691 22*	Topic for 22#qutebrowser set by 26The-Compiler!~compiler@qutebrowser/dev/The-Compiler (24Mon May  6 13:45:16 2019)
+T 1558822691 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558822803 23*	king_radical (~fuck@c-67-169-184-129.hsd1.ca.comcast.net23) has joined
+T 1558822991 20<bbugyi201>30	Does anyone know if there is a setting that forces all pinned tabs to stay to the far left of the tab list? This is how pinned tabs work by default in chrome.
+T 1558823167 18<toofar18>	nope: https://github.com/qutebrowser/qutebrowser/issues/4419
+T 1558823367 20*	Disconnected (20)
+T 1558823512 19*	Now talking on 22#qutebrowser
+T 1558823512 22*	Topic for 22#qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558823512 22*	Topic for 22#qutebrowser set by 26The-Compiler!~compiler@qutebrowser/dev/The-Compiler (24Mon May  6 13:45:16 2019)
+T 1558823512 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558823717 23*	b0f0 (~shtumf@cpe-31-15-172-72.cable.telemach.net23) has joined
+T 1558823970 24*	plexigras has quit (Ping timeout: 272 seconds)
+T 1558824083 19*	Now talking on 22#qutebrowser
+T 1558824083 22*	Topic for 22#qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558824083 22*	Topic for 22#qutebrowser set by 26The-Compiler!~compiler@qutebrowser/dev/The-Compiler (24Mon May  6 13:45:16 2019)
+T 1558824083 23*	bbugyi202_ (~bbugyi202@pool-173-71-68-161.cmdnnj.fios.verizon.net23) has joined
+T 1558824083 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558824109 24*	bbugyi202_ has quit (Client Quit)
+T 1558824430 19*	Now talking on 22#qutebrowser
+T 1558824430 22*	Topic for 22#qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558824430 22*	Topic for 22#qutebrowser set by 26The-Compiler!~compiler@qutebrowser/dev/The-Compiler (24Mon May  6 13:45:16 2019)
+T 1558824430 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558824430 23*	bbugyi222 (~bbugyi202@pool-173-71-68-161.cmdnnj.fios.verizon.net23) has joined
+T 1558824666 24*	bbugyi201 has quit (Quit: Leaving)
+T 1558825570 19*	Now talking on 22#qutebrowser
+T 1558825570 22*	Topic for 22#qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558825570 22*	Topic for 22#qutebrowser set by 26The-Compiler!~compiler@qutebrowser/dev/The-Compiler (24Mon May  6 13:45:16 2019)
+T 1558825570 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558825850 24*	linarcx has quit (Quit: WeeChat 2.4)
+T 1558826608 24*	b0f0 has quit (Quit: WeeChat 2.1)
+T 1558826830 19*	Now talking on 22#qutebrowser
+T 1558826830 22*	Topic for 22#qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558826830 22*	Topic for 22#qutebrowser set by 26The-Compiler!~compiler@qutebrowser/dev/The-Compiler (24Mon May  6 13:45:16 2019)
+T 1558826830 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558827035 19*	Now talking on 22#qutebrowser
+T 1558827035 22*	Topic for 22#qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558827035 22*	Topic for 22#qutebrowser set by 26The-Compiler!~compiler@qutebrowser/dev/The-Compiler (24Mon May  6 13:45:16 2019)
+T 1558827036 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558827257 19*	Now talking on 22#qutebrowser
+T 1558827257 22*	Topic for 22#qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558827257 22*	Topic for 22#qutebrowser set by 26The-Compiler!~compiler@qutebrowser/dev/The-Compiler (24Mon May  6 13:45:16 2019)
+T 1558827257 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558827318 19*	19Now talking on #qutebrowser
+T 1558827318 29*	29Topic for #qutebrowser 29is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558827318 29*	29Topic for #qutebrowser 29set by The-Compiler!~compiler@qutebrowser/dev/The-Compiler 29at Mon May  6 13:45:16 2019
+T 1558827318 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558827438 25»19»	19Now talking on #qutebrowser
+T 1558827438 29»22»	22Topic for #qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558827438 29»22»	22Topic for #qutebrowser set by The-Compiler!~compiler@qutebrowser/dev/The-Compiler at Mon May  6 13:45:16 2019
+T 1558827438 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558827513 25»19»	19Now talking on #qutebrowser
+T 1558827513 29»22»	22Topic for #qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558827513 29»22»	22Topic for #qutebrowser set by The-Compiler!~compiler@qutebrowser/dev/The-Compiler at Mon May  6 13:45:16 2019
+T 1558827513 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558828730 25»19»	19Now talking on #qutebrowser
+T 1558828730 29»22»	22Topic for #qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558828730 29»22»	22Topic for #qutebrowser set by The-Compiler!~compiler@qutebrowser/dev/The-Compiler at Mon May  6 13:45:16 2019
+T 1558828731 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558828937 25»19»	19Now talking on #qutebrowser
+T 1558828937 29»22»	22Topic for #qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558828937 29»22»	22Topic for #qutebrowser set by The-Compiler!~compiler@qutebrowser/dev/The-Compiler at Mon May  6 13:45:16 2019
+T 1558828937 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558829372 25»19»	19Now talking on #qutebrowser
+T 1558829372 29»22»	22Topic for #qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558829372 29»22»	22Topic for #qutebrowser set by The-Compiler!~compiler@qutebrowser/dev/The-Compiler at Mon May  6 13:45:16 2019
+T 1558829372 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558830183 31-26-25-19»	19neeasade (~neeasade@68.205.11.15219) has Joined #qutebrowser
+T 1558830941 31-26-25-19»	19bandithijo (~bandithij@unaffiliated/bandithijo19) has Joined #qutebrowser
+T 1558831348 21«23-24-31-	21Haudegen (~quassel@178.115.237.87.static.drei.at21) has Quit (Ping timeout: 259 seconds21)
+T 1558832030 28<191611winny28>	something i've noticed: when I use ddg, and open a link, then type H to go back to ddg search results, it will switch to Images. Anybody know why it does this?
+T 1558832128 28<191604demure28>	winny: works normally for me. perhaps you want to clear out your cookies/cache?
+T 1558832152 28<191611winny28>	it's possible. I wonder if DDG has a key event for "H" that does this
+T 1558832337 21«23-24-31-	21king_radical (~fuck@c-67-169-184-129.hsd1.ca.comcast.net21) has Quit (Ping timeout: 258 seconds21)
+T 1558832439 28<191613toofar28>	There is an issue about extra <Tab> key events coming from somewhere, but it doesn't go to images on tab for me https://github.com/qutebrowser/qutebrowser/issues/4579
+T 1558832624 21«23-24-31-	21bandithijo (~bandithij@unaffiliated/bandithijo21) has Quit (Quit: leaving21)
+T 1558833959 25»19»	19Now talking on #qutebrowser
+T 1558833959 29»22»	22Topic for #qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558833959 29»22»	22Topic for #qutebrowser set by The-Compiler!~compiler@qutebrowser/dev/The-Compiler at Mon May  6 13:45:16 2019
+T 1558833959 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558833968 21«23-24-31-	21Aelius (~Aelius@unaffiliated/aelius21) has Quit (Quit: quit21)
+T 1558834192 21«23-24-31-	21Hi-Angel (~Hi-Angel@broadband-188-32-15-112.ip.moscow.rt.ru21) has Quit (Ping timeout: 252 seconds21)
+T 1558834193 31-26-25-19»	19Aelius (~Aelius@unaffiliated/aelius19) has Joined #qutebrowser
+T 1558835659 28<191611arza28>	i've also ended up to images page with other keys for :back
+T 1558836714 31-26-25-19»	19tobiaswiese_ (~tobiaswie@wikipedia/Info-Screen19) has Joined #qutebrowser
+T 1558836802 21«23-24-31-	21tobiaswiese (~tobiaswie@wikipedia/Info-Screen21) has Quit (Ping timeout: 268 seconds21)
+T 1558836802 28»18»	tobiaswiese_ is now known as tobiaswiese
+T 1558838182 21«23-24-31-	21ranzpirat (~anon@unaffiliated/ranzpirat21) has Quit (Ping timeout: 272 seconds21)
+T 1558838660 21«23-24-31-	21Sajadi (~SaJaDi@213-225-35-222.nat.highway.a1.net21) has Quit (Remote host closed the connection21)
+T 1558838878 31-26-25-19»	19ranzpirat (~anon@unaffiliated/ranzpirat19) has Joined #qutebrowser
+T 1558840194 31-26-25-19»	19user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558840337 21«23-24-31-	21user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Remote host closed the connection21)
+T 1558841817 31-26-25-19»	19user202729 (~androirc@1.54.150.12019) has Joined #qutebrowser
+T 1558841982 31-26-25-19»	19Joschasa_ (~andre@i59F55126.versanet.de19) has Joined #qutebrowser
+T 1558842120 31-26-25-19»	19mord0d (~mord0d@gateway/tor-sasl/mord0d19) has Joined #qutebrowser
+T 1558842204 21«23-24-31-	21Joschasa (~andre@i59F676BC.versanet.de21) has Quit (Ping timeout: 268 seconds21)
+T 1558842206 28»18»	Joschasa_ is now known as Joschasa
+T 1558842453 31-26-25-19»	19batman_nair (~batman_na@111.92.74.23819) has Joined #qutebrowser
+T 1558842463 21«23-24-31-	21batman_nair (~batman_na@111.92.74.23821) has Quit (Remote host closed the connection21)
+T 1558842772 31-26-25-19»	19user2027299 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558843273 21«23-24-31-	21drymer (~drymer@unaffiliated/drymer21) has Quit (Read error: Connection reset by peer21)
+T 1558843306 21«23-24-31-	21user2027299 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Remote host closed the connection21)
+T 1558843368 31-26-25-19»	19drymer (~drymer@unaffiliated/drymer19) has Joined #qutebrowser
+T 1558843932 19<2819bbugyi222>	So I'm trying to bind '<<' to 'tab-move -', but qutebrowser binds '<' instead. Any idea why this may be happening?
+T 1558843948 19<2819bbugyi222>	I was able to successfully bind '>>' to 'tab-move +' btw.
+T 1558844009 19<2819bbugyi222>	It seems no matter how many left angle brackets I send to `bind`, it only ever reads one (e.g. `:bind <<<<<<<< tab-move -` acts like `:bind < tab-move -`).
+T 1558844228 28<191604toofar28>	You might have to do <Less><Less>
+T 1558844263 28<191604toofar28>	ref: https://doc.qt.io/archives/qt-4.8/qt.html#Key-enum
+T 1558844381 19<2819bbugyi222>	Nope. Same problem.
+T 1558844387 19<2819bbugyi222>	Thanks for trying to help though.
+T 1558844449 28<191604toofar28>	Oh yes I see what you mean
+T 1558844637 25»19»	19Now talking on #qutebrowser
+T 1558844637 29»22»	22Topic for #qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558844637 29»22»	22Topic for #qutebrowser set by The-Compiler!~compiler@qutebrowser/dev/The-Compiler at Mon May  6 13:45:16 2019
+T 1558844637 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/
+T 1558844692 21«23-24-31-	21bbugyi202 (~bbugyi202@67.207.92.15221) has Quit (Remote host closed the connection21)
+T 1558846968 31-26-25-19»	19RJ722 (~rahuljha@223.181.55.7319) has Joined #qutebrowser
+T 1558847076 04<arza04>04	bbugyi: https://github.com/qutebrowser/qutebrowser/pull/4578
+T 1558847167 19<2819bbugyi>	arza: Good eye. Thanks.
+T 1558847180 arza aramiscd
+T 1558848172 21«23-24-31-	21melpy (~melpy@gateway/tor-sasl/melpy21) has Quit (Quit: leaving21)
+T 1558848491 31-26-25-19»	19ArturSha1 (~ArturShai@212.112.100.8819) has Joined #qutebrowser
+T 1558849617 21«23-24-31-	21phenoble (~fthevisse@h2712310.stratoserver.net21) has Quit (Quit: ZNC 1.7.0 - https://znc.in21)
+T 1558849643 31-26-25-19»	19phenoble (~fthevisse@h2712310.stratoserver.net19) has Joined #qutebrowser
+T 1558849800 31-26-25-19»	19reinhardt (~reinhardt@p200300C48F0952000E5415FFFEABC6A6.dip0.t-ipconnect.de19) has Joined #qutebrowser
+T 1558850089 21«23-24-31-	21user202729 (~androirc@1.54.150.12021) has Quit (Remote host closed the connection21)
+T 1558850095 21«23-24-31-	21RJ722 (~rahuljha@223.181.55.7321) has Quit (Ping timeout: 246 seconds21)
+T 1558850929 31-26-25-19»	19king_radical (~fuck@c-67-169-184-129.hsd1.ca.comcast.net19) has Joined #qutebrowser
+T 1558853030 31-26-25-19»	19user202729 (~androirc@1.54.150.12019) has Joined #qutebrowser
+T 1558853261 31-26-25-19»	19linarcx (~linarcx@151.242.161.2319) has Joined #qutebrowser
+T 1558853952 21«23-24-31-	21linarcx (~linarcx@151.242.161.2321) has Quit (Ping timeout: 272 seconds21)
+T 1558853989 28<191611jgkamat28>	winny: yah I see it too. I can repro in chrome too though, so idk. Not firefox though
+T 1558853996 28<191611jgkamat28>	I 'fixed it' by disabling IAs completely which is a bit sad but less annoying
+T 1558854025 28<191611jgkamat28>	the reason is that when you search, ddg will redirect you to a url which contains a flag which forces images IAs for some reason (but not showing them). When you go back, it loads it with that flag, and images come up
+T 1558854211 31-26-25-19»	19user20272914 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558854240 28<191604user2027291428>	(what is IAs? I missed the context)
+T 1558854251 28<191611jgkamat28>	IA's are duckduckgo instant answers
+T 1558854287 28<191611jgkamat28>	http://ix.io/1K5w
+T 1558854355 28<191611jgkamat28>	also it only happens for some searches, which made it harder to pin down. I think only searches which had no other IAs available?
+T 1558855464 28<191604user2027291428>	I force web IA by setting the search engine URL as `https://duckduckgo.com/?ia=web&q={}`.
+T 1558855510 28<191604user2027291428>	Originally I was annoyed because it's not easy to edit the search query so I did that to force the query to go last.
+T 1558855647 28<191604user2027291428>	jgkamat: Is https://github.com/qutebrowser/qutebrowser/pull/4536/files#diff-72ead469bcd77266c2467a3c73c8addbL179 really faster? It's just a string (or the verification of the string is slow?)
+T 1558855666 28<191604user2027291428>	Of course it shouldn't hurt to use the cache, just asking.
+T 1558855710 28<191611jgkamat28>	user20272914: the cache is a small win, but the big difference is not generating that huge dict every time a key is pressed (or whenever that code runs)
+T 1558855732 28<191611jgkamat28>	the diff is a lie, the dict is so big, its smaller to diff the code moving around the dict
+T 1558855809 21«23-24-31-	21user20272914 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Remote host closed the connection21)
+T 1558856032 28<191613toofar28>	If I build sip and PyQt against 5.13 is the resulting wrapper supposed to have the new 5.13 APIs in it?
+T 1558856043 28<191613toofar28>	If not can I make it be so?
+T 1558856047 28<191611jgkamat28>	user202729: if you're just talking about the cache, I think the savings there comes from avoiding function calls and string validation
+T 1558856136 28<191611jgkamat28>	I think the PyQt5 snapshot will say it's at dev version 5.13 when it supports 5.13 features
+T 1558856143 28<191611jgkamat28>	but I'm not 100% sure about that
+T 1558856201 28<191613toofar28>	Hmm, I assumed it generated the bindings from the header files and the version number was just saying it wouldn't break
+T 1558856269 28<191611jgkamat28>	I'm not sure when the bindings are generated, they might be generated on compile or they might be pre-generated in the release
+T 1558856349 28<191607dive28>	Morning.  I've just had a look at the segfault in the venv when qt is installed on the system and I've got a list of libs in the venv that are linked to the qt5 libs in /usr/lib64/.
+T 1558856388 28<191607dive28>	That's after a full tox mkvenv-pypi which I understood to be a complete self comtained venv.
+T 1558856437 28<191607dive28>	Any ideas where to go with this?
+T 1558856532 28<191607dive28>	No rude comments!
+T 1558856536 28<191613toofar28>	delete it and try again?
+T 1558856555 28<191607dive28>	I've done that several times since I found the problem.
+T 1558856576 28<191611jgkamat28>	it's not fully self contained, for example, it uses the system libssl
+T 1558856578 28<191607dive28>	The libs in the venv are linked to the system ones.
+T 1558856587 28<191607dive28>	Yeah but they are all qt5
+T 1558856609 28<191607dive28>	I know other stuff isn't but the qt5 shouldn't be.
+T 1558856649 28<191607dive28>	is*
+T 1558856664 28<191611jgkamat28>	if qt5 uses a system library that is different enough it could be causing the crash
+T 1558856680 28<191607dive28>	But qt5 is using qt5 in the system
+T 1558856710 28<191607dive28>	So you can't have a different enough version of qt installed system wide.
+T 1558856716 28<191613toofar28>	I went to try it and it just complained that it couldn't find a package for PyQt5==5.12.2
+T 1558856738 28<191611jgkamat28>	I would grab the debug stacktrace then and report it to the qt devs depending on the stacktrace
+T 1558856744 28<191607dive28>	I have qt 5.9.8 installed system wide and that's too far different I suspect.
+T 1558856755 28<191611jgkamat28>	why use a venv if it's using the system qt though
+T 1558856767 28<191607dive28>	Do they make the venv files, or is that a tox/python thing?
+T 1558856781 28<191607dive28>	Because I can have the latest qt in the venv.
+T 1558856811 28<191611jgkamat28>	if the version of qt in the venv is newer than the system then it can't be using the system venv, right?
+T 1558856826 28<191607dive28>	It's trying to though.
+T 1558856849 28<191607dive28>	I moved libes out of /usr/lib64/ a few at a time and it stopped segfaulting.
+T 1558856864 31-26-25-19»	19linarcx (~linarcx@151.241.54.14619) has Joined #qutebrowser
+T 1558856887 28<191607dive28>	Look there's no error here.  I ran ldd on all the libs in the venv, sorted and have a nice list.
+T 1558857007 28<191613toofar28>	Oh, my error was because there is no i386 version on pypi, great
+T 1558857024 28<191607dive28>	http://tty1.uk/p/gnww4k
+T 1558857036 28<191611jgkamat28>	(generally, I would treat the pypi version as a last-resort, I've always found it very buggy/broken myself)
+T 1558857042 31-26-25-19»	19plexigras (plexigras@gateway/vpn/privateinternetaccess/plexigras19) has Joined #qutebrowser
+T 1558857059 28<191607dive28>	It's worked great for me, until I hit this.
+T 1558857087 28<191607dive28>	But I like to keep the system qt with the prop codecs built in case I need it.
+T 1558857205 28<191607dive28>	And since I maintain qt5 for slackware I really need it installed for support reasons.
+T 1558857284 28<191607dive28>	So who actually maintains the libraries that are installed with tox?
+T 1558857307 28<191611jgkamat28>	All the upstream developers. For PyQt5, the PyQt5 devs
+T 1558857312 28<191613toofar28>	This looks to be what it does https://github.com/qutebrowser/qutebrowser/blob/master/tox.ini#L65
+T 1558857347 28<191607dive28>	Yeah I read the tox.ini.
+T 1558857389 28<191607dive28>	What we need is a way to isolate the venv but still use the user settings.  No idea if that's possible or not.
+T 1558857468 28<191613toofar28>	I ran it in and amd64 chroot and they are they an not links in .venv/lib/python3.7/site-packages/PyQt5/Qt/lib/
+T 1558857498 28<191613toofar28>	*there and not links
+T 1558857502 28<191607dive28>	Hmm thinking that /etc/profile.d/qt5.sh might have something to do with it.
+T 1558857583 28<191607dive28>	But I thought that was only for compiling, not for using.
+T 1558857631 28<191607dive28>	toofar, what do you mean?
+T 1558857691 28<191613toofar28>	I ran tox -e mkvenv-pypi and the Qt libs are there (and not symlinks) for me
+T 1558857702 28<191607dive28>	You installed a .venv in a chroot, ran find for shared objects, listed them and ldd'd them all and none were linked to system libs?
+T 1558857744 28<191607dive28>	I'm not saying that the libs aren't there.  I'm saying that some of them are linked to system libs.
+T 1558857764 28<191607dive28>	That paste was the output from ldd all sorted.
+T 1558857798 28<191613toofar28>	Oh...
+T 1558857817 28<191607dive28>	It's pretty clear.
+T 1558857828 28<191607dive28>	brb
+T 1558857865 28<191613toofar28>	I did find .venv/lib/python3.7/site-packages/ -name '*.so' | xargs ldd | grep Qt | grep  /usr/lib/
+T 1558857888 28<191613toofar28>	And only got libQt5EglFSDeviceIntegration.so.5 and libQt5EglFsKmsSupport.so.5 back
+T 1558857930 28<191613toofar28>	it's late
+T 1558858056 28<191607dive28>	Try this find . -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF
+T 1558858074 28<191607dive28>	But you will need to sort them.
+T 1558858104 28<191607dive28>	Setting QT5DIR doesn't help, but I'm not sure where in the venv to set it to.
+T 1558858139 28<191607dive28>	There doesn't seem to be an exact duplicate of /usr/lib64/Qt5*
+T 1558858216 28<191613toofar28>	Not sure what I'm looking for but all the lines start with .venv
+T 1558858249 28<191613toofar28>	You can do LD_DEBUG=libs ldd .venv/lib/python3.7/site-packages/PyQt5/Qt/lib/libQt5Gui.so.5
+T 1558858269 28<191613toofar28>	Then look for the bit where it says "find library=libQt5Core.so.5" to see the search path
+T 1558858275 28<191613toofar28>	there's probably a better way
+T 1558858292 28<191607dive28>	There's not much point.  I've already found that they are linked.
+T 1558858305 28<191613toofar28>	But ldd is for dynamic links.
+T 1558858308 28<191607dive28>	Someone just used my pas to try to sign into gmail.
+T 1558858311 28<191607dive28>	pass
+T 1558858317 28<191607dive28>	brb need to sort that out.
+T 1558858333 28<191607dive28>	Yes I'm taling about dynamic links.
+T 1558858342 21«23-24-31-	21drymer (~drymer@unaffiliated/drymer21) has Quit (Read error: Connection reset by peer21)
+T 1558858451 31-26-25-19»	19drymer (~drymer@unaffiliated/drymer19) has Joined #qutebrowser
+T 1558859080 31-26-25-19»	19rtn (~lms@c-d0aed954.56550-0-757473696b74.bbcust.telenor.se19) has Joined #qutebrowser
+T 1558859165 28<191607dive28>	Hmm weird.  I think their imap server freaked out at a normal mail collection.
+T 1558859172 28<191607dive28>	Hopefully anyway.
+T 1558859209 28<191607dive28>	toofar, yes I'm talking about linking to libraries in /usr/lib64/
+T 1558859224 28<191607dive28>	That paste is ldd output.
+T 1558859737 28<191607dive28>	Well I found a fix.  I unset LD_LIBRARY_PATH
+T 1558859749 28<191607dive28>	Problem solved.
+T 1558859760 28<191613toofar28>	lol
+T 1558859806 28<191607dive28>	But it's still strange that they are linked to the system libs.
+T 1558860085 28<191613toofar28>	If you do objdump -x on one of the libs in the venv you will see RUNPATH is set but not RPATH
+T 1558860116 28<191613toofar28>	man ld.so says it goes RPATH -> LD_LIBRARY_PATH -> RUNPATH -> ld.so.cache -> /lib
+T 1558860122 28<191613toofar28>	for the search paths
+T 1558860128 28<191607dive28>	That would explain it then.
+T 1558860740 28<191607dive28>	Quite a few of them have RPATH set.
+T 1558860767 28<191607dive28>	41
+T 1558860922 21«23-24-31-	21linarcx (~linarcx@151.241.54.14621) has Quit (Quit: WeeChat 2.421)
+T 1558860940 21«23-24-31-	21chuugar (~charles@2001:41d0:a:3b33::121) has Quit (Quit: WeeChat 1.621)
+T 1558861083 28<191613toofar28>	Are those the same ones that ldd was resolving the wrong one for?
+T 1558861093 31-26-25-19»	19chuugar (~charles@2001:41d0:a:3b33::119) has Joined #qutebrowser
+T 1558861370 28<191607dive28>	I didn't check the names, I just grepped for it.
+T 1558861377 28<191607dive28>	bbl anyway.
+T 1558861975 31-26-25-19»	19Haudegen (~quassel@178.115.237.87.static.drei.at19) has Joined #qutebrowser
+T 1558862000 31-26-25-19»	19user20272940 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558862063 31-26-25-19»	19Hi-Angel (~Hi-Angel@broadband-188-32-15-112.ip.moscow.rt.ru19) has Joined #qutebrowser
+T 1558862190 31-26-25-19»	19user202729_ (~androirc@1.54.150.12019) has Joined #qutebrowser
+T 1558862328 21«23-24-31-	21user202729 (~androirc@1.54.150.12021) has Quit (Ping timeout: 245 seconds21)
+T 1558862426 21«23-24-31-	21Hi-Angel (~Hi-Angel@broadband-188-32-15-112.ip.moscow.rt.ru21) has Quit (Ping timeout: 272 seconds21)
+T 1558863220 21«23-24-31-	21king_radical (~fuck@c-67-169-184-129.hsd1.ca.comcast.net21) has Quit (Ping timeout: 268 seconds21)
+T 1558863231 31-26-25-19»	19linarcx (~linarcx@151.241.54.14619) has Joined #qutebrowser
+T 1558863429 28<191607dive28>	toofar, some of them match up, but I didn't check them all.
+T 1558863498 28<191607dive28>	Anyway it's fixed now.  I'm allowed a pebkac now and then.  I had a real issue in 5.9.8 fixed last week so it balances it out.
+T 1558863971 31-26-25-19»	19Hi-Angel (~Hi-Angel@broadband-188-32-15-112.ip.moscow.rt.ru19) has Joined #qutebrowser
+T 1558863982 21«23-24-31-	21user20272940 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Quit: Ping timeout (120 seconds)21)
+T 1558864968 31-26-25-19»	19user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558865476 21«23-24-31-	21user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Ping timeout: 258 seconds21)
+T 1558865820 31-26-25-19»	19Sajadi (~SaJaDi@213-225-35-222.nat.highway.a1.net19) has Joined #qutebrowser
+T 1558866820 21«23-24-31-	21user202729_ (~androirc@1.54.150.12021) has Quit (Remote host closed the connection21)
+T 1558866832 31-26-25-19»	19user202729_ (~androirc@1.54.150.12019) has Joined #qutebrowser
+T 1558866880 21«23-24-31-	21user202729_ (~androirc@1.54.150.12021) has Quit (Remote host closed the connection21)
+T 1558868404 31-26-25-19»	19arnidg- (~arnidg@89-160-144-246.du.xdsl.is19) has Joined #qutebrowser
+T 1558868458 28<191608arnidg-28>	For me, the URL bar does not update when I visit a new website unless I move the mouse over some link. Should this be the case or is this a bug?
+T 1558869512 28<191609digdug_28>	:version?
+T 1558869585 31-26-25-19»	19RJ722 (~rahuljha@223.181.118.4919) has Joined #qutebrowser
+T 1558871356 21«23-24-31-	21RJ722 (~rahuljha@223.181.118.4921) has Quit (Ping timeout: 272 seconds21)
+T 1558871577 28<191608arnidg-28>	https://paste.the-compiler.org/view/c825d8bc
+T 1558871581 31-26-25-19»	19user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558871586 31-26-25-19»	19RJ722 (~rahuljha@223.181.54.14519) has Joined #qutebrowser
+T 1558872062 28<191608arnidg-28>	https://www.youtube.com/watch?v=tLJoJliRcUE&feature=youtu.be
+T 1558872071 28<191608arnidg-28>	Here's a screen capture
+T 1558872103 21«23-24-31-	21user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Ping timeout: 245 seconds21)
+T 1558872929 21«23-24-31-	21edge563 (~edge563@gateway/tor-sasl/edge56321) has Quit (Ping timeout: 256 seconds21)
+T 1558873415 21«23-24-31-	21drymer (~drymer@unaffiliated/drymer21) has Quit (Read error: Connection reset by peer21)
+T 1558873476 31-26-25-19»	19drymer (~drymer@unaffiliated/drymer19) has Joined #qutebrowser
+T 1558873750 21«23-24-31-	21linarcx (~linarcx@151.241.54.14621) has Quit (Quit: WeeChat 2.421)
+T 1558875157 31-26-25-19»	19user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558875673 21«23-24-31-	21user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Quit: Ping timeout (120 seconds)21)
+T 1558875997 21«23-24-31-	21infty_ (~infty@aldebaran.pqrs.se21) has Quit (Remote host closed the connection21)
+T 1558876605 31-26-25-19»	19user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558876799 21«23-24-31-	21rtn (~lms@c-d0aed954.56550-0-757473696b74.bbcust.telenor.se21) has Quit (Read error: Connection reset by peer21)
+T 1558876827 31-26-25-19»	19rtn (~lms@c-d0aed954.56550-0-757473696b74.bbcust.telenor.se19) has Joined #qutebrowser
+T 1558877260 21«23-24-31-	21user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Quit: Ping timeout (120 seconds)21)
+T 1558877375 21«23-24-31-	21plexigras (plexigras@gateway/vpn/privateinternetaccess/plexigras21) has Quit (Ping timeout: 248 seconds21)
+T 1558878139 31-26-25-19»	19user202729 (~androirc@1.54.150.12019) has Joined #qutebrowser
+T 1558878248 31-26-25-19»	19user20272999 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558878248 21«23-24-31-	21user20272999 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Remote host closed the connection21)
+T 1558878655 21«23-24-31-	21Hi-Angel (~Hi-Angel@broadband-188-32-15-112.ip.moscow.rt.ru21) has Quit (Ping timeout: 246 seconds21)
+T 1558881044 21«23-24-31-	21user202729 (~androirc@1.54.150.12021) has Quit (Remote host closed the connection21)
+T 1558881125 31-26-25-19»	19melpy (~melpy@gateway/tor-sasl/melpy19) has Joined #qutebrowser
+T 1558881186 21«23-24-31-	21melpy (~melpy@gateway/tor-sasl/melpy21) has Quit (Client Quit21)
+T 1558881193 31-26-25-19»	19edge563 (~edge563@gateway/tor-sasl/edge56319) has Joined #qutebrowser
+T 1558881334 21«23-24-31-	21nullcone (uid11626@gateway/web/irccloud.com/x-frlhdrnbaepnrpnk21) has Quit (Quit: Connection closed for inactivity21)
+T 1558881400 31-26-25-19»	19user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558881567 21«23-24-31-	21user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Client Quit21)
+T 1558881798 31-26-25-19»	19melpy (~melpy@gateway/tor-sasl/melpy19) has Joined #qutebrowser
+T 1558882088 31-26-25-19»	19user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12019) has Joined #qutebrowser
+T 1558882095 31-26-25-19»	19derk0pf (~derk0pf@p5497B777.dip0.t-ipconnect.de19) has Joined #qutebrowser
+T 1558882098 21«23-24-31-	21user202729 (01369678@gateway/web/cgi-irc/kiwiirc.com/ip.1.54.150.12021) has Quit (Remote host closed the connection21)
+T 1558882290 21«23-24-31-	21derk0pf (~derk0pf@p5497B777.dip0.t-ipconnect.de21) has Quit (Client Quit21)
+T 1558882874 21«23-24-31-	21SCHAPiE (~schapie@unaffiliated/schaap13721) has Quit (Quit: ZNC - https://znc.in21)
+T 1558883551 31-26-25-19»	19SCHAPiE (~schapie@unaffiliated/schaap13719) has Joined #qutebrowser
+T 1558883972 21«23-24-31-	21neeasade (~neeasade@68.205.11.15221) has Quit (Ping timeout: 272 seconds21)
+T 1558884149 31-26-25-19»	19KunaPrime (~KunaPrime@78.134.243.6619) has Joined #qutebrowser
+T 1558884179 28<191611jgkamat28>	I've never seen it before, but maybe it's some qt5.12 thing
+T 1558884231 28<191611jgkamat28>	do you have --debug logs on a page load when that happens?
+T 1558884241 21«23-24-31-	21SCHAPiE (~schapie@unaffiliated/schaap13721) has Quit (Quit: ZNC - https://znc.in21)
+T 1558884553 31-26-25-19»	19SCHAPiE (~schapie@unaffiliated/schaap13719) has Joined #qutebrowser
+T 1558885118 31-26-25-19»	19epheo (~epheo@37.165.4.2719) has Joined #qutebrowser
+T 1558885238 31-26-25-19»	19bandithijo (~bandithij@unaffiliated/bandithijo19) has Joined #qutebrowser
+T 1558885543 21«23-24-31-	21epheo (~epheo@37.165.4.2721) has Quit (Read error: Connection reset by peer21)
+T 1558885547 31-26-25-19»	19epheo_ (~epheo@92.184.117.19119) has Joined #qutebrowser
+T 1558885718 28<191607dive28>	I've just noticed something like that too.  The old tag title remains after locading a page.
+T 1558885724 28<191607dive28>	loading
+T 1558886263 21«23-24-31-	21SCHAPiE (~schapie@unaffiliated/schaap13721) has Quit (Quit: ZNC - https://znc.in21)
+T 1558886360 21«23-24-31-	21reinhardt (~reinhardt@p200300C48F0952000E5415FFFEABC6A6.dip0.t-ipconnect.de21) has Quit (Quit: Leaving21)
+T 1558886486 31-26-25-19»	19SCHAPiE (~schapie@unaffiliated/schaap13719) has Joined #qutebrowser
+T 1558886839 31-26-25-19»	19plexigras (plexigras@gateway/vpn/privateinternetaccess/plexigras19) has Joined #qutebrowser
+T 1558887013 21«23-24-31-	21random_yanek (~random_ya@87.116.237.14621) has Quit (Ping timeout: 246 seconds21)
+T 1558887385 21«23-24-31-	21epheo_ (~epheo@92.184.117.19121) has Quit (Remote host closed the connection21)
+T 1558887405 31-26-25-19»	19epheo_ (~epheo@92.184.117.19119) has Joined #qutebrowser
+T 1558887424 31-26-25-19»	19random_yanek (~random_ya@host-89-230-171-114.dynamic.mm.pl19) has Joined #qutebrowser
+T 1558887468 21«23-24-31-	21SCHAPiE (~schapie@unaffiliated/schaap13721) has Quit (Ping timeout: 272 seconds21)
+T 1558887652 21«23-24-31-	21drymer (~drymer@unaffiliated/drymer21) has Quit (Max SendQ exceeded21)
+T 1558887717 31-26-25-19»	19drymer (~drymer@unaffiliated/drymer19) has Joined #qutebrowser
+T 1558887885 31-26-25-19»	19SCHAPiE (~schapie@unaffiliated/schaap13719) has Joined #qutebrowser
+T 1558888155 21«23-24-31-	21maailmankaikkeus (~universum@5.2.64.6221) has Quit (Quit: Reconnecting21)
+T 1558888164 31-26-25-19»	19universumi (~universum@unaffiliated/universumi19) has Joined #qutebrowser
+T 1558888191 21«23-24-31-	21bandithijo (~bandithij@unaffiliated/bandithijo21) has Quit (Ping timeout: 248 seconds21)
+T 1558888823 31-26-25-19»	19user202729 (~androirc@1.54.150.12019) has Joined #qutebrowser
+T 1558888966 21«23-24-31-	21epheo_ (~epheo@92.184.117.19121) has Quit (Ping timeout: 246 seconds21)
+T 1558889008 21«23-24-31-	21rtn (~lms@c-d0aed954.56550-0-757473696b74.bbcust.telenor.se21) has Quit (Read error: Connection reset by peer21)
+T 1558889091 31-26-25-19»	19epheo (~epheo@92.184.116.10819) has Joined #qutebrowser
+T 1558889653 21«23-24-31-	21user202729 (~androirc@1.54.150.12021) has Quit (Ping timeout: 245 seconds21)
+T 1558889678 21«23-24-31-	21epheo (~epheo@92.184.116.10821) has Quit (Ping timeout: 245 seconds21)
+T 1558889806 31-26-25-19»	19linarcx (~linarcx@151.241.54.14619) has Joined #qutebrowser
+T 1558890018 21«23-24-31-	21ArturSha1 (~ArturShai@212.112.100.8821) has Quit (Ping timeout: 244 seconds21)
+T 1558890210 31-26-25-19»	19rtn (~lms@c-d0aed954.56550-0-757473696b74.bbcust.telenor.se19) has Joined #qutebrowser
+T 1558890837 21«23-24-31-	21mord0d (~mord0d@gateway/tor-sasl/mord0d21) has Quit (Remote host closed the connection21)
+T 1558890866 31-26-25-19»	19mord0d (~mord0d@gateway/tor-sasl/mord0d19) has Joined #qutebrowser
+T 1558892066 28<191609digdug_28>	cool! another lobsterian!
+T 1558892535 31-26-25-19»	19nullcone (uid11626@gateway/web/irccloud.com/x-udqoordlnxktafzt19) has Joined #qutebrowser
+T 1558893145 21«23-24-31-	21RJ722 (~rahuljha@223.181.54.14521) has Quit (Ping timeout: 258 seconds21)
+T 1558893835 21«23-24-31-	21linarcx (~linarcx@151.241.54.14621) has Quit (Quit: WeeChat 2.421)
+T 1558893853 31-26-25-19»	19linarcx (~linarcx@151.241.54.14619) has Joined #qutebrowser
+T 1558894283 31-26-25-19»	19neeasade (~neeasade@68.205.11.15219) has Joined #qutebrowser
+T 1558894396 31-26-25-19»	19einveru (~einveru@ip72-211-87-237.no.no.cox.net19) has Joined #qutebrowser
+T 1558895007 31-26-25-19»	19rememberYou (~user@unaffiliated/rememberyou19) has Joined #qutebrowser
+T 1558895516 31-26-25-19»	19RJ722 (~rahuljha@223.181.118.4919) has Joined #qutebrowser
+T 1558897530 21«23-24-31-	21neeasade (~neeasade@68.205.11.15221) has Quit (Remote host closed the connection21)
+T 1558899304 28<191608arnidg-28>	there are dozens of us!
+T 1558899811 28<191608arnidg-28>	jgkamat: Here's with `--debug` https://www.youtube.com/watch?v=rHJTBui_2bY&feature=youtu.be
+T 1558900004 21«23-24-31-	21Copenhagen_Bram (~elonsatos@unaffiliated/elon-satoshi/x-279455521) has Quit (Read error: Connection reset by peer21)
+T 1558900034 21«23-24-31-	21rememberYou (~user@unaffiliated/rememberyou21) has Quit (Quit: ERC (IRC client for Emacs 26.2)21)
+T 1558900389 31-26-25-19»	19Copenhagen_Bram (~elonsatos@unaffiliated/elon-satoshi/x-279455519) has Joined #qutebrowser
+T 1558900494 31-26-25-19»	19rememberYou (~user@unaffiliated/rememberyou19) has Joined #qutebrowser
+T 1558900853 21«23-24-31-	21nullcone (uid11626@gateway/web/irccloud.com/x-udqoordlnxktafzt21) has Quit (Quit: Connection closed for inactivity21)
+T 1558902360 21«23-24-31-	21rememberYou (~user@unaffiliated/rememberyou21) has Quit (Quit: ERC (IRC client for Emacs 26.2)21)
+T 1558902672 21«23-24-31-	21drymer (~drymer@unaffiliated/drymer21) has Quit (Read error: Connection reset by peer21)
+T 1558902695 28<191610winny28>	jgkamat: thank you for explaining that weird behavior. It really threw me for a loop
+T 1558902741 31-26-25-19»	19drymer (~drymer@unaffiliated/drymer19) has Joined #qutebrowser
+T 1558902870 31-26-25-19»	19treble (~treble@unaffiliated/treble19) has Joined #qutebrowser
+T 1558903039 31-26-25-19»	19bandithijo (~bandithij@unaffiliated/bandithijo19) has Joined #qutebrowser
+T 1558903125 21«23-24-31-	21bandithijo (~bandithij@unaffiliated/bandithijo21) has Quit (Client Quit21)
+T 1558903600 21«23-24-31-	21RJ722 (~rahuljha@223.181.118.4921) has Quit (Read error: Connection reset by peer21)
+T 1558903897 31-26-25-19»	19nullcone (uid11626@gateway/web/irccloud.com/x-vdutomeotjzbqckf19) has Joined #qutebrowser
+T 1558904222 28<191611jgkamat28>	man I really love reading text off videos
+T 1558904239 28<191611jgkamat28>	but I noticed that the wrong text is blue, so for some reason it thinks you're hovering on the old page
+T 1558904946 28<191611jgkamat28>	arnidg-: if you can, can you apply this diff and do it again (with --debug still) http://paste.debian.net/plain/1084105
+T 1558905051 21«23-24-31-	21linarcx (~linarcx@151.241.54.14621) has Quit (Quit: WeeChat 2.421)
+T 1558905079 28<191611jgkamat28>	also, can you try it in --temp-basedir and see if you have the issue there?
+T 1558905093 28<191608arnidg-28>	on it
+T 1558906090 28<191608arnidg-28>	Neither works for me
+T 1558906103 28<191611jgkamat28>	the patch dosen't change any behavior it's debugging information
+T 1558906109 28<191608arnidg-28>	oh
+T 1558906601 28<191608arnidg-28>	One interesting thing is that the website I get in the corner is sometimes (always?) a link on the site. One time it was a link to the Google play store for example.
+T 1558906619 28»18»	jokke2 is now known as jokke
+T 1558906630 21«23-24-31-	21jokke (~jokke@jokke.space21) has Quit (Quit: WeeChat 2.421)
+T 1558906639 28<191611jgkamat28>	that would make sense to me, my guess is that qt is sending us fake hover events for some reason on a page load
+T 1558906653 31-26-25-19»	19jokke (~jokke@jokke.space19) has Joined #qutebrowser
+T 1558906805 28<191608arnidg-28>	video: https://youtu.be/rwr-8FG2PBw
+T 1558906810 28<191608arnidg-28>	log: https://paste.the-compiler.org/view/raw/179c30fb
+T 1558906852 28<191611jgkamat28>	don't think the patch was applied, I don't see any of the messages from the patch
+T 1558906992 28<191608arnidg-28>	yeah i applied it to the wrong folder
+T 1558907066 21«23-24-31-	21Sajadi (~SaJaDi@213-225-35-222.nat.highway.a1.net21) has Quit (Quit: Mozilla sold out to Google... sellout losers - Long live Pale Moon and Ambassador :)21)
+T 1558907335 28<191608arnidg-28>	https://paste.the-compiler.org/view/raw/b02dedc0
+T 1558907561 28<191611jgkamat28>	http://ix.io/1K9S
+T 1558907601 28<191611jgkamat28>	yah, for some reason we're getting a hover event right after page load. Sounds like either a qt bug or something in your wm config confusing qt
+T 1558907634 28<191611jgkamat28>	does it happen when the mouse is not on the qb window at all?
+T 1558907801 28<191608arnidg-28>	Yes, it happens when the mouse is outside of the qb window.
+T 1558907955 28<191608arnidg-28>	I also tried without the `unclutter` daemon which hides the mouse cursor when inactive, but it still happens
+T 1558908332 21«23-24-31-	21plexigras (plexigras@gateway/vpn/privateinternetaccess/plexigras21) has Quit (Ping timeout: 252 seconds21)
+T 1558909471 21«23-24-31-	21einveru (~einveru@ip72-211-87-237.no.no.cox.net21) has Quit (Ping timeout: 248 seconds21)
+T 1558909542 31-26-25-19»	19einveru (~einveru@ip72-211-87-237.no.no.cox.net19) has Joined #qutebrowser
+T 1558910121 31-26-25-19»	19sudoforge (~sudoforge@c-73-71-179-96.hsd1.ca.comcast.net19) has Joined #qutebrowser
+T 1558910678 21«23-24-31-	21rtn (~lms@c-d0aed954.56550-0-757473696b74.bbcust.telenor.se21) has Quit (Ping timeout: 245 seconds21)
+T 1558910978 21«23-24-31-	21Haudegen (~quassel@178.115.237.87.static.drei.at21) has Quit (Ping timeout: 245 seconds21)
+T 1558911916 31-26-25-19»	19epheo (~epheo@5.18.184.24719) has Joined #qutebrowser
+T 1558912301 21«23-24-31-	21edge563 (~edge563@gateway/tor-sasl/edge56321) has Quit (Ping timeout: 256 seconds21)
+T 1558912505 31-26-25-19»	19edge563 (~edge563@gateway/tor-sasl/edge56319) has Joined #qutebrowser
+T 1558914333 20«21-23-24-	20Unode (~Unode@unaffiliated/unode20) has Left #qutebrowser ("WeeChat 2.3"20)
+T 1558914757 21«23-24-31-	21xelxebar (~xelxebar@gateway/tor-sasl/xelxebar21) has Quit (Remote host closed the connection21)
+T 1558914789 31-26-25-19»	19xelxebar (~xelxebar@gateway/tor-sasl/xelxebar19) has Joined #qutebrowser
+T 1558915283 21«23-24-31-	21chrissl (~chris@80-110-34-172.static.upcbusiness.at21) has Quit (Ping timeout: 244 seconds21)
+T 1558915332 31-26-25-19»	19chrissl (~chris@80-110-34-172.static.upcbusiness.at19) has Joined #qutebrowser
+T 1558915632 28-21Notice28-	21{29from SaslServ21} the_bugyi_man!~bbugyi200@pool-173-72-22-163.cmdnnj.fios.verizon.net has just authenticated as you (bbugyi200)
+T 1558915638 31-26-25-19»	19the_bugyi_man (~bbugyi200@pool-173-72-22-163.cmdnnj.fios.verizon.net19) has Joined #qutebrowser
+T 1558915686 21«23-24-31-	21edge563 (~edge563@gateway/tor-sasl/edge56321) has Quit (Quit: edge56321)
+T 1558916384 31-26-25-19»	19bbugyi202 (~bbugyi200@pool-173-72-22-163.cmdnnj.fios.verizon.net19) has Joined #qutebrowser
+T 1558916384 25»19»	19Now talking on #qutebrowser
+T 1558916384 29»22»	22Topic for #qutebrowser is: Current version: v1.6.2 - https://www.qutebrowser.org/ - Blog: https://blog.qutebrowser.org/ - Mailinglist: https://s.cmpl.cc/quteml - Roadmap: https://s.cmpl.cc/qute2019 - Pastebin: https://p.cmpl.cc/ - #qutebrowser-dev for github/travis bots; #qutebrowser-offtopic for offtopic
+T 1558916384 29»22»	22Topic for #qutebrowser set by The-Compiler!~compiler@qutebrowser/dev/The-Compiler at Mon May  6 13:45:16 2019
+T 1558916384 22*	Channel 22#qutebrowser url: 24https://www.qutebrowser.org/

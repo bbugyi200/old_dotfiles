@@ -34,6 +34,7 @@ search_aliases = {
     'cs': 'Computer Science',
     'de': 'Debian',
     'dep': 'Debian Buster',
+    'en': 'Evernote',
     'fcl': 'from the command-line',
     'ge': 'Gentoo',
     'gh': 'GitHub',
@@ -42,7 +43,7 @@ search_aliases = {
     'ha': 'Haskell',
     'hzd': 'Horizon: Zero Dawn',
     'js': 'JavaScript',
-    'lcl': 'on Linux from the command-line',
+    'lcl': 'Linux from the command-line',
     'lx': 'Linux',
     'mac': 'MacOS',
     'mf': 'Modern Family',
@@ -184,6 +185,9 @@ command_aliases = {
     'wt': 'spawn wtitle',
 }
 
+for i in range(1, 21):
+    command_aliases['b{}'.format(i)] = 'buffer {}'.format(i)
+
 for k, v in command_aliases.items():
     c.aliases[k] = v
 
@@ -194,8 +198,8 @@ for k, v in command_aliases.items():
 c.bindings.commands = {}  # Clears all previously set user bindings.
 
 ########## Unbinds
-unbound_nkeys: List[str] = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'gf', 'M', ]
-unbound_ikeys: List[str] = []
+unbound_nkeys: List[str] = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'gf', 'gl', 'gr', 'M', ]
+unbound_ikeys: List[str] = ['<Ctrl+e>']
 
 for unbound_keys, mode in [(unbound_nkeys, 'normal'), (unbound_ikeys, 'insert')]:
     for keys in unbound_keys:
@@ -225,6 +229,7 @@ cbind('<Ctrl-f>', 'edit-command --run')
 cbind('<Ctrl-y>', 'fake-key --global <Return>V$y')
 
 # >>>>>>> INSERT
+ibind('<Ctrl-f>', 'open-editor')
 ibind('<Ctrl-i>', 'spawn -d qute-pass-add {url}')
 ibind('<Alt-i>', 'spawn --userscript qute-pass')
 ibind('<Ctrl-n>', 'fake-key -g <Down>')
@@ -260,6 +265,7 @@ bind('b', 'quickmark-save')
 bind('B', 'bookmark-add --toggle')
 bind('c', 'yank selection')
 bind('C', 'tab-clone')
+bind('dl', 'tab-close')
 bind('D', 'download')
 bind(',e', 'spawn --userscript searchbar-command')
 bind('gc', 'spawn google-chrome {url}')
@@ -268,6 +274,7 @@ bind('gs', 'view-source')
 bind(',g', 'spawn --userscript google')
 bind(',G', 'spawn --userscript google -t')
 bind('gi', 'hint inputs')
+bind('gl', 'tab-focus last')
 bind(',h', 'set-cmd-text -s :help')
 bind(',H', 'set-cmd-text -s :help -t')
 bind(',m', 'spawn --userscript view_in_umpv -d')
@@ -293,8 +300,8 @@ bind('tg', 'set-cmd-text -s :tab-give')
 bind('v', 'enter-mode passthrough')
 bind('V', 'enter-mode caret')
 bind('w-', 'window-only')
-bind('x', 'tab-close')
-bind('X', 'tab-close -o')
+bind('x', 'tab-close -n')
+bind('X', 'tab-close -p')
 bind(',Y', 'spawn ytcast {url}', 'message-info "Casting YouTube to chromecast..."')
 bind(';Y', 'hint links spawn -v ytcast {hint-url}', 'message-info "Casting YouTube to chromecast..."')
 bind('Y', 'fake-key --global v$y')
@@ -310,6 +317,8 @@ bind('{', 'navigate prev -t')
 bind('}', 'navigate next -t')
 bind('[', 'spawn winstack prev')
 bind(']', 'spawn winstack next')
+bind('>', 'tab-move +')
+bind('<', 'tab-move -')
 # -------------------------
 # ----- Miscellaneous -----
 # -------------------------

@@ -13,9 +13,9 @@ from types import *  # noqa: F401
 
 import gutils
 
-############################################################################################
-#  gutils library: https://github.com/bbugyi200/scripts/tree/master/modules/python/gutils  #
-############################################################################################
+##########################################################################
+# https://github.com/bbugyi200/scripts/tree/master/modules/python/gutils #
+##########################################################################
 
 log = gutils.logging.getEasyLogger(__name__)
 scriptname = os.path.basename(os.path.realpath(__file__))

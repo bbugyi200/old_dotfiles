@@ -70,9 +70,11 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="names-visible" type="array">
         <value type="string" value="vlc"/>
+        <value type="string" value="tusk"/>
         <value type="string" value="google-chrome"/>
         <value type="string" value="system-config-printer"/>
         <value type="string" value="networkmanager applet"/>
+        <value type="string" value="hexchat"/>
         <value type="string" value="clipman"/>
         <value type="string" value="dropbox"/>
         <value type="string" value="xfce4-power-manager"/>

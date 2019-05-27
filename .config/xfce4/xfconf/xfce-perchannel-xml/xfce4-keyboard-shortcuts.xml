@@ -36,7 +36,6 @@
       </property>
       <property name="&lt;Alt&gt;w" type="string" value="wmctrl -c :ACTIVE:"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;o" type="string" value="zopen"/>
-      <property name="&lt;Alt&gt;t" type="string" value="task_new_inbox_item"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;&lt;Super&gt;s" type="string" value="sudo shutdown now"/>
       <property name="&lt;Shift&gt;&lt;Alt&gt;l" type="string" value="debian-suspend"/>
       <property name="&lt;Primary&gt;space" type="string" value="debian-close-notifications"/>
@@ -70,6 +69,7 @@
       <property name="&lt;Alt&gt;u" type="string" value="winstack prev"/>
       <property name="&lt;Alt&gt;minus" type="string" value="wnotify"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;minus" type="string" value="wtoggle"/>
+      <property name="&lt;Alt&gt;t" type="string" value="new_enote_task"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

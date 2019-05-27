@@ -32,10 +32,10 @@ tabs:
     max_width: 250
     mousewheel_switching: false
     new_position:
-        related: next
-        unrelated: next
+        related: last
+        unrelated: last
     position: top
-    select_on_remove: next
+    select_on_remove: last-used
     show: always
     title:
         format_pinned: "[{index}]"

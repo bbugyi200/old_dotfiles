@@ -1,0 +1,143 @@
+// <!-- <mdb:mork:z v="1.4"/> -->
+< <(a=c)> // (f=iso-8859-1)
+  (B8=ProtoThreadFlags)(B9=MRUTime)(BA=folderName)(BB=X-GM-MSGID)
+  (BC=X-GM-THRID)(BD=X-GM-LABELS)(BE=replyTo)(BF=preview)(C0=storeToken)
+  (C1=gloda-id)(C2=gloda-dirty)(C3=junkscore)(C4=keywords)
+  (80=ns:msg:db:row:scope:msgs:all)(81=subject)(82=sender)(83=message-id)
+  (84=references)(85=recipients)(86=date)(87=size)(88=flags)(89=priority)
+  (8A=label)(8B=statusOfset)(8C=numLines)(8D=ccList)(8E=bccList)
+  (8F=msgThreadId)(90=threadId)(91=threadFlags)(92=threadNewestMsgDate)
+  (93=children)(94=unreadChildren)(95=threadSubject)(96=msgCharSet)
+  (97=ns:msg:db:table:kind:msgs)(98=ns:msg:db:table:kind:thread)
+  (99=ns:msg:db:table:kind:allthreads)
+  (9A=ns:msg:db:row:scope:threads:all)(9B=threadParent)(9C=threadRoot)
+  (9D=msgOffset)(9E=offlineMsgSize)
+  (9F=ns:msg:db:row:scope:dbfolderinfo:all)
+  (A0=ns:msg:db:table:kind:dbfolderinfo)(A1=numMsgs)(A2=numNewMsgs)
+  (A3=folderSize)(A4=expungedBytes)(A5=folderDate)(A6=highWaterKey)
+  (A7=mailboxName)(A8=UIDValidity)(A9=totPendingMsgs)
+  (AA=unreadPendingMsgs)(AB=expiredMark)(AC=version)(AD=forceReparse)
+  (AE=fixedBadRefThreading)(AF=onlineName)(B0=highestModSeq)
+  (B1=imapFlags)(B2=charSetOverride)(B3=charSet)(B4=highestRecordedUID)
+  (B5=ns:msg:db:row:scope:pending:all)(B6=ns:msg:db:table:kind:pending)
+  (B7=dateReceived)>
+<(8D=453e)(8A=5ceac56e)(81=0)(80=1)>
+[1:m(^9C^8D)(^90^8D)(^92^8A)(^91=0)(^93=1)(^94=1)]
+<(9A=453f)(A4=5ceacf89)(A0=3)>[2:m(^9C^9A)(^90^9A)(^92^A4)(^91=0)(^93=3)
+    (^94=3)]
+<(AD=4542)(AB=5ceae23b)>[3:m(^9C^AD)(^90^AD)(^92^AB)(^91=0)(^93=1)(^94=1)]
+
+<(AF=80)(87=bryanbugyi34@gmail.com)(88=TEST)(89
+    =201905261657.x4QGvIgA010618@athena.fios-router.home)(8B=3ed)(8C
+    =ffffffff)(86=)(B0=440)(B1=15)(BD
+    =Rub the Pig's Belly From - Sun May 26 20:02:21 2019 X-Mozilla-Status: 000\
+1 X-Mozilla-Status2: 00000000 Delivered-To: bryanbugyi34@gmail.com Received: b\
+y 2002:a5d:504f:0:0:0:0:0 with SMTP id h15csp5372509wrt; Sun, 26 May 2019 10:4\
+0:14 -0700 (PDT\) X-Google-)(B3=90)(8F
+    =robert7/nixnote2 <reply+AC55QFVHJ2IPBWUXFIV2QYV27AA73EVBNHHBVPE6Q4@reply.\
+github.com>)(90=Robert Spiegel <notifications@github.com>)(91
+    =robert7/nixnote2 <nixnote2@noreply.github.com>)(92
+    =Bryan Bugyi <bryanbugyi34@gmail.com>, Author <author@noreply.github.com>)
+  (94
+    =[robert7/nixnote2] Update README to include installation instructions for\
+ Gentoo Linux (#105\))(95
+    =robert7/nixnote2/pull/105/review/242048920@github.com)(96
+    =<robert7/nixnote2/pull/105@github.com>)(97=5ceacf7d)(98=UTF-8)
+  (99=1ac3)(B2=1088)(B4=1b16)(B5=79)(9C
+    =robert7/nixnote2 <reply+AC55QFW4RG3GDXPNAYSPCGN27ABALEVBNHHBVPE6Q4@reply.\
+github.com>)(9D
+    =robert7/nixnote2/pull/105/issue_event/2367919959@github.com)(9E
+    =5ceacf85)(9F=1bfa)(B6=1f56)(B7=8022)(B8=1c4d)(B9=73)(A2
+    =robert7/nixnote2 <reply+AC55QFUR5URN6UXSXQP2LKF27ABATEVBNHHBVPE6Q4@reply.\
+github.com>)(A3=robert7/nixnote2/pull/105/c496018226@github.com)(A5=1a40)
+  (BA=3ba3)(BB=15267)(BC=1a93)(A8=Feedspot Today <nobody@e.feedspot.com>)
+  (A9
+    =Python Logging: A Stroll Through the Source Code, Interactive Data Visual\
+ization in Python With Bokeh,..)(AA
+    =9932722381c2ed48370af66e346723be@e.feedspot.com)(A6=4)(AC=1d201)>
+{1:^80 {(k^97:c)(s=9)} 
+  [453E(^88=80)(^8B=0)(^82^87)(^85^87)(^81^88)(^83^89)(^B7^8A)(^86^8A)
+    (^89=1)(^87^8B)(^9B^8C)(^8F^8D)(^B8=0)(^BB=)(^BC=)(^BD=)(^9D=0)
+    (^C0=0)(^9E^B0)(^8C=15)(^BF^BD)]
+  [453F(^88=90)(^BE^8F)(^8B=0)(^82^90)(^85^91)(^8D^92)(^81^94)(^83^95)
+    (^84^96)(^B7^97)(^86^97)(^89=1)(^96^98)(^87^99)(^9B^8C)(^8F^9A)
+    (^B8=0)(^BB=)(^BC=)(^BD=)(^9D^B0)(^C0^B2)(^9E^B4)(^8C=79)]
+  [4540(^88=90)(^BE^9C)(^8B=0)(^82^90)(^85^91)(^8D^92)(^81^94)(^83^9D)
+    (^84^96)(^B7^9E)(^86^9E)(^89=1)(^96^98)(^87^9F)(^9B^9A)(^8F^9A)
+    (^B8=0)(^BB=)(^BC=)(^BD=)(^9D^B6)(^C0^B7)(^9E^B8)(^8C=73)]
+  [4541(^88=90)(^BE^A2)(^8B=0)(^82^90)(^85^91)(^8D^92)(^81^94)(^83^A3)
+    (^84^96)(^B7^A4)(^86^A4)(^89=1)(^96^98)(^87^A5)(^9B^9A)(^8F^9A)
+    (^B8=0)(^BB=)(^BC=)(^BD=)(^9D^BA)(^C0^BB)(^9E^BC)(^8C=73)]
+  [4542(^88=0)(^8B=0)(^82^A8)(^85^87)(^81^A9)(^83^AA)(^B7^AB)(^86^AB)
+    (^89=4)(^96^98)(^87^AC)(^9B^8C)(^8F^AD)(^B8=0)(^BB=)(^BC=)(^BD=)]}
+{453E:^80 {(k^98:c)(s=9)1:m } 453E }
+{453F:^80 {(k^98:c)(s=9)2:m } 453F 4540 4541 }
+{4542:^80 {(k^98:c)(s=9)3:m } 4542 }
+{FFFFFFFD:^9A {(k^99:c)(s=9)} [453E(^95^88)]
+  [453F(^95^94)]
+  [4542(^95^A9)]}
+
+<(82=INBOX)(83=88083014)(85=ee00)(AE=5)(8E=1558915341)>
+{1:^9F {(k^A0:c)(s=9)} 
+  [1(^AC=1)(^AD=0)(^AE=1)(^AF^82)(^A7^82)(^88^83)(^B0=)(^B1^85)(^A8=1)
+    (^B4^AD)(^A1=5)(^A2=5)(^A6^AD)(^B9^8E)]}
+
+@$${2{@
+@$$}2}@
+
+@$${3{@
+<(BE=20)>[453E:^80(^C1=20)]
+<(BF=22)>[453F:^80(^C1=22)]
+<(C0=23)>[4540:^80(^C1=23)]
+<(C1=24)>[4541:^80(^C1=24)]
+@$$}3}@
+
+@$${4{@
+<(C2=5636)(C3=22070)(C4=1d254)(C5=782)>
+[-4542:^80(^88=80)(^8B=0)(^82^A8)(^85^87)(^81^A9)(^83^AA)(^B7^AB)(^86^AB)
+    (^89=4)(^96^98)(^87^AC)(^9B^8C)(^8F^AD)(^B8=0)(^BB=)(^BC=)(^BD=)
+    (^9D^C2)(^C0^C3)(^9E^C4)(^8C^C5)]
+@$$}4}@
+
+@$${5{@
+@$$}5}@
+
+@$${6{@
+<(C6=25)>[4542:^80(^C1=25)]
+@$$}6}@
+
+@$${8{@
+< <(a=c)> // (f=iso-8859-1)
+  (C5=retainBy)(C6=daysToKeepHdrs)(C7=numHdrsToKeep)(C8=daysToKeepBodies)
+  (C9=useServerDefaults)(CA=cleanupBodies)(CB=applyToFlaggedMessages)
+  (CC=useServerRetention)>
+[1:^9F(^CC=1)]
+@$$}8}@
+
+@$${9{@
+@$$}9}@
+
+@$${B{@
+< <(a=c)> // (f=iso-8859-1)
+  (CD=ns:msg:db:row:scope:ops:all)(CE=ns:msg:db:table:kind:ops)>
+[-453E:^80(^88=80)(^8B=0)(^82^87)(^85^87)(^81^88)(^83^89)(^B7^8A)(^86^8A)
+    (^89=1)(^87^8B)(^9B^8C)(^8F^8D)(^B8=0)(^BB=)(^BC=)(^BD=)(^9D=0)
+    (^C0=0)(^9E^B0)(^8C=15)(^BF^BD)(^C1=20)(^C4=)(^8A=0)]
+[-453F:^80(^88=90)(^BE^8F)(^8B=0)(^82^90)(^85^91)(^8D^92)(^81^94)(^83^95)
+    (^84^96)(^B7^97)(^86^97)(^89=1)(^96^98)(^87^99)(^9B^8C)(^8F^9A)
+    (^B8=0)(^BB=)(^BC=)(^BD=)(^9D^B0)(^C0^B2)(^9E^B4)(^8C=79)(^C1=22)
+    (^C4=)(^8A=0)]
+[-4540:^80(^88=90)(^BE^9C)(^8B=0)(^82^90)(^85^91)(^8D^92)(^81^94)(^83^9D)
+    (^84^96)(^B7^9E)(^86^9E)(^89=1)(^96^98)(^87^9F)(^9B^9A)(^8F^9A)
+    (^B8=0)(^BB=)(^BC=)(^BD=)(^9D^B6)(^C0^B7)(^9E^B8)(^8C=73)(^C1=23)
+    (^C4=)(^8A=0)]
+[-4541:^80(^88=90)(^BE^A2)(^8B=0)(^82^90)(^85^91)(^8D^92)(^81^94)(^83^A3)
+    (^84^96)(^B7^A4)(^86^A4)(^89=1)(^96^98)(^87^A5)(^9B^9A)(^8F^9A)
+    (^B8=0)(^BB=)(^BC=)(^BD=)(^9D^BA)(^C0^BB)(^9E^BC)(^8C=73)(^C1=24)
+    (^C4=)(^8A=0)]
+[-4542:^80(^88=80)(^8B=0)(^82^A8)(^85^87)(^81^A9)(^83^AA)(^B7^AB)(^86^AB)
+    (^89=4)(^96^98)(^87^AC)(^9B^8C)(^8F^AD)(^B8=0)(^BB=)(^BC=)(^BD=)
+    (^9D^C2)(^C0^C3)(^9E^C4)(^8C^C5)(^C1=25)(^C4=)(^8A=0)]
+<(C7=2393576)>[1:^9F(^B0^C7)]
+{-1:^CD {(k^CE:c)(s=9)} }
+@$$}B}@

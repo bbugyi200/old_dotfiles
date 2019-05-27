@@ -116,7 +116,7 @@ NET_P=$((1.0 - TAX_P))
 sal() { clear && salary "$@" && echo; }
 salary() { printf "======= BEFORE TAXES =======\n" && _salary "$1" 0 && printf "\n===== AFTER TAXES (%0.0f%%) =====\n" "${2:-$((TAX_P * 100))}" && _salary "$@"; }
 _salary() { { [[ -n "$2" ]] && NET_P=$((1.0 - ($2 / 100.0))); }; printf "Hourly:       $%0.2f\nWeekly:       $%0.2f\nBiweekly:     $%0.2f\nSemi-monthly: $%0.2f\nMonthly:      $%0.2f\nYearly:       $%0.2f\n" "$(hourly_salary "$1")" "$(weekly_salary "$1")" "$((2 * $(weekly_salary "$1")))" "$((0.5 * $(monthly_salary "$1")))" "$(monthly_salary "$1")" "$(yearly_salary "$1")"; NET_P=$((1.0 - TAX_P)); }
-TAX_P=0.33;  # Default tax percentage used for salary calculation.
+TAX_P=0.30;  # Default tax percentage used for salary calculation.
 weekly_salary() { printf "%f\n" $(($(yearly_salary "$1") / 52.0)); }
 yearly_salary() { printf "%f\n" $(($1 * 1000.0 * NET_P)); }
 
@@ -125,10 +125,11 @@ yearly_salary() { printf "%f\n" $(($1 * 1000.0 * NET_P)); }
 alias activate='source venv/bin/activate'
 addgroup() { sudo usermod -aG "$1" bryan; }
 alias ag='ag --hidden'
-alg() { { alias | grep --color=always -e "$@" && echo; rg -s -C 5 -p "$@" ~/Dropbox/bin; } | less -F; }
 alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
+bar() { i=0; while [[ $i -lt "$1" ]]; do printf "#"; i=$((i+1)); done; printf "\n"; }
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
+box() { blen=$((4 + ${#1})); bar "${blen}"; printf "# %s #\n" "$1"; bar "${blen}"; }
 alias c='cookie'
 alias cal='cal -n 3 | less -F'
 alias ccat='pygmentize -g'
@@ -152,8 +153,10 @@ alias deff='def -f'
 alias del_swps='find . -name "*.swp" -delete -print'
 alias delshots='confirm "find $HOME/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias df='df -h'
-diff() { colordiff -wy -W "$(tput cols)" "$@" | less -F -R; }
 alias dfs='dropbox-cli filestatus'
+dg() { { box "ALIAS DEFINITIONS"; alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"; printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | sed '/^$/d' | sed '/^_.\+ () {/,/^}$/d' | sed 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | sed '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | sed 's/ {$/:/g' | sed '/--$/d' | sed 'N;s/\:\n/: /g' | sed 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"; printf "\n"; box "SCRIPT CONTENTS"; rg -s -C 5 -p "$@" ~/Dropbox/bin; } | less -F; }
+dgw() { dg "\W$1\W"; }
+diff() { colordiff -wy -W "$(tput cols)" "$@" | less -F -R; }
 alias dst='dropbox-cli status'
 alias dstart='dropbox-cli start'
 alias dstop='dropbox-cli stop'
@@ -293,6 +296,7 @@ vlog() { vim + /var/tmp/"$1"; }
 alias vm='vman'
 alias vmb='vim $HOME/Dropbox/bin/cron/cron.monthly/*'
 alias vmkrules='make -p > /tmp/make-rules && vim /tmp/make-rules'
+alias vnix='vv_push ~/.nixnote'
 alias vpyutils='pushd ~/Dropbox/lib/python/gutils &> /dev/null && vv && popd &> /dev/null'
 alias vr='vim ${RECENTLY_EDITED_FILES_LOG}'
 alias vs='vshlog'

@@ -1,0 +1,503 @@
+T 1558881340 28<19@1607MacinMan28>	dff: the other thing I've done is run cable to all major devices so my network is mostly wired, except for those mobile devices that can't be
+T 1558881365 31-26-25-19»	19MacGeek (~BSD@95.232.211.1519) has Joined #macosx
+T 1558881517 21«23-24-31-	21Miroboru_ (~myrvoll@50.169.16.62.customer.cdi.no21) has Quit (Quit: My MacBook has gone to sleep. ZZZzzz…21)
+T 1558881528 31-26-25-19»	19abbaZaba (~abbaZaba@unaffiliated/abbazaba19) has Joined #macosx
+T 1558881537 21«23-24-31-	21Hasi (~Mutter@p54AEEC44.dip0.t-ipconnect.de21) has Quit (Remote host closed the connection21)
+T 1558881592 28<19@1607MacinMan28>	I got an email from Best Buy a while back about them taking old tech and giving money for it, do they do this all the time or is that only special times?
+T 1558881597 21«23-24-31-	21abbaZaba (~abbaZaba@unaffiliated/abbazaba21) has Quit (Client Quit21)
+T 1558881613 28<19@1607MacinMan28>	That would be a good way to get some money for the things I don't need anymore
+T 1558881836 31-26-25-19»	19edlinde (~edlinde@203.191.56.219) has Joined #macosx
+T 1558882095 31-26-25-19»	19derk0pf (~derk0pf@p5497B777.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558882290 21«23-24-31-	21derk0pf (~derk0pf@p5497B777.dip0.t-ipconnect.de21) has Quit (Client Quit21)
+T 1558882319 28<19@1607MacinMan28>	bbs
+T 1558882320 21«23-24-31-	21MacinMan (~macinman@050-089-221-103.res.spectrum.com21) has Quit (Quit: Textual IRC Client: www.textualapp.com21)
+T 1558882353 21«23-24-31-	21BrainChld (~brainchil@185.237.183.17421) has Quit (Ping timeout: 245 seconds21)
+T 1558882389 31-26-25-19»	19Tom01 (~tom@p4FEC3519.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558882671 21«23-24-31-	21linli (~linli@218.76.29.9521) has Quit (Remote host closed the connection21)
+T 1558882687 31-26-25-19»	19derstrom (~derstrom@33.80.187.81.in-addr.arpa19) has Joined #macosx
+T 1558883003 21«23-24-31-	21zerohero (~treadmill@147.81-166-131.customer.lyse.net21) has Quit (Quit: zerohero21)
+T 1558883957 31-26-25-19»	19Miroboru_ (~myrvoll@50.169.16.62.customer.cdi.no19) has Joined #macosx
+T 1558884024 31-26-25-19»	19tatack (~tatack@ip-89-102-239-215.net.upcbroadband.cz19) has Joined #macosx
+T 1558884136 31-26-25-19»	19linli (~linli@111.8.49.21419) has Joined #macosx
+T 1558884375 31-26-25-19»	19linli_ (~linli@111.8.49.21419) has Joined #macosx
+T 1558884584 28<191612fris28>	bestbuy wont give cash, just store credit, and you will get peanuts
+T 1558884656 21«23-24-31-	21linli (~linli@111.8.49.21421) has Quit (Ping timeout: 272 seconds21)
+T 1558884726 31-26-25-19»	19Syliss|Hobomobo (~SylissHob@asa1.digitalpath.net19) has Joined #macosx
+T 1558884744 28»18»	Syliss|Hobomobo is now known as Syliss
+T 1558884770 31-26-25-19»	19Hasi (~Mutter@p54AEEC44.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558884823 31-26-25-19»	19Hasi_ (~Mutter@2a01:598:990c:2917:3954:5b4a:b107:66b019) has Joined #macosx
+T 1558884883 31-26-25-19»	19electronicmaji (~plpl@107-134-11-5.lightspeed.fyvlar.sbcglobal.net19) has Joined #macosx
+T 1558884902 21«23-24-31-	21edlinde (~edlinde@203.191.56.221) has Quit (Quit: edlinde21)
+T 1558884952 21«23-24-31-	21Hasi_ (~Mutter@2a01:598:990c:2917:3954:5b4a:b107:66b021) has Quit (Remote host closed the connection21)
+T 1558885053 21«23-24-31-	21Hasi (~Mutter@p54AEEC44.dip0.t-ipconnect.de21) has Quit (Ping timeout: 245 seconds21)
+T 1558885340 21«23-24-31-	21netj (~netj@76-226-64-14.lightspeed.sntcca.sbcglobal.net21) has Quit (Ping timeout: 272 seconds21)
+T 1558885364 31-26-25-19»	19netj (~netj@76-226-64-14.lightspeed.sntcca.sbcglobal.net19) has Joined #macosx
+T 1558885495 21«23-24-31-	21CryptoManiac (~MeGa@unaffiliated/cryptomaniac21) has Quit (Remote host closed the connection21)
+T 1558885555 31-26-25-19»	19zutat (5d836b42@gateway/web/freenode/ip.93.131.107.6619) has Joined #macosx
+T 1558885688 28<191606Syliss28>	mornin
+T 1558885760 28<191614zutat28>	evening
+T 1558885914 21«23-24-31-	21Miroboru_ (~myrvoll@50.169.16.62.customer.cdi.no21) has Quit (Quit: My MacBook has gone to sleep. ZZZzzz…21)
+T 1558886210 31-26-25-19»	19tdy (~tdy@unaffiliated/tdy19) has Joined #macosx
+T 1558886271 28<191614zutat28>	"The MacBook Pro Supplemental Update addresses a firmware issue affecting 15-inch MacBook Pro computers with T2 Security Chip, and is recommended for all users."
+T 1558886356 28<191614zutat28>	perhaps there's now light in the tunnel
+T 1558886441 31-26-25-19»	19Skipp_OSX (~textual@75-172-59-215.tukw.qwest.net19) has Joined #macosx
+T 1558886552 21«23-24-31-	21zutat (5d836b42@gateway/web/freenode/ip.93.131.107.6621) has Quit (Quit: q21)
+T 1558886621 28<191606Syliss28>	prolly not
+T 1558886722 28<191604uxfi28>	Syliss; hi sir
+T 1558887012 21«23-24-31-	21Sasha_LV1 (~Instantbi@unaffiliated/sasha-lv/x-173270021) has Quit (Ping timeout: 272 seconds21)
+T 1558887197 21«23-24-31-	21NDPMacBook (~ndpmacboo@unaffiliated/ndpmacbook21) has Quit (Ping timeout: 244 seconds21)
+T 1558887217 31-26-25-19»	19lucid-lullaby (lucid-lull@gateway/vpn/privateinternetaccess/lucid-lullaby19) has Joined #macosx
+T 1558887400 31-26-25-19»	19zutat (5d836b42@gateway/web/freenode/ip.93.131.107.6619) has Joined #macosx
+T 1558887629 28<191614zutat28>	hopefully the firmware update addressed audio device issues aswell
+T 1558887724 31-26-25-19»	19Sasha_LV (~Instantbi@unaffiliated/sasha-lv/x-173270019) has Joined #macosx
+T 1558887751 31-26-25-19»	19b0tanik (~b0tanik@188.163.1.19419) has Joined #macosx
+T 1558888033 31-26-25-19»	19Miroboru_ (~myrvoll@50.169.16.62.customer.cdi.no19) has Joined #macosx
+T 1558888113 31-26-25-19»	19electro33 (uid613@gateway/web/irccloud.com/x-dfknfazzgxfedhaf19) has Joined #macosx
+T 1558888182 28<191615jcm_28>	anyone experienced this where you try to add something to your library from apple music and instead a window like this pops up and doesn't go away? https://puu.sh/Dxyz6/beade18778.png
+T 1558888480 28<191615jcm_28>	seems to be related to being unable to load T&Cs
+T 1558888699 21«23-24-31-	21jcm_ (~jcm@c-76-113-79-163.hsd1.nm.comcast.net21) has Quit (Quit: jcm_21)
+T 1558888846 31-26-25-19»	19Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558888861 21«23-24-31-	21fletom (~fletom@104.163.186.4421) has Quit (Ping timeout: 268 seconds21)
+T 1558888900 31-26-25-19»	19azuri5 (~textual@196.207.85.18519) has Joined #macosx
+T 1558888906 31-26-25-19»	19fletom (~fletom@104.163.186.4419) has Joined #macosx
+T 1558888997 21«23-24-31-	21Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de21) has Quit (Client Quit21)
+T 1558889122 31-26-25-19»	19leb (~leb@pool-108-53-115-4.nwrknj.fios.verizon.net19) has Joined #macosx
+T 1558889151 31-26-25-19»	19kevin-oculus (~kevin-ocu@c83-253-33-28.bredband.comhem.se19) has Joined #macosx
+T 1558889409 31-26-25-19»	19BrainChld (~brainchil@185.237.183.17419) has Joined #macosx
+T 1558889572 31-26-25-19»	19uptown (~uptown@5.59.52.22919) has Joined #macosx
+T 1558889588 21«23-24-31-	21leb (~leb@pool-108-53-115-4.nwrknj.fios.verizon.net21) has Quit (21)
+T 1558889991 31-26-25-19»	19zippo^ (~zippo@unaffiliated/zippo/x-799028719) has Joined #macosx
+T 1558890542 31-26-25-19»	19bpmedley (~bpm@2600:1700:eb20:6050:3426:4177:a697:170b19) has Joined #macosx
+T 1558890546 21«23-24-31-	21tatack (~tatack@ip-89-102-239-215.net.upcbroadband.cz21) has Quit (Quit: tatack21)
+T 1558890576 21«23-24-31-	21BrainChld (~brainchil@185.237.183.17421) has Quit (Ping timeout: 244 seconds21)
+T 1558890627 21«23-24-31-	21Night-Shade (~TimF@2a02:8109:9a80:6d80:f87c:aaf:8bee:523621) has Quit (Quit: My MacBook has gone to sleep. ZZZzzz…21)
+T 1558890707 21«23-24-31-	21linli_ (~linli@111.8.49.21421) has Quit (Remote host closed the connection21)
+T 1558890846 21«23-24-31-	21zutat (5d836b42@gateway/web/freenode/ip.93.131.107.6621) has Quit (Quit: q21)
+T 1558890889 31-26-25-19»	19zerohero (~treadmill@147.81-166-131.customer.lyse.net19) has Joined #macosx
+T 1558890926 21«23-24-31-	21b0tanik (~b0tanik@188.163.1.19421) has Quit (Ping timeout: 272 seconds21)
+T 1558891041 31-26-25-19»	19b0tanik (~b0tanik@188.163.1.19419) has Joined #macosx
+T 1558891105 31-26-25-19»	19Lui (~textual@94.142.234.24819) has Joined #macosx
+T 1558891407 31-26-25-19»	19ghoti_ (~paul@glphon2233w-grc-14-50-101-208-68.dsl.bell.ca19) has Joined #macosx
+T 1558891415 31-26-25-19»	19tatack (~tatack@ip-89-102-239-215.net.upcbroadband.cz19) has Joined #macosx
+T 1558891534 21«23-24-31-	21ziyourenxiang (~ziyourenx@unaffiliated/ziyourenxiang21) has Quit (Ping timeout: 272 seconds21)
+T 1558891578 21«23-24-31-	21ghoti (~paul@glphon2233w-grc-05-70-50-123-70.dsl.bell.ca21) has Quit (Ping timeout: 245 seconds21)
+T 1558891597 21«23-24-31-	21uptown (~uptown@5.59.52.22921) has Quit (Remote host closed the connection21)
+T 1558891632 31-26-25-19»	19abbaZaba (~abbaZaba@unaffiliated/abbazaba19) has Joined #macosx
+T 1558891883 21«23-24-31-	21electronicmaji (~plpl@107-134-11-5.lightspeed.fyvlar.sbcglobal.net21) has Quit (Quit: My Mac has gone to sleep. ZZZzzz…21)
+T 1558891971 28<191611DropBear28>	https://i.imgur.com/1reF9Xt.gifv
+T 1558892038 31-26-25-19»	19Miroboru__ (~myrvoll@50.169.16.62.customer.cdi.no19) has Joined #macosx
+T 1558892085 21«23-24-31-	21Miroboru__ (~myrvoll@50.169.16.62.customer.cdi.no21) has Quit (Client Quit21)
+T 1558892141 31-26-25-19»	19subopt (~subopt@65.123.219.6819) has Joined #macosx
+T 1558892451 21«23-24-31-	21tang^ (~tang^@2604:3d09:47f:fb80:bdf2:ae39:3f0d:9f2d21) has Quit (Quit: Bye21)
+T 1558892672 21«23-24-31-	21subopt (~subopt@65.123.219.6821) has Quit (Read error: Connection reset by peer21)
+T 1558892785 31-26-25-19»	19subopt (~subopt@2605:6000:1022:c559:45b8:81ea:571c:b8ce19) has Joined #macosx
+T 1558892851 31-26-25-19»	19Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558892944 21«23-24-31-	21Biessie (~Beeze@23-121-134-201.lightspeed.jcsnms.sbcglobal.net21) has Quit (Quit: ZNC 1.6.6+deb1ubuntu0.1 - http://znc.in21)
+T 1558893038 21«23-24-31-	21Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de21) has Quit (Remote host closed the connection21)
+T 1558893126 31-26-25-19»	19Biessie (~Beeze@23-121-134-201.lightspeed.jcsnms.sbcglobal.net19) has Joined #macosx
+T 1558893222 31-26-25-19»	19Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558893225 31-26-25-19»	19sctskw (~sctskw@c-76-120-17-178.hsd1.co.comcast.net19) has Joined #macosx
+T 1558893227 21«23-24-31-	21tdy (~tdy@unaffiliated/tdy21) has Quit (Ping timeout: 268 seconds21)
+T 1558893242 21«23-24-31-	21zerohero (~treadmill@147.81-166-131.customer.lyse.net21) has Quit (Quit: zerohero21)
+T 1558893516 28<191613Hasi_28>	Airport Extremes can easily extend wireless networks (repeater). Also you can attach HDs and printers. Use them till they really don’t work any more, then think about a replacement.
+T 1558893516 21«23-24-31-	21sctskw (~sctskw@c-76-120-17-178.hsd1.co.comcast.net21) has Quit (Ping timeout: 258 seconds21)
+T 1558893604 21«23-24-31-	21Skipp_OSX (~textual@75-172-59-215.tukw.qwest.net21) has Quit (Quit: My Mac Pro has gone to sleep. ZZZzzz…21)
+T 1558893628 31-26-25-19»	19TicOnMyAss (~mike@c-24-127-243-117.hsd1.mi.comcast.net19) has Joined #macosx
+T 1558893784 31-26-25-19»	19edlinde (~edlinde@203.191.56.219) has Joined #macosx
+T 1558894063 31-26-25-19»	19tdy (~tdy@unaffiliated/tdy19) has Joined #macosx
+T 1558894219 31-26-25-19»	19MacinMan (~macinman@050-089-221-103.res.spectrum.com19) has Joined #macosx
+T 1558894219 24»23»	23ChanServ gives channel operator status to MacinMan
+T 1558894231 28<19@1607MacinMan28>	How's it going ?
+T 1558894250 28<191610mwilson28>	Hasi_: Your point?
+T 1558894645 21«23-24-31-	21thenewsigs (~thenewsig@71-17-160-35.regn.hsdb.sasknet.sk.ca21) has Quit (Read error: Connection reset by peer21)
+T 1558894657 31-26-25-19»	19thenewsigs (~thenewsig@71-17-160-35.regn.hsdb.sasknet.sk.ca19) has Joined #macosx
+T 1558894699 28<19@1607MacinMan28>	just out of curiosity, is there a tool I can run other then Disk Utility to test system integrity ?  I would like a second opinion other then Disk Utility to test the system after all the glitches I had.  Disk Utility says everything is ok.
+T 1558894861 28<191604uxfi28>	MacinMan; hi sir
+T 1558894869 28<19@1607MacinMan28>	hi
+T 1558894971 28<191613Hasi_28>	mwilson: I was responding to a question put here this afternoon .
+T 1558894982 28<191610mwilson28>	I suppose it depends on what you think you mean by "test system integrity".  Is there some reason you don't trust what Disk Utility does but would trust something else?
+T 1558894999 28<191610mwilson28>	Hasi_: Please lose the boldface.
+T 1558895079 31-26-25-19»	19jcm_ (~jcm@c-76-113-79-163.hsd1.nm.comcast.net19) has Joined #macosx
+T 1558895145 31-26-25-19»	19ExoUNX (~ExoUNX@unaffiliated/exounx19) has Joined #macosx
+T 1558895166 28<191608ExoUNX28>	alright, it's driving me nuts
+T 1558895173 28<191608ExoUNX28>	I'm trying to use a wireless mouse
+T 1558895191 28<191608ExoUNX28>	1st I was using a logitech wireless mouse but it would lag like mad
+T 1558895202 28<191608ExoUNX28>	so I just bought a $79 magic mouse 2 and paid $20 more just to get it black (fuck Apple.)
+T 1558895209 28<191608ExoUNX28>	and it still lags!
+T 1558895226 28<191608ExoUNX28>	like I can see it possibly being 2.4GHz being crowded
+T 1558895230 28<191610mwilson28>	Right, after all Apple opened your wallet and took money out of it.
+T 1558895254 28<191613Hasi_28>	So
+T 1558895277 28<191608ExoUNX28>	mwilson fuck them for charging it the first place, I'm not getting mismatched colors, it's stupid and they know people like me pay it
+T 1558895334 28<191615jcm_28>	is that the one with the plug on the bottom? i think you have bigger problems if so
+T 1558895352 31-26-25-19»	19Beerbaron23 (~Montreal@198-58-179-188.on.cable.ebox.net19) has Joined #macosx
+T 1558895366 28<191610mwilson28>	Original magic mouse is replaceable batteries, MM2 is the rechargeable one.
+T 1558895380 28<191608ExoUNX28>	I just wanted a wireless mouse that worked, that's all
+T 1558895384 21«23-24-31-	21TicOnMyAss (~mike@c-24-127-243-117.hsd1.mi.comcast.net21) has Quit (Read error: Connection reset by peer21)
+T 1558895401 31-26-25-19»	19TicOnMyAss (~mike@c-24-127-243-117.hsd1.mi.comcast.net19) has Joined #macosx
+T 1558895452 28<191610mwilson28>	There really wasn't anywhere they could have put the charging port that someone wouldn't have whined about.  Whether where they DID choose is any good, I decline to stipulate.
+T 1558895548 28<191608ExoUNX28>	the only good place would be the front, but the top extends down too far
+T 1558895602 28<191608ExoUNX28>	anyways, I'm trying a wired mouse and it seems to work fine
+T 1558895628 21«23-24-31-	21edlinde (~edlinde@203.191.56.221) has Quit (Quit: edlinde21)
+T 1558895802 28<191608ExoUNX28>	is the a free spectrum analyzer for macOS
+T 1558895821 28<191608ExoUNX28>	don't feel like paying $15 just to see why my mouse might not be working properly
+T 1558895829 28<191608ExoUNX28>	there*
+T 1558895899 21«23-24-31-	21Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de21) has Quit (Remote host closed the connection21)
+T 1558895915 28<191608ExoUNX28>	looks like netspot might work
+T 1558895963 28<191608ExoUNX28>	nvm, survey isn't in the free version
+T 1558895998 28<191608ExoUNX28>	guess I'll give wireless diagnostics a try
+T 1558896517 31-26-25-19»	19adamc (~adamc@198-48-190-37.cpe.pppoe.ca19) has Joined #macosx
+T 1558896528 28<191603adamc28>	Good afternoon every one!
+T 1558896538 28<191603adamc28>	MacinMan: YO WASSUP!!! long time no see!
+T 1558896549 28<191610mwilson28>	Uh, a mounse isn't 802.11
+T 1558896568 28<191610mwilson28>	BT is 802.15
+T 1558896572 28<191609zippo^28>	ik kan nergens vinden welke partij krijgt meeste zetels in Groot-Brittannië? of word het vanaf 23.00 uur bekendgemaakt?
+T 1558896588 28<19@1607MacinMan28>	adamc: how are you? Which Mac are you using now ?
+T 1558896588 28<191609zippo^28>	doeps
+T 1558896590 28<191609zippo^28>	sorry
+T 1558896594 28<191609zippo^28>	bad channel here
+T 1558896628 28<191603adamc28>	MacinMan: actually my white macbook died... so I got a cheapie Dell and threw Ubuntu on it couldn't be happier :) yes I'm back into the dark side! :)
+T 1558896703 28<191615jcm_28>	hey ExoUNX, have you tried bluetooth explorer?
+T 1558896706 28<191603adamc28>	MacinMan: I'm doing good I'm now working for a Panasonic company called Quickservice assembling cash registers. My Job @ the ISP got downsized :(
+T 1558896722 28<191615jcm_28>	it comes in the 'additional tools for xcode 10.2' available here: https://developer.apple.com/download/more/
+T 1558896777 31-26-25-19»	19NDPMacBook (~ndpmacboo@216-15-126-75.s5947.c3-0.sbo-ubr1.sbo.ma.cable.rcncustomer.com19) has Joined #macosx
+T 1558896777 21«23-24-31-	21NDPMacBook (~ndpmacboo@216-15-126-75.s5947.c3-0.sbo-ubr1.sbo.ma.cable.rcncustomer.com21) has Quit (Changing host21)
+T 1558896777 31-26-25-19»	19NDPMacBook (~ndpmacboo@unaffiliated/ndpmacbook19) has Joined #macosx
+T 1558896780 28<191611DropBear28>	https://i.imgur.com/NzuUNJe.jpg
+T 1558896877 28<19@1607MacinMan28>	adamc: as long as it meets your needs
+T 1558896899 28<19@1607MacinMan28>	I think there are far more options in PCs over macs
+T 1558896939 28<191603adamc28>	MacinMan: it's mainly because of price versus value is too far apart
+T 1558897241 31-26-25-19»	19Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558897251 28<19@1607MacinMan28>	adamc: I might go with a PC later on myself so I can maintain the hardware as well
+T 1558897329 28<19@1607MacinMan28>	Has anyone here used EtreCheck? It detected some App crashes under minor problems, but how does it know? Does it check crash reports?
+T 1558897545 21«23-24-31-	21Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de21) has Quit (Remote host closed the connection21)
+T 1558897632 31-26-25-19»	19BrainChld (~brainchil@185.237.183.17419) has Joined #macosx
+T 1558897787 21«23-24-31-	21duckydan (~duckydan@li1301-74.members.linode.com21) has Quit (Quit: ZNC - http://znc.in21)
+T 1558897870 31-26-25-19»	19duckydan (duckydan@2600:3c02::f03c:91ff:fec7:36d919) has Joined #macosx
+T 1558897910 21«23-24-31-	21zen1 (~zen1@unaffiliated/zen121) has Quit (Read error: Connection reset by peer21)
+T 1558897912 31-26-25-19»	19LikeABox (~LikeABox@unaffiliated/likeabox19) has Joined #macosx
+T 1558898307 20«21-23-24-	20LikeABox (~LikeABox@unaffiliated/likeabox20) has Left #macosx ("Leaving"20)
+T 1558898320 21«23-24-31-	21BrainChld (~brainchil@185.237.183.17421) has Quit (Ping timeout: 258 seconds21)
+T 1558898696 20«21-23-24-	20adamc (~adamc@198-48-190-37.cpe.pppoe.ca20) has Left #macosx
+T 1558898735 31-26-25-19»	19BrainChld (~brainchil@185.237.183.17419) has Joined #macosx
+T 1558898923 21«23-24-31-	21thenewsigs (~thenewsig@71-17-160-35.regn.hsdb.sasknet.sk.ca21) has Quit (Remote host closed the connection21)
+T 1558898939 31-26-25-19»	19thenewsigs (~thenewsig@71-17-160-35.regn.hsdb.sasknet.sk.ca19) has Joined #macosx
+T 1558898952 21«23-24-31-	21TicOnMyAss (~mike@c-24-127-243-117.hsd1.mi.comcast.net21) has Quit (Quit: This computer has gone to sleep21)
+T 1558898971 31-26-25-19»	19Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558899001 31-26-25-19»	19adamc (~adamc@198-48-190-37.cpe.pppoe.ca19) has Joined #macosx
+T 1558899050 20«21-23-24-	20adamc (~adamc@198-48-190-37.cpe.pppoe.ca20) has Left #macosx
+T 1558899059 31-26-25-19»	19adamc (~adamc@198-48-190-37.cpe.pppoe.ca19) has Joined #macosx
+T 1558899066 20«21-23-24-	20adamc (~adamc@198-48-190-37.cpe.pppoe.ca20) has Left #macosx
+T 1558899117 31-26-25-19»	19adamc (~adamc@198-48-190-37.cpe.pppoe.ca19) has Joined #macosx
+T 1558899120 20«21-23-24-	20adamc (~adamc@198-48-190-37.cpe.pppoe.ca20) has Left #macosx
+T 1558899318 21«23-24-31-	21Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de21) has Quit (Remote host closed the connection21)
+T 1558899412 21«23-24-31-	21Sasha_LV (~Instantbi@unaffiliated/sasha-lv/x-173270021) has Quit (Quit: Instantbird 1.5 -- http://www.instantbird.com21)
+T 1558899437 28<191608ExoUNX28>	jcm_ no, but I'm trying a mousepad
+T 1558899588 31-26-25-19»	19frank1e (~frank1e@unaffiliated/frank1e19) has Joined #macosx
+T 1558899776 21«23-24-31-	21fletom (~fletom@104.163.186.4421) has Quit (Quit: Ping timeout (120 seconds)21)
+T 1558899808 31-26-25-19»	19bn_ (~bn_@unaffiliated/bn-/x-238974319) has Joined #macosx
+T 1558899812 31-26-25-19»	19fletom (~fletom@104.163.186.4419) has Joined #macosx
+T 1558899885 28<191612bn_28>	hola
+T 1558899939 28<191612bn_28>	does anyone remember the last version of iTunes to support app backups?  was it 12.6.5.3?
+T 1558899964 31-26-25-19»	19Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558900464 31-26-25-19»	19adamc (~adamc@198-48-190-37.cpe.pppoe.ca19) has Joined #macosx
+T 1558900471 20«21-23-24-	20adamc (~adamc@198-48-190-37.cpe.pppoe.ca20) has Left #macosx
+T 1558900584 31-26-25-19»	19netlar (~lwells@ip70-187-133-41.oc.oc.cox.net19) has Joined #macosx
+T 1558900601 21«23-24-31-	21azuri5 (~textual@196.207.85.18521) has Quit (Quit: azuri521)
+T 1558900624 21«23-24-31-	21Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de21) has Quit (Remote host closed the connection21)
+T 1558900828 21«23-24-31-	21jcm_ (~jcm@c-76-113-79-163.hsd1.nm.comcast.net21) has Quit (Quit: jcm_21)
+T 1558900947 28<191608ExoUNX28>	seems the mousepad has fixed it
+T 1558901058 28<191606derstrom28>	MacinMan There will already be logs on your machine from previous app crashes
+T 1558901105 28<19@1607MacinMan28>	derstrom: ok, was a bit confused because I hadn't seen any of the apps EtreCheck reported as crashing, crash
+T 1558901131 31-26-25-19»	19Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558901135 28<191606derstrom28>	Just force quitting an app can be misinterpreted as a crash, if an app technically does "crash" when you force quit it
+T 1558901157 28<19@1607MacinMan28>	ok
+T 1558901163 31-26-25-19»	19azuri5 (~textual@196.207.85.18519) has Joined #macosx
+T 1558901175 28<19@1607MacinMan28>	Well at least it didn't find anything serious so I'll just ignore those
+T 1558901207 28<191606derstrom28>	What's the problem causing you to check with EtreCheck?
+T 1558901250 21«23-24-31-	21Lui (~textual@94.142.234.24821) has Quit (Read error: Connection reset by peer21)
+T 1558901253 28<19@1607MacinMan28>	derstrom: I just wanted a second opinion to disk utility after solving my USB issues due to a defective or under powered hub
+T 1558901265 31-26-25-19»	19Lui (~textual@94.142.234.24819) has Joined #macosx
+T 1558901334 21«23-24-31-	21azuri5 (~textual@196.207.85.18521) has Quit (Client Quit21)
+T 1558901339 28<19@1607MacinMan28>	derstrom: everything seems to check out, was just curious about the crash reports of the apps
+T 1558901372 21«23-24-31-	21Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de21) has Quit (Remote host closed the connection21)
+T 1558901428 31-26-25-19»	19Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de19) has Joined #macosx
+T 1558901625 21«23-24-31-	21Hasi_ (~Mutter@p54AEEC44.dip0.t-ipconnect.de21) has Quit (Client Quit21)
+T 1558901631 21«23-24-31-	21Fridtjof_ (znc@thonk.9net.org21) has Quit (Ping timeout: 264 seconds21)
+T 1558901718 28<191606derstrom28>	MacinMan Nothing to worry about. macOS aggressively logs the crap out of everything so developers and Apple engineers have the information they need to diagnose an issue deep within an app or within the operating system or kernel. Check the Console app. It can make unsuspecting users think something is wrong with their machine because of the sheer amount of log data visible.
+T 1558901871 28<19@1607MacinMan28>	derstrom: my main concern was system / file corruption because while the issues were in play it cause the fusion drive to split once, and the system hard locked, but mostly usb drives were random ejecting due to usb power overload due to the hub defects. I returned that hub to amazon, and got a different one that's been rock solid.  Disk utility reports all disks / filesystems are fine.  Just wasn't sure if I needed any info beyond
+T 1558901871 28<19@1607MacinMan28>	 that.
+T 1558901923 28<191606derstrom28>	Are you saying your USB hub... caused your Fusion Drive to split? O_O
+T 1558901933 28<191606derstrom28>	Is that even...possible?
+T 1558901955 28<19@1607MacinMan28>	derstrom: whatever happened, all the drives reset, and the fusion drive split
+T 1558901980 21«23-24-31-	21netlar (~lwells@ip70-187-133-41.oc.oc.cox.net21) has Quit (Quit: leaving21)
+T 1558902001 28<19@1607MacinMan28>	derstrom: that was only ONE time the fusion drive acted funny since then it was mainly usb devices acting crazy until I replaced the hub
+T 1558902248 31-26-25-19»	19zerohero (~treadmill@147.81-166-131.customer.lyse.net19) has Joined #macosx
+T 1558902288 28<191606derstrom28>	Most odd. Don't worry about it. Just take regular backups as you always do. If you are concerned, restart in macOS Recovery and run First Aid on the disk (https://support.apple.com/guide/disk-utility/repair-a-disk-dskutl1040/mac). However typically what happens is if a USB device tries to draw more power than the system can deliver through the USB ports, the computer may shut itself down to protect itself. It is possible when the computer
+T 1558902288 28<191606derstrom28>	 turned itself off, that may have caused the Fusion Drive to split. In these circumstances if you run First Aid in macOS Recovery and it comes back clean (or detects errors and repairs them) you should be fine.
+T 1558902314 28<19@1607MacinMan28>	derstrom: oh, I have, everything checks out fine
+T 1558902381 31-26-25-19»	19Fridtjof (znc@thonk.9net.org19) has Joined #macosx
+T 1558902417 28<19@1607MacinMan28>	derstrom: I follow everything you've said, and I also ran Onyx to clean up caches as well.  Everything has checked out without problems, was just checking to see how deep I needed to go.  Good news is, the Mac has run fine since
+T 1558902569 31-26-25-19»	19netlar (~lwells@ip70-187-133-41.oc.oc.cox.net19) has Joined #macosx
+T 1558902632 28<191606derstrom28>	MacinMan You've done everything you need to do then. It is likely the USB hub was trying to draw too much power and the computer shut itself down to protect itself from being damaged. A USB hub I had back in 2013 did the same to my MacBook Air, but as an SSD only system I didn't experience any side effects after it shut itself down. I don't know what component or circuitry on the logic board is responsible for shutting down the machine in
+T 1558902632 28<191606derstrom28>	 cases like this, but just know... it works.
+T 1558902696 28<19@1607MacinMan28>	derstrom: yep, and like I mentioned I sent that hub back to amazon and got a nicer one with a higher power rating that's been fine since
+T 1558902761 28<19@1607MacinMan28>	derstrom: thanks for the feedback that has confirmed my initial thoughts, that everything is ok now, and I don't need to clean install
+T 1558902817 31-26-25-19»	19Night-Shade (~TimF@2a02:8109:9a80:6d80:458:afaf:31d7:2afd19) has Joined #macosx
+T 1558902894 28<191614netlar28>	I am so goddam done with Linux..it sucks eggs
+T 1558902938 28<191606derstrom28>	netlar I quite liked Debian when I used it for a few years when it was at 8.x. Super stable.
+T 1558902948 28<191614netlar28>	Let me rephrase that. Linux on the on the desktop sucks
+T 1558902966 28<191606derstrom28>	Until v9 came out and they started using a shittier, newer version of GNOME 3.x with more pointless touchscreen-friendly mouse-unfriendly changes.
+T 1558903000 28<19@1607MacinMan28>	I like XFCE
+T 1558903001 28<191614netlar28>	I just bricked a new Thinkpad just a few minutes ago.. but its more than that.  I waste so much time just trying to get things to work
+T 1558903032 28<191614netlar28>	I have been using Macs for 20 years and have never ever had a problem
+T 1558903032 28<19@1607MacinMan28>	the box I have set up as a storage NAS runs Xubuntu
+T 1558903034 28<191604rawtaz28>	netlar: are you moving to macOS, or whats your plan?
+T 1558903036 31-26-25-19»	19kaboo (~kaboo@160.170.196.19819) has Joined #macosx
+T 1558903037 28<191604rawtaz28>	netlar: ok
+T 1558903048 28<191606derstrom28>	GNOME 3.x started using really tiny scroll bars which meant you really had to very carefully hover over the scroll bars to make them expand... what a useless, pointless thing to do. You'd easily overhit them in a constant battle JUST TO SCROLL A DOCUMENT. *ugh*
+T 1558903050 28<191614netlar28>	I have been on MacOS for 18 years
+T 1558903064 28<191614netlar28>	Well almost 20 years
+T 1558903078 28<191606derstrom28>	netlar miss the classic Mac OS days? ;-)
+T 1558903138 28<191614netlar28>	My first mac was a G5 powermac
+T 1558903157 28<191606derstrom28>	netlar What distribution did you try installing on your ThinkPad?
+T 1558903159 21«23-24-31-	21tatack (~tatack@ip-89-102-239-215.net.upcbroadband.cz21) has Quit (Quit: tatack21)
+T 1558903206 28<191606derstrom28>	netlar So Mac OS X then... the first G5 Power Mac was released in 2003.
+T 1558903224 28<191614netlar28>	derstrom: I was on Solus but just was so limiting I found..so I decided to try Manjaro. So how it messed up my bios
+T 1558903261 28<191606derstrom28>	netlar hah, yes Solus is quite limiting. they don't use APT but their own unique package manager instead AFAIK
+T 1558903310 28<191614netlar28>	But Manjaro some how put an entry into the bios
+T 1558903321 28<191606derstrom28>	netlar if you stick to distributions like Solus, Debian or Ubuntu, their installers are less likely to cause issues like that versus a distribution not widely used
+T 1558903337 28<191614netlar28>	And now it will not get past the bios not matter what I do
+T 1558903458 28<191614netlar28>	Does not matter, I'm returning the machine. My time is too valuable
+T 1558903563 20«21-23-24-	20kaboo (~kaboo@160.170.196.19820) has Left #macosx ("Leaving"20)
+T 1558903627 21«23-24-31-	21mavhc (~mavhc@cpc77319-basf12-2-0-cust433.12-3.cable.virginm.net21) has Quit (Ping timeout: 244 seconds21)
+T 1558903645 28<19@1607MacinMan28>	derstrom: I was curious if you might know about a different issue I've heard people talk about when it comes to powered hubs.  How do I know if a hub has the issue where it throws the 5V back at the computer? People say this can be bad.
+T 1558903661 28<191612bn_28>	in iTunes 12.3.3, what is the diff between the "This Computer" and "iCloud" option in this screenshot?  https://support.apple.com/library/content/dam/edam/applecare/images/en_US/itunes/macos-mojave-itunes12-9-back-up-now-iphone-x.jpg  Is the latter a superset of the former?  ie: backing up to iCloud will also backup locally?  (it seemed to do that when I had "iCloud" selected)
+T 1558903707 28<191614netlar28>	Felt like I have been torn between two lovers anyway. Going to focus on MacOS now
+T 1558903778 31-26-25-19»	19mavhc (~mavhc@cpc77319-basf12-2-0-cust433.12-3.cable.virginm.net19) has Joined #macosx
+T 1558903923 28<191612bn_28>	netlar:  are you talking about Grub?  BIOS is firmware usually and usually requires the BIOS vendor's firmare software update
+T 1558904022 28<191614netlar28>	bn_: Yes, there was an entry of Manjaro in the bios boot sequence
+T 1558904036 28<191612bn_28>	It'd be highly unusual for a distro to try to install something in BIOS, 
+T 1558904051 28<191614netlar28>	that is what I thought
+T 1558904085 28<191612bn_28>	perhaps you're thining of Grub or the bootloader
+T 1558904086 28<191614netlar28>	So I reset the bios back to factory, but that did not help either
+T 1558904107 28<191614netlar28>	Nope, it was not even getting the bootloader or Grub
+T 1558904112 21«23-24-31-	21b0tanik (~b0tanik@188.163.1.19421) has Quit (Ping timeout: 272 seconds21)
+T 1558904118 31-26-25-19»	19Branes (~Branes@unaffiliated/branes19) has Joined #macosx
+T 1558904127 28<191614netlar28>	I even tried to use a live CD to boot into and nothing different happened
+T 1558904145 28<191613Branes28>	Goodilymornibode.
+T 1558904160 28<19@1607MacinMan28>	Morning branes
+T 1558904187 28<191612bn_28>	netlar:  does your thinkpad use EFI?
+T 1558904210 28<191614netlar28>	UEFI
+T 1558904312 28<191614netlar28>	Someone suggested to not use quick boot so I changed that too. Still would not go past the bios splash screen
+T 1558904336 28<191612bn_28>	it may have just messed with the partition table layout
+T 1558904357 28<191614netlar28>	Is that the bios?
+T 1558904381 31-26-25-19»	19Laptop_mini (~Laptop_mi@2601:645:4000:bda3:50f7:1610:b380:46f819) has Joined #macosx
+T 1558904411 28<191612bn_28>	no, it's on the disk, like the first 512 bytes (historically) it contains the bootloader code
+T 1558904428 28<191612bn_28>	if that's messed up, then you won't be able to boot
+T 1558904440 28<191614netlar28>	bn_: It does not really matter I am just returning the Thinkpad.  It is just the 1000 cut thing, I have had enough of trying to get linux to work properly
+T 1558904485 28<191611DropBear28>	Branes so it turns out in my apple ][ stash I have a 16k card that didn't need the strap to the motherboard.  Reading up on it, I guess chips got fast enough they could do the refresh on their own and work just through the bus. 
+T 1558904496 28<191614netlar28>	bn_: Plus even when the OS works well I just cannot find quality software like on the Mac
+T 1558904548 28<191611DropBear28>	Didn't even remember those existed because I think the //e was out or coming out around that time.
+T 1558904567 21«23-24-31-	21Lui (~textual@94.142.234.24821) has Quit (Read error: Connection reset by peer21)
+T 1558904577 28<191612bn_28>	a lot of OS-es assume they're the only OS and as a result clobber your existing partition table when you install, Linux is probably more cogniscent that there are multiple OS-es out there
+T 1558904592 28<191614netlar28>	I felt like I have been on a fools errand. There is not arguing that linux is a superior solution for servers, but just for home and everyday use I just could not get things to work as well as the Mac, actually not even close
+T 1558904603 31-26-25-19»	19Lui (~textual@94.142.234.24819) has Joined #macosx
+T 1558904613 28<191613Branes28>	DropBear: Pretty sure I've got a couple of memory cards that are strapless like that.
+T 1558904710 21«23-24-31-	21netlar (~lwells@ip70-187-133-41.oc.oc.cox.net21) has Quit (Quit: leaving21)
+T 1558904737 21«23-24-31-	21Miroboru_ (~myrvoll@50.169.16.62.customer.cdi.no21) has Quit (Quit: My Mac Pro has gone to sleep. ZZZzzz…21)
+T 1558904760 28<191612bn_28>	netlar:  depends on what you want to do, at least Linux will always give you the option to customize though, with OSX you're pretty much at the mercy of what Apple decides and pushes
+T 1558904824 28<191612bn_28>	for better or worse
+T 1558904892 21«23-24-31-	21electro33 (uid613@gateway/web/irccloud.com/x-dfknfazzgxfedhaf21) has Quit (Quit: Connection closed for inactivity21)
+T 1558904969 28<191613Branes28>	He's gone.
+T 1558904987 28<191613Branes28>	"Missed him by /that/ much."
+T 1558905073 28<191611DropBear28>	https://www.youtube.com/watch?v=pJif4i9NRdI
+T 1558905139 21«23-24-31-	21dpl (~dpl@193.34.62.18321) has Quit (Read error: Connection reset by peer21)
+T 1558905177 31-26-25-19»	19Skipp_OSX (~textual@75-172-59-215.tukw.qwest.net19) has Joined #macosx
+T 1558905238 31-26-25-19»	19leb (~leb@pool-108-53-115-4.nwrknj.fios.verizon.net19) has Joined #macosx
+T 1558905265 28<191610uxfi28>	hi Branes  excited for WWDC?
+T 1558905288 21«23-24-31-	21frank1e (~frank1e@unaffiliated/frank1e21) has Quit (Quit: Leaving21)
+T 1558905324 31-26-25-19»	19TicOnMyAss (~mike@c-24-127-243-117.hsd1.mi.comcast.net19) has Joined #macosx
+T 1558905328 28<191613Branes28>	I've never bothered with WWDCs, and stopped bothering with keynotes after Steve's death.
+T 1558905351 28<191610uxfi28>	ah
+T 1558905372 28<191610uxfi28>	Branes; I feel a bit iffy about the mac... The 2019 MBPS are on the "repair/replacement program" even after their quiet refresh "yikes"
+T 1558905390 28<191610uxfi28>	They also added the 2018's do that list too
+T 1558905402 28<191613Branes28>	A zero-day inclusion that normally happens only with malware.
+T 1558905451 28<191610uxfi28>	Branes;  Deos that mean a redesign is on the way?
+T 1558905473 28<191612bn_28>	are these the new 16" mbps?  or is that still a rumor of the next-gen ones?
+T 1558905490 28<191610uxfi28>	bn_; rumor
+T 1558905512 28<191612bn_28>	uxfi:  what is the "repair/replacement program"?
+T 1558905549 28<191610uxfi28>	bn_; Keyboard failure....and display cable being short  so the display fizzles out
+T 1558905580 28<191610uxfi28>	the keyboard design has been unchanged even in the 2019 refresh  so I asume they will also fail  as did the previous genenrations  so thas why they added it to their repair/replacement program
+T 1558905598 28<191613Branes28>	Apple, after finally admitting there was a design flaw somewhere, start an Extended Repair Program and will fix that flaw for free on affected machines, warranty or not. 
+T 1558905619 21«23-24-31-	21MacinMan (~macinman@050-089-221-103.res.spectrum.com21) has Quit (Quit: Textual IRC Client: www.textualapp.com21)
+T 1558905659 28<191613Branes28>	They've got one for the butterfly-spring keyboard that's been running since late 2017, and with last week's refresh to the MacBook Pros they added the 2018 & the very-new 2019 models to the list.
+T 1558905676 21«23-24-31-	21spockers (~spockers@unaffiliated/spockers21) has Quit (Quit: bye            http://i.imgur.com/nkzOWAv.jpg21)
+T 1558905700 28<191609Skipp_OSX28>	https://i.imgur.com/JHVZJCq.jpg
+T 1558905705 28<191610uxfi28>	Branes; prtty bad track record
+T 1558905706 28<191613Branes28>	So basically every laptop with the butterfly is now on the list, which is about as close as we'll get to "Yeah, we know the butterfly design is absolute bollocks."
+T 1558905937 31-26-25-19»	19MacinMan (~macinman@050-089-221-103.res.spectrum.com19) has Joined #macosx
+T 1558905937 24»23»	23ChanServ gives channel operator status to MacinMan
+T 1558905985 28<19@1607MacinMan28>	Was just able to confirm my older USB hub doesn't back feed power, I had been curious about that after seeing a post about it here.
+T 1558906170 28<191609Skipp_OSX28>	there's nothing wrong with putting radeon VII in Mac Pro :)
+T 1558906213 21«23-24-31-	21Laptop_mini (~Laptop_mi@2601:645:4000:bda3:50f7:1610:b380:46f821) has Quit (Quit: My MacBook has gone to sleep. ZZZzzz…21)
+T 1558906216 28<191609Skipp_OSX28>	and thunderbolt 3 just because you can now
+T 1558906293 28<19@1607MacinMan28>	I was mainly curious because items plugged into the 4 ports would power up on bus power, or AC only power.  The way I found out it wasn't back feeding was to plug a hard drive with a USB A connector into the B connector that goes to the computer, while the AC power adapter was connected., and the drive didn't power up.  From my understanding, if the unit had the power back feed issue, the drive would have powered up on the
+T 1558906293 28<19@1607MacinMan28>	 connection from the hub that goes to the computer.
+T 1558906398 28<19@1607MacinMan28>	Skipp_OSX: amazon received the unit I sent back, and issued my refund.  I got my notifications this morning.
+T 1558906429 28<191609Skipp_OSX28>	I've had Amazon issue a refund before they got the item as soon as ups had it
+T 1558906435 28<19@1607MacinMan28>	So, my first amazon return was a success
+T 1558906443 21«23-24-31-	21zerohero (~treadmill@147.81-166-131.customer.lyse.net21) has Quit (Quit: zerohero21)
+T 1558906460 28<19@1607MacinMan28>	either way it's done
+T 1558906467 28<191609Skipp_OSX28>	actually had a pretty good success returning to amazon, you gotta pay return shipping but oh well
+T 1558906493 28<19@1607MacinMan28>	Oh I wasn't charged my UPS pick up
+T 1558906501 28<19@1607MacinMan28>	ups came here to get it
+T 1558906516 28<191609Skipp_OSX28>	even better
+T 1558906565 28<19@1607MacinMan28>	Well I'm not likely to need it a lot but it's there if I do.
+T 1558906636 31-26-25-19»	19zerohero (~treadmill@147.81-166-131.customer.lyse.net19) has Joined #macosx
+T 1558906813 28<19@1607MacinMan28>	Skipp_OSX: I did the back feed test so now, if I want to sell it, or give it away I know I'm not giving someone a broken unit.
+T 1558906843 28<19@1607MacinMan28>	I'm talking about my older SIIG 4 port that I don't need anymore. 
+T 1558906888 21«23-24-31-	21kevin-oculus (~kevin-ocu@c83-253-33-28.bredband.comhem.se21) has Quit (Read error: Connection reset by peer21)
+T 1558907022 21«23-24-31-	21thenewsigs (~thenewsig@71-17-160-35.regn.hsdb.sasknet.sk.ca21) has Quit (Quit: "You're a super star boy, Why you still up in the hood!"21)
+T 1558907023 21«23-24-31-	21netj (~netj@76-226-64-14.lightspeed.sntcca.sbcglobal.net21) has Quit (Ping timeout: 252 seconds21)
+T 1558907039 31-26-25-19»	19netj (~netj@76-226-64-14.lightspeed.sntcca.sbcglobal.net19) has Joined #macosx
+T 1558907071 31-26-25-19»	19thenewsigs (~thenewsig@71-17-160-35.regn.hsdb.sasknet.sk.ca19) has Joined #macosx
+T 1558907083 31-26-25-19»	19BrainChl_ (~brainchil@185.237.183.17419) has Joined #macosx
+T 1558907194 21«23-24-31-	21BrainChld (~brainchil@185.237.183.17421) has Quit (Ping timeout: 246 seconds21)
+T 1558907325 28<191615mwilson28>	Branes: Hey, what is your opinion on why they added the 2019 before it was in anyone's hands?
+T 1558907398 28<191613Branes28>	"We can't fix the design without a very radical redesign of the body so we may as well play it safe & say it'll probably fail anyway, and thus cover our arses."
+T 1558907420 28<191615mwilson28>	And do that forever?
+T 1558907425 28<191615mwilson28>	That doesn't make any sense.
+T 1558907482 21«23-24-31-	21ExoUNX (~ExoUNX@unaffiliated/exounx21) has Quit (Quit: later fam...21)
+T 1558907491 28<191613Branes28>	I'm willing to bet that the 2019 refresh will be the last to use that body design. The next will probably have some kind of backing-plate behind the keyboard.
+T 1558907553 28<191613Branes28>	The current standalone Magic Keyboards have butterflies but they don't suffer key-failure at all.
+T 1558907568 28<191615mwilson28>	No, they're just crap-with-no-travel
+T 1558907590 28<191613Branes28>	And the switches are reinforced by a backing-plate.
+T 1558907637 28<19@1607MacinMan28>	i like the usb aluminum apple keyboard, if I was going to choose non apple I might like a mechanical keyboard
+T 1558907638 28<191613Branes28>	You can sprinkle them in chicken-salt and get ham-fisted on them and they keep working.
+T 1558907644 28<19@1607MacinMan28>	Nothing to squishy though
+T 1558907711 31-26-25-19»	19sctskw (~sctskw@c-76-120-17-178.hsd1.co.comcast.net19) has Joined #macosx
+T 1558907806 21«23-24-31-	21leb (~leb@pool-108-53-115-4.nwrknj.fios.verizon.net21) has Quit (21)
+T 1558907816 31-26-25-19»	19jen__ (~jen_@99-155-157-108.lightspeed.chrlnc.sbcglobal.net19) has Joined #macosx
+T 1558907819 31-26-25-19»	19ExoUNX (~ExoUNX@unaffiliated/exounx19) has Joined #macosx
+T 1558907836 28<191615mwilson28>	AEKII, please :)
+T 1558907865 28<191603jen__28>	 I have High Sierra running with Itunes 12.8. My iPhone XR is not showing up as a device in itunes. What gives/
+T 1558907915 28<191613Branes28>	Got all the updates in, Jen?
+T 1558907927 31-26-25-19»	19vyrgozunqk (~ceco@2001:67c:21bc:44:0:cec0:0:b8719) has Joined #macosx
+T 1558907929 28<19@1607MacinMan28>	i'll bbl
+T 1558907930 21«23-24-31-	21MacinMan (~macinman@050-089-221-103.res.spectrum.com21) has Quit (Quit: Textual IRC Client: www.textualapp.com21)
+T 1558907940 28<191603jen__28>	the iMac is 2009, so i can't jump to Mojave
+T 1558907950 28<191603jen__28>	hey BrainChl_ 
+T 1558907952 28<191603jen__28>	Branes: 
+T 1558907964 28<191615mwilson28>	jen__: Why would you want to?
+T 1558907974 28<191603jen__28>	lol
+T 1558907976 28<191603jen__28>	ok ok
+T 1558907977 28<191613Branes28>	Ah. Probably the iMac's Bluetooth is too old to talk to the phone?
+T 1558907989 28<191603jen__28>	i have it hard wired via USB
+T 1558907996 21«23-24-31-	21BrainChl_ (~brainchil@185.237.183.17421) has Quit (Remote host closed the connection21)
+T 1558908002 28<191603jen__28>	i want to add music to the phone
+T 1558908026 21«23-24-31-	21sctskw (~sctskw@c-76-120-17-178.hsd1.co.comcast.net21) has Quit (Ping timeout: 272 seconds21)
+T 1558908035 28<191613Branes28>	Reason why I ask about updates is that there was an iTunes Device Support update issued last week.
+T 1558908035 28<191603jen__28>	https://www.dropbox.com/s/44ex00o36u3l52v/Screen%20Shot%202019-05-26%20at%206.00.21%20PM.png?dl=0
+T 1558908057 28<191603jen__28>	just ran an update. let me check
+T 1558908072 28<191603jen__28>	i have itunes 12.8.2.3
+T 1558908076 31-26-25-19»	19BrainChld (~brainchil@185.237.183.17419) has Joined #macosx
+T 1558908145 28<191613Branes28>	Have you successfully used the XR with that Mac before?
+T 1558908154 28<191603jen__28>	actually, there is afurther update to Airplay support for iTUnes
+T 1558908174 28<191613Branes28>	(the phone could be asking you to trust the computer it was just plugged into, so check the phone too)
+T 1558908177 28<191603jen__28>	i sync Messages and WhatsApp fine
+T 1558908205 28<191603jen__28>	i believe i said Trust initially...yes, well aware of that step
+T 1558908241 28<191603jen__28>	brb need to restart
+T 1558908243 28<191613Branes28>	Short of restarting both and trying a different cable, I'm out of ideas then'
+T 1558908244 21«23-24-31-	21jen__ (~jen_@99-155-157-108.lightspeed.chrlnc.sbcglobal.net21) has Quit (Quit: jen__21)
+T 1558908310 21«23-24-31-	21zerohero (~treadmill@147.81-166-131.customer.lyse.net21) has Quit (Quit: zerohero21)
+T 1558908341 31-26-25-19»	19b0tanik (~b0tanik@188.163.1.19419) has Joined #macosx
+T 1558908378 21«23-24-31-	21BrainChld (~brainchil@185.237.183.17421) has Quit (Ping timeout: 245 seconds21)
+T 1558908634 21«23-24-31-	21b0tanik (~b0tanik@188.163.1.19421) has Quit (Ping timeout: 272 seconds21)
+T 1558908715 21«23-24-31-	21jinie (~jimmy@188.114.128.8221) has Quit (Quit: ZNC 1.6.1 - http://znc.in21)
+T 1558908883 31-26-25-19»	19jinie (~jimmy@188.114.128.8219) has Joined #macosx
+T 1558909766 31-26-25-19»	19PacBilly (~PacBilly@2600-6c58-6400-11fc-50d2-fc57-73b7-5a67.dhcp6.chtrptr.net19) has Joined #macosx
+T 1558910101 31-26-25-19»	19zen1 (~zen1@unaffiliated/zen119) has Joined #macosx
+T 1558910258 21«23-24-31-	21zippo^ (~zippo@unaffiliated/zippo/x-799028721) has Quit (Quit: My MacBook has gone to sleep. ZZZzzz…21)
+T 1558910342 31-26-25-19»	19Lui_ (~textual@94.142.234.24819) has Joined #macosx
+T 1558910487 31-26-25-19»	19jcm_ (~jcm@c-76-113-79-163.hsd1.nm.comcast.net19) has Joined #macosx
+T 1558910519 21«23-24-31-	21vyrgozunqk (~ceco@2001:67c:21bc:44:0:cec0:0:b8721) has Quit (Quit: My MacBook has gone to sleep. ZZZzzz…21)
+T 1558910534 28<191612bn_28>	does one need to disable SIP to resize a partition now in OSX 10.11+??
+T 1558910578 21«23-24-31-	21Lui (~textual@94.142.234.24821) has Quit (Ping timeout: 245 seconds21)
+T 1558910648 28<191613Branes28>	No, why?
+T 1558910671 28<191613Branes28>	Just don't try and do it on an active volume.
+T 1558910700 28<191613Branes28>	s/volume/device/
+T 1558910708 28<191612bn_28>	I'm trying to resize the non-OS partition in Disk Utility and it's been just staying at "Preparing to Partition Disk" for the last 20-30 mins
+T 1558910754 28<191613Branes28>	Sounds normal enough if it is an HDD. It has to defrag & optimise to make the space.
+T 1558910766 28<191612bn_28>	it's an SSD
+T 1558910778 28<191612bn_28>	it's barely filled
+T 1558910804 28<191613Branes28>	And you're not running Disk Futility from the drive you're attempting to do a resize on?
+T 1558910806 28<191612bn_28>	I was trying to force a resize because the freespace wasn't being reported correctly
+T 1558910811 28<191613Branes28>	(If you are, don't.)
+T 1558910830 28<191612bn_28>	even though, diskutil list and the partition table show it correctly
+T 1558910840 28<191612bn_28>	no
+T 1558910889 28<191613Branes28>	Easier to back it up and clean-slate it, I reckon.
+T 1558910890 28<191612bn_28>	I think it's stuck... normally this operation runs pretty quickly :/
+T 1558910913 28<191612bn_28>	Branes:  that's what introduced the issue to begin with I believe
+T 1558910965 28<191613Branes28>	Did you remember to enable trimforce?
+T 1558910968 28<191612bn_28>	the old partition size was ~225GB, but when I moved it from my old HDD I expanded it to fill the remaining disk space so it's now ~580GB
+T 1558911002 28<191612bn_28>	what's weird is everything except the Finder and `df -h /Volumes/foo` show the correct size
+T 1558911032 28<191613Branes28>	*shrug* I don't resize partitions, ever.
+T 1558911137 28<191612bn_28>	I haven't enabled that yet, was going to install W10 on a separate partition to install the SSD vendor's maintenance software, which sadly is only available on Windows
+T 1558911192 28<191612bn_28>	Branes:  you never migrate from a smaller drive to a larger one?
+T 1558911210 28<191613Branes28>	Sure. I just never resize partitions after they're made.
+T 1558911292 28<191612bn_28>	I wonder if it's because of SIP, gdisk earlier was complaining everything would be read-only because it was enabled
+T 1558911322 28<191612bn_28>	which if the partition-table was locked, would make sense that resizing in DU would have no effect
+T 1558911347 28<191612bn_28>	unless Apple made an exception for system utils
+T 1558911359 28<191613Branes28>	No clue, but I doubt it. If I want to shift the contents of one volume to another, I use CCC.
+T 1558911500 31-26-25-19»	19two_dogs (~emanuel@unaffiliated/almoxarife19) has Joined #macosx
+T 1558911616 21«23-24-31-	21tdy (~tdy@unaffiliated/tdy21) has Quit (Ping timeout: 268 seconds21)
+T 1558911795 31-26-25-19»	19mauz555 (~mauz555@2a01:e35:8ab1:dea0:dc13:eb9c:4a69:7a8d19) has Joined #macosx
+T 1558912135 21«23-24-31-	21fedorafan (~fedorafan@unaffiliated/fedorafan21) has Quit (Quit: My MacBook has gone to sleep. ZZZzzz…21)
+T 1558912182 21«23-24-31-	21korzq (~korzq@unaffiliated/korzq21) has Quit (Quit: ZNC - http://znc.in21)
+T 1558912199 31-26-25-19»	19korzq (~korzq@alpha.korzq.xyz19) has Joined #macosx
+T 1558912199 21«23-24-31-	21korzq (~korzq@alpha.korzq.xyz21) has Quit (Changing host21)
+T 1558912199 31-26-25-19»	19korzq (~korzq@unaffiliated/korzq19) has Joined #macosx
+T 1558912220 31-26-25-19»	19Joeyo133_ (~joeyo133@2601:243:2100:6620:6458:35:5ee6:8aa819) has Joined #macosx
+T 1558912466 21«23-24-31-	21mauz555 (~mauz555@2a01:e35:8ab1:dea0:dc13:eb9c:4a69:7a8d21) has Quit (Remote host closed the connection21)
+T 1558912494 31-26-25-19»	19mauz555 (~mauz555@2a01:e35:8ab1:dea0:dc13:eb9c:4a69:7a8d19) has Joined #macosx
+T 1558912755 31-26-25-19»	19`Cam (~textual@230.134.220.203.dial.dynamic.acc01-carp-beg.comindico.com.au19) has Joined #macosx
+T 1558912776 21«23-24-31-	21mauz555 (~mauz555@2a01:e35:8ab1:dea0:dc13:eb9c:4a69:7a8d21) has Quit (Ping timeout: 252 seconds21)
+T 1558912814 31-26-25-19»	19cloudrancher (~cloudranc@cpe-70-113-53-145.austin.res.rr.com19) has Joined #macosx
+T 1558913326 21«23-24-31-	21qsub_ (~qsub@c-73-225-113-73.hsd1.wa.comcast.net21) has Quit (Ping timeout: 246 seconds21)
+T 1558913346 31-26-25-19»	19zippo^ (~zippo@unaffiliated/zippo/x-799028719) has Joined #macosx
+T 1558913472 31-26-25-19»	19fish3485 (~fish3485@2600:8800:4682:7b40:a5eb:fe3f:6cd0:3cec19) has Joined #macosx
+T 1558913473 31-26-25-19»	19CynicalSorcerer (~textual@2a02:c7f:7879:aa00:e06c:fec0:c2fa:66fc19) has Joined #macosx
+T 1558913485 21«23-24-31-	21PacBilly (~PacBilly@2600-6c58-6400-11fc-50d2-fc57-73b7-5a67.dhcp6.chtrptr.net21) has Quit (Quit: PacBilly21)
+T 1558913521 21«23-24-31-	21fish3485 (~fish3485@2600:8800:4682:7b40:a5eb:fe3f:6cd0:3cec21) has Quit (Remote host closed the connection21)
+T 1558913521 31-26-25-19»	19leb (~leb@pool-108-53-115-4.nwrknj.fios.verizon.net19) has Joined #macosx
+T 1558913643 31-26-25-19»	19tdy (~tdy@unaffiliated/tdy19) has Joined #macosx
+T 1558913706 31-26-25-19»	19BrainChld (~brainchil@185.237.183.17419) has Joined #macosx
+T 1558913738 21«23-24-31-	21Skipp_OSX (~textual@75-172-59-215.tukw.qwest.net21) has Quit (Quit: My Mac Pro has gone to sleep. ZZZzzz…21)
+T 1558913986 21«23-24-31-	21BrainChld (~brainchil@185.237.183.17421) has Quit (Ping timeout: 258 seconds21)
+T 1558913989 21«23-24-31-	21tdy (~tdy@unaffiliated/tdy21) has Quit (Read error: error:1408F119:SSL routines:ssl3_get_record:decryption failed or bad record mac21)
+T 1558914055 31-26-25-19»	19ziyourenxiang (~ziyourenx@unaffiliated/ziyourenxiang19) has Joined #macosx
+T 1558914104 31-26-25-19»	19tdy (~tdy@unaffiliated/tdy19) has Joined #macosx
+T 1558914376 21«23-24-31-	21two_dogs (~emanuel@unaffiliated/almoxarife21) has Quit (Quit: Konversation terminated!21)
+T 1558914580 21«23-24-31-	21ExoUNX (~ExoUNX@unaffiliated/exounx21) has Quit (Quit: later fam...21)
+T 1558914604 28»18»	subopt is now known as _subopt_in_repos
+T 1558914634 31-26-25-19»	19linux_dr (uid130126@gateway/web/irccloud.com/x-lqziiambypflhnzc19) has Joined #macosx
+T 1558914834 31-26-25-19»	19b0tanik (~b0tanik@188.163.1.19419) has Joined #macosx
+T 1558914963 21«23-24-31-	21`Cam (~textual@230.134.220.203.dial.dynamic.acc01-carp-beg.comindico.com.au21) has Quit (Quit: ZZZ21)
+T 1558914994 31-26-25-19»	19sctskw (~sctskw@c-76-120-17-178.hsd1.co.comcast.net19) has Joined #macosx
+T 1558915133 21«23-24-31-	21b0tanik (~b0tanik@188.163.1.19421) has Quit (Ping timeout: 258 seconds21)
+T 1558915249 21«23-24-31-	21TicOnMyAss (~mike@c-24-127-243-117.hsd1.mi.comcast.net21) has Quit (Quit: This computer has gone to sleep21)
+T 1558915253 21«23-24-31-	21sctskw (~sctskw@c-76-120-17-178.hsd1.co.comcast.net21) has Quit (Ping timeout: 245 seconds21)
+T 1558915262 31-26-25-19»	19two_dogs (~emanuel@c-73-240-47-250.hsd1.or.comcast.net19) has Joined #macosx
+T 1558915265 21«23-24-31-	21two_dogs (~emanuel@c-73-240-47-250.hsd1.or.comcast.net21) has Quit (Changing host21)
+T 1558915265 31-26-25-19»	19two_dogs (~emanuel@unaffiliated/almoxarife19) has Joined #macosx
+T 1558915381 31-26-25-19»	19pand0ra1337^BNC (~pand0ra13@ipbcc0214a.dynamic.kabel-deutschland.de19) has Joined #macosx
+T 1558915464 21«23-24-31-	21pand0ra1D (~pand0ra13@ipbcc01e91.dynamic.kabel-deutschland.de21) has Quit (Ping timeout: 268 seconds21)
+T 1558915629 31-26-25-19»	19TicOnMyAss (~mike@c-24-127-243-117.hsd1.mi.comcast.net19) has Joined #macosx
+T 1558915638 31-26-25-19»	19the_bugyi_man (~bbugyi200@pool-173-72-22-163.cmdnnj.fios.verizon.net19) has Joined #macosx
+T 1558915865 21«23-24-31-	21Syliss (~SylissHob@asa1.digitalpath.net21) has Quit (Remote host closed the connection21)
+T 1558916298 31-26-25-19»	19electro33 (uid613@gateway/web/irccloud.com/x-cmqngmsmcbetzelu19) has Joined #macosx
+T 1558916384 31-26-25-19»	19bbugyi202 (~bbugyi200@pool-173-72-22-163.cmdnnj.fios.verizon.net19) has Joined #macosx
+T 1558916384 25»19»	19Now talking on #macosx
+T 1558916384 29»22»	22Topic for #macosx is:  macOS 10.14.5/10.13.6/10.12.6 | Rules: http://osxwiki.net/mr | ~ops for op attention | Can't chat? /MSG CoreInfo cant_chat | Security Updates: http://support.apple.com/kb/HT1222 | 2018-06-04: WWDC keynote https://www.apple.com/apple-events/june-2018/ | 2018-09-24: macOS 10.14 (Mojave) released
+T 1558916384 29»22»	22Topic for #macosx set by tbo!sid327339@gateway/web/irccloud.com/x-yzkfnswiniljlqsd at Mon May 13 19:13:30 2019
+T 1558916384 22*	Channel 22#MacOSX url: 24http://www.osxwiki.net/

@@ -281,6 +281,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_9), swapScreens "prev")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
+   , ((alpha, c), launchApp "chat" "hexchat")
    , ((alpha, d), windows W.focusDown)
    , ((alpha, f), sendMessage $ Toggle TABBED)
    , ((alpha .|. beta, g), spawn "qb_prompt")
@@ -295,7 +296,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, l), sendMessage Expand)
    , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
    , ((alpha .|. ctrl, l), sendMessage NextLayout)
-   , ((alpha, m), launchApp "mpv" "umpv")
+   , ((alpha, m), launchApp "mail" "thunderbird")
    , ((alpha .|. beta, m), do
            DW.addHiddenWorkspace "misc"
            windows $ W.shift "misc"
@@ -304,7 +305,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
                            CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
                            removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
-   , ((alpha, n), launchApp "notes" "nixnote2")
+   , ((alpha, n), launchApp "notes" "tusk-app")
    , ((alpha .|. beta .|. shift, n), do
            ws_name <- io $ readFile "/tmp/xmonad.workspace"
            DW.addWorkspace ws_name
@@ -317,16 +318,13 @@ myAdditionalKeys = [
    , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
-   , ((alpha, s), launchApp "slack" "slack")
    , ((alpha .|. beta, s), windows W.swapDown) -- Swap Windows
-   , ((alpha, t), spawn "DISPLAY=:0 task_new_inbox_item") -- taskwarrior (inbox)
-   , ((alpha .|. beta, t), spawn "task_due_today") -- taskwarrior (due today)
-   , ((alpha .|. shift, t), spawn "task_hotstart")
-   , ((alpha .|. ctrl, t), spawn "notify-send 'Torrent Downloads' \"$(transmission-remote -l | head -n -1 | tail -n +2)\"")
+   , ((alpha, t), spawn "DISPLAY=:0 new_enote_task") -- evernote (inbox)
    , ((alpha, u), windows W.focusUp)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, x), launchApp "term" myTerminal)
    , ((alpha .|. beta, x), launchApp "term'" "urxvt -name primes -e zsh -c 'tm-init-prime'")
+   , ((alpha, v), launchApp "mpv" "umpv")
    , ((alpha, z), launchApp "zath" "zathura")
    , ((alpha .|. beta, z), launchApp "zath'" "zcopy")
 
