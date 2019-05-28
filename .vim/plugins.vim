@@ -209,6 +209,16 @@ if PluginInstalled("easytags")
     let g:easytags_events = ['BufWritePost']
 endif
 
+""""""""""""*
+"  fzf.vim  "
+"""""""""""""
+if PluginInstalled("fzf.vim")
+    let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-w': 'split',
+      \ 'ctrl-l': 'vsplit' }
+endif
+
 """"""""""""""""
 "  Haskell-vim "
 """"""""""""""""
