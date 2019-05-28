@@ -233,7 +233,6 @@ alias pdb='pudb3'
 pgr() { pgrep -f ".*$1.*"; }
 alias plex='xspawn -w plex plexmediaplayer'
 pname() { pass show | grep -i "$1" | awk '{print $2}'; }
-alias pr1='ssh pr-dev-1'
 alias psg='ps -ax | grep -v grep | grep'
 alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
