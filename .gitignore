@@ -29,9 +29,7 @@
 .config/watson/*
 !.config/watson/config
 
-.config/qutebrowser/bookmarks/*
 .config/qutebrowser/qsettings/*
-.config/qutebrowser/quickmarks
 .config/qutebrowser/autoconfig.yml 
 
 .vim/*
