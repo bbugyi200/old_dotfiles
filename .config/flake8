@@ -15,6 +15,7 @@
 # F401: module imported but unused
 # F403: ‘from module import *’ used; unable to detect undefined names
 # F405: Name may be undefined, or defined from star imports
+max-line-length = 100
 ignore = E126,E128,E131,E266,E302,E303,E402,E501,E702,E731,F403,F405
 per-file-ignores =
   __init__.py: F401,F403,F405

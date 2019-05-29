@@ -1,6 +1,9 @@
 """Qutebrowser Configuration"""
 
 import functools
+import platform
+import os  # noqa
+import sys  # noqa
 import re
 from typing import *  # noqa: F401
 from types import *  # noqa: F401
@@ -9,6 +12,14 @@ import yaml
 
 import searchengines as SE
 import searchengines.utils as utils
+
+
+os.environ['PATH'] = '{0}/.local/bin:/usr/local/bin:{1}'.format(os.environ['HOME'], os.environ['PATH'])
+
+is_macos = False
+if 'Darwin' in platform.version():
+    is_macos = True
+
 
 # pylint: disable=C0111
 c = c  # type: ignore  # noqa: F821 pylint: disable=E0602,C0103
@@ -232,6 +243,7 @@ cbind('<Ctrl-y>', 'fake-key --global <Return>V$y')
 ibind('<Ctrl-f>', 'open-editor')
 ibind('<Ctrl-i>', 'spawn -d qute-pass-add {url}')
 ibind('<Alt-i>', 'spawn --userscript qute-pass')
+ibind('<Ctrl-Shift-i>', 'spawn --userscript qute-pass')
 ibind('<Ctrl-n>', 'fake-key -g <Down>')
 ibind('<Alt-p>', 'spawn --userscript qute-pass --password-only')
 ibind('<Ctrl-p>', 'fake-key -g <Up>')
@@ -268,7 +280,9 @@ bind('C', 'tab-clone')
 bind('dl', 'tab-close')
 bind('D', 'download')
 bind(',e', 'spawn --userscript searchbar-command')
-bind('gc', 'spawn google-chrome {url}')
+bind('gc', 'spawn "{}" {{url}}'.format(
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' if is_macos else 'google-chrome'
+))
 bind('gh', 'home')
 bind('gs', 'view-source')
 bind(',g', 'spawn --userscript google')

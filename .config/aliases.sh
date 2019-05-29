@@ -65,14 +65,14 @@ tgp () { eval "tga project:$*"; }
 tgps () { eval "tgp Study.$*"; }
 tgs() { tga project:Study."$*"; }
 tgw () { eval "tcsn $* rc.verbose=blank,label waiting"; }
-ti () { task rc._forcecolor:on "$@" info | less -F; }
+ti () { task rc._forcecolor:on "$@" info | less; }
 tin () { task rc.context=none +inbox -DELETED -COMPLETED all; }
-tl () { task "$1" | less -F; }
-alias tlat='task rc._forcecolor:on +LATEST info | less -F'
+tl () { task "$1" | less; }
+alias tlat='task rc._forcecolor:on +LATEST info | less'
 tnall () { tcsn "next +READY"; }
 tnl () { task next +READY limit:none; }  # no limit
 tpa () { tga project:"$(tproject)"; }
-trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS limit:none \( +PENDING or +WAITING \) | less -F; }
+trev () { task rc.context:review rc.verbose:nothing rc.defaultwidth:$COLUMNS limit:none \( +PENDING or +WAITING \) | less; }
 alias tstudy='vim ~/.vimwiki/TaskWarrior.wiki'
 tsub () { task "$1" modify "/$2/$3/g"; }
 alias tw='timew'
@@ -131,7 +131,7 @@ bar() { i=0; while [[ $i -lt "$1" ]]; do printf "#"; i=$((i+1)); done; printf "\
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "# %s #\n" "$1"; bar "${blen}"; }
 alias c='cookie'
-alias cal='cal -n 3 | less -F'
+alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
 alias cdef='def -m COOKIE'
@@ -143,7 +143,7 @@ alias cower='cower -c'
 alias cp="cp -i"
 alias cplug='vim +PluginClean +qall'
 alias cppinit='cinit ++'
-cprof() { python -m cProfile -s "$@" | less -F; }
+cprof() { python -m cProfile -s "$@" | less; }
 alias dayplan='cd $HOME/Dropbox/var/notes && vim dayplan.txt'
 dc() { sudo -E deluge-console "${@}"; }
 dci() { dc info --sort=time_added | awk -F ':' "{if(\$1==\"$1\")print \$0}"; }
@@ -154,9 +154,9 @@ alias del_swps='find . -name "*.swp" -delete -print'
 alias delshots='confirm "find $HOME/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias df='df -h'
 alias dfs='dropbox-cli filestatus'
-dg() { { box "ALIAS DEFINITIONS"; alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"; printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | sed '/^$/d' | sed '/^_.\+ () {/,/^}$/d' | sed 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | sed '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | sed 's/ {$/:/g' | sed '/--$/d' | sed 'N;s/\:\n/: /g' | sed 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"; printf "\n"; box "SCRIPT CONTENTS"; rg -s -C 5 -p "$@" ~/Dropbox/bin; } | less -F; }
+dg() { { box "ALIAS DEFINITIONS"; alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"; printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | sed '/^$/d' | sed '/^_.\+ () {/,/^}$/d' | sed 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | sed '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | sed 's/ {$/:/g' | sed '/--$/d' | sed 'N;s/\:\n/: /g' | sed 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"; printf "\n"; box "SCRIPT CONTENTS"; rg -s -C 5 -p "$@" ~/Dropbox/bin; } | less; }
 dgw() { dg "\W$1\W"; }
-diff() { colordiff -wy -W "$(tput cols)" "$@" | less -F -R; }
+diff() { colordiff -wy -W "$(tput cols)" "$@" | less -R; }
 alias dst='dropbox-cli status'
 alias dstart='dropbox-cli start'
 alias dstop='dropbox-cli stop'
@@ -188,7 +188,7 @@ alias ginit='while true; do; watch -d -n 1 cat .gdbinit; vim .gdbinit; done'
 alias git='hub'
 alias Glg='git log -p -G'
 alias glg='git log --oneline --decorate --graph'
-alias glg="git log --oneline --decorate --graph --color=always | nl -s ':  ' -v 0 | less -F"
+alias glg="git log --oneline --decorate --graph --color=always | nl -s ':  ' -v 0 | less"
 alias gn='gnext'
 alias gN='git checkout HEAD~1'
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
@@ -211,7 +211,7 @@ alias kman='man -k'
 Kman() { man -wK "$@" | awk -F'/' '{print $NF}' | sed 's/\.\(.*\)\.bz2$/ (\1)/g' | sort; }
 alias lay='sudo layman'
 alias Loc='sudo updatedb && loc'
-alias loc='sudo ${LOCATE} --regex'
+alias loc='${LOCATE} --regex'
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
 alias ls='ls --color=auto'
 m-torrent() { echo "torrent -w /media/bryan/hercules/media/Entertainment/Movies $*" | at 0200; }
@@ -238,9 +238,10 @@ alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
 pycov() { coverage run "$1" && coverage html && qutebrowser htmlcov/index.html; }
 alias reboot='sudo reboot'
-rg() { "$(which -a rg | tail -n 1)" -p "$@" | less -F; }
+rg() { "$(which -a rg | tail -n 1)" -p "$@" | less; }
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
 riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &> /dev/null & disown; }
+alias rm='safe-rm'
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
 alias rag='cat $RECENTLY_EDITED_FILES_LOG | sudo xargs ag 2> /dev/null'
 alias sch='vim ~/Dropbox/var/notes/Rutgers/course_schedule.txt'

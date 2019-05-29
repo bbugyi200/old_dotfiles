@@ -250,6 +250,7 @@ vnoremap K K<CR>
 " L-L-L-L-L-L-L-L-L-L
 " M-M-M-M-M-M-M-M-M-M
 " N-N-N-N-N-N-N-N-N-N
+map <C-n> :NERDTreeToggle<CR>
 " O-O-O-O-O-O-O-O-O-O
 nnoremap <Leader>O O<C-u>
 nnoremap <Leader>o o<C-u>
