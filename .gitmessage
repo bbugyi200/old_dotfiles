@@ -10,10 +10,10 @@
 #    Add:       add feature
 #    Fix:       bug fix
 #    Mod:       modified existing feature
-#    Sty:     style changes
-#    Doc:      change documentation; docstrings, log messages, README, etc.
+#    Sty:       style changes
+#    Doc:       change documentation; docstrings, log messages, README, etc.
 #    Meta:      change .gitignore, .flake8, *.ini, setup.py, binaries, etc.
-#    Test:     add or modify test(s); no production code changed
+#    Test:      add or modify test(s); no production code changed
 # --------------------
 # Remember to
 #    Capitalize the subject line

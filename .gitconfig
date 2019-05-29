@@ -19,6 +19,6 @@
 [pager]
 	branch = false
 [commit]
-	template = ~/bryan/.gitmessage
+	template = ~/.gitmessage
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
