@@ -1,3 +1,0 @@
-T 1558822592 19*	Now talking on 22#qutebrowser
-T 1558822592 22*	26cornelius.scuttled.net sets mode 24+n on 22#qutebrowser
-T 1558822592 22*	26cornelius.scuttled.net sets mode 24+t on 22#qutebrowser
