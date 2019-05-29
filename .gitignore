@@ -6,8 +6,6 @@
 .ipython/*
 .xournal/*
 
-.gitconfig
-
 .local/share/*
 !.local/share/qutebrowser
 .local/share/qutebrowser/*
