@@ -32,6 +32,8 @@
 .config/qutebrowser/qsettings/*
 .config/qutebrowser/autoconfig.yml 
 
+.config/hexchat/scrollback/*
+
 .vim/*
 !.vim/after
 !.vim/ftplugin/
