@@ -1,10 +1,7 @@
-[user]
-	email = bryanbugyi34@gmail.com
-	name = Bryan Bugyi
 [init]
 	templatedir = ~/.git_template
 [core]
-	excludesfile = /home/bryan/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [merge]
 	tool = fugitive
 [mergetool]
@@ -22,6 +19,6 @@
 [pager]
 	branch = false
 [commit]
-	template = /home/bryan/.gitmessage
+	template = ~/bryan/.gitmessage
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
