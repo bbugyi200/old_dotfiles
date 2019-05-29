@@ -211,7 +211,7 @@ alias kman='man -k'
 Kman() { man -wK "$@" | awk -F'/' '{print $NF}' | sed 's/\.\(.*\)\.bz2$/ (\1)/g' | sort; }
 alias lay='sudo layman'
 alias Loc='sudo updatedb && loc'
-alias loc='sudo locate --regex'
+alias loc='sudo ${LOCATE} --regex'
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
 alias ls='ls --color=auto'
 m-torrent() { echo "torrent -w /media/bryan/hercules/media/Entertainment/Movies $*" | at 0200; }
