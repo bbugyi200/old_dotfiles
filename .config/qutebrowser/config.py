@@ -72,6 +72,7 @@ search_aliases = {
     'sal': 'average salary',
     'sd': 'San Diego',
     'se': 'Software Engineer',
+    'tb': 'Thunderbird',
     'tex': 'LaTeX',
     'tlou': 'The Last of Us',
     'v': 'vim',

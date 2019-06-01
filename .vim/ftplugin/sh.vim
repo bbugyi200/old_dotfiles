@@ -4,4 +4,4 @@ let @a = "Ialias wEhc3l=$hhxlcs{'"
 " Convert a single-line function to a bash alias
 let @f = "^dwf=s() lcs'{cs\"{$hi;"
 
-nnoremap <Leader>G :e /usr/bin/gutils.sh<CR>
+nnoremap <Leader>0g :e /usr/bin/gutils.sh<CR>

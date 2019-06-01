@@ -125,7 +125,7 @@ alias -g @@="&> /dev/null & disown"
 alias -g ::="| grep -i -e"
 alias -g :::="| grep -A 5 -B 5 -i -e"
 alias -g :c="clear &&"
-alias -g :l="| less"
+alias -g :l="| less -F"
 alias -g :L="tmux send-keys '!-2 | less' Enter Enter"
 alias -g :w="watch -n 1"
 

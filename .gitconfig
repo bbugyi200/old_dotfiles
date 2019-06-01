@@ -18,7 +18,8 @@
 	rebase = true
 [pager]
 	branch = false
-[commit]
-	template = ~/bryan/.gitmessage
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
+[user]
+	email = bryanbugyi34@gmail.com
+	name = Bryan Bugyi
