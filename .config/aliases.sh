@@ -229,7 +229,7 @@ alias ok='xspawn okular'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/var/notes/Onething/"$1".txt; }
 alias ping2all='(ping2life 10.1.1.1; ping2life google.com) @@'
 alias pipget='pip install --user'
-alias pdb='pudb3'
+pdb() { { [[ -f ./"$1" ]] && pudb3 "$@"; } || pudb3 "$(which -a "$1" | tail -n 1)" "${@:2}"; }
 pgr() { pgrep -f ".*$1.*"; }
 alias plex='xspawn -w plex plexmediaplayer'
 pname() { pass show | grep -i "$1" | awk '{print $2}'; }
