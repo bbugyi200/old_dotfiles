@@ -190,7 +190,7 @@ alias Glg='git log -p -G'
 alias glg='git log --oneline --decorate --graph'
 alias glg="git log --oneline --decorate --graph --color=always | nl -s ':  ' -v 0 | less"
 alias gn='gnext'
-alias gN='git checkout HEAD~1'
+gN() { git checkout HEAD~"${1:-1}"; }
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
 alias gpf='git push --force'
 alias gprm='gpup "Docs: Update README"'
