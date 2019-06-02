@@ -32,8 +32,8 @@ tabs:
     max_width: 250
     mousewheel_switching: false
     new_position:
-        related: last
-        unrelated: last
+        related: next
+        unrelated: next
     position: top
     select_on_remove: last-used
     show: always

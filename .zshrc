@@ -13,7 +13,7 @@ if type brew &>/dev/null; then
 fi
 
 # 'sudo' plugin MUST remain near the end or (for some reason) it won't work
-plugins=(git emoji lpass vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
+plugins=(git git-extras emoji lpass vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -30,8 +30,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 #  Disable Aliases / Builtins  #
 ################################
 # Disable aliases
-arr=("ll" "gcl" "gco" "gd" "gsta")
-for i in "${arr[@]}"; do
+bad_aliases=("ll" "gcl" "gca" "gco" "gd" "gsta")
+for i in "${bad_aliases[@]}"; do
     unalias "$i" &> /dev/null
 done
 
