@@ -23,3 +23,5 @@
 [user]
 	email = bryanbugyi34@gmail.com
 	name = Bryan Bugyi
+[commit]
+	template = ~/.gitmessage
