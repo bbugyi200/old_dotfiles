@@ -8,12 +8,12 @@
 
 # Type can be 
 #    Add:       add feature
-#    Fix:       bug fix
 #    Mod:       modified existing feature
+#    Fix:       bug fix
+#    Test:      add or modify test(s); no production code changed
 #    Sty:       style changes
 #    Doc:       change documentation; docstrings, log messages, README, etc.
 #    Meta:      change .gitignore, .flake8, *.ini, setup.py, binaries, etc.
-#    Test:      add or modify test(s); no production code changed
 # --------------------
 # Remember to
 #    Capitalize the subject line

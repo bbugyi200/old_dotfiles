@@ -93,6 +93,7 @@ alias vmutt='vim $HOME/.mutt/muttrc'
 # def marker: VIM
 alias daf='def -a'
 def() { zim "def" "$@" "$HOME/Dropbox/home/.zshrc" "$HOME/Dropbox/home/.config/aliases.sh" "$HOME/Dropbox/home/.config/debian.sh" "$HOME/Dropbox/home/.config/gentoo.sh" "/home/bryan/Dropbox/home/.config/macos.sh"; }
+him() { vim ~/"$1"; }
 lim() { vim -c "normal '0" -c 'bd1'; }
 mim() { zim "mim" "$@"; }
 alias pim="F=\"\$(rg --files | fzf)\"; [[ -n \"\${F}\" ]] && vim \"\${F}\""
@@ -182,9 +183,11 @@ gd() { git diff HEAD~"${1:-0}"; }
 alias Gdef='def -m GTD'
 alias gdef='def -m GENTOO'
 alias gdo='git diff origin/master'
+alias geff='git effort'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gho='ghi open'
 alias ghooks='rm -rf .git/hooks && git init' 
+alias gi='git info --no-config'
 alias ginit='while true; do; watch -d -n 1 cat .gdbinit; vim .gdbinit; done'
 alias Glg='git log -p -G'
 alias glg='git log --oneline --decorate --graph'
@@ -199,6 +202,7 @@ alias grc='git rebase --continue'
 gri() { git rebase -i HEAD~"$1"; }
 grun() { [[ "$(tail -n 1 "${PWD}"/.gdbinit)" == "r" ]] && sed -i '/^r$/d' "${PWD}"/.gdbinit || printf "r\n" >> "${PWD}"/.gdbinit; }
 alias gsd='sudo get-shit-done'
+alias gsum='git summary | less ${LESS_OPTS}'
 header() { clear && eval "$@" && echo; }
 info() { pinfo "$@" || { printf "\n===== APROPOS OUTPUT =====\n"; apropos "$@"; }; }
 alias ipdb='ipdb3'

@@ -43,10 +43,12 @@ export XDG_CONFIG_HOME="$HOME"/.config
 if [[ "$(uname -a)" == *"Darwin"* ]]; then
     export TERM="rxvt-256color"
     export LOCATE="glocate"
+    export LESS_OPTS=""
     export AT_WORK=true
 else
     export LOCATE="locate"
     export TERM="rxvt-unicode-256color"  # Fixes Mutt Background Issue (stays transparent) in TMUX
+    export LESS_OPTS="-F"
 fi
 
 
