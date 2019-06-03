@@ -61,6 +61,7 @@ search_aliases = {
     'ml': 'Machine Learning',
     'ms': "master's degree",
     'n': 'AND',
+    'nn': 'nixnote',
     'o': 'OR',
     'oms': "online master's degree",
     'py': 'Python',
