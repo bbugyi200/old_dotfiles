@@ -1,0 +1,25 @@
+# ~/.config/tmuxinator/Edgestream`.yml
+
+root: ~/projects/edgelp/prod
+name: Edgestream`
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - A:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - B:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - C:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll

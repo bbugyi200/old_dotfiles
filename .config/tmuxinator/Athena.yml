@@ -1,0 +1,15 @@
+# ~/.config/tmuxinator/Athena.yml
+
+root: <%= @settings['root'] %>
+name: Athena
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - SSH:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ssh-athena '/home/bryan/.local/bin/tm Terminal'
