@@ -1,5 +1,8 @@
 let b:run_cmd = "!pytest -v %"
 
+nnoremap [om :let g:syntastic_python_checkers=['flake8']<CR>:e<CR>
+nnoremap ]om :let g:syntastic_python_checkers=['flake8', 'mypy']<CR>:e<CR>
+
 " ------------------------------------- MULTILINE STRINGS -----------------------------------------
 function! BreakMultlineString(quote)
     let w = &tw+1

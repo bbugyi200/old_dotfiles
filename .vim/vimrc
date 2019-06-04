@@ -180,14 +180,16 @@ imap <C-l> <Esc><C-l>
 inoremap <C-s> <Esc>:Snippets<CR>
 
 " >>>>>>>>>>>>> VISUAL
-vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
-vnoremap <silent> <Leader>.i :w !ix \| xclip -sel clipboard<CR>
-vnoremap <Leader>s :sort ri //<Left>
-vnoremap dx <Esc>`.``gvP``P
 vnoremap <Space> $<Left>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>| " Allows for visual search
 xnoremap & :&&<CR>
+vnoremap dx <Esc>`.``gvP``P
+vnoremap <silent> <Leader>i :w !ix \| xargs printf "\%s/<C-R>=&filetype<CR>" \| xclip -sel clipboard<CR>
+vnoremap <silent> <Leader>.i :w !ix \| xclip -sel clipboard<CR>
+vnoremap p pgvy
+vnoremap P p
+vnoremap <Leader>s :sort ri //<Left>
 
 " >>>>>>>>>>>>> COMMAND
 cnoremap <C-n> <Down>

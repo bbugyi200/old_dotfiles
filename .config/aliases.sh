@@ -128,9 +128,9 @@ addgroup() { sudo usermod -aG "$1" bryan; }
 alias ag='ag --hidden'
 alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
-bar() { i=0; while [[ $i -lt "$1" ]]; do printf "#"; i=$((i+1)); done; printf "\n"; }
+bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
-box() { blen=$((4 + ${#1})); bar "${blen}"; printf "# %s #\n" "$1"; bar "${blen}"; }
+box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
 alias c='cookie'
 alias cal='cal -n 3 | less'
 alias ccat='pygmentize -g'
@@ -155,7 +155,7 @@ alias del_swps='find . -name "*.swp" -delete -print'
 alias delshots='confirm "find $HOME/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias df='df -h'
 alias dfs='dropbox-cli filestatus'
-dg() { { box "ALIAS DEFINITIONS"; alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"; printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | sed '/^$/d' | sed '/^_.\+ () {/,/^}$/d' | sed 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | sed '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | sed 's/ {$/:/g' | sed '/--$/d' | sed 'N;s/\:\n/: /g' | sed 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"; printf "\n"; box "SCRIPT CONTENTS"; rg -s -C 5 -p "$@" ~/Dropbox/bin; } | less; }
+dg() { { box "ALIAS DEFINITIONS"; alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"; printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | ${SED} '/^$/d' | ${SED} '/^_.\+ () {/,/^}$/d' | ${SED} 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | ${SED} '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | ${SED} 's/ {$/:/g' | ${SED} '/--$/d' | ${SED} 'N;s/\:\n/: /g' | ${SED} 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"; printf "\n"; box "SCRIPT CONTENTS"; rg -s -C 5 -p "$@" ~/Dropbox/bin; } | less; }
 dgw() { dg "\W$1\W"; }
 diff() { colordiff -wy -W "$(tput cols)" "$@" | less -R; }
 alias dst='dropbox-cli status'
@@ -202,13 +202,14 @@ gri() { git rebase -i HEAD~"$1"; }
 grun() { [[ "$(tail -n 1 "${PWD}"/.gdbinit)" == "r" ]] && sed -i '/^r$/d' "${PWD}"/.gdbinit || printf "r\n" >> "${PWD}"/.gdbinit; }
 alias gsd='sudo get-shit-done'
 alias gsum='git summary | less ${LESS_OPTS}'
+alias h='tm-home load'
 header() { clear && eval "$@" && echo; }
 info() { pinfo "$@" || { printf "\n===== APROPOS OUTPUT =====\n"; apropos "$@"; }; }
 alias ipdb='ipdb3'
 alias iplug='vim +PluginInstall +qall'
 alias issh='ssh -p 34857 athena-arch.ddns.net'
 K() { tmux switchc -n && tmux kill-session -t "$(tm-session-name)"; }
-alias k='sudo kill'
+alias k='tm-kill'
 alias k9='sudo kill -9'
 alias kman='man -k'
 Kman() { man -wK "$@" | awk -F'/' '{print $NF}' | sed 's/\.\(.*\)\.bz2$/ (\1)/g' | sort; }

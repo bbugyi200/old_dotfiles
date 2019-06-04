@@ -54,6 +54,7 @@ search_aliases = {
     'ha': 'Haskell',
     'hzd': 'Horizon: Zero Dawn',
     'js': 'JavaScript',
+    'ks': 'keyboard shortcuts',
     'lcl': 'Linux from the command-line',
     'lx': 'Linux',
     'mac': 'MacOS',
@@ -115,6 +116,7 @@ c.url.searchengines = {
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),
                                SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
                                SE.LuckyURL('{}')),
+    'ei': SE.SearchEngine('https://gitlab.pr.edgelp.net/edgelp/prod/issues/{}'),
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
                           SE.OneIntURL(SE.static.google('Season {0} {1} episodes'))),
     'g4g': SE.static.site('www.geeksforgeeks.org'),
@@ -313,8 +315,6 @@ bind(';TT', 'hint links spawn --userscript add-to-torrent-file tv.txt "{hint-url
 bind('t-', 'tab-only')
 bind('tt', 'set-cmd-text -s :tab-take')
 bind('tg', 'set-cmd-text -s :tab-give')
-bind('v', 'enter-mode passthrough')
-bind('V', 'enter-mode caret')
 bind('w-', 'window-only')
 bind('x', 'tab-close -n')
 bind('X', 'tab-close -p')
