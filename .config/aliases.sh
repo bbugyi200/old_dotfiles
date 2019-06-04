@@ -110,13 +110,14 @@ x() { mkdir /tmp/copy &> /dev/null; /bin/mv "$@" /tmp/copy/; }
 y() { mkdir /tmp/copy &> /dev/null; /bin/cp -r "$@" /tmp/copy/; }
 
 # ---------- Salary ----------
+daily_salary() { printf "%f\n" $(($(weekly_salary "$1") / 5.0)); }
 hourly_salary() { printf "%f\n" $(($(weekly_salary "$1") / 40.0)); }
 hsal() { sal "$(($1 * 40.0 * 52.0 / 1000.0))" "${@:2}"; }
 monthly_salary() { printf "%f\n" $(($(yearly_salary "$1") / 12.0)); }
 NET_P=$((1.0 - TAX_P))
 sal() { clear && salary "$@" && echo; }
 salary() { printf "======= BEFORE TAXES =======\n" && _salary "$1" 0 && printf "\n===== AFTER TAXES (%0.1f%%) =====\n" "${2:-$((TAX_P * 100.0))}" && _salary "$@"; }
-_salary() { { [[ -n "$2" ]] && NET_P=$((1.0 - ($2 / 100.0))); }; printf "Hourly:       $%0.2f\nWeekly:       $%0.2f\nBiweekly:     $%0.2f\nSemi-monthly: $%0.2f\nMonthly:      $%0.2f\nYearly:       $%0.2f\n" "$(hourly_salary "$1")" "$(weekly_salary "$1")" "$((2 * $(weekly_salary "$1")))" "$((0.5 * $(monthly_salary "$1")))" "$(monthly_salary "$1")" "$(yearly_salary "$1")"; NET_P=$((1.0 - TAX_P)); }
+_salary() { { [[ -n "$2" ]] && NET_P=$((1.0 - ($2 / 100.0))); }; printf "Hourly:       $%0.2f\nDaily:        $%0.2f\nWeekly:       $%0.2f\nBiweekly:     $%0.2f\nSemi-monthly: $%0.2f\nMonthly:      $%0.2f\nYearly:       $%0.2f\n" "$(hourly_salary "$1")" "$(daily_salary "$1")" "$(weekly_salary "$1")" "$((2 * $(weekly_salary "$1")))" "$((0.5 * $(monthly_salary "$1")))" "$(monthly_salary "$1")" "$(yearly_salary "$1")"; NET_P=$((1.0 - TAX_P)); }
 TAX_P=0.285;  # Default tax percentage used for salary calculation.
 weekly_salary() { printf "%f\n" $(($(yearly_salary "$1") / 52.0)); }
 yearly_salary() { printf "%f\n" $(($1 * 1000.0 * NET_P)); }
