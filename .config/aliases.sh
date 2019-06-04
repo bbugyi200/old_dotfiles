@@ -196,6 +196,7 @@ alias gpa='git commit -v -a --no-edit --amend && git push --force'
 alias gpf='git push --force'
 alias gprm='gpup "Docs: Update README"'
 alias gpu='sudo radeontop -l 1 -d - | sed "1d" | head -n 1 | awk "{print \$3}" | sed "s/,//g"'
+alias gpull='git stash && git pull && git stash apply'
 alias grc='git rebase --continue'
 gri() { git rebase -i HEAD~"$1"; }
 grun() { [[ "$(tail -n 1 "${PWD}"/.gdbinit)" == "r" ]] && sed -i '/^r$/d' "${PWD}"/.gdbinit || printf "r\n" >> "${PWD}"/.gdbinit; }
