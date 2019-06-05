@@ -4,6 +4,7 @@
 \.git
 \.gitignore
 \.stow-local-ignore
+\.stow-global-ignore
 
 # bad extensions
 /.*\.swo
