@@ -23,3 +23,13 @@ windows:
         panes:
             - 0:
                 - ll
+    - IV:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - V:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll

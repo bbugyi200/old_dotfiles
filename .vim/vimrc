@@ -16,7 +16,7 @@ set colorcolumn=
 set completeopt-=preview
 set nocursorcolumn
 set nocursorline
-" set diffopt+=iwhiteall
+set diffopt+=iwhiteall
 set expandtab
 set exrc  " Allows Local .vimrc to be loaded
 set grepformat=%f:%l:%c:%m
@@ -288,6 +288,10 @@ nnoremap <Leader>Y ma^y$`a
 " -------------------
 " ----- Symbols -----
 " -------------------
+nnoremap <Leader>:e :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <Leader>:v :vs <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <Leader>:s :sp <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <Leader>:t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 call s:nimap('<Leader>#', ':call MakeBox()<CR>')
 nnoremap <Leader>= <C-w>=
 nnoremap <Leader>/ /\v\C<><Left>

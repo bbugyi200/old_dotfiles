@@ -1,3 +1,11 @@
+########################################
+#  Startup Completion Scripts / Setup  #
+########################################
+# Brew ZSH Completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 ###############
 #  Oh-My-Zsh  #
 ###############
@@ -6,11 +14,6 @@ ZSH_THEME="mytheme"
 DEFAULT_USER="bryan"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
-
-# Brew ZSH Completions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
 
 # 'sudo' plugin MUST remain near the end or (for some reason) it won't work
 plugins=(git git-extras emoji lpass vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
@@ -43,14 +46,17 @@ disable r
 ####################
 autoload -U +X compinit && compinit -u
 autoload -U +X bashcompinit && bashcompinit
-for filename in ~/.bash-completions/*; do
-    source "$filename"
-done
+if [[ -d ~/.bash-completions ]]; then
+    for filename in ~/.bash-completions/*; do
+        source "$filename"
+    done
+fi
 
 _git 2> /dev/null  # hack to make git branch completion work
 compdef _command_names wim vinfo
 compdef __git_branch_names gco gnext
 compdef _git-diff gd
+compdef _git-log glg
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
 compdef _tmuxinator tm
 compdef vman=man
@@ -58,8 +64,6 @@ compdef vman=man
 command -v emerge &> /dev/null && compdef sudo_del=emerge
 command -v emerge &> /dev/null && compdef sudo_get=emerge
 command -v rc-service &> /dev/null && compdef rcst=rc-service
-
-
 
 #####################
 #  Source Commands  #
@@ -146,10 +150,6 @@ if [[ -d $PWD/.git ]] && [[ -d ~/.virtualenvs/$(basename $PWD) ]]; then
     workon $(basename $PWD) &> /dev/null
 fi
 
-if [[ -d venv ]]; then
-    source venv/bin/activate
-fi
-
 # Starts ssh-agent automatically
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > ~/.ssh-agent-thing
@@ -159,7 +159,7 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 fi
 
 # Needed for Eternal Command History
-preexec() { log_shell_history "$1"; }
+preexec() { log_shell_history &> /dev/null "$1"; }
 
 if [[ -f $PWD/.lzshrc ]]; then
     printf "\n*** ALERT: A Local zshrc File has been Sourced ***\n\n"

@@ -93,10 +93,10 @@ alias vmutt='vim $HOME/.mutt/muttrc'
 # def marker: VIM
 alias daf='def -a'
 def() { zim "def" "$@" "$HOME/Dropbox/home/.zshrc" "$HOME/Dropbox/home/.config/aliases.sh" "$HOME/Dropbox/home/.config/debian.sh" "$HOME/Dropbox/home/.config/gentoo.sh" "/home/bryan/Dropbox/home/.config/macos.sh"; }
+alias fim="F=\"\$(rg --files --color=never | fzf)\"; [[ -n \"\${F}\" ]] && vim \"\${F}\" || { echo '[ERROR] No filename matched.' && return 1; }"
 him() { vim ~/"$1"; }
 lim() { vim -c "normal '0" -c 'bd1'; }
 mim() { zim "mim" "$@"; }
-alias pim="F=\"\$(rg --files | fzf)\"; [[ -n \"\${F}\" ]] && vim \"\${F}\""
 tam() { N="$(history -n | tail -n 100 | tac | nl | fzf --tiebreak=index | awk '{print $1}')"; if [[ -n "${N}" ]]; then tim "${N}" "$@"; fi; }
 tim() { f=$(fc -e - -"${1:-1}" 2> /dev/null | fzf -q "$2"); if [[ -n "${f}" ]]; then vim "${f}"; fi; }
 alias v='vim'
@@ -131,6 +131,7 @@ alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
+alias black='black -l 120'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
 alias c='cookie'
 alias cal='cal -n 3 | less'
@@ -138,6 +139,7 @@ alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
 alias cdef='def -m COOKIE'
 alias cdow='cd "$(dow_dir $PWD)"'
+checklist() { vim -c "/^\[" -c "nnoremap x :normal 0lsX<CR>/^\[ \]<CR>" -c "nnoremap X :normal 0ls <CR>/^\[<CR>" "$1" && ${SED} -i 's/\[X\]/[ ]/g' "$1"; }
 cho() { sudo chown -R "$2":"$2" "$1"; }
 alias chrome='xspawn -w web google-chrome-stable'
 alias chx='sudo chmod +x'
@@ -180,7 +182,7 @@ gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
 alias gclp='cd ~/projects && gcl'
 alias gclt='cd /tmp && gcl'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
-gd() { git diff HEAD~"${1:-0}"; }
+alias gcm='git checkout master 2> /dev/null || git checkout P.master 2> /dev/null'
 alias Gdef='def -m GTD'
 alias gdef='def -m GENTOO'
 alias gdo='git diff origin/master'
@@ -190,6 +192,7 @@ alias gho='ghi open'
 alias ghooks='rm -rf .git/hooks && git init' 
 alias gi='git info -c 3 --no-config'
 alias ginit='while true; do; watch -d -n 1 cat .gdbinit; vim .gdbinit; done'
+git_issue_number() { git branch | grep '^\*' | awk '{print $2}' | awk -F'-' '{print $1}'; }
 alias Glg='git log -p -G'
 alias gn='gnext'
 gN() { git checkout HEAD~"${1:-1}"; }
@@ -208,6 +211,8 @@ header() { clear && eval "$@" && echo; }
 info() { pinfo "$@" || { printf "\n===== APROPOS OUTPUT =====\n"; apropos "$@"; }; }
 alias ipdb='ipdb3'
 alias iplug='vim +PluginInstall +qall'
+ipy-add-import() { ${SED} -i "/c\.InteractiveShellApp\.exec_lines/ a import $1" ~/.ipython/profile_default/ipython_config.py; }
+alias ipy='ipython3'
 alias issh='ssh -p 34857 athena-arch.ddns.net'
 K() { tmux switchc -n && tmux kill-session -t "$(tm-session-name)"; }
 alias k='tm-kill'
@@ -232,15 +237,21 @@ alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias nrg='pushd ~/Dropbox/var/notes && ranger && popd'
 alias ok='xspawn okular'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/var/notes/Onething/"$1".txt; }
+alias P='popd'
 alias ping2all='(ping2life 10.1.1.1; ping2life google.com) @@'
 alias pipget='pip install --user'
 pdb() { { [[ -f ./"$1" ]] && pudb3 "$@"; } || pudb3 "$(which -a "$1" | tail -n 1)" "${@:2}"; }
 pgr() { pgrep -f ".*$1.*"; }
 alias plex='xspawn -w plex plexmediaplayer'
 pname() { pass show | grep -i "$1" | awk '{print $2}'; }
+alias pp='pipenv'
+alias ppi='pipenv install'
+alias ppr='pipenv run'
+ppython() { pipenv run python "$@"; }
 alias psg='ps -ax | grep -v grep | grep'
 alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
+pvim() { pipenv run vim "$@"; }
 pycov() { coverage run "$1" && coverage html && qutebrowser htmlcov/index.html; }
 alias reboot='sudo reboot'
 rg() { "$(which -a rg | tail -n 1)" -p "$@" | less; }
@@ -268,7 +279,6 @@ alias time='/usr/bin/time'
 tmd() { tmux display-message -p "#{$1}"; }
 # shellcheck disable=SC2142
 alias tm-layout="tmux lsw | grep '*' | awk '{gsub(/\\]/, \"\"); print \$7}'"
-alias top='sudo htop'
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
 alias tsm='transmission-remote'
 tsm-add() { transmission-remote -a "$1"; }
@@ -293,11 +303,13 @@ alias vdiff='vimdiff -n'
 venv() { vim "$HOME"/.zprofile "$HOME"/.profile "$HOME"/Dropbox/etc/environment "$(find "$HOME"/Dropbox/etc/profile.d -type f)" "$HOME"/.local/bin/etc-generator; }
 alias vgdb-l='voltron view command "cmds set listsize $(tput lines) ; list *\$pc" --lexer c'
 alias vgdb='vim ~/.gdbinit .gdbinit'
-alias vgtd-weekly-review='vim ~/Dropbox/var/notes/weekly_review.txt'
+alias vgtd-daily="checklist ~/Dropbox/var/notes/daily_tasks.txt"
+alias vgtd-weekly-review='checklist ~/Dropbox/var/notes/weekly_review.txt'
 alias vgutils='vim /usr/bin/gutils.sh'
 alias vi='vinfo'
 alias vihor='vim ~/Dropbox/var/notes/Horizons_of_Focus/*'
 alias vimilla='vim -u ~/.vanilla-vimrc'
+alias vipy='vim -c "/c.InteractiveShellApp.exec_lines" ~/.ipython/profile_default/ipython_config.py'
 vlog() { vim + /var/tmp/"$1"; }
 alias vm='vman'
 alias vmb='vim $HOME/Dropbox/bin/cron/cron.monthly/*'

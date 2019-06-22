@@ -45,12 +45,14 @@ if [[ "$(uname -a)" == *"Darwin"* ]]; then
     export LOCATE="glocate"
     export LESS_OPTS=""
     export SED="gsed"
+    export GREP="/usr/local/bin/ggrep"
 
     export AT_WORK=true
 else
     export TERM="rxvt-unicode-256color"  # Fixes Mutt Background Issue (stays transparent) in TMUX
     export LESS_OPTS="-F"
-    export SED="gsed"
+    export SED="sed"
+    export GREP="grep"
 fi
 
 

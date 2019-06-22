@@ -74,6 +74,8 @@ search_aliases = {
     'sal': 'average salary',
     'sd': 'San Diego',
     'se': 'Software Engineer',
+    'sg': 'Samsung Galaxy S10',
+    'sgw': 'Samsung Galaxy Watch',
     'tb': 'Thunderbird',
     'tex': 'LaTeX',
     'tlou': 'The Last of Us',
@@ -117,8 +119,10 @@ c.url.searchengines = {
                                SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
                                SE.LuckyURL('{}')),
     'ei': SE.SearchEngine('https://gitlab.pr.edgelp.net/edgelp/prod/issues/{}'),
+    'emr': 'https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests/{}',
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
                           SE.OneIntURL(SE.static.google('Season {0} {1} episodes'))),
+    'ew': 'https://www.edgestreamlp.com/{}',
     'g4g': SE.static.site('www.geeksforgeeks.org'),
     'geb': 'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific',
     'gep': SE.SearchEngine(SE.static.site('packages.gentoo.org', 'gpo.zugaina.org'),
@@ -149,6 +153,7 @@ c.url.searchengines = {
     'j': 'https://www.google.com/search?q={}&ibp=htl;jobs#fpstate=tldetail',
     'js': 'https://www.google.com/search?q=Software+Engineer+{}&ibp=htl;jobs#fpstate=tldetail',
     'l': SE.static.stackoverflow(7, prefix='Linux'),
+    'lh': 'http://127.0.0.1:8000/{}',
     'li': SE.SearchEngine(SE.static.site('linkedin.com'),
                           SE.URL(SE.static.site('linkedin.com', prefix='software'),
                                  '^@',
@@ -161,6 +166,7 @@ c.url.searchengines = {
     'pss': 'https://store.playstation.com/en-us/search/{}',
     'r': SE.static.site('reddit.com'),
     'rlp': 'https://rocketleague.tracker.network/profile/ps/{}',
+    'rpy': 'https://realpython.com/search?q={}',
     's0': SE.static.site('stackoverflow.com'),
     'shr': 'https://shop.shoprite.com/store/1627666/search?displayType=&query={}&recipe=0&sponsored=5',
     'st': SE.static.google('set timer for {}'),
@@ -213,7 +219,7 @@ for k, v in command_aliases.items():
 c.bindings.commands = {}  # Clears all previously set user bindings.
 
 ########## Unbinds
-unbound_nkeys: List[str] = ['ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'gf', 'gl', 'gr', 'M', ]
+unbound_nkeys: List[str] = ['<Ctrl+h>', 'ad', 'b', 'B', 'co', 'd', 'D', 'gd', 'gf', 'gl', 'gr', 'M', ]
 unbound_ikeys: List[str] = ['<Ctrl+e>']
 
 for unbound_keys, mode in [(unbound_nkeys, 'normal'), (unbound_ikeys, 'insert')]:
@@ -307,7 +313,9 @@ bind(',sd', 'set-cmd-text -s :session-delete')
 bind(',sl', 'set-cmd-text -s :session-load -c')
 bind(',ss', 'set-cmd-text -s :session-save -o')
 bind(',S', 'session-save -c')
-bind(',t', 'config-cycle tabs.position left top')
+bind(',tt', 'set tabs.position top', 'set tabs.title.format "{audio}{index}: {title}"', 'set tabs.title.format_pinned "[{index}]"')
+bind(',tl', 'set tabs.position left', 'set tabs.title.format " * {audio}{index}: {title}"', 'set tabs.title.format_pinned "[{index}]: {title}"')
+bind(',tr', 'set tabs.position right', 'set tabs.title.format " * {audio}{index}: {title}"', 'set tabs.title.format_pinned "[{index}]: {title}"')
 bind(';Tm', 'hint links spawn -d -v torrent -d {hint-url} -w /media/bryan/hercules/media/Entertainment/Movies', 'message-info "Select movie to torrent."')
 bind(';TM', 'hint links spawn --userscript add-to-torrent-file movies.txt "{hint-url}"', 'message-info "Select movie to add to torrent list."')
 bind(';Tt', 'hint links spawn -d -v torrent -d {hint-url} -w /media/bryan/hercules/media/Entertainment/TV', 'message-info "Select TV show to torrent."')

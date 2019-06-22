@@ -8,17 +8,31 @@ on_project_stop:
 pre_window:
 
 windows:
-    - I:
+    - prod1:
+        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - II:
+    - prod2:
+        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - III:
+    - pr-dev-1:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - pr1
+    - plat:
+        root: ~/projects/edgelp/plat
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - edgelp:
+        root: ~/projects/edgelp
         layout: even-horizontal
         panes:
             - 0:

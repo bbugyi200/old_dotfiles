@@ -242,6 +242,11 @@ let g:instant_markdown_autostart = 0
 "  Jedi-vim  "
 """"""""""""""
 if PluginInstalled("jedi")
+    " Fix for Mac OS
+    if has('macunix')
+        py3 sys.executable='/usr/local/bin/python3'
+    endif
+
     let g:jedi#auto_initialization = 1
 
     " Add the virtualenv's site-packages to vim path
@@ -318,7 +323,7 @@ if PluginInstalled("syntastic")
     " You can disable specific warnings for <checker> by using
     " the 'g:syntastic_<ext>_<checker>_args' variable
     let g:syntastic_cpp_checkers=['clang_check']
-    let g:syntastic_python_checkers=['flake8', 'mypy']
+    let g:syntastic_python_checkers=['flake8']
     let g:syntastic_tex_checkers=['chktex']
     let g:syntastic_sh_checkers=['shellcheck']
     let g:syntastic_rst_checkers=['sphinx']

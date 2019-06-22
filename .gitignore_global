@@ -8,8 +8,10 @@ __pycache__/*
 .clang_complete
 .coverage
 core
+*.dump
 **/dist/*
 *.egg-info/*
+.env
 epatch.info
 .funky
 .gdbinit
