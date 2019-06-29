@@ -1,8 +1,7 @@
 """Static URL Helpers"""
 
 import datetime as dt
-from typing import *  # noqa: F401
-from types import *  # noqa: F401
+from typing import Any, Callable, Container, Dict, Generator, Iterable, Iterator, List, NoReturn, Optional, Sequence, Set, Tuple, Union  # noqa
 
 import searchengines as SE
 import searchengines.utils as utils

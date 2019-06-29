@@ -187,6 +187,7 @@ alias Gdef='def -m GTD'
 alias gdef='def -m GENTOO'
 alias gdo='git diff origin/master'
 alias geff='git effort'
+alias gg='git grep --break --heading'
 alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
 alias gho='ghi open'
 alias ghooks='rm -rf .git/hooks && git init' 
@@ -201,10 +202,11 @@ alias gpf='git push --force'
 alias gprm='gpup "Docs: Update README"'
 alias gpu='sudo radeontop -l 1 -d - | sed "1d" | head -n 1 | awk "{print \$3}" | sed "s/,//g"'
 alias gpull='git stash && git pull && git stash apply'
+alias gra='git rebase --abort'
 alias grc='git rebase --continue'
-gri() { git rebase -i HEAD~"$1"; }
 grun() { [[ "$(tail -n 1 "${PWD}"/.gdbinit)" == "r" ]] && sed -i '/^r$/d' "${PWD}"/.gdbinit || printf "r\n" >> "${PWD}"/.gdbinit; }
 alias gsd='sudo get-shit-done'
+alias gsta='git stash'
 alias gsum='git summary | less ${LESS_OPTS}'
 alias h='tm-home load'
 header() { clear && eval "$@" && echo; }
@@ -279,6 +281,7 @@ alias time='/usr/bin/time'
 tmd() { tmux display-message -p "#{$1}"; }
 # shellcheck disable=SC2142
 alias tm-layout="tmux lsw | grep '*' | awk '{gsub(/\\]/, \"\"); print \$7}'"
+alias top='htop'
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
 alias tsm='transmission-remote'
 tsm-add() { transmission-remote -a "$1"; }

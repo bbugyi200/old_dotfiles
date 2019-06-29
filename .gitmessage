@@ -6,14 +6,14 @@
 # Explain why this change is being made
 # |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
 
-# Type can be 
-#    Add:       add feature
-#    Mod:       modified existing feature
-#    Fix:       bug fix
-#    Tests:      add or modify test(s); no production code changed
-#    Sty:       style changes
-#    Docs:       change documentation; docstrings, log messages, README, etc.
-#    Meta:      change .gitignore, .flake8, *.ini, setup.py, binaries, etc.
+# Replace <type> with one of the following:
+#    Add        add feature
+#    Mod        modified existing feature
+#    Fix        bug fix
+#    Tests      add or modify test(s); no production code changed
+#    Sty        style changes
+#    Docs       change documentation; docstrings, log messages, README, etc....
+#    Meta       change .gitignore, .flake8, *.ini, setup.py, binaries, etc....
 # --------------------
 # Remember to
 #    Capitalize the subject line

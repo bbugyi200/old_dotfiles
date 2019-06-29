@@ -5,8 +5,7 @@ classes/functions must be added to __all__ or they will NOT be made available.
 """
 
 import re
-from typing import *  # noqa: F401
-from types import *  # noqa: F401
+from typing import Any, Callable, Container, Dict, Generator, Iterable, Iterator, List, NoReturn, Optional, Sequence, Set, Tuple, Type, Union  # noqa
 
 import searchengines.imfeelinglucky as IFL
 import searchengines.utils as utils

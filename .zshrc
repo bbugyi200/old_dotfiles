@@ -33,7 +33,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 #  Disable Aliases / Builtins  #
 ################################
 # Disable aliases
-bad_aliases=("ll" "gcl" "gca" "gco" "gd" "glg" "gsta")
+bad_aliases=("ll" "gcl" "gca" "gco" "gd" "gg" "glg" "gra" "gsta")
 for i in "${bad_aliases[@]}"; do
     unalias "$i" &> /dev/null
 done
@@ -54,7 +54,7 @@ fi
 
 _git 2> /dev/null  # hack to make git branch completion work
 compdef _command_names wim vinfo
-compdef __git_branch_names gco gnext
+compdef _git-checkout gco gnext
 compdef _git-diff gd
 compdef _git-log glg
 compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget

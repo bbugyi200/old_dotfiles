@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 case "$1" in
-  rebase) exec .git/hooks/post-merge ;;
+  rebase)
+      if [[ -f .git/hooks/post-merge ]]; then
+          exec .git/hooks/post-merge 
+      fi
+      ;;
 esac

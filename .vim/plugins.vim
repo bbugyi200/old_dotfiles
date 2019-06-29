@@ -5,14 +5,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'Raimondi/delimitMate'
-Plugin 'Rip-Rip/clang_complete'  " Depends on external package: clang
-Plugin 'Shougo/neoinclude.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/vimproc.vim'  " Required by: ghcmod-vim;  Install by running ':VimProcInstall'
-Plugin 'SirVer/ultisnips'
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'VundleVim/Vundle.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'benmills/vimux'
 Plugin 'danro/rename.vim'
@@ -29,9 +21,16 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'pboettch/vim-cmake-syntax'
+Plugin 'Raimondi/delimitMate'
+Plugin 'Rip-Rip/clang_complete'  " Depends on external package: clang
+Plugin 'scrooloose/nerdtree'
+Plugin 'Shougo/neoinclude.vim'
+Plugin 'Shougo/vimproc.vim'  " Required by: ghcmod-vim;  Install by running ':VimProcInstall'
+Plugin 'SirVer/ultisnips'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -40,7 +39,9 @@ Plugin 'vim-scripts/AnsiEsc.vim'
 Plugin 'vim-scripts/applescript.vim'
 Plugin 'vim-scripts/cecutil'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'vimwiki/vimwiki'  " Required by: taskwiki
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'xolox/vim-misc'  " Required by: vim-easytags
 
 " All of your Plugins must be added before the following line

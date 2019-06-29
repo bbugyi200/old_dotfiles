@@ -292,7 +292,7 @@ nmap S ys
 " V-V-V-V-V-V-V-V-V-V
 nnoremap <Leader>v :vert sfind 
 " W-W-W-W-W-W-W-W-W-W
-nnoremap <Leader>w gqap| " mapping to wrap paragraph
+nnoremap <Leader>W gqap| " mapping to wrap paragraph
 nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
 nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
 " X-X-X-X-X-X-X-X-X-X

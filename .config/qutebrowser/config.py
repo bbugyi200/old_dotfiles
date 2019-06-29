@@ -5,8 +5,7 @@ import platform
 import os  # noqa
 import sys  # noqa
 import re
-from typing import *  # noqa: F401
-from types import *  # noqa: F401
+from typing import Any, Callable, Container, Dict, Generator, Iterable, Iterator, List, NoReturn, Optional, Sequence, Set, Tuple, Union  # noqa
 
 import yaml
 
@@ -45,6 +44,7 @@ search_aliases = {
     'cs': 'Computer Science',
     'de': 'Debian',
     'dep': 'Debian Buster',
+    'djpy': 'Django Python',
     'en': 'Evernote',
     'fcl': 'from the command-line',
     'ge': 'Gentoo',
@@ -74,8 +74,10 @@ search_aliases = {
     'sal': 'average salary',
     'sd': 'San Diego',
     'se': 'Software Engineer',
-    'sg': 'Samsung Galaxy S10',
+    'sel': 'Selenium Python',
+    'sg': 'Samsung Galaxy',
     'sgw': 'Samsung Galaxy Watch',
+    'ta': 'tasker',
     'tb': 'Thunderbird',
     'tex': 'LaTeX',
     'tlou': 'The Last of Us',
@@ -108,6 +110,7 @@ def bang_pttrn() -> str:
 
 c.url.searchengines = {
     '2': 'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}',
+    '3': 'https://www.google.com/maps/dir/902+Carnegie+Center,+Princeton,+NJ+08540/{}',
     'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
     'b': SE.static.stackoverflow(10, prefix='Bash'),
     'bmo': SE.SearchEngine(SE.static.google('best movies of 20{}'),
@@ -119,10 +122,12 @@ c.url.searchengines = {
                                SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
                                SE.LuckyURL('{}')),
     'ei': SE.SearchEngine('https://gitlab.pr.edgelp.net/edgelp/prod/issues/{}'),
-    'emr': 'https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests/{}',
+    'emp': 'https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests/{}',
+    'emw': 'https://gitlab.pr.edgelp.net/edgelp/website/merge_requests/{}',
     'ep': SE.SearchEngine(SE.static.google('{} episodes'),
                           SE.OneIntURL(SE.static.google('Season {0} {1} episodes'))),
     'ew': 'https://www.edgestreamlp.com/{}',
+    'ews': 'https://edgestream-staging.herokuapp.com/{}',
     'g4g': SE.static.site('www.geeksforgeeks.org'),
     'geb': 'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific',
     'gep': SE.SearchEngine(SE.static.site('packages.gentoo.org', 'gpo.zugaina.org'),
@@ -151,7 +156,6 @@ c.url.searchengines = {
     'ght': 'https://github.com/bbugyi200/{}/graphs/traffic',
     'i': SE.SearchEngine('https://www.google.com/search?&tbm=isch&q={}'),
     'j': 'https://www.google.com/search?q={}&ibp=htl;jobs#fpstate=tldetail',
-    'js': 'https://www.google.com/search?q=Software+Engineer+{}&ibp=htl;jobs#fpstate=tldetail',
     'l': SE.static.stackoverflow(7, prefix='Linux'),
     'lh': 'http://127.0.0.1:8000/{}',
     'li': SE.SearchEngine(SE.static.site('linkedin.com'),
@@ -247,7 +251,7 @@ cbind("<Alt-u>", 'spawn --userscript add_quotes -1')
 cbind("<Alt-i>", 'spawn --userscript add_quotes -2')
 cbind("<Alt-o>", 'spawn --userscript add_quotes -3')
 cbind('<Ctrl-f>', 'edit-command --run')
-cbind('<Ctrl-y>', 'fake-key --global <Return>V$y')
+cbind('<Ctrl-y>', 'fake-key --global <Return>v$y')
 
 # >>>>>>> INSERT
 ibind('<Ctrl-f>', 'open-editor')
@@ -263,13 +267,8 @@ ibind('<Alt-u>', 'spawn --userscript qute-pass --username-only')
 pbind('<Ctrl-o>', 'prompt-open-download rifle {}')
 
 # >>>>>>> PASSTHROUGH
-ptbind('<Escape>', 'leave-mode')
 ptbind('<Ctrl-]>', 'fake-key <Escape>')
 ptbind('<Ctrl-x>', 'tab-close', 'enter-mode passthrough')
-ptbind('[', 'spawn winstack prev')
-ptbind(']', 'spawn winstack next')
-ptbind('<Alt-[>', 'fake-key [')
-ptbind('<Alt-]>', 'fake-key ]')
 
 # >>>>>>> NORMAL
 # -------------------
@@ -352,7 +351,7 @@ bind('<Alt-u>', 'enter-mode insert', 'spawn --userscript qute-pass --username-on
 bind('<Ctrl-p>', 'tab-pin')
 bind('<Ctrl-l>', 'edit-url')
 bind('<Ctrl-r>', 'restart')
-bind('<Ctrl-y>', 'fake-key --global V$y')
+bind('<Ctrl-y>', 'fake-key --global v$y')
 bind('<Escape>', 'search', 'clear-messages')
 
 
