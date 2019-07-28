@@ -41,14 +41,16 @@ search_aliases = {
     'bnn': 'Brooklyn Nine-Nine',
     'cl': 'command-line',
     'co': 'Compilers',
+    'cod': 'Call of Duty: Black Ops 4',
     'cs': 'Computer Science',
     'de': 'Debian',
     'dep': 'Debian Buster',
-    'djpy': 'Django Python',
+    'dj': 'Django',
     'en': 'Evernote',
     'fcl': 'from the command-line',
     'ge': 'Gentoo',
     'gh': 'GitHub',
+    'gl': 'GitLab',
     'gt': 'Georgia Tech',
     'gtest': '"Google Test" OR gtest',
     'ha': 'Haskell',
@@ -56,6 +58,7 @@ search_aliases = {
     'js': 'JavaScript',
     'ks': 'keyboard shortcuts',
     'lcl': 'Linux from the command-line',
+    'lta': '"Life Time Athletic"',
     'lx': 'Linux',
     'mac': 'MacOS',
     'mf': 'Modern Family',
@@ -121,6 +124,7 @@ c.url.searchengines = {
                                SE.URL(SE.static.duckduckgo('{}'), '^!'),
                                SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
                                SE.LuckyURL('{}')),
+    'dvd': SE.static.google('{} DVD release date'),
     'ei': SE.SearchEngine('https://gitlab.pr.edgelp.net/edgelp/prod/issues/{}'),
     'emp': 'https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests/{}',
     'emw': 'https://gitlab.pr.edgelp.net/edgelp/website/merge_requests/{}',
@@ -162,7 +166,7 @@ c.url.searchengines = {
                           SE.URL(SE.static.site('linkedin.com', prefix='software'),
                                  '^@',
                                  lambda x: x.replace(SE.utils.encode('@'), ''))),
-    'lib': 'http://libgen.io/search.php?req={}',
+    'lib': 'http://libgen.is/search.php?req={}',
     'Lib': 'https://libgen.me/search?q={}',
     'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
     'p': SE.static.stackoverflow(7, prefix='Python'),
@@ -179,12 +183,12 @@ c.url.searchengines = {
                            SE.LuckyURL('{2} S{0:02d}E{1:02d} inurl:english site:subscene.com',
                                        SE.TwoIntURL.pattern,
                                        SE.TwoIntURL.filter)),
-    'T': SE.SearchEngine('https://thepiratebay3.com/search/{}',
-                         SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}'),
-                         SE.OneIntURL('https://thepiratebay.org/search/{1} Season')),
-    'TT': SE.SearchEngine('https://1337x.unblocked.vet/search/{}/1/',
+    'T': SE.SearchEngine('https://1337x.unblocked.vet/search/{}/1/',
                          SE.TwoIntURL('https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/'),
                          SE.OneIntURL('https://1337x.unblocked.vet/search/{1} Season/1/')),
+    'TT': SE.SearchEngine('https://thepiratebay3.com/search/{}',
+                         SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}'),
+                         SE.OneIntURL('https://thepiratebay.org/search/{1} Season')),
     'ud': SE.static.site('idioms.thefreedictionary.com', 'en.wiktionary.org', 'urbandictionary.com'),
     'q': SE.static.google('"{}"'),
     'w': SE.static.site('en.wikipedia.org'),
@@ -193,7 +197,8 @@ c.url.searchengines = {
 }
 
 for i in range(1, 11):
-    c.url.searchengines['s{}'.format(i)] = SE.static.stackoverflow(i)
+    c.url.searchengines[f's{i}'] = SE.static.stackoverflow(i)
+    c.url.searchengines[f'g{i}'] = SE.static.google('{}', max_years_old=i)
 
 
 ######################
@@ -292,10 +297,9 @@ bind(',e', 'spawn --userscript searchbar-command')
 bind('gc', 'spawn "{}" {{url}}'.format(
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' if is_macos else 'google-chrome'
 ))
+bind(',gc', 'spawn "init-chrome"')
 bind('gh', 'home')
 bind('gs', 'view-source')
-bind(',g', 'spawn --userscript google')
-bind(',G', 'spawn --userscript google -t')
 bind('gi', 'hint inputs')
 bind('gl', 'tab-focus last')
 bind(',h', 'set-cmd-text -s :help')
@@ -315,9 +319,9 @@ bind(',S', 'session-save -c')
 bind(',tt', 'set tabs.position top', 'set tabs.title.format "{audio}{index}: {title}"', 'set tabs.title.format_pinned "[{index}]"')
 bind(',tl', 'set tabs.position left', 'set tabs.title.format " * {audio}{index}: {title}"', 'set tabs.title.format_pinned "[{index}]: {title}"')
 bind(',tr', 'set tabs.position right', 'set tabs.title.format " * {audio}{index}: {title}"', 'set tabs.title.format_pinned "[{index}]: {title}"')
-bind(';Tm', 'hint links spawn -d -v torrent -d {hint-url} -w /media/bryan/hercules/media/Entertainment/Movies', 'message-info "Select movie to torrent."')
+bind(';Tm', 'hint links spawn -d -v torrent -d {hint-url} -w /media/bryan/zeus/media/Entertainment/Movies', 'message-info "Select movie to torrent."')
 bind(';TM', 'hint links spawn --userscript add-to-torrent-file movies.txt "{hint-url}"', 'message-info "Select movie to add to torrent list."')
-bind(';Tt', 'hint links spawn -d -v torrent -d {hint-url} -w /media/bryan/hercules/media/Entertainment/TV', 'message-info "Select TV show to torrent."')
+bind(';Tt', 'hint links spawn -d -v torrent -d {hint-url} -w /media/bryan/zeus/media/Entertainment/TV', 'message-info "Select TV show to torrent."')
 bind(';TT', 'hint links spawn --userscript add-to-torrent-file tv.txt "{hint-url}"', 'message-info "Select TV show to add to torrent list."')
 bind('t-', 'tab-only')
 bind('tt', 'set-cmd-text -s :tab-take')

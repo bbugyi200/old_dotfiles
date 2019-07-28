@@ -38,7 +38,7 @@ tabs:
     select_on_remove: last-used
     show: always
     title:
-        format: "{audio}{index}: {title}"
+        format: "{audio}{index}: {current_title}"
         format_pinned: "[{index}]"
 
 url:

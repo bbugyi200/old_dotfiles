@@ -269,8 +269,9 @@ EOF
     endif
     
     let g:jedi#popup_select_first = 0
-    let g:jedi#show_call_signatures = 0
+    let g:jedi#show_call_signatures = "1"
     let g:jedi#goto_command = "<C-]>"
+    let g:jedi#completions_command = ""
     let g:jedi#goto_assignments_command = ""
     let g:jedi#rename_command = ""
 endif
@@ -319,12 +320,13 @@ if PluginInstalled("syntastic")
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
     let g:syntastic_python_python_exec = '/usr/bin/python3'
+    let g:syntastic_aggregate_errors = 1
     
     " Set checkers for specific filetypes
     " You can disable specific warnings for <checker> by using
     " the 'g:syntastic_<ext>_<checker>_args' variable
     let g:syntastic_cpp_checkers=['clang_check']
-    let g:syntastic_python_checkers=['flake8']
+    let g:syntastic_python_checkers=['mypy', 'flake8']
     let g:syntastic_tex_checkers=['chktex']
     let g:syntastic_sh_checkers=['shellcheck']
     let g:syntastic_rst_checkers=['sphinx']

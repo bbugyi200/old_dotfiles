@@ -60,3 +60,7 @@ nmap <Leader>K :!qutebrowser https://docs.python.org/3/library/<C-R><C-W> &> /de
 nmap <Leader>t :call SwitchToTest('py')<CR>
 nmap <Leader><Leader>t :!pyinit -n -t <C-R>=expand('%:r')<CR><CR>
 nmap <Leader>T :call VSwitchToTest('py')<CR>
+
+" ----- pytest -----
+nnoremap <Leader><C-]> /\v^\s*def <C-r><C-w><CR>
+let @p='A  # pragma: no cover'

@@ -142,13 +142,13 @@ function! NthCookie(N)
     return $HOME . '/.cookiecutters/' . templates[a:N - 1]
 endfunction
 
-function! RemoveBuffer()
-    exec 'b# | sp | b# | bd'
+function! RemoveBuffer(direction)
+    exec 'b' . a:direction . ' | sp | b# | bd'
 endfunction
 
 function! RemoveFile()
     let filename = expand('%')
-    call RemoveBuffer()
+    call RemoveBuffer('n')
     call system("safe-rm " . filename)
 endfunction
 
@@ -224,38 +224,36 @@ nnoremap <Leader>a :AnsiEsc<CR>
 " B-B-B-B-B-B-B-B-B-B
 " C-C-C-C-C-C-C-C-C-C
 " D-D-D-D-D-D-D-D-D-D
-nnoremap <Leader>d :call RemoveBuffer()<CR>
-nnoremap <LocalLeader>d :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <Leader>d :call RemoveBuffer('n')<CR>
 nnoremap <Leader>D :update<CR>:call RemoveFile()<CR>
 nnoremap dx :set opfunc=SwapWords<CR>g@
 " E-E-E-E-E-E-E-E-E-E
 call s:nimap('<Leader>e', ':x!<CR>')
 call s:nimap('<Leader>E', ':xa!<CR>')
 " F-F-F-F-F-F-F-F-F-F
-call s:nimap('<C-f>', '<C-^>')
+nnoremap <C-f> :Files<CR>
 nnoremap <Leader>.fs :sfind 
 nnoremap <Leader>.fv :vert sfind 
 nnoremap <Leader>.ft :tabfind 
 " G-G-G-G-G-G-G-G-G-G
 nnoremap <Leader>ga :Git add %:p<CR><CR>
-nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gb :Git branch<Space>
 nnoremap <Leader>gc :Gcommit -v -q<CR>
-nnoremap <Leader>gt :Gcommit -v -q %:p<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>ge :Gedit<CR>
-nnoremap <Leader>gr :Gread<CR>
-nnoremap <Leader>gw :Gwrite<CR><CR>
-nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
-nnoremap <Leader>gp :Ggrep<Space>
-nnoremap <Leader>gm :Gmove<Space>
-nnoremap <Leader>gb :Git branch<Space>
-nnoremap <Leader>go :Git checkout<Space>
-nnoremap <Leader>gps :Dispatch! git push<CR>
-nnoremap <Leader>gpl :Dispatch! git pull<CR>
 nnoremap gj j
 nnoremap gk k
-nnoremap gp :!git add --all && git commit && git push<CR>
+nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <Leader>gm :Gmove<Space>
+nnoremap <Leader>go :Git checkout<Space>
+nnoremap <Leader>gp :Ggrep<Space>
+nnoremap <Leader>gpl :Dispatch! git pull<CR>
+nnoremap <Leader>gps :Dispatch! git push<CR>
+nnoremap <Leader>gr :Gread<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gt :Gcommit -v -q %:p<CR>
 nnoremap gV ggVG
+nnoremap <Leader>gw :Gwrite<CR><CR>
 " H-H-H-H-H-H-H-H-H-H
 " I-I-I-I-I-I-I-I-I-I
 " J-J-J-J-J-J-J-J-J-J
@@ -273,9 +271,9 @@ nnoremap <Leader>o o<C-u>
 nnoremap [oe :SyntasticToggleMode<CR>
 nnoremap ]oe :SyntasticToggleMode<CR>
 " P-P-P-P-P-P-P-P-P-P
-nnoremap <C-p><C-p> :History<CR>
 nnoremap <C-p>f :Files<CR>
-nnoremap <C-p>p :History<CR>
+nnoremap <C-p>h :History<CR>
+nnoremap <C-p><C-p> :History<CR>
 nnoremap <C-p>s :Rg<CR>
 nnoremap <C-p>t :Tags<CR>
 " Q-Q-Q-Q-Q-Q-Q-Q-Q-Q
@@ -303,6 +301,7 @@ nnoremap <Leader>Y ma^y$`a
 " -------------------
 " ----- Symbols -----
 " -------------------
+nnoremap * /\v\C<<C-R><C-W>><CR>
 nnoremap <Leader>:e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>:v :vs <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>:s :sp <C-R>=expand("%:p:h") . "/" <CR>

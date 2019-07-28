@@ -49,7 +49,7 @@ import qualified XMonad.Util.NamedScratchpad as NSP
 -- XMobar Templates                                                          --
 -------------------------------------------------------------------------------
 getXmobarTemplate :: String -> String
-getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}%wstatus% %wpoll%{ %pia%  %volume%  |  %date%"
+getXmobarTemplate "1-top-athena" = "%UnsafeStdinReader%}{ %pia%  %volume%  |  %date%"
 getXmobarTemplate "1-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "1-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
 getXmobarTemplate "2-top" = "}%weather%%xweather%     (☀ %suntimes%%xsuntimes%){"
@@ -135,9 +135,6 @@ launchAppAndUP :: String -> String -> X ()
 launchAppAndUP ws cmd = do
     UP.updatePointer (0.5, 0.5) (0, 0)
     launchApp ws cmd
-
-launchFullApp :: String -> String -> X ()
-launchFullApp ws cmd = launchApp ws ("xdotool key super+f && " ++ cmd)
 
 -- Only shows layout when fullscreen mode is enabled
 myPpOrder :: [String] -> [String]
@@ -239,6 +236,7 @@ myStartupHook = ewmhDesktopsStartup
                 >> delayedSpawn 2 "xmonad-suntimes"
                 >> delayedSpawn 2 "xmonad-volume"
                 >> delayedSpawn 2 "xmonad-weather"
+                >> delayedSpawn 2 "/usr/bin/x11vnc -rfbauth /home/bryan/.vnc/passwd -rfbport 34590 -display :0 -o /var/tmp/x11vnc.log -bg -forever -many -usepw -auth /home/bryan/.Xauthority"
                 >> spawn (xmobarTempFmt (getXmobarTemplate "1-bottom") ++ " -b --screen=1")
                 >> spawn ("[[ $(x11screens) -ge 0 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-top") ++ " --screen=0")
                 >> spawn ("[[ $(x11screens) -ge 0 ]] && " ++ xmobarTempFmt (getXmobarTemplate "2-bottom") ++ " -b --screen=0")
@@ -284,10 +282,16 @@ myAdditionalKeys = [
    , ((alpha, c), launchApp "chat" "hexchat")
    , ((alpha, d), windows W.focusDown)
    , ((alpha, f), sendMessage $ Toggle TABBED)
-   , ((alpha .|. beta, g), spawn "qb_prompt")
+   , ((alpha, g), do
+           spawn "wmctrl -a chrome"
+           launchApp "web" "init-chrome"
+   )
    , ((alpha, h), N2D.windowGo N2D.L True)
    , ((alpha .|. beta, h), sendMessage Shrink) -- Next Layout
-   , ((alpha, i), launchApp "web" "qutebrowser --enable-webengine-inspector")
+   , ((alpha, i), do
+           spawn "wmctrl -a qutebrowser"
+           launchApp "web" "qutebrowser --enable-webengine-inspector"
+   )
    , ((alpha, j), N2D.windowGo N2D.D True)
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), N2D.windowGo N2D.U True)
@@ -296,15 +300,11 @@ myAdditionalKeys = [
    , ((alpha .|. beta, l), sendMessage Expand)
    , ((alpha .|. shift, l), spawn "my-screenlock") -- screenlock
    , ((alpha .|. ctrl, l), sendMessage NextLayout)
-   , ((alpha, m), launchApp "mail" "thunderbird")
-   , ((alpha .|. beta, m), do
+   , ((alpha, m), do
            DW.addHiddenWorkspace "misc"
            windows $ W.shift "misc"
            removeEmptyWorkspaceAfter' $ windows $ W.view "misc"
      ) -- Shift current window to MISC
-   , ((alpha .|. beta, n), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
-                           CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
-                           removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
    , ((alpha, n), launchApp "notes" "nixnote2")
    , ((alpha .|. beta .|. shift, n), do
            ws_name <- io $ readFile "/tmp/xmonad.workspace"
@@ -312,7 +312,7 @@ myAdditionalKeys = [
      )
    , ((alpha, o), CW.toggleWS' ["NSP"])
    , ((alpha .|. ctrl, o), spawn "zopen")
-   , ((alpha, p), spawn ":")
+   , ((alpha, p), launchApp "pycharm" "pycharm-community")
    , ((alpha, q), spawn "qb_prompt")
    , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
    , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
@@ -396,13 +396,9 @@ myAdditionalKeys = [
            CW.nextScreen
      )
    , ((alpha, xK_space), spawn "rofi -modi drun -show drun")
-   , ((alpha, xK_Tab), do
-           DW.addWorkspacePrompt myXPConfig
-           DW.setWorkspaceIndex 1
-           CW.toggleWS' ["NSP"]
-           DW.withWorkspaceIndex W.shift 1
-           removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1
-     )
+   , ((alpha, xK_Tab), sequence_ [DW.addWorkspacePrompt myXPConfig, DW.setWorkspaceIndex 1,
+                           CW.toggleWS' ["NSP"], DW.withWorkspaceIndex W.shift 1,
+                           removeEmptyWorkspaceAfter' $ DW.withWorkspaceIndex W.view 1]) -- Shift current window to _______
    ]
 
    -- Shift to WS; then Focus WS

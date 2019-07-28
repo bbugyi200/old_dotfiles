@@ -92,8 +92,7 @@ alias vmutt='vim $HOME/.mutt/muttrc'
 # ---------- Vim Wrapper Aliases / Functions ----------
 # def marker: VIM
 alias daf='def -a'
-def() { zim "def" "$@" "$HOME/Dropbox/home/.zshrc" "$HOME/Dropbox/home/.config/aliases.sh" "$HOME/Dropbox/home/.config/debian.sh" "$HOME/Dropbox/home/.config/gentoo.sh" "/home/bryan/Dropbox/home/.config/macos.sh"; }
-alias fim="F=\"\$(rg --files --color=never | fzf)\"; [[ -n \"\${F}\" ]] && vim \"\${F}\" || { echo '[ERROR] No filename matched.' && return 1; }"
+def() { zim "def" "$@" "$HOME/Dropbox/home/.zshrc" "$HOME/Dropbox/home/.config/aliases.sh" "$HOME/Dropbox/home/.config/debian.sh" "$HOME/Dropbox/home/.config/gentoo.sh" "$HOME/Dropbox/home/.config/macos.sh"; }
 him() { vim ~/"$1"; }
 lim() { vim -c "normal '0" -c 'bd1'; }
 mim() { zim "mim" "$@"; }
@@ -131,7 +130,6 @@ alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
-alias black='black -l 120'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
 alias c='cookie'
 alias cal='cal -n 3 | less'
@@ -139,9 +137,8 @@ alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
 alias cdef='def -m COOKIE'
 alias cdow='cd "$(dow_dir $PWD)"'
-checklist() { vim -c "/^\[" -c "nnoremap x :normal 0lsX<CR>/^\[ \]<CR>" -c "nnoremap X :normal 0ls <CR>/^\[<CR>" "$1" && ${SED} -i 's/\[X\]/[ ]/g' "$1"; }
+checklist() { vim -c "/^\[" -c "nnoremap x :normal 0lsX<CR>/^\[ \]<CR>" -c "nnoremap <space> :normal 0ls <CR>/^\[<CR>" "$1" && ${SED} -i 's/\[X\]/[ ]/g' "$1"; }
 cho() { sudo chown -R "$2":"$2" "$1"; }
-alias chrome='xspawn -w web google-chrome-stable'
 alias chx='sudo chmod +x'
 alias cower='cower -c'
 alias cp="cp -i"
@@ -168,6 +165,7 @@ alias du='ncdu --color dark'
 alias dunst='killall dunst &> /dev/null; dunst'
 alias edsl='printf "$(hostname):%d,%d\n%s,%d" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
 alias epuse='sudo -E epuse'
+fim() { vim "$("$(which -a fim | tail -n 1)" "$1")"; }
 alias flaggie='sudo -i flaggie'
 fn_() { if [[ "$1" == *"*"* ]]; then find . -iname "$@"; else find . -iname "*$**"; fi; }
 alias fn='noglob fn_'
@@ -182,7 +180,7 @@ gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
 alias gclp='cd ~/projects && gcl'
 alias gclt='cd /tmp && gcl'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
-alias gcm='git checkout master 2> /dev/null || git checkout P.master 2> /dev/null'
+alias gcm='git checkout master'
 alias Gdef='def -m GTD'
 alias gdef='def -m GENTOO'
 alias gdo='git diff origin/master'
@@ -240,13 +238,13 @@ alias nrg='pushd ~/Dropbox/var/notes && ranger && popd'
 alias ok='xspawn okular'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/var/notes/Onething/"$1".txt; }
 alias P='popd'
-alias ping2all='(ping2life 10.1.1.1; ping2life google.com) @@'
 alias pipget='pip install --user'
 pdb() { { [[ -f ./"$1" ]] && pudb3 "$@"; } || pudb3 "$(which -a "$1" | tail -n 1)" "${@:2}"; }
 pgr() { pgrep -f ".*$1.*"; }
 alias plex='xspawn -w plex plexmediaplayer'
 pname() { pass show | grep -i "$1" | awk '{print $2}'; }
 alias pp='pipenv'
+alias ppi2='pipenv --two install'
 alias ppi='pipenv install'
 alias ppr='pipenv run'
 ppython() { pipenv run python "$@"; }
@@ -298,6 +296,7 @@ alias updatedb='sudo updatedb'
 # shellcheck disable=SC2046
 vab() { vim $(find "$HOME"/Dropbox/bin/cron.jobs -type f | sort | tr '\n' ' '); }
 alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
+alias vdaily='vgtd-daily'
 alias Vgi='vim ~/.gitignore_global'
 alias vbox='xspawn sudo virtualbox'
 alias vbt='vim ~/.local/share/torrent/*.txt'
@@ -317,6 +316,7 @@ vlog() { vim + /var/tmp/"$1"; }
 alias vm='vman'
 alias vmb='vim $HOME/Dropbox/bin/cron/cron.monthly/*'
 alias vmkrules='make -p > /tmp/make-rules && vim /tmp/make-rules'
+alias vnc-athena='open vnc://athena-arch.ddns.net:34590'
 alias vnix='vv_push ~/.nixnote'
 alias vpyutils='pushd ~/Dropbox/lib/python/gutils &> /dev/null && vv && popd &> /dev/null'
 alias vr='vim ${RECENTLY_EDITED_FILES_LOG}'
@@ -332,6 +332,7 @@ vrobot() { vim "$HOME"/.local/share/red_robot/pending/"$1"; }
 vuse() { vim /etc/portage/package.use/"$1"; }
 alias vq='vv_push ~/.config/qutebrowser'
 vv_push() { tmux send-keys "clear && pushd '$1' &> /dev/null && vv && popd &> /dev/null && clear" "Enter"; }
+alias vweekly='vgtd-weekly-review'
 alias vx='vv_push ~/.xmonad'
 alias vxorg='sudo -E vim /etc/X11/xorg.conf.d/*'
 alias w='which'
@@ -346,7 +347,8 @@ alias wwat='watch -n 1 "{ wpoll; echo; watson log; }"'
 alias xc='xclip -sel clipboard'
 alias xdokey='xev -event keyboard'
 alias xk='xdokey'
+alias xkey='xdotool key'
 alias xmonad-keycodes='vim /usr/include/X11/keysymdef.h'
 alias xs='xspawn'
-ytd() { youtube-dl "$(xclip -sel clipboard -out)" --output "$1"; }
+ytd() { pushd "${HOME}"/Downloads &> /dev/null || return 1 && youtube-dl "$(xclip -sel clipboard -out)" --output "$1"; popd &> /dev/null || return 1; }
 alias zath='xspawn zathura && xdotool key super+f'

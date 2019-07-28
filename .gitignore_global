@@ -28,6 +28,7 @@ htmlcov
 passwd
 Session.vim
 *.snippets
+*.svg
 *.swp
 .stow-local-ignore
 .sync
