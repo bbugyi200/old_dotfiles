@@ -9,11 +9,11 @@
 # Replace <type> with one of the following:
 #    feat       add new feature or modify existing feature
 #    fix        bug fix
-#    refactor   refactor code
+#    ref        refactor code
 #    test       add or modify test(s); no production code changed
 #    doc        change documentation; docstrings, log messages, README, etc....
 #    meta       change .gitignore, .flake8, *.ini, setup.py, binaries, etc....
-#    style      formatting, missing semi colons, etc; no code change
+#    sty        formatting, missing semi colons, etc; no code change
 #    wip        work in progress; for intermediate commits to keep patches reasonably sized
 # --------------------
 # Remember to

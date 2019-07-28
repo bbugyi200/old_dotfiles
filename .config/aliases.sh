@@ -100,7 +100,7 @@ tam() { N="$(history -n | tail -n 100 | tac | nl | fzf --tiebreak=index | awk '{
 tim() { f=$(fc -e - -"${1:-1}" 2> /dev/null | fzf -q "$2"); if [[ -n "${f}" ]]; then vim "${f}"; fi; }
 alias v='vim'
 alias wam='wim -a'
-wim() { zim "wim" "$@"; }
+wim() { cval "$HOME/Dropbox/bin" "zim wim $*"; }
 zim() { "$HOME"/.local/bin/zim "$@" || { EC="$?"; if [[ "${EC}" -eq 3 ]]; then so; else return "${EC}"; fi; }; }
 
 # ---------- File Copy / Cut / Paste ----------
@@ -130,6 +130,7 @@ alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
+alias black='black -l 79 --fast'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
 alias c='cookie'
 alias cal='cal -n 3 | less'
@@ -145,6 +146,7 @@ alias cp="cp -i"
 alias cplug='vim +PluginClean +qall'
 alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
+cval() { pushd "$1" &> /dev/null || return 1 && eval "$2"; popd &> /dev/null || return 1; }
 alias dayplan='cd $HOME/Dropbox/var/notes && vim dayplan.txt'
 dc() { sudo -E deluge-console "${@}"; }
 dci() { dc info --sort=time_added | awk -F ':' "{if(\$1==\"$1\")print \$0}"; }
@@ -325,7 +327,7 @@ alias vscratch='vim ~/Dropbox/var/notes/scratch.txt'
 alias vsd='vshlog -H all -D'
 alias vstudy='vim $HOME/.vimwiki/TaskWarrior.wiki'
 alias vsu='vshlog -u -D BOT EOT -H all -G'
-alias vtorr='vim $HOME/.local/share/torrent/{tv.txt,movies.txt}'
+alias vtorr='cval "$HOME/Dropbox/bin/main" "vim libtorrent/*.py torrent"'
 alias vtv="vim \$HOME/.local/bin/tmux_view.sh \$HOME/.local/bin/tv_*"
 alias vwb='vim $HOME/Dropbox/bin/cron/cron.weekly/*'
 vrobot() { vim "$HOME"/.local/share/red_robot/pending/"$1"; }

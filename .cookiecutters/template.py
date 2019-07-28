@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 {% INSERT %}
 
@@ -8,26 +8,41 @@ import os  # noqa: F401
 from pathlib import Path  # noqa: F401
 import subprocess as sp  # noqa: F401
 import sys  # noqa: F401
-from typing import *  # noqa: F401
-from types import *  # noqa: F401
+from typing import (  # noqa
+    Any,
+    Callable,
+    Container,
+    Dict,
+    Generator,
+    Iterable,
+    Iterator,
+    List,
+    NoReturn,
+    Optional,
+    Sequence,
+    Set,
+    Tuple,
+    TypeVar,
+    Union,
+)
 
 import gutils
+from loguru import logger as log
 
-##########################################################################
-# https://github.com/bbugyi200/scripts/tree/master/modules/python/gutils #
-##########################################################################
 
-log = gutils.logging.getEasyLogger(__name__)
 scriptname = os.path.basename(os.path.realpath(__file__))
 
 
-def main(args: argparse.Namespace) -> None:
-    pass
+@log.crash
+def main() -> None:
+    args = parse_cli_args()
+    gutils.logging.configure(__name__, debug=args.debug, verbose=args.verbose)
+
+
+def parse_cli_args() -> argparse.Namespace:
+    parser = gutils.ArgumentParser()
+    return parser.parse_args()
 
 
 if __name__ == "__main__":
-    parser = gutils.ArgumentParser()
-    args = parser.parse_args()
-
-    with gutils.logging.context(log, debug=args.debug, verbose=args.verbose):
-        main(args)
+    main()

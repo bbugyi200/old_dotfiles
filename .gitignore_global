@@ -22,8 +22,8 @@ htmlcov
 .lvimrc
 *.o
 *.out
-**/.pytest_cache/*
-**/.mypy_cache/*
+.pytest_cache/
+.mypy_cache/
 *.pyc
 passwd
 Session.vim

@@ -14,11 +14,18 @@ source_if_exists /usr/bin/virtualenvwrapper_lazy.sh
 ###############################
 #  Environment Variables      #
 ###############################
+# >>> Conveniance Variables
+export DB="$HOME"/Dropbox
+export DBB="$DB"/bin
+export DBH="$DB"/home
+export MOV=/media/bryan/zeus/media/Entertainment/Movies
+export TV=/media/bryan/zeus/media/Entertainment/TV
+
 # >>> Filesystem Paths
 if [[ -f /etc/environment ]]; then 
-    source <(sed 's/^\(.*\)="/export \1="${\1}:/' /etc/environment)
+    source <(sed 's/^\(.*\)="\(.*\)"/export \1="${\1}:\2"/' /etc/environment)
 else
-    export PATH="/usr/local/opt/gnu-getopt/bin:$HOME/.local/bin:/usr/local/bin:/opt/bin:$PATH"
+    export PATH="$PATH:/usr/local/opt/gnu-getopt/bin:$HOME/.local/bin:/usr/local/bin:/opt/bin"
 fi
 
 export MATLABPATH="$HOME/.matlab"
@@ -30,6 +37,7 @@ if [[ "$(id -u)" = 0 ]]; then
 fi
 
 # >>> Miscellaneous
+export BETTER_EXCEPTIONS=1  # enables python 'better_exceptions' library
 export EDITOR="$(command -v vim)"  # I set this so the crontab would use vim for editing
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export FZF_DEFAULT_OPTS='--reverse --height 40% --border'
