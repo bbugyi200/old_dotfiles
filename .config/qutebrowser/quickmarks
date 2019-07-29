@@ -12,14 +12,18 @@ dd http://192.168.1.1/
 D http://localhost:8112/
 ebw https://gitlab.pr.edgelp.net/edgelp/website/boards
 ed http://web-prod.pr.edgelp.net/
+egc https://gitlab.pr.edgelp.net/edgelp/production_config
 eggw https://gitlab.pr.edgelp.net/bbugyi/website
 eg https://gitlab.pr.edgelp.net/edgelp
 egp https://gitlab.pr.edgelp.net/edgelp/prod
 egw https://gitlab.pr.edgelp.net/edgelp/website
 eip https://gitlab.pr.edgelp.net/edgelp/prod/issues
 eiw https://gitlab.pr.edgelp.net/edgelp/website/issues
+emp https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests
 emr https://gitlab.pr.edgelp.net/dashboard/merge_requests?assignee_username=bbugyi&nav_source=navbar
 en https://evernote.com/
+enip https://gitlab.pr.edgelp.net/edgelp/prod/issues/new?issue%5Bassignee_id%5D=&issue%5Bmilestone_id%5D=
+eniw https://gitlab.pr.edgelp.net/edgelp/website/issues/new?issue%5Bassignee_id%5D=&issue%5Bmilestone_id%5D=
 ewh https://dashboard.heroku.com/apps
 ew https://www.edgestreamlp.com/
 ewiki http://wiki.pr.edgelp.net/
@@ -100,7 +104,3 @@ W https://www.google.com/search?q=weather
 Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
-enip https://gitlab.pr.edgelp.net/edgelp/prod/issues/new?issue%5Bassignee_id%5D=&issue%5Bmilestone_id%5D=
-eniw https://gitlab.pr.edgelp.net/edgelp/website/issues/new?issue%5Bassignee_id%5D=&issue%5Bmilestone_id%5D=
-emp https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests
-egc https://gitlab.pr.edgelp.net/edgelp/production_config

@@ -13,7 +13,6 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'eagletmt/neco-ghc'  " Depends on external package: ghc-mod
 Plugin 'embear/vim-localvimrc'
-Plugin 'gu-fan/riv.vim'
 Plugin 'hiphish/info.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'jez/vim-superman'
