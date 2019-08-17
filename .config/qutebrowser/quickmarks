@@ -85,7 +85,7 @@ sgg https://sakai.rutgers.edu/portal/site/d3351d47-4b13-4d25-9089-9432a77ddf25/t
 sg https://sakai.rutgers.edu/portal/site/d3351d47-4b13-4d25-9089-9432a77ddf25/tool/db468e7d-9967-4409-8098-c63ccd702844
 sgo https://sakai.rutgers.edu/portal/site/914cd0d6-79fc-4f54-8682-8077228e3e13/tool/7b3ef068-286b-4c2a-94c2-a2d580127663/wicket/bookmarkable/org.sakaiproject.gradebookng.tool.pages.StudentPage
 sgs https://sakai.rutgers.edu/portal/site/2899986c-d020-4ded-abab-5b91199d9ec7/tool/915e9d98-c675-4242-af58-7281925396e1/wicket/bookmarkable/org.sakaiproject.gradebookng.tool.pages.StudentPage
-S https://www.swellinfo.com/surf-forecast/long-beach-island-new-jersey
+S https://www.surfline.com/surf-forecasts/new-jersey/58581a836630e24c44878fda
 so https://sakai.rutgers.edu/portal/site/914cd0d6-79fc-4f54-8682-8077228e3e13/page/0b5b1dcc-99bf-4b45-877d-b22a1cc10673
 spc https://sakai.rutgers.edu/portal/site/1e1a60a9-d88c-493e-ad37-b3d6ead86fb9/page/2f15b666-5962-4f21-b46d-c133dcfea5b6
 spo https://sakai.rutgers.edu/portal/site/914cd0d6-79fc-4f54-8682-8077228e3e13/page/02c3bfe4-d5ac-4ef4-806e-0c4df16e5754
@@ -104,3 +104,7 @@ W https://www.google.com/search?q=weather
 Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
+AMC https://www.amctheatres.com/movie-theatres/philadelphia/amc-marketfair-10/showtimes/all/2019-08-07/amc-marketfair-10/all
+spy http://localhost:7777/
+cov file:///Users/bbugyi/projects/edgelp/prod/htmlcov/index.html
+12fa https://12factor.net/

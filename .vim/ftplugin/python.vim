@@ -1,8 +1,5 @@
 let b:run_cmd = "!pytest -v %"
 
-nnoremap [om :let g:syntastic_python_checkers=['flake8']<CR>:e<CR>
-nnoremap ]om :let g:syntastic_python_checkers=['flake8', 'mypy']<CR>:e<CR>
-
 " ------------------------------------- MULTILINE STRINGS -----------------------------------------
 function! BreakMultlineString(quote)
     let w = &tw+1
@@ -51,11 +48,16 @@ nmap <Leader>j Jds'ds"x
 nnoremap <Leader>J :call JoinMultilineString()<CR>
 
 " break lines
-nnoremap <Leader>" 100\|Bi"<CR>"<Esc>
+nnoremap <Leader>" 80\|Bi"<CR>"<Esc>
 nnoremap <Leader><Leader>" :call JoinMultilineString()<CR>:call BreakMultlineString('"')<CR>
-nnoremap <Leader>' 100\|Bi'<CR>'<Esc>
+nnoremap <Leader>' 80\|Bi'<CR>'<Esc>
 nnoremap <Leader><Leader>' :call JoinMultilineString()<CR>:call BreakMultlineString("'")<CR>
 
+nnoremap [op :let g:syntastic_python_checkers=['flake8', 'mypy']<CR>:e<CR>
+nnoremap ]op :let g:syntastic_python_checkers=['flake8', 'mypy', 'pylint']<CR>:e<CR>
+nnoremap <Leader>0f :e ~/.config/flake8<CR>
+nnoremap <Leader>0p :e ~/.config/pylintrc<CR>
+nnoremap <Leader>b :call system('echo "b ' . expand('%:p') . ':' . line('.') . '" >> ~/.config/pudb/saved-breakpoints-2.7')<CR>
 nmap <Leader>K :!qutebrowser https://docs.python.org/3/library/<C-R><C-W> &> /dev/null &<CR><CR>
 nmap <Leader>t :call SwitchToTest('py')<CR>
 nmap <Leader><Leader>t :!pyinit -n -t <C-R>=expand('%:r')<CR><CR>
@@ -63,4 +65,8 @@ nmap <Leader>T :call VSwitchToTest('py')<CR>
 
 " ----- pytest -----
 nnoremap <Leader><C-]> /\v^\s*def <C-r><C-w><CR>
-let @p='A  # pragma: no cover'
+
+" ----- macros -----
+let @c='A  # pragma: no cover'
+let @o='F(af)ikA,'
+let @t='yiwmm?from typingofrom typing pmtgg/from typingV`t:sort`m'

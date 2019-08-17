@@ -235,3 +235,6 @@ https://docs.python-guide.org/ The Hitchhiker’s Guide to Python! — The Hitch
 https://www.omscs.gatech.edu/cs-6210-advanced-operating-systems CS 6210: Advanced Operating Systems | OMSCS | Georgia Institute of Technology | Atlanta, GA
 https://docs.djangoproject.com/en/2.2/ref/templates/builtins/ Built-in template tags and filters | Django documentation | Django
 https://python-future.org/compatible_idioms.html Cheat Sheet: Writing Python 2-3 compatible code — Python-Future documentation
+https://regex101.com/ Online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript
+https://12factor.net/ The Twelve-Factor App
+http://pylint.pycqa.org/en/latest/technical_reference/features.html Pylint features — Pylint 2.4.0-dev0 documentation

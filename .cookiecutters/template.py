@@ -27,13 +27,13 @@ from typing import (  # noqa: F401
 )
 
 import gutils
-from loguru import logger as log
+from loguru import logger as log  # noqa
 
 
 scriptname = os.path.basename(os.path.realpath(__file__))
 
 
-@log.crash
+@gutils.catch
 def main() -> None:
     args = parse_cli_args()
     gutils.logging.configure(__file__, debug=args.debug, verbose=args.verbose)

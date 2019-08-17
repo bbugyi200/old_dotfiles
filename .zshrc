@@ -33,7 +33,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 #  Disable Aliases / Builtins  #
 ################################
 # Disable aliases
-bad_aliases=("ll" "gcl" "gca" "gco" "gd" "gg" "glg" "gra" "gsta")
+bad_aliases=("ll" "gcl" "gca" "gco" "gd" "gg" "glg" "gra" "gsta" "gwip")
 for i in "${bad_aliases[@]}"; do
     unalias "$i" &> /dev/null
 done

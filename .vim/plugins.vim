@@ -18,6 +18,7 @@ Plugin 'jamessan/vim-gnupg'
 Plugin 'jez/vim-superman'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+Plugin 'manicmaniac/coconut.vim'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'pboettch/vim-cmake-syntax'
 Plugin 'Raimondi/delimitMate'
@@ -144,8 +145,8 @@ if PluginInstalled("ctrlsf")
     let g:ctrlsf_default_root = 'project'
 
     let g:ctrlsf_mapping = {
-                \ "quit": "",
-                \ "pquit": "",
+                \ "quit": "Q",
+                \ "pquit": "Q",
                 \ }
 endif
 
@@ -330,13 +331,14 @@ if PluginInstalled("syntastic")
     " You can disable specific warnings for <checker> by using
     " the 'g:syntastic_<ext>_<checker>_args' variable
     let g:syntastic_cpp_checkers=['clang_check']
-    let g:syntastic_python_checkers=['mypy', 'flake8']
+    let g:syntastic_python_checkers=['flake8', 'pylint', 'mypy', ]
     let g:syntastic_tex_checkers=['chktex']
     let g:syntastic_sh_checkers=['shellcheck']
     let g:syntastic_rst_checkers=['sphinx']
 
     let g:syntastic_cpp_cppcheck_args="--language=c++"
     let g:syntastic_tex_chktex_args='-n 1'
+    let g:syntastic_python_pylint_args='--rcfile=~/.config/pylintrc'
     
     " Forces Syntastic to check header files for errors
     " By default, Syntastic does not check .h file types

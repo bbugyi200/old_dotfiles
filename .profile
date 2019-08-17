@@ -25,7 +25,8 @@ export TV=/media/bryan/zeus/media/Entertainment/TV
 if [[ -f /etc/environment ]]; then 
     source <(sed 's/^\(.*\)="\(.*\)"/export \1="${\1}:\2"/' /etc/environment)
 else
-    export PATH="$PATH:/usr/local/opt/gnu-getopt/bin:$HOME/.local/bin:/usr/local/bin:/opt/bin"
+    export PATH="$PATH:$HOME/.local/bin:/usr/local/bin:/opt/bin"
+    export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 fi
 
 export MATLABPATH="$HOME/.matlab"
@@ -37,7 +38,7 @@ if [[ "$(id -u)" = 0 ]]; then
 fi
 
 # >>> Miscellaneous
-export BETTER_EXCEPTIONS=1  # enables python 'better_exceptions' library
+export BETTER_EXCEPTIONS=true  # enables python 'better_exceptions' library
 export EDITOR="$(command -v vim)"  # I set this so the crontab would use vim for editing
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export FZF_DEFAULT_OPTS='--reverse --height 40% --border'

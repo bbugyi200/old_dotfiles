@@ -33,6 +33,7 @@ Session.vim
 .stow-local-ignore
 .sync
 *.tar
+.tmp/*
 .tox/*
 tags
 .tags

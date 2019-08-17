@@ -1,7 +1,7 @@
-# ~/.config/tmuxinator/es-prod.yml
+# ~/.config/tmuxinator/es-plat.yml
 
 root: <%= @settings['root'] %>
-name: es-prod
+name: es-plat
 
 on_project_start:
 on_project_stop:
@@ -9,32 +9,27 @@ pre_window:
 
 windows:
     - I:
-        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - II:
-        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - III:
-        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
-                - pr1
+                - ll
     - IV:
-        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
-                - pr1
+                - ll
     - V:
-        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
-                - pr1
+                - ll

@@ -42,7 +42,7 @@ set confirmappend=no      # Makes folder moves faster.
 set pager_stop            # don't go to next message at end of message
 
 set mail_check=10
-set timeout=30            # Needed for 'mail_check' to work when mutt is idle
+set timeout=3            # Needed for 'mail_check' to work when mutt is idle
 set beep_new
 set nomark_old            # I don't care if message is OLD
 set delete=yes		 	  # purge deleted messages without asking
