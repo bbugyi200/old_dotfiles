@@ -68,6 +68,7 @@ search_aliases = {
     'nn': 'nixnote',
     'o': 'OR',
     'oms': "online master's degree",
+    'pt': 'pytest',
     'py': 'Python',
     'qb': 'qutebrowser',
     'rdr': 'Red Dead Redemption 2',

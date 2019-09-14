@@ -25,7 +25,7 @@ export TV=/media/bryan/zeus/media/Entertainment/TV
 if [[ -f /etc/environment ]]; then 
     source <(sed 's/^\(.*\)="\(.*\)"/export \1="${\1}:\2"/' /etc/environment)
 else
-    export PATH="$PATH:$HOME/.local/bin:/usr/local/bin:/opt/bin"
+    export PATH="/usr/local/bin:/opt/bin:$PATH"
     export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 fi
 
@@ -50,19 +50,28 @@ export WORKON_HOME=~/.virtualenvs
 export XDG_CONFIG_HOME="$HOME"/.config
 
 if [[ "$(uname -a)" == *"Darwin"* ]]; then
-    export TERM="rxvt-256color"
-    export LOCATE="glocate"
-    export LESS_OPTS=""
-    export SED="gsed"
     export GREP="/usr/local/bin/ggrep"
+    export LESS_OPTS=""
+    export LOCATE="glocate"
+    export LS="gls"
+    export PATH=$PATH:/opt/local/bin
+    export PYTHONPATH=$PYTHONPATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages
+    export SED="gsed"
+    export TERM="rxvt-256color"
 
     export AT_WORK=true
 else
     export TERM="rxvt-unicode-256color"  # Fixes Mutt Background Issue (stays transparent) in TMUX
     export LESS_OPTS="-F"
+    export LS="ls"
     export SED="sed"
     export GREP="grep"
 fi
+
+# Fixes "perl: warning: Setting locale failed." errors when using SSH to
+# connect to bugyidesk at work.
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 
 ###########################
@@ -83,4 +92,6 @@ else
     fi
 fi
 
-export PATH=~/.local/bin:"$PATH"
+# MUST remain at bottom of file. Otherwise, other paths are prepended to $PATH
+# somehow.
+export PATH="$HOME/.local/bin:$PATH"

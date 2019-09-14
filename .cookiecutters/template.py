@@ -2,29 +2,13 @@
 
 {% INSERT %}
 
-import argparse  # noqa: F401
-import datetime as dt  # noqa: F401
-import os  # noqa: F401
-from pathlib import Path  # noqa: F401
-import subprocess as sp  # noqa: F401
-import sys  # noqa: F401
-from typing import (  # noqa: F401
-    Any,
-    Callable,
-    Container,
-    Dict,
-    Generator,
-    Iterable,
-    Iterator,
-    List,
-    NoReturn,
-    Optional,
-    Sequence,
-    Set,
-    Tuple,
-    TypeVar,
-    Union,
-)
+import argparse  # pylint: disable=unused-import
+import datetime as dt  # pylint: disable=unused-import
+import os  # pylint: disable=unused-import
+from pathlib import Path  # pylint: disable=unused-import
+import subprocess as sp  # pylint: disable=unused-import
+import sys  # pylint: disable=unused-import
+import typing as Type  # pylint: disable=unused-import
 
 import gutils
 from loguru import logger as log  # noqa

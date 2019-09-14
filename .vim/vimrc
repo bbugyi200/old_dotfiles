@@ -16,7 +16,7 @@ set colorcolumn=
 set completeopt-=preview
 set nocursorcolumn
 set nocursorline
-set diffopt+=iwhiteall
+" set diffopt+=iwhiteall
 set expandtab
 set exrc  " Allows Local .vimrc to be loaded
 set grepformat=%f:%l:%c:%m
@@ -231,6 +231,7 @@ nnoremap <Leader>D :update<CR>:call RemoveFile()<CR>
 nnoremap dx :set opfunc=SwapWords<CR>g@
 " E-E-E-E-E-E-E-E-E-E
 call s:nimap('<Leader>e', ':x!<CR>')
+nnoremap <Leader><Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 call s:nimap('<Leader>E', ':xa!<CR>')
 " F-F-F-F-F-F-F-F-F-F
 nnoremap <C-f> :Files<CR>
@@ -286,13 +287,16 @@ call s:nimap('<Leader>r', ':update<CR>:execute b:run_cmd<CR>')
 call s:nimap('<Leader>R', ':update<CR>:execute b:Run_cmd<CR>')
 " S-S-S-S-S-S-S-S-S-S
 call s:nimap('<Leader>s', ':update<CR>')
+nnoremap <Leader><Leader>s :sp <C-R>=expand("%:p:h") . "/" <CR>
 call s:nimap('<Leader>S', ':update<CR>:mksession!<CR>')
 nnoremap <LocalLeader>s :w !sudo tee > /dev/null %<CR>
 nmap S ys
 " T-T-T-T-T-T-T-T-T-T
+nnoremap <Leader><Leader>t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 " U-U-U-U-U-U-U-U-U-U
 " V-V-V-V-V-V-V-V-V-V
 nnoremap <Leader>v :vert sfind 
+nnoremap <Leader><Leader>v :vs <C-R>=expand("%:p:h") . "/" <CR>
 " W-W-W-W-W-W-W-W-W-W
 nnoremap <Leader>W gqap| " mapping to wrap paragraph
 nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
@@ -305,12 +309,10 @@ nnoremap <Leader>Y ma^y$`a
 " -------------------
 " ----- Symbols -----
 " -------------------
+nnoremap <Leader>; ,
 nnoremap * /\v\C<<C-R><C-W>><CR>
-nnoremap <Leader>:e :e <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <Leader>:v :vs <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <Leader>:s :sp <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <Leader>:t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 call s:nimap('<Leader>#', ':call MakeBox()<CR>')
+nnoremap <C-\> <C-^>
 nnoremap <Leader>= <C-w>=
 nnoremap <Leader>/ /\v\C<><Left>
 nnoremap <Leader>% :so %<CR>

@@ -27,7 +27,7 @@ load-plugins=
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
 # multiple time. See also the "--disable" option for examples.
-enable=python3,imports
+enable=imports
 
 # Disable the message, report, category or checker with the given id(s). You
 # can either give multiple identifiers separated by comma (,) or put this
@@ -39,14 +39,25 @@ enable=python3,imports
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
 disable=design,
+    arguments-differ,
+    blacklisted-name,
+    broad-except,
     fixme,
+    global-statement,
+    import-error,
+    inconsistent-return-statements,
     invalid-name,
+    logging-format-interpolation,
     missing-docstring,
     multiple-statements,
-    no-absolute-import,  # python3
     no-else-return,
+    no-init,
     no-member,
+    no-name-in-module,
     non-parent-init-called,
+    old-style-class,
+    protected-access,
+    signature-differs,
     super-init-not-called,
     too-many-lines,
     wrong-import-position,

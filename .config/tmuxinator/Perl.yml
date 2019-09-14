@@ -1,7 +1,7 @@
-# ~/.config/tmuxinator/es-prod.yml
+# ~/.config/tmuxinator/Perl.yml
 
 root: <%= @settings['root'] %>
-name: es-prod
+name: Perl
 
 on_project_start:
 on_project_stop:
@@ -9,31 +9,26 @@ pre_window:
 
 windows:
     - I:
-        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - II:
-        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - III:
-        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - IV:
-        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - V:
-        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:

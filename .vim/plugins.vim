@@ -214,6 +214,16 @@ if PluginInstalled("easytags")
     let g:easytags_events = ['BufWritePost']
 endif
 
+""""""""""""
+" Fugitive "
+""""""""""""
+if PluginInstalled("vim-fugitive")
+    hi DiffAdd cterm=BOLD ctermfg=black ctermbg=green
+    hi DiffDelete cterm=BOLD ctermfg=black ctermbg=red
+    hi DiffChange cterm=NONE ctermfg=NONE ctermbg=NONE
+    hi DiffText cterm=BOLD ctermfg=black ctermbg=yellow
+endif
+
 """"""""""""*
 "  fzf.vim  "
 """""""""""""

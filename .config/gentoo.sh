@@ -1,7 +1,7 @@
 # ---------- Gentoo Aliases / Functions ----------
 # def marker: GENTOO
 alias del='sudo_del'
-Ebi() { eposync "$1" && sudo -i /usr/local/bin/get "$1"; }
+Ebi() { eget "$1" && sudo -i /usr/local/bin/get "$1"; }
 Epatch() { cd "$(epatch "$@")" || return 1; }
 ebi() { sudo repoman manifest && sudo ebuild "$1" clean merge; }
 ecd () { cd "$(find /home/bryan/projects/portage-overlay -type d -name "*$1*" | head -n 1)" || return 1; }

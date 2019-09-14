@@ -3,7 +3,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 [merge]
-	tool = vimdiff
+	tool = fugitive
 [mergetool]
 	keepBackup = false
 [alias]

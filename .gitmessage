@@ -10,9 +10,13 @@
 #    feat       add new feature or modify existing feature
 #    fix        bug fix
 #    ref        refactor code
+#    meta       change .gitignore, .flake8, *.ini, scripts, setup.py, binaries, etc....
+#    meta-fix   fix bug in one of the meta files listed above
+#    meta-ref   refactor code used in a helper script or clean up configuration file
 #    test       add or modify test(s); no production code changed
+#    test-fix   fix bug in test suite
+#    test-ref   refactor tests
 #    doc        change documentation; docstrings, log messages, README, etc....
-#    meta       change .gitignore, .flake8, *.ini, setup.py, binaries, etc....
 #    sty        formatting, missing semi colons, etc; no code change
 #    wip        work in progress; for intermediate commits to keep patches reasonably sized
 # --------------------

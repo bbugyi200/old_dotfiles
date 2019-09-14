@@ -20,12 +20,13 @@
 # F405: Name may be undefined, or defined from star imports
 # F841: local variable is defined but not used
 # ----- Hacking -----
+# H301: One import per line
 # H304: No relative imports
 # H404: Multiline docstring should not start with newline
 # H405: Multiline docstring not seperated by newline
-ignore = E126,E128,E131,E266,E303,E402,E501,E702,E704,E731,F401,F403,F841,F405,H304,H404,H405,W503,W504
+ignore = E126,E128,E131,E266,E303,E402,E501,E702,E704,E731,F401,F403,F841,F405,H202,H238,H301,H304,H404,H405,W503,W504
 max-line-length = 79
 max-complexity = 10
-# per-file-ignores =
-#   __init__.py: F401,F403,F405
-#   test_*.py: F401
+per-file-ignores =
+  __init__.py: F403,F405
+  test_*.py: H238
