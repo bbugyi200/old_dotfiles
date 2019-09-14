@@ -215,7 +215,7 @@ greshs() { gresh "$1" --soft; }
 grun() { [[ "$(tail -n 1 "${PWD}"/.gdbinit)" == "r" ]] && sed -i '/^r$/d' "${PWD}"/.gdbinit || printf "r\n" >> "${PWD}"/.gdbinit; }
 alias gsd='sudo get-shit-done'
 alias gsta='git stash'
-alias gstal="git stash list --date=local | perl -pE 's/stash@\{(?<date>.*)\}: .*[Oo]n (?<branch>.*): (?<desc>.*)$/\"\\033[33mstash@\{\" . \$n++ . \"\}: \\033[36m[\$+{date}] \\033[32m(\$+{branch})\n\t\$+{desc}\n\"/ge' | less"
+alias gstal="git stash list --date=local | perl -pE 's/stash@\{(?<date>.*)\}: .*[Oo]n (?<branch>.*?): (?<desc>.*)$/\"\\033[33mstash@\{\" . \$n++ . \"\}: \\033[36m[\$+{date}] \\033[32m(\$+{branch})\n\t\$+{desc}\n\"/ge' | less"
 alias gsum='git summary | less ${LESS_OPTS}'
 gwip() { gaa && git commit -m "[wip] $*"; }
 alias h='tm-home load'

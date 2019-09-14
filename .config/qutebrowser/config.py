@@ -301,7 +301,7 @@ bind('gc', 'spawn "{}" {{url}}'.format(
 ))
 bind(',gc', 'spawn "init-chrome"')
 bind('gh', 'home')
-bind('gs', 'view-source')
+bind('gs', 'view-source --pygments')
 bind('gi', 'hint inputs')
 bind('gl', 'tab-focus last')
 bind(',h', 'set-cmd-text -s :help')
