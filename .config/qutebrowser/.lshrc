@@ -1,2 +1,0 @@
-alias vila='vim config.py searchengines/__init__.py searchengines/*.py config.yml'
-alias cda='tmux send-keys "cd ~/.local/share/qutebrowser/userscripts" "Enter"'

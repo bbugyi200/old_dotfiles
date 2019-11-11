@@ -40,6 +40,7 @@ enable=imports
 # --disable=W"
 disable=design,
     arguments-differ,
+    bad-continuation,
     blacklisted-name,
     broad-except,
     fixme,
@@ -47,7 +48,6 @@ disable=design,
     import-error,
     inconsistent-return-statements,
     invalid-name,
-    logging-format-interpolation,
     missing-docstring,
     multiple-statements,
     no-else-return,
@@ -206,7 +206,7 @@ init-import=no
 
 # A regular expression matching the name of dummy variables (i.e. expectedly
 # not used).
-dummy-variables-rgx=_$|dummy|__$|.*_ignored$
+dummy-variables-rgx=_.*$|dummy$
 
 # List of additional names supposed to be defined in builtins. Remember that
 # you should avoid to define new builtins when possible.
@@ -216,10 +216,10 @@ additional-builtins=_
 [FORMAT]
 
 # Maximum number of characters on a single line.
-max-line-length=80
+max-line-length=79
 
 # Regexp for a line that is allowed to be longer than the limit.
-ignore-long-lines=^(\s*(# )?<?https?://\S+>?|.*# type: .*)$
+ignore-long-lines=^(.*https?://\S+|.*# type: .*)$
 
 # Allow the body of an if to be on the same line as the test if there is no
 # else.

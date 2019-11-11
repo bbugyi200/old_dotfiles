@@ -13,13 +13,13 @@ windows:
             - 0:
                 - ll
     - bin:
-        root: ~/Dropbox/bin
+        root: ~/Sync/bin
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - home:
-        root: ~/Dropbox/home
+        root: ~/Sync/home
         layout: even-horizontal
         panes:
             - 0:

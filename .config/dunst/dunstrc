@@ -260,7 +260,7 @@
     icon = /usr/share/icons/gnome/16x16/status/messagebox_critical.png
 
 [dropbox]
-    appname = "Dropbox"
+    appname = "Sync"
     format = ""
 
 

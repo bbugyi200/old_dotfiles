@@ -19,14 +19,14 @@ alt + c
 
 # screenlock
 super + l
-	~/Dropbox/scripts/lock
+	~/Sync/scripts/lock
 
 super + s
-	~/Dropbox/scripts/scratch-toggle
+	~/Sync/scripts/scratch-toggle
 
 # Randomly change background
 super + b
-	bg_img=$(find ~/Dropbox/photos/backgrounds/random -type f | shuf -n 1); \
+	bg_img=$(find ~/Sync/photos/backgrounds/random -type f | shuf -n 1); \
 	background $bg_img
 
 # clear screen
@@ -42,7 +42,7 @@ alt + q
 
 super + @Print
 	bspc rule -a "*:*" -o state=floating; \
-	termite -e ~/Dropbox/scripts/receipt_sshot
+	termite -e ~/Sync/scripts/receipt_sshot
 
 super + w
 	networkmanager_dmenu

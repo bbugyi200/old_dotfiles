@@ -6,7 +6,7 @@
 # Uses the pygmalion.zsh-theme as a template.
 
 if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
-    ssh_prompt="%{$fg[white]%}[ssh] %{$reset_color%}"
+    ssh_prompt="%{$fg[green]%}[ssh] %{$reset_color%}"
 fi
 prompt_setup_pygmalion(){
   ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{$fg[green]%}"

@@ -46,3 +46,6 @@ url:
 
 window:
     title_format: qutebrowser
+
+zoom:
+    mouse_divider: 0  # disable mouse wheel zoom

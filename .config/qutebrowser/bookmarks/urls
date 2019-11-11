@@ -55,7 +55,7 @@ https://www.libraries.rutgers.edu/hours Today's Hours | Rutgers University Libra
 https://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics#align_and_align.2A LaTeX/Advanced Mathematics - Wikibooks, open books for an open world
 https://sims.rutgers.edu/webreg/ WebReg | Home Page
 https://www.cs.rutgers.edu/undergraduate/courses Undergraduate Courses | Department of Computer Science
-https://www.dropbox.com/h Login - Dropbox 
+https://www.dropbox.com/h Login - Sync 
 ipv4.connman.net/online/status.html 
 https://finservices.rutgers.edu/otb/ Student Accounting & Cashiering - Student Account | Home Page
 https://github.com/tartley/python-regex-cheatsheet/blob/master/cheatsheet.rst python-regex-cheatsheet/cheatsheet.rst at master · tartley/python-regex-cheatsheet
@@ -135,7 +135,6 @@ https://devmanual.gentoo.org/function-reference/install-functions/index.html Ins
 https://devmanual.gentoo.org/function-reference/index.html Function Reference – Gentoo Development Guide
 https://crontab.guru/ crontab.guru - the cron schedule expression editor
 https://hackage.haskell.org/package/xmonad-contrib-0.14/docs/XMonad-Util-EZConfig.html XMonad Key Codes
-https://devhints.io/vimscript-functions Vimscript functions cheatsheet
 https://github.com/davidawad/RutgersClasses/tree/master/314 Rutgers 314 Programming Languages GitHub Solutions
 https://github.com/arpitshah101/BarBeerDrinker Rutgers Databases BarBeerDrinker GitHub Project
 https://read.amazon.com/ Kindle Online
@@ -203,41 +202,20 @@ https://www.irs.gov/refunds Where's my Refund (IRS)
 https://www.imdb.com/chart/toptv/ Best TV Shows Ever (IMDb)
 https://www.symbolab.com/solver/definite-integral-calculator Definite Integral Calculator - Symbolab
 https://www.heroknowl.org/ Student Loan Totals (heroknowl.org)
-https://calendar.google.com/calendar/r/settings/createcalendar Google Calendar - Create calendar
-https://gitlab.pr.edgelp.net/edgelp/prod/issues Edgestream - GitLab Issues
-https://gitlab.pr.edgelp.net/edgelp/prod Edgestream - GitLab (edgelp/prod)
-http://paychexflex.com Edgestream - Paychex
-https://drive.google.com/drive/folders/0AJQ9aP02Ph8fUk9PVA Edgestream - Google Drive
-http://kb.mozillazine.org/Keyconfig_extension:_Thunderbird Thunderbird Keyconfig
-https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/List_of_commands Thunderbird - List of Commands
-https://momcurls.com/best-body-washes-acne-prone-skin/ The 15 Best Body Washes for Acne Prone Skin Reviews & Guide 2019
-https://my.horizonblue.com/home Horizon Blue Medical Insurance (HOME)
-https://docs.djangoproject.com/en/2.2/ Django documentation | Django documentation | Django
-https://shop.miamidolphins.com/payment | Shop
-https://github.com/pypa/pipenv/issues/1246 Deploy to heroku pipenv project · Issue #1246 · pypa/pipenv
-https://www.gq.com/gallery/the-best-sneakers-to-wear-to-the-office The Best Sneakers to Wear to the Office | GQ
-https://www.mensjournal.com/style/11-sneakers-that-are-totally-office-appropriate-w484050/asics-onitsuka-tiger-gsm-w484058/ 11 Sneakers That Are Totally Office-Appropriate - Men's Journal
-https://www.colehaan.com/grandpro-tennis-sneaker-woodbury-handstain/C22585.html Men's GrandPrø Tennis Sneaker in Woodbury Handstain | Cole Haan US
-https://developer.salesforce.com/docs/api-explorer Salesforce API Reference
-https://github.com/hjwp/book-example hjwp/book-example: Example code for my book on TDD with Python
-https://nerdlettering.com/16680637/checkouts/5a481576167e102ce1392bde5f880314?previous_step=shipping_method&step=payment_method Payment - Nerdlettering - Checkout
-https://messages.google.com/web/conversations Messages for web
-http://web-prod.pr.edgelp.net/ Edgestream Internal Web Page
-https://gitlab.pr.edgelp.net/bbugyi/website/-/ci/lint CI Lint · Bryan Bugyi / website · GitLab
-https://realpython.com/async-io-python/ Async IO in Python: A Complete Walkthrough – Real Python
-https://docs.google.com/document/d/1CDZd0L3714EI3eOTooPwD_umX4-Cog66qK6Uja3x6cA/edit?ts=5d1cf1f0 Gitlab Label Brainstorming
-https://gitlab.pr.edgelp.net/edgelp/website/labels Labels · edgelp / website · GitLab
-https://pytest-django.readthedocs.io/en/latest/helpers.html Django helpers — pytest-django documentation
-https://docs.pytest.org/en/latest/reference.html Reference — pytest documentation
-https://tonybaloney.github.io/pep-explorer/#Any_Any PEP-Explorer find and filter Python Enhancement Proposals
-https://refactoring.com/catalog/ Catalog of Refactorings
-https://docs.python-guide.org/ The Hitchhiker’s Guide to Python! — The Hitchhiker's Guide to Python
-https://www.omscs.gatech.edu/cs-6210-advanced-operating-systems CS 6210: Advanced Operating Systems | OMSCS | Georgia Institute of Technology | Atlanta, GA
-https://docs.djangoproject.com/en/2.2/ref/templates/builtins/ Built-in template tags and filters | Django documentation | Django
-https://python-future.org/compatible_idioms.html Cheat Sheet: Writing Python 2-3 compatible code — Python-Future documentation
-https://regex101.com/ Online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript
-https://12factor.net/ The Twelve-Factor App
-http://pylint.pycqa.org/en/latest/technical_reference/features.html Pylint features — Pylint 2.4.0-dev0 documentation
-https://www.computer.org/csdl/magazine/so IEEE Software | IEEE Computer Society Digital Library
-http://web-prod.pr.edgelp.net/cgi-bin/fundgraph?09/05/2019+1 Fund Graph (XT vs Nias)
-http://akul.me/blog/2016/beautifulsoup-cheatsheet/ Beautiful Soup 4 Cheatsheet | Akul's Blog
+https://www.google.com/maps/dir/InterContinental+Boston,+510+Atlantic+Ave,+Boston,+MA+02210//@42.3464632,-71.0907785,14z/data=!4m9!4m8!1m5!1m1!1s0x89e37080fb7ac32d:0x9f4a03ea72d93097!2m2!1d-71.0518733!2d42.3538495!1m0!3e2 Google Maps
+https://medium.com/nearprotocol/understanding-rust-lifetimes-e813bcd405fa READ: Understanding Rust Lifetimes - NEAR Protocol - Medium
+https://doc.rust-lang.org/nomicon/index.html READ: Introduction -
+https://www.thenorthface.com/webapp/wcs/stores/servlet/VFShippingAddressView?orderId=50378863&storeId=7001 Shipping | United States
+https://www.python.org/dev/peps/pep-0544/ READ: PEP 544 -- Protocols: Structural subtyping (static duck typing) | Python.org
+https://jrsinclair.com/articles/2019/algebraic-structures-what-i-wish-someone-had-explained-about-functional-programming/ READ: Algebraic Structures: Things I wish someone had explained about functional programming
+https://blog.rust-lang.org/2019/11/07/Rust-1.39.0.html READ: Announcing Rust 1.39.0 | Rust Blog
+https://blog.rust-lang.org/2019/11/07/Async-await-stable.html READ: Async-await on stable Rust! | Rust Blog
+https://parallel-rust-cpp.github.io/introduction.html READ: Introduction - Comparing parallel Rust and C++
+https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/ READ: Parse, don’t validate
+https://google.github.io/eng-practices/review/reviewer/standard.html#conflicts READ: The Standard of Code Review | eng-practices
+https://kataskeue.com/gdp.pdf READ: https://kataskeue.com/gdp.pdf
+https://www.parsonsmatt.org/2017/10/11/type_safety_back_and_forth.html READ: Type Safety Back and Forth
+https://beepb00p.xyz/mypy-error-handling.html READ: Python: better typed than you think | Mildly entertainingᵝ
+https://medium.com/@vmsp/less-known-bits-of-the-python-standard-library-46dc88490115 READ: Less known bits of the Python Standard Library - Vitor Pereira - Medium
+https://treyhunner.com/2018/10/asterisks-in-python-what-they-are-and-how-to-use-them/ READ: Asterisks in Python: what they are and how to use them - Trey Hunner
+https://snarky.ca/why-you-should-use-python-m-pip/ READ: Why you should use `python -m pip`

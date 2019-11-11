@@ -14,7 +14,7 @@ nnoremap <buffer> <Leader>M :e Makefile<CR>
 nnoremap <buffer> <Leader>t :execute "find test_" . expand('%:t:r') . ".cc"<CR>
 nnoremap <buffer> <Leader>T :execute "tabfind test_" . expand('%:t:r') . ".cc"<CR>
 
-setlocal dictionary+=/home/bryan/Dropbox/var/cheaders.txt
+setlocal dictionary+=/home/bryan/Sync/var/cheaders.txt
 setlocal iskeyword+=.,/,-
 
 " Do NOT place anything else below this conditional.

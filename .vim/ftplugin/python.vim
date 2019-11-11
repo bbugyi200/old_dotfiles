@@ -1,4 +1,4 @@
-let b:run_cmd = "!pytest -v %"
+let b:run_cmd = ":Black"
 
 " ------------------------------------- MULTILINE STRINGS -----------------------------------------
 function! BreakMultlineString(quote)
@@ -48,9 +48,9 @@ nmap <Leader>j Jds'ds"x
 nnoremap <Leader>J :call JoinMultilineString()<CR>
 
 " break lines
-nnoremap <Leader>" 80\|Bi"<CR>"<Esc>
+nnoremap <Leader>" 79\|Bi"<CR>"<Esc>
 nnoremap <Leader><Leader>" :call JoinMultilineString()<CR>:call BreakMultlineString('"')<CR>
-nnoremap <Leader>' 80\|Bi'<CR>'<Esc>
+nnoremap <Leader>' 79\|Bi'<CR>'<Esc>
 nnoremap <Leader><Leader>' :call JoinMultilineString()<CR>:call BreakMultlineString("'")<CR>
 
 nnoremap [op :let g:syntastic_python_checkers=['flake8', 'mypy']<CR>:e<CR>

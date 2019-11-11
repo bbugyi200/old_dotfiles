@@ -3,7 +3,7 @@
 <channel name="xfce4-notifyd" version="1.0">
   <property name="applications" type="empty">
     <property name="known_applications" type="array">
-      <value type="string" value="Dropbox"/>
+      <value type="string" value="Sync"/>
       <value type="string" value="io.github.Hexchat"/>
       <value type="string" value="nm-applet"/>
       <value type="string" value="notify-send"/>

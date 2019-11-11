@@ -92,7 +92,7 @@ alias vmutt='vim $HOME/.mutt/muttrc'
 # ---------- Vim Wrapper Aliases / Functions ----------
 # def marker: VIM
 alias daf='def -a'
-def() { zim "def" "$@" "$HOME/Dropbox/home/.zshrc" "$HOME/Dropbox/home/.config/aliases.sh" "$HOME/Dropbox/home/.config/debian.sh" "$HOME/Dropbox/home/.config/gentoo.sh" "$HOME/Dropbox/home/.config/macos.sh"; }
+def() { zim "def" "$@" "$HOME/Sync/home/.zshrc" "$HOME/Sync/home/.config/aliases.sh" "$HOME/Sync/home/.config/debian.sh" "$HOME/Sync/home/.config/gentoo.sh" "$HOME/Sync/home/.config/macos.sh"; }
 him() { vim ~/"$1"; }
 lim() { vim -c "normal '0" -c 'bd1'; }
 mim() { zim "mim" "$@"; }
@@ -129,18 +129,17 @@ alias ag='ag --hidden'
 alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
-bb() { bc <<< "scale=${2:-5}; $*"; }
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
-alias black='black -l 79 --fast'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
+alias budget='python3 $HOME/Sync/var/projects/budget/main.py'
 alias c='cookie'
 alias cal='cal -n 3 | less'
+alias cat='bat --theme=GitHub'
 alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
 alias cdef='def -m COOKIE'
 alias cdow='cd "$(dow_dir $PWD)"'
-checklist() { vim -c "goto 1" -c "/^\[" -c "nnoremap <nowait> x :normal 0lclX<Esc>/^\[ \]<CR>" -c "nnoremap - :normal 0lcl-<Esc>/^\[<CR>" -c "nnoremap <Space> :normal 0lcl <Esc>/^\[<CR>" -c "nnoremap <Leader><Space> :%s/\[.\]/[ ]/g<CR>gg/^\[<CR>" -c "nnoremap <nowait> [ ?\[<CR>" -c "nnoremap <nowait> ] /\[<CR>" "$1" && ${SED} -i 's/\[.\]/[ ]/g' "$1"; }
-cho() { sudo chown -R "$2":"$2" "$1"; }
+cho() { sudo chown -R "${2:-bryan}":"${2:-bryan}" "$1"; }
 alias chx='sudo chmod +x'
 cim() { vim ~/.config/"$1"; }
 alias cower='cower -c'
@@ -148,18 +147,19 @@ alias cp="cp -i"
 alias cplug='vim +PluginClean +qall'
 alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
+alias crun='cargo run --'
 cval() { pushd "$1" &> /dev/null || return 1 && eval "$2"; popd &> /dev/null || return 1; }
-alias dayplan='cd $HOME/Dropbox/var/notes && vim dayplan.txt'
+alias dayplan='cd $HOME/Sync/var/notes && vim dayplan.txt'
 dc() { sudo -E deluge-console "${@}"; }
 dci() { dc info --sort=time_added | awk -F ':' "{if(\$1==\"$1\")print \$0}"; }
 alias ddef='def -m DEBIAN'
 alias ddwrt-logs='sim /var/log/syslog-ddwrt'
 alias deff='def -f'
 alias del_swps='find . -name "*.swp" -delete -print'
-alias delshots='confirm "find $HOME/Dropbox/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
+alias delshots='confirm "find $HOME/Sync/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias df='df -h'
 alias dfs='dropbox-cli filestatus'
-dg() { { box "ALIAS DEFINITIONS"; alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"; printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | ${SED} '/^$/d' | ${SED} '/^_.\+ () {/,/^}$/d' | ${SED} 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | ${SED} '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | ${SED} 's/ {$/:/g' | ${SED} '/--$/d' | ${SED} 'N;s/\:\n/: /g' | ${SED} 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"; printf "\n"; box "SCRIPT CONTENTS"; rg -s -C 5 -p "$@" ~/Dropbox/bin; } | less; }
+dg() { { box "ALIAS DEFINITIONS"; alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"; printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | ${SED} '/^$/d' | ${SED} '/^_.\+ () {/,/^}$/d' | ${SED} 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | ${SED} '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | ${SED} 's/ {$/:/g' | ${SED} '/--$/d' | ${SED} 'N;s/\:\n/: /g' | ${SED} 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"; printf "\n"; box "SCRIPT CONTENTS"; rg -s -C 5 -p "$@" ~/Sync/bin; } | less; }
 dgw() { dg "\W$1\W"; }
 diff() { colordiff -wy -W "$(tput cols)" "$@" | less -R; }
 alias dst='dropbox-cli status'
@@ -170,6 +170,7 @@ alias dunst='killall dunst &> /dev/null; dunst'
 alias edsl='printf "$(hostname):%d,%d\n%s,%d" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
 alias epuse='sudo -E epuse'
 essh() { ssh "$@" -t 'cd ~/src/prod; source .environ; /bin/zsh'; }
+alias ewatch='watch -c -n 5 genlop -c'
 fim() { vim "$("$(which -a fim | tail -n 1)" "$1")"; }
 alias flaggie='sudo -i flaggie'
 fn_() { if [[ "$1" == *"*"* ]]; then find . -iname "$@"; else find . -iname "*$**"; fi; }
@@ -191,13 +192,15 @@ alias gdef='def -m GENTOO'
 alias gdo='git diff origin/master'
 alias geff='git effort'
 alias gg='git grep --break --heading'
-alias ggrep='git rev-list --all | xargs git grep -n --break --heading'
+alias gga='git rev-list --all | xargs git grep -n --break --heading'
 alias gho='ghi open'
 alias ghooks='rm -rf .git/hooks && git init' 
 alias gi='git info -c 3 --no-config'
 alias ginit='while true; do; watch -d -n 1 cat .gdbinit; vim .gdbinit; done'
+git() { if [[ -n "$1" ]]; then command git "$@"; else tig; fi; }
 git_issue_number() { git branch | grep '^\*' | awk '{print $2}' | awk -F'-' '{print $1}'; }
 alias Glg='git log -p -G'
+alias gmc='git ls-files -u | cut -f 2 | sort -u'
 alias gn='gnext'
 gN() { git checkout HEAD~"${1:-1}"; }
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
@@ -207,11 +210,12 @@ alias gpu='sudo radeontop -l 1 -d - | sed "1d" | head -n 1 | awk "{print \$3}" |
 alias gpull='git stash && git pull && git stash apply'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
-alias gref='git reflog'
+alias grep='${GREP}'
 alias gres='git reset'
 gresh() { git reset "${@:2}" HEAD~"${1:-0}"; }
 greshh() { gresh "$1" --hard; }
 greshs() { gresh "$1" --soft; }
+alias grl='git reflog'
 grun() { [[ "$(tail -n 1 "${PWD}"/.gdbinit)" == "r" ]] && sed -i '/^r$/d' "${PWD}"/.gdbinit || printf "r\n" >> "${PWD}"/.gdbinit; }
 alias gsd='sudo get-shit-done'
 alias gsta='git stash'
@@ -220,16 +224,17 @@ alias gsum='git summary | less ${LESS_OPTS}'
 gwip() { gaa && git commit -m "[wip] $*"; }
 alias h='tm-home load'
 header() { clear && eval "$@" && echo; }
+alias htop='sudo htop'
 info() { pinfo "$@" || { printf "\n===== APROPOS OUTPUT =====\n"; apropos "$@"; }; }
+alias iotop='sudo iotop'
 alias ipdb='ipdb3'
 alias iplug='vim +PluginInstall +qall'
 ipy-add-import() { ${SED} -i "/c\.InteractiveShellApp\.exec_lines/ a import $1" ~/.ipython/profile_default/ipython_config.py; }
 alias ipy='if [[ -f Pipfile ]]; then pipenv run ipython; else ipython; fi'
 alias issh='ssh -p 34857 athena-arch.ddns.net'
-j() { if [[ -n "$1" ]]; then jrnl "$@"; else vim + "$HOME"/Dropbox/var/notes/Journal/jrnl.txt; fi; }
-alias J='pushd ~/Dropbox/var/notes/Journal &> /dev/null && ranger && popd &> /dev/null'
+j() { if [[ -n "$1" ]]; then jrnl "$@"; else vim + "$HOME"/Sync/var/notes/Journal/jrnl.txt; fi; }
+alias J='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /dev/null'
 K() { tmux switchc -n && tmux kill-session -t "$(tm-session-name)"; }
-alias k='tm-kill'
 alias k9='sudo kill -9'
 alias kman='man -k'
 Kman() { man -wK "$@" | awk -F'/' '{print $NF}' | sed 's/\.\(.*\)\.bz2$/ (\1)/g' | sort; }
@@ -237,7 +242,8 @@ alias lay='sudo layman'
 alias Loc='sudo updatedb && loc'
 alias loc='${LOCATE} --regex'
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
-alias ls='${LS} --color=auto'
+alias ls='exa'
+alias lt='ls --tree'
 m-torrent() { echo "torrent -w /media/bryan/hercules/media/Entertainment/Movies $*" | at 0200; }
 alias matlab='matlab -nojvm -nodisplay -nosplash'
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
@@ -245,12 +251,13 @@ mkcd() { mkdir -p "$1" && cd "$1" || return 1; }
 alias mkdir='mkdir'
 alias mkpkg='makepkg -si'
 alias mpvlc='xspawn -w mpv mpvlc'
+alias mrun='macrun'
 alias mv="mv -i"
 alias myip='ip addr | grep -P -o "192.168.1.[0-9]+" | grep -v 192.168.1.255'
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
-alias nrg='pushd ~/Dropbox/var/notes && ranger && popd'
+alias notes='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /dev/null'
 alias ok='xspawn okular'
-onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Dropbox/var/notes/Onething/"$1".txt; }
+onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Sync/var/notes/Onething/"$1".txt; }
 alias P='popd'
 alias pipget='pip install --user'
 pdb() { { [[ -f ./"$1" ]] && pudb3 "$@"; } || pudb3 "$(which -a "$1" | tail -n 1)" "${@:2}"; }
@@ -267,8 +274,11 @@ ppython() { pipenv run python "$@"; }
 alias psg='ps -ax | grep -v grep | grep'
 alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
+alias pvsu='py-vshlog -u -D BOT EOT -H all -e'
 pycov() { coverage run "$1" && coverage html && qutebrowser htmlcov/index.html; }
 pylint() { if [[ -f Pipfile ]]; then pipenv run pylint "$@"; else command pylint "$@"; fi; }
+alias Q='tm-kill'
+alias q='exit'
 alias reboot='sudo reboot'
 rg() { "$(which -a rg | tail -n 1)" -p "$@" | less; }
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
@@ -276,12 +286,12 @@ riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@"
 alias rm='safe-rm'
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
 alias rag='cat $RECENTLY_EDITED_FILES_LOG | sudo xargs ag 2> /dev/null'
-alias sch='vim ~/Dropbox/var/notes/Rutgers/course_schedule.txt'
+alias sch='vim ~/Sync/var/notes/Rutgers/course_schedule.txt'
 alias sc='systemctl'
 alias scu='systemctl --user'
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias sim='sudo -E vim'
-alias snapshots='find $HOME/Dropbox/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
+alias snapshots='find $HOME/Sync/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
 ss() { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
 alias ssh-aphrodite='ssh 192.168.1.193'
 alias ssh-artemis="ssh bryan@67.207.92.152"
@@ -292,7 +302,6 @@ alias sudo='sudo -E '  # makes aliases visible to sudo
 alias sudoers='sudo -E vim /etc/sudoers'
 alias sqlite3='rlwrap -a -N -c -i sqlite3'
 alias tgdb="gdb -iex 'set pagination off' -ex 'tui enable' -ex 'set pagination on'"
-alias time='/usr/bin/time'
 tmd() { tmux display-message -p "#{$1}"; }
 # shellcheck disable=SC2142
 alias tm-layout="tmux lsw | grep '*' | awk '{gsub(/\\]/, \"\"); print \$7}'"
@@ -311,41 +320,37 @@ u() { echo -e "\u$1"; }
 alias undow='dow --undo'
 alias updatedb='sudo updatedb'
 # shellcheck disable=SC2046
-vab() { vim $(find "$HOME"/Dropbox/bin/cron.jobs -type f | sort | tr '\n' ' '); }
+vab() { vim $(find "$HOME"/Sync/bin/cron.jobs -type f | sort | tr '\n' ' '); }
 alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
-alias vdaily='vgtd-daily'
+alias vdaily="vgtd-daily-review"
 Vgi() { if [[ -f ./.local_gitignore ]]; then vim -c 'vs ./.local_gitignore' ~/.gitignore_global; else vim ~/.gitignore_global; fi; }
 alias vbox='xspawn sudo virtualbox'
 alias vbt='vim ~/.local/share/torrent/*.txt'
-alias vdb='vim $HOME/Dropbox/bin/cron/cron.daily/*'
+alias vdb='vim $HOME/Sync/bin/cron/cron.daily/*'
 alias vdiff='vimdiff -n'
-venv() { vim "$HOME"/.zprofile "$HOME"/.profile "$HOME"/Dropbox/etc/environment "$(find "$HOME"/Dropbox/etc/profile.d -type f)" "$HOME"/.local/bin/etc-generator; }
+venv() { vim "$HOME"/.zprofile "$HOME"/.profile "$HOME"/Sync/etc/environment "$(find "$HOME"/Sync/etc/profile.d -type f)" "$HOME"/.local/bin/etc-generator; }
 alias vgdb-l='voltron view command "cmds set listsize $(tput lines) ; list *\$pc" --lexer c'
 alias vgdb='vim ~/.gdbinit .gdbinit'
-alias vgtd-daily="checklist ~/Dropbox/var/notes/daily_tasks.txt"
-alias vgtd-weekly-review='checklist ~/Dropbox/var/notes/weekly_review.txt'
 alias vgutils='vim /usr/bin/gutils.sh'
 alias vi='vinfo'
-alias vihor='vim ~/Dropbox/var/notes/Horizons_of_Focus/*'
-vim() { if [[ -f Pipfile ]]; then pipenv run vim "$@"; else command vim "$@"; fi; }
+alias vihor='vim ~/Sync/var/notes/Horizons_of_Focus/*'
 alias vimilla='vim -u ~/.vanilla-vimrc'
 alias vipy='vim -c "/c.InteractiveShellApp.exec_lines" ~/.ipython/profile_default/ipython_config.py'
 vlog() { vim + /var/tmp/"$1"; }
 alias vm='vman'
-alias vmb='vim $HOME/Dropbox/bin/cron/cron.monthly/*'
+alias vmb='vim $HOME/Sync/bin/cron/cron.monthly/*'
 alias vmkrules='make -p > /tmp/make-rules && vim /tmp/make-rules'
 alias vnc-athena='open vnc://athena-arch.ddns.net:34590'
 alias vnix='vv_push ~/.nixnote'
-alias vpyutils='pushd ~/Dropbox/lib/python/gutils &> /dev/null && vv && popd &> /dev/null'
+alias vpyutils='pushd ~/Sync/lib/python/gutils &> /dev/null && vv && popd &> /dev/null'
 alias vr='vim ${RECENTLY_EDITED_FILES_LOG}'
 alias vs='vshlog'
-alias vscratch='vim ~/Dropbox/var/notes/scratch.txt'
+alias vscratch='vim ~/Sync/var/notes/scratch.txt'
 alias vsd='vshlog -H all -D'
 alias vstudy='vim $HOME/.vimwiki/TaskWarrior.wiki'
-alias vsu='vshlog -u -D BOT EOT -H all -e'
-alias vtorr='cval "$HOME/Dropbox/bin/main" "vim torrent libtorrent/**/[^_]*.py"'
+alias vtorr='cval "$HOME/Sync/bin/main" "vim torrent libtorrent/**/[^_]*.py"'
 alias vtv="vim \$HOME/.local/bin/tmux_view.sh \$HOME/.local/bin/tv_*"
-alias vwb='vim $HOME/Dropbox/bin/cron/cron.weekly/*'
+alias vwb='vim $HOME/Sync/bin/cron/cron.weekly/*'
 vrobot() { vim "$HOME"/.local/share/red_robot/pending/"$1"; }
 vuse() { vim /etc/portage/package.use/"$1"; }
 alias vq='vv_push ~/.config/qutebrowser'

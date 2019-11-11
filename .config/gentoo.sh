@@ -41,7 +41,7 @@ alias shutdown='epcsync -q && sudo shutdown -h now'
 vblog() { vim "$(sudo find /var/tmp/portage -type f -regex ".*$1.*/build\.log")"; }
 alias velog='vim /var/log/emerge.log'
 alias vg='vgp /etc/portage/make.{conf,shared}'
-alias vgmanage='vim ~/Dropbox/bin/gentoo/{emanage,eupdate,ecleanup,emaint_check}'
+alias vgmanage='vim ~/Sync/bin/gentoo/{emanage,eupdate,ecleanup,emaint_check}'
 alias vgmk='sudo -E vim /etc/portage/make.conf /etc/portage/make.shared'
 vgp() { sudo -E vim "$@" /etc/portage/package.{accept_keywords,use,env,mask,unmask} /etc/portage/make.{conf,shared} /etc/portage/env/*; }
 alias vgpe='sudo -E vim /etc/portage/package.env /etc/portage/env/*.conf'

@@ -23,7 +23,7 @@ windows:
                 - tmux select-pane -t 1.1
                 - sleep 2
             - 1:
-              - cd /home/bryan/Dropbox/home/.timewarrior && so && clear
+              - cd /home/bryan/Sync/home/.timewarrior && so && clear
 
     - khal:
         layout: 5511,157x36,0,0[157x27,0,0,6,157x8,0,28,5]
@@ -37,7 +37,7 @@ windows:
         root: /home/bryan/.task
         panes:
             - 0:
-                - rm -rf /home/bryan/Dropbox/home/.taskrc.swp
+                - rm -rf /home/bryan/Sync/home/.taskrc.swp
                 - sleep 2 && vc
     - hooks:
         layout: main-horizontal

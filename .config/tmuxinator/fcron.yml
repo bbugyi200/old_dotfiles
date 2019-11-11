@@ -22,7 +22,7 @@ windows:
         layout: even-horizontal
         panes:
             - 0:
-                - vim ~/Dropbox/bin/cron.jobs/{cron.daily/daily_jobs,cron.weekly/weekly_jobs} ~/Dropbox/bin/cron.jobs/cron.{daily,weekly,monthly}/*
+                - vim ~/Sync/bin/cron.jobs/{cron.daily/daily_jobs,cron.weekly/weekly_jobs} ~/Sync/bin/cron.jobs/cron.{daily,weekly,monthly}/*
     - man:
         layout: even-horizontal
         panes:

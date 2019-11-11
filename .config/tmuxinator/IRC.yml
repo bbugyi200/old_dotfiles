@@ -1,0 +1,15 @@
+# ~/.config/tmuxinator/IRC.yml
+
+root: <%= @settings['root'] %>
+name: IRC
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - WeeChat:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - weechat

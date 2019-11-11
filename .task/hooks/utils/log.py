@@ -6,7 +6,7 @@ import logging
 import os
 import sys
 
-sys.path.insert(0, '/home/{}/Dropbox/scripts/pymodules'.format(getpass.getuser()))
+sys.path.insert(0, '/home/{}/Sync/scripts/pymodules'.format(getpass.getuser()))
 
 import gutils  # noqa
 

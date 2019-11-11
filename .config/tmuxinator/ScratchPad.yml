@@ -8,7 +8,7 @@ on_project_stop:
 
 windows:
     - notes:
-        root: /home/bryan/Dropbox/var/notes
+        root: /home/bryan/Sync/var/notes
         layout: even-horizontal
         panes:
             - 0:

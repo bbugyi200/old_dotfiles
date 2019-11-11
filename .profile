@@ -15,7 +15,7 @@ source_if_exists /usr/bin/virtualenvwrapper_lazy.sh
 #  Environment Variables      #
 ###############################
 # >>> Conveniance Variables
-export DB="$HOME"/Dropbox
+export DB="$HOME"/Sync
 export DBB="$DB"/bin
 export DBH="$DB"/home
 export MOV=/media/bryan/zeus/media/Entertainment/Movies
@@ -42,15 +42,20 @@ export BETTER_EXCEPTIONS=true  # enables python 'better_exceptions' library
 export EDITOR="$(command -v vim)"  # I set this so the crontab would use vim for editing
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export FZF_DEFAULT_OPTS='--reverse --height 40% --border'
+export PATH="$HOME/.cargo/bin:$PATH"
 export QT_QPA_PLATFORMTHEME="qt5ct"  # Fixes: missing okular icons
-export RECENTLY_EDITED_FILES_LOG="$HOME"/Dropbox/var/recently_edited_files.log
-export SHELLCHECK_OPTS="-e SC1090 -e SC1091 -e SC1117 -e SC2001 -e SC2016 -e SC2059 -e SC2129 -e SC2155 -e SC2162"
+export RECENTLY_EDITED_FILES_LOG="$HOME"/Sync/var/recently_edited_files.log
 export RIPGREP_CONFIG_PATH="$HOME"/.config/rgrc
+export RUST_SRC_PATH="$HOME"/Sync/var/projects/rust/src
+export SHELLCHECK_OPTS="-e SC1090 -e SC1091 -e SC1117 -e SC2001 -e SC2016 -e SC2059 -e SC2129 -e SC2155 -e SC2162"
+export SHV_SHELL_HISTORY_ROOT="$HOME"/Sync/var/logs/shell-history
 export WORKON_HOME=~/.virtualenvs
 export XDG_CONFIG_HOME="$HOME"/.config
 
 if [[ "$(uname -a)" == *"Darwin"* ]]; then
-    export GREP="/usr/local/bin/ggrep"
+    export AT_WORK=true
+    export BROWSER=/Applications/qutebrowser.app/Contents/MacOS/qutebrowser
+    export GREP="ggrep"
     export LESS_OPTS=""
     export LOCATE="glocate"
     export LS="gls"
@@ -58,14 +63,17 @@ if [[ "$(uname -a)" == *"Darwin"* ]]; then
     export PYTHONPATH=$PYTHONPATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages
     export SED="gsed"
     export TERM="rxvt-256color"
-
-    export AT_WORK=true
 else
-    export TERM="rxvt-unicode-256color"  # Fixes Mutt Background Issue (stays transparent) in TMUX
+    export BROWSER=qutebrowser
+    export GREP="grep"
     export LESS_OPTS="-F"
+    export LOCATE=locate
     export LS="ls"
     export SED="sed"
-    export GREP="grep"
+    export TERM="rxvt-unicode-256color"  # Fixes Mutt Background Issue (stays transparent) in TMUX
+
+    rust_version="$(rustc --version | perl -anE 'print $F[1]')"
+    export PATH=/opt/rust-bin-"${rust_version}"/bin:"$PATH"
 fi
 
 # Fixes "perl: warning: Setting locale failed." errors when using SSH to
@@ -95,3 +103,5 @@ fi
 # MUST remain at bottom of file. Otherwise, other paths are prepended to $PATH
 # somehow.
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.dynamic-colors/bin:$PATH"
+export PATH="$HOME/.flamegraph:$PATH"

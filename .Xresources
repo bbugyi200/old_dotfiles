@@ -28,29 +28,43 @@ URxvt*skipScroll:             true            ! favour scroll speed over listing
 URxvt*geometry:               100x39
 
 ! ----- COLORS
-! Enable Dynamic Colors
-xterm*dynamicColors: true
-urxvt*dynamicColors: on
-! Background and Foreground
-*background: #1d1f21
-*foreground: #c5c8c6
 ! 16 Colors (http://terminal.sexy)
-*color0: #1d1f21
-*color1: #a54242
-*color2: #8c9440
-*color3: #de935f
-*color4: #5f819d
-*color5: #85678f
-*color6: #5e8d87
-*color7: #707880
-*color8: #373b41
-*color9: #cc6666
-*color10: #b5bd68
-*color11: #f0c674
-*color12: #81a2be
-*color13: #b294bb
-*color14: #8abeb7
-*color15: #c5c8c6
+! special
+*.foreground:   #373b41
+*.background:   #ffffff
+*.cursorColor:  #373b41
+
+! black
+*.color0:       #1d1f21
+*.color8:       #969896
+
+! red
+*.color1:       #cc342b
+*.color9:       #cc342b
+
+! green
+*.color2:       #198844
+*.color10:      #198844
+
+! yellow
+*.color3:       #fba922
+*.color11:      #fba922
+
+! blue
+*.color4:       #3971ed
+*.color12:      #3971ed
+
+! magenta
+*.color5:       #a36ac7
+*.color13:      #a36ac7
+
+! cyan
+*.color6:       #3971ed
+*.color14:      #3971ed
+
+! white
+*.color7:       #c5c8c6
+*.color15:      #ffffff
 
 ! ----- EXTENSIONS
 ! URxvt.perl-ext-common: default,url-select,clipboard

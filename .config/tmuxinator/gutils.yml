@@ -13,7 +13,7 @@ windows:
                 - vv
     - scripts:
         layout: even-horizontal
-        root: ~/Dropbox/scripts/bin/main
+        root: ~/Sync/scripts/bin/main
         panes:
             - 0:
                 - lls

@@ -21,8 +21,11 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'manicmaniac/coconut.vim'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'pboettch/vim-cmake-syntax'
+Plugin 'psf/black'
+Plugin 'racer-rust/vim-racer'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Rip-Rip/clang_complete'  " Depends on external package: clang
+Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neoinclude.vim'
 Plugin 'Shougo/vimproc.vim'  " Required by: ghcmod-vim;  Install by running ':VimProcInstall'
@@ -38,7 +41,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/AnsiEsc.vim'
 Plugin 'vim-scripts/applescript.vim'
 Plugin 'vim-scripts/cecutil'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'dense-analysis/ale'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'vimwiki/vimwiki'  " Required by: taskwiki
 Plugin 'VundleVim/Vundle.vim'
@@ -79,12 +82,32 @@ function! PluginInstalled(plugin)
     return 0
 endfunction
 
+"""""""
+" ALE "
+"""""""
+if PluginInstalled("ale")
+    let g:ale_python_pylint_options = get(g:, "ale_python_pylint_options", "--rcfile=~/.config/pylintrc")
+endif
+
+"""""""""""
+"  Black  "
+"""""""""""
+if PluginInstalled("black")
+    let g:black_fast = 1
+    let g:black_skip_string_normalization = 1
+    let g:black_linelength = get(g:, "black_linelength", 79)
+endif
+
 """"""""""""""""
 "  BufTabLine  "
 """"""""""""""""
 if PluginInstalled("buftabline")
     let g:buftabline_numbers = 1
     let g:buftabline_indicators = 1
+
+    hi BufTabLineCurrent cterm=bold,underline ctermbg=lightgreen
+    hi BufTabLineActive ctermbg=lightgreen
+    hi BufTabLineHidden cterm=nocombine,none ctermbg=lightgrey
 endif
 
 """""""""""""""""""
@@ -286,7 +309,7 @@ EOF
     let g:jedi#popup_select_first = 0
     let g:jedi#show_call_signatures = "1"
     let g:jedi#goto_command = "<C-]>"
-    let g:jedi#completions_command = ""
+    let g:jedi#completions_command = "<C-o>"
     let g:jedi#goto_assignments_command = ""
     let g:jedi#rename_command = ""
 endif
@@ -306,6 +329,20 @@ if PluginInstalled("necoghc")
     let g:necoghc_enable_detailed_browse = 1
 endif
 
+""""""""""""
+" NerdTree "
+""""""""""""
+if PluginInstalled("nerdtree")
+    let NERDTreeIgnore = ['.pyc$']
+endif
+
+"""""""""
+" Racer "
+"""""""""
+if PluginInstalled("vim-racer")
+    let g:racer_experimental_completer = 1
+endif
+
 """""""""
 "  Riv  "
 """""""""
@@ -316,11 +353,19 @@ if PluginInstalled("riv")
     autocmd FileType txt setlocal commentstring=//\ %s
 endif
 
+""""""""""""
+" rust.vim "
+""""""""""""
+if PluginInstalled("rust.vim")
+   let g:rustfmt_command = $HOME . "/.cargo/bin/rustfmt" 
+   let g:rustfmt_options = "--config-path " . $HOME . "/.config/rustfmt/rustfmt.toml"
+endif
+
 """""""""""""""
 "  Solarized  "
 """""""""""""""
 if PluginInstalled("vim-colors-solarized")
-    " colorscheme solarized
+    colorscheme solarized
 endif
 
 """""""""""""""
@@ -391,7 +436,7 @@ endfunction
 
 if PluginInstalled("UltiSnips")
     " Allows other directories to be searched for snippet files
-    " let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME . "/Dropbox/home/extra/UltiSnips"]
+    " let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME . "/Sync/home/extra/UltiSnips"]
     let g:UltiSnipsSnippetDirectories=[$HOME . "/.vim/vim-snippets", getcwd()]
 
     au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"

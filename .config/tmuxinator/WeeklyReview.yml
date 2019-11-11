@@ -3,8 +3,8 @@
 root: <%= @settings['root'] %>
 name: WeeklyReview
 
-on_project_start: sed -i.bak 's/_forcecolor=on/_forcecolor=off/g' /home/bryan/Dropbox/dotfiles/home/.taskrc
-on_project_stop: sed -i.bak 's/_forcecolor=off/_forcecolor=on/g' /home/bryan/Dropbox/dotfiles/home/.taskrc
+on_project_start: sed -i.bak 's/_forcecolor=on/_forcecolor=off/g' /home/bryan/Sync/dotfiles/home/.taskrc
+on_project_stop: sed -i.bak 's/_forcecolor=off/_forcecolor=on/g' /home/bryan/Sync/dotfiles/home/.taskrc
 
 windows:
     - Next:
@@ -26,12 +26,12 @@ windows:
                 - sleep 2
                 - vim $(find /home/bryan -name "TaskWarrior.wiki") 
     - Checklist:
-        root: /home/bryan/Dropbox/var/notes
+        root: /home/bryan/Sync/var/notes
         layout: 9194,237x47,0,0{136x47,0,0,47,100x47,137,0,55}
         panes:
             - 0:
-                - sed -i 's/\[X\]/[ ]/g' ~/Dropbox/var/notes/weekly_review.txt
-                - vim ~/Dropbox/var/notes/weekly_review.txt
+                - sed -i 's/\[X\]/[ ]/g' ~/Sync/var/notes/weekly_review.txt
+                - vim ~/Sync/var/notes/weekly_review.txt
     - Other:
         layout: 9194,237x47,0,0{136x47,0,0,47,100x47,137,0,55}
         panes:

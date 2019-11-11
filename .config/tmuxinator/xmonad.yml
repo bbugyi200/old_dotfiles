@@ -12,7 +12,7 @@ windows:
             - 0:
                 - vv
     - II:scripts:
-        root: ~/Dropbox/scripts/bin/xmonad
+        root: ~/Sync/scripts/bin/xmonad
         layout: main-vertical
         panes:
             - tree

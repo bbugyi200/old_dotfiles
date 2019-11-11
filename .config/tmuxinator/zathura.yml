@@ -12,7 +12,7 @@ windows:
             - 0:
                 - vim ~/.config/zathura/zathurarc
             - 1:
-                - vim /home/bryan/Dropbox/bin/zathura/*
+                - vim /home/bryan/Sync/bin/zathura/*
     - docs:
         layout: even-horizontal
         panes:

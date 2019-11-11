@@ -1,7 +1,7 @@
 [xfdesktop-version-4.10.3+-rcfile_format]
 4.10.3+=true
 
-[/home/bryan/Dropbox]
+[/home/bryan/Sync]
 row=4
 col=0
 
@@ -12,6 +12,10 @@ col=0
 [/home/bryan/main.c]
 row=6
 col=0
+
+[/home/bryan/vshlog]
+row=0
+col=1
 
 [/home/bryan/projects]
 row=7

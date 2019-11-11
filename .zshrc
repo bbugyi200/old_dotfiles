@@ -113,7 +113,7 @@ alias -s doc="libreoffice"
 alias -s docx="libreoffice"
 alias -s epub="zathura"
 alias -s git="git clone"
-alias -s html="google-chrome-stable"
+alias -s html="qutebrowser"
 alias -s odt="libreoffice"
 alias -s pdf="zathura"
 alias -s ppt="libreoffice"
@@ -125,6 +125,7 @@ alias -s xls="libreoffice"
 alias -s xlsx="libreoffice"
 
 # ---------- Global Aliases ----------
+alias -g @!="&> /dev/null"
 alias -g @@="&> /dev/null & disown"
 alias -g ::="| grep -i -e"
 alias -g :::="| grep -A 5 -B 5 -i -e"
@@ -159,10 +160,9 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 fi
 
 # Needed for Eternal Command History
-preexec() { log_shell_history &> /dev/null "$1"; }
+preexec() { shw.sh &> /dev/null "$1"; }
 
 if [[ -f $PWD/.lzshrc ]]; then
-    printf "\n*** ALERT: A Local zshrc File has been Sourced ***\n\n"
     source ".lzshrc"
 fi
 

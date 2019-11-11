@@ -9,7 +9,7 @@ endfunction
 
 set autoindent
 set autoread
-set background=dark
+set background=light
 set backspace=2
 set breakindent  " Indents wraps
 set colorcolumn=
@@ -47,7 +47,7 @@ set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random 
 set tw=0
 set undofile
 set undodir=$HOME/.vim/undo
-set viminfo+=n~/Dropbox/home/.vim/viminfo  " since viminfo file CANNOT be a symlink
+set viminfo+=n~/Sync/home/.vim/viminfo  " since viminfo file CANNOT be a symlink
 set wildignore+=*/__pycache__/*,*/.git/*,*/venv/*  " 'find'/ctrlp should ignore these folders
 set wildmenu  " Improves tab completion from normal mode
 set wildmode=full
@@ -117,6 +117,10 @@ function! InterpretDot()
     return "."
 endfunction
 
+function! LineTooLong(lch)
+    execute "normal F" . a:lch . "a\<CR>\<Esc>k$%i\<CR>\<Esc>k^"
+endfunction
+
 " Create mappings to open @f in using the current window, a horizontal split,
 " and a vertical split; respectively.
 function! s:MapEditCommands(chars, file_expr)
@@ -174,6 +178,7 @@ inoremap <expr> / InterpretForwardSlash()
 inoremap <expr> . InterpretDot()
 inoremap <expr> <C-d> pumvisible() ? "\<C-n>\<C-y>\<C-x>\<C-f>\<C-p>" : "\<C-x>\<C-f>\<C-p>"
 inoremap <Leader>o <CR><Esc>O
+inoremap <C-o> <C-x><C-o>
 imap <C-h> <Esc><C-h>
 imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
@@ -299,6 +304,7 @@ nnoremap <Leader>v :vert sfind
 nnoremap <Leader><Leader>v :vs <C-R>=expand("%:p:h") . "/" <CR>
 " W-W-W-W-W-W-W-W-W-W
 nnoremap <Leader>W gqap| " mapping to wrap paragraph
+nmap <Leader><Leader>W ]<Space>[<Space>kmmj<Leader>Wdd'mdd
 nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
 nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
 " X-X-X-X-X-X-X-X-X-X
@@ -309,11 +315,13 @@ nnoremap <Leader>Y ma^y$`a
 " -------------------
 " ----- Symbols -----
 " -------------------
+nnoremap <Leader>( :call LineTooLong('(')')<CR>
+nnoremap <Leader>[ :call LineTooLong('[')<CR>
 nnoremap <Leader>; ,
 nnoremap * /\v\C<<C-R><C-W>><CR>
 call s:nimap('<Leader>#', ':call MakeBox()<CR>')
 nnoremap <C-\> <C-^>
-nnoremap <Leader>= <C-w>=
+call s:nimap('<Leader>=', '<C-w>=')
 nnoremap <Leader>/ /\v\C<><Left>
 nnoremap <Leader>% :so %<CR>
 nnoremap _ :<C-u>execute "sbuffer " . v:count1<CR>
@@ -330,7 +338,7 @@ nnoremap <RightMouse> <LeftMouse>""p
 map <MiddleMouse> <Nop>
 " ~ Miscellaneous ~
 nnoremap <Del> :<C-u>execute "bdelete " . v:count<CR>
-nnoremap <CR> o<Esc>
+nmap <CR> ]<Space>j
 nnoremap <silent> <Down> :resize +5<CR>
 nnoremap <silent> <Left> :vert resize +5<CR>
 nnoremap <silent> <Right> :vert resize -5<CR>
@@ -378,12 +386,14 @@ autocmd BufRead,BufNewFile .coveragerc set filetype=cfg
 autocmd BufRead,BufNewFile CMakeLists.txt set filetype=cmake
 autocmd BufRead,BufNewFile config set filetype=cfg
 autocmd BufRead,BufNewFile *.sh set filetype=bash
+autocmd BufRead,BufNewFile *.px setlocal filetype=python
 autocmd BufReadPost /etc/portage/sets/* set filetype=txt
 autocmd BufReadPost /usr/include/c++/**/* set filetype=cpp
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost quickfix nnoremap <CR> <CR>
 autocmd BufReadPost fcr-* set filetype=crontab
 autocmd! BufWritePost vimrc source %  " Automatic rewriting of .vimrc
+autocmd! BufWritePost plugins.vim source %  " Automatic rewriting of .vimrc
 autocmd! BufWritePost python.vim,c.vim,cpp.vim,sh.vim source %  " Automatic rewriting of .vimrc
 autocmd! BufWritePost .Xresources :Silent xrdb merge $HOME/.Xresources
 autocmd! BufWritePost *.c,*.cpp,*.h,*.y silent! !ctags -Rf .tags . &
@@ -397,6 +407,7 @@ autocmd FileType scheme let b:delimitMate_quotes = "\""
 autocmd FocusGained,BufEnter * :checktime  " Reloads buffer on buffer changes
 autocmd InsertEnter * set timeoutlen=500
 autocmd InsertLeave * set timeoutlen=1000
+
 
 " Creates current file's parent directory if it doesn't already exist
 " https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
@@ -455,7 +466,7 @@ function! TmuxOrSplitSwitch(wincmd, tmuxdir)
   let previous_winnr = winnr()
   silent! execute "wincmd " . a:wincmd
   if previous_winnr == winnr()
-    call system("tmux select-pane -" . a:tmuxdir)
+    call system("tm-select-pane -" . a:tmuxdir . " -f")
     redraw!
   endif
 endfunction
@@ -479,8 +490,9 @@ endif
 " ----- Syntax Highlighting -----
 syntax on
 syntax enable
-hi SpellBad cterm=underline
+
 hi Normal guibg=NONE ctermbg=NONE
+hi SpellBad cterm=underline
 
 " #################### EXTRA MODULES ##########################################
 function! s:SourceIfExists(file)

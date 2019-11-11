@@ -171,7 +171,7 @@ myFull = smartBorders simpleTabbed
 -- Transformers (W+f)
 data TABBED = TABBED deriving (Read, Show, Eq, Typeable)
 instance Transformer TABBED Window where
-	transform TABBED x k = k myFull (const x)
+    transform TABBED x k = k myFull (const x)
 
 myLayout = id
     $ mkToggle (single TABBED)
@@ -207,7 +207,7 @@ scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
               , NSP.NS "gtd" gtd (appName =? "GTD")
                     NSP.nonFloating ]
             where 
-                calculator = "urxvt -name calculator -e zsh -c 'wtitle Calculator && bc -l'"
+                calculator = "urxvt -name calculator -e zsh -c 'wtitle Calculator && eva'"
                 scratchpad = "scratchpad-launcher"
                 spotify = "spotify"
                 gtd = "gtd-launcher"
@@ -255,14 +255,10 @@ shift = shiftMask
 --
 -- The `alpha` and `beta` keys should be set to either 'super' or 'alt', depending on which
 -- key you want as your primary meta key.
---
--- NOTE: I have used Xmodmap to swap the 'super' and 'alt' keys on my keyboard.  This has no effect
--- on this configuration (i.e. the alt key still corresponds to `mod1Mask`), but most other
--- programs will recognize 'super' as 'alt' and vice-versa.
 
 -- KeyMask Aliases
-alpha = alt
-beta = super
+alpha = super
+beta = alt
 
 myAdditionalKeys = [
    ---------- ALPHANUMERIC CHARACTERS ----------
@@ -312,14 +308,12 @@ myAdditionalKeys = [
      )
    , ((alpha, o), CW.toggleWS' ["NSP"])
    , ((alpha .|. ctrl, o), spawn "zopen")
-   , ((alpha, p), launchApp "pycharm" "pycharm-community")
    , ((alpha, q), spawn "qb_prompt")
    , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
    , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha .|. beta, s), windows W.swapDown) -- Swap Windows
-   , ((alpha, t), spawn "DISPLAY=:0 new_enote_task") -- evernote (inbox)
    , ((alpha, u), windows W.focusUp)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, x), launchApp "term" myTerminal)
@@ -353,17 +347,16 @@ myAdditionalKeys = [
    , ((0, xF86XK_AudioPrev), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
    , ((0, xF86XK_AudioNext), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
    , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "spotify") -- Scratchpad Add Task to Inbox
+   , ((alpha, xK_backslash), DW.moveTo CW.Next (CW.WSIs hiddenNotNSP))
    , ((alpha .|. beta .|. ctrl, xK_backslash), pushWindow)
    , ((alpha .|. beta .|. ctrl .|. shift, xK_backslash), CW.shiftNextScreen)
    , ((alpha, xK_bracketleft), CW.prevScreen)
-   , ((beta, xK_bracketleft), windows W.focusUp)
    , ((alpha .|. beta, xK_bracketleft), do
            CW.nextScreen
            DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)
            CW.prevScreen
      ) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), CW.nextScreen)
-   , ((beta, xK_bracketright), windows W.focusDown)
    , ((alpha .|. beta, xK_bracketright), do
            CW.nextScreen
            DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)
@@ -377,10 +370,8 @@ myAdditionalKeys = [
            spawn "tmux -L GTD select-window -t2"
            NSP.namedScratchpadAction scratchpads "gtd"
      )
-   , ((alpha, xK_equal), DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)) -- Next Hidden NonEmpty Workspace
-   , ((alpha .|. ctrl, xK_equal), spawn "set_volume 2%+")
-   , ((alpha, xK_minus), spawn "wtoggle")
-   , ((alpha .|. ctrl, xK_minus), spawn "set_volume 2%-")
+   , ((alpha, xK_equal), spawn "set_volume 2%+")
+   , ((alpha, xK_minus), spawn "set_volume 2%-")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((beta, xK_Print), spawn "saved_sshot") -- Saved Screenshot
