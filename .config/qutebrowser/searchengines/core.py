@@ -1,11 +1,28 @@
 """Core Classes of the 'searchengines' Package
 
-This module is imported directly into the global scope of the 'searchengines' package. All
-classes/functions must be added to __all__ or they will NOT be made available.
+This module is imported directly into the global scope of the 'searchengines'
+package. All classes/functions must be added to __all__ or they will NOT be
+made available.
 """
 
 import re
-from typing import Any, Callable, Container, Dict, Generator, Iterable, Iterator, List, NoReturn, Optional, Sequence, Set, Tuple, Type, Union  # noqa
+from typing import (
+    Any,
+    Callable,
+    Container,
+    Dict,
+    Generator,
+    Iterable,
+    Iterator,
+    List,
+    NoReturn,
+    Optional,
+    Sequence,
+    Set,
+    Tuple,
+    Type,
+    Union,
+)  # noqa
 
 import searchengines.imfeelinglucky as IFL
 import searchengines.utils as utils
@@ -33,13 +50,14 @@ class SearchEngine(str):
         default_url: default URL to return from 'format'
         *url_objects: variable number of URL objects
     """
-    def __new__(cls, default_url: str, *url_objects: 'URL') -> 'SearchEngine':
+
+    def __new__(cls, default_url: str, *_url_objects: 'URL') -> 'SearchEngine':
         return super(SearchEngine, cls).__new__(cls, default_url)  # type: ignore
 
     def __init__(self, default_url: str, *url_objects: 'URL'):
-        self.url_objects = url_objects + (URL(default_url, '.*'), )
+        self.url_objects = url_objects + (URL(default_url, '.*'),)
 
-    def format(self, *args: str, **kwargs: str) -> str:
+    def format(self, *args: str, **kwargs: str) -> str:  # type: ignore
         term = args[0]
         for url, pttrn, filter_ in self.url_objects:
             if re.match(pttrn, term):
@@ -54,8 +72,8 @@ class SearchEngine(str):
                     formatted_url = LuckyURL.get_top_link(formatted_url)
 
                 return formatted_url
-        else:
-            return str.format(term, *args, **kwargs)
+
+        return str.format(term, *args, **kwargs)
 
 
 class URL:
@@ -64,11 +82,17 @@ class URL:
     Used to initialize a SearchEngine object.
 
     Args:
-        url (str): url string with braces ({}) to represent the search query
-        pattern (str): regex pattern used to identify when this URL should be used
-        filter_ (callable, optional): used to filter out garbage in the search query
+        url (str):
+            url string with braces ({}) to represent the search query
+        pattern (str):
+            regex pattern used to identify when this URL should be used.
+        filter_ (callable, optional):
+            used to filter out garbage in the search query.
     """
-    def __init__(self, url: str, pattern: str = None, filter_: filter_type = None):
+
+    def __init__(
+        self, url: str, pattern: str = None, filter_: filter_type = None
+    ):
         self.url = url
 
         if pattern is None:
@@ -87,24 +111,37 @@ class URL:
 
 class LuckyURL(URL):
     """Queries that Utilize Google's 'I'm Feeling Lucky' Feature"""
-    pattern = r'^(\|/)'
+
+    pattern = r"^(\|/)|^.*@$"
 
     # dummy url is needed to pass qutebrowser's validation checks
     start_mark = 'https://imfeelinglucky/'
     end_mark = '@'
 
-    def __init__(self, url: str, pattern: str = None, filter_: filter_type = None, suffix: str = ''):
+    def __init__(
+        self,
+        url: str,
+        pattern: str = None,
+        filter_: filter_type = None,
+        suffix: str = '',
+    ):
         if pattern is not None:
             self.pattern = pattern
 
         if filter_ is not None:
             self.filter = filter_  # type: ignore
 
-        super().__init__(self.make_lucky(url, suffix=suffix), self.pattern, self.filter)
+        super().__init__(
+            self.make_lucky(url, suffix=suffix), self.pattern, self.filter
+        )
 
     def make_lucky(self, query: str, suffix: str = '') -> str:
         query = utils.encode(query)
-        fmt_url = '{}{{}}{}{}'.format(self.start_mark, self.end_mark, re.sub(r'\{(\d*)\}', r'{{\1}}', suffix))
+        fmt_url = '{}{{}}{}{}'.format(
+            self.start_mark,
+            self.end_mark,
+            re.sub(r'\{(\d*)\}', r'{{\1}}', suffix),
+        )
         return fmt_url.format(query)
 
     @classmethod
@@ -117,7 +154,7 @@ class LuckyURL(URL):
 
     @classmethod
     def get_top_link(cls, url: str) -> str:
-        query, suffix = url[len(cls.start_mark):].split(cls.end_mark)
+        query, suffix = url[len(cls.start_mark) :].split(cls.end_mark)
         top_link = IFL.get_top_link(query)
         return '{}/{}'.format(top_link, suffix) if suffix else top_link
 

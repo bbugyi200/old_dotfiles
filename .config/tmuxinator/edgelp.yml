@@ -1,25 +1,34 @@
-# ~/.config/tmuxinator/OS`.yml
+# ~/.config/tmuxinator/edgelp.yml
 
 root: <%= @settings['root'] %>
-name: OS`
-socket_name: tmux_primes
+name: edgelp
 
 on_project_start:
 on_project_stop:
 pre_window:
 
 windows:
-    - src:
+    - I:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - debug:
+    - II:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - tests:
+    - III:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - IV:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - V:
         layout: even-horizontal
         panes:
             - 0:

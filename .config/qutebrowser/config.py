@@ -152,9 +152,15 @@ def bang_pttrn() -> str:
 
 
 c.url.searchengines = {  # type: ignore
-    '2': 'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}',
-    '3': 'https://www.google.com/maps/dir/902+Carnegie+Center,+Princeton,+NJ+08540/{}',
-    'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
+    '2': (
+        'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}'
+    ),
+    '3': (
+        'https://www.google.com/maps/dir/902+Carnegie+Center,+Princeton,+NJ+08540/{}'
+    ),
+    'A': (
+        'https://www.amazon.com/gp/your-account/order-history/search?&search={}'
+    ),
     'b': SE.static.stackoverflow(10, prefix='Bash'),
     'bmo': SE.SearchEngine(
         SE.static.google('best movies of 20{}'),
@@ -193,7 +199,9 @@ c.url.searchengines = {  # type: ignore
     'ew': 'https://www.edgestreamlp.com/{}',
     'ews': 'https://edgestream-staging.herokuapp.com/{}',
     'g4g': SE.static.site('www.geeksforgeeks.org'),
-    'geb': 'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific',
+    'geb': (
+        'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific'
+    ),
     'gep': SE.SearchEngine(
         SE.static.site('packages.gentoo.org', 'gpo.zugaina.org'),
         SE.LuckyURL('{} site:packages.gentoo.org'),
@@ -253,7 +261,9 @@ c.url.searchengines = {  # type: ignore
     'rlp': 'https://rocketleague.tracker.network/profile/ps/{}',
     'rpy': 'https://realpython.com/search?q={}',
     's0': SE.static.site('stackoverflow.com'),
-    'shr': 'https://shop.shoprite.com/store/1627666/search?displayType=&query={}&recipe=0&sponsored=5',
+    'shr': (
+        'https://shop.shoprite.com/store/1627666/search?displayType=&query={}&recipe=0&sponsored=5'
+    ),
     'st': SE.static.google('set timer for {}'),
     'sub': SE.SearchEngine(
         SE.static.google('{} inurl:english site:subscene.com'),
@@ -322,14 +332,19 @@ def setup_cmd_aliases() -> None:
 ##############
 #  Bindings  #
 ##############
-c.bindings.commands = {}  # type: ignore  # Clears all previously set user bindings.
+def bind(keys: str, *commands: str, mode: str = 'normal') -> None:
+    config.bind(keys, ' ;; '.join(commands), mode=mode)
 
 
-########## Unbinds
 @register_config_helper
 def setup_binds() -> None:
+    c.bindings.commands = {}  # type: ignore  # Clears all previously set user bindings.
+
+    ########## Unbinds
     unbound_nkeys: List[str] = [
         '<Ctrl+h>',
+        '[[',
+        ']]',
         'ad',
         'b',
         'B',
@@ -351,204 +366,205 @@ def setup_binds() -> None:
         for keys in unbound_keys:
             config.unbind(keys, mode=mode)  # type: ignore
 
+    ########## Binds
 
-########## Binds
-def bind(keys: str, *commands: str, mode: str = 'normal') -> None:
-    config.bind(keys, ' ;; '.join(commands), mode=mode)
+    # bind functions for different modes
+    cbind = functools.partial(bind, mode='command')
+    ibind = functools.partial(bind, mode='insert')
+    pbind = functools.partial(bind, mode='prompt')
+    ptbind = functools.partial(bind, mode='passthrough')
 
+    # >>>>>>> COMMAND
+    cbind("<Alt-j>", 'spawn --userscript add_quotes 1')
+    cbind("<Alt-k>", 'spawn --userscript add_quotes 2')
+    cbind("<Alt-l>", 'spawn --userscript add_quotes 3')
+    cbind("<Alt-u>", 'spawn --userscript add_quotes -1')
+    cbind("<Alt-i>", 'spawn --userscript add_quotes -2')
+    cbind("<Alt-o>", 'spawn --userscript add_quotes -3')
+    cbind('<Ctrl-f>', 'edit-command --run')
+    cbind('<Ctrl-y>', 'fake-key --global <Return>v$y')
 
-# bind functions for different modes
-cbind = functools.partial(bind, mode='command')
-ibind = functools.partial(bind, mode='insert')
-pbind = functools.partial(bind, mode='prompt')
-ptbind = functools.partial(bind, mode='passthrough')
+    # >>>>>>> INSERT
+    ibind('<Ctrl-f>', 'open-editor')
+    ibind('<Ctrl-i>', 'spawn -d qute-pass-add {url}')
+    ibind('<Alt-i>', 'spawn --userscript qute-pass')
+    ibind('<Ctrl-Alt-i>', 'spawn --userscript qute-pass')
+    ibind('<Ctrl-Shift-i>', 'spawn --userscript qute-pass')
+    ibind('<Ctrl-n>', 'fake-key -g <Down>')
+    ibind('<Alt-p>', 'spawn --userscript qute-pass --password-only')
+    ibind('<Ctrl-Alt-p>', 'spawn --userscript qute-pass --password-only')
+    ibind('<Ctrl-p>', 'fake-key -g <Up>')
+    ibind('<Alt-u>', 'spawn --userscript qute-pass --username-only')
+    ibind('<Ctrl-Alt-u>', 'spawn --userscript qute-pass --username-only')
 
+    # >>>>>>> PROMPT
+    pbind('<Ctrl-o>', 'prompt-open-download rifle {}')
 
-# >>>>>>> COMMAND
-cbind("<Alt-j>", 'spawn --userscript add_quotes 1')
-cbind("<Alt-k>", 'spawn --userscript add_quotes 2')
-cbind("<Alt-l>", 'spawn --userscript add_quotes 3')
-cbind("<Alt-u>", 'spawn --userscript add_quotes -1')
-cbind("<Alt-i>", 'spawn --userscript add_quotes -2')
-cbind("<Alt-o>", 'spawn --userscript add_quotes -3')
-cbind('<Ctrl-f>', 'edit-command --run')
-cbind('<Ctrl-y>', 'fake-key --global <Return>v$y')
+    # >>>>>>> PASSTHROUGH
+    ptbind('<Ctrl-]>', 'fake-key <Escape>')
+    ptbind('<Ctrl-x>', 'tab-close', 'enter-mode passthrough')
 
-# >>>>>>> INSERT
-ibind('<Ctrl-f>', 'open-editor')
-ibind('<Ctrl-i>', 'spawn -d qute-pass-add {url}')
-ibind('<Alt-i>', 'spawn --userscript qute-pass')
-ibind('<Ctrl-Shift-i>', 'spawn --userscript qute-pass')
-ibind('<Ctrl-n>', 'fake-key -g <Down>')
-ibind('<Alt-p>', 'spawn --userscript qute-pass --password-only')
-ibind('<Ctrl-p>', 'fake-key -g <Up>')
-ibind('<Alt-u>', 'spawn --userscript qute-pass --username-only')
-
-# >>>>>>> PROMPT
-pbind('<Ctrl-o>', 'prompt-open-download rifle {}')
-
-# >>>>>>> PASSTHROUGH
-ptbind('<Ctrl-]>', 'fake-key <Escape>')
-ptbind('<Ctrl-x>', 'tab-close', 'enter-mode passthrough')
-
-# >>>>>>> NORMAL
-# -------------------
-# ----- Numeric -----
-# -------------------
-bind('9', 'scroll-page 0 -0.5')
-bind('0', 'scroll-page 0 0.5')
-# ----------------------
-# ----- Alphabetic -----
-# ----------------------
-bind('A', 'set-cmd-text -s :quickmark-load -t')
-bind('a', 'set-cmd-text -s :quickmark-load')
-bind(',b', 'set-cmd-text :bookmark-add {url} "')
-bind('b', 'quickmark-save')
-bind('B', 'bookmark-add --toggle')
-bind('c', 'yank selection')
-bind('C', 'tab-clone')
-bind('D', 'download')
-bind(',d', 'bookmark-del')
-bind('dl', 'tab-close')
-bind(',e', 'spawn --userscript searchbar-command')
-bind(
-    'gc',
-    'spawn "{}" {{url}}'.format(
-        '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-        if is_macos
-        else 'google-chrome'
-    ),
-)
-bind(',gc', 'spawn "init-chrome"')
-bind('gh', 'home')
-bind('gs', 'view-source --pygments')
-bind('gi', 'hint inputs')
-bind('gl', 'tab-focus last')
-bind(',h', 'set-cmd-text -s :help')
-bind(',H', 'set-cmd-text -s :help -t')
-bind(',m', 'spawn --userscript view_in_umpv -d')
-bind(
-    ';m',
-    'hint all spawn -v qb_umpv {hint-url}',
-    'message-info "Select video to load with umpv."',
-)
-bind(
-    ';M',
-    'hint all spawn -v qb_umpv --append {hint-url}',
-    'message-info "Select video to append to umpv playlist."',
-)
-bind('m', 'enter-mode set_mark')
-bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
-bind('p', 'open -- {clipboard}')
-bind('P', 'open -t -- {clipboard}')
-bind(
-    ',q',
-    'set-cmd-text :',
-    'run-with-count 2 command-history-prev',
-    'edit-command --run',
-)
-bind(',r', 'bookmark-add {url} "READ: {title}"')
-bind(',sd', 'set-cmd-text -s :session-delete')
-bind(',sl', 'set-cmd-text -s :session-load -c')
-bind(',ss', 'set-cmd-text -s :session-save -o')
-bind(',S', 'session-save -c')
-bind(
-    ',tt',
-    'set tabs.position top',
-    'set tabs.title.format "{audio}{index}: {title}"',
-    'set tabs.title.format_pinned "[{index}]"',
-)
-bind(
-    ',tl',
-    'set tabs.position left',
-    'set tabs.title.format " * {audio}{index}: {title}"',
-    'set tabs.title.format_pinned "[{index}]: {title}"',
-)
-bind(
-    ',tr',
-    'set tabs.position right',
-    'set tabs.title.format " * {audio}{index}: {title}"',
-    'set tabs.title.format_pinned "[{index}]: {title}"',
-)
-bind(
-    ';Tm',
-    (
-        'hint links spawn -d -v torrent -d {hint-url} -w '
-        '/media/bryan/zeus/media/Entertainment/Movies'
-    ),
-    'message-info "Select movie to torrent."',
-)
-bind(
-    ';TM',
-    (
-        'hint links spawn --userscript add-to-torrent-file movies.txt '
-        '"{hint-url}"'
-    ),
-    'message-info "Select movie to add to torrent list."',
-)
-bind(
-    ';Tt',
-    (
-        'hint links spawn -d -v torrent -d {hint-url} -w '
-        '/media/bryan/zeus/media/Entertainment/TV'
-    ),
-    'message-info "Select TV show to torrent."',
-)
-bind(
-    ';TT',
-    'hint links spawn --userscript add-to-torrent-file tv.txt "{hint-url}"',
-    'message-info "Select TV show to add to torrent list."',
-)
-bind('t-', 'tab-only')
-bind('tt', 'set-cmd-text -s :tab-take')
-bind('tg', 'set-cmd-text -s :tab-give')
-bind('w-', 'window-only')
-bind('x', 'tab-close -n')
-bind('X', 'tab-close -p')
-bind(
-    ',Y',
-    'spawn ytcast {url}',
-    'message-info "Casting YouTube to chromecast..."',
-)
-bind(
-    ';Y',
-    'hint links spawn -v ytcast {hint-url}',
-    'message-info "Casting YouTube to chromecast..."',
-)
-bind('Y', 'fake-key --global v$y')
-# ----------------------------
-# ----- Non-Alphanumeric -----
-# ----------------------------
-bind('=', 'zoom-in')
-bind('\\', 'set-cmd-text :open /')
-bind('|', 'set-cmd-text :open -t /')
-bind('(', 'navigate prev')
-bind(')', 'navigate next')
-bind('{', 'navigate prev -t')
-bind('}', 'navigate next -t')
-bind('[', 'spawn winstack prev')
-bind(']', 'spawn winstack next')
-bind('>', 'tab-move +')
-bind('<', 'tab-move -')
-# -------------------------
-# ----- Miscellaneous -----
-# -------------------------
-bind('<Alt-i>', 'enter-mode insert', 'spawn --userscript qute-pass')
-bind(
-    '<Alt-p>',
-    'enter-mode insert',
-    'spawn --userscript qute-pass --password-only',
-)
-bind(
-    '<Alt-u>',
-    'enter-mode insert',
-    'spawn --userscript qute-pass --username-only',
-)
-bind('<Ctrl-p>', 'tab-pin')
-bind('<Ctrl-l>', 'edit-url')
-bind('<Ctrl-r>', 'restart')
-bind('<Ctrl-y>', 'fake-key --global v$y')
-bind('<Escape>', 'search', 'clear-messages')
+    # >>>>>>> NORMAL
+    # -------------------
+    # ----- Numeric -----
+    # -------------------
+    bind('9', 'scroll-page 0 -0.5')
+    bind('0', 'scroll-page 0 0.5')
+    # ----------------------
+    # ----- Alphabetic -----
+    # ----------------------
+    bind('A', 'set-cmd-text -s :quickmark-load -t')
+    bind('a', 'set-cmd-text -s :quickmark-load')
+    bind(',b', 'set-cmd-text :bookmark-add {url} "')
+    bind('b', 'quickmark-save')
+    bind('B', 'bookmark-add --toggle')
+    bind('c', 'yank selection')
+    bind('C', 'tab-clone')
+    bind('D', 'download')
+    bind(',d', 'bookmark-del')
+    bind('dl', 'tab-close')
+    bind(',e', 'spawn --userscript searchbar-command')
+    bind(
+        'gc',
+        'spawn "{}" {{url}}'.format(
+            '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+            if is_macos
+            else 'google-chrome'
+        ),
+    )
+    bind(',gc', 'spawn "init-chrome"')
+    bind('gh', 'home')
+    bind('gs', 'view-source --pygments')
+    bind('gi', 'hint inputs')
+    bind('gl', 'tab-focus last')
+    bind(',h', 'set-cmd-text -s :help')
+    bind(',H', 'set-cmd-text -s :help -t')
+    bind(',m', 'spawn --userscript view_in_umpv -d')
+    bind(
+        ';m',
+        'hint all spawn -v qb_umpv {hint-url}',
+        'message-info "Select video to load with umpv."',
+    )
+    bind(
+        ';M',
+        'hint all spawn -v qb_umpv --append {hint-url}',
+        'message-info "Select video to append to umpv playlist."',
+    )
+    bind('m', 'enter-mode set_mark')
+    bind(';P', "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
+    bind('p', 'open -- {clipboard}')
+    bind('P', 'open -t -- {clipboard}')
+    bind(
+        ',q',
+        'set-cmd-text :',
+        'run-with-count 2 command-history-prev',
+        'edit-command --run',
+    )
+    bind(',r', 'bookmark-add {url} "READ: {title}"')
+    bind(',sd', 'set-cmd-text -s :session-delete')
+    bind(',sl', 'set-cmd-text -s :session-load -c')
+    bind(',ss', 'set-cmd-text -s :session-save -o')
+    bind(',S', 'session-save -c')
+    bind(
+        ',tt',
+        'set tabs.position top',
+        'set tabs.title.format "{audio}{index}: {title}"',
+        'set tabs.title.format_pinned "[{index}]"',
+    )
+    bind(
+        ',tl',
+        'set tabs.position left',
+        'set tabs.title.format " * {audio}{index}: {title}"',
+        'set tabs.title.format_pinned "[{index}]: {title}"',
+    )
+    bind(
+        ',tr',
+        'set tabs.position right',
+        'set tabs.title.format " * {audio}{index}: {title}"',
+        'set tabs.title.format_pinned "[{index}]: {title}"',
+    )
+    bind(
+        ';Tm',
+        (
+            'hint links spawn -d -v torrent -d {hint-url} -w '
+            '/media/bryan/zeus/media/Entertainment/Movies'
+        ),
+        'message-info "Select movie to torrent."',
+    )
+    bind(
+        ';TM',
+        (
+            'hint links spawn --userscript add-to-torrent-file movies.txt '
+            '"{hint-url}"'
+        ),
+        'message-info "Select movie to add to torrent list."',
+    )
+    bind(
+        ';Tt',
+        (
+            'hint links spawn -d -v torrent -d {hint-url} -w '
+            '/media/bryan/zeus/media/Entertainment/TV'
+        ),
+        'message-info "Select TV show to torrent."',
+    )
+    bind(
+        ';TT',
+        (
+            'hint links spawn --userscript add-to-torrent-file tv.txt'
+            ' "{hint-url}"'
+        ),
+        'message-info "Select TV show to add to torrent list."',
+    )
+    bind('t-', 'tab-only')
+    bind('tt', 'set-cmd-text -s :tab-take')
+    bind('tg', 'set-cmd-text -s :tab-give')
+    bind('w-', 'window-only')
+    bind('x', 'tab-close -n')
+    bind('X', 'tab-close -p')
+    bind(
+        ',Y',
+        'spawn ytcast {url}',
+        'message-info "Casting YouTube to chromecast..."',
+    )
+    bind(
+        ';Y',
+        'hint links spawn -v ytcast {hint-url}',
+        'message-info "Casting YouTube to chromecast..."',
+    )
+    bind('Y', 'fake-key --global v$y')
+    # ----------------------------
+    # ----- Non-Alphanumeric -----
+    # ----------------------------
+    bind('=', 'zoom-in')
+    bind('\\', 'set-cmd-text :open /')
+    bind('|', 'set-cmd-text :open -t /')
+    bind('(', 'navigate prev')
+    bind(')', 'navigate next')
+    bind('{', 'navigate prev -t')
+    bind('}', 'navigate next -t')
+    bind('[', 'run-with-count 10 scroll left')
+    bind(']', 'run-with-count 10 scroll right')
+    bind('>', 'tab-move +')
+    bind('<', 'tab-move -')
+    # -------------------------
+    # ----- Miscellaneous -----
+    # -------------------------
+    bind('<Alt-i>', 'enter-mode insert', 'spawn --userscript qute-pass')
+    bind(
+        '<Alt-p>',
+        'enter-mode insert',
+        'spawn --userscript qute-pass --password-only',
+    )
+    bind(
+        '<Alt-u>',
+        'enter-mode insert',
+        'spawn --userscript qute-pass --username-only',
+    )
+    bind('<Ctrl-p>', 'tab-pin')
+    bind('<Ctrl-l>', 'edit-url')
+    bind('<Ctrl-r>', 'restart')
+    bind('<Ctrl-y>', 'fake-key --global v$y')
+    bind('<Escape>', 'search', 'clear-messages')
 
 
 ######################

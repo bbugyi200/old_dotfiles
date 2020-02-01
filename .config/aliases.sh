@@ -134,7 +134,7 @@ box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}
 alias budget='python3 $HOME/Sync/var/projects/budget/main.py'
 alias c='cookie'
 alias cal='cal -n 3 | less'
-alias cat='bat --theme=GitHub'
+cat() { if [[ -r "$1" ]]; then bat --theme=GitHub "$@"; else sudo -E bat --theme=GitHub "$@"; fi; }
 alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
 alias cdef='def -m COOKIE'
@@ -149,6 +149,7 @@ alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
 alias crun='cargo run --'
 cval() { pushd "$1" &> /dev/null || return 1 && eval "$2"; popd &> /dev/null || return 1; }
+alias d.='desk .'
 alias dayplan='cd $HOME/Sync/var/notes && vim dayplan.txt'
 dc() { sudo -E deluge-console "${@}"; }
 dci() { dc info --sort=time_added | awk -F ':' "{if(\$1==\"$1\")print \$0}"; }
@@ -169,9 +170,9 @@ alias du='ncdu --color dark'
 alias dunst='killall dunst &> /dev/null; dunst'
 alias edsl='printf "$(hostname):%d,%d\n%s,%d" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
 alias epuse='sudo -E epuse'
-essh() { ssh "$@" -t 'cd ~/src/prod; source .environ; /bin/zsh'; }
+essh() { ssh "$@" -t 'cd ~/src/prod; source ~/bin/psource.sh; PATH=/prod/home/bbugyi/bin:$PATH psource .environ; cd; /bin/zsh'; }
 alias ewatch='watch -c -n 5 genlop -c'
-fim() { vim "$("$(which -a fim | tail -n 1)" "$1")"; }
+fim() { file="$("$(which -a fim | tail -n 1)" "$1")"; if [[ -z "${file}" ]]; then return 1; else vim "${file}"; fi; }
 alias flaggie='sudo -i flaggie'
 fn_() { if [[ "$1" == *"*"* ]]; then find . -iname "$@"; else find . -iname "*$**"; fi; }
 alias fn='noglob fn_'
@@ -181,7 +182,12 @@ forever() { while true; do eval "$*"; done; }
 alias ga='git add -v'
 alias gaa='git add -v --all'
 alias gau='git add -v --update'
+alias gbb='git branch --sort=-committerdate | less ${LESS_OPTS}'
 gca() { if [[ -n "$1" ]]; then git commit -v -a -m "$1"; else git commit -v -a; fi; }
+gcB() { gbD "$1" &> /dev/null; git checkout -b "$1" "${2:-upstream}"/"$1"; }
+gcbc() { git checkout -b "$@" && git commit --allow-empty; }
+gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%Y%m%d")"-"$1"; }
+alias gce='git commit --allow-empty'
 gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
 alias gclp='cd ~/projects && gcl'
 alias gclt='cd /tmp && gcl'
@@ -189,6 +195,7 @@ alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 alias gcm='git checkout master'
 alias Gdef='def -m GTD'
 alias gdef='def -m GENTOO'
+gdm() { git diff "${MASTER_BRANCH:-master}"...HEAD; }
 alias gdo='git diff origin/master'
 alias geff='git effort'
 alias gg='git grep --break --heading'
@@ -199,22 +206,27 @@ alias gi='git info -c 3 --no-config'
 alias ginit='while true; do; watch -d -n 1 cat .gdbinit; vim .gdbinit; done'
 git() { if [[ -n "$1" ]]; then command git "$@"; else tig; fi; }
 git_issue_number() { git branch | grep '^\*' | awk '{print $2}' | awk -F'-' '{print $1}'; }
+alias glg++='glg ++'
+alias glg+='glg +'
 alias Glg='git log -p -G'
 alias gmc='git ls-files -u | cut -f 2 | sort -u'
 alias gn='gnext'
 gN() { git checkout HEAD~"${1:-1}"; }
+gN1() { git_current_branch > /tmp/gnext-branch.txt && gN "$@"; }
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
 alias gpf='git push --force'
 alias gprm='gpup "Docs: Update README"'
-alias gpu='sudo radeontop -l 1 -d - | sed "1d" | head -n 1 | awk "{print \$3}" | sed "s/,//g"'
+gpu() { git push -u origin "$(git_current_branch)"; }
 alias gpull='git stash && git pull && git stash apply'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias grep='${GREP}'
 alias gres='git reset'
-gresh() { git reset "${@:2}" HEAD~"${1:-0}"; }
-greshh() { gresh "$1" --hard; }
-greshs() { gresh "$1" --soft; }
+gresh() { git reset "${@:2}" HEAD~"${1:-1}"; }
+greshh() { gresh "${1:-0}" --hard; }
+greshs() { gresh "${1:-1}" --soft; }
+alias grest='git restore'
+alias grests='git restore --staged'
 alias grl='git reflog'
 grun() { [[ "$(tail -n 1 "${PWD}"/.gdbinit)" == "r" ]] && sed -i '/^r$/d' "${PWD}"/.gdbinit || printf "r\n" >> "${PWD}"/.gdbinit; }
 alias gsd='sudo get-shit-done'
@@ -242,7 +254,7 @@ alias lay='sudo layman'
 alias Loc='sudo updatedb && loc'
 alias loc='${LOCATE} --regex'
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
-alias ls='exa'
+alias ls='exa -g'
 alias lt='ls --tree'
 m-torrent() { echo "torrent -w /media/bryan/hercules/media/Entertainment/Movies $*" | at 0200; }
 alias matlab='matlab -nojvm -nodisplay -nosplash'
@@ -254,6 +266,7 @@ alias mpvlc='xspawn -w mpv mpvlc'
 alias mrun='macrun'
 alias mv="mv -i"
 alias myip='ip addr | grep -P -o "192.168.1.[0-9]+" | grep -v 192.168.1.255'
+alias noeye='eye --purge-eye'
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias notes='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /dev/null'
 alias ok='xspawn okular'
@@ -271,21 +284,23 @@ alias ppi='pipenv install'
 alias ppr='pipenv run'
 alias ppu='pipenv uninstall'
 ppython() { pipenv run python "$@"; }
+alias prun='poetry run'
 alias psg='ps -ax | grep -v grep | grep'
+alias pshell='poetry shell'
 alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
 alias pvsu='py-vshlog -u -D BOT EOT -H all -e'
 pycov() { coverage run "$1" && coverage html && qutebrowser htmlcov/index.html; }
-pylint() { if [[ -f Pipfile ]]; then pipenv run pylint "$@"; else command pylint "$@"; fi; }
 alias Q='tm-kill'
 alias q='exit'
 alias reboot='sudo reboot'
-rg() { "$(which -a rg | tail -n 1)" -p "$@" | less; }
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
 riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &> /dev/null & disown; }
 alias rm='safe-rm'
+alias rng='ranger'
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
 alias rag='cat $RECENTLY_EDITED_FILES_LOG | sudo xargs ag 2> /dev/null'
+alias sat='sudo cat'
 alias sch='vim ~/Sync/var/notes/Rutgers/course_schedule.txt'
 alias sc='systemctl'
 alias scu='systemctl --user'
@@ -332,7 +347,6 @@ venv() { vim "$HOME"/.zprofile "$HOME"/.profile "$HOME"/Sync/etc/environment "$(
 alias vgdb-l='voltron view command "cmds set listsize $(tput lines) ; list *\$pc" --lexer c'
 alias vgdb='vim ~/.gdbinit .gdbinit'
 alias vgutils='vim /usr/bin/gutils.sh'
-alias vi='vinfo'
 alias vihor='vim ~/Sync/var/notes/Horizons_of_Focus/*'
 alias vimilla='vim -u ~/.vanilla-vimrc'
 alias vipy='vim -c "/c.InteractiveShellApp.exec_lines" ~/.ipython/profile_default/ipython_config.py'

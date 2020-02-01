@@ -6,15 +6,35 @@
 
 import argparse
 import re
+import sys
 
 import searchengines.utils as utils
 
-USER_AGENT = {'User-Agent': 'Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.63 Safari/534.3'}
+
+USER_AGENT = {
+    'User-Agent': (
+        'Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/534.3 (KHTML, '
+        'like Gecko) Chrome/6.0.472.63 Safari/534.3'
+    )
+}
 
 
 def get_top_link(query: str) -> str:
+    if sys.platform == "darwin":
+        import importlib.util  # pylint: disable=import-outside-toplevel
+
+        spec = importlib.util.spec_from_file_location(
+            "http.cookies",
+            "/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/cookies.py",
+        )
+        cookies = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cookies)  # type: ignore
+        sys.modules["http.cookies"] = cookies
+
+        sys.path.append("/usr/local/lib/python3.7/site-packages")
+
     from bs4 import BeautifulSoup
-    import requests
+    import requests  # pylint: disable=import-outside-toplevel
 
     try:
         html = _fetch_results(query)
@@ -32,8 +52,14 @@ def get_top_link(query: str) -> str:
 
 
 def _fetch_results(query: str) -> str:
-    # dynamic import needed to work around weird qutebrowser bug with 'cryptography' module
-    import requests
+    if sys.platform == "darwin":
+        sys.path.append(
+            "/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7"
+        )
+
+    # dynamic import needed to work around weird qutebrowser bug with
+    # 'cryptography' module
+    import requests  # pylint: disable=import-outside-toplevel
 
     try:
         assert isinstance(query, str), 'Search term must be a string'

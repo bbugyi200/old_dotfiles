@@ -2,6 +2,7 @@
 **/_build/*
 __pycache__/*
 *.aux
+*.bak
 **/build/*
 **/coverage/*
 .cache
@@ -33,6 +34,8 @@ Session.vim
 .stow-local-ignore
 .sync
 *.tar
+tags.lock
+tags.temp
 .tmp/*
 .tox/*
 tags

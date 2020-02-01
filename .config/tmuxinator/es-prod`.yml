@@ -1,7 +1,7 @@
-# ~/.config/tmuxinator/OS`.yml
+# ~/.config/tmuxinator/es-prod`.yml
 
 root: <%= @settings['root'] %>
-name: OS`
+name: es-prod`
 socket_name: tmux_primes
 
 on_project_start:
@@ -9,17 +9,20 @@ on_project_stop:
 pre_window:
 
 windows:
-    - src:
+    - I:
+        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - debug:
+    - II:
+        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - tests:
+    - III:
+        root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:

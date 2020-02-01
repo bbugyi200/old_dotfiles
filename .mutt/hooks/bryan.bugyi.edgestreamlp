@@ -1,0 +1,18 @@
+##############################################################################
+set my_accnt = "bryan.bugyi@edgestreamlp"
+
+set from = "bryan.bugyi@edgestreamlp.com"
+set imap_user = "bryan.bugyi@edgestreamlp.com"
+set imap_pass=$my_mutt_edgestream_pwd
+
+##REMOTE GMAIL FOLDERS
+set folder = "imaps://bryan.bugyi@edgestreamlp@imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed ="+[Google Mail]/Drafts"
+set trash = "+[Google Mail]/Trash"
+
+##SMTP Settings to sent email
+set smtp_url = "smtp://bryan.bugyi@edgestreamlp@smtp.gmail.com:587/"
+set smtp_pass=$my_mutt_edgestream_pwd
+
+############################## MACROS ########################################

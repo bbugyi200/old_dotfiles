@@ -2,7 +2,7 @@
 
 root: <%= @settings['root'] %>
 name: Updates`
-socket_name: primes
+socket_name: tmux_primes
 
 on_project_start:
 on_project_stop:

@@ -16,7 +16,7 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 
 # 'sudo' plugin MUST remain near the end or (for some reason) it won't work
-plugins=(git git-extras emoji lpass vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
+plugins=(desk docker docker-compose git git-extras emoji lpass poetry vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -33,7 +33,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 #  Disable Aliases / Builtins  #
 ################################
 # Disable aliases
-bad_aliases=("ll" "gcl" "gca" "gco" "gd" "gg" "glg" "gra" "gsta" "gwip")
+bad_aliases=("ll" "gcl" "gca" "gco" "gd" "gg" "glg" "gpu" "gra" "gsta" "gwip")
 for i in "${bad_aliases[@]}"; do
     unalias "$i" &> /dev/null
 done
@@ -51,6 +51,9 @@ if [[ -d ~/.bash-completions ]]; then
         source "$filename"
     done
 fi
+
+# pipx
+eval "$(register-python-argcomplete pipx)"
 
 _git 2> /dev/null  # hack to make git branch completion work
 compdef _command_names wim vinfo
@@ -188,3 +191,6 @@ function command_not_found_handler() {
 }
 
 test 0  # so exit status is always 0 when starting shell
+
+# Hook for desk activation
+[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true

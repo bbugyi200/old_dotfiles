@@ -1,4 +1,4 @@
-let b:run_cmd = ":Black"
+let b:run_cmd = ":ALEFix"
 
 " ------------------------------------- MULTILINE STRINGS -----------------------------------------
 function! BreakMultlineString(quote)
@@ -53,15 +53,17 @@ nnoremap <Leader><Leader>" :call JoinMultilineString()<CR>:call BreakMultlineStr
 nnoremap <Leader>' 79\|Bi'<CR>'<Esc>
 nnoremap <Leader><Leader>' :call JoinMultilineString()<CR>:call BreakMultlineString("'")<CR>
 
-nnoremap [op :let g:syntastic_python_checkers=['flake8', 'mypy']<CR>:e<CR>
-nnoremap ]op :let g:syntastic_python_checkers=['flake8', 'mypy', 'pylint']<CR>:e<CR>
-nnoremap [oP :let g:syntastic_python_pylint_args=''<CR>:let g:syntastic_python_checkers=['pylint']<CR>:e<CR>
-nnoremap ]oP :let g:syntastic_python_pylint_args='--rcfile=~/.config/pylintrc'<CR>:let g:syntastic_python_checkers=['flake8', 'mypy', 'pylint']<CR>:e<CR>
+nnoremap [om :let g:ale_fix_on_save = 0<CR>
+nnoremap ]om :let g:ale_fix_on_save = 1<CR>
+nmap <Leader>S [om,s]om
 nnoremap <Leader>0f :e ~/.config/flake8<CR>
 nnoremap <Leader>0p :e ~/.config/pylintrc<CR>
 nnoremap <Leader>b :call system('echo "b ' . expand('%:p') . ':' . line('.') . '" >> ~/.config/pudb/saved-breakpoints-2.7')<CR>
 imap <Leader>( (<CR><Esc>O
 nmap <Leader>K :!qutebrowser https://docs.python.org/3/library/<C-R><C-W> &> /dev/null &<CR><CR>
+nmap <Leader>i :w<CR>:Silent isort --line-width=79 -fss -a "import " <C-R>=expand('%')<CR><C-b><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
+nmap <Leader><Leader>i :w<CR>:Silent isort --line-width=79 -fss -a "from " <C-R>=expand('%')<CR><C-b><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
+nmap <LocalLeader>i :w<CR>:Silent isort --line-width=79 -fss -a "from typing import " <C-R>=expand('%')<CR><C-b><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
 nmap <Leader>t :call SwitchToTest('py')<CR>
 nmap <Leader><Leader>t :!pyinit -n -t <C-R>=expand('%:r')<CR><CR>
 nmap <Leader>T :call VSwitchToTest('py')<CR>
@@ -71,5 +73,7 @@ nnoremap <Leader><C-]> /\v^\s*def <C-r><C-w><CR>
 
 " ----- macros -----
 let @c='A  # pragma: no cover'
+let @d='kJxJx'  " Join docstring
 let @o='F(af)ikA,'
+let @s='^lla$hhik^'  " Split docstring
 let @t='yiwmm?from typingofrom typing pmtgg/from typingV`t:sort`m'

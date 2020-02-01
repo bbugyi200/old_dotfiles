@@ -3,7 +3,7 @@
 auto_view text/html  # view html automatically
 alternative_order  text/html text/plain text/enriched  # save html for last
 
-mailboxes imaps://bryanbugyi34@imap.gmail.com:993/ imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ imaps://bmb181@scarletmail.rutgers.edu@imap.gmail.com:993/ /var/spool/mail/bryan
+mailboxes imaps://bryan.bugyi@edgestreamlp.com:993/ imaps://bryanbugyi34@imap.gmail.com:993/ imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ imaps://bmb181@scarletmail.rutgers.edu@imap.gmail.com:993/ /var/spool/mail/bryan
 
 # source "gpg2 -dq ~/.my-mutt-pwds.gpg |"
 source ~/.mutt/passwd

@@ -317,7 +317,7 @@ myAdditionalKeys = [
    , ((alpha, u), windows W.focusUp)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, x), launchApp "term" myTerminal)
-   , ((alpha .|. beta, x), launchApp "term'" "urxvt -name primes -e zsh -c 'tm-init-prime'")
+   , ((alpha .|. beta, x), launchApp "term'" "alacritty -t tmux_primes -e zsh -c 'tm-init-prime tmux_primes'")
    , ((alpha, v), launchApp "mpv" "umpv")
    , ((alpha, z), launchApp "zath" "zathura")
    , ((alpha .|. beta, z), launchApp "zath'" "zcopy")
@@ -373,8 +373,8 @@ myAdditionalKeys = [
    , ((alpha, xK_equal), spawn "set_volume 2%+")
    , ((alpha, xK_minus), spawn "set_volume 2%-")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
-   , ((alpha, xK_Print), spawn "sshot") -- Screenshot
-   , ((beta, xK_Print), spawn "saved_sshot") -- Saved Screenshot
+   , ((beta, xK_Print), spawn "sshot") -- Screenshot
+   , ((alpha .|. beta, xK_Print), spawn "saved_sshot") -- Saved Screenshot
    , ((alpha, xK_semicolon), spawn "shellPrompt")
    , ((alpha .|. beta, xK_semicolon), spawn "shellPrompt -L")
    , ((alpha, xK_slash), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad

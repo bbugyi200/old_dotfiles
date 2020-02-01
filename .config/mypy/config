@@ -1,6 +1,20 @@
 [mypy]
-allow_redefinition = True
-check_untyped_defs = True
+check_untyped_defs = False
+disallow_any_decorated = False
+disallow_any_explicit = False
+disallow_any_expr = False
+disallow_any_generics = False
+disallow_any_unimported = False
+disallow_subclassing_any = False
 disallow_untyped_defs = True
 follow_imports = silent
+ignore_missing_imports = False
+strict_equality = False
+warn_redundant_casts = True
+warn_return_any = False
+warn_unreachable = True
+warn_unused_configs = True
+warn_unused_ignores = True
+
+[mypy-tornado.*,pandas.*,numpy.*,sklearn.*,matplotlib.*,scipy.*,IPython.*,paramiko.*,loguru,hypothesis.*,django*,ldap.*]
 ignore_missing_imports = True

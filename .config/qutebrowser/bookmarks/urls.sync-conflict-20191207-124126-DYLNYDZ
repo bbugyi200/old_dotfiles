@@ -211,24 +211,18 @@ https://jrsinclair.com/articles/2019/algebraic-structures-what-i-wish-someone-ha
 https://blog.rust-lang.org/2019/11/07/Rust-1.39.0.html READ: Announcing Rust 1.39.0 | Rust Blog
 https://blog.rust-lang.org/2019/11/07/Async-await-stable.html READ: Async-await on stable Rust! | Rust Blog
 https://parallel-rust-cpp.github.io/introduction.html READ: Introduction - Comparing parallel Rust and C++
+https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/ READ: Parse, don’t validate
 https://google.github.io/eng-practices/review/reviewer/standard.html#conflicts READ: The Standard of Code Review | eng-practices
 https://kataskeue.com/gdp.pdf READ: https://kataskeue.com/gdp.pdf
 https://www.parsonsmatt.org/2017/10/11/type_safety_back_and_forth.html READ: Type Safety Back and Forth
 https://treyhunner.com/2018/10/asterisks-in-python-what-they-are-and-how-to-use-them/ READ: Asterisks in Python: what they are and how to use them - Trey Hunner
+https://snarky.ca/why-you-should-use-python-m-pip/ READ: Why you should use `python -m pip`
 https://www.draw.io/ draw.io
 https://secretgeek.github.io/devShop/ DevShop
+https://www.ncsc.gov.uk/blog-post/time-to-shed-python-2 READ: Time to shed Python 2 - NCSC
 https://stackoverflow.blog/2019/11/14/why-is-the-migration-to-python-3-taking-so-long/ READ: Why is the Migration to Python 3 Taking So Long? - Stack Overflow Blog
 https://github.com/dry-python/returns#result-container READ: dry-python/returns: Make your functions return something meaningful, typed, and safe!
-https://realpython.com/python-descriptors/ READ: Python Descriptors: An Introduction – Real Python
-https://dev.gentoo.org/~mgorny/articles/the-ultimate-guide-to-eapi-7.html The ultimate guide to EAPI 7
-https://news.ycombinator.com/item?id=21900498 READ: Ask HN: Best books you read in the past decade? | Hacker News
-https://hbr.org/2019/12/what-happens-when-your-career-becomes-your-whole-identity READ: What Happens When Your Career Becomes Your Whole Identity
-https://edgedb.com/blog/edgedb-a-new-beginning/ READ: EdgeDB: A New Beginning
-https://refactoring.guru/design-patterns Design Patterns
-https://refactoring.guru/refactoring Refactoring: clean your code
-https://pypi.org/project/regex/ READ: regex · PyPI
-https://www.oreilly.com/learning/20-python-libraries-you-arent-using-but-should READ: 20 Python libraries you aren't using (but should) - O'Reilly Media
-https://www.linkedin.com/pulse/12-most-infuential-books-every-software-engineer-needs-jason-roell/ READ: (4) 12 Most Influential Books Every Software Engineer Needs to Read | LinkedIn
-https://beepb00p.xyz/pkm-search.html READ: Building personal search infrastructure for your knowledge and code | Mildly entertainingᵝ
-https://github.com/pschanely/CrossHair READ: pschanely/CrossHair: A static analysis tool for Python that blurs the line between testing and type systems.
-https://www.python.org/dev/peps/pep-0316/#rationale READ: PEP 316 -- Programming by Contract for Python | Python.org
+https://software.rajivprab.com/2018/04/29/myths-programmers-believe-about-cpu-caches/ READ: Myths Programmers Believe about CPU Caches – Software the Hard way
+https://github.blog/2019-08-16-highlights-from-git-2-23/ READ: Highlights from Git 2.23 - The GitHub Blog
+https://medium.com/unbabel/refactoring-a-python-codebase-using-the-single-responsibility-principle-ed1367baefd6 READ: Refactoring a Python codebase using the Single Responsibility Principle
+https://aphyr.com/posts/341-hexing-the-technical-interview READ: Hexing the technical interview

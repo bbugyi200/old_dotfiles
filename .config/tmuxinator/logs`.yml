@@ -1,7 +1,7 @@
-# ~/.config/tmuxinator/OS`.yml
+# ~/.config/tmuxinator/logs`.yml
 
 root: <%= @settings['root'] %>
-name: OS`
+name: logs`
 socket_name: tmux_primes
 
 on_project_start:
@@ -9,17 +9,29 @@ on_project_stop:
 pre_window:
 
 windows:
-    - src:
+    - I:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vim /etc/syslog-ng/syslog-ng.conf /etc/logrotate.conf
+            - 1:
+                - ll
+    - II:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - debug:
+    - III:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - tests:
+    - IV:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - V:
         layout: even-horizontal
         panes:
             - 0:

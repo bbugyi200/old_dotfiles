@@ -18,7 +18,7 @@ content:
     notifications: true
     persistent_storage: true
     register_protocol_handler: true
-    ssl_strict: true
+    ssl_strict: ask
 
 downloads:
     remove_finished: 10000

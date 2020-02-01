@@ -9,6 +9,7 @@
 [alias]
 	co = checkout
     mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(auto)%s%C(reset) %C(auto)- %an%C(reset)%C(auto)%d%C(reset)'
 [color]
 	status = always
 [diff]

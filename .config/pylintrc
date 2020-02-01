@@ -39,15 +39,14 @@ enable=imports
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
 disable=design,
-    arguments-differ,
     bad-continuation,
     blacklisted-name,
     broad-except,
-    fixme,
-    global-statement,
     import-error,
     inconsistent-return-statements,
     invalid-name,
+    logging-format-interpolation,
+    logging-not-lazy,
     missing-docstring,
     multiple-statements,
     no-else-return,
@@ -57,7 +56,6 @@ disable=design,
     non-parent-init-called,
     old-style-class,
     protected-access,
-    signature-differs,
     super-init-not-called,
     too-many-lines,
     wrong-import-position,
@@ -219,7 +217,7 @@ additional-builtins=_
 max-line-length=79
 
 # Regexp for a line that is allowed to be longer than the limit.
-ignore-long-lines=^(.*https?://\S+|.*# type: .*)$
+ignore-long-lines=^(.*https?://\S+|.*# type: .*|\s*\S*\s*)$
 
 # Allow the body of an if to be on the same line as the test if there is no
 # else.

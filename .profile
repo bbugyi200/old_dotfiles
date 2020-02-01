@@ -105,3 +105,5 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
 export PATH="$HOME/.flamegraph:$PATH"
+
+export PATH="$HOME/.poetry/bin:$PATH"

@@ -2,25 +2,25 @@
 
 root: <%= @settings['root'] %>
 name: Terminal`
-socket_name: primes
+socket_name: tmux_primes
 
 on_project_stop:
 
 windows:
     - main:
-        root: /home/bryan
+        root: ~/
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - bin:
-        root: /home/bryan/Sync/bin
+        root: ~/Sync/bin
         layout: even-horizontal
         panes:
             - 0:
                 - ll
     - home:
-        root: /home/bryan/Sync/home
+        root: ~/Sync/home
         layout: even-horizontal
         panes:
             - 0:

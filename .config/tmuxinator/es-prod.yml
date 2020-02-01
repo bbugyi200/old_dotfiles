@@ -10,13 +10,29 @@ pre_window:
 windows:
     - I:
         root: ~/projects/edgelp/prod
-        layout: even-horizontal
+        layout: ca5a,212x59,0,0{81x59,0,0,146,130x59,82,0,149}
         panes:
             - 0:
-                - ll
+                - (sleep 3 && tmux send-keys -t 0.0 "clear" "Enter") &
+                - (sleep 1 && tmux send-keys -t 0.0 "desk . prod" "Enter") &
+                - pshell
+            - 1:
+                - (sleep 3 && tmux send-keys -t 0.1 "clear" "Enter") &
+                - (sleep 1 && tmux send-keys -t 0.1 "desk . prod" "Enter") &
+                - pshell
     - II:
         root: ~/projects/edgelp/prod
         layout: even-horizontal
         panes:
             - 0:
-                - ll
+                - (sleep 3 && tmux send-keys -t 1.0 "clear" "Enter") &
+                - (sleep 1 && tmux send-keys -t 1.0 "desk . prod" "Enter") &
+                - pshell
+    - III:
+        root: ~/projects/edgelp/prod
+        layout: even-horizontal
+        panes:
+            - 0:
+                - (sleep 3 && tmux send-keys -t 2.0 "clear" "Enter") &
+                - (sleep 1 && tmux send-keys -t 2.0 "desk . prod" "Enter") &
+                - pshell

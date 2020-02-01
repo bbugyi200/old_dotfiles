@@ -6,27 +6,30 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'ap/vim-buftabline'
+Plugin 'apeschel/vim-syntax-syslog-ng'
 Plugin 'benmills/vimux'
+Plugin 'cespare/vim-toml'
 Plugin 'danro/rename.vim'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'dense-analysis/ale'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'eagletmt/neco-ghc'  " Depends on external package: ghc-mod
 Plugin 'embear/vim-localvimrc'
+Plugin 'francoiscabrol/ranger.vim'
 Plugin 'hiphish/info.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'jez/vim-superman'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'manicmaniac/coconut.vim'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'pboettch/vim-cmake-syntax'
-Plugin 'psf/black'
 Plugin 'racer-rust/vim-racer'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Rip-Rip/clang_complete'  " Depends on external package: clang
 Plugin 'rust-lang/rust.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neoinclude.vim'
 Plugin 'Shougo/vimproc.vim'  " Required by: ghcmod-vim;  Install by running ':VimProcInstall'
 Plugin 'SirVer/ultisnips'
@@ -41,11 +44,9 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/AnsiEsc.vim'
 Plugin 'vim-scripts/applescript.vim'
 Plugin 'vim-scripts/cecutil'
-Plugin 'dense-analysis/ale'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'vimwiki/vimwiki'  " Required by: taskwiki
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'xolox/vim-misc'  " Required by: vim-easytags
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -86,14 +87,19 @@ endfunction
 " ALE "
 """""""
 if PluginInstalled("ale")
+    let g:ale_fixers = {'python': ['black']}
+
     let g:ale_python_pylint_options = get(g:, "ale_python_pylint_options", "--rcfile=~/.config/pylintrc")
+    let g:ale_python_black_options = get(g:, "ale_python_black_options", "--line-length=79 --skip-string-normalization")
+
+    let g:ale_fix_on_save = get(g:, "ale_fix_on_save", 1)
 endif
 
 """""""""""
 "  Black  "
 """""""""""
 if PluginInstalled("black")
-    let g:black_fast = 1
+    let g:black_fast = 0
     let g:black_skip_string_normalization = 1
     let g:black_linelength = get(g:, "black_linelength", 79)
 endif
@@ -254,7 +260,7 @@ if PluginInstalled("fzf.vim")
     let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-w': 'split',
-      \ 'ctrl-l': 'vsplit' }
+      \ 'ctrl-e': 'vsplit' }
 endif
 
 """"""""""""""""
@@ -281,6 +287,9 @@ let g:instant_markdown_autostart = 0
 "  Jedi-vim  "
 """"""""""""""
 if PluginInstalled("jedi")
+    " Fix color of jedi-vim's function signature highlighting.
+    hi jediFat ctermbg=black ctermfg=green
+
     " Fix for Mac OS
     if has('macunix')
         py3 sys.executable='/usr/local/bin/python3'
@@ -306,12 +315,14 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
     endif
     
-    let g:jedi#popup_select_first = 0
-    let g:jedi#show_call_signatures = "1"
-    let g:jedi#goto_command = "<C-]>"
     let g:jedi#completions_command = "<C-o>"
     let g:jedi#goto_assignments_command = ""
+    let g:jedi#goto_command = "<C-]>"
+    let g:jedi#goto_stubs_command = ""
+    let g:jedi#popup_select_first = 0
     let g:jedi#rename_command = ""
+    let g:jedi#show_call_signatures = "1"
+    let g:jedi#smart_auto_mappings = 1
 endif
 
 """"""""""""""""
@@ -341,6 +352,13 @@ endif
 """""""""
 if PluginInstalled("vim-racer")
     let g:racer_experimental_completer = 1
+endif
+
+""""""""""""""
+" Ranger.vim "
+""""""""""""""
+if PluginInstalled("ranger.vim")
+    let g:ranger_map_keys = 0
 endif
 
 """""""""
@@ -413,6 +431,13 @@ endif
 """""""""""""""""
 if PluginInstalled("taskwarrior")
     let g:task_rc_override = 'rc._forcecolor=off'
+endif
+
+""""""""
+" Toml "
+""""""""
+if PluginInstalled("vim-toml")
+    hi tomlComment ctermfg=darkgrey
 endif
 
 """""""""""""""

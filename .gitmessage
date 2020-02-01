@@ -18,6 +18,7 @@
 #    test-ref   refactor tests
 #    doc        change documentation; docstrings, log messages, README, etc....
 #    sty        formatting, missing semi colons, etc; no code change
+#    misc       miscellaneous changes
 #    wip        work in progress; for intermediate commits to keep patches reasonably sized
 # --------------------
 # Remember to
