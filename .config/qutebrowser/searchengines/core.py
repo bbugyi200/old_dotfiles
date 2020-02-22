@@ -6,30 +6,13 @@ made available.
 """
 
 import re
-from typing import (
-    Any,
-    Callable,
-    Container,
-    Dict,
-    Generator,
-    Iterable,
-    Iterator,
-    List,
-    NoReturn,
-    Optional,
-    Sequence,
-    Set,
-    Tuple,
-    Type,
-    Union,
-)  # noqa
+from typing import Callable, Generator, List, Sequence, Type
 
 import searchengines.imfeelinglucky as IFL
 import searchengines.utils as utils
 
-# ----- Type Aliases -----
+# Custom Types
 filter_type = Callable[[str], Sequence]
-# ------------------------
 
 
 __all__ = [
@@ -145,7 +128,7 @@ class LuckyURL(URL):
         return fmt_url.format(query)
 
     @classmethod
-    def filter(cls, query: str) -> str:
+    def filter(cls, query: str) -> str:  # pylint: disable=method-hidden
         return re.sub(cls.pattern, '', query)
 
     @classmethod
@@ -178,7 +161,9 @@ def IntURLFactory(n: int) -> Type[URL]:
             super().__init__(url, self.pattern, self.filter)
 
         @classmethod
-        def filter(cls, query: str) -> Sequence:
+        def filter(  # pylint: disable=method-hidden
+            cls, query: str
+        ) -> Sequence:
             nums: List = re.split(utils.encode(' '), query, maxsplit=n)
 
             ret = nums[:]

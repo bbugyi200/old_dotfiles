@@ -28,12 +28,12 @@ def get_top_link(query: str) -> str:
             "/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/cookies.py",
         )
         cookies = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(cookies)  # type: ignore
+        spec.loader.exec_module(cookies)
         sys.modules["http.cookies"] = cookies
 
         sys.path.append("/usr/local/lib/python3.7/site-packages")
 
-    from bs4 import BeautifulSoup
+    from bs4 import BeautifulSoup  # type: ignore
     import requests  # pylint: disable=import-outside-toplevel
 
     try:

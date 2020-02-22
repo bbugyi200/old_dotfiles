@@ -15,17 +15,21 @@ os.environ['PATH'] = '{0}/.local/bin:/usr/local/bin:{1}'.format(
 )
 
 
-is_macos = 'Darwin' in platform.version()
-
-# pylint: disable=C0111
 c = c  # type: ignore  # noqa: F821  # pylint: disable=undefined-variable,self-assigning-variable
 config = config  # type: ignore  # noqa: F821  # pylint: disable=undefined-variable,self-assigning-variable
 
 # Load autoconfig.yml
 config.load_autoconfig()  # type: ignore
 
-# Registered config helper functions.
+
+# Custom Types
 ConfigHelper = Callable[[], None]
+
+
+#####################################################################
+#  Utils                                                            #
+#####################################################################
+# Registered config helper functions.
 CONFIG_HELPER_REGISTRY: Tuple[ConfigHelper, ...] = ()
 
 
@@ -35,14 +39,18 @@ def register_config_helper(config_helper: ConfigHelper) -> ConfigHelper:
     return config_helper
 
 
-def configure_all() -> None:
+def configure_qutebrowser() -> None:
     for config_helper in CONFIG_HELPER_REGISTRY:
         config_helper()  # pylint: disable=not-callable
 
 
-######################
-#  Search Aliases    #
-######################
+def is_macos() -> bool:
+    return 'Darwin' in platform.version()
+
+
+#####################################################################
+#  Search Aliases                                                   #
+#####################################################################
 # These aliases will be substituted with their definitions when found
 # anywhere in the query of an ':open' command.
 search_aliases = {
@@ -112,9 +120,9 @@ def setup_search_aliases() -> None:
     utils.search_aliases = search_aliases
 
 
-####################
-#  Search Engines  #
-####################
+#####################################################################
+#  Search Engines                                                   #
+#####################################################################
 def bang_pttrn() -> str:
     """
     Returns regex pattern that matches DuckDuckGo bangs that I like to use.
@@ -144,7 +152,7 @@ def bang_pttrn() -> str:
     return bang_fmt.format('|'.join(all_bangs))
 
 
-c.url.searchengines = {  # type: ignore
+searchengines = {
     '2': (
         'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}'
     ),
@@ -294,13 +302,15 @@ c.url.searchengines = {  # type: ignore
 @register_config_helper
 def setup_search_engines() -> None:
     for i in range(1, 11):
-        c.url.searchengines[f's{i}'] = SE.static.stackoverflow(i)
-        c.url.searchengines[f'g{i}'] = SE.static.google('{}', max_years_old=i)
+        searchengines[f's{i}'] = SE.static.stackoverflow(i)
+        searchengines[f'g{i}'] = SE.static.google('{}', max_years_old=i)
+
+    c.url.searchengines = searchengines
 
 
-######################
-#  Commande Aliases  #
-######################
+#####################################################################
+#  Command Aliases                                                  #
+#####################################################################
 command_aliases = {
     'libget': 'jseval -q document.querySelector("h2").click()',
     'lic': 'spawn --userscript linkedin_connect',
@@ -318,13 +328,12 @@ def setup_cmd_aliases() -> None:
     for i in range(1, 21):
         command_aliases['b{}'.format(i)] = 'buffer {}'.format(i)
 
-    for k, v in command_aliases.items():
-        c.aliases[k] = v
+    c.aliases = command_aliases
 
 
-##############
-#  Bindings  #
-##############
+#####################################################################
+#  Bindings                                                         #
+#####################################################################
 def bind(keys: str, *commands: str, mode: str = 'normal') -> None:
     config.bind(keys, ' ;; '.join(commands), mode=mode)
 
@@ -421,7 +430,7 @@ def setup_binds() -> None:
         'gc',
         'spawn "{}" {{url}}'.format(
             '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-            if is_macos
+            if is_macos()
             else 'google-chrome'
         ),
     )
@@ -552,9 +561,9 @@ def setup_binds() -> None:
     bind('<Escape>', 'search', 'clear-messages')
 
 
-######################
-#  Load yaml Config  #
-######################
+#####################################################################
+#  Load yaml Config                                                 #
+#####################################################################
 def dict_attrs(
     obj: Union[str, Dict], path: str = ''
 ) -> Generator[Tuple[str, str], None, None]:
@@ -575,4 +584,4 @@ def setup_config_from_yaml() -> None:
 
 
 # Call all config helpers.
-configure_all()
+configure_qutebrowser()

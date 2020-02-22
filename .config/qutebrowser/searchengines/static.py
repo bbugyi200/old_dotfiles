@@ -1,7 +1,6 @@
 """Static URL Helpers"""
 
 import datetime as dt
-from typing import Any, Callable, Container, Dict, Generator, Iterable, Iterator, List, NoReturn, Optional, Sequence, Set, Tuple, Union  # noqa
 
 import searchengines as SE
 import searchengines.utils as utils
@@ -13,7 +12,8 @@ import searchengines.utils as utils
 def stackoverflow(n: int, *, prefix: str = None) -> 'SE.SearchEngine':
     """Returns stackoverflow google search string.
 
-    The search results returned by Google will range from @n years ago until now.
+    The search results returned by Google will range from @n years ago until
+    now.
 
     Args:
         prefix (opt): static content to prepend to query.
@@ -29,21 +29,31 @@ def site(*domains: str, prefix: str = None) -> 'SE.SearchEngine':
         prefix (opt): static content to prepend to query.
     """
     prefix = _validate_prefix(prefix)
-    return google('{0}{{}} {1}'.format(prefix, ' OR '.join(['site:' + D for D in domains])))
+    return google(
+        '{0}{{}} {1}'.format(
+            prefix, ' OR '.join(['site:' + D for D in domains])
+        )
+    )
 
 
 def google(query: str, *, max_years_old: int = None) -> 'SE.SearchEngine':
     encoded_query = utils.encode(query)
     if max_years_old is None:
-        return SE.SearchEngine('https://google.com/search?q={}'.format(encoded_query))
+        return SE.SearchEngine(
+            'https://google.com/search?q={}'.format(encoded_query)
+        )
     else:
         D = _n_years_ago(max_years_old)
-        return SE.SearchEngine(f'https://google.com/search?q={encoded_query}&source=lnt&tbs=cdr%3A1%2Ccd_min%3A{D.month}%2F{D.day}%2F{D.year}%2Ccd_max%3A&tbm=')
+        return SE.SearchEngine(
+            f'https://google.com/search?q={encoded_query}&source=lnt&tbs=cdr%3A1%2Ccd_min%3A{D.month}%2F{D.day}%2F{D.year}%2Ccd_max%3A&tbm='
+        )
 
 
 def duckduckgo(query: str) -> 'SE.SearchEngine':
     encoded_query = utils.encode(query)
-    return SE.SearchEngine('https://duckduckgo.com/?q={}'.format(encoded_query))
+    return SE.SearchEngine(
+        'https://duckduckgo.com/?q={}'.format(encoded_query)
+    )
 
 
 #############
