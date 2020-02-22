@@ -7,17 +7,16 @@
 # |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
 
 # Replace <type> with one of the following:
-#    feat       add new feature or modify existing feature
+#    add        add new feature
+#    mod        modify existing feature
+#    rem        remove feature
 #    fix        bug fix
+#    opt        optimization
 #    ref        refactor code
-#    meta       change .gitignore, .flake8, *.ini, scripts, setup.py, binaries, etc....
-#    meta-fix   fix bug in one of the meta files listed above
-#    meta-ref   refactor code used in a helper script or clean up configuration file
 #    test       add or modify test(s); no production code changed
-#    test-fix   fix bug in test suite
-#    test-ref   refactor tests
+#    meta       styling, type hints, pragmas, etc....
+#    chore      change .gitignore, .flake8, *.ini, scripts, setup.py, binaries, etc....
 #    doc        change documentation; docstrings, log messages, README, etc....
-#    sty        formatting, missing semi colons, etc; no code change
 #    misc       miscellaneous changes
 #    wip        work in progress; for intermediate commits to keep patches reasonably sized
 # --------------------

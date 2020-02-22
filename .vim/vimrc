@@ -195,6 +195,7 @@ imap <C-j> <Esc><C-j>
 imap <C-k> <Esc><C-k>
 imap <C-l> <Esc><C-l>
 inoremap <C-s> <Esc>:Snippets<CR>
+inoremap <C-w> <Esc><C-w>
 
 " >>>>>>>>>>>>> VISUAL
 vnoremap <Space> $<Left>
@@ -288,8 +289,8 @@ map <C-n> :Ranger<CR>
 " O-O-O-O-O-O-O-O-O-O
 nnoremap <Leader>O O<C-u>
 nnoremap <Leader>o o<C-u>
-nnoremap [oe :SyntasticToggleMode<CR>
-nnoremap ]oe :SyntasticToggleMode<CR>
+nnoremap [oe :ALEToggle<CR>
+nnoremap ]oe :ALEToggle<CR>
 " P-P-P-P-P-P-P-P-P-P
 nnoremap <C-p>f :Files<CR>
 nnoremap <C-p>h :History<CR>
@@ -331,7 +332,12 @@ nnoremap <Leader>; ,
 nnoremap * /\v\C<<C-R><C-W>><CR>
 call s:nimap('<Leader>#', ':call MakeBox()<CR>')
 nnoremap <C-\> <C-^>
-call s:nimap('<Leader>=', '<C-w>=')
+nnoremap ; :
+nnoremap } ;
+nnoremap { ,
+nnoremap [{ {
+nnoremap ]} }
+call s:nimap('<C-e>', '<C-w>=:redraw!<CR>')
 nnoremap <Leader>/ /\v\C<><Left>
 nnoremap <Leader>% :so %<CR>
 nnoremap _ :<C-u>execute "sbuffer " . v:count1<CR>
@@ -411,7 +417,7 @@ autocmd CmdwinEnter * nnoremap <CR> <CR>| " http://stackoverflow.com/questions/1
 autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
 autocmd FileType * setlocal formatoptions-=t
 autocmd FileType c,cpp setlocal commentstring=//%s
-autocmd FileType mail setlocal spell spelllang=en_us
+autocmd FileType gitcommit,mail setlocal spell spelllang=en_us
 autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro  " Disables auto-comments on newlines and disables autowrap
 autocmd FileType scheme let b:delimitMate_quotes = "\""
 autocmd FocusGained,BufEnter * :checktime  " Reloads buffer on buffer changes
@@ -481,21 +487,21 @@ function! TmuxOrSplitSwitch(wincmd, tmuxdir)
   endif
 endfunction
 
-if exists('$TMUX')
-  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
+" if exists('$TMUX')
+"   let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+"   let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+"   let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
 
-  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
-else
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
-endif
+"   nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+"   nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+"   nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+"   nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+" else
+"   map <C-h> <C-w>h
+"   map <C-j> <C-w>j
+"   map <C-k> <C-w>k
+"   map <C-l> <C-w>l
+" endif
 
 " ----- Syntax Highlighting -----
 syntax on

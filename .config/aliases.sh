@@ -171,7 +171,6 @@ alias dunst='killall dunst &> /dev/null; dunst'
 alias edsl='printf "$(hostname):%d,%d\n%s,%d" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
 alias epuse='sudo -E epuse'
 essh() { ssh "$@" -t 'cd ~/src/prod; source ~/bin/psource.sh; PATH=/prod/home/bbugyi/bin:$PATH psource .environ; cd; /bin/zsh'; }
-alias ewatch='watch -c -n 5 genlop -c'
 fim() { file="$("$(which -a fim | tail -n 1)" "$1")"; if [[ -z "${file}" ]]; then return 1; else vim "${file}"; fi; }
 alias flaggie='sudo -i flaggie'
 fn_() { if [[ "$1" == *"*"* ]]; then find . -iname "$@"; else find . -iname "*$**"; fi; }
@@ -186,7 +185,7 @@ alias gbb='git branch --sort=-committerdate | less ${LESS_OPTS}'
 gca() { if [[ -n "$1" ]]; then git commit -v -a -m "$1"; else git commit -v -a; fi; }
 gcB() { gbD "$1" &> /dev/null; git checkout -b "$1" "${2:-upstream}"/"$1"; }
 gcbc() { git checkout -b "$@" && git commit --allow-empty; }
-gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%Y%m%d")"-"$1"; }
+gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%y%m%d")"-"$1"; }
 alias gce='git commit --allow-empty'
 gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
 alias gclp='cd ~/projects && gcl'

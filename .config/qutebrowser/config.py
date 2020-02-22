@@ -4,18 +4,11 @@ import functools
 import os
 import platform
 import re
-from typing import (
-    Callable,
-    Generator,
-    List,
-    Tuple,
-)
-
-import yaml
+from typing import Callable, Dict, Generator, List, Tuple, Union
 
 import searchengines as SE
 import searchengines.utils as utils
-
+import yaml
 
 os.environ['PATH'] = '{0}/.local/bin:/usr/local/bin:{1}'.format(
     os.environ['HOME'], os.environ['PATH']
@@ -25,26 +18,26 @@ os.environ['PATH'] = '{0}/.local/bin:/usr/local/bin:{1}'.format(
 is_macos = 'Darwin' in platform.version()
 
 # pylint: disable=C0111
-c = c  # type: ignore  # noqa: F821 pylint: disable=E0602,C0103
-config = config  # type: ignore  # noqa: F821 pylint: disable=E0602,C0103
+c = c  # type: ignore  # noqa: F821  # pylint: disable=undefined-variable,self-assigning-variable
+config = config  # type: ignore  # noqa: F821  # pylint: disable=undefined-variable,self-assigning-variable
 
 # Load autoconfig.yml
 config.load_autoconfig()  # type: ignore
 
-ConfigHelper = Callable[[], None]
-
 # Registered config helper functions.
-config_helper_registry: List[ConfigHelper] = []
+ConfigHelper = Callable[[], None]
+CONFIG_HELPER_REGISTRY: Tuple[ConfigHelper, ...] = ()
 
 
 def register_config_helper(config_helper: ConfigHelper) -> ConfigHelper:
-    config_helper_registry.append(config_helper)
+    global CONFIG_HELPER_REGISTRY
+    CONFIG_HELPER_REGISTRY += (config_helper,)
     return config_helper
 
 
 def configure_all() -> None:
-    for config_helper in config_helper_registry:
-        config_helper()
+    for config_helper in CONFIG_HELPER_REGISTRY:
+        config_helper()  # pylint: disable=not-callable
 
 
 ######################
@@ -301,8 +294,8 @@ c.url.searchengines = {  # type: ignore
 @register_config_helper
 def setup_search_engines() -> None:
     for i in range(1, 11):
-        c.url.searchengines[f's{i}'] = SE.static.stackoverflow(i)  # type: ignore
-        c.url.searchengines[f'g{i}'] = SE.static.google('{}', max_years_old=i)  # type: ignore
+        c.url.searchengines[f's{i}'] = SE.static.stackoverflow(i)
+        c.url.searchengines[f'g{i}'] = SE.static.google('{}', max_years_old=i)
 
 
 ######################
@@ -326,7 +319,7 @@ def setup_cmd_aliases() -> None:
         command_aliases['b{}'.format(i)] = 'buffer {}'.format(i)
 
     for k, v in command_aliases.items():
-        c.aliases[k] = v  # type: ignore
+        c.aliases[k] = v
 
 
 ##############
@@ -338,7 +331,7 @@ def bind(keys: str, *commands: str, mode: str = 'normal') -> None:
 
 @register_config_helper
 def setup_binds() -> None:
-    c.bindings.commands = {}  # type: ignore  # Clears all previously set user bindings.
+    c.bindings.commands = {}  # Clears all previously set user bindings.
 
     ########## Unbinds
     unbound_nkeys: List[str] = [
@@ -364,7 +357,7 @@ def setup_binds() -> None:
         (unbound_ikeys, 'insert'),
     ]:
         for keys in unbound_keys:
-            config.unbind(keys, mode=mode)  # type: ignore
+            config.unbind(keys, mode=mode)
 
     ########## Binds
 
@@ -485,34 +478,26 @@ def setup_binds() -> None:
     )
     bind(
         ';Tm',
-        (
-            'hint links spawn -d -v torrent -d {hint-url} -w '
-            '/media/bryan/zeus/media/Entertainment/Movies'
-        ),
+        'hint links spawn -d -v torrent -d {hint-url} -w '
+        '/media/bryan/zeus/media/Entertainment/Movies',
         'message-info "Select movie to torrent."',
     )
     bind(
         ';TM',
-        (
-            'hint links spawn --userscript add-to-torrent-file movies.txt '
-            '"{hint-url}"'
-        ),
+        'hint links spawn --userscript add-to-torrent-file movies.txt '
+        '"{hint-url}"',
         'message-info "Select movie to add to torrent list."',
     )
     bind(
         ';Tt',
-        (
-            'hint links spawn -d -v torrent -d {hint-url} -w '
-            '/media/bryan/zeus/media/Entertainment/TV'
-        ),
+        'hint links spawn -d -v torrent -d {hint-url} -w '
+        '/media/bryan/zeus/media/Entertainment/TV',
         'message-info "Select TV show to torrent."',
     )
     bind(
         ';TT',
-        (
-            'hint links spawn --userscript add-to-torrent-file tv.txt'
-            ' "{hint-url}"'
-        ),
+        'hint links spawn --userscript add-to-torrent-file tv.txt'
+        ' "{hint-url}"',
         'message-info "Select TV show to add to torrent list."',
     )
     bind('t-', 'tab-only')
@@ -571,7 +556,7 @@ def setup_binds() -> None:
 #  Load yaml Config  #
 ######################
 def dict_attrs(
-    obj: str, path: str = ''
+    obj: Union[str, Dict], path: str = ''
 ) -> Generator[Tuple[str, str], None, None]:
     if isinstance(obj, dict):
         for k, v in obj.items():
@@ -582,11 +567,11 @@ def dict_attrs(
 
 @register_config_helper
 def setup_config_from_yaml() -> None:
-    with (config.configdir / 'config.yml').open() as f:  # type: ignore
+    with (config.configdir / 'config.yml').open() as f:
         yaml_data = yaml.load(f)
 
     for k, v in dict_attrs(yaml_data):
-        config.set(k, v)  # type: ignore
+        config.set(k, v)
 
 
 # Call all config helpers.

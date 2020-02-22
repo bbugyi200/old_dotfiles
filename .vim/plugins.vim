@@ -466,7 +466,7 @@ if PluginInstalled("UltiSnips")
 
     au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"
-    let g:UltiSnipsListSnippets="<c-e>"
+    let g:UltiSnipsListSnippets="<c-u>"
     
     " this mapping Enter key to <C-y> to chose the current highlight item
     " and close the selection list, same as other IDEs.

@@ -1,3 +1,6 @@
+setlocal indentkeys-=<:>
+setlocal indentkeys+==else
+
 let b:run_cmd = ":ALEFix"
 
 " ------------------------------------- MULTILINE STRINGS -----------------------------------------
@@ -61,9 +64,9 @@ nnoremap <Leader>0p :e ~/.config/pylintrc<CR>
 nnoremap <Leader>b :call system('echo "b ' . expand('%:p') . ':' . line('.') . '" >> ~/.config/pudb/saved-breakpoints-2.7')<CR>
 imap <Leader>( (<CR><Esc>O
 nmap <Leader>K :!qutebrowser https://docs.python.org/3/library/<C-R><C-W> &> /dev/null &<CR><CR>
-nmap <Leader>i :w<CR>:Silent isort --line-width=79 -fss -a "import " <C-R>=expand('%')<CR><C-b><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
-nmap <Leader><Leader>i :w<CR>:Silent isort --line-width=79 -fss -a "from " <C-R>=expand('%')<CR><C-b><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
-nmap <LocalLeader>i :w<CR>:Silent isort --line-width=79 -fss -a "from typing import " <C-R>=expand('%')<CR><C-b><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
+nmap <Leader>i <Leader>S:Silent isort --line-width=79 -fss -a "import " <C-R>=expand('%')<CR><C-b><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
+nmap <Leader><Leader>i <Leader>S:Silent isort --line-width=79 -fss -a "from " <C-R>=expand('%')<CR><C-b><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
+nmap <LocalLeader>i <Leader>S:Silent isort --line-width=79 -fss -a "from typing import " <C-R>=expand('%')<CR><C-b><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
 nmap <Leader>t :call SwitchToTest('py')<CR>
 nmap <Leader><Leader>t :!pyinit -n -t <C-R>=expand('%:r')<CR><CR>
 nmap <Leader>T :call VSwitchToTest('py')<CR>

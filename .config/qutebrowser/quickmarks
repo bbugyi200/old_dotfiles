@@ -20,9 +20,11 @@ edb http://web-prod.pr.edgelp.net:22052/
 edd http://web-dev.pr.edgelp.net/
 ed http://web-prod.pr.edgelp.net/
 eds http://web-stag.pr.edgelp.net/
+edwc http://web-prod.pr.edgelp.net:19999/
 egc https://gitlab.pr.edgelp.net/edgelp/production_config
 eggw https://gitlab.pr.edgelp.net/bbugyi/website
 eg https://gitlab.pr.edgelp.net/edgelp
+egms https://gitlab.pr.edgelp.net/bbugyi/META_STATIC
 egpb https://gitlab.pr.edgelp.net/bbugyi/prod
 egpbr https://gitlab.pr.edgelp.net/bryan/prod
 egp https://gitlab.pr.edgelp.net/edgelp/prod
@@ -133,5 +135,4 @@ W https://www.google.com/search?q=weather
 Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
-edwc http://web-prod.pr.edgelp.net:19999/
-egms https://gitlab.pr.edgelp.net/bbugyi/META_STATIC
+ecov http://gitlab-ci.pr.edgelp.net:8080/
