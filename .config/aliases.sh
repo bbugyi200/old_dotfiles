@@ -276,7 +276,6 @@ pdb() { { [[ -f ./"$1" ]] && pudb3 "$@"; } || pudb3 "$(which -a "$1" | tail -n 1
 pgr() { pgrep -f ".*$1.*"; }
 alias plex='xspawn -w plex plexmediaplayer'
 pname() { pass show | grep -i "$1" | awk '{print $2}'; }
-alias pp='pipenv'
 ppg() { if [[ -n "$1" ]]; then pipenv graph | grep "$@"; else pipenv graph; fi; }
 alias ppi2='pipenv --two install'
 alias ppi='pipenv install'

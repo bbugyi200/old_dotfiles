@@ -23,95 +23,86 @@ config.load_autoconfig()  # type: ignore
 
 
 # Custom Types
-ConfigHelper = Callable[[], None]
+SetupFunc = Callable[[], None]
 
 
 #####################################################################
 #  Utils                                                            #
 #####################################################################
-# Registered config helper functions.
-CONFIG_HELPER_REGISTRY: Tuple[ConfigHelper, ...] = ()
-
-
-def register_config_helper(config_helper: ConfigHelper) -> ConfigHelper:
-    global CONFIG_HELPER_REGISTRY
-    CONFIG_HELPER_REGISTRY += (config_helper,)
-    return config_helper
-
-
-def configure_qutebrowser() -> None:
-    for config_helper in CONFIG_HELPER_REGISTRY:
-        config_helper()  # pylint: disable=not-callable
-
-
 def is_macos() -> bool:
     return 'Darwin' in platform.version()
+
+
+class Setup:
+    """Master Setup Class
+
+    All setup functions MUST register with this class or they will not be
+    called.
+    """
+
+    # Registered setup functions.
+    __SETUP_FUNC_REGISTRY: List[SetupFunc] = []
+
+    @classmethod
+    def register(cls, debug: bool = False) -> Callable[[SetupFunc], SetupFunc]:
+        def _register(setup_func: SetupFunc) -> SetupFunc:
+            def wrapped_setup_func() -> None:
+                if debug:
+                    import pudb
+
+                    pudb.set_trace()
+                return setup_func()
+
+            cls.__SETUP_FUNC_REGISTRY.append(wrapped_setup_func)
+            return setup_func
+
+        return _register
+
+    @classmethod
+    def run_all(cls) -> None:
+        for setup_func in cls.__SETUP_FUNC_REGISTRY:
+            setup_func()
 
 
 #####################################################################
 #  Search Aliases                                                   #
 #####################################################################
-# These aliases will be substituted with their definitions when found
-# anywhere in the query of an ':open' command.
-search_aliases = {
-    'al': 'Arch Linux',
-    'b': 'Bash',
-    'bb': 'Bloodborne',
-    'bbt': 'Big Bang Theory',
-    'bnn': 'Brooklyn Nine-Nine',
-    'cl': 'command-line',
-    'co': 'Compilers',
-    'cod': 'Call of Duty: Black Ops 4',
-    'cs': 'Computer Science',
-    'de': 'Debian',
-    'dep': 'Debian Buster',
-    'dj': 'Django',
-    'en': 'Evernote',
-    'fcl': 'from the command-line',
-    'ge': 'Gentoo',
-    'gh': 'GitHub',
-    'gl': 'GitLab',
-    'gt': 'Georgia Tech',
-    'gtest': '"Google Test" OR gtest',
-    'ha': 'Haskell',
-    'hzd': 'Horizon: Zero Dawn',
-    'js': 'JavaScript',
-    'ks': 'keyboard shortcuts',
-    'lcl': 'Linux from the command-line',
-    'lta': '"Life Time Athletic"',
-    'lx': 'Linux',
-    'mac': 'MacOS',
-    'mf': 'Modern Family',
-    'ml': 'Machine Learning',
-    'ms': "master's degree",
-    'n': 'AND',
-    'nn': 'nixnote',
-    'o': 'OR',
-    'oms': "online master's degree",
-    'pt': 'pytest',
-    'py': 'Python',
-    'qb': 'qutebrowser',
-    'rdr': 'Red Dead Redemption 2',
-    'rnm': 'Rick and Morty',
-    'rl': 'Rocket League',
-    'ru': 'Rutgers',
-    'sal': 'average salary',
-    'sd': 'San Diego',
-    'se': 'Software Engineer',
-    'sel': 'Selenium Python',
-    'sg': 'Samsung Galaxy',
-    'sgw': 'Samsung Galaxy Watch',
-    'ta': 'tasker',
-    'tb': 'Thunderbird',
-    'tex': 'LaTeX',
-    'tlou': 'The Last of Us',
-    'v': 'vim',
-    'ys': 'Young Sheldon',
-}
-
-
-@register_config_helper
+@Setup.register()
 def setup_search_aliases() -> None:
+    # These aliases will be substituted with their definitions when found
+    # anywhere in the query of an ':open' command.
+    search_aliases = {
+        'al': 'Arch Linux',
+        'b': 'Bash',
+        'bnn': 'Brooklyn Nine-Nine',
+        'cl': 'command-line',
+        'cs': 'Computer Science',
+        'de': 'Debian',
+        'fcl': 'from the command-line',
+        'ge': 'Gentoo',
+        'gh': 'GitHub',
+        'gl': 'GitLab',
+        'ha': 'Haskell',
+        'js': 'JavaScript',
+        'lcl': 'Linux from the command-line',
+        'lx': 'Linux',
+        'mac': 'MacOS',
+        'mf': 'Modern Family',
+        'n': 'AND',
+        'o': 'OR',
+        'py': 'Python',
+        'qb': 'qutebrowser',
+        'rnm': 'Rick and Morty',
+        'rl': 'Rocket League',
+        'ru': 'Rutgers',
+        'sal': 'average salary',
+        'sd': 'San Diego',
+        'se': 'Software Engineer',
+        'sg': 'Samsung Galaxy',
+        'v': 'vim',
+        'ys': 'Young Sheldon',
+    }
+
     # Google's AROUND(N) Search Operator
     for i in range(1, 51):
         search_aliases['a{}'.format(i)] = 'AROUND({})'.format(i)
@@ -152,155 +143,162 @@ def bang_pttrn() -> str:
     return bang_fmt.format('|'.join(all_bangs))
 
 
-searchengines = {
-    '2': (
-        'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}'
-    ),
-    '3': (
-        'https://www.google.com/maps/dir/902+Carnegie+Center,+Princeton,+NJ+08540/{}'
-    ),
-    'A': (
-        'https://www.amazon.com/gp/your-account/order-history/search?&search={}'
-    ),
-    'b': SE.static.stackoverflow(10, prefix='Bash'),
-    'bmo': SE.SearchEngine(
-        SE.static.google('best movies of 20{}'),
-        SE.OneIntURL(SE.static.google('best {1} movies of 20{0}')),
-    ),
-    'c': SE.static.stackoverflow(7, prefix='C'),
-    'cc': SE.static.stackoverflow(5, prefix='C\\+\\+'),
-    'DEFAULT': SE.SearchEngine(
-        SE.static.google('{}'),
-        SE.URL(SE.static.duckduckgo('{}'), '^!'),
-        SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
-        SE.LuckyURL('{}'),
-    ),
-    'dvd': SE.static.google('{} DVD release date'),
-    'eda': SE.SearchEngine(
-        'http://web-prod.pr.edgelp.net:22051/find?names={}&days=3',
-        SE.OneIntURL(
-            'http://web-prod.pr.edgelp.net:22051/find?names={1}&days={0}'
-        ),
-    ),
-    'edb': SE.SearchEngine(
-        'http://web-prod.pr.edgelp.net:22052/find?names={}&days=3',
-        SE.OneIntURL(
-            'http://web-prod.pr.edgelp.net:22052/find?names={1}&days={0}'
-        ),
-    ),
-    'eip': SE.static.google(
-        'https://gitlab.pr.edgelp.net/edgelp/prod/issues?scope=all&utf8=✓&state=opened&search={}'
-    ),
-    'emp': 'https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests/{}',
-    'emw': 'https://gitlab.pr.edgelp.net/edgelp/website/merge_requests/{}',
-    'ep': SE.SearchEngine(
-        SE.static.google('{} episodes'),
-        SE.OneIntURL(SE.static.google('Season {0} {1} episodes')),
-    ),
-    'ew': 'https://www.edgestreamlp.com/{}',
-    'ews': 'https://edgestream-staging.herokuapp.com/{}',
-    'g4g': SE.static.site('www.geeksforgeeks.org'),
-    'geb': (
-        'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific'
-    ),
-    'gep': SE.SearchEngine(
-        SE.static.site('packages.gentoo.org', 'gpo.zugaina.org'),
-        SE.LuckyURL('{} site:packages.gentoo.org'),
-    ),
-    'gh': SE.SearchEngine(
-        SE.static.site('github.com'),
-        SE.LuckyURL('{} site:github.com'),
-        SE.URL(
-            'https://github.com/bbugyi200/{}',
-            '^@',
-            lambda x: x.replace(SE.utils.encode('@'), ''),
-        ),
-    ),
-    'ghi': SE.SearchEngine(
-        'https://github.com/bbugyi200/{}/issues',
-        SE.URL('https://github.com/bbugyi200/scripts/issues/{}', '^[0-9]+$'),
-        SE.OneIntURL('https://github.com/bbugyi200/{1}/issues/{0}'),
-        SE.LuckyURL(
-            '{0} site:github.com',
-            '{}{}'.format(SE.LuckyURL.pattern, r'([A-z]| )+@'),
-            lambda x: re.split(
-                SE.utils.encode(' @'), SE.LuckyURL.filter(x), maxsplit=1
-            ),
-            suffix='issues?&q=is%3Aissue+{1}',
-        ),
-        SE.LuckyURL(
-            '{0} site:github.com',
-            '{}{}'.format(SE.LuckyURL.pattern, '([A-z]| )+#'),
-            lambda x: re.split(
-                SE.utils.encode(' #'), SE.LuckyURL.filter(x), maxsplit=1
-            ),
-            suffix='issues/{1}',
-        ),
-        SE.LuckyURL('{} site:github.com', suffix='issues'),
-    ),
-    'ght': 'https://github.com/bbugyi200/{}/graphs/traffic',
-    'i': SE.SearchEngine('https://www.google.com/search?&tbm=isch&q={}'),
-    'j': 'https://www.google.com/search?q={}&ibp=htl;jobs#fpstate=tldetail',
-    'l': SE.static.stackoverflow(7, prefix='Linux'),
-    'lh': 'http://127.0.0.1:8000/{}',
-    'li': SE.SearchEngine(
-        SE.static.site('linkedin.com'),
-        SE.URL(
-            SE.static.site('linkedin.com', prefix='software'),
-            '^@',
-            lambda x: x.replace(SE.utils.encode('@'), ''),
-        ),
-    ),
-    'lib': 'http://libgen.is/search.php?req={}',
-    'Lib': 'https://libgen.me/search?q={}',
-    'ma': SE.static.site('math.stackexchange.com', 'tex.stackexchange.com'),
-    'p': SE.static.stackoverflow(7, prefix='Python'),
-    'pyl': 'https://docs.python.org/3/library/{}',
-    'pypi': 'https://pypi.org/project/{}',
-    'pss': 'https://store.playstation.com/en-us/search/{}',
-    'r': SE.static.site('reddit.com'),
-    'rlp': 'https://rocketleague.tracker.network/profile/ps/{}',
-    'rpy': 'https://realpython.com/search?q={}',
-    's0': SE.static.site('stackoverflow.com'),
-    'shr': (
-        'https://shop.shoprite.com/store/1627666/search?displayType=&query={}&recipe=0&sponsored=5'
-    ),
-    'st': SE.static.google('set timer for {}'),
-    'sub': SE.SearchEngine(
-        SE.static.google('{} inurl:english site:subscene.com'),
-        SE.LuckyURL('{0} inurl:english site:subscene.com'),
-        SE.LuckyURL(
-            '{2} S{0:02d}E{1:02d} inurl:english site:subscene.com',
-            SE.TwoIntURL.pattern,
-            SE.TwoIntURL.filter,
-        ),
-    ),
-    'T': SE.SearchEngine(
-        'https://1337x.unblocked.vet/search/{}/1/',
-        SE.TwoIntURL(
-            'https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/'
-        ),
-        SE.OneIntURL('https://1337x.unblocked.vet/search/{1} Season/1/'),
-    ),
-    'TT': SE.SearchEngine(
-        'https://thepiratebay3.com/search/{}',
-        SE.TwoIntURL('https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}'),
-        SE.OneIntURL('https://thepiratebay.org/search/{1} Season'),
-    ),
-    'ud': SE.static.site(
-        'idioms.thefreedictionary.com',
-        'en.wiktionary.org',
-        'urbandictionary.com',
-    ),
-    'q': SE.static.google('"{}"'),
-    'w': SE.static.site('en.wikipedia.org'),
-    'W': SE.static.google('weather in {}'),
-    'ytt': 'https://www.youtube.com/results?search_query={}+Trailer',
-}
-
-
-@register_config_helper
+@Setup.register()
 def setup_search_engines() -> None:
+    searchengines = {
+        '2': (
+            'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}'
+        ),
+        '3': (
+            'https://www.google.com/maps/dir/902+Carnegie+Center,+Princeton,+NJ+08540/{}'
+        ),
+        'A': (
+            'https://www.amazon.com/gp/your-account/order-history/search?&search={}'
+        ),
+        'b': SE.static.stackoverflow(10, prefix='Bash'),
+        'bmo': SE.SearchEngine(
+            SE.static.google('best movies of 20{}'),
+            SE.OneIntURL(SE.static.google('best {1} movies of 20{0}')),
+        ),
+        'c': SE.static.stackoverflow(7, prefix='C'),
+        'cc': SE.static.stackoverflow(5, prefix='C\\+\\+'),
+        'DEFAULT': SE.SearchEngine(
+            SE.static.google('{}'),
+            SE.URL(SE.static.duckduckgo('{}'), '^!'),
+            SE.URL(SE.static.duckduckgo('!{}'), bang_pttrn()),
+            SE.LuckyURL('{}'),
+        ),
+        'dvd': SE.static.google('{} DVD release date'),
+        'eda': SE.SearchEngine(
+            'http://web-prod.pr.edgelp.net:22051/find?names={}&days=3',
+            SE.OneIntURL(
+                'http://web-prod.pr.edgelp.net:22051/find?names={1}&days={0}'
+            ),
+        ),
+        'edb': SE.SearchEngine(
+            'http://web-prod.pr.edgelp.net:22052/find?names={}&days=3',
+            SE.OneIntURL(
+                'http://web-prod.pr.edgelp.net:22052/find?names={1}&days={0}'
+            ),
+        ),
+        'eip': SE.static.google(
+            'https://gitlab.pr.edgelp.net/edgelp/prod/issues?scope=all&utf8=✓&state=opened&search={}'
+        ),
+        'emp': 'https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests/{}',
+        'emw': 'https://gitlab.pr.edgelp.net/edgelp/website/merge_requests/{}',
+        'ep': SE.SearchEngine(
+            SE.static.google('{} episodes'),
+            SE.OneIntURL(SE.static.google('Season {0} {1} episodes')),
+        ),
+        'ew': 'https://www.edgestreamlp.com/{}',
+        'ews': 'https://edgestream-staging.herokuapp.com/{}',
+        'g4g': SE.static.site('www.geeksforgeeks.org'),
+        'geb': (
+            'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific'
+        ),
+        'gep': SE.SearchEngine(
+            SE.static.site('packages.gentoo.org', 'gpo.zugaina.org'),
+            SE.LuckyURL('{} site:packages.gentoo.org'),
+        ),
+        'gh': SE.SearchEngine(
+            SE.static.site('github.com'),
+            SE.LuckyURL('{} site:github.com'),
+            SE.URL(
+                'https://github.com/bbugyi200/{}',
+                '^@',
+                lambda x: x.replace(SE.utils.encode('@'), ''),
+            ),
+        ),
+        'ghi': SE.SearchEngine(
+            'https://github.com/bbugyi200/{}/issues',
+            SE.URL(
+                'https://github.com/bbugyi200/scripts/issues/{}', '^[0-9]+$'
+            ),
+            SE.OneIntURL('https://github.com/bbugyi200/{1}/issues/{0}'),
+            SE.LuckyURL(
+                '{0} site:github.com',
+                '{}{}'.format(SE.LuckyURL.pattern, r'([A-z]| )+@'),
+                lambda x: re.split(
+                    SE.utils.encode(' @'), SE.LuckyURL.filter(x), maxsplit=1
+                ),
+                suffix='issues?&q=is%3Aissue+{1}',
+            ),
+            SE.LuckyURL(
+                '{0} site:github.com',
+                '{}{}'.format(SE.LuckyURL.pattern, '([A-z]| )+#'),
+                lambda x: re.split(
+                    SE.utils.encode(' #'), SE.LuckyURL.filter(x), maxsplit=1
+                ),
+                suffix='issues/{1}',
+            ),
+            SE.LuckyURL('{} site:github.com', suffix='issues'),
+        ),
+        'ght': 'https://github.com/bbugyi200/{}/graphs/traffic',
+        'i': SE.SearchEngine('https://www.google.com/search?&tbm=isch&q={}'),
+        'j': (
+            'https://www.google.com/search?q={}&ibp=htl;jobs#fpstate=tldetail'
+        ),
+        'l': SE.static.stackoverflow(7, prefix='Linux'),
+        'lh': 'http://127.0.0.1:8000/{}',
+        'li': SE.SearchEngine(
+            SE.static.site('linkedin.com'),
+            SE.URL(
+                SE.static.site('linkedin.com', prefix='software'),
+                '^@',
+                lambda x: x.replace(SE.utils.encode('@'), ''),
+            ),
+        ),
+        'lib': 'http://libgen.is/search.php?req={}',
+        'Lib': 'https://libgen.me/search?q={}',
+        'ma': SE.static.site(
+            'math.stackexchange.com', 'tex.stackexchange.com'
+        ),
+        'p': SE.static.stackoverflow(7, prefix='Python'),
+        'pyl': 'https://docs.python.org/3/library/{}',
+        'pypi': 'https://pypi.org/project/{}',
+        'pss': 'https://store.playstation.com/en-us/search/{}',
+        'r': SE.static.site('reddit.com'),
+        'rlp': 'https://rocketleague.tracker.network/profile/ps/{}',
+        'rpy': 'https://realpython.com/search?q={}',
+        's0': SE.static.site('stackoverflow.com'),
+        'shr': (
+            'https://shop.shoprite.com/store/1627666/search?displayType=&query={}&recipe=0&sponsored=5'
+        ),
+        'st': SE.static.google('set timer for {}'),
+        'sub': SE.SearchEngine(
+            SE.static.google('{} inurl:english site:subscene.com'),
+            SE.LuckyURL('{0} inurl:english site:subscene.com'),
+            SE.LuckyURL(
+                '{2} S{0:02d}E{1:02d} inurl:english site:subscene.com',
+                SE.TwoIntURL.pattern,
+                SE.TwoIntURL.filter,
+            ),
+        ),
+        'T': SE.SearchEngine(
+            'https://1337x.unblocked.vet/search/{}/1/',
+            SE.TwoIntURL(
+                'https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/'
+            ),
+            SE.OneIntURL('https://1337x.unblocked.vet/search/{1} Season/1/'),
+        ),
+        'TT': SE.SearchEngine(
+            'https://thepiratebay3.com/search/{}',
+            SE.TwoIntURL(
+                'https://thepiratebay.org/search/{2} S{0:02d}E{1:02d}'
+            ),
+            SE.OneIntURL('https://thepiratebay.org/search/{1} Season'),
+        ),
+        'ud': SE.static.site(
+            'idioms.thefreedictionary.com',
+            'en.wiktionary.org',
+            'urbandictionary.com',
+        ),
+        'q': SE.static.google('"{}"'),
+        'w': SE.static.site('en.wikipedia.org'),
+        'W': SE.static.google('weather in {}'),
+        'ytt': 'https://www.youtube.com/results?search_query={}+Trailer',
+    }
+
     for i in range(1, 11):
         searchengines[f's{i}'] = SE.static.stackoverflow(i)
         searchengines[f'g{i}'] = SE.static.google('{}', max_years_old=i)
@@ -311,20 +309,21 @@ def setup_search_engines() -> None:
 #####################################################################
 #  Command Aliases                                                  #
 #####################################################################
-command_aliases = {
-    'libget': 'jseval -q document.querySelector("h2").click()',
-    'lic': 'spawn --userscript linkedin_connect',
-    'mkpdf': 'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/',
-    'P': "spawn -v pockyt-add {url}",
-    'rss': 'spawn --userscript openfeeds',
-    'Tsub': 'spawn --userscript Tsub',
-    'vs': 'open -w',
-    'wt': 'spawn wtitle',
-}
-
-
-@register_config_helper
+@Setup.register()
 def setup_cmd_aliases() -> None:
+    command_aliases = {
+        'libget': 'jseval -q document.querySelector("h2").click()',
+        'lic': 'spawn --userscript linkedin_connect',
+        'mkpdf': (
+            'set-cmd-text :spawn -v wkhtmltopdf {url} /home/bryan/Downloads/'
+        ),
+        'P': "spawn -v pockyt-add {url}",
+        'rss': 'spawn --userscript openfeeds',
+        'Tsub': 'spawn --userscript Tsub',
+        'vs': 'open -w',
+        'wt': 'spawn wtitle',
+    }
+
     for i in range(1, 21):
         command_aliases['b{}'.format(i)] = 'buffer {}'.format(i)
 
@@ -338,7 +337,7 @@ def bind(keys: str, *commands: str, mode: str = 'normal') -> None:
     config.bind(keys, ' ;; '.join(commands), mode=mode)
 
 
-@register_config_helper
+@Setup.register()
 def setup_binds() -> None:
     c.bindings.commands = {}  # Clears all previously set user bindings.
 
@@ -574,7 +573,7 @@ def dict_attrs(
         yield path, obj
 
 
-@register_config_helper
+@Setup.register()
 def setup_config_from_yaml() -> None:
     with (config.configdir / 'config.yml').open() as f:
         yaml_data = yaml.load(f)
@@ -583,5 +582,5 @@ def setup_config_from_yaml() -> None:
         config.set(k, v)
 
 
-# Call all config helpers.
-configure_qutebrowser()
+# Call all setup functions.
+Setup.run_all()
