@@ -10,12 +10,14 @@ shouldShowToolBarComingFromFullScreen=false
 [MainWindow]
 Height 1080=1008
 Height 1920=1868
+Height 2160=2084
 Height 900=848
-State=AAAA/wAAAAD9AAAAAAAAB3YAAAPYAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAADvIAAAgMAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 Width 1080=1070
 Width 1600=1590
 Width 1920=1910
+Width 3840=3826
 
 [Print Preview]
 Height 1080=490
@@ -23,6 +25,7 @@ Width 1920=590
 
 [Recent Files]
 File1[$e]=$HOME/Sync/var/study/Statistics/HW5/hw5.pdf
+File10[$e]=$HOME/Downloads/Edgestream Employee Handbook April 2020.pdf
 File2[$e]=$HOME/Sync/var/notes/Rocketbook/Statistics/My_Statistics_Notes.pdf
 File3[$e]=$HOME/projects/CV/BryanBugyi_CV.pdf
 File4[$e]=$HOME/Sync/var/books/Programming/Operating_Systems/Operating_System_Concepts-(Silberschatz).pdf
@@ -30,8 +33,9 @@ File5[$e]=$HOME/Sync/var/books/Math/Combinatorics/A_First_Course_in_Graph_Theory
 File6[$e]=$HOME/Sync/var/study/Compilers/hw6_instructions.pdf
 File7[$e]=$HOME/Sync/var/books/Programming/Philosophy/The_Mythical_Man_Month-(Brooks).pdf
 File8[$e]=$HOME/Sync/var/books/Programming/Philosophy/The_Pragmatic_Programmer-(Hunt).pdf
-File9[$e]=$HOME/Downloads/112-7495364-7647454.pdf
+File9[$e]=$HOME/Sync/var/books/Programming/Python/Web Scraping with Python - Ryan Mitchell.pdf
 Name1[$e]=hw5.pdf
+Name10[$e]=Edgestream Employee Handbook April 2020.pdf
 Name2[$e]=My_Statistics_Notes.pdf
 Name3[$e]=BryanBugyi_CV.pdf
 Name4[$e]=Operating_System_Concepts-(Silberschatz).pdf
@@ -39,7 +43,7 @@ Name5[$e]=A_First_Course_in_Graph_Theory-(Zhang).pdf
 Name6[$e]=hw6_instructions.pdf
 Name7[$e]=The_Mythical_Man_Month-(Brooks).pdf
 Name8[$e]=The_Pragmatic_Programmer-(Hunt).pdf
-Name9[$e]=112-7495364-7647454.pdf
+Name9[$e]=Web Scraping with Python - Ryan Mitchell.pdf
 
 [Shortcut Schemes]
 Current Scheme=VimBindings

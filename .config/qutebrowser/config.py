@@ -1,7 +1,8 @@
 """Qutebrowser Configuration"""
 
-import functools
+from functools import partial, wraps
 import os
+from pathlib import Path
 import platform
 import re
 from typing import Callable, Dict, Generator, List, Tuple, Union
@@ -9,6 +10,7 @@ from typing import Callable, Dict, Generator, List, Tuple, Union
 import searchengines as SE
 import searchengines.utils as utils
 import yaml
+
 
 os.environ['PATH'] = '{0}/.local/bin:/usr/local/bin:{1}'.format(
     os.environ['HOME'], os.environ['PATH']
@@ -19,7 +21,7 @@ c = c  # type: ignore  # noqa: F821  # pylint: disable=undefined-variable,self-a
 config = config  # type: ignore  # noqa: F821  # pylint: disable=undefined-variable,self-assigning-variable
 
 # Load autoconfig.yml
-config.load_autoconfig()  # type: ignore
+# config.load_autoconfig()  # type: ignore
 
 
 # Custom Types
@@ -33,8 +35,8 @@ def is_macos() -> bool:
     return 'Darwin' in platform.version()
 
 
-class Setup:
-    """Master Setup Class
+class smaster:
+    """Setup Master Class
 
     All setup functions MUST register with this class or they will not be
     called.
@@ -44,19 +46,24 @@ class Setup:
     __SETUP_FUNC_REGISTRY: List[SetupFunc] = []
 
     @classmethod
-    def register(cls, debug: bool = False) -> Callable[[SetupFunc], SetupFunc]:
-        def _register(setup_func: SetupFunc) -> SetupFunc:
-            def wrapped_setup_func() -> None:
-                if debug:
-                    import pudb
+    def register(
+        cls, setup_func: SetupFunc = None, *, debug: bool = False
+    ) -> Callable:
+        if setup_func is None:
+            return partial(cls.register, debug=debug)
 
-                    pudb.set_trace()
-                return setup_func()
+        @wraps(setup_func)
+        def wrapped_setup_func() -> None:
+            if debug:
+                import pudb
 
-            cls.__SETUP_FUNC_REGISTRY.append(wrapped_setup_func)
-            return setup_func
+                pudb.set_trace()
 
-        return _register
+            assert setup_func is not None
+            return setup_func()
+
+        cls.__SETUP_FUNC_REGISTRY.append(wrapped_setup_func)
+        return wrapped_setup_func
 
     @classmethod
     def run_all(cls) -> None:
@@ -67,7 +74,7 @@ class Setup:
 #####################################################################
 #  Search Aliases                                                   #
 #####################################################################
-@Setup.register()
+@smaster.register
 def setup_search_aliases() -> None:
     # These aliases will be substituted with their definitions when found
     # anywhere in the query of an ':open' command.
@@ -79,6 +86,7 @@ def setup_search_aliases() -> None:
         'cs': 'Computer Science',
         'de': 'Debian',
         'fcl': 'from the command-line',
+        'fn': 'Fortnite',
         'ge': 'Gentoo',
         'gh': 'GitHub',
         'gl': 'GitLab',
@@ -143,18 +151,12 @@ def bang_pttrn() -> str:
     return bang_fmt.format('|'.join(all_bangs))
 
 
-@Setup.register()
+@smaster.register
 def setup_search_engines() -> None:
     searchengines = {
-        '2': (
-            'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}'
-        ),
-        '3': (
-            'https://www.google.com/maps/dir/902+Carnegie+Center,+Princeton,+NJ+08540/{}'
-        ),
-        'A': (
-            'https://www.amazon.com/gp/your-account/order-history/search?&search={}'
-        ),
+        '2': 'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}',
+        '3': 'https://www.google.com/maps/dir/902+Carnegie+Center,+Princeton,+NJ+08540/{}',
+        'A': 'https://www.amazon.com/gp/your-account/order-history/search?&search={}',
         'b': SE.static.stackoverflow(10, prefix='Bash'),
         'bmo': SE.SearchEngine(
             SE.static.google('best movies of 20{}'),
@@ -193,9 +195,7 @@ def setup_search_engines() -> None:
         'ew': 'https://www.edgestreamlp.com/{}',
         'ews': 'https://edgestream-staging.herokuapp.com/{}',
         'g4g': SE.static.site('www.geeksforgeeks.org'),
-        'geb': (
-            'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific'
-        ),
+        'geb': 'https://bugs.gentoo.org/buglist.cgi?bug_status=__open__&content={}&list_id=4089892&order=Importance&query_format=specific',
         'gep': SE.SearchEngine(
             SE.static.site('packages.gentoo.org', 'gpo.zugaina.org'),
             SE.LuckyURL('{} site:packages.gentoo.org'),
@@ -253,6 +253,7 @@ def setup_search_engines() -> None:
         'ma': SE.static.site(
             'math.stackexchange.com', 'tex.stackexchange.com'
         ),
+        'ne': 'https://www.newegg.com/p/pl?d={}',
         'p': SE.static.stackoverflow(7, prefix='Python'),
         'pyl': 'https://docs.python.org/3/library/{}',
         'pypi': 'https://pypi.org/project/{}',
@@ -261,9 +262,7 @@ def setup_search_engines() -> None:
         'rlp': 'https://rocketleague.tracker.network/profile/ps/{}',
         'rpy': 'https://realpython.com/search?q={}',
         's0': SE.static.site('stackoverflow.com'),
-        'shr': (
-            'https://shop.shoprite.com/store/1627666/search?displayType=&query={}&recipe=0&sponsored=5'
-        ),
+        'shr': 'https://shop.shoprite.com/store/1627666/search?displayType=&query={}&recipe=0&sponsored=5',
         'st': SE.static.google('set timer for {}'),
         'sub': SE.SearchEngine(
             SE.static.google('{} inurl:english site:subscene.com'),
@@ -309,7 +308,7 @@ def setup_search_engines() -> None:
 #####################################################################
 #  Command Aliases                                                  #
 #####################################################################
-@Setup.register()
+@smaster.register
 def setup_cmd_aliases() -> None:
     command_aliases = {
         'libget': 'jseval -q document.querySelector("h2").click()',
@@ -319,6 +318,7 @@ def setup_cmd_aliases() -> None:
         ),
         'P': "spawn -v pockyt-add {url}",
         'rss': 'spawn --userscript openfeeds',
+        'set-edgelp-proxy': 'set content.proxy socks://localhost:8080',
         'Tsub': 'spawn --userscript Tsub',
         'vs': 'open -w',
         'wt': 'spawn wtitle',
@@ -337,7 +337,7 @@ def bind(keys: str, *commands: str, mode: str = 'normal') -> None:
     config.bind(keys, ' ;; '.join(commands), mode=mode)
 
 
-@Setup.register()
+@smaster.register
 def setup_binds() -> None:
     c.bindings.commands = {}  # Clears all previously set user bindings.
 
@@ -370,10 +370,10 @@ def setup_binds() -> None:
     ########## Binds
 
     # bind functions for different modes
-    cbind = functools.partial(bind, mode='command')
-    ibind = functools.partial(bind, mode='insert')
-    pbind = functools.partial(bind, mode='prompt')
-    ptbind = functools.partial(bind, mode='passthrough')
+    cbind = partial(bind, mode='command')
+    ibind = partial(bind, mode='insert')
+    pbind = partial(bind, mode='prompt')
+    ptbind = partial(bind, mode='passthrough')
 
     # >>>>>>> COMMAND
     cbind("<Alt-j>", 'spawn --userscript add_quotes 1')
@@ -573,9 +573,9 @@ def dict_attrs(
         yield path, obj
 
 
-@Setup.register()
+@smaster.register
 def setup_config_from_yaml() -> None:
-    with (config.configdir / 'config.yml').open() as f:
+    with (Path(__file__).parent.absolute() / 'config.yml').open() as f:
         yaml_data = yaml.load(f)
 
     for k, v in dict_attrs(yaml_data):
@@ -583,4 +583,4 @@ def setup_config_from_yaml() -> None:
 
 
 # Call all setup functions.
-Setup.run_all()
+smaster.run_all()

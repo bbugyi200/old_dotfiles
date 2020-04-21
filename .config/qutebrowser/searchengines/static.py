@@ -62,7 +62,11 @@ def duckduckgo(query: str) -> 'SE.SearchEngine':
 def _n_years_ago(n: int) -> dt.date:
     """Return a datetime N years ago."""
     today = dt.date.today()
-    return today.replace(year=(today.year - n))
+    # So qutebrowser doesn't fail to start once every 1461 days ;).
+    if today.month == 2 and today.day == 29:
+        return today.replace(year=(today.year - n), day=28)
+    else:
+        return today.replace(year=(today.year - n))
 
 
 def _validate_prefix(prefix: str = None) -> str:

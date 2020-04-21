@@ -17,7 +17,7 @@ alias eq='equery'
 alias eup='sudo emerge --ask --update --deep --newuse @world'
 alias ewdups='comm -12 <(sudo cat /etc/portage/sets/shared) <(sudo cat /var/lib/portage/world) 2> /dev/null'
 alias get='sudo_get'
-alias pg='equery list "*" | grep -i'
+alias pg='equery list "*" 2> /dev/null | grep -i'
 pwg() { ag "$@" /etc/portage/sets; }
 alias rc-service='sudo /sbin/rc-service'
 alias rc-update='sudo /sbin/rc-update'
@@ -26,7 +26,7 @@ alias rstwifi='sudo rc-service net.wlo1 restart; sudo dhcpcd'
 alias shutdown='epcsync -q && sudo shutdown -h now'
 vblog() { vim "$(sudo find /var/tmp/portage -type f -regex ".*$1.*/build\.log")"; }
 alias velog='vim /var/log/emerge.log'
-alias vg='vgp /etc/portage/make.{conf,shared}'
+alias vg='vgp /etc/portage/make.conf'
 alias vgmanage='vim ~/Sync/bin/gentoo/{emanage,eupdate,ecleanup,emaint_check}'
 alias vgmk='sudo -E vim /etc/portage/make.conf /etc/portage/make.shared'
 vgp() { sudo -E vim "$@" /etc/portage/package.{accept_keywords,use,env,mask,unmask} /etc/portage/make.{conf,shared} /etc/portage/env/*; }

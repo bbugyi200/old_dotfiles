@@ -1,0 +1,24 @@
+# ~/.config/tmuxinator/Top.yml
+
+root: <%= @settings['root'] %>
+name: Top
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - main:
+        layout: b2d7,383x109,0,0{191x109,0,0,8,191x109,192,0[191x66,192,0,9,191x42,192,67,10]}
+        panes:
+            - 0:
+                - sudo htop
+            - 1:
+                - sudo gtop
+            - 2:
+                - sudo radeontop
+    - atop:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - sudo atop -r

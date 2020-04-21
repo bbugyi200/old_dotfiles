@@ -1,0 +1,23 @@
+# ~/.config/tmuxinator/Top.yml
+
+root: <%= @settings['root'] %>
+name: Top
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - main:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - sudo htop
+            - 1:
+                - tmux select-pane -t 0.1 && tmux splitw -p25 sudo radeontop && tmux select-pane -t 0.0
+                - sleep 1 && sudo gtop
+    - atop:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - sudo atop -r

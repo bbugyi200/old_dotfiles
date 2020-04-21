@@ -1,32 +1,34 @@
-# ~/.config/tmuxinator/Terminal`.yml
+# ~/.config/tmuxinator/ese.yml
 
 root: <%= @settings['root'] %>
-name: Terminal`
-socket_name: top
+name: ese
 
+on_project_start:
 on_project_stop:
+pre_window:
 
 windows:
-    - main:
-        root: ~/
+    - I:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - bin:
-        root: ~/Sync/bin
+    - II:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - home:
-        root: ~/Sync/home
+    - III:
         layout: even-horizontal
         panes:
             - 0:
                 - ll
-    - projects:
-        root: ~/projects
+    - IV:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll
+    - V:
         layout: even-horizontal
         panes:
             - 0:

@@ -15,7 +15,21 @@ prompt_setup_pygmalion(){
   ZSH_THEME_GIT_PROMPT_CLEAN=""
 
   exit_status='%(?..%{$fg[red]%}[%?] %{$reset_color%})'
-  base_prompt='%{$fg[magenta]%}%n%{$reset_color%}%{$fg[cyan]%}@%{$reset_color%}%{$fg[yellow]%}%m%{$reset_color%}%{$fg[red]%}:%{$reset_color%}%{$fg[cyan]%}%0~%{$reset_color%}%{$fg[red]%}|%{$reset_color%}'
+
+  real_user="$(whoami)"
+  if [[ "${real_user}" == "root" ]]; then
+      user="%B"
+      user+='%{$fg[red]%}'
+      user+="ROOT"
+  else
+      user='%{$fg[magenta]%}'
+      user+="${real_user}"
+  fi
+
+  base_prompt=""
+  base_prompt+="${user}"
+  base_prompt+='%{$reset_color%}%{$fg[cyan]%}@%{$reset_color%}%{$fg[yellow]%}%m%{$reset_color%}%{$fg[red]%}:%{$reset_color%}%{$fg[cyan]%}%0~%{$reset_color%}%{$fg[red]%}|%{$reset_color%}'
+
   post_prompt='%{$fg[cyan]%}⇒%{$reset_color%}  '
 
   base_prompt_nocolor=$(echo "$base_prompt" | perl -pe "s/%\{[^}]+\}//g")
@@ -40,7 +54,7 @@ prompt_pygmalion_precmd(){
 
   if [[ $prompt_length -gt 40 ]]; then
     nl=$'\n%{\r%}';
-    PROMPT="$base_prompt$gitinfo $ssh_prompt$venv_prompt$exit_status$nl$post_prompt"
+    PROMPT="$ssh_prompt$base_prompt$gitinfo $venv_prompt$exit_status$nl$post_prompt"
   else
     PROMPT="$exit_status$venv_prompt$ssh_prompt$base_prompt$gitinfo$nl$post_prompt"
   fi

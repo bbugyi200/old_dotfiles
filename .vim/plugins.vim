@@ -5,6 +5,8 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'mhinz/vim-startify'
+Plugin 'chrisbra/csv.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'apeschel/vim-syntax-syslog-ng'
 Plugin 'benmills/vimux'
@@ -47,6 +49,7 @@ Plugin 'vim-scripts/cecutil'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'vimwiki/vimwiki'  " Required by: taskwiki
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'Konfekt/FastFold'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -92,7 +95,7 @@ if PluginInstalled("ale")
     let g:ale_python_pylint_options = get(g:, "ale_python_pylint_options", "--rcfile=~/.config/pylintrc")
     let g:ale_python_black_options = get(g:, "ale_python_black_options", "--line-length=79 --skip-string-normalization")
 
-    let g:ale_fix_on_save = get(g:, "ale_fix_on_save", 1)
+    let g:ale_fix_on_save = get(g:, "ale_fix_on_save", 0)
 endif
 
 """""""""""
@@ -244,6 +247,15 @@ if PluginInstalled("easytags")
 endif
 
 """"""""""""
+" FastFold "
+""""""""""""
+if PluginInstalled("FastFold")
+    let g:fastfold_savehook = 1
+    let g:fastfold_fold_command_suffixes =  ['x','X']
+    let g:fastfold_fold_movement_commands = []
+endif
+
+""""""""""""
 " Fugitive "
 """"""""""""
 if PluginInstalled("vim-fugitive")
@@ -317,7 +329,7 @@ EOF
     
     let g:jedi#completions_command = "<C-o>"
     let g:jedi#goto_assignments_command = ""
-    let g:jedi#goto_command = "<C-]>"
+    let g:jedi#goto_command = ""
     let g:jedi#goto_stubs_command = ""
     let g:jedi#popup_select_first = 0
     let g:jedi#rename_command = ""
@@ -384,6 +396,13 @@ endif
 """""""""""""""
 if PluginInstalled("vim-colors-solarized")
     colorscheme solarized
+endif
+
+""""""""""""""
+"  Startify  "
+""""""""""""""
+if PluginInstalled("vim-startify")
+    let g:startify_change_to_dir = 0
 endif
 
 """""""""""""""

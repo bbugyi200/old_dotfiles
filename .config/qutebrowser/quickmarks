@@ -14,6 +14,7 @@ dd http://192.168.1.1/
 D http://localhost:8112/
 dvd https://www.rottentomatoes.com/browse/top-dvd-streaming?minTomato=0&maxTomato=100&services=amazon;hbo_go;itunes;netflix_iw;vudu;amazon_prime;fandango_now&genres=1;2;4;5;6;8;9;10;11;13;18;14&sortBy=popularity
 ebw https://gitlab.pr.edgelp.net/edgelp/website/boards
+ecov http://gitlab-ci.pr.edgelp.net:8080/
 eda http://web-prod.pr.edgelp.net:22051/
 edap https://web-prod.pr.edgelp.net:1040/rec/
 edb http://web-prod.pr.edgelp.net:22052/
@@ -39,7 +40,7 @@ eiprod https://gitlab.pr.edgelp.net/edgelp/prod/issues?scope=all&utf8=%E2%9C%93&
 eistag https://gitlab.pr.edgelp.net/edgelp/prod/issues?scope=all&utf8=%E2%9C%93&state=all&assignee_username[]=bbugyi&label_name[]=Status%3A%3ADone%5BStaging%5D
 eiw https://gitlab.pr.edgelp.net/edgelp/website/issues
 empb https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests?scope=all&utf8=%E2%9C%93&state=opened&assignee_username=bbugyi
-emp https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests
+emp https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests?scope=all&utf8=%E2%9C%93&state=all
 empl https://gitlab.pr.edgelp.net/edgelp/plat/merge_requests
 empr https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests?scope=all&utf8=%E2%9C%93&state=opened&wip=no&approver_usernames[]=bbugyi
 emr https://gitlab.pr.edgelp.net/dashboard/merge_requests?assignee_username=bbugyi&nav_source=navbar
@@ -78,6 +79,7 @@ GSC https://search.google.com/search-console?resource_id=https%3A%2F%2Fbryanbugy
 HN https://news.ycombinator.com/
 HNN https://news.ycombinator.com/newest
 ieee https://www.computer.org/csdl/magazine/so
+last https://superuser.com/questions/185773/does-windows-7-support-utc-as-bios-time
 lh http://127.0.0.1:8000/
 L https://lobste.rs/
 LICC https://www.linkedin.com/search/results/people/?facetCurrentCompany=%5B%221703%22%5D&facetNetwork=%5B%22S%22%5D&facetPastCompany=%5B%221703%22%5D&keywords=Software%20Engineer&origin=FACETED_SEARCH
@@ -115,6 +117,7 @@ sgg https://sakai.rutgers.edu/portal/site/d3351d47-4b13-4d25-9089-9432a77ddf25/t
 sg https://sakai.rutgers.edu/portal/site/d3351d47-4b13-4d25-9089-9432a77ddf25/tool/db468e7d-9967-4409-8098-c63ccd702844
 sgo https://sakai.rutgers.edu/portal/site/914cd0d6-79fc-4f54-8682-8077228e3e13/tool/7b3ef068-286b-4c2a-94c2-a2d580127663/wicket/bookmarkable/org.sakaiproject.gradebookng.tool.pages.StudentPage
 sgs https://sakai.rutgers.edu/portal/site/2899986c-d020-4ded-abab-5b91199d9ec7/tool/915e9d98-c675-4242-af58-7281925396e1/wicket/bookmarkable/org.sakaiproject.gradebookng.tool.pages.StudentPage
+shrug https://blog.hubspot.com/marketing/shrug-emoji
 S https://www.surfline.com/surf-forecasts/new-jersey/58581a836630e24c44878fda
 so https://sakai.rutgers.edu/portal/site/914cd0d6-79fc-4f54-8682-8077228e3e13/page/0b5b1dcc-99bf-4b45-877d-b22a1cc10673
 spc https://sakai.rutgers.edu/portal/site/1e1a60a9-d88c-493e-ad37-b3d6ead86fb9/page/2f15b666-5962-4f21-b46d-c133dcfea5b6
@@ -135,4 +138,3 @@ W https://www.google.com/search?q=weather
 Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
-ecov http://gitlab-ci.pr.edgelp.net:8080/

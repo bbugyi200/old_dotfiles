@@ -2,17 +2,19 @@
 
 {% INSERT %}
 
-import argparse
 import sys
-from typing import List
+from typing import NamedTuple, Sequence
 
 from loguru import logger as log  # pylint: disable=unused-import
 
 import gutils
 
 
+Arguments = NamedTuple("Arguments", [("debug", bool), ("verbose", bool)])
+
+
 @gutils.catch
-def main(argv: List[str] = None) -> int:
+def main(argv: Sequence[str] = None) -> int:
     if argv is None:
         argv = sys.argv
 
@@ -22,9 +24,12 @@ def main(argv: List[str] = None) -> int:
     return 0
 
 
-def parse_cli_args(argv: List[str]) -> argparse.Namespace:
+def parse_cli_args(argv: Sequence[str]) -> Arguments:
     parser = gutils.ArgumentParser()
-    return parser.parse_args(argv[1:])
+
+    args = parser.parse_args(argv[1:])
+
+    return Arguments(**dict(args._get_kwargs()))
 
 
 if __name__ == "__main__":

@@ -33,7 +33,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 #  Disable Aliases / Builtins  #
 ################################
 # Disable aliases
-bad_aliases=("ll" "gcl" "gca" "gco" "gd" "gg" "glg" "gpu" "gra" "gsta" "gwip")
+bad_aliases=("ll" "gcl" "gca" "gcm" "gco" "gd" "gg" "glg" "gpu" "gra" "gsta" "gwip")
 for i in "${bad_aliases[@]}"; do
     unalias "$i" &> /dev/null
 done
@@ -84,8 +84,8 @@ source_if_exists "$HOME"/.fzf.zsh
 ##############
 #  Settings  #
 ##############
-setopt null_glob  # disables errors when GLOB pattern does not match
 setopt globdots
+setopt null_glob  # disables errors when GLOB pattern does not match
 
 #################
 #  ZSH Aliases  #

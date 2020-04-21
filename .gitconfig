@@ -21,7 +21,7 @@
 [pager]
 	branch = false
 [mergetool "fugitive"]
-	cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
+	cmd = vim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 [user]
 	email = bryanbugyi34@gmail.com
 	name = Bryan Bugyi

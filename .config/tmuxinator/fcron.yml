@@ -12,7 +12,7 @@ windows:
         layout: even-horizontal
         panes:
             - 0:
-                - while true; do; clear && crontab -e && sleep 1; done
+                - while true; do; clear && sudo -E crontab -e -u bryan && sleep 1; done
     - root:
         layout: even-horizontal
         panes:

@@ -92,7 +92,7 @@ alias vmutt='vim $HOME/.mutt/muttrc'
 # ---------- Vim Wrapper Aliases / Functions ----------
 # def marker: VIM
 alias daf='def -a'
-def() { zim "def" "$@" "$HOME/Sync/home/.zshrc" "$HOME/Sync/home/.config/aliases.sh" "$HOME/Sync/home/.config/debian.sh" "$HOME/Sync/home/.config/gentoo.sh" "$HOME/Sync/home/.config/macos.sh"; }
+def() { zim "def" "$@" "-F" "$HOME/Sync/home/.zshrc" "-F" "$HOME/Sync/home/.config/aliases.sh" "-F" "$HOME/Sync/home/.config/debian.sh" "-F" "$HOME/Sync/home/.config/gentoo.sh" "-F" "$HOME/Sync/home/.config/macos.sh"; }
 him() { vim ~/"$1"; }
 lim() { vim -c "normal '0" -c 'bd1'; }
 mim() { zim "mim" "$@"; }
@@ -149,13 +149,13 @@ alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
 alias crun='cargo run --'
 cval() { pushd "$1" &> /dev/null || return 1 && eval "$2"; popd &> /dev/null || return 1; }
+alias d='mkdvtm'
 alias d.='desk .'
 alias dayplan='cd $HOME/Sync/var/notes && vim dayplan.txt'
 dc() { sudo -E deluge-console "${@}"; }
 dci() { dc info --sort=time_added | awk -F ':' "{if(\$1==\"$1\")print \$0}"; }
 alias ddef='def -m DEBIAN'
 alias ddwrt-logs='sim /var/log/syslog-ddwrt'
-alias deff='def -f'
 alias del_swps='find . -name "*.swp" -delete -print'
 alias delshots='confirm "find $HOME/Sync/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias df='df -h'
@@ -166,11 +166,13 @@ diff() { colordiff -wy -W "$(tput cols)" "$@" | less -R; }
 alias dst='dropbox-cli status'
 alias dstart='dropbox-cli start'
 alias dstop='dropbox-cli stop'
-alias du='ncdu --color dark'
+alias du='sudo ncdu --color dark'
 alias dunst='killall dunst &> /dev/null; dunst'
 alias edsl='printf "$(hostname):%d,%d\n%s,%d" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
 alias epuse='sudo -E epuse'
-essh() { ssh "$@" -t 'cd ~/src/prod; source ~/bin/psource.sh; PATH=/prod/home/bbugyi/bin:$PATH psource .environ; cd; /bin/zsh'; }
+_essh() { printf 'cd ~/src/prod; source ~/bin/psource.sh; PATH=/prod/home/bbugyi/bin:$PATH psource .environ; cd %s; /bin/zsh' "$1"; }
+essh() { ssh "$1" -t "$(_essh "$2")"; }
+esssh() { essh "$1" /prod/home/bbugyi/src/prod; }
 fim() { file="$("$(which -a fim | tail -n 1)" "$1")"; if [[ -z "${file}" ]]; then return 1; else vim "${file}"; fi; }
 alias flaggie='sudo -i flaggie'
 fn_() { if [[ "$1" == *"*"* ]]; then find . -iname "$@"; else find . -iname "*$**"; fi; }
@@ -191,7 +193,7 @@ gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
 alias gclp='cd ~/projects && gcl'
 alias gclt='cd /tmp && gcl'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
-alias gcm='git checkout master'
+gcm() { git checkout "${MASTER_BRANCH:-master}"; }
 alias Gdef='def -m GTD'
 alias gdef='def -m GENTOO'
 gdm() { git diff "${MASTER_BRANCH:-master}"...HEAD; }
@@ -249,7 +251,6 @@ K() { tmux switchc -n && tmux kill-session -t "$(tm-session-name)"; }
 alias k9='sudo kill -9'
 alias kman='man -k'
 Kman() { man -wK "$@" | awk -F'/' '{print $NF}' | sed 's/\.\(.*\)\.bz2$/ (\1)/g' | sort; }
-alias lay='sudo layman'
 alias Loc='sudo updatedb && loc'
 alias loc='${LOCATE} --regex'
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
@@ -260,6 +261,7 @@ alias matlab='matlab -nojvm -nodisplay -nosplash'
 alias mirror='xrandr --output DVI-I-1-1 --auto --same-as LVDS1'
 mkcd() { mkdir -p "$1" && cd "$1" || return 1; }
 alias mkdir='mkdir'
+alias mkgrub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias mkpkg='makepkg -si'
 alias mpvlc='xspawn -w mpv mpvlc'
 alias mrun='macrun'

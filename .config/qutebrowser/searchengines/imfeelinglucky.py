@@ -5,11 +5,22 @@
 ##########################################################
 
 import argparse
+import os
+from os.path import join
 import re
 import sys
 
 import searchengines.utils as utils
 
+
+if sys.platform == "darwin":
+    PY_TOP_DIR = "/usr/local/Cellar/python"
+    PY3_VERSION_SUBDIR = sorted(os.listdir(PY_TOP_DIR))[-1]
+    PY3_LIB_DIR = join(
+        PY_TOP_DIR,
+        PY3_VERSION_SUBDIR,
+        "Frameworks/Python.framework/Versions/3.7/lib/python3.7",
+    )
 
 USER_AGENT = {
     'User-Agent': (
@@ -24,8 +35,7 @@ def get_top_link(query: str) -> str:
         import importlib.util  # pylint: disable=import-outside-toplevel
 
         spec = importlib.util.spec_from_file_location(
-            "http.cookies",
-            "/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/cookies.py",
+            "http.cookies", join(PY3_LIB_DIR, "http/cookies.py"),
         )
         cookies = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cookies)
@@ -53,9 +63,7 @@ def get_top_link(query: str) -> str:
 
 def _fetch_results(query: str) -> str:
     if sys.platform == "darwin":
-        sys.path.append(
-            "/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7"
-        )
+        sys.path.append(PY3_LIB_DIR)
 
     # dynamic import needed to work around weird qutebrowser bug with
     # 'cryptography' module

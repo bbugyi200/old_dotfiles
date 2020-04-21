@@ -1,0 +1,20 @@
+# ~/.config/tmuxinator/top`.yml
+
+root: <%= @settings['root'] %>
+name: top`
+socket_name: top
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - TOP:
+        layout: d2b0,383x109,0,0{191x109,0,0,11,191x109,192,0[191x54,192,0,14,191x54,192,55,15]}
+        panes:
+            - 0:
+                - sudo htop
+            - 1:
+                - sudo gtop
+            - 2:
+                - sudo radeontop

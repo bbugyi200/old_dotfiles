@@ -219,7 +219,6 @@ https://www.draw.io/ draw.io
 https://secretgeek.github.io/devShop/ DevShop
 https://stackoverflow.blog/2019/11/14/why-is-the-migration-to-python-3-taking-so-long/ READ: Why is the Migration to Python 3 Taking So Long? - Stack Overflow Blog
 https://github.com/dry-python/returns#result-container READ: dry-python/returns: Make your functions return something meaningful, typed, and safe!
-https://realpython.com/python-descriptors/ READ: Python Descriptors: An Introduction – Real Python
 https://dev.gentoo.org/~mgorny/articles/the-ultimate-guide-to-eapi-7.html The ultimate guide to EAPI 7
 https://news.ycombinator.com/item?id=21900498 READ: Ask HN: Best books you read in the past decade? | Hacker News
 https://hbr.org/2019/12/what-happens-when-your-career-becomes-your-whole-identity READ: What Happens When Your Career Becomes Your Whole Identity
@@ -235,3 +234,21 @@ https://www.python.org/dev/peps/pep-0316/#rationale READ: PEP 316 -- Programming
 https://bytes.yingw787.com/posts/2020/01/30/a_review_of_haskell/ READ: A Pythonista's Review of Haskell > Ying Wang
 https://sanctum.geek.nz/arabesque/series/unix-as-ide/ READ: Series: Unix as IDE « Arabesque
 http://joeduffyblog.com/2016/02/07/the-error-model/ READ: Joe Duffy - The Error Model
+https://rushter.com/blog/python-garbage-collector/ READ: Garbage collection in Python: things you need to know | Artem Golubin
+https://medium.com/@amannagpal4/how-to-create-your-own-decentralized-file-sharing-service-using-python-2e00005bdc4a READ: How to create your own decentralized file sharing service using python
+https://www.worldometers.info/coronavirus/country/us/ United States Coronavirus: 1,109 Cases and 31 Deaths - Worldometer
+https://www.google.com/search?q=coronavirus%20news coronavirus news - Google Search
+https://www.worldometers.info/coronavirus/coronavirus-cases/ Coronavirus Cases: Statistics and Charts - Worldometer
+https://github.com/psf/black/pull/1132 Improve String Handling by bbugyi200 · Pull Request #1132 · psf/black
+https://www.worldometers.info/coronavirus/ Coronavirus Update (Live): 194,735 Cases and 7,896 Deaths from COVID-19 Virus Outbreak - Worldometer
+https://www.typingtest.com/result.html?acc=98&nwpm=66&gwpm=67&ncpm=330&gcpm=335&dur=60&time=60&chksum=32353&unit=wpm&kh=998&td=null&err=1&hits=335&textfile=enchanted.txt TypingTest.com - View Your Typing Test Results
+https://realpython.com/build-python-c-extension-module/ READ: Building a Python C Extension Module – Real Python
+https://www.asus.com/us/Motherboards/Prime-TRX40-Pro/ Prime TRX40-Pro | Motherboards | ASUS USA
+https://www.wepc.com/tips/ram-speed/ READ: What You Need to Know about RAM Speeds - Is Faster RAM Worth It?
+https://wiki.gentoo.org/wiki/QEMU QEMU - Gentoo Wiki
+https://wiki.gentoo.org/wiki/GPU_passthrough_with_libvirt_qemu_kvm#Qemu GPU passthrough with libvirt qemu kvm - Gentoo Wiki
+https://linuxconfig.org/how-to-create-and-manage-kvm-virtual-machines-from-cli READ: How to create and manage KVM virtual machines from CLI - LinuxConfig.org
+https://github.com/NVIDIA/deepops/blob/master/virtual/README.md#enabling-virtualization-and-gpu-passthrough deepops/README.md at master · NVIDIA/deepops
+https://forum.giga-byte.co.uk/index.php/topic,2441.msg89013.html#msg89013 How Do I Update My BIOS?
+https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF PCI passthrough via OVMF - ArchWiki
+https://wiki.installgentoo.com/index.php/PCI_passthrough#Step_0:_Compile_IOMMU_support_if_you_use_Gentoo PCI passthrough - InstallGentoo Wiki
