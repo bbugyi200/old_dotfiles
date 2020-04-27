@@ -5,6 +5,9 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'airblade/vim-gitgutter'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'vim-scripts/taglist.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'chrisbra/csv.vim'
 Plugin 'ap/vim-buftabline'
@@ -29,7 +32,6 @@ Plugin 'manicmaniac/coconut.vim'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'pboettch/vim-cmake-syntax'
 Plugin 'racer-rust/vim-racer'
-Plugin 'Raimondi/delimitMate'
 Plugin 'Rip-Rip/clang_complete'  " Depends on external package: clang
 Plugin 'rust-lang/rust.vim'
 Plugin 'Shougo/neoinclude.vim'
@@ -275,6 +277,48 @@ if PluginInstalled("fzf.vim")
       \ 'ctrl-e': 'vsplit' }
 endif
 
+"""""""""""""
+" GitGutter "
+"""""""""""""
+if PluginInstalled("vim-gitgutter")
+    " autocmd BufWritePost * GitGutter
+    let g:gitgutter_map_keys = 0
+
+    function! GitGutterStatus()
+        let [a, m, r] = GitGutterGetHunkSummary()
+        if (a + m + r > 0)
+            return printf(":+%d:~%d:-%d", a, m, r)
+        else
+            return ""
+        endif
+    endfunction
+
+    function! GitGutterNextHunkCycle()
+      let line = line('.')
+      silent! GitGutterNextHunk
+      if line('.') == line
+        1
+        GitGutterNextHunk
+      endif
+    endfunction
+
+    function! GitGutterPrevHunkCycle()
+      let line = line('.')
+      silent! GitGutterPrevHunk
+      if line('.') == line
+        10000
+        GitGutterPrevHunk
+      endif
+    endfunction
+
+    nmap ]h :call GitGutterNextHunkCycle()<CR>
+    nmap [h :call GitGutterPrevHunkCycle()<CR>
+else
+    function! GitGutterStatus()
+        return ""
+    endfunction
+endif
+
 """"""""""""""""
 "  Haskell-vim "
 """"""""""""""""
@@ -443,6 +487,16 @@ if PluginInstalled("syntastic")
     " Enables Syntastic to work with Java
     " let g:syntastic_java_checker = 'javac'
     let g:syntastic_java_javac_classpath=fnamemodify(getcwd(), ':h')."/bin:".getcwd()
+endif
+
+"""""""""""
+" Taglist "
+"""""""""""
+if PluginInstalled("taglist.vim")
+    let g:Tlist_Exit_OnlyWindow = 1
+    let g:Tlist_GainFocus_On_ToggleOpen = 1
+    let g:Tlist_WinWidth = 50
+    let g:Tlist_Close_On_Select = 1
 endif
 
 """""""""""""""""

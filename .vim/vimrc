@@ -2,9 +2,13 @@
 " 'nocompatible' must be set first because it overwrites some other settings.
 set nocompatible
 
-function! StatuslineGit()
+function! GitBranchStatus()
   let l:branchname = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-  return strlen(l:branchname) > 0?'  ('.l:branchname.')  ':''
+  if strlen(l:branchname) > 0
+      return printf("(%s)    ", l:branchname)
+  else
+      return ""
+  endif
 endfunction
 
 set autoindent
@@ -40,7 +44,7 @@ set shiftwidth=4
 set smartcase
 set relativenumber
 set rtp+=~/.fzf
-let &statusline = "%{StatuslineGit()} %f %m %= Lines: %l/%L | Columns: %c/%{strwidth(getline('.'))} | %y"
+let &statusline = "%{GitBranchStatus()} %f%{GitGutterStatus()} %m %= Lines: %l/%L | Columns: %c/%{strwidth(getline('.'))} | %y"
 set tabstop=4
 set tags^=./.git/tags,.tags,./.tags;
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
@@ -391,6 +395,7 @@ nnoremap <silent> <Right> :vert resize -5<CR>
 nnoremap <Space> :ls<CR>
 nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
 nnoremap <silent> <Up> :resize -5<CR>
+nnoremap <silent> <F8> :TlistToggle<CR>
 
 
 " #################### ABBREVIATIONS ##########################################

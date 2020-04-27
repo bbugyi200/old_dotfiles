@@ -326,6 +326,7 @@ myAdditionalKeys = [
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha .|. beta, s), windows W.swapDown) -- Swap Windows
+   , ((alpha, t), spawn "DISPLAY=:0 new_enote_task") -- evernote (inbox)
    , ((alpha, u), windows W.focusUp)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
    , ((alpha, x), launchApp "term" "" myTerminal)

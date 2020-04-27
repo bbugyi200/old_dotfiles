@@ -252,3 +252,4 @@ https://github.com/NVIDIA/deepops/blob/master/virtual/README.md#enabling-virtual
 https://forum.giga-byte.co.uk/index.php/topic,2441.msg89013.html#msg89013 How Do I Update My BIOS?
 https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF PCI passthrough via OVMF - ArchWiki
 https://wiki.installgentoo.com/index.php/PCI_passthrough#Step_0:_Compile_IOMMU_support_if_you_use_Gentoo PCI passthrough - InstallGentoo Wiki
+https://bugs.python.org/issue17636 Issue 17636: Modify IMPORT_FROM to fallback on sys.modules - Python tracker

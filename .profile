@@ -38,7 +38,6 @@ if [[ "$(id -u)" = 0 ]]; then
 fi
 
 # >>> Miscellaneous
-export BETTER_EXCEPTIONS= # enables python 'better_exceptions' library
 export EDITOR="$(command -v vim)"  # I set this so the crontab would use vim for editing
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export FZF_DEFAULT_OPTS='--reverse --height 40% --border'

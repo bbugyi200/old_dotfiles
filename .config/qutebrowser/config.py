@@ -95,7 +95,6 @@ def setup_search_aliases() -> None:
         'lcl': 'Linux from the command-line',
         'lx': 'Linux',
         'mac': 'MacOS',
-        'mf': 'Modern Family',
         'n': 'AND',
         'o': 'OR',
         'py': 'Python',

@@ -227,7 +227,7 @@ nmap <Leader>i <Leader>S:call FeedCmd(GetISortCmd("import "))<CR>
 nmap <LocalLeader>i <Leader>S:call FromImport("")<left><left>
 nmap <LocalLeader>I <Leader>S:call FromImport("typing")<CR>
 nmap <Leader>K :!qutebrowser https://docs.python.org/3/library/<C-R><C-W> &> /dev/null &<CR><CR>
-nmap <Leader>S [om,s]om
+nmap <Leader>S [om,s
 nmap <Leader>t :call SwitchToTest('py')<CR>
 nmap <Leader><Leader>t :!pyinit -n -t <C-R>=expand('%:r')<CR><CR>
 nmap <Leader>T :call VSwitchToTest('py')<CR>
