@@ -3,9 +3,9 @@
 auto_view text/html  # view html automatically
 alternative_order  text/html text/plain text/enriched  # save html for last
 
-mailboxes imaps://bryanbugyi34@imap.gmail.com:993/ imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ imaps://bmb181@scarletmail.rutgers.edu@imap.gmail.com:993/ /var/spool/mail/bryan
+mailboxes /var/mail/bryan/ imaps://bryanbugyi34@imap.gmail.com:993/
 
-set folder = "/var/spool/mail/"
+set folder = "/var/mail/bryan/"
 
 # source "gpg2 -dq ~/.my-mutt-pwds.gpg |"
 # source ~/.mutt/passwd
@@ -106,7 +106,7 @@ macro attach s <save-entry><kill-line>/home/bryan/Downloads/
 account-hook $folder 'source ~/.mutt/hooks/status_format'
 folder-hook imaps://bryanbugyi34@imap.gmail.com:993/ 'source ~/.mutt/hooks/bryanbugyi34.gmail'
 folder-hook imaps://bryan_bugyi@mymail.rcbc.edu@imap.gmail.com:993/ 'source ~/.mutt/hooks/bryan_bugyi.mymail.rcbc'
-folder-hook /var/spool/mail 'source ~/.mutt/hooks/unixmail'
+folder-hook /var/mail/bryan/ 'source ~/.mutt/hooks/unixmail'
 
 
 ############################## COLORS #########################################

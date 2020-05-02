@@ -83,7 +83,7 @@ alias wstat='watson status'
 
 # ---------- Mutt Aliases / Functions ----------
 # def marker: MUTT
-alias bmutt='TERM=rxvt-unicode-256color neomutt -f /var/spool/mail/bryan'
+alias bmutt='TERM=rxvt-unicode-256color neomutt -f /home/bryan/.mail'
 alias mutt="TERM=rxvt-unicode-256color neomutt"
 alias rmutt="TERM=rxvt-unicode-256color neomutt -e 'source ~/.mutt/hooks/bmb181@scarletmail.rutgers'"
 alias sudo-mutt='TERM=rxvt-unicode-256color sudo neomutt -f /var/spool/mail/root'
@@ -158,7 +158,6 @@ alias ddef='def -m DEBIAN'
 alias ddwrt-logs='sim /var/log/syslog-ddwrt'
 alias del_swps='find . -name "*.swp" -delete -print'
 alias delshots='confirm "find $HOME/Sync/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
-alias df='df -h'
 alias dfs='dropbox-cli filestatus'
 dg() { { box "ALIAS DEFINITIONS"; alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"; printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | ${SED} '/^$/d' | ${SED} '/^_.\+ () {/,/^}$/d' | ${SED} 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | ${SED} '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | ${SED} 's/ {$/:/g' | ${SED} '/--$/d' | ${SED} 'N;s/\:\n/: /g' | ${SED} 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"; printf "\n"; box "SCRIPT CONTENTS"; rg -s -C 5 -p "$@" ~/Sync/bin; } | less; }
 dgw() { dg "\W$1\W"; }
@@ -237,6 +236,7 @@ alias gsum='git summary | less ${LESS_OPTS}'
 gwip() { gaa && git commit -m "[wip] $*"; }
 alias h='tm-home load'
 header() { clear && eval "$@" && echo; }
+help() { bash -c "help $@"; }
 alias htop='sudo htop'
 info() { pinfo "$@" || { printf "\n===== APROPOS OUTPUT =====\n"; apropos "$@"; }; }
 alias iotop='sudo iotop'
@@ -358,6 +358,7 @@ alias vnc-athena='open vnc://athena-arch.ddns.net:34590'
 alias vnix='vv_push ~/.nixnote'
 alias vpyutils='pushd ~/Sync/lib/python/gutils &> /dev/null && vv && popd &> /dev/null'
 alias vr='vim ${RECENTLY_EDITED_FILES_LOG}'
+alias vrf='vv_push ~/Sync/bin/main/rfuncs'
 alias vs='vshlog'
 alias vscratch='vim ~/Sync/var/notes/scratch.txt'
 alias vsd='vshlog -H all -D'

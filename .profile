@@ -38,15 +38,19 @@ if [[ "$(id -u)" = 0 ]]; then
 fi
 
 # >>> Miscellaneous
+export BB=bbugyi.ddns.net
 export EDITOR="$(command -v vim)"  # I set this so the crontab would use vim for editing
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export FZF_DEFAULT_OPTS='--reverse --height 40% --border'
+M="$(printf "\u2709")"
+export MAILPATH="/var/mail/bryan? ${M} ${M} ${M} NEW MAIL IN /var/mail/bryan!!! ${M} ${M} ${M}"
+export PAGER="less -SRXF"
 export PATH="$HOME/.cargo/bin:$PATH"
 export QT_QPA_PLATFORMTHEME="qt5ct"  # Fixes: missing okular icons
 export RECENTLY_EDITED_FILES_LOG="$HOME"/Sync/var/recently_edited_files.log
 export RIPGREP_CONFIG_PATH="$HOME"/.config/rgrc
 export RUST_SRC_PATH="$HOME"/Sync/var/projects/rust/src
-export SHELLCHECK_OPTS="-e SC1090 -e SC1091 -e SC1117 -e SC2001 -e SC2016 -e SC2059 -e SC2129 -e SC2155 -e SC2162"
+export SHELLCHECK_OPTS="-e SC1090 -e SC1091 -e SC1117 -e SC2001 -e SC2016 -e SC2046 -e SC2059 -e SC2129 -e SC2155 -e SC2162"
 export SHV_SHELL_HISTORY_ROOT="$HOME"/Sync/var/logs/shell-history
 export WORKON_HOME=~/.virtualenvs
 export XDG_CONFIG_HOME="$HOME"/.config
@@ -62,6 +66,8 @@ if [[ "$(uname -a)" == *"Darwin"* ]]; then
     export PYTHONPATH=$PYTHONPATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages
     export SED="gsed"
     export TERM="rxvt-256color"
+
+    source_if_exists /Users/bbugyi/.private.sh
 else
     export BROWSER=qutebrowser
     export GREP="grep"

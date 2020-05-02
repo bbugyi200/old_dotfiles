@@ -1,0 +1,15 @@
+# ~/.config/tmuxinator/rfserver.yml
+
+root: <%= @settings['root'] %>
+name: rfserver
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - I:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - vim ~/Sync/bin/main/{rfserver,rfserver-daemon} ~/Sync/bin/main/rfuncs/*.py /etc/init.d/rfserver

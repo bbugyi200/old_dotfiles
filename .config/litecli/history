@@ -1,0 +1,1383 @@
+
+# 2019-04-30 11:13:01.939101
++.tables
+
+# 2019-04-30 11:13:11.600962
++.schema calendars
+
+# 2019-04-30 11:14:12.629167
++select * from calendars
+
+# 2019-04-30 11:14:20.668137
++select * from events
+
+# 2019-06-01 13:10:12.286978
++.tabls
+
+# 2019-06-01 13:10:13.478945
++.tables
+
+# 2019-06-01 13:10:20.761889
++select * from `CompletionHistory`
+
+# 2019-06-01 13:10:35.153954
++select * from `History`
+
+# 2019-06-01 13:11:35.748086
++.schema History
+
+# 2019-06-01 13:11:48.352108
++select url from History;
+
+# 2019-06-01 13:12:50.589118
++quit
+
+# 2019-06-02 16:39:14.432090
++.tables
+
+# 2019-06-02 16:39:29.733847
++select * from `NoteTable`;
+
+# 2019-06-02 16:40:00.680587
++.schema NoteTable
+
+# 2019-06-02 16:40:12.211620
++.schema
+
+# 2019-06-02 16:40:19.947666
++.tables
+
+# 2019-06-02 16:40:22.777176
++.table
+
+# 2019-06-02 16:40:27.941576
++.table `NoteTable`
+
+# 2019-06-02 16:40:44.204682
++select * from `NotebookModel`
+
+# 2019-06-02 16:41:31.585793
++select `notebookLid` from `NoteTable`;
+
+# 2019-06-02 16:42:08.978975
++select * from `NoteTable` where `notebookLid` == 1;
+
+# 2019-06-02 16:43:02.966326
++delete from `NoteTable` where `notebookLid` == 1;
+
+# 2019-06-02 16:43:09.932491
++.quit
+
+# 2019-06-02 16:43:12.784598
++.exit
+
+# 2019-06-03 15:57:52.108309
++.tables
+
+# 2019-06-03 15:58:02.795166
++.schema
+
+# 2019-06-03 16:02:43.668215
++select * from `metaData`
+
+# 2019-06-03 16:02:49.482576
++.quit
+
+# 2019-06-03 16:02:52.261915
++.exit
+
+# 2019-06-23 18:39:11.272075
++.tables
+
+# 2019-06-23 18:39:20.471138
++select * from `NoteTable`;
+
+# 2019-06-23 18:39:40.434106
++q
+
+# 2019-06-23 18:39:41.347640
++quit
+
+# 2020-04-29 13:51:11.244721
++select title, company, post_date, score from jobs;
+
+# 2020-04-29 13:51:33.196573
++ls
+
+# 2020-04-29 13:51:34.800286
++q
+
+# 2020-04-29 13:51:35.986128
++.q
+
+# 2020-04-29 13:51:41.114839
++?
+
+# 2020-04-29 13:52:09.678233
++\q
+
+# 2020-04-29 13:52:44.933370
++select strftime('%m', post_date) from jobs;
+
+# 2020-04-29 13:53:04.975009
++select strftime('%Y-%m-%d', 'now');
+
+# 2020-04-29 13:53:32.284469
++select date(post_date) from jobs;
+
+# 2020-04-29 14:01:22.881237
++select title, company, post_date from jobs where date(post_date) < date('now', '-1 month')
+
+# 2020-04-29 14:01:41.008373
++select title, company, post_date, score from jobs where date(post_date) < date('now', '-1 month')
+
+# 2020-04-29 14:03:24.625092
++select title, company, post_date, score from jobs where date(post_date) >= date('now', '-1 month') AND modify_date != strftime('%Y-%m-%d', 'now')
+
+# 2020-04-29 14:03:44.973944
++select title, company, post_date, score from jobs where date(post_date) >= date('now', '-1 month') AND modify_date != strftime('%Y-%m-%d', 'now', '-1 day')
+
+# 2020-04-29 14:03:55.819884
++select modify_date, title, company, post_date, score from jobs where date(post_date) >= date('now', '-1 month') AND modify_date != strftime('%Y-%m-%d', 'now', '-1 day')
+
+# 2020-04-29 14:14:39.914079
++\q
+
+# 2020-04-29 14:20:55.448588
++select title, company, post_date, score from jobs where score > 15 order by score;
+
+# 2020-04-29 14:23:47.013096
++select * from jobs where title='bagboy';
+
+# 2020-04-29 15:55:14.896584
++select title, company, post_date, score from jobs where score > 15 order by score;
+
+# 2020-04-29 16:06:51.313283
++select title, company, post_date, score from jobs where score > 15 order by company;
+
+# 2020-04-29 16:07:09.365512
++\q
+
+# 2020-04-29 16:07:12.227360
++select title, company, post_date, score from jobs where score > 15 order by company;
+
+# 2020-04-29 16:07:35.346450
++select title, company, post_date, score, url from jobs where score > 15 order by company;
+
+# 2020-04-29 16:13:25.323912
++select score, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-29 16:14:17.776977
++select round(score, 2), title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-29 16:17:17.455306
++select round(score, 2), title, company, post_date, url from jobs where score > 15 order by score;
+
+# 2020-04-29 16:18:10.931511
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score;
+
+# 2020-04-29 16:51:00.722117
++\q
+
+# 2020-04-29 16:51:03.078482
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score;
+
+# 2020-04-29 18:28:23.566178
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-29 18:29:04.109321
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 8 order by company;
+
+# 2020-04-29 18:29:09.250992
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 10 order by company;
+
+# 2020-04-29 18:46:17.832461
++select count(*) from jobs where score > 10 order by company;
+
+# 2020-04-29 18:46:28.273924
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 10 order by company;
+
+# 2020-04-29 18:47:23.323685
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-29 18:49:22.131028
++select count(*) from jobs;
+
+# 2020-04-29 18:49:31.274535
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-29 18:49:41.461967
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score;
+
+# 2020-04-29 19:00:13.157799
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-29 19:00:24.123052
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 10 order by company;
+
+# 2020-04-29 19:01:01.929552
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 12 order by company;
+
+# 2020-04-29 19:47:04.076869
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-29 19:49:08.359737
++select round(score, 2), search_location, title, company, post_date, url from jobs where company = "Google";
+
+# 2020-04-29 19:50:03.592424
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-29 20:34:04.547955
++ALTER TABLE jobs ADD COLUMN scorecard TEXT
+
+# 2020-04-29 20:34:26.338435
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-29 20:34:34.692395
++select * from jobs;
+
+# 2020-04-29 20:34:37.677589
++select * from jobs
+
+# 2020-04-29 20:44:48.621656
++select round(score, 2), search_location, title, company, post_date, scorecard from jobs where score > 15 order by company;
+
+# 2020-04-29 20:52:36.790031
++select desc from jobs where company = 'Cisco' and search_location = "SF";
+
+# 2020-04-29 20:53:16.737156
++select round(score, 2), search_location, title, company, post_date, scorecard from jobs where score > 15 order by company;
+
+# 2020-04-29 20:53:50.808188
++select title, company, desc from jobs where company = 'Cisco' and search_location = "SF";
+
+# 2020-04-29 20:54:16.855390
++help
+
+# 2020-04-29 20:55:04.874381
++tee -o /tmp/sqlite.out
+
+# 2020-04-29 20:55:09.295272
++select title, company, desc from jobs where company = 'Cisco' and search_location = "SF";
+
+# 2020-04-29 21:02:18.133874
++\q
+
+# 2020-04-29 21:02:46.465216
++select round(score, 2), search_location, title, company, post_date, scorecard from jobs where score > 15 order by company;
+
+# 2020-04-29 21:22:03.951651
++select round(score, 2), search_location, title, company, post_date, scorecard from jobs where score > 15 order by score;
+
+# 2020-04-29 21:22:28.859338
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score;
+
+# 2020-04-29 21:34:40.316147
++ll
+
+# 2020-04-29 21:34:43.230841
++\q
+
+# 2020-04-30 11:02:39.671302
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score;
+
+# 2020-04-30 11:03:15.001550
++select round(score, 2), search_location, title, company, post_date, scorecard from jobs where score > 15 order by score;
+
+# 2020-04-30 11:03:23.863847
++select round(score, 2), search_location, title, company, post_date, scorecard from jobs where score > 15 order by company;
+
+# 2020-04-30 11:19:40.847021
++select round(score, 2), search_location, title, company, post_date, scorecard from jobs where score > 15 order by score;
+
+# 2020-04-30 11:22:43.618141
++select round(score, 2), search_location, title, company, post_date, scorecard from jobs where scorecard like '%Contract%'
+
+# 2020-04-30 11:23:31.003728
++select round(score, 2), search_location, title, company, post_date, url from jobs where scorecard like '%Contract%'
+
+# 2020-04-30 11:25:46.257205
++select round(score, 2), search_location, title, company, post_date, scorecard from jobs where scorecard like '%Contract%'
+
+# 2020-04-30 11:25:54.039073
++select round(score, 2), search_location, title, company, post_date, url from jobs where scorecard like '%Contract%'
+
+# 2020-04-30 12:03:58.903911
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score;
+
+# 2020-04-30 12:04:15.972060
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 12:04:29.196046
++help
+
+# 2020-04-30 12:04:34.681732
++.mode
+
+# 2020-04-30 12:04:43.906935
++.mode github
+
+# 2020-04-30 12:04:45.818874
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 12:04:51.353624
++.mode
+
+# 2020-04-30 12:04:55.137837
++help
+
+# 2020-04-30 12:04:57.370666
++.tables
+
+# 2020-04-30 12:05:58.618580
++.mode
+
+# 2020-04-30 12:06:03.839328
++.mode column
+
+# 2020-04-30 12:07:14.523712
++.mode fancy_grid
+
+# 2020-04-30 12:07:17.299279
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 12:07:27.060879
++.mode grid
+
+# 2020-04-30 12:07:27.835789
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 12:08:01.369739
++help
+
+# 2020-04-30 12:08:12.342822
++\P less -S
+
+# 2020-04-30 12:08:13.956923
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 12:09:37.796368
++\q
+
+# 2020-04-30 12:09:47.271555
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 12:10:19.314120
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score;
+
+# 2020-04-30 12:11:38.299606
++\fs by_score select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score;
+
+# 2020-04-30 12:11:41.904169
++\f by_score
+
+# 2020-04-30 12:11:50.722016
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 12:11:57.533045
++\fs by_company select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 12:12:00.922997
++\q
+
+# 2020-04-30 12:12:11.166455
++\f by_company
+
+# 2020-04-30 12:12:21.905597
++\f
+
+# 2020-04-30 12:12:24.969065
++\q
+
+# 2020-04-30 12:12:27.732241
++\f
+
+# 2020-04-30 12:12:33.307968
++\q
+
+# 2020-04-30 12:12:39.849661
++\f
+
+# 2020-04-30 12:13:41.550100
++\fs li_company select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 12:13:52.561678
++\fs li_score select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score;
+
+# 2020-04-30 12:13:55.155957
++\fd by_score
+
+# 2020-04-30 12:13:57.840263
++\fd by_company
+
+# 2020-04-30 12:13:58.884014
++\f
+
+# 2020-04-30 12:14:00.599247
++\q
+
+# 2020-04-30 12:14:07.030411
++\f li_company
+
+# 2020-04-30 12:14:22.671238
++\f li_score
+
+# 2020-04-30 12:15:18.874958
++\q
+
+# 2020-04-30 12:15:34.003631
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 12:15:40.955575
++\f li_company
+
+# 2020-04-30 12:15:43.630723
++ll
+
+# 2020-04-30 12:15:45.714194
++system ls
+
+# 2020-04-30 12:17:35.275368
++\f li_company
+
+# 2020-04-30 12:28:07.596355
++\fs li_scorecard select round(score, 2), search_location, title, company, post_date, scorecard from jobs where score > 15 order by score;
+
+# 2020-04-30 12:28:13.007847
++\f li_scorecard
+
+# 2020-04-30 13:46:00.087329
++\f score
+
+# 2020-04-30 13:46:02.516803
++\f li_score
+
+# 2020-04-30 13:46:24.939306
++\q
+
+# 2020-04-30 13:48:32.350789
++help
+
+# 2020-04-30 13:48:40.380172
++\q
+
+# 2020-04-30 13:49:11.704708
++\f li_score
+
+# 2020-04-30 13:49:20.301872
++\q
+
+# 2020-04-30 13:52:15.051682
++\f li_score
+
+# 2020-04-30 13:52:19.222958
++\f li
+
+# 2020-04-30 13:52:23.765945
++\f
+
+# 2020-04-30 13:52:37.737944
++\f; help
+
+# 2020-04-30 13:53:07.729514
++\#
+
+# 2020-04-30 13:53:32.618340
++\G
+
+# 2020-04-30 13:53:35.529833
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 13:53:37.089252
++\G
+
+# 2020-04-30 13:53:49.146873
++\G select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company;
+
+# 2020-04-30 13:53:54.929520
++help
+
+# 2020-04-30 13:54:28.991717
++\q
+
+# 2020-04-30 14:00:08.348914
++score
+
+# 2020-04-30 14:00:10.652195
++\f score
+
+# 2020-04-30 14:01:29.176819
++\q
+
+# 2020-04-30 14:01:59.784644
++score
+
+# 2020-04-30 14:02:02.109627
++\f score
+
+# 2020-04-30 14:02:06.224346
++\f company
+
+# 2020-04-30 14:02:11.989293
++\q
+
+# 2020-04-30 14:02:23.464565
++score
+
+# 2020-04-30 14:02:25.308638
++\f score
+
+# 2020-04-30 14:04:31.538705
++\f company
+
+# 2020-04-30 14:32:34.842313
++score
+
+# 2020-04-30 14:32:37.324995
++\f score
+
+# 2020-04-30 14:32:42.787093
++\q
+
+# 2020-04-30 14:33:33.458388
++\f score
+
+# 2020-04-30 14:33:40.453576
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company \G
+
+# 2020-04-30 14:33:43.422218
++\q
+
+# 2020-04-30 14:33:49.247785
++\q
+
+# 2020-04-30 14:33:53.474945
++\f score
+
+# 2020-04-30 14:33:56.580552
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by company \G
+
+# 2020-04-30 14:35:21.513972
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score \G
+
+# 2020-04-30 14:35:47.798978
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order desc by score \G
+
+# 2020-04-30 14:36:18.603318
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score desc \G
+
+# 2020-04-30 14:36:31.712588
++\f score
+
+# 2020-04-30 14:36:34.020940
++\f company
+
+# 2020-04-30 14:36:38.511244
++\f scorecard
+
+# 2020-04-30 14:37:20.621411
++\q
+
+# 2020-04-30 14:38:33.735951
++\f c
+
+# 2020-04-30 14:38:35.450855
++\f s
+
+# 2020-04-30 14:38:41.056924
++\q
+
+# 2020-04-30 14:39:29.568592
++\f s
+
+# 2020-04-30 14:39:32.960125
++\q
+
+# 2020-04-30 14:39:46.454189
++\f s
+
+# 2020-04-30 14:39:59.240050
++\q
+
+# 2020-04-30 14:41:01.581788
++\f s
+
+# 2020-04-30 14:41:05.250243
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score desc \G
+
+# 2020-04-30 14:41:18.685424
++\q
+
+# 2020-04-30 14:41:39.555887
++\f s
+
+# 2020-04-30 14:41:45.240164
++select round(score, 2), search_location, title, company, post_date, url from jobs where score > 15 order by score desc \G
+
+# 2020-04-30 14:41:55.300209
++select round(score, 2) as score, search_location, title, company, post_date, url from jobs where score > 15 order by score desc \G
+
+# 2020-04-30 14:42:23.320669
++\q
+
+# 2020-04-30 14:42:55.386093
++\f v
+
+# 2020-04-30 14:43:17.374626
++\fs V select round(score, 2) as score, search_location, title, company, post_date, url from jobs where score > 15 order by score desc \G
+
+# 2020-04-30 14:43:20.204283
++\f V
+
+# 2020-04-30 14:43:34.647953
++\f v \G
+
+# 2020-04-30 14:43:38.502555
++\f v
+
+# 2020-04-30 14:43:42.888767
++\f V \G
+
+# 2020-04-30 14:43:55.759573
++\q
+
+# 2020-04-30 14:44:08.180351
++\f v \
+
+# 2020-04-30 14:44:12.209429
++\f v \G
+
+# 2020-04-30 14:44:53.637424
++\q
+
+# 2020-04-30 14:45:10.207148
++\f v \G
+
+# 2020-04-30 14:45:30.168107
++\f s
+
+# 2020-04-30 14:45:34.327044
++\f sc
+
+# 2020-04-30 14:45:41.651599
++\f c
+
+# 2020-04-30 14:46:35.933145
++\q
+
+# 2020-04-30 14:46:45.244448
++\f v
+
+# 2020-04-30 14:46:48.994194
++\f v \G
+
+# 2020-04-30 15:09:59.226626
++\f s
+
+# 2020-04-30 15:18:41.038736
++\q
+
+# 2020-04-30 15:18:46.706852
++\f s
+
+# 2020-04-30 15:18:50.778271
++\f sc
+
+# 2020-04-30 15:18:54.570479
++\f v \G
+
+# 2020-04-30 15:43:57.836398
++\q
+
+# 2020-04-30 15:44:05.401902
++\f s
+
+# 2020-04-30 15:44:08.199416
++\f v \G
+
+# 2020-04-30 15:44:26.987147
++\f
+
+# 2020-04-30 15:44:44.028342
++select round(score, 2) as score, search_location, title, company, post_date, url from jobs where score > 15 order by post_date
+
+# 2020-04-30 15:45:18.615209
++\q
+
+# 2020-04-30 15:45:41.993695
++\f d
+
+# 2020-04-30 15:49:33.894694
++\q
+
+# 2020-04-30 15:49:38.339359
++\v s
+
+# 2020-04-30 15:49:40.342253
++\f s
+
+# 2020-04-30 15:49:49.481766
++\f d
+
+# 2020-04-30 15:50:18.390985
++\q
+
+# 2020-04-30 15:50:30.756318
++\f d
+
+# 2020-04-30 15:50:49.741792
++\f count
+
+# 2020-04-30 15:51:08.379823
++select count(*) from jobs where score > 15 order by post_date
+
+# 2020-04-30 15:51:15.935736
++\q
+
+# 2020-04-30 15:51:44.925313
++\f count
+
+# 2020-04-30 15:51:46.766495
++\q
+
+# 2020-04-30 15:51:54.591573
++\f count
+
+# 2020-04-30 15:52:18.052874
++\q
+
+# 2020-04-30 15:52:30.363665
++\f count
+
+# 2020-04-30 15:52:35.127561
++\f count 15
+
+# 2020-04-30 15:52:47.546741
++\q
+
+# 2020-04-30 15:53:00.925777
++\f count 15
+
+# 2020-04-30 15:53:10.696398
++\q
+
+# 2020-04-30 15:53:14.686577
++\f count 15
+
+# 2020-04-30 15:53:25.319887
++\q
+
+# 2020-04-30 15:53:31.931483
++\f count 15
+
+# 2020-04-30 15:53:47.499913
++\q
+
+# 2020-04-30 15:53:53.682549
++\f count 15
+
+# 2020-04-30 15:53:57.419583
++\f count 20
+
+# 2020-04-30 15:54:01.633475
++\f count 25
+
+# 2020-04-30 15:54:09.597821
++\q
+
+# 2020-04-30 15:54:14.898818
++\f count 15
+
+# 2020-04-30 15:54:33.290992
++\f s
+
+# 2020-04-30 15:54:39.676670
++\q
+
+# 2020-04-30 15:54:46.359733
++\f s
+
+# 2020-04-30 15:54:49.548071
++\f d
+
+# 2020-04-30 15:57:28.501539
++\f sc
+
+# 2020-04-30 15:57:32.733104
++/power
+
+# 2020-04-30 15:59:11.925248
++\q
+
+# 2020-04-30 15:59:50.142931
++\f s
+
+# 2020-04-30 15:59:53.172790
++\f count 15
+
+# 2020-04-30 16:00:02.770312
++\f s
+
+# 2020-04-30 16:01:11.143518
++\q
+
+# 2020-04-30 16:01:56.057263
++\f s
+
+# 2020-04-30 16:01:59.991228
++\f s 15
+
+# 2020-04-30 16:02:03.740967
++\f s 30
+
+# 2020-04-30 16:02:20.184070
++\q
+
+# 2020-04-30 16:02:23.956470
++\f s 30
+
+# 2020-04-30 16:02:45.918422
++select url from jobs where score > 30;
+
+# 2020-04-30 16:02:50.331528
++help
+
+# 2020-04-30 16:03:13.665594
++\o -o /tmp/high-experience.txt
+
+# 2020-04-30 16:03:16.729555
++select url from jobs where score > 30;
+
+# 2020-04-30 16:03:53.354666
++\o /tmp/high-experience.txt
+
+# 2020-04-30 16:03:55.847629
++select url from jobs where score > 30;
+
+# 2020-04-30 16:04:06.476618
++nopager
+
+# 2020-04-30 16:04:10.840653
++\o -o /tmp/high-experience.txt
+
+# 2020-04-30 16:04:13.157011
++select url from jobs where score > 30;
+
+# 2020-04-30 16:04:20.770822
++pager
+
+# 2020-04-30 16:04:32.537568
++tee -o /tmp/high-experience.txt
+
+# 2020-04-30 16:04:35.494683
++select url from jobs where score > 30;
+
+# 2020-04-30 16:07:02.538964
++\q
+
+# 2020-04-30 16:07:06.410503
++\f s
+
+# 2020-04-30 16:07:12.451445
++\f s 30 
+
+# 2020-04-30 16:07:16.997793
++\f s 20
+
+# 2020-04-30 16:07:19.978980
++\f s 15
+
+# 2020-04-30 16:07:27.155740
++\f d 15
+
+# 2020-04-30 16:07:37.355429
++\q
+
+# 2020-04-30 16:07:49.761660
++\f sc 15
+
+# 2020-04-30 16:07:57.997358
++\f v 15 \G
+
+# 2020-04-30 16:08:08.820945
++\f v 10 \G
+
+# 2020-04-30 16:21:51.953369
++\q
+
+# 2020-04-30 16:21:56.857595
++\f v 10 \G
+
+# 2020-04-30 16:23:43.910949
++\q
+
+# 2020-04-30 16:23:50.970497
++\f s 15
+
+# 2020-04-30 16:24:37.041030
++\q
+
+# 2020-04-30 16:25:23.347605
++\f vs 15
+
+# 2020-04-30 16:25:29.840053
++\f vs 15 \G
+
+# 2020-04-30 16:25:40.111967
++\f vd 15 \G
+
+# 2020-04-30 16:25:50.459053
++\f vc 15 \G
+
+# 2020-04-30 16:26:20.769981
++\f vd 15 \G
+
+# 2020-04-30 16:26:32.010183
++\q
+
+# 2020-04-30 16:26:36.408226
++\f vd 15 \G
+
+# 2020-04-30 16:27:56.812237
++\q
+
+# 2020-04-30 16:28:03.135850
++\f c 15
+
+# 2020-04-30 16:28:06.294069
++\f count 15
+
+# 2020-04-30 16:28:27.924441
++\q
+
+# 2020-04-30 16:29:19.190826
++\f count 15
+
+# 2020-04-30 16:29:21.916404
++\f s 15
+
+# 2020-04-30 16:29:33.600262
++\f d 15
+
+# 2020-04-30 16:30:05.333322
++\q
+
+# 2020-04-30 16:30:10.122937
++\f c 15
+
+# 2020-04-30 16:30:24.647767
++\f sc 15
+
+# 2020-04-30 21:49:15.459886
++\q
+
+# 2020-04-30 21:49:22.738787
++\f sc 15
+
+# 2020-05-01 08:39:43.479366
++\f s 15
+
+# 2020-05-01 08:40:24.473882
++\q
+
+# 2020-05-01 08:58:46.979714
++\f s 15
+
+# 2020-05-01 09:19:54.229557
++\q
+
+# 2020-05-01 11:36:19.488753
++\f s 15
+
+# 2020-05-01 11:36:35.330125
++.schema
+
+# 2020-05-01 11:39:42.891457
++ALTER TABLE jobs ADD COLUMN creation_date TEXT;
+
+# 2020-05-01 11:39:59.775510
++\#
+
+# 2020-05-01 11:40:07.003476
++select title, creation_date from jobs;
+
+# 2020-05-01 11:40:37.890618
++update jobs set creation_date="2020-05-01";
+
+# 2020-05-01 11:40:42.388897
++select title, creation_date from jobs;
+
+# 2020-05-01 11:44:55.348844
++\q
+
+# 2020-05-01 11:45:02.842342
++\f count 15
+
+# 2020-05-01 11:45:08.844794
++\f s 15
+
+# 2020-05-01 11:45:51.772108
++select title, scorecard from jobs where title like 'Operations%';
+
+# 2020-05-01 11:46:05.908845
++select title, url from jobs where title like 'Operations%';
+
+# 2020-05-01 11:57:52.255334
++\q
+
+# 2020-05-01 11:57:58.773004
++\f s 15
+
+# 2020-05-01 12:21:55.933951
++\q
+
+# 2020-05-01 12:21:59.769133
++\f s 15
+
+# 2020-05-01 12:22:04.446219
++\f sc 15
+
+# 2020-05-01 12:26:03.638966
++\q
+
+# 2020-05-01 12:26:36.008260
++select title, company, scorecard from jobs where scorecard like '%BAD TITLE%'
+
+# 2020-05-01 12:27:29.749094
++\q
+
+# 2020-05-01 12:28:51.730967
++\f sc 15
+
+# 2020-05-01 12:29:34.561198
++\q
+
+# 2020-05-01 12:29:52.564831
++\f sc 15
+
+# 2020-05-01 12:30:20.833864
++\f s 15
+
+# 2020-05-01 12:34:23.901344
++\q
+
+# 2020-05-01 12:35:08.516927
++\f s 15
+
+# 2020-05-01 13:22:33.054933
++\q
+
+# 2020-05-02 14:29:06.775432
++\f count -1000
+
+# 2020-05-02 14:29:11.190798
++\f count -1001
+
+# 2020-05-02 14:29:14.681733
++\f count -1002
+
+# 2020-05-02 14:29:18.534101
++\f count -1001
+
+# 2020-05-02 14:29:35.651755
++\q
+
+# 2020-05-02 14:29:55.645655
++\f count -1001
+
+# 2020-05-02 14:29:58.721848
++\f count -1000
+
+# 2020-05-02 14:30:01.208063
++\f count -999
+
+# 2020-05-02 14:30:03.484961
++\f count 0
+
+# 2020-05-02 14:30:05.787765
++\f count 15
+
+# 2020-05-02 14:30:15.348895
++\f s 15
+
+# 2020-05-02 14:30:25.952026
++\f sc 15
+
+# 2020-05-02 14:34:06.322312
++\q
+
+# 2020-05-02 14:35:00.803843
++alter table jobs add column id integer;
+
+# 2020-05-02 14:35:06.130075
++select * from jobs
+
+# 2020-05-02 14:37:37.671892
++select * from jobs \G
+
+# 2020-05-02 14:37:50.953034
++alter table jobs add primary key id autoincrement
+
+# 2020-05-02 14:38:04.220431
++alter table jobs add primary key autoincrement id
+
+# 2020-05-02 14:41:04.410756
++alter table jobs add primary key id
+
+# 2020-05-02 14:41:19.668901
++alter table jobs add id primary key
+
+# 2020-05-02 14:41:32.623316
++alter table jobs add primary key (id)
+
+# 2020-05-02 14:41:38.324344
++alter table jobs add primary key id;
+
+# 2020-05-02 14:42:14.680975
++alter table jobs add constraint PK_id primary key id;
+
+# 2020-05-02 14:43:14.441349
++TE TABLE IF NOT EXISTS new_jobs (
+
+# 2020-05-02 14:43:14.468564
++    id INTEGER PRIMARY KEY,
+
+# 2020-05-02 14:43:14.487034
++    title TEXT,
+
+# 2020-05-02 14:43:14.505719
++    company TEXT,
+
+# 2020-05-02 14:43:14.523604
++    location TEXT,
+
+# 2020-05-02 14:43:14.542097
++    post_date TEXT,
+
+# 2020-05-02 14:43:14.561684
++    modify_date TEXT,
+
+# 2020-05-02 14:43:14.591914
++    creation_date TEXT,
+
+# 2020-05-02 14:43:14.608382
++    url TEXT,
+
+# 2020-05-02 14:43:14.625575
++    desc TEXT,
+
+# 2020-05-02 14:43:14.644999
++    score INTEGER,
+
+# 2020-05-02 14:43:14.664180
++    scorecard TEXT,
+
+# 2020-05-02 14:43:14.704837
++    search_keywords TEXT,
+
+# 2020-05-02 14:43:14.730960
++    search_location TEXT,
+
+# 2020-05-02 14:43:14.862005
++    UNIQUE(title, company, post_date, location)
+
+# 2020-05-02 14:43:14.873006
++)
+
+# 2020-05-02 14:43:45.524748
++CREATE TABLE IF NOT EXISTS new_jobs (id INTEGER PRIMARY KEY, title TEXT, company TEXT, location TEXT, post_date TEXT, modify_date TEXT, creation_date TEXT, url TEXT, desc TEXT, score INTEGER, scorecard TEXT, search_keywords TEXT, search_location TEXT, UNIQUE(title, company, post_date, location))
+
+# 2020-05-02 14:44:15.074424
++.schema
+
+# 2020-05-02 14:45:45.094112
++insert into new_jobs select * from jobs;
+
+# 2020-05-02 14:45:55.034979
++insert into new_jobs select * from jobs
+
+# 2020-05-02 14:47:09.152476
++insert into new_jobs (title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location) select (title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location) from jobs
+
+# 2020-05-02 14:47:31.060903
++insert into new_jobs (title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location) values (select (title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location) from jobs)
+
+# 2020-05-02 14:47:39.504596
++insert into new_jobs (title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location) (select (title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location) from jobs)
+
+# 2020-05-02 14:47:48.199042
++insert into new_jobs (title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location) select (title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location) from jobs
+
+# 2020-05-02 14:48:29.040123
++insert into new_jobs title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location select title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location from jobs
+
+# 2020-05-02 14:48:46.616053
++insert into new_jobs (title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location) select title, company, location, post_date, modify_date, creation_date, url, desc, score, scorecard, search_keywords, search_location from jobs
+
+# 2020-05-02 14:48:53.263727
++select * from new_jobs
+
+# 2020-05-02 14:49:47.002403
++drop table jobs
+
+# 2020-05-02 14:49:58.639642
++alter table new_jobs rename to jobs
+
+# 2020-05-02 14:50:03.047806
++select * from jobs
+
+# 2020-05-02 14:50:12.688400
++\q
+
+# 2020-05-02 14:50:27.002700
++\f sc 15
+
+# 2020-05-02 14:50:31.523391
++\q
+
+# 2020-05-02 14:53:59.485629
++\f s 15
+
+# 2020-05-02 14:54:36.462617
++\q
+
+# 2020-05-02 14:54:43.721097
++\f s 15
+
+# 2020-05-02 14:55:22.965918
++\q
+
+# 2020-05-02 14:56:04.154634
++\f s 15
+
+# 2020-05-02 14:57:47.071898
++\q
+
+# 2020-05-02 14:57:51.057638
++\f s 15
+
+# 2020-05-02 14:58:49.981672
++\q
+
+# 2020-05-02 14:58:55.157758
++\f d 15
+
+# 2020-05-02 14:59:26.263790
++\f d -1000
+
+# 2020-05-02 14:59:58.782770
++\q
+
+# 2020-05-02 15:02:59.283922
++\f cd -1000
+
+# 2020-05-02 15:03:25.047541
++\q
+
+# 2020-05-02 15:03:59.436922
++\f cd -1000
+
+# 2020-05-02 15:04:46.347005
++\q
+
+# 2020-05-02 15:04:52.166178
++\f cd -1000
+
+# 2020-05-02 15:05:14.272228
++\q
+
+# 2020-05-02 15:05:18.638504
++\f cd -1000
+
+# 2020-05-02 15:05:47.473485
++\q
+
+# 2020-05-02 15:06:23.270138
++\f cd -1000
+
+# 2020-05-02 15:07:04.800166
++\q
+
+# 2020-05-02 15:07:09.490280
++\f cd -1000
+
+# 2020-05-02 15:07:25.080160
++\q
+
+# 2020-05-02 15:08:25.052123
++\f d -1000
+
+# 2020-05-02 15:08:31.013419
++\f s 15
+
+# 2020-05-02 15:08:36.305042
++\q
+
+# 2020-05-02 15:13:19.570431
++\f cd -1000
+
+# 2020-05-02 15:16:39.650954
++\q
+
+# 2020-05-02 15:18:13.062912
++\f cd -1000
+
+# 2020-05-02 15:18:31.862126
++\q
+
+# 2020-05-02 15:18:36.095797
++\f cd -1000
+
+# 2020-05-02 15:19:51.615898
++\q
+
+# 2020-05-02 15:19:58.112743
++\f vc 15 \G
+
+# 2020-05-02 15:21:08.094508
++alter table jobs rename column scorecard to tags
+
+# 2020-05-02 15:21:31.348329
++\q
+
+# 2020-05-02 15:24:28.744577
++\f vc 15 \G
+
+# 2020-05-02 15:24:33.245699
++\f s 15
+
+# 2020-05-02 15:24:36.903425
++\f sc 15
+
+# 2020-05-02 15:24:41.958387
++\q
+
+# 2020-05-02 15:25:54.751370
++\f vs 15 \G
+
+# 2020-05-02 15:26:03.154433
++\q
+
+# 2020-05-02 15:26:21.161308
++\f d 15
+
+# 2020-05-02 15:26:33.824986
++\f cd -1000
+
+# 2020-05-02 15:27:55.616861
++\f s 15
+
+# 2020-05-02 16:30:33.730907
++\q
+
+# 2020-05-02 16:33:47.075471
++\f sc 15
+
+# 2020-05-02 16:33:49.652744
++\q
+
+# 2020-05-02 16:34:13.065915
++\f t 15
+
+# 2020-05-02 16:34:25.930915
++\f vs 15 \G

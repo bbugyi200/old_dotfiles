@@ -466,7 +466,7 @@ key_bindings:
   #- { key: F,      mods: Command|Control, action: ToggleFullscreen }
 
   - {key: Paste, action: Paste}
-  - {key: V, mods: Control, action: Paste}
+  - {key: V, mods: Alt, action: Paste}
   - {key: Copy, action: Copy}
   - {key: L, mods: Control, action: ClearLogNotice}
   - {key: L, mods: Control, chars: "\f"}

@@ -8,7 +8,7 @@ EOM
 source gutils.sh
 
 # ---------- Command-line Arguments ----------
-eval set -- "$(getopt -o "d,h,v" -l "debug,help,verbose" -- "$@")"
+eval set -- "$(getopt -o "d,h" -l "debug,help" -- "$@")"
 
 export USAGE_GRAMMAR=(
     "[-d] [-v]"
@@ -27,9 +27,6 @@ Optional Arguments:
 
     -h | --help
         View this help message.
-
-    -v | --verbose
-        Enable verbose output.
 EOM
 
 while [[ -n "$1" ]]; do
@@ -41,9 +38,6 @@ while [[ -n "$1" ]]; do
            echo "${help}"
            exit 0
            ;;
-       -v|--verbose )
-           verbose=true
-           ;;
        -- )
            shift
            break
@@ -52,7 +46,7 @@ while [[ -n "$1" ]]; do
     shift
 done
 
-if [[ "${debug}" = true && "${verbose}" = true ]]; then
+if [[ "${debug}" = true ]]; then
     PS4='$LINENO: '
     set -x
 fi
