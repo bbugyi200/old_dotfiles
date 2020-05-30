@@ -42,6 +42,7 @@ export BB=bbugyi.ddns.net
 export EDITOR="$(command -v vim)"  # I set this so the crontab would use vim for editing
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export FZF_DEFAULT_OPTS='--reverse --height 40% --border'
+export LESS="${LESS} -Q"
 M="$(printf "\u2709")"
 export MAILPATH="/var/mail/bryan? ${M} ${M} ${M} NEW MAIL IN /var/mail/bryan!!! ${M} ${M} ${M}"
 export PAGER="less -SRXF"
@@ -59,7 +60,6 @@ if [[ "$(uname -a)" == *"Darwin"* ]]; then
     export AT_WORK=true
     export BROWSER=/Applications/qutebrowser.app/Contents/MacOS/qutebrowser
     export GREP="ggrep"
-    export LESS_OPTS=""
     export LOCATE="glocate"
     export LS="gls"
     export PATH=$PATH:/opt/local/bin
@@ -71,7 +71,7 @@ if [[ "$(uname -a)" == *"Darwin"* ]]; then
 else
     export BROWSER=qutebrowser
     export GREP="grep"
-    export LESS_OPTS="-F"
+    export LESS="${LESS} -F"
     export LOCATE=locate
     export LS="ls"
     export SED="sed"

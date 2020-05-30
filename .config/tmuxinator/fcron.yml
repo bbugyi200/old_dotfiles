@@ -22,17 +22,9 @@ windows:
         layout: even-horizontal
         panes:
             - 0:
-                - vim ~/Sync/bin/cron.jobs/{cron.daily/daily_jobs,cron.weekly/weekly_jobs} ~/Sync/bin/cron.jobs/cron.{daily,weekly,monthly}/*
+                - vim ~/Sync/bin/cron.jobs/{cron.daily/daily_jobs,cron.weekly/weekly_jobs} ~/Sync/bin/cron.jobs/backup.sh ~/Sync/bin/cron.jobs/cron.{daily,weekly,monthly}/*
     - man:
         layout: even-horizontal
         panes:
             - 0:
                 - vman 5 fcrontab fcron.conf fcron
-    - logs:
-        layout: even-horizontal
-        panes:
-            - 0:
-                - vj
-            - 1:
-                - alias D='sudo rm /var/spool/mail/bryan && sudo touch /var/spool/mail/bryan && bmutt'
-                - bmutt

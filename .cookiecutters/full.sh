@@ -11,7 +11,7 @@ source gutils.sh
 eval set -- "$(getopt -o "d,h" -l "debug,help" -- "$@")"
 
 export USAGE_GRAMMAR=(
-    "[-d] [-v]"
+    "[-d]"
     "-h"
 )
 
@@ -31,17 +31,17 @@ EOM
 
 while [[ -n "$1" ]]; do
     case $1 in
-       -d|--debug )
-           debug=true
-           ;;
-       -h|--help )
-           echo "${help}"
-           exit 0
-           ;;
-       -- )
-           shift
-           break
-           ;;
+        -d|--debug )
+            debug=true
+            ;;
+        -h|--help )
+            echo "${help}"
+            exit 0
+            ;;
+        -- )
+            shift
+            break
+            ;;
     esac
     shift
 done

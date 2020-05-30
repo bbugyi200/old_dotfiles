@@ -167,7 +167,7 @@ alias dstart='dropbox-cli start'
 alias dstop='dropbox-cli stop'
 alias du='sudo ncdu --color dark'
 alias dunst='killall dunst &> /dev/null; dunst'
-alias edsl='printf "$(hostname):%d,%d\n%s,%d" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
+alias edsl='printf "$(hostname):%d,%d\n%s,%d\n" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
 alias epuse='sudo -E epuse'
 _essh() { printf 'cd ~/src/prod; source ~/bin/psource.sh; PATH=/prod/home/bbugyi/bin:$PATH psource .environ; cd %s; /bin/zsh' "$1"; }
 essh() { ssh "$1" -t "$(_essh "$2")"; }
@@ -182,7 +182,7 @@ forever() { while true; do eval "$*"; done; }
 alias ga='git add -v'
 alias gaa='git add -v --all'
 alias gau='git add -v --update'
-alias gbb='git branch --sort=-committerdate | less ${LESS_OPTS}'
+alias gbb='git branch --sort=-committerdate | less'
 gca() { if [[ -n "$1" ]]; then git commit -v -a -m "$1"; else git commit -v -a; fi; }
 gcB() { gbD "$1" &> /dev/null; git checkout -b "$1" "${2:-upstream}"/"$1"; }
 gcbc() { git checkout -b "$@" && git commit --allow-empty; }
@@ -232,9 +232,10 @@ grun() { [[ "$(tail -n 1 "${PWD}"/.gdbinit)" == "r" ]] && sed -i '/^r$/d' "${PWD
 alias gsd='sudo get-shit-done'
 alias gsta='git stash'
 alias gstal="git stash list --date=local | perl -pE 's/stash@\{(?<date>.*)\}: .*[Oo]n (?<branch>.*?): (?<desc>.*)$/\"\\033[33mstash@\{\" . \$n++ . \"\}: \\033[36m[\$+{date}] \\033[32m(\$+{branch})\n\t\$+{desc}\n\"/ge' | less"
-alias gsum='git summary | less ${LESS_OPTS}'
+alias gsum='git summary | less'
 gwip() { gaa && git commit -m "[wip] $*"; }
-alias h='tm-home load'
+alias h='tldr'
+alias H='tm-home load'
 header() { clear && eval "$@" && echo; }
 help() { bash -c "help $@"; }
 alias htop='sudo htop'
@@ -243,7 +244,6 @@ alias iotop='sudo iotop'
 alias ipdb='ipdb3'
 alias iplug='vim +PluginInstall +qall'
 ipy-add-import() { ${SED} -i "/c\.InteractiveShellApp\.exec_lines/ a import $1" ~/.ipython/profile_default/ipython_config.py; }
-alias ipy='if [[ -f Pipfile ]]; then pipenv run ipython; else ipython; fi'
 alias issh='ssh -p 34857 athena-arch.ddns.net'
 j() { if [[ -n "$1" ]]; then jrnl "$@"; else vim + "$HOME"/Sync/var/notes/Journal/jrnl.txt; fi; }
 alias J='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /dev/null'
@@ -287,6 +287,7 @@ ppython() { pipenv run python "$@"; }
 alias prun='poetry run'
 alias psg='ps -ax | grep -v grep | grep'
 alias pshell='poetry shell'
+alias psi='psinfo'
 alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
 alias pvsu='py-vshlog -u -D BOT EOT -H all -e'
@@ -307,7 +308,7 @@ alias scu='systemctl --user'
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias sim='sudo -E vim'
 alias snapshots='find $HOME/Sync/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
-ss() { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
+SS() { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
 alias ssh-aphrodite='ssh 192.168.1.193'
 alias ssh-artemis="ssh bryan@67.207.92.152"
 alias ssh-athena-tm='ssh-athena /home/bryan/.local/bin/tm Terminal'
@@ -320,7 +321,6 @@ alias tgdb="gdb -iex 'set pagination off' -ex 'tui enable' -ex 'set pagination o
 tmd() { tmux display-message -p "#{$1}"; }
 # shellcheck disable=SC2142
 alias tm-layout="tmux lsw | grep '*' | awk '{gsub(/\\]/, \"\"); print \$7}'"
-alias top='htop'
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
 alias tsm='transmission-remote'
 tsm-add() { transmission-remote -a "$1"; }
@@ -350,7 +350,6 @@ alias vgutils='vim /usr/bin/gutils.sh'
 alias vihor='vim ~/Sync/var/notes/Horizons_of_Focus/*'
 alias vimilla='vim -u ~/.vanilla-vimrc'
 alias vipy='vim -c "/c.InteractiveShellApp.exec_lines" ~/.ipython/profile_default/ipython_config.py'
-vlog() { vim + /var/tmp/"$1"; }
 alias vm='vman'
 alias vmb='vim $HOME/Sync/bin/cron/cron.monthly/*'
 alias vmkrules='make -p > /tmp/make-rules && vim /tmp/make-rules'

@@ -84,6 +84,7 @@ source_if_exists "$HOME"/.fzf.zsh
 ##############
 #  Settings  #
 ##############
+unsetopt BEEP  # Disable automatic terminal bells (e.g. tab-completion)
 setopt globdots
 setopt null_glob  # disables errors when GLOB pattern does not match
 
@@ -133,7 +134,7 @@ alias -g @@="&> /dev/null & disown"
 alias -g ::="| grep -i -e"
 alias -g :::="| grep -A 5 -B 5 -i -e"
 alias -g :c="clear &&"
-alias -g :l="| less -F"
+alias -g :l="| less"
 alias -g :L="tmux send-keys '!-2 | less' Enter Enter"
 alias -g :w="watch -n 1"
 

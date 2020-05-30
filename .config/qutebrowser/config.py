@@ -260,7 +260,7 @@ def setup_search_engines() -> None:
         'r': SE.static.site('reddit.com'),
         'rlp': 'https://rocketleague.tracker.network/profile/ps/{}',
         'rpy': 'https://realpython.com/search?q={}',
-        's0': SE.static.site('stackoverflow.com'),
+        's': SE.static.site('stackoverflow.com'),
         'shr': 'https://shop.shoprite.com/store/1627666/search?displayType=&query={}&recipe=0&sponsored=5',
         'st': SE.static.google('set timer for {}'),
         'sub': SE.SearchEngine(

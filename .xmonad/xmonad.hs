@@ -133,7 +133,7 @@ launchApp ws window_name cmd = do
         spawnHere $ "hide_nsp && WS_is_Empty && " ++ cmd
         )
     when (window_name /= "") (
-        spawnHere $ "hide_nsp && [[ $(active_window_name) != " ++ window_name ++ " ]] && " ++ cmd
+        spawnHere $ "hide_nsp && window_not_active '" ++ window_name ++ "' && " ++ cmd
         )
 
 -- Only shows layout when fullscreen mode is enabled
@@ -188,7 +188,7 @@ instance Transformer TABBED Window where
 
 myLayout = id
     $ mkToggle (single TABBED)
-    $ TwoPane (3/100) (1/2) ||| Grid
+    $ myFull ||| TwoPane (3/100) (1/2) ||| Grid
 
 -------------------------------------------------------------------------------
 -- MISCELLANEOUS CONFIGS                                                     --
@@ -244,6 +244,7 @@ h = 0.3; bigh = 0.94  -- Total Height of Window
 myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
                 >> spawn "init-bg"
+                >> delayedSpawn 2 "emcheck"
                 >> delayedSpawn 2 "calalrms"
                 >> delayedSpawn 2 "xmonad-suntimes"
                 >> delayedSpawn 2 "xmonad-volume"
@@ -287,32 +288,38 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_9), swapScreens "prev")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster_gtk")
-   , ((alpha, c), launchApp "chat" "" "hexchat")
+   , ((alpha, c), do
+            spawn "wmctrl -a Calendar"
+            launchApp "chat" "Calendar" "firefox-bin --new-window https://calendar.google.com/calendar/b/1/r/month?pli=1"
+    )
    , ((alpha, d), windows W.focusDown)
-   , ((alpha, f), do
-           spawn "wmctrl -a firefox"
-           launchApp "firefox" "Navigator" "firefox-bin"
-   )
+   , ((alpha, f), launchApp "fox" "" "firefox-bin")
    , ((alpha .|. beta, f), sendMessage $ Toggle TABBED)
    , ((alpha, g), do
            spawn "wmctrl -a chrome"
            launchApp "chrome" "google-chrome" "google-chrome-stable"
-   )
+     )
    , ((alpha, h), prevScreen)
    , ((alpha .|. ctrl, h), sendMessage Shrink) -- Next Layout
    , ((alpha, i), do
            spawn "wmctrl -a qutebrowser"
            launchApp "web" "qutebrowser" "qutebrowser --enable-webengine-inspector"
-   )
+     )
    , ((alpha, j), N2D.windowGo N2D.D True)
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
    , ((alpha, k), N2D.windowGo N2D.U True)
    , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
    , ((alpha, l), nextScreen)
+   , ((alpha .|. beta, l), sendMessage NextLayout)
    , ((alpha .|. ctrl, l), sendMessage Expand)
-   , ((alpha .|. shift .|. ctrl, l), sendMessage NextLayout)
-   , ((alpha, m), pushToWS "misc"
-     ) -- Shift current window to MISC
+   , ((alpha, m), do
+            spawn "wmctrl -a Gmail || wmctrl -a 'bryan.bugyi@edgestreamlp.com'"
+            launchApp "chat" "Gmail|edgestreamlp" "firefox-bin --new-window https://mail.google.com/mail/u/1/#inbox"
+    )
+   , ((alpha .|. beta, m), do
+            spawn "wmctrl -a Messages"
+            launchApp "chat" "Messages" "firefox-bin --new-window https://messages.google.com/web/conversations"
+    )
    , ((alpha, n), launchApp "notes" "" "nixnote2")
    , ((alpha .|. beta .|. shift, n), do
            ws_name <- io $ readFile "/tmp/xmonad.workspace"
@@ -320,15 +327,31 @@ myAdditionalKeys = [
      )
    , ((alpha, o), CW.toggleWS' ["NSP"])
    , ((alpha .|. ctrl, o), spawn "zopen")
+   , ((alpha, p), launchApp "proj" "" "mkdvtm es-prod")
    , ((alpha, q), spawn "qb_prompt")
-   , ((alpha .|. ctrl, q), io (Exit.exitWith Exit.ExitSuccess))
+   , ((alpha .|. beta .|. ctrl, q), do
+           spawn "sync"
+           io (Exit.exitWith Exit.ExitSuccess)
+     )
    , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
    , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
-   , ((alpha .|. beta, s), windows W.swapDown) -- Swap Windows
-   , ((alpha, t), spawn "DISPLAY=:0 new_enote_task") -- evernote (inbox)
+   , ((alpha, s), do
+            spawn "wmctrl -a Slack"
+            launchApp "chat" "Slack" "firefox-bin --new-window https://app.slack.com/client/T043N5HHP/C5N1S9DU0"
+    )
+   , ((alpha .|. beta, s), do
+            spawn "wmctrl -a 'System Information'"
+            launchApp "stat" "hardinfo" "hardinfo"
+    )
+   , ((alpha .|. ctrl, s), windows W.swapDown) -- Swap Windows
+   , ((alpha, t), spawn "new_enote_task") -- evernote (inbox)
    , ((alpha, u), windows W.focusUp)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
+   , ((alpha .|. beta, w), do
+            spawn "wmctrl -a 'Capturing'"
+            launchApp "stat" "wireshark" "sudo wireshark"
+    )
    , ((alpha, x), launchApp "term" "" myTerminal)
    , ((alpha .|. beta, x), launchApp "term'" "" "alacritty -t tmux_primes -e zsh -c 'tm-init-prime tmux_primes'")
    , ((alpha, v), launchApp "mpv" "" "umpv")
@@ -365,9 +388,9 @@ myAdditionalKeys = [
    , ((alpha .|. beta .|. ctrl .|. shift, xK_backslash), CW.shiftNextScreen)
    , ((alpha, xK_bracketleft), DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP))
    , ((alpha .|. beta, xK_bracketleft), do
-           nextScreen
-           DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP)
            prevScreen
+           DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)
+           nextScreen
      ) -- Prev Hidden NonEmpty Workspace (viewed on non-active screen)
    , ((alpha, xK_bracketright), DW.moveTo CW.Next (CW.WSIs hiddenNotNSP))
    , ((alpha .|. beta, xK_bracketright), do
@@ -386,8 +409,9 @@ myAdditionalKeys = [
    , ((alpha, xK_equal), spawn "set_volume 2%+")
    , ((alpha, xK_minus), spawn "set_volume 2%-")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
-   , ((beta, xK_Print), spawn "sshot") -- Screenshot
-   , ((alpha .|. beta, xK_Print), spawn "saved_sshot") -- Saved Screenshot
+   , ((alpha, xK_Print), spawn "sshot") -- Screenshot
+   , ((alpha .|. beta, xK_Print), spawn "saved_sshot") -- Save Screenshot as Receipt
+   , ((alpha .|. ctrl, xK_Print), spawn "print_sshot") -- Print Screenshot
    , ((alpha, xK_semicolon), spawn "shellPrompt")
    , ((alpha .|. beta, xK_semicolon), spawn "shellPrompt -L")
    , ((alpha, xK_slash), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad

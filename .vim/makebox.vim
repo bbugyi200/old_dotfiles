@@ -6,7 +6,7 @@ function! MakeBox()
     " Mark starting position
     normal! mm
 
-    if index(['conf', 'sh', 'python', 'ruby', 'snippets', 'gdb'], &ft) >= 0
+    if index(['conf', 'bash', 'sh', 'python', 'ruby', 'snippets', 'gdb'], &ft) >= 0
         let g:comment_char = '#'
     elseif index(['c', 'cpp', 'java', 'javascript', 'php', 'txt'], &ft) >= 0
         let g:comment_char = '/'

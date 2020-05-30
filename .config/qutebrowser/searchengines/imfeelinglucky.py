@@ -43,7 +43,7 @@ def get_top_link(query: str) -> str:
 
         sys.path.append("/usr/local/lib/python3.7/site-packages")
 
-    from bs4 import BeautifulSoup  # type: ignore
+    from bs4 import BeautifulSoup
     import requests  # pylint: disable=import-outside-toplevel
 
     try:

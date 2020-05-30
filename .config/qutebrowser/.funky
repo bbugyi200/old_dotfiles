@@ -1,1 +1,1 @@
-{"V": "echo \"config.py searchengines/__init__.py searchengines/*.py config.yml\" $@"}
+{"V": "echo config.py searchengines/__init__.py searchengines/*.py config.yml $@"}

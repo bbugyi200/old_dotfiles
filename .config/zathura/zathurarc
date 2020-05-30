@@ -173,6 +173,7 @@ map <Button2> navigate previous
 map <Button3> navigate next
 map <C-[> feedkeys ":nohlsearch<Return>"
 map <Esc> feedkeys ":nohlsearch<Return>"
+map <Space> feedkeys ":nohlsearch<Return>"
 map \\ feedkeys "gk"
 map [ exec "winstack prev"
 map ] exec "winstack next"

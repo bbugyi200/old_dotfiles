@@ -17,7 +17,7 @@ alias eq='equery'
 alias eup='sudo emerge --ask --update --deep --newuse @world'
 alias ewdups='comm -12 <(sudo cat /etc/portage/sets/shared) <(sudo cat /var/lib/portage/world) 2> /dev/null'
 alias get='sudo_get'
-alias pg='equery list "*" 2> /dev/null | grep -i'
+alias pg="equery list '*' -F '\$repo::\$category/\$name-\$fullversion' 2> /dev/null | grep -i --color=always"
 pwg() { ag "$@" /etc/portage/sets; }
 alias rc-service='sudo /sbin/rc-service'
 alias rc-update='sudo /sbin/rc-update'
