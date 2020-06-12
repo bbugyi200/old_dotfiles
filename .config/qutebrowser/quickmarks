@@ -55,12 +55,16 @@ ews https://edgestream-staging.herokuapp.com/
 eye http://localhost:7777/
 eyum http://yumrepos/rhel/
 fb-azalio-interview-prep https://azalio.wordpress.com/2016/05/29/facebook-production-engineer/
+fb-career-page https://www.facebookrecruiting.com/portal/home
+fb-design-caching-strats https://codeahoy.com/2017/08/11/caching-strategies-and-how-to-choose-the-right-one/
 fb-design-course https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR
 fb-design-intro-to-arch-systems https://lethain.com/introduction-to-architecting-systems-for-scale/
 fb-github-interview-prep https://gist.github.com/ameenkhan07/4f0a65fb2bdec58656850f09ef8e2c48
+fb-http https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview
 FB https://www.facebook.com/
 fb-linux-insides https://github.com/0xAX/linux-insides/blob/master/SUMMARY.md
 fb-linux-perf-tools https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
+fb-redis-vs-memcached https://www.infoworld.com/article/3063161/why-redis-beats-memcached-for-caching.html
 fb-rishi-interview-prep https://www.quora.com/q/oqmeemryvrhrldbd/My-Production-Engineering-Interview-with-Facebook-London
 fb-sre-interview-questions https://github.com/rishiloyola/SRE-Interviews
 GAA https://analytics.google.com/analytics/web/#/report/trafficsources-all-traffic/a129349538w188556133p185126958/
@@ -146,7 +150,5 @@ W https://www.google.com/search?q=weather
 Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
-fb-http https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview
-fb-redis-vs-memcached https://www.infoworld.com/article/3063161/why-redis-beats-memcached-for-caching.html
 zmq http://zguide.zeromq.org/page:all#toc6
-fb-design-caching-strats https://codeahoy.com/2017/08/11/caching-strategies-and-how-to-choose-the-right-one/
+lim https://www.linkedin.com/messaging/thread/6648336934634688512/

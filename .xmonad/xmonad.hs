@@ -293,11 +293,11 @@ myAdditionalKeys = [
             launchApp "chat" "Calendar" "firefox-bin --new-window https://calendar.google.com/calendar/b/1/r/month?pli=1"
     )
    , ((alpha, d), windows W.focusDown)
-   , ((alpha, f), launchApp "fox" "" "firefox-bin")
+   , ((alpha, f), launchApp "web2" "" "firefox-bin")
    , ((alpha .|. beta, f), sendMessage $ Toggle TABBED)
    , ((alpha, g), do
            spawn "wmctrl -a chrome"
-           launchApp "chrome" "google-chrome" "google-chrome-stable"
+           launchApp "web2" "google-chrome" "google-chrome-stable"
      )
    , ((alpha, h), prevScreen)
    , ((alpha .|. ctrl, h), sendMessage Shrink) -- Next Layout

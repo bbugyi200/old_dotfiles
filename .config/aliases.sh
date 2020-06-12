@@ -237,7 +237,7 @@ gwip() { gaa && git commit -m "[wip] $*"; }
 alias h='tldr'
 alias H='tm-home load'
 header() { clear && eval "$@" && echo; }
-help() { bash -c "help $@"; }
+help() { bash -c "help $*"; }
 alias htop='sudo htop'
 info() { pinfo "$@" || { printf "\n===== APROPOS OUTPUT =====\n"; apropos "$@"; }; }
 alias iotop='sudo iotop'
@@ -252,7 +252,7 @@ alias k9='sudo kill -9'
 alias kman='man -k'
 Kman() { man -wK "$@" | awk -F'/' '{print $NF}' | sed 's/\.\(.*\)\.bz2$/ (\1)/g' | sort; }
 alias Loc='sudo updatedb && loc'
-alias loc='${LOCATE} --regex'
+alias loc='locate --regex'
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
 alias ls='exa -g'
 alias lt='ls --tree'
@@ -335,6 +335,7 @@ u() { echo -e "\u$1"; }
 alias undow='dow --undo'
 alias updatedb='sudo updatedb'
 # shellcheck disable=SC2046
+alias uplug='vim +PluginUpdate +qall'
 vab() { vim $(find "$HOME"/Sync/bin/cron.jobs -type f | sort | tr '\n' ' '); }
 alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
 alias vdaily="vgtd-daily-review"

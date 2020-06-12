@@ -30,7 +30,6 @@ else
 fi
 
 export MATLABPATH="$HOME/.matlab"
-export LIBRARY_PATH="/usr/local/lib:${LIBRARY_PATH}"
 export MYPYPATH="$PYTHONPATH"
 
 if [[ "$(id -u)" = 0 ]]; then
@@ -60,7 +59,6 @@ if [[ "$(uname -a)" == *"Darwin"* ]]; then
     export AT_WORK=true
     export BROWSER=/Applications/qutebrowser.app/Contents/MacOS/qutebrowser
     export GREP="ggrep"
-    export LOCATE="glocate"
     export LS="gls"
     export PATH=$PATH:/opt/local/bin
     export PYTHONPATH=$PYTHONPATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages
@@ -72,7 +70,6 @@ else
     export BROWSER=qutebrowser
     export GREP="grep"
     export LESS="${LESS} -F"
-    export LOCATE=locate
     export LS="ls"
     export SED="sed"
     export TERM="rxvt-unicode-256color"  # Fixes Mutt Background Issue (stays transparent) in TMUX
