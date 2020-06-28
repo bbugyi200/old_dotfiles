@@ -95,7 +95,7 @@ class URL:
 class LuckyURL(URL):
     """Queries that Utilize Google's 'I'm Feeling Lucky' Feature"""
 
-    pattern = r"^(\|/)|^.*@$"
+    pattern = r"^(\|/|%2F)|^.*@$"
 
     # dummy url is needed to pass qutebrowser's validation checks
     start_mark = 'https://imfeelinglucky/'

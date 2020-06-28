@@ -1,12 +1,79 @@
 #!/bin/bash
 
 ###############################
-#  Source Commands            #
+#  Functions                  #
 ###############################
 function source_if_exists() {
     [[ -f "$1" ]] && source "$1"
 }
 
+function insert_path() {
+    local path_="$1"; shift
+    local P="$1"; shift
+
+    if _is_in_path "${path_}" "${P}"; then
+        local new_path=
+        for p in $(echo "${path_}" | tr ":" "\n"); do
+            if [[ "${p}" == "${P}" ]]; then
+                continue
+            fi
+
+            if [[ -n "${new_path}" ]]; then
+                new_path="${new_path}":"${p}"
+            else
+                new_path="${p}"
+            fi
+        done
+
+        path_="${new_path}"
+    fi
+
+    echo "${P}":"${path_}"
+}
+
+function dedup_path() {
+    local path_="$1"; shift
+    local new_path=
+
+    for P in $(echo "${path_}" | tr ":" "\n"); do
+        if ! _is_in_path "${new_path}" "${P}"; then
+            if [[ -n "${new_path}" ]]; then
+                new_path="${new_path}":"${P}"
+            else
+                new_path="${P}"
+            fi
+        fi
+    done
+
+    echo "${new_path}"
+}
+
+function _is_in_path() {
+    local path_="$1"; shift
+    local P="$1"; shift
+    if [[ "${path_}" == "${P}" ]]; then
+        return 0
+    fi
+
+    if [[ "${path_}" == "${P}:"* ]]; then
+        return 0
+    fi
+
+    if [[ "${path_}" == *":${P}" ]]; then
+        return 0
+    fi
+
+    if [[ "${path_}" == *":${P}:"* ]]; then
+        return 0
+    fi
+
+    return 1
+}
+
+
+###############################
+#  Source Commands            #
+###############################
 source_if_exists /etc/profile
 source_if_exists /usr/bin/virtualenvwrapper_lazy.sh
 
@@ -25,15 +92,15 @@ export TV=/media/bryan/zeus/media/Entertainment/TV
 if [[ -f /etc/environment ]]; then 
     source <(sed 's/^\(.*\)="\(.*\)"/export \1="${\1}:\2"/' /etc/environment)
 else
-    export PATH="/usr/local/bin:/opt/bin:$PATH"
-    export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+    export PATH="$(insert_path "${PATH}" "/usr/local/bin")"
+    export PATH="$(insert_path "${PATH}" "/usr/local/opt/gnu-getopt/bin")"
 fi
 
 export MATLABPATH="$HOME/.matlab"
 export MYPYPATH="$PYTHONPATH"
 
 if [[ "$(id -u)" = 0 ]]; then
-    export PATH="/root/.local/bin:$PATH"
+    export PATH="$(insert_path "${PATH}" "/root/.local/bin")"
 fi
 
 # >>> Miscellaneous
@@ -45,7 +112,6 @@ export LESS="${LESS} -Q"
 M="$(printf "\u2709")"
 export MAILPATH="/var/mail/bryan? ${M} ${M} ${M} NEW MAIL IN /var/mail/bryan!!! ${M} ${M} ${M}"
 export PAGER="less -SRXF"
-export PATH="$HOME/.cargo/bin:$PATH"
 export QT_QPA_PLATFORMTHEME="qt5ct"  # Fixes: missing okular icons
 export RECENTLY_EDITED_FILES_LOG="$HOME"/Sync/var/recently_edited_files.log
 export RIPGREP_CONFIG_PATH="$HOME"/.config/rgrc
@@ -61,7 +127,7 @@ if [[ "$(uname -a)" == *"Darwin"* ]]; then
     export GREP="ggrep"
     export LS="gls"
     export PATH=$PATH:/opt/local/bin
-    export PYTHONPATH=$PYTHONPATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages
+    export PYTHONPATH="$(insert_path "${PYTHONPATH}" /opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages)"
     export SED="gsed"
     export TERM="rxvt-256color"
 
@@ -102,10 +168,13 @@ else
     fi
 fi
 
+
 # MUST remain at bottom of file. Otherwise, other paths are prepended to $PATH
 # somehow.
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.dynamic-colors/bin:$PATH"
-export PATH="$HOME/.flamegraph:$PATH"
+export PATH="$(insert_path "${PATH}" "$HOME/.local/bin")"
+export PATH="$(insert_path "${PATH}" "$HOME/.dynamic-colors/bin")"
+export PATH="$(insert_path "${PATH}" "$HOME/.flamegraph")"
 
-export PATH="$HOME/.poetry/bin:$PATH"
+export LIBRARY_PATH="$(dedup_path "${LIBRARY_PATH}")"
+export PATH="$(dedup_path "${PATH}")"
+export PYTHONPATH="$(dedup_path "${PYTHONPATH}")"

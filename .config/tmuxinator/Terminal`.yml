@@ -2,13 +2,13 @@
 
 root: <%= @settings['root'] %>
 name: Terminal`
-socket_name: top
+socket_name: tmux_primes
 
 on_project_stop:
 
 windows:
     - main:
-        root: ~/
+        root: /home/bryan
         layout: even-horizontal
         panes:
             - 0:

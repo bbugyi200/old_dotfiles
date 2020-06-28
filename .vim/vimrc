@@ -453,9 +453,18 @@ autocmd FileType c,cpp setlocal commentstring=//%s
 autocmd FileType gitcommit,mail setlocal spell spelllang=en_us
 autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro  " Disables auto-comments on newlines and disables autowrap
 autocmd FileType scheme let b:delimitMate_quotes = "\""
-autocmd FocusGained,BufEnter * :checktime  " Reloads buffer on buffer changes
 autocmd InsertEnter * set timeoutlen=500
 autocmd InsertLeave * set timeoutlen=1000
+
+" Reloads buffer on buffer changes.
+"
+" Some hackery was needed here to fix errors that were popping up when editing
+" in command-line mode (i.e. when pressing <C-f> while in command-line mode).
+augroup auto_read
+    autocmd!
+    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+                \ if mode() == 'n' && getcmdwintype() == '' | checktime | endif
+augroup END
 
 
 " Creates current file's parent directory if it doesn't already exist

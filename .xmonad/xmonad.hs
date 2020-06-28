@@ -203,7 +203,7 @@ myBorderWidth = 7
 myFocusedBorderColor = "#0000FF"
 
 myWorkspaces :: [String]
-myWorkspaces = ["NSP", "term","web", "zath"]
+myWorkspaces = ["NSP", "term","web", "doc"]
 
 myXPConfig :: P.XPConfig
 myXPConfig = P.def {
@@ -293,11 +293,11 @@ myAdditionalKeys = [
             launchApp "chat" "Calendar" "firefox-bin --new-window https://calendar.google.com/calendar/b/1/r/month?pli=1"
     )
    , ((alpha, d), windows W.focusDown)
-   , ((alpha, f), launchApp "web2" "" "firefox-bin")
+   , ((alpha, f), launchApp "fox" "" "firefox-bin")
    , ((alpha .|. beta, f), sendMessage $ Toggle TABBED)
    , ((alpha, g), do
            spawn "wmctrl -a chrome"
-           launchApp "web2" "google-chrome" "google-chrome-stable"
+           launchApp "gc" "google-chrome" "google-chrome-stable"
      )
    , ((alpha, h), prevScreen)
    , ((alpha .|. ctrl, h), sendMessage Shrink) -- Next Layout
@@ -327,7 +327,7 @@ myAdditionalKeys = [
      )
    , ((alpha, o), CW.toggleWS' ["NSP"])
    , ((alpha .|. ctrl, o), spawn "zopen")
-   , ((alpha, p), launchApp "proj" "" "mkdvtm es-prod")
+   , ((alpha, p), launchApp "dev" "" "mkdvtm es-prod")
    , ((alpha, q), spawn "qb_prompt")
    , ((alpha .|. beta .|. ctrl, q), do
            spawn "sync"
@@ -355,8 +355,8 @@ myAdditionalKeys = [
    , ((alpha, x), launchApp "term" "" myTerminal)
    , ((alpha .|. beta, x), launchApp "term'" "" "alacritty -t tmux_primes -e zsh -c 'tm-init-prime tmux_primes'")
    , ((alpha, v), launchApp "mpv" "" "umpv")
-   , ((alpha, z), launchApp "zath" "" "zathura")
-   , ((alpha .|. beta, z), launchApp "zath'" "" "zcopy")
+   , ((alpha, z), launchApp "doc" "" "zathura")
+   , ((alpha .|. beta, z), launchApp "doc'" "" "zcopy")
 
    ---------- KEYPAD CHARACTERS ----------
    , ((alpha, xK_KP_Add), spawn "next_task")

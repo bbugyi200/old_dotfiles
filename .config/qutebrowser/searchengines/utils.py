@@ -20,7 +20,6 @@ def encode(query: str) -> str:
         (':', '%3A'),
         ('@', '%40'),
         ('\\', '%5C'),
-        ('/', '%2F'),
     ]
 
     encoded = query

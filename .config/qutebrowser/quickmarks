@@ -88,6 +88,7 @@ ghr https://github.com/bbugyi200?tab=repositories
 G https://mail.google.com/mail/u/0/#inbox
 g https://www.google.com/
 GSC https://search.google.com/search-console?resource_id=https%3A%2F%2Fbryanbugyi.com%2F
+Gs https://mail.google.com/mail/u/0/#settings/general
 HN https://news.ycombinator.com/
 HNN https://news.ycombinator.com/newest
 ieee https://www.computer.org/csdl/magazine/so
@@ -98,11 +99,12 @@ LICC https://www.linkedin.com/search/results/people/?facetCurrentCompany=%5B%221
 LIC https://www.linkedin.com/search/results/people/?facetNetwork=%5B%22S%22%5D&keywords=Software%20Engineer&origin=GLOBAL_SEARCH_HEADER
 LICP https://www.linkedin.com/search/results/people/?facetGeoRegion=%5B%22us%3A77%22%5D&facetNetwork=%5B%22S%22%5D&keywords=Software%20Engineer&origin=FACETED_SEARCH
 LICR https://www.linkedin.com/search/results/people/?facetNetwork=%5B%22S%22%5D&facetSchool=%5B%223154332%22%2C%2218874%22%5D&keywords=Software%20Engineer&origin=FACETED_SEARCH
-LIH https://www.linkedin.com/feed/
-li https://www.linkedin.com/in/bryan-bugyi-a3650763/
+lih https://www.linkedin.com/feed/
+li https://www.linkedin.com/in/bryan-bugyi/
 LI https://www.linkedin.com/in/bryan-bugyi-a3650763/
 lij https://www.linkedin.com/jobs/
 LIJ https://www.linkedin.com/jobs/
+lim https://www.linkedin.com/messaging/thread/6648336934634688512/
 LIN https://www.linkedin.com/mynetwork/
 M https://messages.google.com/web/conversations
 mpv https://mpv.io/manual/master/
@@ -143,6 +145,7 @@ ss https://sakai.rutgers.edu/portal/site/2899986c-d020-4ded-abab-5b91199d9ec7
 sso https://www.cs.rutgers.edu/~sk2113/course/cs416/
 sss http://sites.math.rutgers.edu/~alexk/2019S481/syllabus.html
 Sync http://127.0.0.1:8384/#device-general
+tb https://triplebyte.com/candidates
 T https://trello.com/b/PfAJM2Ge/black-182
 tr https://sis.rutgers.edu/tags/
 TW https://twitter.com/
@@ -151,4 +154,3 @@ Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
 zmq http://zguide.zeromq.org/page:all#toc6
-lim https://www.linkedin.com/messaging/thread/6648336934634688512/

@@ -254,3 +254,6 @@ https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF PCI passthrough vi
 https://wiki.installgentoo.com/index.php/PCI_passthrough#Step_0:_Compile_IOMMU_support_if_you_use_Gentoo PCI passthrough - InstallGentoo Wiki
 https://bugs.python.org/issue17636 Issue 17636: Modify IMPORT_FROM to fallback on sys.modules - Python tracker
 https://www.cyberciti.biz/tips/top-linux-monitoring-tools.html 30 Linux System Monitoring Tools Every SysAdmin Should Know - nixCraft
+https://www.algoexpert.io/systems/product SystemsExpert | Ace the Systems Design Interviews
+http://danluu.com/google-sre-book/ Google SRE Book (Notes)
+https://github.com/dastergon/awesome-sre Awesome Site Reliability Engineering

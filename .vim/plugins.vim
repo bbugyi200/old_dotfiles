@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'airblade/vim-gitgutter'
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'Raimondi/delimitMate'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'chrisbra/csv.vim'

@@ -14,7 +14,6 @@ alias epu='sudo epuse'
 alias epum='sudo -E vim /etc/portage/package.unmask'
 alias erm='sudo repoman manifest'
 alias eq='equery'
-alias eup='sudo emerge --ask --update --deep --newuse @world'
 alias ewdups='comm -12 <(sudo cat /etc/portage/sets/shared) <(sudo cat /var/lib/portage/world) 2> /dev/null'
 alias get='sudo_get'
 alias pg="equery list '*' -F '\$repo::\$category/\$name-\$fullversion' 2> /dev/null | grep -i --color=always"

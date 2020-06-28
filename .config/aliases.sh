@@ -130,6 +130,7 @@ alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
+alias books='vim ~/Sync/var/notes/Journal/books.txt'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
 alias budget='python3 $HOME/Sync/var/projects/budget/main.py'
 alias c='cookie'
@@ -245,6 +246,7 @@ alias ipdb='ipdb3'
 alias iplug='vim +PluginInstall +qall'
 ipy-add-import() { ${SED} -i "/c\.InteractiveShellApp\.exec_lines/ a import $1" ~/.ipython/profile_default/ipython_config.py; }
 alias issh='ssh -p 34857 athena-arch.ddns.net'
+alias ivim='while true; do vim; done'
 j() { if [[ -n "$1" ]]; then jrnl "$@"; else vim + "$HOME"/Sync/var/notes/Journal/jrnl.txt; fi; }
 alias J='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /dev/null'
 K() { tmux switchc -n && tmux kill-session -t "$(tm-session-name)"; }
@@ -298,6 +300,7 @@ alias reboot='sudo reboot'
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
 riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &> /dev/null & disown; }
 alias rm='safe-rm'
+alias rm_latest='command rm $PWD/`command ls -t | head -1`'
 alias rng='ranger'
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
 alias rag='cat $RECENTLY_EDITED_FILES_LOG | sudo xargs ag 2> /dev/null'

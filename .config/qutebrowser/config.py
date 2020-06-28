@@ -401,8 +401,7 @@ def setup_binds() -> None:
     pbind('<Ctrl-o>', 'prompt-open-download rifle {}')
 
     # >>>>>>> PASSTHROUGH
-    ptbind('<Ctrl-]>', 'fake-key <Escape>')
-    ptbind('<Ctrl-x>', 'tab-close', 'enter-mode passthrough')
+    ptbind('<Escape>', 'leave-mode')
 
     # >>>>>>> NORMAL
     # -------------------
