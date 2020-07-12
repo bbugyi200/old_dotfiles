@@ -363,7 +363,8 @@ nmap ( [[
 nmap ) ]]
 nnoremap <Leader>( :call LineTooLong('(')')<CR>
 nnoremap <Leader>[ :call LineTooLong('[')<CR>
-nnoremap <Leader>; ,
+nnoremap [; ,
+nnoremap ]; ;
 nnoremap * /\v\C<<C-R><C-W>><CR>zv
 call s:nimap('<Leader>#', ':call MakeBox()<CR>')
 nnoremap <C-\> <C-^>

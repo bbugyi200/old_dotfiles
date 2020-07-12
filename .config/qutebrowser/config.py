@@ -255,6 +255,7 @@ def setup_search_engines() -> None:
         'ne': 'https://www.newegg.com/p/pl?d={}',
         'p': SE.static.stackoverflow(7, prefix='Python'),
         'pyl': 'https://docs.python.org/3/library/{}',
+        'pyl2': 'https://docs.python.org/2.7/library/{}',
         'pypi': 'https://pypi.org/project/{}',
         'pss': 'https://store.playstation.com/en-us/search/{}',
         'r': SE.static.site('reddit.com'),

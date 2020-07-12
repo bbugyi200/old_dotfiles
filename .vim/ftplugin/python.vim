@@ -169,7 +169,6 @@ function! GetISortCmd(import_string)
                 \ --lines-after-imports=2
                 \ --force-sort-within-sections
                 \ --combine-as
-                \ --dont-order-by-type
                 \ --multi-line=3
                 \ --trailing-comma
                 \"

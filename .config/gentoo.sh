@@ -1,19 +1,21 @@
+# shellcheck disable=SC2142
+# shellcheck disable=SC2154
+
 # ---------- Gentoo Aliases / Functions ----------
 # def marker: GENTOO
 alias del='sudo_del'
 Ebi() { eget "$1" && sudo -i /usr/local/bin/get "$1"; }
-Epatch() { cd "$(epatch "$@")" || return 1; }
 ebi() { sudo repoman manifest && sudo ebuild "$1" clean merge; }
 ecd () { cd "$(find /home/bryan/projects/portage-overlay -type d -name "*$1*" | head -n 1)" || return 1; }
 Ecd () { cd "$(find /var/db/pkg -type d -name "*$1*" | head -n 1)" || return 1; }
-egcd () { cd "$(find "$(portageq get_repo_path / gentoo)" -type d -name "*$1*" | head -n 1)" || return 1; }
 alias edc='sudo -E dispatch-conf'
 alias edep='sudo emerge --ask --depclean && sudo revdep-rebuild'
-# shellcheck disable=SC2142
+egcd () { cd "$(find "$(portageq get_repo_path / gentoo)" -type d -name "*$1*" | head -n 1)" || return 1; }
+Epatch() { cd "$(epatch "$@")" || return 1; }
 alias epu='sudo epuse'
 alias epum='sudo -E vim /etc/portage/package.unmask'
-alias erm='sudo repoman manifest'
 alias eq='equery'
+alias erm='sudo repoman manifest'
 alias ewdups='comm -12 <(sudo cat /etc/portage/sets/shared) <(sudo cat /var/lib/portage/world) 2> /dev/null'
 alias get='sudo_get'
 alias pg="equery list '*' -F '\$repo::\$category/\$name-\$fullversion' 2> /dev/null | grep -i --color=always"

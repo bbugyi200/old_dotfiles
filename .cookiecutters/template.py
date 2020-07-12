@@ -20,7 +20,8 @@ def parse_cli_args(argv: Sequence[str]) -> Arguments:
 
     args = parser.parse_args(argv[1:])
 
-    return Arguments(**dict(args._get_kwargs()))
+    kwargs = dict(args._get_kwargs())
+    return Arguments(**kwargs)
 
 
 @gutils.catch

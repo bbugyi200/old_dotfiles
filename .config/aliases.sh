@@ -8,6 +8,7 @@
 # shellcheck disable=SC2009
 # shellcheck disable=SC2079
 # shellcheck disable=SC2142
+# shellcheck disable=SC2154
 # shellcheck disable=SC2230
 
 
@@ -56,7 +57,6 @@ tcsn () { tcs none "$@"; }
 tcx () { task context "$@" && task_refresh -F rename,config; }
 alias td='task done'
 alias tdel='task delete'
-# shellcheck disable=SC1010
 tdi () { task "$(tnext_inbox_id)" done; }
 alias tdue='tga +OVERDUE'
 tga () { eval "tcsn rc.verbose=blank,label rc.defaultwidth:$COLUMNS $* -COMPLETED -DELETED all"; }
@@ -150,8 +150,8 @@ alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
 alias crun='cargo run --'
 cval() { pushd "$1" &> /dev/null || return 1 && eval "$2"; popd &> /dev/null || return 1; }
-alias d='mkdvtm'
 alias d.='desk .'
+alias d='mkdvtm'
 alias dayplan='cd $HOME/Sync/var/notes && vim dayplan.txt'
 dc() { sudo -E deluge-console "${@}"; }
 dci() { dc info --sort=time_added | awk -F ':' "{if(\$1==\"$1\")print \$0}"; }
@@ -175,11 +175,11 @@ essh() { ssh "$1" -t "$(_essh "$2")"; }
 esssh() { essh "$1" /prod/home/bbugyi/src/prod; }
 fim() { file="$("$(which -a fim | tail -n 1)" "$1")"; if [[ -z "${file}" ]]; then return 1; else vim "${file}"; fi; }
 alias flaggie='sudo -i flaggie'
-fn_() { if [[ "$1" == *"*"* ]]; then find . -iname "$@"; else find . -iname "*$**"; fi; }
 alias fn='noglob fn_'
-fp_() { if [[ "$1" == *"*"* ]]; then find . -ipath "$@"; else find . -ipath "*$**"; fi; }
-alias fp='noglob fp_'
+fn_() { if [[ "$1" == *"*"* ]]; then find . -iname "$@"; else find . -iname "*$**"; fi; }
 forever() { while true; do eval "$*"; done; }
+alias fp='noglob fp_'
+fp_() { if [[ "$1" == *"*"* ]]; then find . -ipath "$@"; else find . -ipath "*$**"; fi; }
 alias ga='git add -v'
 alias gaa='git add -v --all'
 alias gau='git add -v --update'
@@ -189,13 +189,13 @@ gcB() { gbD "$1" &> /dev/null; git checkout -b "$1" "${2:-upstream}"/"$1"; }
 gcbc() { git checkout -b "$@" && git commit --allow-empty; }
 gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%y%m%d")"-"$1"; }
 alias gce='git commit --allow-empty'
+alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
 alias gclp='cd ~/projects && gcl'
 alias gclt='cd /tmp && gcl'
-alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 gcm() { git checkout "${MASTER_BRANCH:-master}"; }
-alias Gdef='def -m GTD'
 alias gdef='def -m GENTOO'
+alias Gdef='def -m GTD'
 gdm() { git diff "${MASTER_BRANCH:-master}"...HEAD; }
 alias gdo='git diff origin/master'
 alias geff='git effort'
@@ -211,9 +211,9 @@ alias glg++='glg ++'
 alias glg+='glg +'
 alias Glg='git log -p -G'
 alias gmc='git ls-files -u | cut -f 2 | sort -u'
-alias gn='gnext'
 gN() { git checkout HEAD~"${1:-1}"; }
 gN1() { git_current_branch > /tmp/gnext-branch.txt && gN "$@"; }
+alias gn='gnext'
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
 alias gpf='git push --force'
 alias gprm='gpup "Docs: Update README"'
@@ -246,15 +246,15 @@ alias ipdb='ipdb3'
 alias iplug='vim +PluginInstall +qall'
 ipy-add-import() { ${SED} -i "/c\.InteractiveShellApp\.exec_lines/ a import $1" ~/.ipython/profile_default/ipython_config.py; }
 alias issh='ssh -p 34857 athena-arch.ddns.net'
-alias ivim='while true; do vim; done'
+ivim() { while true; do vim "$@"; done; }
 j() { if [[ -n "$1" ]]; then jrnl "$@"; else vim + "$HOME"/Sync/var/notes/Journal/jrnl.txt; fi; }
 alias J='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /dev/null'
 K() { tmux switchc -n && tmux kill-session -t "$(tm-session-name)"; }
 alias k9='sudo kill -9'
-alias kman='man -k'
 Kman() { man -wK "$@" | awk -F'/' '{print $NF}' | sed 's/\.\(.*\)\.bz2$/ (\1)/g' | sort; }
-alias Loc='sudo updatedb && loc'
+alias kman='man -k'
 alias loc='locate --regex'
+alias Loc='sudo updatedb && loc'
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
 alias ls='exa -g'
 alias lt='ls --tree'
@@ -275,9 +275,9 @@ alias notes='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /d
 alias ok='xspawn okular'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Sync/var/notes/Onething/"$1".txt; }
 alias P='popd'
-alias pipget='pip install --user'
 pdb() { { [[ -f ./"$1" ]] && pudb3 "$@"; } || pudb3 "$(which -a "$1" | tail -n 1)" "${@:2}"; }
 pgr() { pgrep -f ".*$1.*"; }
+alias pipget='pip install --user'
 alias plex='xspawn -w plex plexmediaplayer'
 pname() { pass show | grep -i "$1" | awk '{print $2}'; }
 ppg() { if [[ -n "$1" ]]; then pipenv graph | grep "$@"; else pipenv graph; fi; }
@@ -294,23 +294,23 @@ alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
 alias pvsu='py-vshlog -u -D BOT EOT -H all -e'
 pycov() { coverage run "$1" && coverage html && qutebrowser htmlcov/index.html; }
-alias Q='tm-kill'
 alias q='exit'
+alias Q='tm-kill'
+alias rag='cat $RECENTLY_EDITED_FILES_LOG | sudo xargs ag 2> /dev/null'
 alias reboot='sudo reboot'
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
 riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &> /dev/null & disown; }
 alias rm='safe-rm'
-alias rm_latest='command rm $PWD/`command ls -t | head -1`'
 alias rng='ranger'
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
-alias rag='cat $RECENTLY_EDITED_FILES_LOG | sudo xargs ag 2> /dev/null'
 alias sat='sudo cat'
-alias sch='vim ~/Sync/var/notes/Rutgers/course_schedule.txt'
 alias sc='systemctl'
+alias sch='vim ~/Sync/var/notes/Rutgers/course_schedule.txt'
 alias scu='systemctl --user'
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias sim='sudo -E vim'
 alias snapshots='find $HOME/Sync/var/aphrodite-motion -name "*$(date +%Y%m%d)*" | sort | xargs imv && delshots'
+alias sqlite3='rlwrap -a -N -c -i sqlite3'
 SS() { tmux send-keys "sleep 1.5 && !-2" "Enter"; }
 alias ssh-aphrodite='ssh 192.168.1.193'
 alias ssh-artemis="ssh bryan@67.207.92.152"
@@ -319,37 +319,36 @@ ssh-rutgers() { ssh bmb181@"${1:-less}".cs.rutgers.edu; }
 alias su='su - -p'
 alias sudo='sudo -E '  # makes aliases visible to sudo
 alias sudoers='sudo -E vim /etc/sudoers'
-alias sqlite3='rlwrap -a -N -c -i sqlite3'
 alias tgdb="gdb -iex 'set pagination off' -ex 'tui enable' -ex 'set pagination on'"
-tmd() { tmux display-message -p "#{$1}"; }
-# shellcheck disable=SC2142
 alias tm-layout="tmux lsw | grep '*' | awk '{gsub(/\\]/, \"\"); print \$7}'"
+tmd() { tmux display-message -p "#{$1}"; }
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
-alias tsm='transmission-remote'
-tsm-add() { transmission-remote -a "$1"; }
+tsm-add() { transmission-remote -a "$@"; }
 tsm-boost() { transmission-remote -t"$1" -Bh -phall -pr250; }
+tsm-mov() { tsm-add "$@" -w "$MOV"; }
 tsm-purge() { transmission-remote -t"$1" -rad; }
 tsm-rm() { transmission-remote -t"$1" -r; }
 tsm-start() { transmission-daemon; }
 tsm-stop() { killall -9 transmission-daemon; }
+tsm-tv() { tsm-add "$@" -w "$TV"; }
 tsm-watch() { watch -n 1 transmission-remote -l; }
+alias tsm='transmission-remote'
 tv-torrent() { echo "torrent -w /media/bryan/hercules/media/Entertainment/TV $*" | at 0200; }
 u() { echo -e "\u$1"; }
 alias undow='dow --undo'
 alias updatedb='sudo updatedb'
-# shellcheck disable=SC2046
 alias uplug='vim +PluginUpdate +qall'
 vab() { vim $(find "$HOME"/Sync/bin/cron.jobs -type f | sort | tr '\n' ' '); }
 alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
-alias vdaily="vgtd-daily-review"
-Vgi() { if [[ -f ./.local_gitignore ]]; then vim -c 'vs ./.local_gitignore' ~/.gitignore_global; else vim ~/.gitignore_global; fi; }
 alias vbox='xspawn sudo virtualbox'
 alias vbt='vim ~/.local/share/torrent/*.txt'
+alias vdaily="vgtd-daily-review"
 alias vdb='vim $HOME/Sync/bin/cron/cron.daily/*'
 alias vdiff='vimdiff -n'
 venv() { vim "$HOME"/.zprofile "$HOME"/.profile "$HOME"/Sync/etc/environment "$(find "$HOME"/Sync/etc/profile.d -type f)" "$HOME"/.local/bin/etc-generator; }
 alias vgdb-l='voltron view command "cmds set listsize $(tput lines) ; list *\$pc" --lexer c'
 alias vgdb='vim ~/.gdbinit .gdbinit'
+Vgi() { if [[ -f ./.local_gitignore ]]; then vim -c 'vs ./.local_gitignore' ~/.gitignore_global; else vim ~/.gitignore_global; fi; }
 alias vgutils='vim /usr/bin/gutils.sh'
 alias vihor='vim ~/Sync/var/notes/Horizons_of_Focus/*'
 alias vimilla='vim -u ~/.vanilla-vimrc'
@@ -360,19 +359,19 @@ alias vmkrules='make -p > /tmp/make-rules && vim /tmp/make-rules'
 alias vnc-athena='open vnc://athena-arch.ddns.net:34590'
 alias vnix='vv_push ~/.nixnote'
 alias vpyutils='pushd ~/Sync/lib/python/gutils &> /dev/null && vv && popd &> /dev/null'
+alias vq='vv_push ~/.config/qutebrowser'
 alias vr='vim ${RECENTLY_EDITED_FILES_LOG}'
 alias vrf='vv_push ~/Sync/bin/main/rfuncs'
+vrobot() { vim "$HOME"/.local/share/red_robot/pending/"$1"; }
 alias vs='vshlog'
 alias vscratch='vim ~/Sync/var/notes/scratch.txt'
 alias vsd='vshlog -H all -D'
 alias vstudy='vim $HOME/.vimwiki/TaskWarrior.wiki'
 alias vtorr='cval "$HOME/Sync/bin/main" "vim torrent libtorrent/**/[^_]*.py"'
 alias vtv="vim \$HOME/.local/bin/tmux_view.sh \$HOME/.local/bin/tv_*"
-alias vwb='vim $HOME/Sync/bin/cron/cron.weekly/*'
-vrobot() { vim "$HOME"/.local/share/red_robot/pending/"$1"; }
 vuse() { vim /etc/portage/package.use/"$1"; }
-alias vq='vv_push ~/.config/qutebrowser'
 vv_push() { tmux send-keys "clear && pushd '$1' &> /dev/null && vv && popd &> /dev/null && clear" "Enter"; }
+alias vwb='vim $HOME/Sync/bin/cron/cron.weekly/*'
 alias vweekly='vgtd-weekly-review'
 alias vx='vv_push ~/.xmonad'
 alias vxorg='sudo -E vim /etc/X11/xorg.conf.d/*'

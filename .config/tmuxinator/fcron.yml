@@ -27,4 +27,4 @@ windows:
         layout: even-horizontal
         panes:
             - 0:
-                - vman 5 fcrontab fcron.conf fcron
+                - vman fcrontab 5 fcrontab fcron.conf fcron

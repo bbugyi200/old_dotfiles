@@ -2149,3 +2149,51 @@
 
 # 2020-06-28 14:08:30.588873
 +\q
+
+# 2020-07-01 14:23:46.189966
++\f t 15
+
+# 2020-07-01 14:23:51.243822
++\q
+
+# 2020-07-01 14:32:44.094947
++select title, company, post_date from jobs where company="Selby Jennings";
+
+# 2020-07-01 14:37:15.202739
++\q
+
+# 2020-07-11 14:48:12.571870
++select title, company, create_date from jobs;
+
+# 2020-07-11 14:48:15.755786
++\d
+
+# 2020-07-11 14:48:18.921547
++\d jobs
+
+# 2020-07-11 14:49:13.952105
++select score, title, company, tags from jobs where score >= 15.0 order by score;
+
+# 2020-07-11 14:49:37.055350
++select score, title, company, tags from jobs where score >= 15.0 and creation_date=date("now") order by score;
+
+# 2020-07-11 14:49:54.160358
++select score, title, company, creation_date, tags from jobs where score >= 15.0 and creation_date=date("now") order by score;
+
+# 2020-07-11 14:50:13.482409
++select score, title, company, creation_date, tags from jobs where score >= 15.0 and creation_date>=date("now", -1) order by score;
+
+# 2020-07-11 14:50:53.694477
++select score, title, company, creation_date, tags from jobs where score >= 15.0 and date(creation_date) >= date("now") order by score;
+
+# 2020-07-11 14:51:05.728786
++select score, title, company, creation_date, tags from jobs where score >= 15.0 and date(creation_date) >= date("now", "-1 day") order by score;
+
+# 2020-07-11 14:51:25.347906
++select score, title, company, creation_date, tags from jobs where score >= 15.0 and date(creation_date) >= date("now") order by score;
+
+# 2020-07-11 14:51:36.449324
++select score, title, company, creation_date, url from jobs where score >= 15.0 and date(creation_date) >= date("now") order by score;
+
+# 2020-07-11 14:52:21.092584
++\q
