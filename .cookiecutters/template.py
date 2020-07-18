@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 {% INSERT %}
 
 import sys
@@ -8,6 +6,17 @@ from typing import NamedTuple, Sequence
 from loguru import logger as log  # pylint: disable=unused-import
 
 import gutils
+
+
+@gutils.catch
+def main(argv: Sequence[str] = None) -> int:
+    if argv is None:
+        argv = sys.argv
+
+    args = parse_cli_args(argv)
+    gutils.logging.configure(__file__, debug=args.debug, verbose=args.verbose)
+
+    return run(args)
 
 
 class Arguments(NamedTuple):
@@ -24,14 +33,7 @@ def parse_cli_args(argv: Sequence[str]) -> Arguments:
     return Arguments(**kwargs)
 
 
-@gutils.catch
-def main(argv: Sequence[str] = None) -> int:
-    if argv is None:
-        argv = sys.argv
-
-    args = parse_cli_args(argv)
-    gutils.logging.configure(__file__, debug=args.debug, verbose=args.verbose)
-
+def run(args: Arguments) -> int:
     return 0
 
 

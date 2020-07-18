@@ -39,6 +39,7 @@ eip https://gitlab.pr.edgelp.net/edgelp/prod/issues
 eiprod https://gitlab.pr.edgelp.net/edgelp/prod/issues?scope=all&utf8=%E2%9C%93&state=opened&assignee_username[]=bbugyi&label_name[]=Status%3A%3ADone%5BProduction%5D
 eistag https://gitlab.pr.edgelp.net/edgelp/prod/issues?scope=all&utf8=%E2%9C%93&state=all&assignee_username[]=bbugyi&label_name[]=Status%3A%3ADone%5BStaging%5D
 eiw https://gitlab.pr.edgelp.net/edgelp/website/issues
+emonday https://edgestream.monday.com/boards/565435515
 empb https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests?scope=all&utf8=%E2%9C%93&state=opened&assignee_username=bbugyi
 emp https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests?scope=all&utf8=%E2%9C%93&state=all
 empl https://gitlab.pr.edgelp.net/edgelp/plat/merge_requests
@@ -148,6 +149,7 @@ sss http://sites.math.rutgers.edu/~alexk/2019S481/syllabus.html
 Sync http://127.0.0.1:8384/#device-general
 tb https://triplebyte.com/candidates
 T https://trello.com/b/PfAJM2Ge/black-182
+toggl https://toggl.com/app/timer
 tr https://sis.rutgers.edu/tags/
 TSM http://localhost:9091/transmission/web/
 TW https://twitter.com/
@@ -156,4 +158,4 @@ Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
 zmq http://zguide.zeromq.org/page:all#toc6
-emonday https://edgestream.monday.com/boards/565435515
+leet https://leetcode.com/problemset/all/

@@ -290,7 +290,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), do
             spawn "wmctrl -a Calendar"
-            launchApp "chat" "Calendar" "firefox-bin --new-window https://calendar.google.com/calendar/b/1/r/month?pli=1"
+            launchApp "chat" "Calendar" "firefox-bin --new-window https://calendar.google.com/calendar/b/0/r/month?pli=1"
     )
    , ((alpha, d), windows W.focusDown)
    , ((alpha, f), launchApp "fox" "" "firefox-bin")
@@ -410,7 +410,7 @@ myAdditionalKeys = [
    , ((alpha, xK_minus), spawn "set_volume 2%-")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
-   , ((alpha .|. beta, xK_Print), spawn "saved_sshot") -- Save Screenshot as Receipt
+   , ((alpha .|. beta, xK_Print), spawn "saved_sshot") -- Save Screenshot to File
    , ((alpha .|. ctrl, xK_Print), spawn "print_sshot") -- Print Screenshot
    , ((alpha, xK_semicolon), spawn "shellPrompt")
    , ((alpha .|. beta, xK_semicolon), spawn "shellPrompt -L")
