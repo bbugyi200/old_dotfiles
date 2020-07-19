@@ -180,7 +180,7 @@ map = zoom in
 map ; feedkeys ":"
 map ,b focus_inputbar ":bmark "
 map d feedkeys ":set first-page-column 1:2<Return>"
-map ,d feedkeys ":bdelete <Tab>"
+map ,d feedkeys ":bdelete "
 map D feedkeys ":set first-page-column 1:1<Return>"
 map <C-f> toggle_fullscreen
 map [fullscreen] <C-f> toggle_fullscreen

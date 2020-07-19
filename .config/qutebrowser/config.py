@@ -35,7 +35,7 @@ def is_macos() -> bool:
     return 'Darwin' in platform.version()
 
 
-class smaster:
+class SetupMaster:
     """Setup Master Class
 
     All setup functions MUST register with this class or they will not be
@@ -43,7 +43,7 @@ class smaster:
     """
 
     # Registered setup functions.
-    __SETUP_FUNC_REGISTRY: List[SetupFunc] = []
+    _SETUP_FUNC_REGISTRY: List[SetupFunc] = []
 
     @classmethod
     def register(
@@ -62,19 +62,19 @@ class smaster:
             assert setup_func is not None
             return setup_func()
 
-        cls.__SETUP_FUNC_REGISTRY.append(wrapped_setup_func)
+        cls._SETUP_FUNC_REGISTRY.append(wrapped_setup_func)
         return wrapped_setup_func
 
     @classmethod
     def run_all(cls) -> None:
-        for setup_func in cls.__SETUP_FUNC_REGISTRY:
+        for setup_func in cls._SETUP_FUNC_REGISTRY:
             setup_func()
 
 
 #####################################################################
 #  Search Aliases                                                   #
 #####################################################################
-@smaster.register
+@SetupMaster.register
 def setup_search_aliases() -> None:
     # These aliases will be substituted with their definitions when found
     # anywhere in the query of an ':open' command.
@@ -150,7 +150,7 @@ def bang_pttrn() -> str:
     return bang_fmt.format('|'.join(all_bangs))
 
 
-@smaster.register
+@SetupMaster.register
 def setup_search_engines() -> None:
     searchengines = {
         '2': 'https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}',
@@ -308,7 +308,7 @@ def setup_search_engines() -> None:
 #####################################################################
 #  Command Aliases                                                  #
 #####################################################################
-@smaster.register
+@SetupMaster.register
 def setup_cmd_aliases() -> None:
     command_aliases = {
         'libget': 'jseval -q document.querySelector("h2").click()',
@@ -337,7 +337,7 @@ def bind(keys: str, *commands: str, mode: str = 'normal') -> None:
     config.bind(keys, ' ;; '.join(commands), mode=mode)
 
 
-@smaster.register
+@SetupMaster.register
 def setup_binds() -> None:
     c.bindings.commands = {}  # Clears all previously set user bindings.
 
@@ -572,7 +572,7 @@ def dict_attrs(
         yield path, obj
 
 
-@smaster.register
+@SetupMaster.register
 def setup_config_from_yaml() -> None:
     with (Path(__file__).parent.absolute() / 'config.yml').open() as f:
         yaml_data = yaml.load(f)
@@ -582,4 +582,4 @@ def setup_config_from_yaml() -> None:
 
 
 # Call all setup functions.
-smaster.run_all()
+SetupMaster.run_all()
