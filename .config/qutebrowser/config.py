@@ -433,6 +433,7 @@ def setup_binds() -> None:
         ),
     )
     bind(',gc', 'spawn "init-chrome"')
+    bind('gf', 'spawn firefox-bin --new-window {url}')
     bind('gh', 'home')
     bind('gs', 'view-source --pygments')
     bind('gi', 'hint inputs')

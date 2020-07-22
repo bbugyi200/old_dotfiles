@@ -97,7 +97,6 @@ else
 fi
 
 export MATLABPATH="$HOME/.matlab"
-export MYPYPATH="$PYTHONPATH"
 
 if [[ "$(id -u)" = 0 ]]; then
     export PATH="$(insert_path "${PATH}" "/root/.local/bin")"
@@ -111,7 +110,6 @@ export FZF_DEFAULT_OPTS='--reverse --height 40% --border'
 export LESS="${LESS} -Q"
 M="$(printf "\u2709")"
 export MAILPATH="/var/mail/bryan? ${M} ${M} ${M} NEW MAIL IN /var/mail/bryan!!! ${M} ${M} ${M}"
-export MYPYPATH="${PYTHONPATH}":"${PWD}"
 export PAGER="less -SRXF"
 export QT_QPA_PLATFORMTHEME="qt5ct"  # Fixes: missing okular icons
 export RECENTLY_EDITED_FILES_LOG="$HOME"/Sync/var/recently_edited_files.log
@@ -179,3 +177,4 @@ export PATH="$(insert_path "${PATH}" "$HOME/.flamegraph")"
 export LIBRARY_PATH="$(dedup_path "${LIBRARY_PATH}")"
 export PATH="$(dedup_path "${PATH}")"
 export PYTHONPATH="$(dedup_path "${PYTHONPATH}")"
+export MYPYPATH="${PYTHONPATH}"

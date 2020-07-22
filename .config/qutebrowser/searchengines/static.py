@@ -9,7 +9,7 @@ import searchengines.utils as utils
 ############
 #  Public  #
 ############
-def stackoverflow(n: int, *, prefix: str = None) -> 'SE.SearchEngine':
+def stackoverflow(n: int, *, prefix: str = None) -> SE.SearchEngine:
     """Returns stackoverflow google search string.
 
     The search results returned by Google will range from @n years ago until
@@ -36,7 +36,7 @@ def site(*domains: str, prefix: str = None) -> 'SE.SearchEngine':
     )
 
 
-def google(query: str, *, max_years_old: int = None) -> 'SE.SearchEngine':
+def google(query: str, *, max_years_old: int = None) -> SE.SearchEngine:
     encoded_query = utils.encode(query)
     if max_years_old is None:
         return SE.SearchEngine(

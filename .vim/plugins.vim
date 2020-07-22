@@ -94,8 +94,9 @@ endfunction
 if PluginInstalled("ale")
     let g:ale_fixers = {'python': ['black']}
 
-    let g:ale_python_pylint_options = get(g:, "ale_python_pylint_options", "--rcfile=~/.config/pylintrc")
     let g:ale_python_black_options = get(g:, "ale_python_black_options", "--line-length=79 --skip-string-normalization")
+    let g:ale_python_mypy_options = get(g:, "ale_python_mypy_options", "--python-executable=python")
+    let g:ale_python_pylint_options = get(g:, "ale_python_pylint_options", "--rcfile=~/.config/pylintrc")
 
     let g:ale_fix_on_save = get(g:, "ale_fix_on_save", 0)
 endif
