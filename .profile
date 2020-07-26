@@ -110,7 +110,7 @@ export FZF_DEFAULT_OPTS='--reverse --height 40% --border'
 export LESS="${LESS} -Q"
 M="$(printf "\u2709")"
 export MAILPATH="/var/mail/bryan? ${M} ${M} ${M} NEW MAIL IN /var/mail/bryan!!! ${M} ${M} ${M}"
-export PAGER="less -SRXF"
+export PAGER="less"
 export QT_QPA_PLATFORMTHEME="qt5ct"  # Fixes: missing okular icons
 export RECENTLY_EDITED_FILES_LOG="$HOME"/Sync/var/recently_edited_files.log
 export RIPGREP_CONFIG_PATH="$HOME"/.config/rgrc
@@ -173,6 +173,8 @@ fi
 export PATH="$(insert_path "${PATH}" "$HOME/.local/bin")"
 export PATH="$(insert_path "${PATH}" "$HOME/.dynamic-colors/bin")"
 export PATH="$(insert_path "${PATH}" "$HOME/.flamegraph")"
+
+export PYTHONPATH="$(insert_path "${PYTHONPATH}" "${HOME}"/.local/bin)"
 
 export LIBRARY_PATH="$(dedup_path "${LIBRARY_PATH}")"
 export PATH="$(dedup_path "${PATH}")"

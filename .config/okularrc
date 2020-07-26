@@ -25,25 +25,25 @@ Width 1920=590
 
 [Recent Files]
 File1[$e]=$HOME/Sync/var/notes/Rocketbook/Statistics/My_Statistics_Notes.pdf
-File10[$e]=$HOME/Sync/var/books/Programming/Operating_Systems/TCP_IP_Illustrated-(Stevens).djvu
+File10[$e]=$HOME/Sync/var/books/Programming/Operating_Systems/Understanding_the_Linux_Kernel-(Bovet).pdf
 File2[$e]=$HOME/projects/CV/BryanBugyi_CV.pdf
 File3[$e]=$HOME/Sync/var/books/Programming/Operating_Systems/Operating_System_Concepts-(Silberschatz).pdf
 File4[$e]=$HOME/Sync/var/books/Math/Combinatorics/A_First_Course_in_Graph_Theory-(Zhang).pdf
 File5[$e]=$HOME/Sync/var/study/Compilers/hw6_instructions.pdf
 File6[$e]=$HOME/Sync/var/books/Programming/Philosophy/The_Mythical_Man_Month-(Brooks).pdf
-File7[$e]=$HOME/Sync/var/books/Programming/Philosophy/The_Pragmatic_Programmer-(Hunt).pdf
-File8[$e]=$HOME/Sync/var/books/Programming/Python/Web Scraping with Python - Ryan Mitchell.pdf
-File9[$e]=$HOME/Downloads/Edgestream Employee Handbook April 2020.pdf
+File7[$e]=$HOME/Sync/var/books/Programming/Python/Web Scraping with Python - Ryan Mitchell.pdf
+File8[$e]=$HOME/Sync/var/books/Programming/Operating_Systems/TCP_IP_Illustrated-(Stevens).djvu
+File9[$e]=$HOME/Sync/var/books/Programming/Philosophy/The_Pragmatic_Programmer-(Hunt).pdf
 Name1[$e]=My_Statistics_Notes.pdf
-Name10[$e]=TCP_IP_Illustrated-(Stevens).djvu
+Name10[$e]=Understanding_the_Linux_Kernel-(Bovet).pdf
 Name2[$e]=BryanBugyi_CV.pdf
 Name3[$e]=Operating_System_Concepts-(Silberschatz).pdf
 Name4[$e]=A_First_Course_in_Graph_Theory-(Zhang).pdf
 Name5[$e]=hw6_instructions.pdf
 Name6[$e]=The_Mythical_Man_Month-(Brooks).pdf
-Name7[$e]=The_Pragmatic_Programmer-(Hunt).pdf
-Name8[$e]=Web Scraping with Python - Ryan Mitchell.pdf
-Name9[$e]=Edgestream Employee Handbook April 2020.pdf
+Name7[$e]=Web Scraping with Python - Ryan Mitchell.pdf
+Name8[$e]=TCP_IP_Illustrated-(Stevens).djvu
+Name9[$e]=The_Pragmatic_Programmer-(Hunt).pdf
 
 [Shortcut Schemes]
 Current Scheme=VimBindings

@@ -159,3 +159,4 @@ Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
 zmq http://zguide.zeromq.org/page:all#toc6
+j http://zguide.zeromq.org/page:chapter2#Working-with-Messages

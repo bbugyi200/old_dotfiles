@@ -464,7 +464,7 @@ def setup_binds() -> None:
     bind(',r', 'bookmark-add {url} "READ: {title}"')
     bind(',sd', 'set-cmd-text -s :session-delete')
     bind(',sl', 'set-cmd-text -s :session-load -c')
-    bind(',ss', 'set-cmd-text -s :session-save -o')
+    bind(',ss', 'set-cmd-text -s :session-save')
     bind(',S', 'session-save -c')
     bind(
         ',tt',
