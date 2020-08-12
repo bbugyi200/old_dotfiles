@@ -173,6 +173,7 @@ fi
 export PATH="$(insert_path "${PATH}" "$HOME/.local/bin")"
 export PATH="$(insert_path "${PATH}" "$HOME/.dynamic-colors/bin")"
 export PATH="$(insert_path "${PATH}" "$HOME/.flamegraph")"
+export PATH="$(insert_path "${PATH}" "${HOME}"/.tmp/bin)"
 
 export PYTHONPATH="$(insert_path "${PYTHONPATH}" "${HOME}"/.local/bin)"
 

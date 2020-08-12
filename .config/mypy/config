@@ -16,5 +16,5 @@ warn_unreachable = True
 warn_unused_configs = True
 warn_unused_ignores = True
 
-[mypy-tornado.*,pandas.*,numpy.*,sklearn.*,matplotlib.*,scipy.*,IPython.*,paramiko.*,loguru,hypothesis.*,django.*,ldap.*,pudb.*,selenium.*,bs4.*,pytest.*]
+[mypy-tornado.*,pandas.*,numpy.*,sklearn.*,matplotlib.*,scipy.*,IPython.*,paramiko.*,loguru,hypothesis.*,django.*,ldap.*,pudb.*,selenium.*,bs4.*,pytest.*,zmq.*]
 ignore_missing_imports = True

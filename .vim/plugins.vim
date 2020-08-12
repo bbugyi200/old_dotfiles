@@ -52,6 +52,7 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'vimwiki/vimwiki'  " Required by: taskwiki
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Konfekt/FastFold'
+Plugin 'z0mbix/vim-shfmt'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -92,7 +93,7 @@ endfunction
 " ALE "
 """""""
 if PluginInstalled("ale")
-    let g:ale_fixers = {'python': ['black']}
+    let g:ale_fixers = {'python': ['black'], 'sh': ['shfmt']}
 
     let g:ale_python_black_options = get(g:, "ale_python_black_options", "--line-length=79 --skip-string-normalization")
     let g:ale_python_mypy_options = get(g:, "ale_python_mypy_options", "--python-executable=python")

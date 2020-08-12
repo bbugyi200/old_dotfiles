@@ -12,7 +12,7 @@ import searchengines.imfeelinglucky as IFL
 import searchengines.utils as utils
 
 # Custom Types
-filter_type = Callable[[str], Sequence]
+FilterType = Callable[[str], Sequence]
 
 
 __all__ = [
@@ -41,7 +41,9 @@ class SearchEngine(str):
         self.url_objects = url_objects + (URL(default_url, '.*'),)
 
     def format(self, *args: str, **kwargs: str) -> str:  # type: ignore
-        term = args[0]
+        args_list = list(args)
+
+        term = args_list.pop(0)
         for url, pttrn, filter_ in self.url_objects:
             if re.match(pttrn, term):
                 filtered = filter_(utils.filter_aliases(term))
@@ -49,14 +51,27 @@ class SearchEngine(str):
                 if isinstance(filtered, str):
                     filtered = (filtered,)
 
-                formatted_url = str.format(url, *filtered, *args[1:], **kwargs)
+                try:
+                    formatted_url = str.format(
+                        url, *filtered, *args_list, **kwargs
+                    )
+                except Exception as e:
+                    raise RuntimeError(
+                        "There was an error when formatting the url. Printing"
+                        " local variables...\n{}".format(
+                            '\n'.join(
+                                "{}={}".format(k, repr(v))
+                                for k, v in locals().items()
+                            )
+                        )
+                    ) from e
 
                 if LuckyURL.is_lucky(formatted_url):
                     formatted_url = LuckyURL.get_top_link(formatted_url)
 
                 return formatted_url
 
-        return str.format(term, *args, **kwargs)
+        return str.format(term, *args_list, **kwargs)
 
 
 class URL:
@@ -74,7 +89,7 @@ class URL:
     """
 
     def __init__(
-        self, url: str, pattern: str = None, filter_: filter_type = None
+        self, url: str, pattern: str = None, filter_: FilterType = None
     ):
         self.url = url
 
@@ -99,13 +114,13 @@ class LuckyURL(URL):
 
     # dummy url is needed to pass qutebrowser's validation checks
     start_mark = 'https://imfeelinglucky/'
-    end_mark = '@'
+    end_mark = '@@@'
 
     def __init__(
         self,
         url: str,
         pattern: str = None,
-        filter_: filter_type = None,
+        filter_: FilterType = None,
         suffix: str = '',
     ):
         if pattern is not None:
@@ -154,7 +169,7 @@ def IntURLFactory(n: int) -> Type[URL]:
     class IntURL(URL):
         pattern = pttrn_fmt.format(int_pttrn)
 
-        def __init__(self, url: str, filter_: filter_type = None):
+        def __init__(self, url: str, filter_: FilterType = None):
             if filter_ is not None:
                 self.filter = filter_  # type: ignore
 
@@ -166,11 +181,11 @@ def IntURLFactory(n: int) -> Type[URL]:
         ) -> Sequence:
             nums: List = re.split(utils.encode(' '), query, maxsplit=n)
 
-            ret = nums[:]
+            result = nums[:]
             for i in range(n):
-                ret[i] = int(nums[i])
+                result[i] = int(nums[i])
 
-            return ret
+            return result
 
     return IntURL
 

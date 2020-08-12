@@ -126,28 +126,40 @@ def bang_pttrn() -> str:
     Returns regex pattern that matches DuckDuckGo bangs that I like to use.
     """
     one_letter_bangs = [
-        'a',
-        'd',
-        'g',
-        'm',
-        't',
+        'a',  # Amazon
+        'd',  # Dictionary
+        'g',  # Google
+        'm',  # Google Maps
+        't',  # Thesaurus
     ]
     two_letter_bangs = [
-        'gm',
-        'ho',
-        'wa',
-        'yt',
+        'ho',  # Hoogle
+        'wa',  # WolframAlpha
+        'yt',  # YouTube
     ]
     long_bangs = [
-        'ddg',
-        'bang',
-        'giphy',
+        'ddg',  # DuckDuckGo
+        'bang',  # DuckDuckGo Bang Search
+        'giphy',  # Giphy.com
     ]
 
     all_bangs = one_letter_bangs + two_letter_bangs + long_bangs
 
     bang_fmt = '^({}) '
     return bang_fmt.format('|'.join(all_bangs))
+
+
+def lucky_url_with_suffix_arg(
+    query: str, *, suffix: str, sep: str = "@"
+) -> SE.LuckyURL:
+    return SE.LuckyURL(
+        query,
+        '({}){}'.format(SE.LuckyURL.pattern, rf'[A-z][A-z0-9-_ ]* {sep}'),
+        lambda x: re.split(
+            SE.utils.encode(f' {sep}'), SE.LuckyURL.filter(x), maxsplit=1
+        ),
+        suffix=suffix,
+    )
 
 
 @SetupMaster.register
@@ -182,9 +194,7 @@ def setup_search_engines() -> None:
                 'http://web-prod.pr.edgelp.net:22052/find?names={1}&days={0}'
             ),
         ),
-        'eip': SE.static.google(
-            'https://gitlab.pr.edgelp.net/edgelp/prod/issues?scope=all&utf8=✓&state=opened&search={}'
-        ),
+        'eip': 'https://gitlab.pr.edgelp.net/edgelp/prod/issues?scope=all&utf8=✓&state=opened&search={}',
         'emp': 'https://gitlab.pr.edgelp.net/edgelp/prod/merge_requests/{}',
         'emw': 'https://gitlab.pr.edgelp.net/edgelp/website/merge_requests/{}',
         'ep': SE.SearchEngine(
@@ -214,21 +224,13 @@ def setup_search_engines() -> None:
                 'https://github.com/bbugyi200/scripts/issues/{}', '^[0-9]+$'
             ),
             SE.OneIntURL('https://github.com/bbugyi200/{1}/issues/{0}'),
-            SE.LuckyURL(
+            lucky_url_with_suffix_arg(
                 '{0} site:github.com',
-                '{}{}'.format(SE.LuckyURL.pattern, r'([A-z]| )+@'),
-                lambda x: re.split(
-                    SE.utils.encode(' @'), SE.LuckyURL.filter(x), maxsplit=1
-                ),
                 suffix='issues?&q=is%3Aissue+{1}',
+                sep="@",
             ),
-            SE.LuckyURL(
-                '{0} site:github.com',
-                '{}{}'.format(SE.LuckyURL.pattern, '([A-z]| )+#'),
-                lambda x: re.split(
-                    SE.utils.encode(' #'), SE.LuckyURL.filter(x), maxsplit=1
-                ),
-                suffix='issues/{1}',
+            lucky_url_with_suffix_arg(
+                '{0} site:github.com', suffix='issues/{1}', sep="#"
             ),
             SE.LuckyURL('{} site:github.com', suffix='issues'),
         ),

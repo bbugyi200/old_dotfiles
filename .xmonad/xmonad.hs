@@ -30,9 +30,10 @@ import qualified Data.List as DataList
 import qualified Network.HostName as HostName
 import qualified System.Exit as Exit
 import qualified XMonad.Actions.CycleWS as CW
-import qualified XMonad.Actions.DynamicWorkspaces as DW
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
+import qualified XMonad.Actions.DynamicWorkspaces as DW
 import qualified XMonad.Actions.FloatKeys as FK
+import qualified XMonad.Actions.GroupNavigation as GNav
 import qualified XMonad.Actions.Navigation2D as N2D
 import qualified XMonad.Actions.UpdatePointer as UP
 import qualified XMonad.Hooks.DynamicLog as DL
@@ -87,7 +88,7 @@ main = do
             , DL.ppWsSep                 = "    "
             , DL.ppTitle                 = DL.xmobarColor "green"  "" . DL.shorten 40
             , DL.ppSort                  = (NSP.namedScratchpadFilterOutWorkspace .) `liftM` DW.getSortByOrder
-            } >> ewmhDesktopsLogHook <+> DL.dynamicLogXinerama
+            } >> GNav.historyHook >> ewmhDesktopsLogHook <+> DL.dynamicLogXinerama
       } `additionalKeys` myAdditionalKeys
 
 -------------------------------------------------------------------------------
@@ -169,6 +170,17 @@ pushDesktop key = spawn $ "xmonad-scratch-bind " ++ key ++ " 0.15"
 
 delayedSpawn :: Int -> String -> X ()
 delayedSpawn seconds cmd = spawn $ "sleep " ++ show seconds ++ " && " ++ cmd
+
+-- Usage:  goToLastMonitor "S <TARGET_SCREEN_ID>" "S <CURRENT_SCREEN_ID>"
+goToLastMonitor :: String -> String -> X ()
+goToLastMonitor "S 0" "S 1" = do
+    swapScreens "prev"
+    prevScreen
+goToLastMonitor "S 1" "S 2" = goToLastMonitor "S 0" "S 1"
+goToLastMonitor "S 2" "S 0" = goToLastMonitor "S 0" "S 1"
+goToLastMonitor _ _ = do
+    swapScreens "next"
+    nextScreen
 
 -- I have no idea why it is necessary to sometimes swap these, but it is...
 swapNextScreen = CW.swapNextScreen
@@ -290,7 +302,7 @@ myAdditionalKeys = [
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), do
             spawn "wmctrl -a Calendar"
-            launchApp "chat" "Calendar" "firefox-bin --new-window https://calendar.google.com/calendar/b/0/r/month?pli=1"
+            launchApp "cal" "Calendar" "firefox-bin --new-window https://calendar.google.com/calendar/b/0/r/month?pli=1"
     )
    , ((alpha, d), windows W.focusDown)
    , ((alpha, f), launchApp "fox" "" "firefox-bin")
@@ -314,18 +326,23 @@ myAdditionalKeys = [
    , ((alpha .|. ctrl, l), sendMessage Expand)
    , ((alpha, m), do
             spawn "wmctrl -a Gmail || wmctrl -a 'bryan.bugyi@edgestreamlp.com'"
-            launchApp "chat" "Gmail|edgestreamlp" "firefox-bin --new-window https://mail.google.com/mail/u/1/#inbox"
+            launchApp "mail" "Gmail|edgestreamlp" "firefox-bin --new-window https://mail.google.com/mail/u/1/#inbox"
     )
    , ((alpha .|. beta, m), do
             spawn "wmctrl -a Messages"
-            launchApp "chat" "Messages" "firefox-bin --new-window https://messages.google.com/web/conversations"
+            launchApp "msg" "Messages" "firefox-bin --new-window https://messages.google.com/web/conversations"
     )
    , ((alpha, n), launchApp "notes" "" "nixnote2")
    , ((alpha .|. beta .|. shift, n), do
            ws_name <- io $ readFile "/tmp/xmonad.workspace"
            DW.addWorkspace ws_name
      )
-   , ((alpha, o), CW.toggleWS' ["NSP"])
+   , ((alpha, o), do
+           orig_sid <- gets (W.screen . W.current . windowset)
+           GNav.nextMatch GNav.History (return True)
+           new_sid <- gets (W.screen . W.current . windowset)
+           when (orig_sid /= new_sid) $ goToLastMonitor (show orig_sid) (show new_sid)
+     )
    , ((alpha .|. ctrl, o), spawn "zopen")
    , ((alpha, p), launchApp "dev" "" "mkdvtm es-prod")
    , ((alpha, q), spawn "qb_prompt")
@@ -338,7 +355,7 @@ myAdditionalKeys = [
    , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha, s), do
             spawn "wmctrl -a Slack"
-            launchApp "chat" "Slack" "firefox-bin --new-window https://app.slack.com/client/T043N5HHP/C5N1S9DU0"
+            launchApp "slack" "Slack" "init-slack"
     )
    , ((alpha .|. beta, s), do
             spawn "wmctrl -a 'System Information'"
