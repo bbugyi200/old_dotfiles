@@ -30,7 +30,7 @@ alias velog='vim /var/log/emerge.log'
 alias vg='vgp /etc/portage/make.conf'
 alias vgmanage='vim ~/Sync/bin/gentoo/{emanage,eupdate,ecleanup,emaint_check}'
 alias vgmk='sudo -E vim /etc/portage/make.conf /etc/portage/make.shared'
-vgp() { sudo -E vim "$@" /etc/portage/package.{accept_keywords,use,env,mask,unmask} /etc/portage/make.{conf,shared} /etc/portage/env/*; }
+vgp() { sudo -E vim "$@" /etc/portage/package.{accept_keywords,use,env,mask,unmask} /etc/portage/make.conf /etc/portage/env/*; }
 alias vgpe='sudo -E vim /etc/portage/package.env /etc/portage/env/*.conf'
 alias vgpk='sudo -E vim /etc/portage/package.accept_keywords'
 alias vgpm='sudo -E vim /etc/portage/package.mask'

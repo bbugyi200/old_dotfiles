@@ -110,7 +110,9 @@ class URL:
 class LuckyURL(URL):
     """Queries that Utilize Google's 'I'm Feeling Lucky' Feature"""
 
-    pattern = r"^(\|/|%2F)|^.*@$"
+    slash_pattern = r"^(\|/|%2F)"
+    at_pattern = r"^.*(@|%40)$"
+    pattern = rf"{slash_pattern}|{at_pattern}"
 
     # dummy url is needed to pass qutebrowser's validation checks
     start_mark = 'https://imfeelinglucky/'
@@ -133,18 +135,27 @@ class LuckyURL(URL):
             self.make_lucky(url, suffix=suffix), self.pattern, self.filter
         )
 
-    def make_lucky(self, query: str, suffix: str = '') -> str:
+    @classmethod
+    def make_lucky(cls, query: str, suffix: str = '') -> str:
         query = utils.encode(query)
         fmt_url = '{}{{}}{}{}'.format(
-            self.start_mark,
-            self.end_mark,
+            cls.start_mark,
+            cls.end_mark,
             re.sub(r'\{(\d*)\}', r'{{\1}}', suffix),
         )
         return fmt_url.format(query)
 
     @classmethod
     def filter(cls, query: str) -> str:  # pylint: disable=method-hidden
-        return re.sub(cls.pattern, '', query)
+        result = re.sub(cls.slash_pattern, '', query)
+
+        if result.endswith("@"):
+            result = result[:-1]
+
+        if result.endswith("%40"):
+            result = result[:-3]
+
+        return result
 
     @classmethod
     def is_lucky(cls, url: str) -> bool:
