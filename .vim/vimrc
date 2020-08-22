@@ -83,15 +83,6 @@ function! CookieMirror(project)
 endfunction
 
 
-function! NavFold(keys, count=1)
-    if foldlevel(line(".")) > 0
-        normal zC
-    endif
-
-    execute "normal " . a:count . a:keys
-endfunction
-
-
 " Returns an expression that will replace a forward slash when one is typed
 " in INSERT mode. Used to enable automatic file completion (and sometimes
 " header completion in C/C++).

@@ -19,10 +19,9 @@
       <property name="XF86Mail" type="empty"/>
     </property>
     <property name="custom" type="empty">
-      <property name="&lt;Alt&gt;F3" type="string" value="xfce4-appfinder">
+      <property name="&lt;Alt&gt;F3" type="empty">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
-      <property name="&lt;Alt&gt;F1" type="string" value="xfce4-popup-applicationsmenu"/>
       <property name="&lt;Alt&gt;F2" type="empty">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
@@ -31,45 +30,53 @@
       <property name="XF86WWW" type="string" value="exo-open --launch WebBrowser"/>
       <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
       <property name="override" type="bool" value="true"/>
-      <property name="&lt;Alt&gt;semicolon" type="string" value="xfce4-appfinder --collapsed">
+      <property name="&lt;Alt&gt;semicolon" type="empty">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
-      <property name="&lt;Alt&gt;w" type="string" value="wmctrl -c :ACTIVE:"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;o" type="string" value="zopen"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;&lt;Super&gt;s" type="string" value="sudo shutdown now"/>
-      <property name="&lt;Shift&gt;&lt;Alt&gt;l" type="string" value="debian-suspend"/>
       <property name="&lt;Primary&gt;space" type="string" value="debian-close-notifications"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;x" type="string" value="debian-extra-terminal"/>
-      <property name="&lt;Alt&gt;n" type="string" value="debian-notes"/>
-      <property name="&lt;Alt&gt;1" type="string" value="debian-send-window 0"/>
-      <property name="&lt;Alt&gt;2" type="string" value="debian-send-window 1"/>
-      <property name="&lt;Alt&gt;3" type="string" value="debian-send-window 2"/>
-      <property name="&lt;Alt&gt;4" type="string" value="debian-send-window 3"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;b" type="string" value="debian-battery"/>
-      <property name="&lt;Alt&gt;b" type="string" value="clipster_rofi_menu"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;b" type="string" value="clipster_gtk"/>
-      <property name="&lt;Alt&gt;o" type="string" value="debian-launcher &quot;okular&quot; &quot;okular&quot; 2 &quot;-x&quot;"/>
-      <property name="&lt;Alt&gt;i" type="string" value="debian-launcher &quot;qutebrowser&quot; &quot;qutebrowser&quot; 1 &quot;-x&quot;"/>
-      <property name="&lt;Alt&gt;period" type="string" value="debian-launcher &quot;scratchpad&quot; &quot;scratchpad-launcher&quot; 0"/>
-      <property name="&lt;Alt&gt;x" type="string" value="debian-launcher &quot;zsh:hera&quot; &quot;tm-init&quot; 0 &quot;-F&quot;"/>
-      <property name="&lt;Alt&gt;s" type="string" value="debian-launcher &quot;xfce4-settings-manager&quot; &quot;xfce4-settings-manager&quot; &quot;-x&quot;"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;x" type="string" value="debian-launcher &quot;zsh:athena&quot; &quot;init-athena&quot; 0 &quot;-F&quot;"/>
-      <property name="&lt;Alt&gt;comma" type="string" value="debian-launcher &quot;GTD&quot; &quot;gtd-launcher&quot; 0:0.1"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;comma" type="string" value="debian-launcher &quot;GTD&quot; &quot;gtd-launcher&quot; 0:2.1"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="debian-suspend -1"/>
-      <property name="&lt;Alt&gt;slash" type="string" value="urxvt -e bc -l /home/bryan/.bcrc"/>
-      <property name="&lt;Alt&gt;l" type="string" value="winstack next"/>
-      <property name="&lt;Alt&gt;h" type="string" value="winstack prev"/>
-      <property name="&lt;Alt&gt;z" type="string" value="debian-launcher &quot;zathura&quot; &quot;zathura&quot; 2 &quot;-x&quot;"/>
-      <property name="&lt;Alt&gt;q" type="string" value="debian-qb-search &quot;O&quot;"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;t" type="string" value="task_due_today"/>
-      <property name="&lt;Alt&gt;m" type="string" value="debian-launcher &quot;mpv&quot; &quot;umpv&quot; 1"/>
-      <property name="&lt;Alt&gt;p" type="string" value="pkhal"/>
-      <property name="&lt;Alt&gt;d" type="string" value="winstack next"/>
-      <property name="&lt;Alt&gt;u" type="string" value="winstack prev"/>
-      <property name="&lt;Alt&gt;minus" type="string" value="wnotify"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;minus" type="string" value="wtoggle"/>
-      <property name="&lt;Alt&gt;t" type="string" value="new_enote_task"/>
+      <property name="&lt;Super&gt;b" type="string" value="clipster_rofi_menu"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;b" type="string" value="debian-battery"/>
+      <property name="&lt;Super&gt;o" type="string" value="debian-launcher &quot;okular&quot; &quot;okular&quot; 2 &quot;-x&quot;"/>
+      <property name="&lt;Super&gt;i" type="string" value="debian-launcher &quot;qutebrowser&quot; &quot;qutebrowser&quot; 1 &quot;-x&quot;"/>
+      <property name="&lt;Super&gt;x" type="string" value="debian-launcher &quot;zsh:hera&quot; &quot;tm-init&quot; 0 &quot;-F&quot;"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;l" type="string" value="debian-suspend"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;l" type="string" value="debian-suspend -1"/>
+      <property name="&lt;Super&gt;t" type="string" value="new_enote_task"/>
+      <property name="&lt;Super&gt;p" type="string" value="pkhal"/>
+      <property name="&lt;Super&gt;l" type="string" value="winstack next"/>
+      <property name="&lt;Super&gt;h" type="string" value="winstack prev"/>
+      <property name="&lt;Super&gt;w" type="string" value="wmctrl -c :ACTIVE:"/>
+      <property name="&lt;Super&gt;XF86AudioRaiseVolume" type="empty">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
+      <property name="&lt;Super&gt;F3" type="string" value="xfce4-appfinder">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
+      <property name="&lt;Super&gt;F1" type="string" value="xfce4-popup-applicationsmenu"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;o" type="string" value="zopen"/>
+      <property name="&lt;Super&gt;z" type="string" value="debian-launcher &quot;zathura&quot; &quot;zathura&quot; 2 &quot;-x&quot;"/>
+      <property name="&lt;Super&gt;n" type="string" value="debian-notes"/>
+      <property name="&lt;Super&gt;q" type="string" value="debian-qb-search &quot;O&quot;"/>
+      <property name="&lt;Super&gt;1" type="string" value="debian-send-window 0"/>
+      <property name="&lt;Super&gt;2" type="string" value="debian-send-window 1"/>
+      <property name="&lt;Super&gt;3" type="string" value="debian-send-window 2"/>
+      <property name="&lt;Super&gt;4" type="string" value="debian-send-window 3"/>
+      <property name="&lt;Super&gt;semicolon" type="string" value="xfce4-appfinder --collapsed">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
+      <property name="&lt;Super&gt;g" type="string" value="debian-launcher &quot;chrome&quot; &quot;google-chrome&quot; 1 &quot;-x&quot;"/>
+      <property name="&lt;Super&gt;s" type="string" value="debian-launcher &quot;Slack&quot; &quot;init-slack&quot; 3"/>
+      <property name="&lt;Super&gt;m" type="string" value="debian-launcher &quot;Gmail|bryan.bugyi@edgestreamlp.com&quot; &quot;init-mail&quot; 3"/>
+      <property name="&lt;Super&gt;f" type="string" value="debian-launcher &quot;Firefox&quot; &quot;firefox&quot; 1 &quot;-x&quot;"/>
+      <property name="&lt;Alt&gt;&lt;Super&gt;s" type="string" value="debian-launcher &quot;Xfce4-settings-manager&quot; &quot;xfce4-settings-manager&quot; &quot;-x&quot;"/>
+      <property name="&lt;Super&gt;c" type="string" value="debian-launcher &quot;Calendar&quot; &quot;init-calendar&quot; 3"/>
+      <property name="&lt;Super&gt;d" type="string" value="winstack prev"/>
+      <property name="&lt;Super&gt;u" type="string" value="winstack next"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

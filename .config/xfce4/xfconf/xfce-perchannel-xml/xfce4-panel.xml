@@ -78,6 +78,7 @@
         <value type="string" value="dropbox"/>
         <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="skypeforlinux"/>
+        <value type="string" value="nixnote2"/>
       </property>
       <property name="names-hidden" type="array">
         <value type="string" value="notes"/>

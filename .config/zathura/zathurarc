@@ -296,7 +296,7 @@ map p feedkeys ":set pages-per-row 1<Return>"
 map P feedkeys ":set pages-per-row 2<Return>"
 map ,p feedkeys ":set pages-per-row 3<Return>"
 map R exec "zopen -R"
-map x exec "xdotool key super+w"
+map x exec "zclose"
 map Z feedkeys "200zz"
 
 # vim: set ft=conf:

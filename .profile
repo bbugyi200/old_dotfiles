@@ -94,6 +94,8 @@ if [[ -f /etc/environment ]]; then
 else
     export PATH="$(insert_path "${PATH}" "/usr/local/bin")"
     export PATH="$(insert_path "${PATH}" "/usr/local/opt/gnu-getopt/bin")"
+    export PATH="$(insert_path "${PATH}" "${HOME}"/.cargo/bin)"
+    export PATH="$(insert_path "${PATH}" "${HOME}"/.poetry/bin)"
 fi
 
 export MATLABPATH="$HOME/.matlab"
@@ -107,8 +109,8 @@ export BB=bbugyi.ddns.net
 export EDITOR="$(command -v vim)"  # I set this so the crontab would use vim for editing
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export FZF_DEFAULT_OPTS='--reverse --height 40% --border'
-export LESS="${LESS} -Q"
 M="$(printf "\u2709")"
+export LESS="${LESS}QR"
 export MAILPATH="/var/mail/bryan? ${M} ${M} ${M} NEW MAIL IN /var/mail/bryan!!! ${M} ${M} ${M}"
 export PAGER="less"
 export QT_QPA_PLATFORMTHEME="qt5ct"  # Fixes: missing okular icons
@@ -134,7 +136,6 @@ if [[ "$(uname -a)" == *"Darwin"* ]]; then
 else
     export BROWSER=qutebrowser
     export GREP="grep"
-    export LESS="${LESS} -F"
     export LS="ls"
     export SED="sed"
     export TERM="rxvt-unicode-256color"  # Fixes Mutt Background Issue (stays transparent) in TMUX
@@ -181,3 +182,4 @@ export LIBRARY_PATH="$(dedup_path "${LIBRARY_PATH}")"
 export PATH="$(dedup_path "${PATH}")"
 export PYTHONPATH="$(dedup_path "${PYTHONPATH}")"
 export MYPYPATH="${PYTHONPATH}"
+export LESS="$(python -c "import sys; print(''.join(set('${LESS}')))")"

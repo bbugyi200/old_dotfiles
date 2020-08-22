@@ -53,6 +53,7 @@ Plugin 'vimwiki/vimwiki'  " Required by: taskwiki
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Konfekt/FastFold'
 Plugin 'z0mbix/vim-shfmt'
+Plugin 'tmhedberg/SimpylFold'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -95,7 +96,7 @@ endfunction
 if PluginInstalled("ale")
     let g:ale_fixers = {'python': ['black'], 'sh': ['shfmt']}
 
-    let g:ale_python_black_options = get(g:, "ale_python_black_options", "--line-length=79 --skip-string-normalization")
+    let g:ale_python_black_options = get(g:, "ale_python_black_options", "--line-length=79")
     let g:ale_python_mypy_options = get(g:, "ale_python_mypy_options", "--python-executable=python")
     let g:ale_python_pylint_options = get(g:, "ale_python_pylint_options", "--rcfile=~/.config/pylintrc")
 
@@ -449,6 +450,13 @@ endif
 """"""""""""""
 if PluginInstalled("vim-startify")
     let g:startify_change_to_dir = 0
+endif
+
+""""""""""""""""
+"  SympylFold  "
+""""""""""""""""
+if PluginInstalled("SimpylFold")
+    let g:SimpylFold_docstring_preview = 1
 endif
 
 """""""""""""""

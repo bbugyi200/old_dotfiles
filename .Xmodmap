@@ -1,4 +1,5 @@
 clear lock
 clear control
-add control = Caps_Lock Control_L Control_R
+add control = Caps_Lock Control_L
 keycode 66 = Control_L NoSymbol NoSymbol NoSymbol
+keycode 105 = Super_L NoSymbol NoSymbol NoSymbol

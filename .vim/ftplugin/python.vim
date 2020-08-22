@@ -3,7 +3,7 @@ function! DebugFoldExpr(lnum)
 endfunction
 
 
-function! FoldExpr(lnum, debug="0")
+function! FoldExpr(lnum, debug)
     function! Ok(rv, msg) closure
         if a:debug == "1"
             echom "#" . a:lnum . ": " . a:msg . " [" . a:rv . "]"
@@ -204,9 +204,9 @@ let b:run_cmd = ":ALEFix"
 setlocal indentkeys-=<:>
 setlocal indentkeys+==else
 setlocal foldmethod=expr
-setlocal foldexpr=FoldExpr(v:lnum)
+setlocal foldexpr=FoldExpr(v:lnum, "0")
 setlocal foldcolumn=3
-setlocal foldlevel=2
+setlocal foldlevel=3
 
 
 " --- Symbol Mappings

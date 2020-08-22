@@ -3,36 +3,12 @@
 root: <%= @settings['root'] %>
 name: es-prod
 
-on_project_start: encfs -o allow_root ~/Sync/var/projects/.edgelp ~/Sync/var/projects/edgelp
+on_project_start: es-prod-hook
 on_project_stop: umount_edgelp
 pre_window:
 
 windows:
-    - prod:
-        root: ~/projects/edgelp/prod
+    - vim:
         panes:
             - 0:
-                - abduco -c es-prod dvtm /bin/zsh
-    # - I:
-    #     root: ~/projects/edgelp/prod
-    #     panes:
-    #         - 0:
-    #             - (sleep 3 && tmux send-keys -t 0.0 "clear" "Enter") &
-    #             - (sleep 1 && tmux send-keys -t 0.0 "desk . prod" "Enter") &
-    #             - pshell
-    # - II:
-    #     root: ~/projects/edgelp/prod
-    #     layout: even-horizontal
-    #     panes:
-    #         - 0:
-    #             - (sleep 3 && tmux send-keys -t 1.0 "clear" "Enter") &
-    #             - (sleep 1 && tmux send-keys -t 1.0 "desk . prod" "Enter") &
-    #             - pshell
-    # - III:
-    #     root: ~/projects/edgelp/prod
-    #     layout: even-horizontal
-    #     panes:
-    #         - 0:
-    #             - (sleep 3 && tmux send-keys -t 2.0 "clear" "Enter") &
-    #             - (sleep 1 && tmux send-keys -t 2.0 "desk . prod" "Enter") &
-    #             - pshell
+                - ll

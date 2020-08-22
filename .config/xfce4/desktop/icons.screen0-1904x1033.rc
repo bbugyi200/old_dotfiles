@@ -5,28 +5,36 @@
 row=4
 col=0
 
+[/home/bryan/main.py]
+row=1
+col=1
+
+[/home/bryan/main.c]
+row=0
+col=1
+
+[/home/bryan/flame.svg]
+row=6
+col=0
+
 [/home/bryan/snap]
 row=8
 col=0
 
-[/home/bryan/main.c]
-row=6
-col=0
-
-[/home/bryan/vshlog]
-row=0
+[/home/bryan/projects]
+row=3
 col=1
 
-[/home/bryan/projects]
-row=7
-col=0
+[/home/bryan/tags]
+row=2
+col=1
 
 [/home/bryan/Downloads]
 row=3
 col=0
 
-[/home/bryan/bio.txt]
-row=5
+[/home/bryan/Dropbox]
+row=7
 col=0
 
 [Trash]
