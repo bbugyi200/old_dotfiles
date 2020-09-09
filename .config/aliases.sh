@@ -158,7 +158,7 @@ alias ddef='def -m DEBIAN'
 alias ddwrt-logs='sim /var/log/syslog-ddwrt'
 alias del_swps='find . -name "*.swp" -delete -print'
 alias delshots='confirm "find $HOME/Sync/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
-alias dfs='dropbox-cli filestatus'
+alias dff='df -x tmpfs -x squashfs -x devtmpfs -h'
 dg() { { box "ALIAS DEFINITIONS"; alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"; printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | ${SED} '/^$/d' | ${SED} '/^_.\+ () {/,/^}$/d' | ${SED} 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | ${SED} '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | ${SED} 's/ {$/:/g' | ${SED} '/--$/d' | ${SED} 'N;s/\:\n/: /g' | ${SED} 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"; printf "\n"; box "SCRIPT CONTENTS"; rg -s -C 5 -p "$@" ~/Sync/bin; }; }
 dgw() { dg "\W$1\W"; }
 diff() { colordiff -wy -W "$(tput cols)" "$@" | less -R; }
@@ -209,6 +209,7 @@ git_issue_number() { git branch | grep '^\*' | awk '{print $2}' | awk -F'-' '{pr
 alias glg++='glg ++'
 alias glg+='glg +'
 alias Glg='git log -p -G'
+alias glog='git log'
 alias gmc='git ls-files -u | cut -f 2 | sort -u'
 gN() { git checkout HEAD~"${1:-1}"; }
 gN1() { git_current_branch > /tmp/gnext-branch.txt && gN "$@"; }
@@ -292,15 +293,17 @@ alias psi='psinfo'
 alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
 pvar() { set | grep -i -e "^$1"; }
 alias pvsu='py-vshlog -u -D BOT EOT -H all -e'
+alias pwrstat='sudo pwrstat'
 pycov() { coverage run "$1" && coverage html && qutebrowser htmlcov/index.html; }
-alias q='exit'
 alias Q='tm-kill'
+alias q='{ sleep 0.1 && tm-fix-layout; } & disown && exit'
 alias rag='cat $RECENTLY_EDITED_FILES_LOG | sudo xargs ag 2> /dev/null'
 alias reboot='sudo reboot'
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
 riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &> /dev/null & disown; }
 alias rm='safe-rm'
 alias rng='ranger'
+alias root='sudo su -p'
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
 alias sat='sudo cat'
 alias sc='systemctl'
@@ -315,7 +318,7 @@ alias ssh-aphrodite='ssh 192.168.1.193'
 alias ssh-artemis="ssh bryan@67.207.92.152"
 alias ssh-athena-tm='ssh-athena /home/bryan/.local/bin/tm Terminal'
 ssh-rutgers() { ssh bmb181@"${1:-less}".cs.rutgers.edu; }
-alias su='su - -p'
+alias su='su -p'
 alias sudo='sudo -E '  # makes aliases visible to sudo
 alias sudoers='sudo -E vim /etc/sudoers'
 alias tgdb="gdb -iex 'set pagination off' -ex 'tui enable' -ex 'set pagination on'"
@@ -327,8 +330,8 @@ tsm-boost() { transmission-remote -t"$1" -Bh -phall -pr250; }
 tsm-mov() { tsm-add "$@" -w "$MOV"; }
 tsm-purge() { transmission-remote -t"$1" -rad; }
 tsm-rm() { transmission-remote -t"$1" -r; }
-tsm-start() { transmission-daemon; }
-tsm-stop() { killall -9 transmission-daemon; }
+tsm-start() { sudo service transmission-daemon start; }
+tsm-stop() { sudo service transmission-daemon stop; }
 tsm-tv() { tsm-add "$@" -w "$TV"; }
 tsm-watch() { watch -n 1 transmission-remote -l; }
 alias tsm='transmission-remote'
@@ -341,6 +344,7 @@ vab() { vim $(find "$HOME"/Sync/bin/cron.jobs -type f | sort | tr '\n' ' '); }
 alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
 alias vbox='xspawn sudo virtualbox'
 alias vbt='vim ~/.local/share/torrent/*.txt'
+alias vcron='vim ~/Sync/bin/cron.jobs/jobs.sh ~/Sync/bin/cron.jobs/{cron.hourly/hourly_jobs,cron.daily/daily_jobs,cron.weekly/weekly_jobs} ~/Sync/bin/cron.jobs/backup.sh ~/Sync/bin/cron.jobs/cron.{daily,weekly,monthly}/*'
 alias vdaily="vgtd-daily-review"
 alias vdb='vim $HOME/Sync/bin/cron/cron.daily/*'
 alias vdiff='vimdiff -n'

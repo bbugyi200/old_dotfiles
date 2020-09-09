@@ -1,0 +1,15 @@
+# ~/.config/tmuxinator/boogie.yml
+
+root: <%= @settings['root'] %>
+name: boogie
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - main:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll

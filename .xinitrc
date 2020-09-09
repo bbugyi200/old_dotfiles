@@ -1,13 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 
-source /etc/X11/xinit/xinitrc
+# source /etc/X11/xinit/xinitrc
 
-numlockx &
+numlockx
 dunst &
 xbindkeys
+xmodmap -v /home/bryan/.Xmodmap
 clipster -d &
 generate_xmobar_config &
 # /usr/bin/redshift -l 39.99:-74.78 -t 5000:3400 &
-/home/bryan/.local/bin/start_sync &
+start_sync &
+. /etc/profile.d/private.sh; rfserver &
 if watson_is_on; then xtaskidle -d & fi
-exec xmonad 2>&1 | tee /var/tmp/xmonad.log
+exec x-window-manager

@@ -1,47 +1,50 @@
-{-# LANGUAGE DeriveDataTypeable, TypeSynonymInstances, MultiParamTypeClasses #-}
+{-# LANGUAGE DeriveDataTypeable    #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE TypeSynonymInstances  #-}
 
 -------------------------------------------------------------------------------
 -- IMPORTED LIBRARIES                                                        --
 -------------------------------------------------------------------------------
-import Control.Monad
-import Data.Ratio
-import Graphics.X11.ExtraTypes.XF86
-import XMonad
-import XMonad.Core
-import XMonad.Layout
-import XMonad.Layout.Grid
-import XMonad.Layout.MultiToggle
-import XMonad.Layout.TwoPane
-import XMonad.Layout.Tabbed
+import           Control.Monad
+import           Data.Ratio
+import           Graphics.X11.ExtraTypes.XF86
+import           XMonad
+import           XMonad.Core
+import           XMonad.Layout
+import           XMonad.Layout.Grid
+import           XMonad.Layout.MultiToggle
+import           XMonad.Layout.Tabbed
+import           XMonad.Layout.TwoPane
 
-import XMonad.Actions.SpawnOn (spawnOn,spawnHere,manageSpawn)
-import XMonad.Config.Desktop (desktopConfig)
-import XMonad.Hooks.EwmhDesktops (ewmh,ewmhDesktopsLogHook,ewmhDesktopsStartup)
-import XMonad.Hooks.ManageHelpers (doRectFloat,doFullFloat)
-import XMonad.Hooks.SetWMName (setWMName)
-import XMonad.Layout.NoBorders (smartBorders)
-import XMonad.Layout.Spacing (smartSpacing)
-import XMonad.Util.Run (spawnPipe,hPutStrLn)
-import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Util.WorkspaceCompare (getSortByIndex)
+import           XMonad.Actions.SpawnOn               (manageSpawn, spawnHere,
+                                                       spawnOn)
+import           XMonad.Config.Desktop                (desktopConfig)
+import           XMonad.Hooks.EwmhDesktops            (ewmh,
+                                                       ewmhDesktopsLogHook,
+                                                       ewmhDesktopsStartup)
+import           XMonad.Hooks.ManageHelpers           (doFullFloat, doRectFloat)
+import           XMonad.Hooks.SetWMName               (setWMName)
+import           XMonad.Layout.NoBorders              (smartBorders)
+import           XMonad.Layout.Spacing                (smartSpacing)
+import           XMonad.Util.EZConfig                 (additionalKeys)
+import           XMonad.Util.Run                      (hPutStrLn, spawnPipe)
+import           XMonad.Util.WorkspaceCompare         (getSortByIndex)
 
-import qualified Data.Char as DataChar
-import qualified Data.List as DataList
-import qualified Network.HostName as HostName
-import qualified System.Exit as Exit
-import qualified XMonad.Actions.CycleWS as CW
+import qualified Data.Char                            as DataChar
+import qualified Network.HostName                     as HostName
+import qualified System.Exit                          as Exit
+import qualified XMonad.Actions.CycleWS               as CW
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DW
-import qualified XMonad.Actions.DynamicWorkspaces as DW
-import qualified XMonad.Actions.FloatKeys as FK
-import qualified XMonad.Actions.GroupNavigation as GNav
-import qualified XMonad.Actions.Navigation2D as N2D
-import qualified XMonad.Actions.UpdatePointer as UP
-import qualified XMonad.Hooks.DynamicLog as DL
-import qualified XMonad.Hooks.ManageDocks as Docks
-import qualified XMonad.Layout.ResizableTile as RT
-import qualified XMonad.Prompt as P
-import qualified XMonad.StackSet as W
-import qualified XMonad.Util.NamedScratchpad as NSP
+import qualified XMonad.Actions.DynamicWorkspaces     as DW
+import qualified XMonad.Actions.FloatKeys             as FK
+import qualified XMonad.Actions.GroupNavigation       as GNav
+import qualified XMonad.Actions.Navigation2D          as N2D
+import qualified XMonad.Hooks.DynamicLog              as DL
+import qualified XMonad.Hooks.ManageDocks             as Docks
+import qualified XMonad.Layout.ResizableTile          as RT
+import qualified XMonad.Prompt                        as P
+import qualified XMonad.StackSet                      as W
+import qualified XMonad.Util.NamedScratchpad          as NSP
 
 -- hlint ignore directives
 {-# ANN module "HLint: ignore Evaluate" #-}
@@ -52,8 +55,8 @@ import qualified XMonad.Util.NamedScratchpad as NSP
 getXmobarTemplate :: String -> String
 getXmobarTemplate "C-top-athena" = "%UnsafeStdinReader%}{ %pia%  %volume%  |  %date%"
 getXmobarTemplate "C-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
-getXmobarTemplate "C-bottom" = "%cpu%  |  %memory%}%calevent%{%counter%%dynnetwork%"
-getXmobarTemplate "L-top" = "}%weather%%xweather%     (☀ %suntimes%%xsuntimes%){"
+getXmobarTemplate "C-bottom" = "%cpu%   |   %memory%   |   %dynnetwork%}%calevent%{%counter% "
+getXmobarTemplate "L-top" = "}%weather%%xweather%     (@ %suntimes%%xsuntimes%){"
 getXmobarTemplate "L-bottom" = "}{"
 getXmobarTemplate "R-top" = "}{"
 getXmobarTemplate "R-bottom" = "}{"
@@ -145,7 +148,7 @@ strToUpper :: String -> String
 strToUpper = map DataChar.toUpper
 
 pushWindow :: X ()
-pushWindow = do 
+pushWindow = do
     swapNextScreen
     CW.toggleWS' ["NSP"]
 
@@ -157,16 +160,6 @@ swapScreens dir = do
     else
         swapPrevScreen
     removeEmptyWorkspace'
-
-pushToWS :: String -> X ()
-pushToWS wsname = do
-    DW.addHiddenWorkspace wsname
-    windows $ W.shift wsname
-    removeEmptyWorkspaceAfter' $ windows $ W.view wsname
-
-
-pushDesktop :: String -> X ()
-pushDesktop key = spawn $ "xmonad-scratch-bind " ++ key ++ " 0.15"
 
 delayedSpawn :: Int -> String -> X ()
 delayedSpawn seconds cmd = spawn $ "sleep " ++ show seconds ++ " && " ++ cmd
@@ -223,19 +216,22 @@ myXPConfig = P.def {
   P.position = P.CenteredAt 0.2 0.4
 }
 
-scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad") 
+scratchpads = [ NSP.NS "scratchpad" scratchpad (appName =? "scratchpad")
                     NSP.nonFloating
               , NSP.NS "calculator" calculator (appName =? "calculator")
                     NSP.nonFloating
               , NSP.NS "spotify" spotify (appName =? "spotify")
                     NSP.nonFloating
               , NSP.NS "gtd" gtd (appName =? "GTD")
+                    NSP.nonFloating
+              , NSP.NS "conky" conky (appName =? "Conky")
                     NSP.nonFloating ]
-            where 
+            where
                 calculator = "urxvt -name calculator -e zsh -c 'wtitle Calculator && eva'"
                 scratchpad = "scratchpad-launcher"
                 spotify = "spotify"
                 gtd = "gtd-launcher"
+                conky = "conky"
 
 myManageHook = composeAll
     [ manageSpawn
@@ -257,33 +253,35 @@ myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
                 >> spawn "init-bg"
                 >> delayedSpawn 2 "emcheck"
+                >> delayedSpawn 2 "external_backup_check"
                 >> delayedSpawn 2 "calalrms"
                 >> delayedSpawn 2 "xmonad-suntimes"
                 >> delayedSpawn 2 "xmonad-volume"
                 >> delayedSpawn 2 "xmonad-weather"
                 >> delayedSpawn 2 "/usr/bin/x11vnc -rfbauth /home/bryan/.vnc/passwd -rfbport 34590 -display :0 -o /var/tmp/x11vnc.log -bg -forever -many -usepw -auth /home/bryan/.Xauthority"
-                >> spawn (xmobarTempFmt (getXmobarTemplate "C-bottom") ++ " -b --screen=1")
-                >> spawn ("[[ $(x11screens) -ge 0 ]] && " ++ xmobarTempFmt (getXmobarTemplate "L-top") ++ " --screen=0")
-                >> spawn ("[[ $(x11screens) -ge 0 ]] && " ++ xmobarTempFmt (getXmobarTemplate "L-bottom") ++ " -b --screen=0")
-                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "R-top") ++ " --screen=2")
-                >> spawn ("[[ $(x11screens) -ge 2 ]] && " ++ xmobarTempFmt (getXmobarTemplate "R-bottom") ++ " -b --screen=2")
+                >> delayedSpawn 3 (xmobarTempFmt (getXmobarTemplate "C-bottom") ++ " -b --screen=1")
+                >> delayedSpawn 3 (xmobarTempFmt (getXmobarTemplate "L-top") ++ " --screen=0")
+                >> delayedSpawn 3 (xmobarTempFmt (getXmobarTemplate "L-bottom") ++ " -b --screen=0")
+                >> delayedSpawn 3 (xmobarTempFmt (getXmobarTemplate "R-top") ++ " --screen=2")
+                >> delayedSpawn 3 (xmobarTempFmt (getXmobarTemplate "R-bottom") ++ " -b --screen=2")
 
 -------------------------------------------------------------------------------
 -- KEY BINDING CONFIGS                                                       --
 -------------------------------------------------------------------------------
+------------ Modifier Masks
+--
+-- Mask Aliases
 alt = mod1Mask
 super = mod4Mask
 ctrl = controlMask
 shift = shiftMask
-
-------- Modifier Masks (mod1Mask: alt, mod4Mask: super)
 --
--- The `alpha` and `beta` keys should be set to either 'super' or 'alt', depending on which
--- key you want as your primary meta key.
-
--- KeyMask Aliases
+-- Mask Variables
 alpha = super
 beta = alt
+chi = ctrl
+delta = shift
+---------------------------
 
 myAdditionalKeys = [
    ---------- ALPHANUMERIC CHARACTERS ----------
@@ -302,17 +300,17 @@ myAdditionalKeys = [
    , ((alpha .|. beta, b), spawn "clipster_gtk")
    , ((alpha, c), do
             spawn "wmctrl -a Calendar"
-            launchApp "cal" "Calendar" "firefox-bin --new-window https://calendar.google.com/calendar/b/0/r/month?pli=1"
+            launchApp "cal" "Calendar" "$(firefox_exe) --new-window https://calendar.google.com/calendar/u/1/r/month?pli=1 &"
     )
    , ((alpha, d), windows W.focusDown)
-   , ((alpha, f), launchApp "fox" "" "firefox-bin")
+   , ((alpha, f), launchApp "fox" "" "$(firefox_exe) --new-window https://google.com &")
    , ((alpha .|. beta, f), sendMessage $ Toggle TABBED)
    , ((alpha, g), do
            spawn "wmctrl -a chrome"
            launchApp "gc" "google-chrome" "google-chrome-stable"
      )
    , ((alpha, h), prevScreen)
-   , ((alpha .|. ctrl, h), sendMessage Shrink) -- Next Layout
+   , ((alpha .|. chi, h), sendMessage Shrink)
    , ((alpha, i), do
            spawn "wmctrl -a qutebrowser"
            launchApp "web" "qutebrowser" "qutebrowser --enable-webengine-inspector"
@@ -323,17 +321,17 @@ myAdditionalKeys = [
    , ((alpha .|. beta, k), sendMessage RT.MirrorExpand) -- Expand Master Area
    , ((alpha, l), nextScreen)
    , ((alpha .|. beta, l), sendMessage NextLayout)
-   , ((alpha .|. ctrl, l), sendMessage Expand)
+   , ((alpha .|. chi, l), sendMessage Expand)
    , ((alpha, m), do
             spawn "wmctrl -a Gmail || wmctrl -a 'bryan.bugyi@edgestreamlp.com'"
-            launchApp "mail" "Gmail|edgestreamlp" "firefox-bin --new-window https://mail.google.com/mail/u/1/#inbox"
+            launchApp "mail" "Gmail|edgestreamlp" "init-mail"
     )
    , ((alpha .|. beta, m), do
             spawn "wmctrl -a Messages"
-            launchApp "msg" "Messages" "firefox-bin --new-window https://messages.google.com/web/conversations"
+            launchApp "msg" "Messages" "$(firefox_exe) --new-window https://messages.google.com/web/conversations &"
     )
    , ((alpha, n), launchApp "notes" "" "nixnote2")
-   , ((alpha .|. beta .|. shift, n), do
+   , ((alpha .|. beta .|. delta, n), do
            ws_name <- io $ readFile "/tmp/xmonad.workspace"
            DW.addWorkspace ws_name
      )
@@ -343,16 +341,16 @@ myAdditionalKeys = [
            new_sid <- gets (W.screen . W.current . windowset)
            when (orig_sid /= new_sid) $ goToLastMonitor (show orig_sid) (show new_sid)
      )
-   , ((alpha .|. ctrl, o), spawn "zopen")
+   , ((alpha .|. chi, o), spawn "zopen")
    , ((alpha, p), launchApp "dev" "" "mkdvtm es-prod")
    , ((alpha, q), spawn "qb_prompt")
-   , ((alpha .|. beta .|. ctrl, q), do
+   , ((alpha .|. beta .|. chi, q), do
            spawn "sync"
            io (Exit.exitWith Exit.ExitSuccess)
      )
    , ((alpha, r), spawn "killall xmobar; generate_xmobar_config; xmonad --recompile && xmonad --restart")
-   , ((alpha .|. ctrl, r), DW.removeWorkspace)  -- Remove Current Workspace
-   , ((alpha .|. shift, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
+   , ((alpha .|. chi, r), DW.removeWorkspace)  -- Remove Current Workspace
+   , ((alpha .|. delta, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha, s), do
             spawn "wmctrl -a Slack"
             launchApp "slack" "Slack" "init-slack"
@@ -361,7 +359,7 @@ myAdditionalKeys = [
             spawn "wmctrl -a 'System Information'"
             launchApp "stat" "hardinfo" "hardinfo"
     )
-   , ((alpha .|. ctrl, s), windows W.swapDown) -- Swap Windows
+   , ((alpha .|. chi, s), windows W.swapDown) -- Swap Windows
    , ((alpha, t), spawn "new_enote_task") -- evernote (inbox)
    , ((alpha, u), windows W.focusUp)
    , ((alpha, w), spawn "close-window") -- Close Focused Window
@@ -376,22 +374,15 @@ myAdditionalKeys = [
    , ((alpha .|. beta, z), launchApp "doc'" "" "zcopy")
 
    ---------- KEYPAD CHARACTERS ----------
-   , ((alpha, xK_KP_Add), spawn "next_task")
    , ((alpha, xK_KP_Begin), withFocused $ windows . W.sink)
-   , ((alpha, xK_KP_Delete), spawn "twd")
-   , ((alpha, xK_KP_Divide), spawn "wait_task -N")
    , ((alpha, xK_KP_Down), withFocused $ FK.keysMoveWindow (0, 100))
-   , ((alpha .|. ctrl, xK_KP_Down), withFocused $ FK.keysResizeWindow (0, -50) (0, 1))
-   , ((alpha, xK_KP_Enter), spawn "task start.any: done && task_refresh")
-   , ((alpha, xK_KP_Insert), spawn "task start.any: stop && task_refresh")
+   , ((alpha .|. chi, xK_KP_Down), withFocused $ FK.keysResizeWindow (0, -50) (0, 1))
    , ((alpha, xK_KP_Left), withFocused $ FK.keysMoveWindow (-100, 0))
-   , ((alpha .|. ctrl, xK_KP_Left), withFocused $ FK.keysResizeWindow (-50, 0) (0, 0))
-   , ((alpha, xK_KP_Multiply), spawn "wait_task -D 1h -N --purge")
+   , ((alpha .|. chi, xK_KP_Left), withFocused $ FK.keysResizeWindow (-50, 0) (0, 0))
    , ((alpha, xK_KP_Right), withFocused $ FK.keysMoveWindow (100, 0))
-   , ((alpha .|. ctrl, xK_KP_Right), withFocused $ FK.keysResizeWindow (50, 0) (0, 0))
-   , ((alpha, xK_KP_Subtract), spawn "last_task")
+   , ((alpha .|. chi, xK_KP_Right), withFocused $ FK.keysResizeWindow (50, 0) (0, 0))
    , ((alpha, xK_KP_Up), withFocused $ FK.keysMoveWindow (0, -100))
-   , ((alpha .|. ctrl, xK_KP_Up), withFocused $ FK.keysResizeWindow (0, 50) (0, 1))
+   , ((alpha .|. chi, xK_KP_Up), withFocused $ FK.keysResizeWindow (0, 50) (0, 1))
 
    ---------- MISCELLANEOUS CHARACTERS ----------
    -- (you can sort these bindings with `:<range>sort r /K_[A-z]/`)
@@ -401,8 +392,8 @@ myAdditionalKeys = [
    , ((0, xF86XK_AudioNext), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
    , ((alpha, xK_apostrophe), NSP.namedScratchpadAction scratchpads "spotify") -- Scratchpad Add Task to Inbox
    , ((alpha, xK_backslash), DW.moveTo CW.Next (CW.WSIs hiddenNotNSP))
-   , ((alpha .|. beta .|. ctrl, xK_backslash), pushWindow)
-   , ((alpha .|. beta .|. ctrl .|. shift, xK_backslash), CW.shiftNextScreen)
+   , ((alpha .|. beta .|. chi, xK_backslash), pushWindow)
+   , ((alpha .|. beta .|. chi .|. delta, xK_backslash), CW.shiftNextScreen)
    , ((alpha, xK_bracketleft), DW.moveTo CW.Prev (CW.WSIs hiddenNotNSP))
    , ((alpha .|. beta, xK_bracketleft), do
            prevScreen
@@ -415,28 +406,21 @@ myAdditionalKeys = [
            DW.moveTo CW.Next (CW.WSIs hiddenNotNSP)
            prevScreen
      ) -- Next Hidden NonEmpty Workspace (viewed on non-active screen)
-   , ((alpha, xK_comma), do
-           spawn "tmux -L GTD select-window -t0"
-           NSP.namedScratchpadAction scratchpads "gtd"
-     )
-   , ((alpha .|. ctrl, xK_comma), do
-           spawn "tmux -L GTD select-window -t2"
-           NSP.namedScratchpadAction scratchpads "gtd"
-     )
+   , ((alpha, xK_comma), NSP.namedScratchpadAction scratchpads "conky")
    , ((alpha, xK_equal), spawn "set_volume 2%+")
    , ((alpha, xK_minus), spawn "set_volume 2%-")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((alpha .|. beta, xK_Print), spawn "saved_sshot") -- Save Screenshot to File
-   , ((alpha .|. ctrl, xK_Print), spawn "print_sshot") -- Print Screenshot
+   , ((alpha .|. chi, xK_Print), spawn "print_sshot") -- Print Screenshot
    , ((alpha, xK_semicolon), spawn "shellPrompt")
    , ((alpha .|. beta, xK_semicolon), spawn "shellPrompt -L")
    , ((alpha, xK_slash), NSP.namedScratchpadAction scratchpads "calculator") -- Calculator Scratchpad
-   , ((alpha .|. beta .|. ctrl, xK_slash), do
+   , ((alpha .|. beta .|. chi, xK_slash), do
            pushWindow
            nextScreen
      )
-   , ((alpha .|. beta .|. ctrl .|. shift, xK_slash), do
+   , ((alpha .|. beta .|. chi .|. delta, xK_slash), do
            CW.shiftNextScreen
            nextScreen
      )

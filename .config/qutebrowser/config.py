@@ -181,6 +181,7 @@ def setup_search_engines() -> None:
             SE.URL(SE.static.duckduckgo("!{}"), bang_pttrn()),
             SE.LuckyURL("{}"),
         ),
+        "dep": "https://packages.debian.org/search?keywords={}",
         "dvd": SE.static.google("{} DVD release date"),
         "eda": SE.SearchEngine(
             "http://web-prod.pr.edgelp.net:22051/find?names={}&days=3",

@@ -7,7 +7,7 @@ set show-recent 25
 set window-title-basename true
 
 # ---------- Bookmark Bindings
-# Set Mark
+# Set Mark Bindings
 map ba feedkeys ":bmark a<Return>"
 map bb feedkeys ":bmark b<Return>"
 map bc feedkeys ":bmark c<Return>"
@@ -120,7 +120,7 @@ map b%7 feedkeys ":bmark 57<Return>"
 map b%8 feedkeys ":bmark 58<Return>"
 map b%9 feedkeys ":bmark 59<Return>"
 map b. feedkeys ":bmark .<Return>"
-# Goto Mark
+# Goto Mark Bindings
 map ga feedkeys ":blist a<Return>"
 map gb feedkeys ":blist b<Return>"
 map gc feedkeys ":blist c<Return>"
@@ -296,7 +296,7 @@ map p feedkeys ":set pages-per-row 1<Return>"
 map P feedkeys ":set pages-per-row 2<Return>"
 map ,p feedkeys ":set pages-per-row 3<Return>"
 map R exec "zopen -R"
-map x exec "zclose"
+map x exec "winclose"
 map Z feedkeys "200zz"
 
 # vim: set ft=conf:

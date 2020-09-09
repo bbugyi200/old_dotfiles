@@ -14,7 +14,7 @@ else
         return 1
     fi
 
-    poetry_venv="$(pvenv)"
+    poetry_venv="$(poe show -v | perl -nE 'print s/Using virtualenv:\s*//gr if /Using virtualenv:/')"
     source "${poetry_venv}"/bin/activate
 
     export PATH=$(pwd)/.bin:$(pwd)/docker:"$PATH"
@@ -34,4 +34,5 @@ else
     fi
 
     source pychecks.sh
+    source .tmp/env
 fi

@@ -27,3 +27,6 @@
 	name = Bryan Bugyi
 [commit]
 	template = ~/.gitmessage
+[rerere]
+	enabled = 1
+	autoupdate = true

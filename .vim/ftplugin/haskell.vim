@@ -1,3 +1,4 @@
+let b:run_cmd = ":ALEFix"
 let g:comment_char = '-'
 
 " for hacking on xmonad

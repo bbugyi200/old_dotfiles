@@ -69,10 +69,7 @@ def _fetch_results(query: str) -> str:
     # 'cryptography' module
     import requests  # pylint: disable=import-outside-toplevel
 
-    try:
-        assert isinstance(query, str), 'Search term must be a string'
-    except AssertionError as e:
-        raise ValueError(str(e))
+    assert isinstance(query, str), 'Search term must be a string'
 
     encoded_query = utils.encode(query)
 

@@ -206,7 +206,7 @@ setlocal indentkeys+==else
 setlocal foldmethod=expr
 setlocal foldexpr=FoldExpr(v:lnum, "0")
 setlocal foldcolumn=3
-setlocal foldlevel=3
+setlocal foldlevel=5
 
 
 " --- Symbol Mappings

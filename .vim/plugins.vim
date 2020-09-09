@@ -18,7 +18,6 @@ Plugin 'danro/rename.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'dense-analysis/ale'
 Plugin 'dyng/ctrlsf.vim'
-Plugin 'eagletmt/ghcmod-vim'
 Plugin 'eagletmt/neco-ghc'  " Depends on external package: ghc-mod
 Plugin 'embear/vim-localvimrc'
 Plugin 'francoiscabrol/ranger.vim'
@@ -35,7 +34,6 @@ Plugin 'racer-rust/vim-racer'
 Plugin 'Rip-Rip/clang_complete'  " Depends on external package: clang
 Plugin 'rust-lang/rust.vim'
 Plugin 'Shougo/neoinclude.vim'
-Plugin 'Shougo/vimproc.vim'  " Required by: ghcmod-vim;  Install by running ':VimProcInstall'
 Plugin 'SirVer/ultisnips'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
@@ -94,10 +92,16 @@ endfunction
 " ALE "
 """""""
 if PluginInstalled("ale")
-    let g:ale_fixers = {'python': ['black'], 'sh': ['shfmt']}
+    let g:ale_fixers = {'python': ['black'], 'sh': ['shfmt'], 'haskell': ['stylish-haskell']}
 
-    let g:ale_python_black_options = get(g:, "ale_python_black_options", "--line-length=79")
-    let g:ale_python_mypy_options = get(g:, "ale_python_mypy_options", "--python-executable=python")
+    if empty($VIRTUAL_ENV)
+        let python="python3"
+    else
+        let python="python"
+    endif
+
+    let g:ale_python_black_options = get(g:, "ale_python_black_options", "--line-length=79 --experimental-string-processing")
+    let g:ale_python_mypy_options = get(g:, "ale_python_mypy_options", "--python-executable=" . python)
     let g:ale_python_pylint_options = get(g:, "ale_python_pylint_options", "--rcfile=~/.config/pylintrc")
 
     let g:ale_fix_on_save = get(g:, "ale_fix_on_save", 0)

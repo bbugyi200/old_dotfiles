@@ -1,0 +1,17 @@
+# ~/.config/tmuxinator/tsm.yml
+
+root: <%= @settings['root'] %>
+name: tsm
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - main:
+        layout: even-horizontal
+        panes:
+            - 0:
+                - tsm-watch
+            - 1:
+                - pia_wrapper

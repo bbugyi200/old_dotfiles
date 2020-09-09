@@ -192,7 +192,12 @@ function command_not_found_handler() {
     tmux send-keys "${funky_cmd}" "Enter"
 }
 
-test 0  # so exit status is always 0 when starting shell
-
 # Hook for desk activation
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
+
+# Added by 'pyenv'
+export PATH="/home/bryan/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+test 0  # so exit status is always 0 when starting shell

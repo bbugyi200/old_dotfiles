@@ -85,8 +85,8 @@ source_if_exists /usr/bin/virtualenvwrapper_lazy.sh
 export DB="$HOME"/Sync
 export DBB="$DB"/bin
 export DBH="$DB"/home
-export MOV=/media/bryan/zeus/media/Entertainment/Movies
-export TV=/media/bryan/zeus/media/Entertainment/TV
+export MOV=/mnt/hercules/plex/Movies
+export TV=/mnt/hercules/plex/TV
 
 # >>> Filesystem Paths
 if [[ -f /etc/environment ]]; then 
@@ -183,3 +183,5 @@ export PATH="$(dedup_path "${PATH}")"
 export PYTHONPATH="$(dedup_path "${PYTHONPATH}")"
 export MYPYPATH="${PYTHONPATH}"
 export LESS="$(python -c "import sys; print(''.join(set('${LESS}')))")"
+
+export PATH="$HOME/.cargo/bin:$PATH"
