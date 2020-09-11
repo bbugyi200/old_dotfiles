@@ -56,7 +56,7 @@ getXmobarTemplate :: String -> String
 getXmobarTemplate "C-top-athena" = "%UnsafeStdinReader%}{ %pia%  %volume%  |  %date%"
 getXmobarTemplate "C-top-aphrodite" = "%UnsafeStdinReader%    (%window_count%)}{ %pia%  %battery%  |  %volume%  |  %date%"
 getXmobarTemplate "C-bottom" = "%cpu%   |   %memory%   |   %dynnetwork%}%calevent%{%counter% "
-getXmobarTemplate "L-top" = "}%weather%%xweather%     (@ %suntimes%%xsuntimes%){"
+getXmobarTemplate "L-top" = "}%weather%      [%suntimes%]{"
 getXmobarTemplate "L-bottom" = "}{"
 getXmobarTemplate "R-top" = "}{"
 getXmobarTemplate "R-bottom" = "}{"
@@ -252,18 +252,18 @@ h = 0.3; bigh = 0.94  -- Total Height of Window
 myStartupHook = ewmhDesktopsStartup
                 >> setWMName "LG3D"
                 >> spawn "init-bg"
+                >> spawn (xmobarTempFmt (getXmobarTemplate "C-bottom") ++ " -b --screen=1")
+                >> spawn (xmobarTempFmt (getXmobarTemplate "L-top") ++ " --screen=0")
+                >> spawn (xmobarTempFmt (getXmobarTemplate "L-bottom") ++ " -b --screen=0")
+                >> spawn (xmobarTempFmt (getXmobarTemplate "R-top") ++ " --screen=2")
+                >> spawn (xmobarTempFmt (getXmobarTemplate "R-bottom") ++ " -b --screen=2")
                 >> delayedSpawn 2 "emcheck"
                 >> delayedSpawn 2 "external_backup_check"
                 >> delayedSpawn 2 "calalrms"
-                >> delayedSpawn 2 "xmonad-suntimes"
                 >> delayedSpawn 2 "xmonad-volume"
-                >> delayedSpawn 2 "xmonad-weather"
+                >> delayedSpawn 2 "sudo killall -9 xmonad-weather; sudo killall -9 poll-weather; xmonad-weather --init"
+                >> delayedSpawn 2 "xmonad-suntimes"
                 >> delayedSpawn 2 "/usr/bin/x11vnc -rfbauth /home/bryan/.vnc/passwd -rfbport 34590 -display :0 -o /var/tmp/x11vnc.log -bg -forever -many -usepw -auth /home/bryan/.Xauthority"
-                >> delayedSpawn 3 (xmobarTempFmt (getXmobarTemplate "C-bottom") ++ " -b --screen=1")
-                >> delayedSpawn 3 (xmobarTempFmt (getXmobarTemplate "L-top") ++ " --screen=0")
-                >> delayedSpawn 3 (xmobarTempFmt (getXmobarTemplate "L-bottom") ++ " -b --screen=0")
-                >> delayedSpawn 3 (xmobarTempFmt (getXmobarTemplate "R-top") ++ " --screen=2")
-                >> delayedSpawn 3 (xmobarTempFmt (getXmobarTemplate "R-bottom") ++ " -b --screen=2")
 
 -------------------------------------------------------------------------------
 -- KEY BINDING CONFIGS                                                       --

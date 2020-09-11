@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -r -d '' doc <<EOM
+read -r -d '' DOC <<EOM
 {% INSERT %}
 EOM
 
@@ -22,7 +22,7 @@ function parse_cli_args() {
     read -r -d '' help <<EOM
 $(usage)
 
-${doc}
+${DOC}
 
 Optional Arguments:
     -d | --debug

@@ -197,7 +197,11 @@ function command_not_found_handler() {
 
 # Added by 'pyenv'
 export PATH="/home/bryan/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+
+# pyenv
+if [[ -z "${VIRTUAL_ENV}" ]]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 test 0  # so exit status is always 0 when starting shell

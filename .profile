@@ -76,6 +76,7 @@ function _is_in_path() {
 ###############################
 source_if_exists /etc/profile
 source_if_exists /usr/bin/virtualenvwrapper_lazy.sh
+source_if_exists "${HOME}"/.orivate.sh
 
 
 ###############################
@@ -89,15 +90,12 @@ export MOV=/mnt/hercules/plex/Movies
 export TV=/mnt/hercules/plex/TV
 
 # >>> Filesystem Paths
-if [[ -f /etc/environment ]]; then 
-    source <(sed 's/^\(.*\)="\(.*\)"/export \1="${\1}:\2"/' /etc/environment)
-else
-    export PATH="$(insert_path "${PATH}" "/usr/local/bin")"
-    export PATH="$(insert_path "${PATH}" "/usr/local/opt/gnu-getopt/bin")"
-    export PATH="$(insert_path "${PATH}" "${HOME}"/.cargo/bin)"
-    export PATH="$(insert_path "${PATH}" "${HOME}"/.poetry/bin)"
-fi
-
+export PATH="$(insert_path "${PATH}" "/usr/sbin")"
+export PATH="$(insert_path "${PATH}" "/sbin")"
+export PATH="$(insert_path "${PATH}" "/usr/local/bin")"
+export PATH="$(insert_path "${PATH}" "/usr/local/opt/gnu-getopt/bin")"
+export PATH="$(insert_path "${PATH}" "${HOME}"/.cargo/bin)"
+export PATH="$(insert_path "${PATH}" "${HOME}"/.poetry/bin)"
 export MATLABPATH="$HOME/.matlab"
 
 if [[ "$(id -u)" = 0 ]]; then
@@ -183,5 +181,3 @@ export PATH="$(dedup_path "${PATH}")"
 export PYTHONPATH="$(dedup_path "${PYTHONPATH}")"
 export MYPYPATH="${PYTHONPATH}"
 export LESS="$(python -c "import sys; print(''.join(set('${LESS}')))")"
-
-export PATH="$HOME/.cargo/bin:$PATH"
