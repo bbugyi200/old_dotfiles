@@ -199,7 +199,7 @@ function command_not_found_handler() {
 export PATH="/home/bryan/.pyenv/bin:$PATH"
 
 # pyenv
-if [[ -z "${VIRTUAL_ENV}" ]]; then
+if command -v pyenv &> /dev/null && [[ -z "${VIRTUAL_ENV}" ]]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi

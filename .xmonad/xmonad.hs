@@ -257,7 +257,7 @@ myStartupHook = ewmhDesktopsStartup
                 >> spawn (xmobarTempFmt (getXmobarTemplate "L-bottom") ++ " -b --screen=0")
                 >> spawn (xmobarTempFmt (getXmobarTemplate "R-top") ++ " --screen=2")
                 >> spawn (xmobarTempFmt (getXmobarTemplate "R-bottom") ++ " -b --screen=2")
-                >> delayedSpawn 2 "emcheck"
+                >> delayedSpawn 2 "emanage -m -M 7"
                 >> delayedSpawn 2 "external_backup_check"
                 >> delayedSpawn 2 "calalrms"
                 >> delayedSpawn 2 "xmonad-volume"

@@ -3,6 +3,7 @@
 alias aptg='sudo apt-get'
 alias atude='sudo aptitude'
 alias del='sudo aptitude remove'
+alias eqd='apt-cache rdepends --installed'
 alias fd='fdfind'
 alias get='sudo aptitude install'
 alias hibernate='debian-suspend -1'

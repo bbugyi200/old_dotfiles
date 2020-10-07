@@ -311,10 +311,12 @@ nnoremap <Leader>o o<C-u>
 nnoremap [oe :ALEToggle<CR>
 nnoremap ]oe :ALEToggle<CR>
 " P-P-P-P-P-P-P-P-P-P
+nnoremap <C-p>b :Buffers<CR>
 nnoremap <C-p>c :BCommits<CR>
 nnoremap <C-p>f :Files<CR>
 nnoremap <C-p>h :History<CR>
 nnoremap <C-p>s :Rg<CR>
+nnoremap <C-p>r :Rg<CR>
 nnoremap <C-p>t :BTags<CR>zv
 " Q-Q-Q-Q-Q-Q-Q-Q-Q-Q
 " R-R-R-R-R-R-R-R-R-R
@@ -385,7 +387,7 @@ nmap <CR> ]<Space>j
 nnoremap <silent> <Down> :resize +5<CR>
 nnoremap <silent> <Left> :vert resize +5<CR>
 nnoremap <silent> <Right> :vert resize -5<CR>
-nnoremap <Space> :ls<CR>
+nnoremap <Space> :Buffers<CR>
 nnoremap <Leader><Space> a<Space><Esc>hi<Space><Esc>l| " Put space before and after character under cursor
 nnoremap <silent> <Up> :resize -5<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>

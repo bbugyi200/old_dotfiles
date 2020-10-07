@@ -35,7 +35,6 @@ alias mtinit='cookie gtest.make -f Makefile'
 robinit() { DATE="$(date +%Y%m%d)" cookie robot.yaml -f "$HOME"/.local/share/red_robot/pending/"$1"; }
 pytinit() { SCRIPT="$1" cookie pytest_script.py -f test_"$1".py; }
 alias texinit='cookie template.tex -f'
-zinit() { MY_SCRIPTNAME="$1" sudo -E cookie _zsh_completion -f /usr/share/zsh/site-functions/_"$1"; }
 
 # ---------- GTD Aliases / Functions ----------
 # def marker: GTD
@@ -134,7 +133,7 @@ box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}
 alias budget='python3 $HOME/Sync/var/projects/budget/main.py'
 alias c='cookie'
 alias cal='cal -n 3 | less'
-cat() { if [[ -r "$1" ]]; then bat --theme=GitHub "$@"; else sudo -E bat --theme=GitHub "$@"; fi; }
+cat() { if [[ -r "$1" ]]; then bat "$@"; else sudo -E bat "$@"; fi; }
 alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
 alias cdef='def -m COOKIE'
@@ -169,7 +168,7 @@ alias du='sudo ncdu --color dark'
 alias dunst='killall dunst &> /dev/null; dunst'
 alias edsl='printf "$(hostname):%d,%d\n%s,%d\n" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
 alias epuse='sudo -E epuse'
-_essh() { printf 'cd ~/src/prod; source ~/bin/psource.sh; PATH=/prod/home/bbugyi/bin:$PATH psource .environ; cd %s; /bin/zsh' "$1"; }
+_essh() { printf 'cd ~/projects/edgelp/prod; source ~/bin/psource.sh; PATH=/prod/home/bbugyi/bin:$PATH psource .environ; cd %s; /bin/zsh' "$1"; }
 essh() { ssh "$1" -t "$(_essh "$2")"; }
 esssh() { essh "$1" /prod/home/bbugyi/src/prod; }
 fim() { file="$("$(which -a fim | tail -n 1)" "$1")"; if [[ -z "${file}" ]]; then return 1; else vim "${file}"; fi; }
@@ -186,7 +185,7 @@ alias gbb='git branch --sort=-committerdate | less'
 gca() { if [[ -n "$1" ]]; then git commit -v -a -m "$1"; else git commit -v -a; fi; }
 gcB() { gbD "$1" &> /dev/null; git checkout -b "$1" "${2:-upstream}"/"$1"; }
 gcbc() { git checkout -b "$@" && git commit --allow-empty; }
-gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%y%m%d")"-"$1"; }
+gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%Y%m%d")"-"$1"; }
 alias gce='git commit --allow-empty'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
@@ -246,7 +245,8 @@ alias ipdb='ipdb3'
 alias iplug='vim +PluginInstall +qall'
 ipy-add-import() { ${SED} -i "/c\.InteractiveShellApp\.exec_lines/ a import $1" ~/.ipython/profile_default/ipython_config.py; }
 alias issh='ssh -p 34857 athena-arch.ddns.net'
-ivim() { while true; do vim "$@"; done; }
+ivim() { while true; do vim "$@" && sleep 0.5; done; }
+ivimbc() { while true; do vim $(branch_changes | sort_by_basename) && sleep 0.5; done; }
 j() { if [[ -n "$1" ]]; then jrnl "$@"; else vim + "$HOME"/Sync/var/notes/Journal/jrnl.txt; fi; }
 alias J='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /dev/null'
 K() { tmux switchc -n && tmux kill-session -t "$(tm-session-name)"; }
@@ -324,6 +324,7 @@ alias sudoers='sudo -E vim /etc/sudoers'
 alias tgdb="gdb -iex 'set pagination off' -ex 'tui enable' -ex 'set pagination on'"
 alias tm-layout="tmux lsw | grep '*' | awk '{gsub(/\\]/, \"\"); print \$7}'"
 tmd() { tmux display-message -p "#{$1}"; }
+alias todo="rg '^[ ]*..?[ ]TODO\(bugyi\):[ ].*' --color=always -n | perl -nE 'print s/(.*?)[ ]*..?(TODO.*)/\1\n    \2/gr'"
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
 tsm-add() { transmission-remote -a "$@"; }
 tsm-boost() { transmission-remote -t"$1" -Bh -phall -pr250; }

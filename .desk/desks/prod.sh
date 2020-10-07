@@ -14,7 +14,13 @@ else
         return 1
     fi
 
-    poetry_venv="$(poe show -v | perl -nE 'print s/Using virtualenv:\s*//gr if /Using virtualenv:/')"
+    # These two lines should be able to be moved once
+    # https://github.com/pyenv/pyenv/pull/1655 is resolved. You also had to run
+    # `sudo ln -sf /usr/bin/python2.7 /usr/bin/python` for similar reasons.
+    export PATH="/home/bryan/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+
+    poetry_venv="$(pyenv shell 2.7.18 && poe show -v | perl -nE 'print s/Using virtualenv:\s*//gr if /Using virtualenv:/')"
     source "${poetry_venv}"/bin/activate
 
     export PATH=$(pwd)/.bin:$(pwd)/docker:"$PATH"
