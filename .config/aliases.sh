@@ -132,7 +132,6 @@ alias books='vim ~/Sync/var/notes/Journal/books.txt'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
 alias budget='python3 $HOME/Sync/var/projects/budget/main.py'
 alias c='cookie'
-alias cal='cal -n 3 | less'
 cat() { if [[ -r "$1" ]]; then bat "$@"; else sudo -E bat "$@"; fi; }
 alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
@@ -178,10 +177,12 @@ fn_() { if [[ "$1" == *"*"* ]]; then find . -iname "$@"; else find . -iname "*$*
 forever() { while true; do eval "$*"; done; }
 alias fp='noglob fp_'
 fp_() { if [[ "$1" == *"*"* ]]; then find . -ipath "$@"; else find . -ipath "*$**"; fi; }
+alias freeze='icebox --freeze /tmp/icebox'
 alias ga='git add -v'
 alias gaa='git add -v --all'
 alias gau='git add -v --update'
 alias gbb='git branch --sort=-committerdate | less'
+alias gbcopy='gcopy --body'
 gca() { if [[ -n "$1" ]]; then git commit -v -a -m "$1"; else git commit -v -a; fi; }
 gcB() { gbD "$1" &> /dev/null; git checkout -b "$1" "${2:-upstream}"/"$1"; }
 gcbc() { git checkout -b "$@" && git commit --allow-empty; }
@@ -192,6 +193,7 @@ gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
 alias gclp='cd ~/projects && gcl'
 alias gclt='cd /tmp && gcl'
 gcm() { git checkout "${MASTER_BRANCH:-master}"; }
+gcopys() { gcopy --body "$@" && gcopy --title "$@"; }
 alias gdef='def -m GENTOO'
 alias Gdef='def -m GTD'
 gdm() { git diff "${MASTER_BRANCH:-master}"...HEAD; }
@@ -220,6 +222,7 @@ gpu() { git push -u origin "$(git_current_branch)"; }
 alias gpull='git stash && git pull && git stash apply'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
+alias gre='git restore'
 alias grep='${GREP}'
 alias gres='git reset'
 gresh() { git reset "${@:2}" HEAD~"${1:-1}"; }
@@ -233,6 +236,7 @@ alias gsd='sudo get-shit-done'
 alias gsta='git stash'
 alias gstal="git stash list --date=local | perl -pE 's/stash@\{(?<date>.*)\}: .*[Oo]n (?<branch>.*?): (?<desc>.*)$/\"\\033[33mstash@\{\" . \$n++ . \"\}: \\033[36m[\$+{date}] \\033[32m(\$+{branch})\n\t\$+{desc}\n\"/ge' | less"
 alias gsum='git summary | less'
+alias gtcopy='gcopy --title'
 gwip() { gaa && git commit -m "[wip] $*"; }
 alias h='tldr'
 alias H='tm-home load'
@@ -324,7 +328,7 @@ alias sudoers='sudo -E vim /etc/sudoers'
 alias tgdb="gdb -iex 'set pagination off' -ex 'tui enable' -ex 'set pagination on'"
 alias tm-layout="tmux lsw | grep '*' | awk '{gsub(/\\]/, \"\"); print \$7}'"
 tmd() { tmux display-message -p "#{$1}"; }
-alias todo="rg '^[ ]*..?[ ]TODO\(bugyi\):[ ].*' --color=always -n | perl -nE 'print s/(.*?)[ ]*..?(TODO.*)/\1\n    \2/gr'"
+alias todo='rg "^[ ]*..?[ ]TODO\(b?bugyi\):[ ].*$" -l --color=never | sort_by_basename | pytodos'
 alias tree='clear && tree -I "venv*|__pycache__*|coverage*"'
 tsm-add() { transmission-remote -a "$@"; }
 tsm-boost() { transmission-remote -t"$1" -Bh -phall -pr250; }
@@ -339,6 +343,7 @@ alias tsm='transmission-remote'
 tv-torrent() { echo "torrent -w /media/bryan/hercules/media/Entertainment/TV $*" | at 0200; }
 u() { echo -e "\u$1"; }
 alias undow='dow --undo'
+alias unfreeze='icebox --unfreeze /tmp/icebox'
 alias updatedb='sudo updatedb'
 alias uplug='vim +PluginUpdate +qall'
 vab() { vim $(find "$HOME"/Sync/bin/cron.jobs -type f | sort | tr '\n' ' '); }

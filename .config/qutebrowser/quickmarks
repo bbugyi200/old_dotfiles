@@ -88,6 +88,7 @@ ghn https://github.com/
 ghr https://github.com/bbugyi200?tab=repositories
 G https://mail.google.com/mail/u/0/#inbox
 g https://www.google.com/
+grip http://localhost:6419/
 GSC https://search.google.com/search-console?resource_id=https%3A%2F%2Fbryanbugyi.com%2F
 Gs https://mail.google.com/mail/u/0/#settings/general
 HN https://news.ycombinator.com/
@@ -161,4 +162,3 @@ Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
 zmq http://zguide.zeromq.org/page:all#toc6
-grip http://localhost:6419/

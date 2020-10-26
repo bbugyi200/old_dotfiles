@@ -4,8 +4,7 @@ import {{ NAME }}
 
 
 class Test{{ TNAME }}(unittest.TestCase):
-    def test_main(self) -> None:
-        pass
+    pass
 
 
 if __name__ == '__main__':
