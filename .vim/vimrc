@@ -49,7 +49,7 @@ let &statusline = "%{GitBranchStatus()} %f%{GitGutterStatus()} %m %= Lines: %l/%
 set tabstop=4
 set tags^=./.git/tags,.tags,./.tags;
 set ttymouse=sgr  " An attempt to fix the issue where mouse-clicks cause random output to screen
-set tw=79
+set tw=0
 set undofile
 set undodir=$HOME/.vim/undo
 set viminfo+=n~/Sync/home/.vim/viminfo  " since viminfo file CANNOT be a symlink

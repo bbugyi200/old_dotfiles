@@ -13,8 +13,9 @@ content:
         can_access_clipboard: true
         can_close_tabs: true
         can_open_tabs_automatically: true
+    media:
+        audio_video_capture: true
     mouse_lock: true
-    media_capture: true
     notifications: true
     persistent_storage: true
     register_protocol_handler: true

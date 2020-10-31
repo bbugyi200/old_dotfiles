@@ -193,7 +193,7 @@ gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
 alias gclp='cd ~/projects && gcl'
 alias gclt='cd /tmp && gcl'
 gcm() { git checkout "${MASTER_BRANCH:-master}"; }
-gcopys() { gcopy --body "$@" && gcopy --title "$@"; }
+gcopys() { gcopy --body "$@" &>/dev/null && gcopy --title "$@" &>/dev/null; }
 alias gdef='def -m GENTOO'
 alias Gdef='def -m GTD'
 gdm() { git diff "${MASTER_BRANCH:-master}"...HEAD; }

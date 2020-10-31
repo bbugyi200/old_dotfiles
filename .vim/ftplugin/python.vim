@@ -201,12 +201,13 @@ endfunction
 
 let b:run_cmd = ":ALEFix"
 
-setlocal indentkeys-=<:>
-setlocal indentkeys+==else
-setlocal foldmethod=expr
-setlocal foldexpr=FoldExpr(v:lnum, "0")
 setlocal foldcolumn=3
+setlocal foldexpr=FoldExpr(v:lnum, "0")
 setlocal foldlevel=5
+setlocal foldmethod=expr
+setlocal indentkeys+==else
+setlocal indentkeys-=<:>
+setlocal tw=79
 
 
 " --- Symbol Mappings
