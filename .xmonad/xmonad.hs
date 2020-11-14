@@ -352,8 +352,8 @@ myAdditionalKeys = [
    , ((alpha .|. chi, r), DW.removeWorkspace)  -- Remove Current Workspace
    , ((alpha .|. delta, r), removeEmptyWorkspace') -- Remove Current Workspace if Empty
    , ((alpha, s), do
-            spawn "wmctrl -a Slack"
-            launchApp "slack" "Slack" "init-slack"
+            spawn "wmctrl -a Slack || wmctrl -a 'You have new messages'"
+            launchApp "slack" "" "init-slack"
     )
    , ((alpha .|. beta, s), do
             spawn "wmctrl -a 'System Information'"

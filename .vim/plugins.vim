@@ -52,11 +52,6 @@ Plugin 'Konfekt/FastFold'
 Plugin 'z0mbix/vim-shfmt'
 Plugin 'tmhedberg/SimpylFold'
 
- let g:hound_repo_paths = {
-    \'prod': '/home/bryan/projects/edgelp/prod',
-    \'plat': '/home/bryan/projects/edgelp/plat',
-    \'META_STATIC': '/home/bryan/projects/edgelp/staging/20.1-B/prod/data/PNY.20.1-B/META_STATIC',}
-
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on

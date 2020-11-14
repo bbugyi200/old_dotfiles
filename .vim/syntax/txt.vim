@@ -28,8 +28,9 @@ syn region Function start="^\s*---" end="---$" contains=@NoSpell oneline
 syn match Underlined "http\S*" contains=@NoSpell,EndP
 
 " Comments
-syn region Comment start="\/\/" end="$" contains=@txtContains,@NoSpell oneline
-syn region Comment start="#" end="$" contains=@txtContains,@NoSpell oneline
+syn region Comment start="\/\/ " end="$" contains=@txtContains,@NoSpell oneline
+syn region Comment start="# " end="$" contains=@txtContains,@NoSpell oneline
+syn region Comment start="^#$" end="$" contains=@txtContains,@NoSpell oneline
 syn region Comment start="\/\*" end="\*\/" contains=@txtContains,@NoSpell
 
 " Highlights
