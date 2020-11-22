@@ -186,7 +186,7 @@ alias gbcopy='gcopy --body'
 gca() { if [[ -n "$1" ]]; then git commit -v -a -m "$1"; else git commit -v -a; fi; }
 gcB() { gbD "$1" &> /dev/null; git checkout -b "$1" "${2:-upstream}"/"$1"; }
 gcbc() { git checkout -b "$@" && git commit --allow-empty; }
-gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%Y%m%d")"-"$1"; }
+gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%y.%m")"-"$1"; }
 alias gce='git commit --allow-empty'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
@@ -250,7 +250,7 @@ alias iplug='vim +PluginInstall +qall'
 ipy-add-import() { ${SED} -i "/c\.InteractiveShellApp\.exec_lines/ a import $1" ~/.ipython/profile_default/ipython_config.py; }
 alias issh='ssh -p 34857 athena-arch.ddns.net'
 ivim() { while true; do vim "$@" && sleep 0.5; done; }
-ivimbc() { while true; do vim $(branch_changes | sort_by_basename) && sleep 0.5; done; }
+ivimbc() { while true; do vim $(branch_changes | sort_by_basename | perl -nE 'print if not /thirdparty/') && sleep 0.5; done; }
 j() { if [[ -n "$1" ]]; then jrnl "$@"; else vim + "$HOME"/Sync/var/notes/Journal/jrnl.txt; fi; }
 alias J='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /dev/null'
 K() { tmux switchc -n && tmux kill-session -t "$(tm-session-name)"; }
