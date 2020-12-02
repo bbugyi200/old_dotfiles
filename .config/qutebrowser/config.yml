@@ -25,7 +25,7 @@ downloads:
     remove_finished: 10000
 
 editor:
-    command: ['urxvt', '-name', 'qute-editor', '-e', 'zsh', '-c',
+    command: ['alacritty', '--class', 'qute-editor', '-e', 'zsh', '-c',
               'vim -N -u ~/.config/qutebrowser/editor.vimrc {}']
 
 tabs:

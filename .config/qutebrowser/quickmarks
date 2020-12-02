@@ -20,6 +20,7 @@ edap https://web-prod.pr.edgelp.net:1040/rec/
 edb http://web-prod.pr.edgelp.net:22052/
 edd http://web-dev.pr.edgelp.net/
 ed http://web-prod.pr.edgelp.net/
+edoc https://drive.google.com/drive/u/1/my-drive
 eds http://web-stag.pr.edgelp.net/
 edwc http://web-prod.pr.edgelp.net:19999/
 egc https://gitlab.pr.edgelp.net/edgelp/production_config
@@ -162,4 +163,3 @@ Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
 zmq http://zguide.zeromq.org/page:all#toc6
-edoc https://drive.google.com/drive/u/1/my-drive

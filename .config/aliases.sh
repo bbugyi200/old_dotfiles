@@ -131,6 +131,7 @@ bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 alias books='vim ~/Sync/var/notes/Journal/books.txt'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
 alias budget='python3 $HOME/Sync/var/projects/budget/main.py'
+alias bw='sudo bandwhich'
 alias c='cookie'
 cat() { if [[ -r "$1" ]]; then bat "$@"; else sudo -E bat "$@"; fi; }
 alias ccat='pygmentize -g'
@@ -242,6 +243,7 @@ alias h='tldr'
 alias H='tm-home load'
 header() { clear && eval "$@" && echo; }
 help() { bash -c "help $*"; }
+alias htime='hyperfine'
 alias htop='sudo htop'
 info() { pinfo "$@" || { printf "\n===== APROPOS OUTPUT =====\n"; apropos "$@"; }; }
 alias iotop='sudo iotop'
@@ -279,7 +281,7 @@ alias notes='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /d
 alias ok='xspawn okular'
 onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Sync/var/notes/Onething/"$1".txt; }
 alias P='popd'
-pdb() { { [[ -f ./"$1" ]] && pudb3 "$@"; } || pudb3 "$(which -a "$1" | tail -n 1)" "${@:2}"; }
+pdb() { { [[ -f ./"$1" ]] && python -m pdb "$@"; } || python -m pdb "$(which -a "$1" | tail -n 1)" "${@:2}"; }
 pgr() { pgrep -f ".*$1.*"; }
 alias pipget='pip install --user'
 alias plex='xspawn -w plex plexmediaplayer'
@@ -295,6 +297,7 @@ alias psg='ps -ax | grep -v grep | grep'
 alias pshell='poetry shell'
 alias psi='psinfo'
 alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
+pudb() { { [[ -f ./"$1" ]] && pudb3 "$@"; } || pudb3 "$(which -a "$1" | tail -n 1)" "${@:2}"; }
 pvar() { set | grep -i -e "^$1"; }
 alias pvsu='py-vshlog -u -D BOT EOT -H all -e'
 alias pwrstat='sudo pwrstat'
@@ -305,7 +308,7 @@ alias rag='cat $RECENTLY_EDITED_FILES_LOG | sudo xargs ag 2> /dev/null'
 alias reboot='sudo reboot'
 ripmov() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &> /dev/null & disown; }
 riptv() { nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &> /dev/null & disown; }
-alias rm='safe-rm'
+alias rm='trash'
 alias rng='ranger'
 alias root='sudo su -p'
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'

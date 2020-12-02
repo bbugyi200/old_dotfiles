@@ -51,6 +51,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Konfekt/FastFold'
 Plugin 'z0mbix/vim-shfmt'
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'raimon49/requirements.txt.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -99,7 +100,7 @@ if PluginInstalled("ale")
         let python="python"
     endif
 
-    let g:ale_python_black_options = get(g:, "ale_python_black_options", "--experimental-string-processing")
+    let g:ale_python_black_options = get(g:, "ale_python_black_options", "--line-length=79 --experimental-string-processing")
     let g:ale_python_mypy_options = get(g:, "ale_python_mypy_options", "--python-executable=" . python)
     let g:ale_python_pylint_options = get(g:, "ale_python_pylint_options", "--rcfile=~/.config/pylintrc")
 

@@ -188,6 +188,16 @@ function! s:VSetSearch(cmdtype)
 	let @s = temp
 endfunction
 
+function! WrapLine()
+    let wrap_tw = get(b:, 'wrap_tw', &tw)
+    let old_tw = &tw
+    let tw = wrap_tw
+
+    normal gqap
+
+    let tw = old_tw
+endfunction
+
 " copy to attached terminal using the yank(1) script:
 " https://github.com/sunaku/home/blob/master/bin/yank
 function! Yank(text) abort
@@ -335,8 +345,8 @@ nnoremap <Leader><Leader>t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>v :vert sfind 
 nnoremap <Leader><Leader>v :vs <C-R>=expand("%:p:h") . "/" <CR>
 " W-W-W-W-W-W-W-W-W-W
-nnoremap <Leader>W gqap| " mapping to wrap paragraph
-nmap <Leader><Leader>W ]<Space>[<Space>kmmj<Leader>Wdd'mdd
+nnoremap <Leader>W :call WrapLine()<CR> " mapping to wrap paragraph
+nmap <Leader><Leader>W ]<Space>[<Space>kmmj:call WrapLine()<CR>dd'mdd
 nnoremap <silent> [w "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>:nohlsearch<CR>
 nnoremap <silent> ]w "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR>:nohlsearch<CR>
 " X-X-X-X-X-X-X-X-X-X
