@@ -312,7 +312,7 @@ myAdditionalKeys = [
    , ((alpha, h), prevScreen)
    , ((alpha .|. chi, h), sendMessage Shrink)
    , ((alpha, i), do
-           spawn "wmctrl -a qutebrowser"
+           spawn "bash -c '[[ $(wmctrl -lx | grep \"qutebrowser\" | wc -l) -lt 2 ]] && wmctrl -a qutebrowser'"
            launchApp "web" "qutebrowser" "qutebrowser --enable-webengine-inspector"
      )
    , ((alpha, j), N2D.windowGo N2D.D True)
@@ -322,6 +322,7 @@ myAdditionalKeys = [
    , ((alpha, l), nextScreen)
    , ((alpha .|. beta, l), sendMessage NextLayout)
    , ((alpha .|. chi, l), sendMessage Expand)
+   , ((alpha .|. beta .|. chi, l), spawn "my-screenlock --no-blur")
    , ((alpha, m), do
             spawn "wmctrl -a Gmail || wmctrl -a 'bryan.bugyi@edgestreamlp.com'"
             launchApp "mail" "Gmail|edgestreamlp" "init-mail"

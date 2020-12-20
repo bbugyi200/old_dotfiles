@@ -46,7 +46,7 @@ Plugin 'vim-scripts/AnsiEsc.vim'
 Plugin 'vim-scripts/applescript.vim'
 Plugin 'vim-scripts/cecutil'
 Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'vimwiki/vimwiki'  " Required by: taskwiki
+Plugin 'vimwiki/vimwiki'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Konfekt/FastFold'
 Plugin 'z0mbix/vim-shfmt'
@@ -346,7 +346,9 @@ endif
 """"""""""""""""""""""
 "  Instant-Markdown  "
 """"""""""""""""""""""
-let g:instant_markdown_autostart = 0
+if PluginInstalled("instant-markdown")
+    let g:instant_markdown_autostart = 0
+endif
 
 """"""""""""""
 "  Jedi-vim  "

@@ -89,6 +89,7 @@ alias vmutt='vim $HOME/.mutt/muttrc'
 
 # ---------- Vim Wrapper Aliases / Functions ----------
 # def marker: VIM
+cim() { vim ~/.config/"$1"; }
 alias daf='def -a'
 def() { zim "def" "$@" "-F" "$HOME/Sync/home/.zshrc" "-F" "$HOME/Sync/home/.config/aliases.sh" "-F" "$HOME/Sync/home/.config/debian.sh" "-F" "$HOME/Sync/home/.config/gentoo.sh" "-F" "$HOME/Sync/home/.config/macos.sh"; }
 him() { vim ~/"$1"; }
@@ -140,7 +141,6 @@ alias cdef='def -m COOKIE'
 alias cdow='cd "$(dow_dir $PWD)"'
 cho() { sudo chown -R "${2:-bryan}":"${2:-bryan}" "$1"; }
 alias chx='sudo chmod +x'
-cim() { vim ~/.config/"$1"; }
 alias cower='cower -c'
 alias cp="cp -i"
 alias cplug='vim +PluginClean +qall'

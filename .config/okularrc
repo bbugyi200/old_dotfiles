@@ -29,25 +29,23 @@ Width 1920=590
 
 [Recent Files]
 File1[$e]=$HOME/Sync/var/books/Math/Combinatorics/A_First_Course_in_Graph_Theory-(Zhang).pdf
-File10[$e]=$HOME/Downloads/Hans-Jürgen Schönig - Mastering PostgreSQL 13-Packt Publishing.epub
 File2[$e]=$HOME/Sync/var/study/Compilers/hw6_instructions.pdf
 File3[$e]=$HOME/Sync/var/books/Programming/Philosophy/The_Mythical_Man_Month-(Brooks).pdf
 File4[$e]=$HOME/Sync/var/books/Programming/Python/Web Scraping with Python - Ryan Mitchell.pdf
 File5[$e]=$HOME/Sync/var/books/Programming/Operating_Systems/TCP_IP_Illustrated-(Stevens).djvu
 File6[$e]=$HOME/Sync/var/books/Programming/Philosophy/The_Pragmatic_Programmer-(Hunt).pdf
 File7[$e]=$HOME/Sync/var/books/Programming/Operating_Systems/Understanding_the_Linux_Kernel-(Bovet).pdf
-File8[$e]=$HOME/Downloads/american_giant_return_label.pdf
-File9[$e]=$HOME/Downloads/feat_shipping_label.pdf
+File8[$e]=$HOME/Downloads/Bugyi, Bryan - 2020-11-30 Appendix A (Confid)(Production)(EMLLC).pdf
+File9[$e]=$HOME/Downloads/Bugyi, Bryan - 2020-11-30 Employment Agreement (EMLLC).pdf
 Name1[$e]=A_First_Course_in_Graph_Theory-(Zhang).pdf
-Name10[$e]=Hans-Jürgen Schönig - Mastering PostgreSQL 13-Packt Publishing.epub
 Name2[$e]=hw6_instructions.pdf
 Name3[$e]=The_Mythical_Man_Month-(Brooks).pdf
 Name4[$e]=Web Scraping with Python - Ryan Mitchell.pdf
 Name5[$e]=TCP_IP_Illustrated-(Stevens).djvu
 Name6[$e]=The_Pragmatic_Programmer-(Hunt).pdf
 Name7[$e]=Understanding_the_Linux_Kernel-(Bovet).pdf
-Name8[$e]=american_giant_return_label.pdf
-Name9[$e]=feat_shipping_label.pdf
+Name8[$e]=Bugyi, Bryan - 2020-11-30 Appendix A (Confid)(Production)(EMLLC).pdf
+Name9[$e]=Bugyi, Bryan - 2020-11-30 Employment Agreement (EMLLC).pdf
 
 [Shortcut Schemes]
 Current Scheme=VimBindings

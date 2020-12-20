@@ -166,7 +166,7 @@ endfunction
 function! RemoveFile()
     let filename = expand('%')
     call RemoveBuffer('n')
-    call system("safe-rm " . filename)
+    call system("trash " . filename)
 endfunction
 
 

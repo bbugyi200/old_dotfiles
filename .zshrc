@@ -41,39 +41,10 @@ done
 # Disable builtins
 disable r
 
-####################
-#  Autocompletion  #
-####################
-autoload -U +X compinit && compinit -u
-autoload -U +X bashcompinit && bashcompinit
-if [[ -d ~/.bash-completions ]]; then
-    for filename in ~/.bash-completions/*; do
-        source "$filename"
-    done
-fi
-
-# pipx
-eval "$(register-python-argcomplete pipx)"
-
-_git 2> /dev/null  # hack to make git branch completion work
-compdef _command_names wim vinfo
-compdef _git-checkout gco gnext
-compdef _git-diff gd
-compdef _git-log glg
-compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
-compdef _tmuxinator tm
-compdef vman=man
-
-command -v emerge &> /dev/null && compdef sudo_del=emerge
-command -v emerge &> /dev/null && compdef sudo_get=emerge
-command -v rc-service &> /dev/null && compdef rcst=rc-service
-
 #####################
 #  Source Commands  #
 #####################
-function source_if_exists() {
-    [[ -f "$1" ]] && source "$1"
-}
+function source_if_exists() { [[ -f "$1" ]] && source "$1"; }
 
 source_if_exists "${HOME}"/.config/aliases.sh
 source_if_exists /usr/local/lib/tmuxinator.zsh
@@ -195,17 +166,59 @@ function command_not_found_handler() {
 # Hook for desk activation
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
 
-# Added by 'pyenv'
-export PATH="/home/bryan/.pyenv/bin:$PATH"
+# Check if command exists.
+function cmd_exists() { command -v "$1" &>/dev/null; }
 
 # pyenv
-if command -v pyenv &>/dev/null && [[ -z "${VIRTUAL_ENV}" ]]; then
+export PATH="/home/bryan/.pyenv/bin:$PATH"
+if cmd_exists pyenv && [[ -z "${VIRTUAL_ENV}" ]]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
 
-if command -v starship &>/dev/null; then
+if cmd_exists starship; then
     eval "$(starship init zsh)"
 fi
+
+if cmd_exists virtualenvwrapper_lazy.sh; then
+    export WORKON_HOME="${HOME}"/.virtualenvwrapper-venvs
+    export PROJECT_HOME="${HOME}"/projects
+
+    if cmd_exists pyenv; then
+        pyenv virtualenvwrapper_lazy
+    else
+        source virtualenvwrapper_lazy.sh
+    fi
+fi
+
+####################
+#  Autocompletion  #
+####################
+autoload -U +X compinit && compinit -u
+autoload -U +X bashcompinit && bashcompinit
+if [[ -d ~/.bash-completions ]]; then
+    for filename in ~/.bash-completions/*; do
+        source "$filename"
+    done
+fi
+
+# pipx
+eval "$(register-python-argcomplete pipx)"
+
+_git 2> /dev/null  # hack to make git branch completion work
+compdef _command_names wim vinfo
+compdef _git-checkout gco gnext
+compdef _git-diff gd
+compdef _git-log glg
+compdef _task tt ti tpi ts to ta tg tgw tgr tga tin tmi tget
+compdef _tmuxinator tm
+compdef vman=man
+
+command -v emerge &> /dev/null && compdef sudo_del=emerge
+command -v emerge &> /dev/null && compdef sudo_get=emerge
+command -v rc-service &> /dev/null && compdef rcst=rc-service
+
+# pip completion
+eval "$(python -m pip completion --zsh 2>/dev/null)"
 
 test 0  # so exit status is always 0 when starting shell

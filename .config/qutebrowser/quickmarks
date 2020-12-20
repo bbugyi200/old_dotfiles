@@ -163,3 +163,6 @@ Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
 yt https://www.youtube.com/playlist?list=WL
 zmq http://zguide.zeromq.org/page:all#toc6
+zjc https://www.zillow.com/jersey-city-nj/3-_beds/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%22Jersey%20City%2C%20NJ%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.07909405563353%2C%22east%22%3A-74.01309025619506%2C%22south%22%3A40.70648291780803%2C%22north%22%3A40.737592916382745%7D%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A25320%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A600000%2C%22max%22%3A900000%7D%2C%22mp%22%3A%7B%22min%22%3A1971%2C%22max%22%3A2957%7D%2C%22beds%22%3A%7B%22min%22%3A3%7D%2C%22ah%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%2C%22mapZoom%22%3A16%7D
+zho https://www.zillow.com/homes/Hoboken,-NJ_rb/
+zwe https://www.zillow.com/homes/Weehawken,-NJ_rb/
