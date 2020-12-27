@@ -165,7 +165,7 @@ endfunction
 function! GetISortCmd(import_string)
     let isort_prefix = "Silent isort -a '"
     let isort_opts = "
-                \ --line-width=79
+                \ --line-width=88
                 \ --lines-after-imports=2
                 \ --force-sort-within-sections
                 \ --combine-as

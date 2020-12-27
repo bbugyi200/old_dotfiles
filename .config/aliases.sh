@@ -168,7 +168,7 @@ alias du='sudo ncdu --color dark'
 alias dunst='killall dunst &> /dev/null; dunst'
 alias edsl='printf "$(hostname):%d,%d\n%s,%d\n" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
 alias epuse='sudo -E epuse'
-_essh() { printf 'cd ~/projects/edgelp/prod; source ~/bin/psource.sh; PATH=/prod/home/bbugyi/bin:$PATH psource .environ; cd %s; /bin/zsh' "$1"; }
+_essh() { printf 'cd ~/projects/edgelp/prod; source envs/dev.sh; cd %s; /bin/zsh' "$1"; }
 essh() { ssh "$1" -t "$(_essh "$2")"; }
 esssh() { essh "$1" /prod/home/bbugyi/src/prod; }
 fim() { file="$("$(which -a fim | tail -n 1)" "$1")"; if [[ -z "${file}" ]]; then return 1; else vim "${file}"; fi; }

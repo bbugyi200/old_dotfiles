@@ -4,26 +4,11 @@ root: <%= @settings['root'] %>
 name: es-prod`
 socket_name: tmux_primes
 
-on_project_start:
-on_project_stop:
+on_project_start: es-prod-hook
 pre_window:
 
 windows:
-    - I:
-        root: ~/projects/edgelp/prod
-        layout: even-horizontal
-        panes:
-            - 0:
-                - ll
-    - II:
-        root: ~/projects/edgelp/prod
-        layout: even-horizontal
-        panes:
-            - 0:
-                - ll
-    - III:
-        root: ~/projects/edgelp/prod
-        layout: even-horizontal
+    - vim:
         panes:
             - 0:
                 - ll
