@@ -97,6 +97,7 @@ def setup_search_aliases() -> None:
         "mac": "MacOS",
         "n": "AND",
         "o": "OR",
+        "prom": "prometheus",
         "py": "Python",
         "qb": "qutebrowser",
         "rnm": "Rick and Morty",
@@ -241,7 +242,7 @@ def setup_search_engines() -> None:
             "https://www.google.com/search?q={}&ibp=htl;jobs#fpstate=tldetail"
         ),
         "l": SE.static.stackoverflow(7, prefix="Linux"),
-        "lh": "http://127.0.0.1:8000/{}",
+        "lh": "http://localhost:{}",
         "li": SE.SearchEngine(
             SE.static.site("linkedin.com"),
             SE.URL(
