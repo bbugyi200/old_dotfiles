@@ -1,0 +1,253 @@
+    1  ls
+    2  cd poly/
+    3  ls
+    4  vi polymult.C
+    5  g++
+    6  g++ polymult.C
+    7  vi polymult.C
+    8  set -o vi
+    9  g++ polymult.C
+   10  g++ -std=c++11 polymult.C
+   11  clear
+   12  g++ -std=c++11 polymult.C
+   13  vi polymult.C
+   14  g++ -std=c++11 polymult.C
+   15  vi polymult.C
+   16  g++ -std=c++11 polymult.C
+   17  vi polymult.C
+   18  g++ -std=c++11 polymult.C
+   19  vi polymult.C
+   20  g++ -std=c++11 polymult.C
+   21  vi polymult.C
+   22  g++ -std=c++11 polymult.C
+   23  vi polymult.C
+   24  g++ -std=c++11 polymult.C
+   25  vi polymult.C
+   26  g++ -std=c++11 polymult.C
+   27  vi polymult.C
+   28  g++ -std=c++11 polymult.C
+   29  ./a.out
+   30  vi polymult.C
+   31  g++ -std=c++11 polymult.C
+   32  vi polymult.C
+   33  g++ -std=c++11 polymult.C
+   34  ./a.out
+   35  ./a.out xx
+   36  vi input.dat
+   37  ./a.out xx
+   38  ./a.out input.dat
+   39  vi input.dat
+   40  ls -ltr
+   41  vi polymult.C 
+   42  g++ -std=c++11 polymult.C
+   43  ./a.out input.dat
+   44  vi polymult.C 
+   45  g++ -std=c++11 polymult.C
+   46  ./a.out input.dat
+   47  vi polymult.C 
+   48  ./a.out input.dat
+   49  vi polymult.C 
+   50  ./a.out input.dat
+   51  g++ -std=c++11 polymult.C
+   52  ./a.out input.dat
+   53  vi polymult.C 
+   54  g++ -std=c++11 polymult.C
+   55  ./a.out input.dat
+   56  vi polymult.C 
+   57  g++ -std=c++11 polymult.C
+   58  ./a.out input.dat
+   59  vi polymult.C 
+   60  g++ -std=c++11 polymult.C
+   61  vi polymult.C 
+   62  g++ -std=c++11 polymult.C
+   63  ./a.out input.dat
+   64  vi polymult.C 
+   65  g++ -std=c++11 polymult.C
+   66  vi polymult.C 
+   67  g++ -std=c++11 polymult.C
+   68  vi polymult.C 
+   69  g++ -std=c++11 polymult.C
+   70  vi polymult.C 
+   71  g++ -std=c++11 polymult.C
+   72  vi polymult.C 
+   73  g++ -std=c++11 polymult.C
+   74  vi polymult.C 
+   75  mkdir backup
+   76  cp polymult.C backup/
+   77  vi polymult.C 
+   78  g++ -std=c++11 polymult.C
+   79  vi polymult.C 
+   80  g++ -std=c++11 polymult.C
+   81  vi polymult.C 
+   82  g++ -std=c++11 polymult.C
+   83  vi polymult.C 
+   84  g++ -std=c++11 polymult.C
+   85  vi polymult.C 
+   86  g++ -std=c++11 polymult.C
+   87  ./a.out input.dat 
+   88  vi polymult.C 
+   89  g++ -std=c++11 polymult.C
+   90  ./a.out input.dat 
+   91  vi polymult.C 
+   92  g++ -std=c++11 polymult.C
+   93  ./a.out input.dat 
+   94  vi polymult.C 
+   95  g++ -std=c++11 polymult.C
+   96  vi polymult.C 
+   97  cp polymult.C backup/
+   98  vi polymult.C 
+   99  g++ -std=c++11 polymult.C
+  100  ./a.out input.dat 
+  101  vi polymult.C 
+  102  g++ -std=c++11 polymult.C
+  103  ./a.out input.dat 
+  104  vi polymult.C 
+  105  g++ -std=c++11 polymult.C
+  106  ./a.out input.dat 
+  107  vi polymult.C 
+  108  g++ -std=c++11 polymult.C
+  109  vi polymult.C 
+  110  g++ -std=c++11 polymult.C
+  111  ./a.out input.dat 
+  112  vi polymult.C 
+  113  g++ -std=c++11 polymult.C
+  114  ./a.out input.dat 
+  115  vi polymult.C 
+  116  g++ -std=c++11 polymult.C
+  117  ./a.out input.dat 
+  118  vi polymult.C 
+  119  g++ -std=c++11 polymult.C
+  120  clear
+  121  ./a.out input.dat 
+  122  vi polymult.C 
+  123  g++ -std=c++11 polymult.C
+  124  ./a.out input.dat 
+  125  vi polymult.C 
+  126  g++ -std=c++11 polymult.C
+  127  vi polymult.C 
+  128  g++ -std=c++11 polymult.C
+  129  clear
+  130  g++ -std=c++11 polymult.C
+  131  vi polymult.C 
+  132  g++ -std=c++11 polymult.C
+  133  clear
+  134  ./a.out input.dat 
+  135  vi polymult.C 
+  136  g++ -std=c++11 polymult.C
+  137  ./a.out input.dat 
+  138  vi polymult.C 
+  139  g++ -std=c++11 polymult.C
+  140  ./a.out input.dat 
+  141  vi polymult.C 
+  142  g++ -std=c++11 polymult.C
+  143  clear
+  144  ./a.out input.dat 
+  145  vi polymult.C 
+  146  g++ -std=c++11 polymult.C
+  147  ./a.out input.dat 
+  148  vi polymult.C 
+  149  g++ -std=c++11 polymult.C
+  150  ./a.out input.dat 
+  151  vi polymult.C 
+  152  g++ -std=c++11 polymult.C
+  153  ./a.out input.dat 
+  154  vi input.dat
+  155  ./a.out input.dat 
+  156  vi input.dat
+  157  g++ -std=c++11 polymult.C
+  158  cp polymult.C backup/
+  159  vi polymult.C 
+  160  g++ -std=c++11 polymult.C
+  161  vi polymult.C 
+  162  g++ -std=c++11 polymult.C
+  163  vi polymult.C 
+  164  g++ -std=c++11 polymult.C
+  165  vi polymult.C 
+  166  g++ -std=c++11 polymult.C
+  167  vi polymult.C 
+  168  g++ -std=c++11 polymult.C
+  169  ./a.out input.dat 
+  170  vi polymult.C 
+  171  g++ -std=c++11 polymult.C
+  172  ./a.out input.dat 
+  173  vi polymult.C 
+  174  vi input.dat
+  175  ./a.out input.dat 
+  176  vi input.dat
+  177  vi polymult.C 
+  178  vi polymult.C 
+  179  g++ -std=c++11 polymult.C
+  180  ./a.out input.dat 
+  181  vi polymult.C 
+  182  g++ -std=c++11 polymult.C
+  183  cp polymult.C backup/
+  184  ./a.out input.dat 
+  185  vi polymult.C 
+  186  g++ -std=c++11 polymult.C
+  187  ./a.out input.dat 
+  188  vi polymult.C 
+  189  g++ -std=c++11 polymult.C
+  190  vi polymult.C 
+  191  g++ -std=c++11 polymult.C
+  192  ./a.out input.dat 
+  193  vi polymult.C 
+  194  g++ -std=c++11 polymult.C
+  195  ./a.out input.dat 
+  196  vi polymult.C 
+  197  vi input.dat
+  198  ./a.out input.dat 
+  199  vi input.dat
+  200  ./a.out input.dat 
+  201  vi input.dat
+  202  ./a.out input.dat 
+  203  vi input.dat
+  204  ./a.out input.dat 
+  205  vi input.dat
+  206  vi polymult.C 
+  207  g++ -std=c++11 polymult.C
+  208  ./a.out input.dat 
+  209  vi polymult.C 
+  210  vi input.dat 
+  211  ./a.out input.dat 
+  212  vi input.dat 
+  213  vi polymult.C 
+  214  g++ -std=c++11 polymult.C
+  215  ./a.out input.dat 
+  216  vi polymult.C 
+  217  g++ -std=c++11 polymult.C
+  218  ./a.out input.dat 
+  219  g++ -O3 -std=c++11 polymult.C
+  220  ./a.out input.dat 
+  221  clear
+  222  ./a.out input.dat 
+  223  vi polymult.C 
+  224  g++ -O3 -std=c++11 polymult.C
+  225  ./a.out input.dat 
+  226  vi polymult.C 
+  227  g++ -O3 -std=c++11 polymult.C
+  228  ./a.out input.dat 
+  229  clear
+  230  ./a.out input.dat 
+  231  vi polymult.C 
+  232  g++ -O3 -std=c++11 polymult.C
+  233  vi polymult.C 
+  234  g++ -O3 -std=c++11 polymult.C
+  235  ./a.out input.dat 
+  236  vi input.dat
+  237  ./a.out input.dat 
+  238  vi input.dat
+  239  ./a.out input.dat 
+  240  cp polymult.C backup/
+  241  vi input.dat
+  242  vi polymult.C 
+  243  g++ -O3 -std=c++11 polymult.C
+  244  vi readme
+  245  ./a.out input.dat 
+  246  g++ -O3 -std=c++11 polymult.C
+  247  vi readme
+  248  g++ -O3 -std=c++11 polymult.C
+  249  ./a.out input.dat 
+  250  l
+  251  ls -la
+  252  pwd
+  253  history >hist

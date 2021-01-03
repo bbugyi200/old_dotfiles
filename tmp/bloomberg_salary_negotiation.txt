@@ -1,0 +1,72 @@
+Hey Alex,
+
+Let me start by stressing how thrilled I am to have passed the bar and be given a chance to
+join the team! I was thoroughly impressed not only with the Compliance Engineering department
+but also (and especially) with the company as a whole! Bloomberg really seems like it would
+be an incredible place to work!
+
+I hope that my attempt to negotiate the terms of the offer are not in any way taken as an
+indication that I have not been taking this process seriously, but I do want to make sure
+that we've agreed upon a competitive offer that fits within the salary range for this
+position.  Moreover, I do understand that I have already given my compensation expectations
+during the HR round, but I honestly was not properly prepared for negotiations at the time.
+In the days leading up to my virtual on-site, I was more focused on passing the technical
+interviews and ensuring that the team/company was a good fit for both my personality and my
+skill set.
+
+After spending the weekend researching the salary range for this position and speaking with
+Jesse (the third-party recruiter who introduced me to Bloomberg), I think that 210K total
+compensation would be more appropriate for this position. In the spirit of transparency, here
+is the data that helped me get to this number:
+
+* Jesse mentioned that he was initially looking to aim for 175K base salary for this
+  position. I trust his judgement over my own on this matter since he surely has a much
+  better idea of what a professional with my skill set is really worth on the job market.
+  This base salary combined with a 20% target bonus (35K) implies a total compensation of
+  210K.
+
+* I did some research on levels.fyi, which in my experience has more accurate salary data
+  than most other competing sites (e.g. glassdoor.com). I have made the assumption that the
+  SRE salary range at Bloomberg is roughly equivalent to the salary range for "Senior" level
+  Software Engineers at Bloomberg. This seems to be the case at most organizations I think.
+  Furthermore, the job titles of the other two SRE positions that I received interview
+  invitations for at Bloomberg seem to imply the same ("Senior Software Engineer - Market
+  Data SRE" and "Sr. SWE/SRE - Bloomberg Indices").
+
+  I found 48 salary entries for Software Engineers working for Bloomberg at the "Senior"
+  level who have between 1 and 4 years of experience (instead of 1-2 years---for the sake of
+  more data points) and work out of Bloomberg's NYC location. Of these entries, the average
+  total compensation was 218.9K. This number is likely inflated a bit since my number of
+  years of experience (2) falls closer to the bottom of that range (1-4) than the top. I have
+  decremented this average accordingly (using my own judgement), which brought me to 210K.
+
+* I also did some research on the salary ranges for two companies that I was particularly
+  close to receiving an offer from:
+
+    (1) I interviewed for an Infrastructure Software Engineer position at DE Shaw. I estimate
+    that the total compensation for this role would have been in the low 200s. They ended up
+    going with another candidate with more experience, but I was particularly close to the
+    offer stage for this position (I had to complete a background check and all of my
+    referrals where collected and contacted).
+
+    (2) I interviewed for an E4-level Production Engineer position at Facebook. The total
+    compensation for this position would have been ~260K (judging from levels.fyi). I didn't
+    quite make the cut for this role, but I did well enough on the on-site interviews that I
+    have a phone call scheduled in January with one of their recruiters to setup another
+    round of interviews (Facebook requires you wait 6 months before interviewing again for
+    the same role).
+
+  Salary is not everything; I am honestly glad at the way things turned out since it looks
+  like Bloomberg has a much better company culture than either of these two companies. My
+  fiance and I do, however, worry about the potential opportunity cost of accepting an offer
+  that is too much lower than what I might have received if I were to have continued my job
+  search for another year or so.
+
+* Lastly, glassdoor.com (which I respect much less than levels.fyi) claims the average total
+  compensation for Site Reliability Engineers at Bloomberg is 224K. This site is less
+  reliable (though normally the salary data skews low not high) and there were only 3 salary
+  entries to work with. With that said, this number is consistent with my other findings.
+
+I apologize for the length of this email. In my defense, I did warn you that I prefer
+reading/writing over listening/speaking :). Do you think there is some way for us to adjust
+the offer based on the argument laid out above?

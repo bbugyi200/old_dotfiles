@@ -1,0 +1,41 @@
+#!/bin/bash -ex
+
+source script_utils.sh
+
+case "${PACKAGE_MANAGER}" in
+    apt )
+        sudo apt-get install -y libgpgme-dev swig
+        ;;
+    yum )
+        sudo yum install -y gpgme-devel swig
+        ;;
+    brew )
+        brew install gpgme swig
+        ;;
+    none )
+        # NOTE: 'libgpg-error' and 'libassuan' are dependencies of 'gpgme', so we must
+        # install them first.
+        # ----- Install 'libgpg-error'
+        cd "${WORKDIR}" || exit 1
+        esafe_wget https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.39.tar.bz2
+        tar xvf libgpg-error-1.39.tar.bz2
+        cd libgpg-error-1.39 || exit 1
+        ./configure --prefix="${PREFIX}"
+        make -j 10 && make install
+        # ----- Install 'libassuan'
+        cd "${WORKDIR}" || exit 1
+        esafe_wget https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.4.tar.bz2
+        tar xvf libassuan-2.5.4.tar.bz2
+        cd libassuan-2.5.4 || exit 1
+        ./configure --prefix="${PREFIX}"
+        make -j 10 && make install
+        # ----- Install 'gpgme'
+        cd "${WORKDIR}" || exit 1
+        esafe_wget https://gnupg.org/ftp/gcrypt/gpgme/gpgme-1.15.0.tar.bz2
+        tar xf gpgme-1.15.0.tar.bz2
+        cd gpgme-1.15.0 || exit 1
+        ./configure --prefix="${PREFIX}" --disable-gpg-test
+        perl -pE 's/-Wsuggest-override//g' -i lang/cpp/src/Makefile
+        make -j 10 && make install
+        ;;
+esac

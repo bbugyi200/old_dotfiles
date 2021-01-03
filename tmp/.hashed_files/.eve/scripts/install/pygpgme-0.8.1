@@ -1,0 +1,13 @@
+#!/bin/bash -ex
+
+source script_utils.sh
+
+esafe_wget http://deb.debian.org/debian/pool/main/p/pyme/pyme_0.8.1.orig.tar.gz
+tar xzf pyme_0.8.1.orig.tar.gz
+cd pyme-0.8.1 || exit 1
+
+# HACK: Needed to fix compile errors.
+perl -pE 's/(SWIGOPT :=.*)/\1 -cpperraswarn/' -i Makefile
+perl -pE "s/sh gpgme-config --%s/sh -c 'gpgme-config --%s'/" -i setup.py
+
+make && make install

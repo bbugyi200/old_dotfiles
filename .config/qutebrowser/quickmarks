@@ -157,7 +157,7 @@ T https://trello.com/b/PfAJM2Ge/black-182
 time https://www.time.gov/
 toggl https://toggl.com/app/timer
 tr https://sis.rutgers.edu/tags/
-TSM http://localhost:9091/transmission/web/
+TSM http://localhost:51414/transmission/web/#confirm
 TW https://twitter.com/
 W https://www.google.com/search?q=weather
 Wsd https://www.google.com/search?q=weather%20in%20san%20diego
@@ -168,3 +168,5 @@ zjc https://www.zillow.com/jersey-city-nj/3-_beds/?searchQueryState=%7B%22pagina
 zmq http://zguide.zeromq.org/page:all#toc6
 zwe https://www.zillow.com/homes/Weehawken,-NJ_rb/
 jcmap https://jerseycity.carto.com/builder/2d373196-8aee-11e5-99ea-0e5db1731f59/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B40.669636890290256%2C-74.17410850524904%5D%2C%22sw%22%3A%5B40.75538459186637%2C-73.96674156188966%5D%2C%22center%22%3A%5B40.7125245446439%2C-74.07042503356935%5D%2C%22zoom%22%3A13%7D%7D
+zse https://www.zillow.com/homes/secaucus,-NJ_rb/
+supervisor http://localhost:9001/

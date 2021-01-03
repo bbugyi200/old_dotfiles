@@ -1,0 +1,33 @@
+#!/bin/bash -ex
+
+case "${PACKAGE_MANAGER}" in
+brew)
+    # On MacOS, for some reason, we can install this package via 'pip install'. On Linux,
+    # however, 'pip install egenix-mx-base==3.2.9' fails.
+    ;;
+*)
+    D=egenix-mx-base-"${PV}"-py2.7_ucs4-linux-x86_64-prebuilt
+    wget https://downloads.egenix.com/python/"${D}".zip?python=2.7+ucs4+prebuilt2
+
+    zipfile="${D}".zip\?python=2.7+ucs4+prebuilt2
+    unzip "${zipfile}"
+
+    pushd "${D}" || exit 1
+    # --- BEGIN: inside $D
+    python setup.py install
+
+    # HACK: Otherwise we get errors when 'pex' tries to '#include
+    # mx/mxDateTime.h'.
+    MX_INCLUDE_DIR="${PREFIX}"/include/mx
+    mkdir -p "${MX_INCLUDE_DIR}"
+    cp build/lib.linux-x86_64-2.7_ucs4/mx/DateTime/mxDateTime/*.h "${MX_INCLUDE_DIR}"
+    # --- END: inside $D
+    popd || exit 1
+    ;;
+esac
+
+# HACK: This is meant to emulate the following file:
+#     /opt/edgelp/el7/default/lib64/python2.7/site-packages/DateTime.py
+#
+# Why this was done in the first place? I have no idea.
+echo "from mx.DateTime import *; from mx.DateTime import _DT, _DTD" >"${PREFIX}"/lib/python2.7/site-packages/DateTime.py

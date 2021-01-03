@@ -297,7 +297,7 @@ myAdditionalKeys = [
      )
    , ((alpha .|. beta, xK_9), swapScreens "prev")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
-   , ((alpha .|. beta, b), spawn "clipster_gtk")
+   , ((alpha .|. beta, b), spawn "clipster -s")
    , ((alpha, c), do
             spawn "wmctrl -a Calendar"
             launchApp "cal" "Calendar" "$(firefox_exe) --new-window https://calendar.google.com/calendar/u/1/r/month?pli=1 &"

@@ -1,1 +1,1 @@
-pipx virtualenvwrapper
+pipx uvicorn virtualenvwrapper

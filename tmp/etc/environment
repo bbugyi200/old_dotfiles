@@ -1,0 +1,2 @@
+PATH="/snap/bin:/home/bryan/.local/bin:/usr/local/bin:/usr/bin:/bin:/sbin/:/usr/sbin:/home/bryan/.cargo/bin:/home/bryan/.poetry/bin"
+PYTHONPATH="/usr/local/lib/python:/usr/local/bin"

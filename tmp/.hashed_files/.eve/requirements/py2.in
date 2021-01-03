@@ -1,0 +1,8 @@
+# The packages in this file are installed ONLY when running Python2.7.
+
+-c constraints/py2.txt
+
+enum34==1.1.10
+pathlib2==2.3.5
+typing==3.7.4
+virtualenv==20.0.32  # so `pip install --proxy` works

@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+python -c "from util import lint; lint.ensure_virtualenv_exists('.lint-venv'); lint.ensure_pylint_is_installed('.lint-venv')"

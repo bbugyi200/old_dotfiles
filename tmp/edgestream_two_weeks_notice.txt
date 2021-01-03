@@ -1,0 +1,14 @@
+Hey Josh,
+
+I want to make it clear though that this decision to leave is final and I am not open to
+negotiating against the offer I have received.
+
+My last day of work (provided that Edgestream permits me to stay this long) will be on
+2020-01-15 (a Friday). 
+
+===== TODO =====
+* Write report on projects that you are lead on.
+* Compliment Josh.
+
+===== Report =====
+Cleanup Issues/MRs

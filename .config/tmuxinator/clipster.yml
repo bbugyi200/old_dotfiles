@@ -1,0 +1,16 @@
+# ~/.config/tmuxinator/clipster.yml
+
+root: <%= @settings['root'] %>
+name: clipster
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+    - main:
+        root: /home/bryan/projects/clipster
+        layout: even-horizontal
+        panes:
+            - 0:
+                - ll

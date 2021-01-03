@@ -293,7 +293,7 @@ alias ppr='pipenv run'
 alias ppu='pipenv uninstall'
 ppython() { pipenv run python "$@"; }
 alias prun='poetry run'
-alias psg='ps -ax | grep -v grep | grep'
+alias psg='ps -aux | grep -v grep | grep'
 alias pshell='poetry shell'
 alias psi='psinfo'
 alias pstrace="strace \$@ -p \$(ps -ax | fzf | awk '{print \$2}')"
@@ -328,6 +328,7 @@ ssh-rutgers() { ssh bmb181@"${1:-less}".cs.rutgers.edu; }
 alias su='su -p'
 alias sudo='sudo -E '  # makes aliases visible to sudo
 alias sudoers='sudo -E vim /etc/sudoers'
+alias supctl='supervisorctl -c /home/bryan/.config/supervisor/supervisord.conf'
 alias tgdb="gdb -iex 'set pagination off' -ex 'tui enable' -ex 'set pagination on'"
 alias tm-layout="tmux lsw | grep '*' | awk '{gsub(/\\]/, \"\"); print \$7}'"
 tmd() { tmux display-message -p "#{$1}"; }

@@ -441,6 +441,7 @@ autocmd BufRead,BufNewFile *.xmobarrc set syntax=haskell
 autocmd BufRead,BufNewFile .coveragerc set filetype=cfg
 autocmd BufRead,BufNewFile CMakeLists.txt set filetype=cmake
 autocmd BufRead,BufNewFile config set filetype=cfg
+autocmd BufRead,BufNewFile *.conf set filetype=cfg
 autocmd BufRead,BufNewFile *.sh set filetype=sh
 autocmd BufRead,BufNewFile *.px setlocal filetype=python
 autocmd BufReadPost /etc/portage/sets/* set filetype=txt

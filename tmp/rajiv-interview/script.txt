@@ -1,0 +1,29 @@
+------ Introduction ------
+[ ] Water / Restroom?
+[ ] Introduce yourself: Name + Title + Story
+[ ] Explain interview structure (no finance stuff; base technical skills; finish with big picture questions).
+[ ] Questions for me?
+------ General Questions ------
+[ ] Walk me through your background up to this point? How did you get here?
+[ ] How did you feel about your performance on the programming challenge? Anything you wish you did differently?
+[ ] What’s your most successful project so far? What was your role? Describe the challenges you faced during this project.
+------ Technical Questions ------
+[ ] What three programming languages are you most familiar with?
+[ ] What makes C++ a good language?
+[ ] What makes C++ a bad language?
+[ ] How familiar are you with Python?
+[ ] Explain the trade-offs between C++ and Python.
+[ ] What language features, if any, would you add to C++? Why?
+[ ] What do you think are the most important aspects to pay attention to during code review?
+[ ] What are your thoughts on unit-testing and/or software testing in general?
+[ ] What is your process for finding a bug in an application? How much time do you typically spend on debugging?
+[ ] What do you think of when you think of when you here the term "Legacy Code"? Do you have any best practices when dealing with Legacy Code?
+------ Learning Questions ------
+[ ] What tools should every C++ developer know about?
+[ ] Name one (top 3 would be nice) software engineering book that everyone in the industry should read.
+[ ] Name one non-software engineering book that everyone should read?
+[ ] What is one technical skill that you DON'T have but wish you did?
+[ ] Can you describe a project that you were working on that was NOT successful? What would you do differently today?
+------ Wrap Up ------
+[ ] Feedback on programming exercise.
+[ ] Questions for me?

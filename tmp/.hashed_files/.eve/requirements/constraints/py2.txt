@@ -1,0 +1,7 @@
+### Package constraints that are only needed when running Python2.7.
+
+# Pip plans to drop support for Python2.7 in version 21.0.0.
+pip<21.0.0
+
+# Needed to fix https://github.com/pypa/setuptools/issues/2164.
+setuptools<45.0.0

@@ -1,0 +1,37 @@
+------ Introduction ------
+[ ] Water / Restroom?
+[ ] Introduce yourself: Name + Title + Story
+[ ] Explain interview structure (no finance stuff; base technical skills; finish with big picture questions).
+[ ] Questions for me?
+------ General Questions ------
+[ ] Walk me through your background up to this point? How did you get here?
+[ ] How did you feel about your performance on the programming challenge? Anything you wish you did differently?
+------ Technical Questions ------
+===== Testing =====
+[ ] What is your philosophy on software testing? TDD... Good or bad?
+[ ] Trade-offs between unit-testing and integration/systems testing? Strengths and weaknesses of each?
+===== Programming Language Features =====
+[ ] Explain the trade-offs between C++ and Python.
+[ ] What does E mean to you? Does python allow for E? If not, what are your alternatives?
+[ ] What do NS mean to you? Does python have NS? If not, what are your alternatives?
+[ ] One language feature you would add/modify to Python?
+[ ] What are some differences between Python 2. and Python 3?
+===== Python Specific Features / Gotchas =====
+[ ] Multi-threading in Python. A good idea? When? Why?
+[ ] What is monkeypatching? When would you use it?
+[ ] Python Syntax Speedround:
+    - How can you "de-sugarize" Python's decorator syntax?
+    - Why would you use an "else" clause with a try-block?
+    - Why would you use an "finally" clause with a try-block?
+    - Why would you use an "else" clause with a for-loop?
+[ ] In what ways is the code on the whiteboard broken? When will these flaws surface? How would you fix them?
+------ Learning Questions ------
+[ ] What tools should every Python developer know about?
+[ ] One technical book that everyone should read?
+[ ] One non-technical book that everyone should read?
+[ ] What is one technical skill that you DON'T have but wish you did?
+[ ] What is something you have failed at? What would you do differently today?
+------ Wrap Up ------
+[ ] Feedback on programming exercise.
+[ ] Feedback on interview questions / answers.
+[ ] Questions for me?

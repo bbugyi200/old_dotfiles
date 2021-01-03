@@ -1,0 +1,23 @@
+#!/bin/bash -ex
+
+# HACK: This post-hook script re-installs matplotlib to work-around a bug which causes
+# matplotlib to associate itself with the wrong copy of numpy.
+
+function matplotlib_is_broken() {
+    python -c \
+        'from matplotlib._path import affine_transform, count_bboxes_overlapping_bbox' 2>&1 |
+        grep -q "ImportError: numpy.core.multiarray failed to import"
+}
+
+if ! matplotlib_is_broken; then
+    printf 1>&2 ">>> The 'matplotlib' package is not broken, so there is no reason to reinstall.\n\n"
+    exit 0
+fi
+
+python -m pip uninstall -y matplotlib
+python -m pip install -U --no-cache-dir matplotlib=="${PV}"
+
+if matplotlib_is_broken; then
+    printf 1>&2 "[ERROR] The 'matplotlib' package is still broken!\n"
+    exit 1
+fi

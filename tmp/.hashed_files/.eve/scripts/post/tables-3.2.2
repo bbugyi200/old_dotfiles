@@ -1,0 +1,27 @@
+#!/bin/bash -ex
+
+# HACK: This post-hook script re-installs tables to work-around a bug which causes
+# tables to associate itself with the wrong copy of numpy.
+
+function tables_is_broken() {
+    python -c \
+        "from tables.utilsextension import *" 2>&1 |
+        grep -q "ValueError: numpy.dtype has the wrong size, try recompiling"
+}
+
+if ! tables_is_broken; then
+    printf 1>&2 ">>> The 'tables' package is not broken, so there is no reason to reinstall.\n\n"
+    exit 0
+fi
+
+if [[ "${PACKAGE_MANAGER}" == brew ]]; then
+    export HDF5_DIR="/usr/local/opt/hdf5@1.8"
+fi
+
+python -m pip uninstall -y tables
+python -m pip install -U --no-cache-dir tables=="${PV}"
+
+if tables_is_broken; then
+    printf 1>&2 "[ERROR] The 'tables' package is still broken!\n"
+    exit 1
+fi

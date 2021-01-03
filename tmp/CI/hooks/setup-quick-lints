@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+pprod/bin/setup_quick_lints

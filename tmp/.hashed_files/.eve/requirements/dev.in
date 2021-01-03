@@ -1,0 +1,10 @@
+# The packages in this file are needed to run tests and static analysis in CI.
+
+hypothesis==4.57.1
+modernize==0.7
+mock==1.0.1
+parameterized==0.7.4
+pip-tools==5.4.0
+pyftpdlib==1.5.6
+pylint==1.9.5
+sftpserver==0.3

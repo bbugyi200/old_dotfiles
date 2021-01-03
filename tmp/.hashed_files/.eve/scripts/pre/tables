@@ -1,0 +1,16 @@
+#!/bin/bash -ex
+
+case "${PACKAGE_MANAGER}" in
+    apt )
+        sudo apt-get install -y libhdf5-serial-dev
+        ;;
+    yum )
+        sudo yum install -y hdf5-devel
+        ;;
+    brew )
+        # HACK: On MacOS, we have to install 'tables' in this pre-hook script since we need
+        # to set the HDF5_DIR envvar to point to the 'hdf5@1.8' brew package's directory.
+        brew install hdf5@1.8
+        HDF5_DIR="/usr/local/opt/hdf5@1.8" python -m pip install tables=="${PV}"
+        ;;
+esac

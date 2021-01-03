@@ -1,0 +1,2 @@
+### Global package constraints (i.e. every frozen/*.txt file obeys the package
+### constraints listed in this file)
