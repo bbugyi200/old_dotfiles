@@ -80,7 +80,7 @@ graphviz==0.8.2
 greenlet==0.4.15
 h5py==2.5.0
 html5lib==0.9999999
-httplib2==0.9.2
+httplib2==0.18.0
 husl==4.0.3
 hypothesis==4.57.1
 idna==2.0
