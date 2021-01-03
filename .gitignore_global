@@ -37,6 +37,7 @@ Session.vim
 tags.lock
 tags.temp
 .tmp/*
+tmp/*
 .tox/*
 tags
 .tags
