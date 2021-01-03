@@ -238,7 +238,7 @@ TempTicks==0.6
 terminado==0.6
 toolz==0.7.4
 tornado==4.2.1
-Twisted==16.0.0
+Twisted==20.3.0
 txZMQ==0.7.4
 typing==3.5.2.2
 tz-set==1.0
