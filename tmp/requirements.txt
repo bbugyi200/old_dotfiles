@@ -76,7 +76,7 @@ sqlparse==0.2.3
 statsmodels==0.9.0
 suds==0.4
 tables==3.2.2  # depends on 'python-tables' system pacakge.
-Twisted==16.0.0
+Twisted==20.3.0
 typing==3.5.2.2
 typing_extensions==3.7.4.1
 tzlocal==1.2.2
