@@ -291,18 +291,22 @@ myAdditionalKeys = [
            nextScreen
      )
    , ((alpha .|. beta, xK_0), swapScreens "next")
+   , ((alpha .|. chi, xK_0), spawn "release_mod_keys && xdotool key --clearmodifiers Down")
    , ((alpha, xK_9), do
            swapScreens "prev"
            prevScreen
      )
    , ((alpha .|. beta, xK_9), swapScreens "prev")
+   , ((alpha .|. chi, xK_9), spawn "release_mod_keys && xdotool key --clearmodifiers Up")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster -s")
+   , ((alpha .|. chi, b), launchApp "bb" "Bloomberg Anywhere" "open /home/bryan/Downloads/bba.ica")
    , ((alpha, c), do
             spawn "wmctrl -a Calendar"
-            launchApp "cal" "Calendar" "$(firefox_exe) --new-window https://calendar.google.com/calendar/u/1/r/month?pli=1 &"
+            launchApp "cal" "Calendar" "$(firefox_exe) --new-window https://calendar.google.com/calendar/u/0/r/month?pli=1 &"
     )
    , ((alpha, d), windows W.focusDown)
+   , ((alpha, e), spawn "release_mod_keys && xdotool key --clearmodifiers End")
    , ((alpha, f), launchApp "fox" "" "$(firefox_exe) --new-window https://google.com &")
    , ((alpha .|. beta, f), sendMessage $ Toggle TABBED)
    , ((alpha, g), do
@@ -342,7 +346,6 @@ myAdditionalKeys = [
            new_sid <- gets (W.screen . W.current . windowset)
            when (orig_sid /= new_sid) $ goToLastMonitor (show orig_sid) (show new_sid)
      )
-   , ((alpha .|. chi, o), spawn "zopen")
    , ((alpha, p), launchApp "dev" "" "mkdvtm es-prod")
    , ((alpha, q), spawn "qb_prompt")
    , ((alpha .|. beta .|. chi, q), do
@@ -410,6 +413,7 @@ myAdditionalKeys = [
    , ((alpha, xK_comma), NSP.namedScratchpadAction scratchpads "conky")
    , ((alpha, xK_equal), spawn "set_volume 2%+")
    , ((alpha, xK_minus), spawn "set_volume 2%-")
+   , ((alpha .|. chi, xK_minus), spawn "release_mod_keys && xdotool key --clearmodifiers Delete")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((alpha .|. beta, xK_Print), spawn "saved_sshot") -- Save Screenshot to File

@@ -97,6 +97,7 @@ HN https://news.ycombinator.com/
 HNN https://news.ycombinator.com/newest
 hound http://localhost:6080/
 ieee https://www.computer.org/csdl/magazine/so
+jcmap https://jerseycity.carto.com/builder/2d373196-8aee-11e5-99ea-0e5db1731f59/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B40.669636890290256%2C-74.17410850524904%5D%2C%22sw%22%3A%5B40.75538459186637%2C-73.96674156188966%5D%2C%22center%22%3A%5B40.7125245446439%2C-74.07042503356935%5D%2C%22zoom%22%3A13%7D%7D
 j http://zguide.zeromq.org/page:chapter2#Working-with-Messages
 last https://superuser.com/questions/185773/does-windows-7-support-utc-as-bios-time
 leet https://leetcode.com/problemset/all/
@@ -115,6 +116,7 @@ lim https://www.linkedin.com/messaging/thread/6648336934634688512/
 LIN https://www.linkedin.com/mynetwork/
 M https://messages.google.com/web/conversations
 mpv https://mpv.io/manual/master/
+multivisor http://192.168.1.2:8100/view/supervisor
 peye http://pr-dev-1.pr.edgelp.net:7777/
 PH https://www.producthunt.com/
 P https://getpocket.com/a/queue/
@@ -151,6 +153,7 @@ ssg http://www.angelagibney.org/teaching-statement/
 ss https://sakai.rutgers.edu/portal/site/2899986c-d020-4ded-abab-5b91199d9ec7
 sso https://www.cs.rutgers.edu/~sk2113/course/cs416/
 sss http://sites.math.rutgers.edu/~alexk/2019S481/syllabus.html
+supervisor http://localhost:9001/
 Sync http://127.0.0.1:8384/#device-general
 tb https://triplebyte.com/candidates
 T https://trello.com/b/PfAJM2Ge/black-182
@@ -162,11 +165,15 @@ TW https://twitter.com/
 W https://www.google.com/search?q=weather
 Wsd https://www.google.com/search?q=weather%20in%20san%20diego
 Wsf https://www.google.com/search?q=weather%20in%20san%20francisco
+wsj https://www.wsj.com/
+wsjpe http://ereader.wsj.net/?editionStart=The+Wall+Street+Journal
 yt https://www.youtube.com/playlist?list=WL
 zho https://www.zillow.com/homes/Hoboken,-NJ_rb/
 zjc https://www.zillow.com/jersey-city-nj/3-_beds/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%22Jersey%20City%2C%20NJ%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.07909405563353%2C%22east%22%3A-74.01309025619506%2C%22south%22%3A40.70648291780803%2C%22north%22%3A40.737592916382745%7D%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A25320%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A600000%2C%22max%22%3A900000%7D%2C%22mp%22%3A%7B%22min%22%3A1971%2C%22max%22%3A2957%7D%2C%22beds%22%3A%7B%22min%22%3A3%7D%2C%22ah%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%2C%22mapZoom%22%3A16%7D
 zmq http://zguide.zeromq.org/page:all#toc6
-zwe https://www.zillow.com/homes/Weehawken,-NJ_rb/
-jcmap https://jerseycity.carto.com/builder/2d373196-8aee-11e5-99ea-0e5db1731f59/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B40.669636890290256%2C-74.17410850524904%5D%2C%22sw%22%3A%5B40.75538459186637%2C-73.96674156188966%5D%2C%22center%22%3A%5B40.7125245446439%2C-74.07042503356935%5D%2C%22zoom%22%3A13%7D%7D
 zse https://www.zillow.com/homes/secaucus,-NJ_rb/
-supervisor http://localhost:9001/
+zwe https://www.zillow.com/homes/Weehawken,-NJ_rb/
+zumc https://www.zillow.com/homes/Upper-Montclair,-Montclair,-NJ_rb/
+zmap https://www.zillow.com/maplewood-nj/sold/2-_beds/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%22Maplewood%2C%20NJ%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.29720242086793%2C%22east%22%3A-74.23119862142946%2C%22south%22%3A40.708706757970006%2C%22north%22%3A40.74014087797144%7D%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A39616%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A500000%2C%22max%22%3A900000%7D%2C%22mp%22%3A%7B%22min%22%3A1646%2C%22max%22%3A2957%7D%2C%22beds%22%3A%7B%22min%22%3A2%7D%2C%22doz%22%3A%7B%22value%22%3A%2290%22%7D%2C%22fsba%22%3A%7B%22value%22%3Afalse%7D%2C%22fsbo%22%3A%7B%22value%22%3Afalse%7D%2C%22nc%22%3A%7B%22value%22%3Afalse%7D%2C%22fore%22%3A%7B%22value%22%3Afalse%7D%2C%22cmsn%22%3A%7B%22value%22%3Afalse%7D%2C%22auc%22%3A%7B%22value%22%3Afalse%7D%2C%22pmf%22%3A%7B%22value%22%3Afalse%7D%2C%22pf%22%3A%7B%22value%22%3Afalse%7D%2C%22rs%22%3A%7B%22value%22%3Atrue%7D%2C%22ah%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%2C%22mapZoom%22%3A16%7D
+bba https://bba.bloomberg.net/
+bbe https://bbe.bloomberg.com/Resources/List

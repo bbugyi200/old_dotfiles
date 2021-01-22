@@ -3,33 +3,12 @@
 root: <%= @settings['root'] %>
 name: edgelp
 
-on_project_start:
-on_project_stop:
+on_project_start: work-hook "edgelp"
+on_project_stop: umount_encfs "edgelp"
 pre_window:
 
 windows:
-    - I:
-        layout: even-horizontal
-        panes:
-            - 0:
-                - ll
-    - II:
-        layout: even-horizontal
-        panes:
-            - 0:
-                - ll
-    - III:
-        layout: even-horizontal
-        panes:
-            - 0:
-                - ll
-    - IV:
-        layout: even-horizontal
-        panes:
-            - 0:
-                - ll
-    - V:
-        layout: even-horizontal
-        panes:
-            - 0:
-                - ll
+  - vim:
+      panes:
+        - 0:
+            - ll

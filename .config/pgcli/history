@@ -1,0 +1,363 @@
+
+# 2021-01-10 14:58:32.381760
++\l
+
+# 2021-01-10 14:58:34.106630
++\d
+
+# 2021-01-10 14:58:37.477467
++\du
+
+# 2021-01-10 14:59:22.344227
++\q
+
+# 2021-01-10 15:00:47.609949
++\d
+
+# 2021-01-10 15:00:58.005075
++\q
+
+# 2021-01-10 15:02:06.315490
++select 
+
+# 2021-01-10 15:03:58.472224
++\q
+
+# 2021-01-10 15:04:08.775891
++\d
+
+# 2021-01-10 15:04:10.281945
++\l
+
+# 2021-01-10 15:04:20.512342
++select * from investors_account;
+
+# 2021-01-10 15:04:23.767911
++\q
+
+# 2021-01-10 15:04:44.248605
++select * from investors_account;
+
+# 2021-01-10 15:05:32.157229
++\q
+
+# 2021-01-10 15:08:29.318169
++\d
+
+# 2021-01-10 15:08:56.577803
++\q
+
+# 2021-01-10 15:10:40.724134
++select * from investors_account;
+
+# 2021-01-10 15:10:51.993287
++\q
+
+# 2021-01-10 15:10:54.438210
++select * from investors_account;
+
+# 2021-01-10 15:11:35.084536
++\qa
+
+# 2021-01-10 15:11:37.262745
++\q
+
+# 2021-01-10 15:11:39.872006
++select * from investors_account;
+
+# 2021-01-10 15:12:02.073987
++\q
+
+# 2021-01-10 15:12:04.535034
++select * from investors_account;
+
+# 2021-01-10 15:12:11.351062
++\l
+
+# 2021-01-10 15:12:21.749445
++\q
+
+# 2021-01-10 15:12:28.967048
++\l
+
+# 2021-01-10 15:12:35.824252
++\q
+
+# 2021-01-10 15:12:37.927105
++\l
+
+# 2021-01-10 15:12:54.145286
++\q
+
+# 2021-01-10 15:12:56.078204
++\l
+
+# 2021-01-10 15:13:04.290479
++select * from investors_account;
+
+# 2021-01-10 15:13:11.997574
++\l
+
+# 2021-01-10 15:13:13.198512
++\q
+
+# 2021-01-10 15:13:14.904538
++\l
+
+# 2021-01-10 15:15:54.496160
++create database investors_dev__reuben_transfer with template investors_staging;
+
+# 2021-01-10 15:15:56.354296
++\l
+
+# 2021-01-10 15:16:21.830449
++drop database investors_staging;
+
+# 2021-01-10 15:16:32.154877
++\c investors_dev__reuben_transfer
+
+# 2021-01-10 15:16:35.303836
++drop database investors_staging;
+
+# 2021-01-10 15:16:49.119771
++create database investors_staging;
+
+# 2021-01-10 15:19:36.986683
++create database investors_snapshot__20201201
+
+# 2021-01-10 15:19:45.060537
++\l
+
+# 2021-01-10 15:19:53.768602
++\c investors_staging
+
+# 2021-01-10 15:19:55.791846
++\d
+
+# 2021-01-10 15:20:38.571162
++\c investors_dev__reuben_transfer
+
+# 2021-01-10 15:20:43.844182
++drop database investors_staging;
+
+# 2021-01-10 15:20:55.267351
++create database investors_staging with template investors_snapshot__20201201;
+
+# 2021-01-10 15:21:01.060240
++\c investors_staging
+
+# 2021-01-10 15:21:02.714086
++\d
+
+# 2021-01-10 16:43:04.923782
++drop database investors_dev__reuben_transfer;
+
+# 2021-01-10 16:43:27.261666
++create database investors_dev__reuben_transfer with template investors_staging;
+
+# 2021-01-10 16:43:29.725277
++\l
+
+# 2021-01-10 16:48:00.013562
++\ns ir-reuben-transfer drop database investors_staging; create database investors_staging with template investors_dev__reuben_transfer;
+
+# 2021-01-10 16:48:19.708901
++\n ir-reuben-transfer
+
+# 2021-01-10 16:48:41.975709
++\ns ir-reuben-transfer drop database investors_staging\; create database investors_staging with template investors_dev__reuben_transfer;
+
+# 2021-01-10 16:48:46.402855
++\ns ir-reuben-transfer drop database investors_staging\\; create database investors_staging with template investors_dev__reuben_transfer;
+
+# 2021-01-10 16:49:21.332044
++\ns ir-reuben-transfer (drop database investors_staging; create database investors_staging with template investors_dev__reuben_transfer;)
+
+# 2021-01-10 16:49:34.074520
++\c investors_dev__reuben_transfer
+
+# 2021-01-10 16:49:40.149420
++\n ir-reuben-transfer
+
+# 2021-01-10 16:51:49.126318
++\ns ir-drop drop database investors_staging
+
+# 2021-01-10 16:52:12.176850
++\ns ir-reuben-transfer create database investors_staging with template investors_dev__reuben_transfer;
+
+# 2021-01-10 16:52:20.896434
++\n ir-drop; \n ir-reuben-transfer;
+
+# 2021-01-10 17:17:25.331068
++\ns ir-dev create database investors_staging with template investors_'$1';
+
+# 2021-01-10 17:17:53.386028
++\n ir-drop; \n ir-dev dev__reuben_transfer
+
+# 2021-01-10 17:18:01.984153
++\ns ir-dev create database investors_staging with template investors_$1;
+
+# 2021-01-10 17:18:04.916165
++\n ir-drop; \n ir-dev dev__reuben_transfer
+
+# 2021-01-10 17:18:24.172063
++ \n ir-dev dev__reuben_transfer
+
+# 2021-01-10 17:18:33.259680
++\l
+
+# 2021-01-10 17:18:56.582506
++\n ir-drop; \n ir-dev snapshot__20201201
+
+# 2021-01-10 17:53:41.916692
++\n ir-drop; \n ir-dev dev__reuben_transfer
+
+# 2021-01-10 18:28:18.421206
++\n ir-drop; \n ir-dev snapshot__20201201
+
+# 2021-01-10 21:15:11.469304
++\q
+
+# 2021-01-11 00:38:44.703327
++\q
+
+# 2021-01-11 00:38:55.326875
++\ns ir-dev create database investors_staging with template investors_$1;
+
+# 2021-01-11 00:39:00.248076
++\ns ir-drop drop database investors_staging
+
+# 2021-01-11 00:39:04.876098
++\n ir-drop; \n ir-dev snapshot__20201201
+
+# 2021-01-11 00:39:08.515625
++\c investors_dev__reuben_transfer
+
+# 2021-01-11 00:39:10.266640
++\n ir-drop; \n ir-dev snapshot__20201201
+
+# 2021-01-11 00:40:52.529873
++\l
+
+# 2021-01-11 00:49:13.779110
++\q
+
+# 2021-01-11 11:39:50.296526
++\c investors_dev__reuben_transfer
+
+# 2021-01-11 11:41:27.303123
++\n ir-drop; \n ir-dev snapshot__20201201
+
+# 2021-01-11 12:02:06.085841
++\l
+
+# 2021-01-11 12:02:12.254793
++\db
+
+# 2021-01-11 12:02:19.181858
++\dE
+
+# 2021-01-11 12:02:20.219979
++\d
+
+# 2021-01-11 12:02:23.539876
++\df
+
+# 2021-01-11 12:02:27.576834
++\di
+
+# 2021-01-11 12:02:43.826980
++\q
+
+# 2021-01-11 12:02:49.967835
++\c investors_dev__reuben_transfer
+
+# 2021-01-11 12:02:51.530897
++\l
+
+# 2021-01-11 12:17:11.724730
++\q
+
+# 2021-01-11 13:24:50.102908
++\c investors_dev__reuben_transfer
+
+# 2021-01-11 13:24:52.427172
++\l
+
+# 2021-01-11 13:25:10.141419
++\q
+
+# 2021-01-11 13:33:20.050796
++\d
+
+# 2021-01-11 13:33:29.425886
++\l
+
+# 2021-01-11 13:33:38.417733
++\q
+
+# 2021-01-11 14:50:12.690799
++\n
+
+# 2021-01-11 14:50:19.637462
++\nd ir-reuben-transfer
+
+# 2021-01-11 14:50:22.992700
++\n
+
+# 2021-01-11 14:53:50.305446
++\q
+
+# 2021-01-11 14:57:03.943722
++\ns pig drop database investors_staging
+
+# 2021-01-11 14:57:04.966081
++\q
+
+# 2021-01-11 14:57:18.455455
++\n
+
+# 2021-01-11 14:57:19.799910
++\q
+
+# 2021-01-15 18:05:41.804239
++\l
+
+# 2021-01-15 18:07:52.361675
++\c postgres
+
+# 2021-01-15 18:08:00.814608
++drop database es-website;
+
+# 2021-01-15 18:08:09.765010
++drop database es-website
+
+# 2021-01-15 18:08:15.857967
++drop database "es-website"
+
+# 2021-01-15 18:08:18.170983
++\l
+
+# 2021-01-15 18:08:23.203207
++drop database investors_dev__reuben_transfer
+
+# 2021-01-15 18:08:29.227089
++\q
+
+# 2021-01-15 18:08:39.155264
++\c postgres
+
+# 2021-01-15 18:08:43.191422
++drop database investors_dev__reuben_transfer
+
+# 2021-01-15 18:08:47.195507
++drop database investors_snapshot__20201201
+
+# 2021-01-15 18:08:50.764473
++drop database investors_staging
+
+# 2021-01-15 18:08:51.968435
++\l
+
+# 2021-01-15 18:08:54.372362
++\q

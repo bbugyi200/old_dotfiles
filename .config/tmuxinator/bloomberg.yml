@@ -1,0 +1,15 @@
+# ~/.config/tmuxinator/bloomberg.yml
+
+root: <%= @settings['root'] %>
+name: bloomberg
+
+on_project_start: work-startup-hook "bloomberg"
+on_project_stop: umount_encfs "bloomberg"
+pre_window:
+
+windows:
+  - main:
+      layout: even-horizontal
+      panes:
+        - 0:
+            - ll

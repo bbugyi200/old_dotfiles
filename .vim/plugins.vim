@@ -52,6 +52,7 @@ Plugin 'Konfekt/FastFold'
 Plugin 'z0mbix/vim-shfmt'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'raimon49/requirements.txt.vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -138,9 +139,7 @@ if PluginInstalled("clang_complete")
     let g:clang_use_library = 1
     let hostname = system("hostname")
 
-    if hostname == "hera\n"
-        let g:clang_library_path = "/usr/lib/llvm-7/lib/libclang.so.1"
-    endif
+    let g:clang_library_path = "/usr/lib/llvm-11/lib/libclang.so.1"
 endif
 
 """""""""""'""""

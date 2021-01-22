@@ -273,6 +273,7 @@ alias mkgrub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias mkpkg='makepkg -si'
 alias mpvlc='xspawn -w mpv mpvlc'
 alias mrun='macrun'
+alias multivisor-cli='multivisor-cli --url athena:8100'
 alias mv="mv -i"
 alias myip='ip addr | grep -P -o "192.168.1.[0-9]+" | grep -v 192.168.1.255'
 alias noeye='eye --purge-eye'
@@ -380,6 +381,7 @@ alias vs='vshlog'
 alias vscratch='vim ~/Sync/var/notes/scratch.txt'
 alias vsd='vshlog -H all -D'
 alias vstudy='vim $HOME/.vimwiki/TaskWarrior.wiki'
+alias vsup='vim /etc/supervisor/supervisord.conf ~/.config/supervisor/supervisord.conf ~/.config/supervisor/*'
 alias vtorr='cval "$HOME/Sync/bin/main" "vim torrent libtorrent/**/[^_]*.py"'
 alias vtv="vim \$HOME/.local/bin/tmux_view.sh \$HOME/.local/bin/tv_*"
 vuse() { vim /etc/portage/package.use/"$1"; }

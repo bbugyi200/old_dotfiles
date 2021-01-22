@@ -1,0 +1,15 @@
+# ~/.config/tmuxinator/BB.yml
+
+root: <%= @settings['root'] %>
+name: BB
+
+on_project_start: work-hook "bloomberg"
+on_project_stop: umount_encfs "bloomberg"
+pre_window:
+
+windows:
+  - main:
+      layout: even-horizontal
+      panes:
+        - 0:
+            - ll

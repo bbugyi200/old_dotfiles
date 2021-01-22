@@ -243,6 +243,7 @@ def setup_search_engines() -> None:
         ),
         "l": SE.static.stackoverflow(7, prefix="Linux"),
         "lh": "http://localhost:{}",
+        "lhs": "https://localhost:{}",
         "li": SE.SearchEngine(
             SE.static.site("linkedin.com"),
             SE.URL(

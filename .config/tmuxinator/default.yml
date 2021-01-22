@@ -8,8 +8,8 @@ on_project_stop:
 pre_window:
 
 windows:
-    - main:
-        layout: even-horizontal
-        panes:
-            - 0:
-                - ll
+  - main:
+      layout: even-horizontal
+      panes:
+        - 0:
+            - ll
