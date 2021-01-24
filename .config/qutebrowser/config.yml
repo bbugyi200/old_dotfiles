@@ -5,7 +5,6 @@ completion:
 content:
     geolocation: true
     desktop_capture: true
-    geolocation: true
     host_blocking:
         enabled: false
         whitelist: ['analytics.google.com']

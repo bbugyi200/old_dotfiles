@@ -3,7 +3,7 @@
 root: <%= @settings['root'] %>
 name: bloomberg
 
-on_project_start: work-startup-hook "bloomberg"
+on_project_start: on_work_project_start "bloomberg"
 on_project_stop: umount_encfs "bloomberg"
 pre_window:
 

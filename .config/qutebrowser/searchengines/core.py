@@ -35,7 +35,7 @@ class SearchEngine(str):
     """
 
     def __new__(cls, default_url: str, *_url_objects: 'URL') -> 'SearchEngine':
-        return super(SearchEngine, cls).__new__(cls, default_url)  # type: ignore
+        return super(SearchEngine, cls).__new__(cls, default_url)
 
     def __init__(self, default_url: str, *url_objects: 'URL'):
         self.url_objects = url_objects + (URL(default_url, '.*'),)

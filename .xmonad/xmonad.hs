@@ -291,22 +291,22 @@ myAdditionalKeys = [
            nextScreen
      )
    , ((alpha .|. beta, xK_0), swapScreens "next")
-   , ((alpha .|. chi, xK_0), spawn "release_mod_keys && xdotool key --clearmodifiers Down")
+   , ((alpha .|. chi, xK_0), spawn "xkey Down")
    , ((alpha, xK_9), do
            swapScreens "prev"
            prevScreen
      )
    , ((alpha .|. beta, xK_9), swapScreens "prev")
-   , ((alpha .|. chi, xK_9), spawn "release_mod_keys && xdotool key --clearmodifiers Up")
+   , ((alpha .|. chi, xK_9), spawn "xkey Up")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster -s")
-   , ((alpha .|. chi, b), launchApp "bb" "Bloomberg Anywhere" "open /home/bryan/Downloads/bba.ica")
+   , ((alpha .|. chi, b), launchApp "bba" "" "google-chrome-stable https://bba.bloomberg.net")
    , ((alpha, c), do
             spawn "wmctrl -a Calendar"
             launchApp "cal" "Calendar" "$(firefox_exe) --new-window https://calendar.google.com/calendar/u/0/r/month?pli=1 &"
     )
    , ((alpha, d), windows W.focusDown)
-   , ((alpha, e), spawn "release_mod_keys && xdotool key --clearmodifiers End")
+   , ((alpha, e), spawn "xkey End")
    , ((alpha, f), launchApp "fox" "" "$(firefox_exe) --new-window https://google.com &")
    , ((alpha .|. beta, f), sendMessage $ Toggle TABBED)
    , ((alpha, g), do
@@ -327,13 +327,14 @@ myAdditionalKeys = [
    , ((alpha .|. beta, l), sendMessage NextLayout)
    , ((alpha .|. chi, l), sendMessage Expand)
    , ((alpha .|. beta .|. chi, l), spawn "my-screenlock --no-blur")
-   , ((alpha, m), do
-            spawn "wmctrl -a Gmail || wmctrl -a 'bryan.bugyi@edgestreamlp.com'"
-            launchApp "mail" "Gmail|edgestreamlp" "init-mail"
-    )
+   , ((alpha, m), launchApp "mac" "" "vncviewer C02DR3Z2MD6R")
    , ((alpha .|. beta, m), do
             spawn "wmctrl -a Messages"
             launchApp "msg" "Messages" "$(firefox_exe) --new-window https://messages.google.com/web/conversations &"
+    )
+   , ((alpha .|. chi, m), do
+            spawn "wmctrl -a Gmail"
+            launchApp "mail" "Gmail" "init-mail"
     )
    , ((alpha, n), launchApp "notes" "" "nixnote2")
    , ((alpha .|. beta .|. delta, n), do
@@ -413,7 +414,7 @@ myAdditionalKeys = [
    , ((alpha, xK_comma), NSP.namedScratchpadAction scratchpads "conky")
    , ((alpha, xK_equal), spawn "set_volume 2%+")
    , ((alpha, xK_minus), spawn "set_volume 2%-")
-   , ((alpha .|. chi, xK_minus), spawn "release_mod_keys && xdotool key --clearmodifiers Delete")
+   , ((alpha .|. chi, xK_minus), spawn "xkey Delete")
    , ((alpha, xK_period), NSP.namedScratchpadAction scratchpads "scratchpad")
    , ((alpha, xK_Print), spawn "sshot") -- Screenshot
    , ((alpha .|. beta, xK_Print), spawn "saved_sshot") -- Save Screenshot to File

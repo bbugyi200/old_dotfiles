@@ -191,6 +191,7 @@ gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%y.%m")"-"$1"; }
 alias gce='git commit --allow-empty'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
+gclbb() { cd "$(command gclbb "$@")" || return 1; }
 alias gclp='cd ~/projects && gcl'
 alias gclt='cd /tmp && gcl'
 gcm() { git checkout "${MASTER_BRANCH:-master}"; }
@@ -395,7 +396,9 @@ alias watdst='watch -n 5 dropbox-cli status'
 alias wcut='watson stop && wedit && watson restart'
 wdiff() { /usr/bin/wdiff -n -w "$(tput bold;tput setaf 1)" -x "$(tput sgr0)" -y "$(tput setaf 2)" -z "$(tput sgr0)" "$@" | less -R; }
 alias wkill='wtoggle && wdel'
-alias wm='wmctrl -lx'
+alias wm='wmctrl'
+alias wml='wmctrl -lx'
+alias wma='wmctrl -a'
 alias wrep='watson report -w'
 alias wsensors='watch -n 1 sensors -f'
 alias wttr='clear && curl "wttr.in/?T"'
@@ -403,7 +406,6 @@ alias wwat='watch -n 1 "{ wpoll; echo; watson log; }"'
 alias xc='xclip -sel clipboard'
 alias xdokey='xev -event keyboard'
 alias xk='xdokey'
-alias xkey='xdotool key'
 alias xmonad-keycodes='vim /usr/include/X11/keysymdef.h'
 alias xs='xspawn'
 ytd() { pushd "${HOME}"/Downloads &> /dev/null || return 1 && youtube-dl "$(xclip -sel clipboard -out)" --output "$1"; popd &> /dev/null || return 1; }

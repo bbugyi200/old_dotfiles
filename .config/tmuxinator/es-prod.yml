@@ -3,12 +3,13 @@
 root: <%= @settings['root'] %>
 name: es-prod
 
-on_project_start: work-startup-hook "edgelp"
-on_project_stop: umount_encfs "edgelp"
+on_project_start:
+on_project_stop:
 pre_window:
 
 windows:
-  - vim:
+  - main:
+      layout: even-horizontal
       panes:
         - 0:
             - ll

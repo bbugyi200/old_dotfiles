@@ -3,7 +3,7 @@
 root: <%= @settings['root'] %>
 name: edgelp
 
-on_project_start: work-hook "edgelp"
+on_project_start: on_work_project_start "edgelp"
 on_project_stop: umount_encfs "edgelp"
 pre_window:
 
