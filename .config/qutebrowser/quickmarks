@@ -1,7 +1,9 @@
 a https://www.amazon.com/
 A https://www.amazon.com/gp/your-account/order-history?ref_=ya_d_c_yo
 amc https://www.amctheatres.com/movie-theatres/philadelphia/amc-marketfair-10
+bba https://bba.bloomberg.net/
 BBA https://bryanbugyi.com/wp-admin/index.php
+bbe https://bbe.bloomberg.com/Resources/List
 BB https://bryanbugyi.com/
 B https://www.wellsfargo.com/
 CC https://codecov.io/gh
@@ -170,10 +172,9 @@ wsjpe http://ereader.wsj.net/?editionStart=The+Wall+Street+Journal
 yt https://www.youtube.com/playlist?list=WL
 zho https://www.zillow.com/homes/Hoboken,-NJ_rb/
 zjc https://www.zillow.com/jersey-city-nj/3-_beds/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%22Jersey%20City%2C%20NJ%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.07909405563353%2C%22east%22%3A-74.01309025619506%2C%22south%22%3A40.70648291780803%2C%22north%22%3A40.737592916382745%7D%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A25320%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A600000%2C%22max%22%3A900000%7D%2C%22mp%22%3A%7B%22min%22%3A1971%2C%22max%22%3A2957%7D%2C%22beds%22%3A%7B%22min%22%3A3%7D%2C%22ah%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%2C%22mapZoom%22%3A16%7D
+zmap https://www.zillow.com/maplewood-nj/sold/2-_beds/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%22Maplewood%2C%20NJ%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.29720242086793%2C%22east%22%3A-74.23119862142946%2C%22south%22%3A40.708706757970006%2C%22north%22%3A40.74014087797144%7D%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A39616%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A500000%2C%22max%22%3A900000%7D%2C%22mp%22%3A%7B%22min%22%3A1646%2C%22max%22%3A2957%7D%2C%22beds%22%3A%7B%22min%22%3A2%7D%2C%22doz%22%3A%7B%22value%22%3A%2290%22%7D%2C%22fsba%22%3A%7B%22value%22%3Afalse%7D%2C%22fsbo%22%3A%7B%22value%22%3Afalse%7D%2C%22nc%22%3A%7B%22value%22%3Afalse%7D%2C%22fore%22%3A%7B%22value%22%3Afalse%7D%2C%22cmsn%22%3A%7B%22value%22%3Afalse%7D%2C%22auc%22%3A%7B%22value%22%3Afalse%7D%2C%22pmf%22%3A%7B%22value%22%3Afalse%7D%2C%22pf%22%3A%7B%22value%22%3Afalse%7D%2C%22rs%22%3A%7B%22value%22%3Atrue%7D%2C%22ah%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%2C%22mapZoom%22%3A16%7D
+zmc https://www.zillow.com/homes/Montclair,-NJ_rb/
 zmq http://zguide.zeromq.org/page:all#toc6
 zse https://www.zillow.com/homes/secaucus,-NJ_rb/
-zwe https://www.zillow.com/homes/Weehawken,-NJ_rb/
 zumc https://www.zillow.com/homes/Upper-Montclair,-Montclair,-NJ_rb/
-zmap https://www.zillow.com/maplewood-nj/sold/2-_beds/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%22Maplewood%2C%20NJ%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.29720242086793%2C%22east%22%3A-74.23119862142946%2C%22south%22%3A40.708706757970006%2C%22north%22%3A40.74014087797144%7D%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A39616%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A500000%2C%22max%22%3A900000%7D%2C%22mp%22%3A%7B%22min%22%3A1646%2C%22max%22%3A2957%7D%2C%22beds%22%3A%7B%22min%22%3A2%7D%2C%22doz%22%3A%7B%22value%22%3A%2290%22%7D%2C%22fsba%22%3A%7B%22value%22%3Afalse%7D%2C%22fsbo%22%3A%7B%22value%22%3Afalse%7D%2C%22nc%22%3A%7B%22value%22%3Afalse%7D%2C%22fore%22%3A%7B%22value%22%3Afalse%7D%2C%22cmsn%22%3A%7B%22value%22%3Afalse%7D%2C%22auc%22%3A%7B%22value%22%3Afalse%7D%2C%22pmf%22%3A%7B%22value%22%3Afalse%7D%2C%22pf%22%3A%7B%22value%22%3Afalse%7D%2C%22rs%22%3A%7B%22value%22%3Atrue%7D%2C%22ah%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%2C%22mapZoom%22%3A16%7D
-bba https://bba.bloomberg.net/
-bbe https://bbe.bloomberg.com/Resources/List
+zwe https://www.zillow.com/homes/Weehawken,-NJ_rb/

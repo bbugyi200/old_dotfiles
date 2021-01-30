@@ -53,6 +53,7 @@ Plugin 'z0mbix/vim-shfmt'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'raimon49/requirements.txt.vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'martinda/Jenkinsfile-vim-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()

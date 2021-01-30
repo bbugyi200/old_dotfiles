@@ -300,19 +300,16 @@ myAdditionalKeys = [
    , ((alpha .|. chi, xK_9), spawn "xkey Up")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
    , ((alpha .|. beta, b), spawn "clipster -s")
-   , ((alpha .|. chi, b), launchApp "bba" "" "google-chrome-stable https://bba.bloomberg.net")
+   , ((alpha .|. chi, b), launchApp "bba" "" "my_chrome https://bba.bloomberg.net")
    , ((alpha, c), do
             spawn "wmctrl -a Calendar"
-            launchApp "cal" "Calendar" "$(firefox_exe) --new-window https://calendar.google.com/calendar/u/0/r/month?pli=1 &"
+            launchApp "cal" "Calendar" "my_firefox https://calendar.google.com/calendar/u/0/r/month?pli=1 &"
     )
    , ((alpha, d), windows W.focusDown)
    , ((alpha, e), spawn "xkey End")
-   , ((alpha, f), launchApp "fox" "" "$(firefox_exe) --new-window https://google.com &")
+   , ((alpha, f), launchApp "fox" "" "my_firefox https://google.com")
    , ((alpha .|. beta, f), sendMessage $ Toggle TABBED)
-   , ((alpha, g), do
-           spawn "wmctrl -a chrome"
-           launchApp "gc" "google-chrome" "google-chrome-stable"
-     )
+   , ((alpha, g), launchApp "gc" "" "my_chrome")
    , ((alpha, h), prevScreen)
    , ((alpha .|. chi, h), sendMessage Shrink)
    , ((alpha, i), do
@@ -327,15 +324,9 @@ myAdditionalKeys = [
    , ((alpha .|. beta, l), sendMessage NextLayout)
    , ((alpha .|. chi, l), sendMessage Expand)
    , ((alpha .|. beta .|. chi, l), spawn "my-screenlock --no-blur")
-   , ((alpha, m), launchApp "mac" "" "vncviewer C02DR3Z2MD6R")
-   , ((alpha .|. beta, m), do
-            spawn "wmctrl -a Messages"
-            launchApp "msg" "Messages" "$(firefox_exe) --new-window https://messages.google.com/web/conversations &"
-    )
-   , ((alpha .|. chi, m), do
-            spawn "wmctrl -a Gmail"
-            launchApp "mail" "Gmail" "init-mail"
-    )
+   , ((alpha, m), launchApp "mail" "" "init-mail")
+   , ((alpha .|. beta, m), launchApp "msg" "" "my_firefox https://messages.google.com/web/conversations")
+   , ((alpha .|. chi, m), launchApp "mac" "" "vncviewer C02DR3Z2MD6R")
    , ((alpha, n), launchApp "notes" "" "nixnote2")
    , ((alpha .|. beta .|. delta, n), do
            ws_name <- io $ readFile "/tmp/xmonad.workspace"
@@ -375,6 +366,7 @@ myAdditionalKeys = [
    , ((alpha, x), launchApp "term" "" myTerminal)
    , ((alpha .|. beta, x), launchApp "term'" "" "alacritty -t tmux_primes -e zsh -c 'tm-init-prime tmux_primes'")
    , ((alpha, v), launchApp "mpv" "" "umpv")
+   , ((alpha .|. beta, v), launchApp "room" "" "my_chrome")
    , ((alpha, z), launchApp "doc" "" "zathura")
    , ((alpha .|. beta, z), launchApp "doc'" "" "zcopy")
 

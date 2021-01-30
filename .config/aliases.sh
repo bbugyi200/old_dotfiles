@@ -128,6 +128,7 @@ alias ag='ag --hidden'
 alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
+alias bbproxy='HTTP_PROXY=C02DR3Z2MD6R:8888 HTTPS_PROXY=C02DR3Z2MD6R:8888'
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 alias books='vim ~/Sync/var/notes/Journal/books.txt'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
@@ -186,6 +187,7 @@ alias gbb='git branch --sort=-committerdate | less'
 alias gbcopy='gcopy --body'
 gca() { if [[ -n "$1" ]]; then git commit -v -a -m "$1"; else git commit -v -a; fi; }
 gcB() { gbD "$1" &> /dev/null; git checkout -b "$1" "${2:-upstream}"/"$1"; }
+gcbb() { git checkout -b ENG3VLTSRE-"$1"; }
 gcbc() { git checkout -b "$@" && git commit --allow-empty; }
 gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%y.%m")"-"$1"; }
 alias gce='git commit --allow-empty'
@@ -315,7 +317,7 @@ alias rng='ranger'
 alias root='sudo su -p'
 alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
 alias sat='sudo cat'
-alias sc='systemctl'
+alias sc='sudo systemctl'
 alias sch='vim ~/Sync/var/notes/Rutgers/course_schedule.txt'
 alias scu='systemctl --user'
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
@@ -327,10 +329,12 @@ alias ssh-aphrodite='ssh 192.168.1.193'
 alias ssh-artemis="ssh bryan@67.207.92.152"
 alias ssh-athena-tm='ssh-athena /home/bryan/.local/bin/tm Terminal'
 ssh-rutgers() { ssh bmb181@"${1:-less}".cs.rutgers.edu; }
+alias sshdev='ssh -tt v5devgateway.bdns.bloomberg.com inline'
 alias su='su -p'
 alias sudo='sudo -E '  # makes aliases visible to sudo
 alias sudoers='sudo -E vim /etc/sudoers'
 alias supctl='supervisorctl -c /home/bryan/.config/supervisor/supervisord.conf'
+alias tcpdump='sudo tcpdump'
 alias tgdb="gdb -iex 'set pagination off' -ex 'tui enable' -ex 'set pagination on'"
 alias tm-layout="tmux lsw | grep '*' | awk '{gsub(/\\]/, \"\"); print \$7}'"
 tmd() { tmux display-message -p "#{$1}"; }
@@ -397,8 +401,8 @@ alias wcut='watson stop && wedit && watson restart'
 wdiff() { /usr/bin/wdiff -n -w "$(tput bold;tput setaf 1)" -x "$(tput sgr0)" -y "$(tput setaf 2)" -z "$(tput sgr0)" "$@" | less -R; }
 alias wkill='wtoggle && wdel'
 alias wm='wmctrl'
-alias wml='wmctrl -lx'
 alias wma='wmctrl -a'
+alias wml='wmctrl -lx'
 alias wrep='watson report -w'
 alias wsensors='watch -n 1 sensors -f'
 alias wttr='clear && curl "wttr.in/?T"'
