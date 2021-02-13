@@ -128,7 +128,7 @@ alias ag='ag --hidden'
 alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
-alias bbproxy='HTTP_PROXY=C02DR3Z2MD6R:8888 HTTPS_PROXY=C02DR3Z2MD6R:8888'
+alias bbproxy='http_proxy=http://C02DR3Z2MD6R:8888 https_proxy=http://C02DR3Z2MD6R:8888 HTTP_PROXY=http://C02DR3Z2MD6R:8888 HTTPS_PROXY=http://C02DR3Z2MD6R:8888'
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 alias books='vim ~/Sync/var/notes/Journal/books.txt'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
@@ -329,7 +329,7 @@ alias ssh-aphrodite='ssh 192.168.1.193'
 alias ssh-artemis="ssh bryan@67.207.92.152"
 alias ssh-athena-tm='ssh-athena /home/bryan/.local/bin/tm Terminal'
 ssh-rutgers() { ssh bmb181@"${1:-less}".cs.rutgers.edu; }
-alias sshdev='ssh -tt v5devgateway.bdns.bloomberg.com inline'
+sshdev() { sshpass -p "$(pass show bbugyi@bb)" ssh "$1".bloomberg.com "${@:2}"; }
 alias su='su -p'
 alias sudo='sudo -E '  # makes aliases visible to sudo
 alias sudoers='sudo -E vim /etc/sudoers'
@@ -360,6 +360,7 @@ vab() { vim $(find "$HOME"/Sync/bin/cron.jobs -type f | sort | tr '\n' ' '); }
 alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
 alias vbox='xspawn sudo virtualbox'
 alias vbt='vim ~/.local/share/torrent/*.txt'
+alias vbudget='pushd ~/projects/budget &>/dev/null && vim main.py && popd &>/dev/null'
 alias vcron='vim ~/Sync/bin/cron.jobs/jobs.sh ~/Sync/bin/cron.jobs/{cron.hourly/hourly_jobs,cron.daily/daily_jobs,cron.weekly/weekly_jobs} ~/Sync/bin/cron.jobs/backup.sh ~/Sync/bin/cron.jobs/cron.{daily,weekly,monthly}/*'
 alias vdaily="vgtd-daily-review"
 alias vdb='vim $HOME/Sync/bin/cron/cron.daily/*'

@@ -327,7 +327,7 @@ myAdditionalKeys = [
    , ((alpha, m), launchApp "mail" "" "init-mail")
    , ((alpha .|. beta, m), launchApp "msg" "" "my_firefox https://messages.google.com/web/conversations")
    , ((alpha .|. chi, m), launchApp "mac" "" "vncviewer C02DR3Z2MD6R")
-   , ((alpha, n), launchApp "notes" "" "nixnote2")
+   , ((alpha, n), launchApp "note" "" "nixnote2")
    , ((alpha .|. beta .|. delta, n), do
            ws_name <- io $ readFile "/tmp/xmonad.workspace"
            DW.addWorkspace ws_name

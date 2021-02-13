@@ -116,7 +116,7 @@ export RECENTLY_EDITED_FILES_LOG="$HOME"/Sync/var/recently_edited_files.log
 export RIPGREP_CONFIG_PATH="$HOME"/.config/rgrc
 export RUST_SRC_PATH="$HOME"/Sync/var/projects/rust/src
 export SHELLCHECK_OPTS="-e SC1090 -e SC1091 -e SC1117 -e SC2001 -e SC2016 -e SC2046 -e SC2059 -e SC2129 -e SC2155 -e SC2162"
-export SHV_SHELL_HISTORY_ROOT="$HOME"/Sync/var/logs/shell-history
+export SHV_SHELL_HISTORY_ROOT=/home/bryan/Sync/var/logs/shell-history
 export WORKON_HOME=~/.virtualenvs
 export XDG_CONFIG_HOME="$HOME"/.config
 
@@ -181,3 +181,4 @@ export PATH="$(dedup_path "${PATH}")"
 export PYTHONPATH="$(dedup_path "${PYTHONPATH}")"
 export MYPYPATH="${PYTHONPATH}"
 export LESS="$(python -c "import sys; print(''.join(set('${LESS}')))")"
+source "$HOME/.cargo/env"

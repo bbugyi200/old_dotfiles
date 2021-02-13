@@ -52,11 +52,17 @@ def get_top_link(query: str) -> str:
         return e.response.url
 
     soup = BeautifulSoup(html, 'html.parser')
-    result_block = soup.find_all('div', attrs={'class': 'g'})
-    for result in result_block:
-        link = result.find('a', href=True)
-        if link and link != '#' and re.match('^http[s]?://', link['href']):
-            return link['href']
+    a_tags = soup.find_all("a", href=True)
+    for a_tag in a_tags:
+        match = re.match(r"^/url\?q=(.*?)&.*$", a_tag['href'])
+        if match:
+            return match.group(1)
+
+    div_tags = soup.find_all('div', attrs={'class': 'g'})
+    for div_tag in div_tags:
+        a_tag = div_tag.find('a', href=True)
+        if a_tag and a_tag != '#' and re.match('^http[s]?://', a_tag['href']):
+            return a_tag['href']
 
     return 'https://www.google.com/search?q={}'.format(utils.encode(query))
 

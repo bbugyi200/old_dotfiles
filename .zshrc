@@ -176,9 +176,7 @@ if cmd_exists pyenv && [[ -z "${VIRTUAL_ENV}" ]]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-if cmd_exists starship; then
-    eval "$(starship init zsh)"
-fi
+cmd_exists starship && eval "$(starship init zsh)"
 
 if cmd_exists virtualenvwrapper_lazy.sh; then
     export WORKON_HOME="${HOME}"/.virtualenvwrapper-venvs
@@ -220,5 +218,4 @@ command -v rc-service &> /dev/null && compdef rcst=rc-service
 
 # pip completion
 eval "$(python -m pip completion --zsh 2>/dev/null)"
-
 test 0  # so exit status is always 0 when starting shell

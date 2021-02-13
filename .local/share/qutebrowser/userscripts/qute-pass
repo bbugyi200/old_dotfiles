@@ -158,7 +158,7 @@ def main(arguments):
         return ExitCodes.COULD_NOT_MATCH_PASSWORD
     password = match.group(1)
 
-    insert_mode = ';; enter-mode insert' if arguments.insert_mode else ''
+    insert_mode = ';; mode-enter insert' if arguments.insert_mode else ''
     if arguments.username_only:
         qute_command('fake-key {}{}'.format(username, insert_mode))
     elif arguments.password_only:

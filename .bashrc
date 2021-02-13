@@ -7,3 +7,4 @@ shopt -s expand_aliases
 [ -f /home/bryan/.travis/travis.sh ] && source /home/bryan/.travis/travis.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source "$HOME/.cargo/env"

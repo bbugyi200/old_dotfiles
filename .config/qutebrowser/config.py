@@ -21,7 +21,7 @@ c = c  # type: ignore  # noqa: F821  # pylint: disable=undefined-variable,self-a
 config = config  # type: ignore  # noqa: F821  # pylint: disable=undefined-variable,self-assigning-variable
 
 # Load autoconfig.yml
-# config.load_autoconfig()  # type: ignore
+config.load_autoconfig(False)  # type: ignore
 
 
 # Custom Types
@@ -283,7 +283,7 @@ def setup_search_engines() -> None:
             SE.TwoIntURL(
                 "https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/"
             ),
-            SE.OneIntURL("https://1337x.unblocked.vet/search/{1} Season/1/"),
+            SE.OneIntURL("https://1337x.unblocked.vet/search/{1} Season {0}/1/"),
         ),
         "TT": SE.SearchEngine(
             "https://thepiratebay3.com/search/{}",
@@ -359,8 +359,6 @@ def setup_binds() -> None:
         "D",
         "gd",
         "gf",
-        "gl",
-        "gr",
         "M",
     ]
     unbound_ikeys: List[str] = ["<Ctrl+e>"]
@@ -407,7 +405,7 @@ def setup_binds() -> None:
     pbind("<Ctrl-o>", "prompt-open-download rifle {}")
 
     # >>>>>>> PASSTHROUGH
-    ptbind("<Escape>", "leave-mode")
+    ptbind("<Escape>", "mode-leave")
 
     # >>>>>>> NORMAL
     # -------------------
@@ -456,7 +454,7 @@ def setup_binds() -> None:
         "hint all spawn -v qb_umpv --append {hint-url}",
         'message-info "Select video to append to umpv playlist."',
     )
-    bind("m", "enter-mode set_mark")
+    bind("m", "mode-enter set_mark")
     bind(";P", "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
     bind("p", "open -- {clipboard}")
     bind("P", "open -t -- {clipboard}")
@@ -547,15 +545,15 @@ def setup_binds() -> None:
     # -------------------------
     # ----- Miscellaneous -----
     # -------------------------
-    bind("<Alt-i>", "enter-mode insert", "spawn --userscript qute-pass")
+    bind("<Alt-i>", "mode-enter insert", "spawn --userscript qute-pass")
     bind(
         "<Alt-p>",
-        "enter-mode insert",
+        "mode-enter insert",
         "spawn --userscript qute-pass --password-only",
     )
     bind(
         "<Alt-u>",
-        "enter-mode insert",
+        "mode-enter insert",
         "spawn --userscript qute-pass --username-only",
     )
     bind("<Ctrl-p>", "tab-pin")
@@ -581,7 +579,7 @@ def dict_attrs(
 @SetupMaster.register
 def setup_config_from_yaml() -> None:
     with (Path(__file__).parent.absolute() / "config.yml").open() as f:
-        yaml_data = yaml.load(f)
+        yaml_data = yaml.load(f, Loader=yaml.FullLoader)
 
     for k, v in dict_attrs(yaml_data):
         config.set(k, v)

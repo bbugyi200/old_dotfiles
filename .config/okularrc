@@ -36,6 +36,7 @@ File4[$e]=$HOME/Sync/var/books/Programming/Python/Web Scraping with Python - Rya
 File5[$e]=$HOME/Sync/var/books/Programming/Operating_Systems/TCP_IP_Illustrated-(Stevens).djvu
 File6[$e]=$HOME/Sync/var/books/Programming/Philosophy/The_Pragmatic_Programmer-(Hunt).pdf
 File7[$e]=$HOME/Sync/var/books/Programming/Operating_Systems/Understanding_the_Linux_Kernel-(Bovet).pdf
+File8[$e]=$HOME/Downloads/The_Debian_Administrators_Handbook_Jessie-(Hertzog).epub
 Name1[$e]=A_First_Course_in_Graph_Theory-(Zhang).pdf
 Name2[$e]=hw6_instructions.pdf
 Name3[$e]=The_Mythical_Man_Month-(Brooks).pdf
@@ -43,6 +44,7 @@ Name4[$e]=Web Scraping with Python - Ryan Mitchell.pdf
 Name5[$e]=TCP_IP_Illustrated-(Stevens).djvu
 Name6[$e]=The_Pragmatic_Programmer-(Hunt).pdf
 Name7[$e]=Understanding_the_Linux_Kernel-(Bovet).pdf
+Name8[$e]=The_Debian_Administrators_Handbook_Jessie-(Hertzog).epub
 
 [Shortcut Schemes]
 Current Scheme=VimBindings

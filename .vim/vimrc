@@ -440,7 +440,6 @@ autocmd BufRead,BufNewFile *.txt set filetype=txt
 autocmd BufRead,BufNewFile *.xmobarrc set syntax=haskell
 autocmd BufRead,BufNewFile .coveragerc set filetype=cfg
 autocmd BufRead,BufNewFile CMakeLists.txt set filetype=cmake
-autocmd BufRead,BufNewFile config set filetype=cfg
 autocmd BufRead,BufNewFile *.conf set filetype=cfg
 autocmd BufRead,BufNewFile *.sh set filetype=sh
 autocmd BufRead,BufNewFile *.px setlocal filetype=python
@@ -460,6 +459,7 @@ autocmd FileType py,vim,sh,zsh,tex setlocal formatoptions-=ro  " Disables auto-c
 autocmd FileType scheme let b:delimitMate_quotes = "\""
 autocmd InsertEnter * set timeoutlen=500
 autocmd InsertLeave * set timeoutlen=1000
+autocmd BufNewFile,BufRead */ssh/config set filetype=sshconfig
 
 " Reloads buffer on buffer changes.
 "
