@@ -5,11 +5,12 @@ import os
 from pathlib import Path
 import platform
 import re
-from typing import Callable, Dict, Generator, List, Tuple, Union
+from typing import Callable, Dict, Iterator, List, Tuple, Union
+
+import yaml
 
 import searchengines as SE
 import searchengines.utils as utils
-import yaml
 
 
 os.environ["PATH"] = "{0}/.local/bin:/usr/local/bin:{1}".format(
@@ -116,7 +117,7 @@ def setup_search_aliases() -> None:
         search_aliases["a{}".format(i)] = "AROUND({})".format(i)
 
     # Set the utils module's search alias dictionary.
-    utils.search_aliases = search_aliases
+    utils.SEARCH_ALIASES = search_aliases
 
 
 #####################################################################
@@ -167,13 +168,28 @@ def lucky_url_with_suffix_arg(
 def setup_search_engines() -> None:
     searchengines = {
         "2": "https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}",
-        "3": "https://www.google.com/maps/dir/902+Carnegie+Center,+Princeton,+NJ+08540/{}",
         "A": "https://www.amazon.com/gp/your-account/order-history/search?&search={}",
         "b": SE.static.stackoverflow(10, prefix="Bash"),
+        "bb": "http://bburl/{}",
+        "bgh": SE.SearchEngine(
+            "https://bbgithub.dev.bloomberg.com/search?q={}",
+            SE.URL(
+                "https://bbgithub.dev.bloomberg.com/{0}/{1}",
+                "^[^ ]+/[^ ]+$",
+                lambda s: s.split("/"),
+            ),
+        ),
+        "bi": "https://infr.prod.bloomberg.com/clusters/{}",
+        "bj": "https://jira.prod.bloomberg.com/browse/ENG3VLTSRE-{}",
         "bmo": SE.SearchEngine(
             SE.static.google("best movies of 20{}"),
             SE.OneIntURL(SE.static.google("best {1} movies of 20{0}")),
         ),
+        "bp": "https://bbgithub.dev.bloomberg.com/pages/ComplianceSRE/{}.html",
+        "bog": "https://code.dev.bloomberg.com/source/search?q={}&defs=&refs=&path=&hist=&type=&project=basmsg&project=bbgithub&project=devsvn&project=dpkg&project=rapid&project=robo_svn",
+        "btu": "https://tutti.prod.bloomberg.com/search/?q={}",
+        "bte": "https://cms.prod.bloomberg.com/team/dosearchsite.action?queryString={}",
+        "bsor": "http://sor.bdns.bloomberg.com/ui/servers/hostname/{}",
         "c": SE.static.stackoverflow(7, prefix="C"),
         "cc": SE.static.stackoverflow(5, prefix="C\\+\\+"),
         "DEFAULT": SE.SearchEngine(
@@ -283,7 +299,9 @@ def setup_search_engines() -> None:
             SE.TwoIntURL(
                 "https://1337x.unblocked.vet/search/{2} S{0:02d}E{1:02d}/1/"
             ),
-            SE.OneIntURL("https://1337x.unblocked.vet/search/{1} Season {0}/1/"),
+            SE.OneIntURL(
+                "https://1337x.unblocked.vet/search/{1} Season {0}/1/"
+            ),
         ),
         "TT": SE.SearchEngine(
             "https://thepiratebay3.com/search/{}",
@@ -568,7 +586,7 @@ def setup_binds() -> None:
 #####################################################################
 def dict_attrs(
     obj: Union[str, Dict], path: str = ""
-) -> Generator[Tuple[str, str], None, None]:
+) -> Iterator[Tuple[str, str]]:
     if isinstance(obj, dict):
         for k, v in obj.items():
             yield from dict_attrs(v, "{}.{}".format(path, k) if path else k)
@@ -578,10 +596,11 @@ def dict_attrs(
 
 @SetupMaster.register
 def setup_config_from_yaml() -> None:
-    with (Path(__file__).parent.absolute() / "config.yml").open() as f:
-        yaml_data = yaml.load(f, Loader=yaml.FullLoader)
+    config_yml = Path(__file__).parent.absolute() / "config.yml"
+    with config_yml.open() as f:
+        conf = yaml.load(f, Loader=yaml.FullLoader)
 
-    for k, v in dict_attrs(yaml_data):
+    for k, v in dict_attrs(conf):
         config.set(k, v)
 
 

@@ -1,10 +1,11 @@
 """Qutebrowser SearchEngine Utilities"""
 
 import re
+from typing import Dict
 
 
 # Defined in the config.py file.
-search_aliases: dict = {}
+SEARCH_ALIASES: Dict[str, str] = {}
 
 
 def encode(query: str) -> str:
@@ -35,7 +36,7 @@ def encode(query: str) -> str:
 def filter_aliases(search_term: str) -> str:
     """Checks for and Substitutes Aliases with their Definitions"""
     new_search_term = search_term
-    for alias, definition in search_aliases.items():
+    for alias, definition in SEARCH_ALIASES.items():
         new_search_term = re.sub(
             r'\b{}\b'.format(alias), definition, new_search_term
         )

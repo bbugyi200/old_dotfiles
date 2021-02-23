@@ -12,7 +12,7 @@ import searchengines.imfeelinglucky as IFL
 import searchengines.utils as utils
 
 # Custom Types
-FilterType = Callable[[str], Sequence]
+FilterType = Callable[[str], Sequence[str]]
 
 
 __all__ = [

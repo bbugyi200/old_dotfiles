@@ -12,7 +12,6 @@ fi
 ZSH="$HOME"/.oh-my-zsh/
 ZSH_THEME="mytheme"
 DEFAULT_USER="bryan"
-DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 
 # 'sudo' plugin MUST remain near the end or (for some reason) it won't work
@@ -66,12 +65,12 @@ so() { exec /bin/zsh; }
 
 # ---------- Suffix Aliases ----------
 if [[ "$(uname -a)" == *"Debian"* ]]; then
-    alias -s gif="imvr -d"
-    alias -s jpeg="imvr -d"
-    alias -s jpg="imvr -d"
-    alias -s pcx="imvr -d"
-    alias -s png="imvr -d"
-    alias -s xbm="imvr -d"
+    alias -s gif="imv-x11 -d"
+    alias -s jpeg="imv-x11 -d"
+    alias -s jpg="imv-x11 -d"
+    alias -s pcx="imv-x11 -d"
+    alias -s png="imv-x11 -d"
+    alias -s xbm="imv-x11 -d"
 else
     alias -s gif="imv -d"
     alias -s jpeg="imv -d"
@@ -102,8 +101,8 @@ alias -s xlsx="libreoffice"
 # ---------- Global Aliases ----------
 alias -g @!="&> /dev/null"
 alias -g @@="&> /dev/null & disown"
-alias -g ::="| grep -i -e"
-alias -g ::v="| grep -A 5 -B 5 -i -e"
+alias -g :g="| grep -i -e"
+alias -g :G="| grep -A 5 -B 5 -i -e"
 alias -g :c="clear &&"
 alias -g :l="| less"
 alias -g :L="tmux send-keys '!-2 | less' Enter Enter"

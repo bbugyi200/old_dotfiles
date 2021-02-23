@@ -51,23 +51,12 @@ function dedup_path() {
 function _is_in_path() {
     local path_="$1"; shift
     local P="$1"; shift
-    if [[ "${path_}" == "${P}" ]]; then
-        return 0
-    fi
 
-    if [[ "${path_}" == "${P}:"* ]]; then
+    if [[ ":${path_}:" == *":${P}:"* ]]; then
         return 0
+    else
+        return 1
     fi
-
-    if [[ "${path_}" == *":${P}" ]]; then
-        return 0
-    fi
-
-    if [[ "${path_}" == *":${P}:"* ]]; then
-        return 0
-    fi
-
-    return 1
 }
 
 
@@ -76,13 +65,13 @@ function _is_in_path() {
 ###############################
 source_if_exists /etc/profile
 source_if_exists /usr/bin/virtualenvwrapper_lazy.sh
-source_if_exists "${HOME}"/.orivate.sh
 
 
 ###############################
 #  Environment Variables      #
 ###############################
 # >>> Conveniance Variables
+export BB=bbugyi.ddns.net
 export DB="$HOME"/Sync
 export DBB="$DB"/bin
 export DBH="$DB"/home
@@ -103,7 +92,6 @@ if [[ "$(id -u)" = 0 ]]; then
 fi
 
 # >>> Miscellaneous
-export BB=bbugyi.ddns.net
 export EDITOR="$(command -v vim)"  # I set this so the crontab would use vim for editing
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export FZF_DEFAULT_OPTS='--reverse --height 40% --border'
@@ -139,7 +127,7 @@ else
     export TERM="rxvt-unicode-256color"  # Fixes Mutt Background Issue (stays transparent) in TMUX
 
     rust_version="$(rustc --version | perl -anE 'print $F[1]')"
-    export PATH=/opt/rust-bin-"${rust_version}"/bin:"$PATH"
+    export PATH="$(insert_path "${PATH}" /opt/rust-bin-"${rust_version}"/bin)"
 fi
 
 # Fixes "perl: warning: Setting locale failed." errors when using SSH to

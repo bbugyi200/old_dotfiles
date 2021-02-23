@@ -27,6 +27,9 @@ editor:
     command: ['alacritty', '--class', 'qute-editor', '-e', 'zsh', '-c',
               'vim -N -u ~/.config/qutebrowser/editor.vimrc {}']
 
+qt:
+    args: ["proxy-pac-url=file:///home/bryan/projects/work/bloomberg/proxy.pac"]
+
 tabs:
     last_close: close
     max_width: 250
