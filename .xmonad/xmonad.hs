@@ -314,7 +314,7 @@ myAdditionalKeys = [
    , ((alpha .|. chi, h), sendMessage Shrink)
    , ((alpha, i), do
            spawn "bash -c '[[ $(wmctrl -lx | grep \"qutebrowser\" | wc -l) -lt 2 ]] && wmctrl -a qutebrowser'"
-           launchApp "web" "qutebrowser" "qutebrowser --enable-webengine-inspector"
+           launchApp "web" "qutebrowser" "qutebrowser --debug 2>> /var/tmp/qutebrowser.log"
      )
    , ((alpha, j), N2D.windowGo N2D.D True)
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area

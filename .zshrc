@@ -15,7 +15,7 @@ DEFAULT_USER="bryan"
 DISABLE_AUTO_TITLE="true"
 
 # 'sudo' plugin MUST remain near the end or (for some reason) it won't work
-plugins=(desk docker docker-compose git git-extras emoji lpass poetry vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
+plugins=(desk docker docker-compose git git-extras emoji vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -101,6 +101,7 @@ alias -s xlsx="libreoffice"
 # ---------- Global Aliases ----------
 alias -g @!="&> /dev/null"
 alias -g @@="&> /dev/null & disown"
+alias -g :bb:="C02DR3Z2MD6R:8888"
 alias -g :g="| grep -i -e"
 alias -g :G="| grep -A 5 -B 5 -i -e"
 alias -g :c="clear &&"

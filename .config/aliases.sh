@@ -128,7 +128,10 @@ alias ag='ag --hidden'
 alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
-alias bbproxy='http_proxy=http://C02DR3Z2MD6R:8888 https_proxy=http://C02DR3Z2MD6R:8888 HTTP_PROXY=http://C02DR3Z2MD6R:8888 HTTPS_PROXY=http://C02DR3Z2MD6R:8888'
+alias bb='http_proxy=http://C02DR3Z2MD6R:8888 https_proxy=http://C02DR3Z2MD6R:8888 HTTP_PROXY=http://C02DR3Z2MD6R:8888 HTTPS_PROXY=http://C02DR3Z2MD6R:8888'
+alias bb_docker='docker --config /home/bryan/projects/work/bloomberg/.docker'
+alias bb_pip_install='python -m pip install --index-url="http://artprod.dev.bloomberg.com/artifactory/api/pypi/bloomberg-pypi/simple" --proxy=192.168.1.198:8888 -U --trusted-host artprod.dev.bloomberg.com'
+alias bc='branch_changes'
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 alias books='vim ~/Sync/var/notes/Journal/books.txt'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
@@ -167,7 +170,7 @@ alias dstart='dropbox-cli start'
 alias dstop='dropbox-cli stop'
 alias du='sudo ncdu --color dark'
 alias dunst='killall dunst &> /dev/null; dunst'
-alias edsl='printf "$(hostname):%d,%d\n%s,%d\n" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | awk -F: "{print \$2}")'
+alias edsl='printf "$(hostname):%d,%d\n%s,%d\n" $(emanage -D local -u) $(emanage -D local -c) $(emanage -D remote -u) $(emanage -D remote -c | perl -nE "print s/^.*://gr")'
 alias epuse='sudo -E epuse'
 _essh() { printf 'cd ~/projects/edgelp/prod; source envs/dev.sh; cd %s; /bin/zsh' "$1"; }
 essh() { ssh "$1" -t "$(_essh "$2")"; }
@@ -187,7 +190,7 @@ alias gbb='git branch --sort=-committerdate | less'
 alias gbcopy='gcopy --body'
 gca() { if [[ -n "$1" ]]; then git commit -v -a -m "$1"; else git commit -v -a; fi; }
 gcB() { gbD "$1" &> /dev/null; git checkout -b "$1" "${2:-upstream}"/"$1"; }
-gcbb() { git checkout -b ENG3VLTSRE-"$1"; }
+gcbb() { git checkout -b CSRE-"$1"; }
 gcbc() { git checkout -b "$@" && git commit --allow-empty; }
 gcbd() { if [[ -z "$1" ]]; then return 1; fi; gcb "$(date +"%y.%m")"-"$1"; }
 alias gce='git commit --allow-empty'
@@ -221,6 +224,7 @@ gN1() { git_current_branch > /tmp/gnext-branch.txt && gN "$@"; }
 alias gn='gnext'
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
 alias gpf='git push --force'
+alias gpr='bbgithub_pull_request -T $(pass show bbgithub\ Personal\ Access\ Token) -u bbugyi -x socks5h://127.0.0.1:8080'
 alias gprm='gpup "Docs: Update README"'
 gpu() { git push -u origin "$(git_current_branch)"; }
 alias gpull='git stash && git pull && git stash apply'
@@ -357,6 +361,7 @@ alias undow='dow --undo'
 alias unfreeze='icebox --unfreeze /tmp/icebox'
 alias updatedb='sudo updatedb'
 alias uplug='vim +PluginUpdate +qall'
+alias va='vv_push $HOME/projects/ansible_config'
 vab() { vim $(find "$HOME"/Sync/bin/cron.jobs -type f | sort | tr '\n' ' '); }
 alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
 alias vbox='xspawn sudo virtualbox'

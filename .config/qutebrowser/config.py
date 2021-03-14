@@ -180,7 +180,7 @@ def setup_search_engines() -> None:
             ),
         ),
         "bi": "https://infr.prod.bloomberg.com/clusters/{}",
-        "bj": "https://jira.prod.bloomberg.com/browse/ENG3VLTSRE-{}",
+        "bj": "https://jira.prod.bloomberg.com/browse/CSRE-{}",
         "bmo": SE.SearchEngine(
             SE.static.google("best movies of 20{}"),
             SE.OneIntURL(SE.static.google("best {1} movies of 20{0}")),
@@ -189,7 +189,7 @@ def setup_search_engines() -> None:
         "bog": "https://code.dev.bloomberg.com/source/search?q={}&defs=&refs=&path=&hist=&type=&project=basmsg&project=bbgithub&project=devsvn&project=dpkg&project=rapid&project=robo_svn",
         "btu": "https://tutti.prod.bloomberg.com/search/?q={}",
         "bte": "https://cms.prod.bloomberg.com/team/dosearchsite.action?queryString={}",
-        "bsor": "http://sor.bdns.bloomberg.com/ui/servers/hostname/{}",
+        "bsor": "https://sor.bdns.bloomberg.com/ui/servers/hostname/{}",
         "c": SE.static.stackoverflow(7, prefix="C"),
         "cc": SE.static.stackoverflow(5, prefix="C\\+\\+"),
         "DEFAULT": SE.SearchEngine(

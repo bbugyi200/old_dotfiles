@@ -102,7 +102,7 @@ if PluginInstalled("ale")
     endif
 
     let g:ale_python_black_options = get(g:, "ale_python_black_options", "--line-length=79 --experimental-string-processing")
-    let g:ale_python_mypy_options = get(g:, "ale_python_mypy_options", "--python-executable=" . python)
+    let g:ale_python_mypy_options = get(g:, "ale_python_mypy_options", "--python-executable=" . python . " --namespace-packages")
     let g:ale_python_pylint_options = get(g:, "ale_python_pylint_options", "--rcfile=~/.config/pylintrc")
 
     let g:ale_sh_shellcheck_options = get(g:, "ale_sh_shellcheck_options", "--shell=bash")

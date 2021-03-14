@@ -4,7 +4,7 @@ function ansible-version(){
 }
 
 function ansible-role-init(){
-    if ! [ -z $1] ; then
+    if ! [ -z $1 ] ; then
         echo "Ansible Role : $1 Creating...."
         ansible-galaxy init $1
         tree $1
@@ -18,10 +18,9 @@ function ansible-role-init(){
 alias a='ansible '
 alias aconf='ansible-config '
 alias acon='ansible-console '
-alias aconn='ansible-connection '
 alias aver='ansible-version'
 alias arinit='ansible-role-init'
-alias aplay='ansible-playbook '
+alias aplaybook='ansible-playbook '
 alias ainv='ansible-inventory '
 alias adoc='ansible-doc '
 alias agal='ansible-galaxy '
