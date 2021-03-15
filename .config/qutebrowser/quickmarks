@@ -1,6 +1,7 @@
 a https://www.amazon.com/
 A https://www.amazon.com/gp/your-account/order-history?ref_=ya_d_c_yo
 amc https://www.amctheatres.com/movie-theatres/philadelphia/amc-marketfair-10
+b401k https://bloomberg401k.empower-retirement.com/participant/accounts/#/account/23212905/150112-01/account-details
 bas https://basvoyager.dev.bloomberg.com/
 bba https://bba.bloomberg.net/
 BBA https://bryanbugyi.com/wp-admin/index.php
@@ -12,6 +13,7 @@ bcs https://compute-storage.prod.bloomberg.com/
 bdgtcat https://bdgt.prod.bloomberg.com/catalog/
 bdgt https://bdgt.prod.bloomberg.com/budget/2021/
 bdis https://discourse.dev.bloomberg.com/c/general/sre/507
+bdpkg https://dpkg.dx.bloomberg.com/packages?search_term=
 bgh https://bbgithub.dev.bloomberg.com/
 bguts https://guts.prod.bloomberg.com/
 B https://www.wellsfargo.com/
@@ -23,7 +25,11 @@ bj https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=14020&projec
 bj-old https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=9124&view=detail&selectedIssue=ENG3VLTSRE-313
 bjpi https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=12375&projectKey=EN3BVS
 bms https://bms.prod.bloomberg.com/home
+bog https://code.dev.bloomberg.com/source/
 bp https://bbgithub.dev.bloomberg.com/pages/ComplianceSRE/
+bpr https://bbgithub.dev.bloomberg.com/pulls
+bpv https://bpv.bloomberg.com/
+bslack https://app.slack.com/client/T066S5VMZ/C066S3JEM
 bso https://engx.prod.bloomberg.com/
 bsor https://sor.bdns.bloomberg.com/ui/servers/
 bte https://cms.prod.bloomberg.com/team/
@@ -203,8 +209,3 @@ zse https://www.zillow.com/homes/secaucus,-NJ_rb/
 zumc https://www.zillow.com/homes/Upper-Montclair,-Montclair,-NJ_rb/
 zwe https://www.zillow.com/homes/Weehawken,-NJ_rb/
 zwf https://www.zillow.com/westfield-nj/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%22Westfield%2C%20NJ%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.41207779943849%2C%22east%22%3A-74.28007020056154%2C%22south%22%3A40.62182714948036%2C%22north%22%3A40.68476252391752%7D%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A27896%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22ah%22%3A%7B%22value%22%3Atrue%7D%2C%22price%22%3A%7B%22min%22%3A500000%2C%22max%22%3A900000%7D%2C%22mp%22%3A%7B%22min%22%3A1670%2C%22max%22%3A3007%7D%7D%2C%22isListVisible%22%3Atrue%2C%22mapZoom%22%3A15%7D
-bdpkg https://dpkg.dx.bloomberg.com/packages?search_term=
-bpv https://bpv.bloomberg.com/
-bslack https://app.slack.com/client/T066S5VMZ/C066S3JEM
-bpr https://bbgithub.dev.bloomberg.com/pulls
-b401k https://bloomberg401k.empower-retirement.com/participant/accounts/#/account/23212905/150112-01/account-details
