@@ -58,7 +58,7 @@ class SetupMaster:
             if debug:
                 import pudb
 
-                pudb.set_trace()
+                pudb.set_trace()  # type: ignore
 
             assert setup_func is not None
             return setup_func()
@@ -171,6 +171,7 @@ def setup_search_engines() -> None:
         "A": "https://www.amazon.com/gp/your-account/order-history/search?&search={}",
         "b": SE.static.stackoverflow(10, prefix="Bash"),
         "bb": "http://bburl/{}",
+        "bdpkg": "https://dpkg.dx.bloomberg.com/packages?search_term={}",
         "bgh": SE.SearchEngine(
             "https://bbgithub.dev.bloomberg.com/search?q={}",
             SE.URL(
@@ -179,14 +180,15 @@ def setup_search_engines() -> None:
                 lambda s: s.split("/"),
             ),
         ),
+        "bguts": "https://guts.prod.bloomberg.com/machines-clusters/{}",
         "bi": "https://infr.prod.bloomberg.com/clusters/{}",
         "bj": "https://jira.prod.bloomberg.com/browse/CSRE-{}",
         "bmo": SE.SearchEngine(
             SE.static.google("best movies of 20{}"),
             SE.OneIntURL(SE.static.google("best {1} movies of 20{0}")),
         ),
-        "bp": "https://bbgithub.dev.bloomberg.com/pages/ComplianceSRE/{}.html",
         "bog": "https://code.dev.bloomberg.com/source/search?q={}&defs=&refs=&path=&hist=&type=&project=basmsg&project=bbgithub&project=devsvn&project=dpkg&project=rapid&project=robo_svn",
+        "bp": "https://bbgithub.dev.bloomberg.com/pages/ComplianceSRE/{}.html",
         "btu": "https://tutti.prod.bloomberg.com/search/?q={}",
         "bte": "https://cms.prod.bloomberg.com/team/dosearchsite.action?queryString={}",
         "bsor": "https://sor.bdns.bloomberg.com/ui/servers/hostname/{}",
@@ -310,6 +312,7 @@ def setup_search_engines() -> None:
             ),
             SE.OneIntURL("https://thepiratebay.org/search/{1} Season"),
         ),
+        "tb": SE.static.site("teamblind.com"),
         "ud": SE.static.site(
             "idioms.thefreedictionary.com",
             "en.wiktionary.org",

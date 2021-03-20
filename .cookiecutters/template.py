@@ -3,7 +3,7 @@
 import sys
 from typing import NamedTuple, Sequence
 
-from gutils.core import ArgumentParser, main_factory
+from bugyi.core import ArgumentParser, main_factory
 from loguru import logger as log  # pylint: disable=unused-import
 
 
