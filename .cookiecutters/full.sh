@@ -4,7 +4,7 @@ read -r -d '' DOC <<EOM
 {% INSERT %}
 EOM
 
-source gutils.sh
+source bugyi.sh
 
 main() {
     parse_cli_args "$@"

@@ -140,8 +140,8 @@ def bang_pttrn() -> str:
         "yt",  # YouTube
     ]
     long_bangs = [
-        "ddg",  # DuckDuckGo
-        "bang",  # DuckDuckGo Bang Search
+        "ddg",    # DuckDuckGo
+        "bang",   # DuckDuckGo Bang Search
         "giphy",  # Giphy.com
     ]
 
@@ -180,6 +180,8 @@ def setup_search_engines() -> None:
                 lambda s: s.split("/"),
             ),
         ),
+        "bghc": "https://bbgithub.dev.bloomberg.com/ComplianceSRE/{}",
+        "bghe": "https://bbgithub.dev.bloomberg.com/EquitySRE/{}",
         "bguts": "https://guts.prod.bloomberg.com/machines-clusters/{}",
         "bi": "https://infr.prod.bloomberg.com/clusters/{}",
         "bj": "https://jira.prod.bloomberg.com/browse/CSRE-{}",
@@ -410,7 +412,7 @@ def setup_binds() -> None:
     cbind("<Ctrl-y>", "fake-key --global <Return>v$y")
 
     # >>>>>>> INSERT
-    ibind("<Ctrl-f>", "open-editor")
+    ibind("<Ctrl-f>", "edit-text")
     ibind("<Ctrl-i>", "spawn -d qute-pass-add {url}")
     ibind("<Alt-i>", "spawn --userscript qute-pass")
     ibind("<Ctrl-Alt-i>", "spawn --userscript qute-pass")

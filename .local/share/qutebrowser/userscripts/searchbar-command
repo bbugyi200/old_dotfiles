@@ -3,11 +3,11 @@
 echo "jseval -q document.querySelector('input').focus()" >> "$QUTE_FIFO"
 echo "jseval -q document.querySelector('input[type=text]').focus()" >> "$QUTE_FIFO"
 echo "mode-enter insert" >> "$QUTE_FIFO"
-echo "open-editor" >> "$QUTE_FIFO"
+echo "edit-text" >> "$QUTE_FIFO"
 
 if [[ "$(uname -a)" != *"Darwin"* ]]; then
     sleep 1
-    while [[ $(wmctrl -lx) == *"qute-editor.URxvt"* ]]; do
+    while [[ $(wmctrl -lx) == *"qute-editor.Alacritty"* ]]; do
         sleep 0.25
     done
     

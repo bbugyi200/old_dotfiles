@@ -84,7 +84,7 @@
 
     ### Text ###
 
-    font = Terminus (TTF) 12
+    font = Hack 12
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -127,7 +127,7 @@
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = center
+    alignment = left
 
     # Show age of message if message is older than show_age_threshold
     # seconds.

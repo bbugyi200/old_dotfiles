@@ -12,7 +12,7 @@ syn cluster txtContains add=Todo,BeginWS,Underlined,WildMenu
 syn region WildMenu start="###" end="###$" contains=@NoSpell oneline
 
 " Section
-syn match Statement "^[A-Z][^a-z]*[A-Z0-9)\]]$" contains=@txtContains,@NoSpell
+" syn match Statement "^[A-Z][^a-z]*[A-Z0-9)\]]$" contains=@txtContains,@NoSpell
 " OLD --> [A-Z () 0-9 / \[\] : # -]
 
 " Subsection

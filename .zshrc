@@ -115,6 +115,7 @@ alias -g :w="watch -n 1"
 ##############
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
+bindkey -M vicmd v edit-command-line
 
 ###################
 #  Miscellaneous  #

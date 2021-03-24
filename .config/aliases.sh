@@ -224,7 +224,7 @@ gN1() { git_current_branch > /tmp/gnext-branch.txt && gN "$@"; }
 alias gn='gnext'
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
 alias gpf='git push --force'
-alias gpr='bbgithub_pull_request -T $(pass show bbgithub\ Personal\ Access\ Token) -u bbugyi -x socks5h://127.0.0.1:8080'
+alias gpr='github_pull_request -T $(pass show bbgithub\ Personal\ Access\ Token) -u bbugyi -x socks5h://127.0.0.1:8080'
 alias gprm='gpup "Docs: Update README"'
 gpu() { git push -u origin "$(git_current_branch)"; }
 alias gpull='git stash && git pull && git stash apply'
@@ -266,6 +266,7 @@ K() { tmux switchc -n && tmux kill-session -t "$(tm-session-name)"; }
 alias k9='sudo kill -9'
 Kman() { man -wK "$@" | awk -F'/' '{print $NF}' | sed 's/\.\(.*\)\.bz2$/ (\1)/g' | sort; }
 alias kman='man -k'
+alias lid='sudo libuser-lid'
 alias loc='locate --regex'
 alias Loc='sudo updatedb && loc'
 alias lpass-login='lpass login bryanbugyi34@gmail.com'
