@@ -10,12 +10,12 @@ fi
 #  Oh-My-Zsh  #
 ###############
 ZSH="$HOME"/.oh-my-zsh/
-ZSH_THEME="mytheme"
+# ZSH_THEME="mytheme"
 DEFAULT_USER="bryan"
 DISABLE_AUTO_TITLE="true"
 
 # 'sudo' plugin MUST remain near the end or (for some reason) it won't work
-plugins=(desk docker docker-compose git git-extras emoji vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
+plugins=(docker docker-compose git git-extras emoji vi-mode z zsh-autosuggestions zsh-syntax-highlighting sudo)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then

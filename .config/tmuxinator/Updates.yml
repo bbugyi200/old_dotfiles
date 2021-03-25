@@ -9,21 +9,7 @@ pre_window:
 
 windows:
     - main:
-        layout: even-horizontal
-        panes:
-            - 0:
-                - header "emanage -h"
-    - my_overlay:
-        root: /home/bryan/projects/portage-overlay
-        layout: even-horizontal
-        panes:
-            - 0:
-                - jrnl @ebuild
-    - kernel:
-        root: /usr/src/linux
-        layout: 9058,210x47,0,0{124x47,0,0,27,85x47,125,0,30}
-        panes:
-            - 0:
-                - ll
-            - 1:
-                - jrnl @kernel
+          layout: even-horizontal
+          panes:
+              - 0:
+                    - header "emanage -h"
