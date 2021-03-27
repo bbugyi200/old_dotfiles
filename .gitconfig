@@ -25,6 +25,8 @@
 [user]
 	email = bryanbugyi34@gmail.com
 	name = Bryan Bugyi
+[includeIf "gitdir:~/projects/work/"]
+    path = ~/.gitconfig-work
 [commit]
 	template = ~/.gitmessage
 [rerere]
