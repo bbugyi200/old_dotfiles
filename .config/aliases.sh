@@ -35,6 +35,7 @@ alias mtinit='cookie gtest.make -f Makefile'
 robinit() { DATE="$(date +%Y%m%d)" cookie robot.yaml -f "$HOME"/.local/share/red_robot/pending/"$1"; }
 pytinit() { SCRIPT="$1" cookie pytest_script.py -f test_"$1".py; }
 alias texinit='cookie template.tex -f'
+alias xinit='cookie template.exp -x'
 
 # ---------- GTD Aliases / Functions ----------
 # def marker: GTD
@@ -129,8 +130,11 @@ alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
 alias bb='http_proxy=http://C02DR3Z2MD6R:8888 https_proxy=http://C02DR3Z2MD6R:8888 HTTP_PROXY=http://C02DR3Z2MD6R:8888 HTTPS_PROXY=http://C02DR3Z2MD6R:8888'
+alias bbs='HTTPS_PROXY=socks5h://127.0.0.1:8080'
 alias bb_docker='docker --config /home/bryan/projects/work/bloomberg/.docker'
 alias bb_pip_install='python -m pip install --index-url="http://artprod.dev.bloomberg.com/artifactory/api/pypi/bloomberg-pypi/simple" --proxy=192.168.1.198:8888 -U --trusted-host artprod.dev.bloomberg.com'
+alias bbssh='command bbssh $(pass show bloomberg_ssh_password)'
+alias bbtmp='scp -r "devnjbvlt01.bloomberg.com:/home/bbugyi/tmp/*" $HOME/projects/work/bloomberg/.tmp/bb'
 alias bc='branch_changes'
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 alias books='vim ~/Sync/var/notes/Journal/books.txt'
@@ -292,6 +296,7 @@ onething() { vim -c "/$(date --date="yesterday" +%m\\/%d\\/%Y)" ~/Sync/var/notes
 alias P='popd'
 pdb() { { [[ -f ./"$1" ]] && python -m pdb "$@"; } || python -m pdb "$(which -a "$1" | tail -n 1)" "${@:2}"; }
 pgr() { pgrep -f ".*$1.*"; }
+pip() { "$(get_python_exe)" -m pip "$@"; }
 alias pipget='pip install --user'
 alias plex='xspawn -w plex plexmediaplayer'
 pname() { pass show | grep -i "$1" | awk '{print $2}'; }
@@ -325,6 +330,10 @@ alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
 alias sat='sudo cat'
 alias sc='sudo systemctl'
 alias sch='vim ~/Sync/var/notes/Rutgers/course_schedule.txt'
+scp2farm() { scp "$1" devnjbvlt01.bloomberg.com:/home/bbugyi/"$2"; }
+scp2mac() { scp "$1" bbmacbook:/Users/bbugyi/"$2"; }
+scp3farm() { scp devnjbvlt01.bloomberg.com:/home/bbugyi/"$1" "$2"; }
+scp3mac() { scp bbmacbook:/Users/bbugyi/"$1" "$2"; }
 alias scu='systemctl --user'
 alias sftp-rutgers='sftp bmb181@less.cs.rutgers.edu'
 alias sim='sudo -E vim'

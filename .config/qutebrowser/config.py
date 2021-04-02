@@ -168,7 +168,7 @@ def lucky_url_with_suffix_arg(
 def setup_search_engines() -> None:
     searchengines = {
         "2": "https://www.google.com/maps/dir/417+Cripps+Dr,+Mt+Holly,+NJ+08060/{}",
-        "A": "https://www.amazon.com/gp/your-account/order-history/search?&search={}",
+        "A": "https://www.amazon.com/gp/your-account/order-history/ref=ppx_yo_dt_b_search?opt=ab&search={}",
         "b": SE.static.stackoverflow(10, prefix="Bash"),
         "bb": "http://bburl/{}",
         "bdpkg": "https://dpkg.dx.bloomberg.com/packages?search_term={}",

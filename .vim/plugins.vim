@@ -552,7 +552,7 @@ endfunction
 if PluginInstalled("UltiSnips")
     " Allows other directories to be searched for snippet files
     " let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME . "/Sync/home/extra/UltiSnips"]
-    let g:UltiSnipsSnippetDirectories=[$HOME . "/.vim/vim-snippets", getcwd()]
+    let g:UltiSnipsSnippetDirectories=[$HOME . "/.vim/vim-snippets", getcwd() . "/snippets"]
 
     au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"

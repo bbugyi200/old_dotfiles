@@ -161,6 +161,7 @@ export PATH="$(insert_path "${PATH}" "$HOME/.local/bin")"
 export PATH="$(insert_path "${PATH}" "$HOME/.dynamic-colors/bin")"
 export PATH="$(insert_path "${PATH}" "$HOME/.flamegraph")"
 export PATH="$(insert_path "${PATH}" "${HOME}"/.tmp/bin)"
+export PATH="$(insert_path "${PATH}" "${HOME}"/.gems/bin)"
 
 export PYTHONPATH="$(insert_path "${PYTHONPATH}" "${HOME}"/.local/bin)"
 
@@ -169,4 +170,7 @@ export PATH="$(dedup_path "${PATH}")"
 export PYTHONPATH="$(dedup_path "${PYTHONPATH}")"
 export MYPYPATH="${PYTHONPATH}"
 export LESS="$(python -c "import sys; print(''.join(set('${LESS}')))")"
+
+export GEM_HOME="${HOME}"/.gems
+
 source "$HOME/.cargo/env"
