@@ -182,6 +182,7 @@ def setup_search_engines() -> None:
         ),
         "bghc": "https://bbgithub.dev.bloomberg.com/ComplianceSRE/{}",
         "bghe": "https://bbgithub.dev.bloomberg.com/EquitySRE/{}",
+        "bghp": "https://bbgithub.dev.bloomberg.com/python/{}",
         "bguts": "https://guts.prod.bloomberg.com/machines-clusters/{}",
         "bi": "https://infr.prod.bloomberg.com/clusters/{}",
         "bj": "https://jira.prod.bloomberg.com/browse/CSRE-{}",
