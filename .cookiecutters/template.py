@@ -6,7 +6,6 @@ from typing import Sequence
 
 from bugyi import cli
 from bugyi.core import main_factory
-from loguru import logger as log  # pylint: disable=unused-import
 
 
 @dataclass(frozen=True)

@@ -61,7 +61,7 @@ setopt null_glob  # disables errors when GLOB pattern does not match
 #################
 #  ZSH Aliases  #
 #################
-so() { exec /bin/zsh; }
+so() { no_venv exec /bin/zsh; }
 
 # ---------- Suffix Aliases ----------
 if [[ "$(uname -a)" == *"Debian"* ]]; then
@@ -179,8 +179,25 @@ fi
 
 cmd_exists starship && eval "$(starship init zsh)"
 
+# configure pipx work settings
+if [[ "${PWD}" == "$HOME/projects/work/"* ]]; then
+    company="$(echo "${PWD}" | perl -nE 'print s{.*work/([^/]*)(/.*)?}{\1}gr')"
+    work_dir="${HOME}/projects/work/${company}"
+
+    export PIPX_HOME="${work_dir}/.local/pipx"
+    export PIPX_BIN_DIR="${work_dir}/.local/bin"
+    export PATH="${PIPX_BIN_DIR}":"${PATH}"
+
+    export PIP_CONFIG_FILE="${work_dir}"/pip.conf
+fi
+
 if cmd_exists virtualenvwrapper_lazy.sh; then
-    export WORKON_HOME="${HOME}"/.virtualenvwrapper-venvs
+    if [[ "${PWD}" == "$HOME/projects/work/"* ]]; then
+        export WORKON_HOME="${work_dir}"/.virtualenvwrapper-venvs
+    else
+        export WORKON_HOME="${HOME}"/.virtualenvwrapper-venvs
+    fi
+
     export PROJECT_HOME="${HOME}"/projects
 
     if cmd_exists pyenv; then
@@ -190,9 +207,9 @@ if cmd_exists virtualenvwrapper_lazy.sh; then
     fi
 fi
 
-####################
-#  Autocompletion  #
-####################
+#####################
+#  Auto-completion  #
+#####################
 autoload -U +X compinit && compinit -u
 autoload -U +X bashcompinit && bashcompinit
 if [[ -d ~/.bash-completions ]]; then
@@ -201,7 +218,7 @@ if [[ -d ~/.bash-completions ]]; then
     done
 fi
 
-# pipx
+# setup pipx auto-completion
 eval "$(register-python-argcomplete pipx)"
 
 _git 2> /dev/null  # hack to make git branch completion work

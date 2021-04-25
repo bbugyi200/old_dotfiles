@@ -27,6 +27,7 @@ htmlcov
 .mypy_cache/
 *.pyc
 passwd
+private.in
 Session.vim
 *.snippets
 *.svg

@@ -287,3 +287,4 @@ https://tutti.prod.bloomberg.com/deployment/reference/package_groups READ: Packa
 https://ssam.admin.bloomberg.com:32445/ui/sudo/new_rule BB SSAM 2.0
 https://bbgithub.dev.bloomberg.com/python/docs/blob/master/src/pypi-overview.md READ: docs/pypi-overview.md at master · python/docs
 https://bbgithub.dev.bloomberg.com/python/docs/blob/master/src/pypi-publishing.md READ: docs/pypi-publishing.md at master · python/docs
+https://keepachangelog.com/en/1.0.0/ Keep a Changelog

@@ -14,13 +14,13 @@
 # specific files
 \.lshrc
 ^/sudoers
-\.archive.tar.gz
+\.archive\.tar\.gz
 ^/README.*
 /viminfo
-/_autosave.yml
+/_autosave\.yml
 
 # data directories
-^/extras/*
-^/img/*
-^/__pycache__/*
-^/\.mypy_cache/*
+^/extras/.*
+^/img/.*
+^/__pycache__/.*
+^/\.mypy_cache/.*

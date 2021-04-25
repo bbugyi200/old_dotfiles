@@ -15,10 +15,12 @@ content:
     media:
         audio_video_capture: true
     mouse_lock: true
-    notifications: true
+    notifications:
+        enabled: true
     persistent_storage: true
     register_protocol_handler: true
-    ssl_strict: ask
+    tls:
+        certificate_errors: ask
 
 downloads:
     remove_finished: 10000

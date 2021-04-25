@@ -7,8 +7,8 @@ on_project_stop:
 
 windows:
     - main:
-        root: /home/bryan
-        layout: even-horizontal
-        panes:
-            - 0:
-                - ll
+          root: /home/bryan
+          layout: even-horizontal
+          panes:
+              - 0:
+                    - ll

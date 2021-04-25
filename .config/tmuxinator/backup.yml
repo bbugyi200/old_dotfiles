@@ -6,15 +6,11 @@ name: backup
 on_project_stop:
 
 windows:
-    - I:
-        layout: main-vertical
-        panes:
-            - 0:
-                - clear
-                - confirm 'external_backup'
-            - 1:
-                - clear
-    - II:
-        layout: main-vertical
-    - III:
-        layout: main-vertical
+  - main:
+      layout: main-vertical
+      panes:
+        - 0:
+            - clear
+            - confirm 'external_backup'
+        - 1:
+            - clear

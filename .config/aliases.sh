@@ -130,11 +130,11 @@ alias anki='xspawn anki'
 auto() { nohup autodemo "$@" &> /dev/null & disown && clear; }
 bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\n"; }
 alias bb='http_proxy=http://C02DR3Z2MD6R:8888 https_proxy=http://C02DR3Z2MD6R:8888 HTTP_PROXY=http://C02DR3Z2MD6R:8888 HTTPS_PROXY=http://C02DR3Z2MD6R:8888'
-alias bbs='HTTPS_PROXY=socks5h://127.0.0.1:8080'
 alias bb_docker='docker --config /home/bryan/projects/work/bloomberg/.docker'
 alias bb_pip_install='python -m pip install --index-url="http://artprod.dev.bloomberg.com/artifactory/api/pypi/bloomberg-pypi/simple" --proxy=192.168.1.198:8888 -U --trusted-host artprod.dev.bloomberg.com'
+alias bbs='PYTHONPATH=$PYTHONPATH:$(pysocks_site_packages) HTTPS_PROXY=socks5h://127.0.0.1:8080'
 alias bbssh='command bbssh $(pass show bloomberg_ssh_password)'
-alias bbtmp='scp -r "devnjbvlt01.bloomberg.com:/home/bbugyi/tmp/*" $HOME/projects/work/bloomberg/.tmp/bb'
+alias bbtmp='scp -r "devnjbvlt01.bloomberg.com:/home/bbugyi/tmp/*" $HOME/projects/work/bloomberg/tmp/bb'
 alias bc='branch_changes'
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 alias books='vim ~/Sync/var/notes/Journal/books.txt'
@@ -147,6 +147,7 @@ alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &> /dev/null || return 1; }
 alias cdef='def -m COOKIE'
 alias cdow='cd "$(dow_dir $PWD)"'
+cdw() { cd "$@" && workon .; }
 cho() { sudo chown -R "${2:-bryan}":"${2:-bryan}" "$1"; }
 alias chx='sudo chmod +x'
 alias cower='cower -c'
@@ -228,7 +229,7 @@ gN1() { git_current_branch > /tmp/gnext-branch.txt && gN "$@"; }
 alias gn='gnext'
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
 alias gpf='git push --force'
-alias gpr='github_pull_request -T $(pass show bbgithub\ Personal\ Access\ Token) -u bbugyi -x socks5h://127.0.0.1:8080'
+alias gpr='no_venv github_pull_request -T $(pass show bbgithub\ Personal\ Access\ Token) -u bbugyi -x socks5h://127.0.0.1:8080'
 alias gprm='gpup "Docs: Update README"'
 gpu() { git push -u origin "$(git_current_branch)"; }
 alias gpull='git stash && git pull && git stash apply'
@@ -251,7 +252,7 @@ alias gsum='git summary | less'
 alias gtcopy='gcopy --title'
 gwip() { gaa && git commit -m "[wip] $*"; }
 alias h='tldr'
-alias H='tm-home load'
+alias H='{ type deactivate && deactivate } >/dev/null; tm-home load'
 header() { clear && eval "$@" && echo; }
 help() { bash -c "help $*"; }
 alias htime='hyperfine'
@@ -414,6 +415,7 @@ alias vwb='vim $HOME/Sync/bin/cron/cron.weekly/*'
 alias vweekly='vgtd-weekly-review'
 alias vx='vv_push ~/.xmonad'
 alias vxorg='sudo -E vim /etc/X11/xorg.conf.d/*'
+alias w.='workon .'
 alias w='which'
 alias watdst='watch -n 5 dropbox-cli status'
 alias wcut='watson stop && wedit && watson restart'
@@ -433,3 +435,139 @@ alias xmonad-keycodes='vim /usr/include/X11/keysymdef.h'
 alias xs='xspawn'
 ytd() { pushd "${HOME}"/Downloads &> /dev/null || return 1 && youtube-dl "$(xclip -sel clipboard -out)" --output "$1"; popd &> /dev/null || return 1; }
 alias zath='xspawn zathura && xdotool key super+f'
+
+###############################################################################
+#  Multi-line Functions                                                       #
+###############################################################################
+PRIVATE_PYPACKS=(
+    bump2version
+    ipython
+    pip-tools
+    pudb
+    pytest-xdist
+)
+
+_FIRST_BB_HEADER=true
+function bb_header() {
+    if [[ "${_FIRST_BB_HEADER}" = true ]]; then
+        _FIRST_BB_HEADER=false
+    else
+        printf "\n"
+    fi
+
+    printf ">>> %s\n" "$(printf "$@")"
+}
+
+function bb_imsg() {
+    bb_header "$@"
+    _FIRST_BB_HEADER=true
+}
+
+# Wrapper for virtualenvwrapper's mkvirtualenv().
+function bb_mkvirtualenv() {
+    _FIRST_BB_HEADER=true
+
+    local master_pack_name="$(basename "${PWD}")"
+    if [[ " $(lsvirtualenv -b | tr '\n' ' ') " == *" ${master_pack_name} "*  ]]; then
+        printf 1>&2 "The '%s' virtual environment already exists.\n" "${master_pack_name}"
+        return 1
+    fi
+
+    if [[ "$1" == "-r" ]]; then
+        shift
+
+        if [[ -z "$1" ]]; then
+            printf 1>&2 "usage: bb_mkvirtualenv [-r REQFILE] [MKVIRTUALENV_OPTS ...]\n"
+            return 2
+        fi
+
+        local reqfile="$1"
+        shift
+
+        if ! [[ -f "${reqfile}" ]]; then
+            printf 1>&2 "The requirements file specified by the -r option does not exist: %s\n" "${reqfile}"
+            return 1
+        fi
+    elif [[ -f requirements-dev.txt ]]; then
+        local reqfile=requirements-dev.txt
+    elif [[ -f requirements.txt ]]; then
+        local reqfile=requirements.txt
+    fi
+
+    bb_header "Creating new venv using mkvirtualenv..."
+    if ! mkvirtualenv "$@" "${master_pack_name}"; then
+        printf 1>&2 "The mkvirtualenv command failed.\n"
+        return 1
+    fi
+
+    if [[ -n "${reqfile}" ]]; then
+        echo "${reqfile}" > "${VIRTUAL_ENV}"/.reqfile
+
+        bb_header "Installing pacakges listed in requirements file: %s" "${reqfile}"
+        pip install -U -r "${reqfile}"
+    else
+        bb_imsg "No requirements file found. Skipping installation of requirements file packages."
+    fi
+
+    bb_header "Installing private packaages: ${PRIVATE_PYPACKS[*]}"
+    pip install -U "${PRIVATE_PYPACKS[@]}"
+
+    if [[ -f setup.py ]]; then
+        bb_header "Installing the '%s' package in development mode..." "${master_pack_name}"
+        pip install -e .
+    else
+        bb_imsg "No setup.py file found. Skipping '%s' package install." "${master_pack_name}"
+    fi
+}
+
+# Sync a virtualenv which was created using bb_mkvirtualenv().
+function bb_sync_venv() {
+    _FIRST_BB_HEADER=true
+
+    local master_pack_name="$(basename "${PWD}")"
+    if [[ -z "${VIRTUAL_ENV}" ]]; then
+        if workon .; then
+            bb_imsg "Sourcing the '%s' virtual environment..." "${master_pack_name}"
+        else
+            printf 1>&2 "The bb_sync_venv() function can only be called AFTER a virtual environment has already been activated OR when inside of a directory where \`workon .\` works.\n"
+            return 1
+        fi
+    fi
+
+    local reqfile_pathfile="${VIRTUAL_ENV}"/.reqfile
+    if [[ -f "${reqfile_pathfile}" ]]; then
+        local reqfile="$(cat "${reqfile_pathfile}")"
+        
+        if ! [[ -f "${reqfile}" ]]; then
+            printf 1>&2 "The requirements file listed in %s does not exist: %s\n" "${reqfile_pathfile}" "${reqfile}"
+            return 1
+        fi
+
+        bb_header "Syncing packages listed in requirements file: %s" "${reqfile}"
+        python -m piptools sync "${reqfile}"
+    else
+        bb_imsg "No requirements file found. Skipping requirements file sync."
+    fi
+
+    bb_header "Updating private packages: ${PRIVATE_PYPACKS[*]}"
+    pip install -U "${PRIVATE_PYPACKS[@]}"
+
+    if [[ -f setup.py ]]; then
+        bb_header "Updating the '%s' package..." "${master_pack_name}"
+        pip install -e .
+    else
+        bb_imsg "No setup.py file found. Skipping '%s' package update." "${master_pack_name}"
+    fi
+}
+
+# Wraps a command that will fail if a virtualenv is currently activated.
+function no_venv() {
+    old_venv="${VIRTUAL_ENV}"
+    type deactivate &>/dev/null && deactivate
+
+    eval "$@"
+
+    if [[ -n "${old_venv}" ]]; then
+        source "${old_venv}"/bin/activate
+    fi
+}
