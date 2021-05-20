@@ -1,2 +1,4 @@
 [user]
 	email = bbugyi@bloomberg.net
+[hub]
+	host = bbgithub.dev.bloomberg.com

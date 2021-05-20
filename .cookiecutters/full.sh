@@ -6,7 +6,7 @@ EOM
 
 source bugyi.sh
 
-main() {
+function main() {
     parse_cli_args "$@"
 }
 

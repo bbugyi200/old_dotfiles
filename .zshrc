@@ -173,19 +173,22 @@ function cmd_exists() { command -v "$1" &>/dev/null; }
 # pyenv
 export PATH="/home/bryan/.pyenv/bin:$PATH"
 if cmd_exists pyenv && [[ -z "${VIRTUAL_ENV}" ]]; then
+    eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
 
 cmd_exists starship && eval "$(starship init zsh)"
 
-# configure pipx work settings
+# configure python work settings (e.g. pipx and pip.conf)
 if [[ "${PWD}" == "$HOME/projects/work/"* ]]; then
     company="$(echo "${PWD}" | perl -nE 'print s{.*work/([^/]*)(/.*)?}{\1}gr')"
     work_dir="${HOME}/projects/work/${company}"
 
     export PIPX_HOME="${work_dir}/.local/pipx"
+    [[ -d "${PIPX_HOME}" ]] || mkdir -p "${PIPX_HOME}"
     export PIPX_BIN_DIR="${work_dir}/.local/bin"
+    [[ -d "${PIPX_BIN_DIR}" ]] || mkdir -p "${PIPX_BIN_DIR}"
     export PATH="${PIPX_BIN_DIR}":"${PATH}"
 
     export PIP_CONFIG_FILE="${work_dir}"/pip.conf

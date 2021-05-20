@@ -132,10 +132,12 @@ bar() { i=0; while [[ $i -lt "$1" ]]; do printf "*"; i=$((i+1)); done; printf "\
 alias bb='http_proxy=http://C02DR3Z2MD6R:8888 https_proxy=http://C02DR3Z2MD6R:8888 HTTP_PROXY=http://C02DR3Z2MD6R:8888 HTTPS_PROXY=http://C02DR3Z2MD6R:8888'
 alias bb_docker='docker --config /home/bryan/projects/work/bloomberg/.docker'
 alias bb_pip_install='python -m pip install --index-url="http://artprod.dev.bloomberg.com/artifactory/api/pypi/bloomberg-pypi/simple" --proxy=192.168.1.198:8888 -U --trusted-host artprod.dev.bloomberg.com'
+alias bbhub='bb GITHUB_TOKEN=$(pass show bbgithub\ Personal\ Access\ Token) hub'
 alias bbs='PYTHONPATH=$PYTHONPATH:$(pysocks_site_packages) HTTPS_PROXY=socks5h://127.0.0.1:8080'
 alias bbssh='command bbssh $(pass show bloomberg_ssh_password)'
 alias bbtmp='scp -r "devnjbvlt01.bloomberg.com:/home/bbugyi/tmp/*" $HOME/projects/work/bloomberg/tmp/bb'
 alias bc='branch_changes'
+alias bcstat='git diff --stat $(git merge-base HEAD "${REVIEW_BASE:-master}")'
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 alias books='vim ~/Sync/var/notes/Journal/books.txt'
 box() { blen=$((4 + ${#1})); bar "${blen}"; printf "* %s *\n" "$1"; bar "${blen}"; }
@@ -158,9 +160,9 @@ cprof() { python -m cProfile -s "$@" | less; }
 alias crun='cargo run --'
 cval() { pushd "$1" &> /dev/null || return 1 && eval "$2"; popd &> /dev/null || return 1; }
 alias d.='desk .'
-alias d='mkdvtm'
+alias d='docker'
 alias dayplan='cd $HOME/Sync/var/notes && vim dayplan.txt'
-dc() { sudo -E deluge-console "${@}"; }
+alias dc='docker-compose'
 dci() { dc info --sort=time_added | awk -F ':' "{if(\$1==\"$1\")print \$0}"; }
 alias ddef='def -m DEBIAN'
 alias ddwrt-logs='sim /var/log/syslog-ddwrt'
@@ -170,6 +172,7 @@ alias dff='df -x tmpfs -x squashfs -x devtmpfs -h'
 dg() { { box "ALIAS DEFINITIONS"; alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"; printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | ${SED} '/^$/d' | ${SED} '/^_.\+ () {/,/^}$/d' | ${SED} 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | ${SED} '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | ${SED} 's/ {$/:/g' | ${SED} '/--$/d' | ${SED} 'N;s/\:\n/: /g' | ${SED} 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"; printf "\n"; box "SCRIPT CONTENTS"; rg -s -C 5 -p "$@" ~/Sync/bin; }; }
 dgw() { dg "\W$1\W"; }
 diff() { colordiff -wy -W "$(tput cols)" "$@" | less -R; }
+alias dnd='do_not_disturb'
 alias dst='dropbox-cli status'
 alias dstart='dropbox-cli start'
 alias dstop='dropbox-cli stop'
@@ -229,7 +232,7 @@ gN1() { git_current_branch > /tmp/gnext-branch.txt && gN "$@"; }
 alias gn='gnext'
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
 alias gpf='git push --force'
-alias gpr='no_venv github_pull_request -T $(pass show bbgithub\ Personal\ Access\ Token) -u bbugyi -x socks5h://127.0.0.1:8080'
+alias gpr='PYTHONPATH=$PYTHONPATH:$(pysocks_site_packages) github_pull_request -T $(pass show bbgithub\ Personal\ Access\ Token) -u bbugyi -x socks5h://127.0.0.1:8080'
 alias gprm='gpup "Docs: Update README"'
 gpu() { git push -u origin "$(git_current_branch)"; }
 alias gpull='git stash && git pull && git stash apply'
@@ -440,7 +443,6 @@ alias zath='xspawn zathura && xdotool key super+f'
 #  Multi-line Functions                                                       #
 ###############################################################################
 PRIVATE_PYPACKS=(
-    bump2version
     ipython
     pip-tools
     pudb

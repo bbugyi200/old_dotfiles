@@ -49,20 +49,23 @@ def get_top_link(query: str) -> str:
     try:
         html = _fetch_results(query)
     except requests.exceptions.HTTPError as e:
-        return e.response.url
+        result: str = e.response.url
+        return result
 
     soup = BeautifulSoup(html, 'html.parser')
     a_tags = soup.find_all("a", href=True)
     for a_tag in a_tags:
         match = re.match(r"^/url\?q=(.*?)&.*$", a_tag['href'])
         if match:
-            return match.group(1)
+            result = match.group(1)
+            return result
 
     div_tags = soup.find_all('div', attrs={'class': 'g'})
     for div_tag in div_tags:
         a_tag = div_tag.find('a', href=True)
         if a_tag and a_tag != '#' and re.match('^http[s]?://', a_tag['href']):
-            return a_tag['href']
+            result = a_tag['href']
+            return result
 
     return 'https://www.google.com/search?q={}'.format(utils.encode(query))
 

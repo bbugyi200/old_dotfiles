@@ -314,7 +314,7 @@ myAdditionalKeys = [
    , ((alpha .|. chi, h), sendMessage Shrink)
    , ((alpha, i), do
            spawn "bash -c '[[ $(wmctrl -lx | grep \"qutebrowser\" | wc -l) -lt 2 ]] && wmctrl -a qutebrowser'"
-           launchApp "web" "qutebrowser" "qutebrowser --debug 2>> /var/tmp/qutebrowser.log"
+           launchApp "web" "qutebrowser" "qutebrowser --debug 2>> /var/tmp/qutebrowser.$(date +'%Y-%m-%d').log"
      )
    , ((alpha, j), N2D.windowGo N2D.D True)
    , ((alpha .|. beta, j), sendMessage RT.MirrorShrink) -- Shrink Master Area
@@ -338,7 +338,6 @@ myAdditionalKeys = [
            new_sid <- gets (W.screen . W.current . windowset)
            when (orig_sid /= new_sid) $ goToLastMonitor (show orig_sid) (show new_sid)
      )
-   , ((alpha, p), launchApp "dev" "" "mkdvtm es-prod")
    , ((alpha, q), spawn "qb_prompt")
    , ((alpha .|. beta .|. chi, q), do
            spawn "sync"

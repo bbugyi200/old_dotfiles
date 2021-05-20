@@ -2,6 +2,7 @@ a https://www.amazon.com/
 A https://www.amazon.com/gp/your-account/order-history?ref_=ya_d_c_yo
 amc https://www.amctheatres.com/movie-theatres/philadelphia/amc-marketfair-10
 b401k https://bloomberg401k.empower-retirement.com/participant/accounts/#/account/23212905/150112-01/account-details
+bart https://artprod.dev.bloomberg.com/artifactory/webapp/#/home
 bart-python http://artprod.dev.bloomberg.com/artifactory/bb-python-release/
 bas https://basvoyager.dev.bloomberg.com/
 bba https://bba.bloomberg.net/
@@ -53,6 +54,7 @@ bte https://cms.prod.bloomberg.com/team/display/CSRE
 btrain https://bbgithub.dev.bloomberg.com/training-materials
 btu https://tutti.prod.bloomberg.com/
 CC https://codecov.io/gh
+cc https://cookscornershop.com/
 C https://calendar.google.com/calendar/u/1/r?pli=1
 cmpv https://mpv.io/manual/master/#command-interface
 cov file:///Users/bbugyi/Sync/var/projects/edgelp/prod/htmlcov/index.html
@@ -145,6 +147,7 @@ HN https://news.ycombinator.com/
 HNN https://news.ycombinator.com/newest
 hound http://localhost:6080/
 ieee https://www.computer.org/csdl/magazine/so
+ifttt https://ifttt.com/home
 jcmap https://jerseycity.carto.com/builder/2d373196-8aee-11e5-99ea-0e5db1731f59/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B40.669636890290256%2C-74.17410850524904%5D%2C%22sw%22%3A%5B40.75538459186637%2C-73.96674156188966%5D%2C%22center%22%3A%5B40.7125245446439%2C-74.07042503356935%5D%2C%22zoom%22%3A13%7D%7D
 j http://zguide.zeromq.org/page:chapter2#Working-with-Messages
 last https://superuser.com/questions/185773/does-windows-7-support-utc-as-bios-time
@@ -225,5 +228,7 @@ zmq http://zguide.zeromq.org/page:all#toc6
 zse https://www.zillow.com/homes/secaucus,-NJ_rb/
 zumc https://www.zillow.com/homes/Upper-Montclair,-Montclair,-NJ_rb/
 zwe https://www.zillow.com/homes/Weehawken,-NJ_rb/
-zwf https://www.zillow.com/westfield-nj/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%22Westfield%2C%20NJ%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.41207779943849%2C%22east%22%3A-74.28007020056154%2C%22south%22%3A40.62182714948036%2C%22north%22%3A40.68476252391752%7D%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A27896%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22ah%22%3A%7B%22value%22%3Atrue%7D%2C%22price%22%3A%7B%22min%22%3A500000%2C%22max%22%3A900000%7D%2C%22mp%22%3A%7B%22min%22%3A1670%2C%22max%22%3A3007%7D%7D%2C%22isListVisible%22%3Atrue%2C%22mapZoom%22%3A15%7D
-ifttt https://ifttt.com/home
+zwf https://www.zillow.com/westfield-nj/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%22Westfield%2C%20NJ%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.4104041010132%2C%22east%22%3A-74.27839650213625%2C%22south%22%3A40.617918185380134%2C%22north%22%3A40.68085724503117%7D%2C%22mapZoom%22%3A15%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A27896%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A400000%2C%22max%22%3A900000%7D%2C%22mp%22%3A%7B%22max%22%3A3007%2C%22min%22%3A1329%7D%2C%22ah%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%7D
+gdocs https://docs.google.com/document/u/1/?tgif=d
+gsheets https://docs.google.com/spreadsheets/u/1/?tgif=d
+bgo https://gogl.prod.bloomberg.com/search?q=

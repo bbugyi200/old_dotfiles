@@ -183,9 +183,11 @@ def setup_search_engines() -> None:
         "bghc": "https://bbgithub.dev.bloomberg.com/ComplianceSRE/{}",
         "bghe": "https://bbgithub.dev.bloomberg.com/EquitySRE/{}",
         "bghp": "https://bbgithub.dev.bloomberg.com/python/{}",
+        "bgo": "https://gogl.prod.bloomberg.com/search?q={}&p=0",
         "bguts": "https://guts.prod.bloomberg.com/machines-clusters/{}",
         "bi": "https://infr.prod.bloomberg.com/clusters/{}",
         "bj": "https://jira.prod.bloomberg.com/browse/CSRE-{}",
+        "bjaas": "https://bvault.jaas.dev.bloomberg.com/blue/pipelines/?search={}",
         "bmo": SE.SearchEngine(
             SE.static.google("best movies of 20{}"),
             SE.OneIntURL(SE.static.google("best {1} movies of 20{0}")),
@@ -354,7 +356,7 @@ def setup_cmd_aliases() -> None:
     }
 
     for i in range(1, 21):
-        command_aliases["b{}".format(i)] = "buffer {}".format(i)
+        command_aliases["b{}".format(i)] = "tab-select {}".format(i)
 
     c.aliases = command_aliases
 
