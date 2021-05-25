@@ -31,6 +31,9 @@ editor:
 
 qt:
     args: ["proxy-pac-url=file:///home/bryan/projects/work/bloomberg/proxy.pac"]
+    workarounds:
+        # https://github.com/qutebrowser/qutebrowser/issues/5656#issuecomment-768278151
+        remove_service_workers: true
 
 tabs:
     last_close: close

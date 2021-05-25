@@ -196,7 +196,7 @@ def setup_search_engines() -> None:
         "bp": "https://bbgithub.dev.bloomberg.com/pages/ComplianceSRE/{}.html",
         "btu": "https://tutti.prod.bloomberg.com/search/?q={}",
         "bte": "https://cms.prod.bloomberg.com/team/dosearchsite.action?queryString={}",
-        "bsor": "https://sor.bdns.bloomberg.com/ui/servers/hostname/{}",
+        "bsor": "https://sor.bdns.bloomberg.com/ui/servers/group/{}",
         "c": SE.static.stackoverflow(7, prefix="C"),
         "cc": SE.static.stackoverflow(5, prefix="C\\+\\+"),
         "DEFAULT": SE.SearchEngine(

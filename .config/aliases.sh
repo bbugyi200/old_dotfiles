@@ -183,6 +183,7 @@ alias epuse='sudo -E epuse'
 _essh() { printf 'cd ~/projects/edgelp/prod; source envs/dev.sh; cd %s; /bin/zsh' "$1"; }
 essh() { ssh "$1" -t "$(_essh "$2")"; }
 esssh() { essh "$1" /prod/home/bbugyi/src/prod; }
+farm() { ssh devnjbvlt01.bloomberg.com -t "bash -c 'PATH=/bb/bin:/opt/bb/bin:\$PATH $*'"; }
 fim() { file="$("$(which -a fim | tail -n 1)" "$1")"; if [[ -z "${file}" ]]; then return 1; else vim "${file}"; fi; }
 alias flaggie='sudo -i flaggie'
 alias fn='noglob fn_'
@@ -232,7 +233,7 @@ gN1() { git_current_branch > /tmp/gnext-branch.txt && gN "$@"; }
 alias gn='gnext'
 alias gpa='git commit -v -a --no-edit --amend && git push --force'
 alias gpf='git push --force'
-alias gpr='PYTHONPATH=$PYTHONPATH:$(pysocks_site_packages) github_pull_request -T $(pass show bbgithub\ Personal\ Access\ Token) -u bbugyi -x socks5h://127.0.0.1:8080'
+alias gpr='PYTHONPATH=$PYTHONPATH:$(pysocks_site_packages) no_venv github_pull_request -T $(pass show bbgithub\ Personal\ Access\ Token) -u bbugyi -x socks5h://127.0.0.1:8080'
 alias gprm='gpup "Docs: Update README"'
 gpu() { git push -u origin "$(git_current_branch)"; }
 alias gpull='git stash && git pull && git stash apply'
@@ -379,6 +380,7 @@ alias va='vv_push $HOME/projects/ansible_config'
 vab() { vim $(find "$HOME"/Sync/bin/cron.jobs -type f | sort | tr '\n' ' '); }
 alias valg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
 alias vb='vv_push $HOME/projects/pylibs'
+alias vbb='vv_push $HOME/projects/bashlibs'
 alias vbox='xspawn sudo virtualbox'
 alias vbt='vim ~/.local/share/torrent/*.txt'
 alias vbudget='pushd ~/projects/budget &>/dev/null && vim main.py && popd &>/dev/null'

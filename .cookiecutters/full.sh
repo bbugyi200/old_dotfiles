@@ -6,15 +6,15 @@ EOM
 
 source bugyi.sh
 
-function main() {
+function run() {
     parse_cli_args "$@"
 }
 
 function parse_cli_args() {
-    eval set -- "$(getopt -o "d,h" -l "debug,help" -- "$@")"
+    eval set -- "$(getopt -o "h,v" -l "help,verbose" -- "$@")"
 
     export USAGE_GRAMMAR=(
-        "[-d]"
+        "[-v]"
         "-h"
     )
 
@@ -25,21 +25,22 @@ $(usage)
 ${DOC}
 
 Optional Arguments:
-    -d | --debug
-        Enable debug mode.
-
     -h | --help
         View this help message.
+
+    -v | --verbose
+        Enable verbose output. This option can be specified multiple times (e.g. -v, -vv, ...).
 EOM
 
+    VERBOSE=0
     while [[ -n "$1" ]]; do
         case $1 in
-        -d | --debug)
-            debug=true
-            ;;
         -h | --help)
             echo "${help}"
             exit 0
+            ;;
+        -v | --verbose)
+            VERBOSE=$((VERBOSE + 1))
             ;;
         --)
             shift
@@ -49,12 +50,12 @@ EOM
         shift
     done
 
-    if [[ "${debug}" = true ]]; then
+    if [[ "${VERBOSE}" -gt 1 ]]; then
         PS4='$LINENO: '
         set -x
     fi
 }
 
 if [[ "${SCRIPTNAME}" == "$(basename "${BASH_SOURCE[0]}")" ]]; then
-    main "$@"
+    run "$@"
 fi
