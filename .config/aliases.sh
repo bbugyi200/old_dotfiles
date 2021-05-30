@@ -6,6 +6,7 @@
 
 # shellcheck disable=SC1010
 # shellcheck disable=SC2009
+# shellcheck disable=SC2029
 # shellcheck disable=SC2079
 # shellcheck disable=SC2142
 # shellcheck disable=SC2154
@@ -183,7 +184,6 @@ alias epuse='sudo -E epuse'
 _essh() { printf 'cd ~/projects/edgelp/prod; source envs/dev.sh; cd %s; /bin/zsh' "$1"; }
 essh() { ssh "$1" -t "$(_essh "$2")"; }
 esssh() { essh "$1" /prod/home/bbugyi/src/prod; }
-farm() { ssh devnjbvlt01.bloomberg.com -t "bash -c 'PATH=/bb/bin:/opt/bb/bin:\$PATH $*'"; }
 fim() { file="$("$(which -a fim | tail -n 1)" "$1")"; if [[ -z "${file}" ]]; then return 1; else vim "${file}"; fi; }
 alias flaggie='sudo -i flaggie'
 alias fn='noglob fn_'
@@ -335,7 +335,6 @@ alias rrg='cat "$RECENTLY_EDITED_FILES_LOG" | sudo xargs rg 2> /dev/null'
 alias sat='sudo cat'
 alias sc='sudo systemctl'
 alias sch='vim ~/Sync/var/notes/Rutgers/course_schedule.txt'
-scp2farm() { scp "$1" devnjbvlt01.bloomberg.com:/home/bbugyi/"$2"; }
 scp2mac() { scp "$1" bbmacbook:/Users/bbugyi/"$2"; }
 scp3farm() { scp devnjbvlt01.bloomberg.com:/home/bbugyi/"$1" "$2"; }
 scp3mac() { scp bbmacbook:/Users/bbugyi/"$1" "$2"; }
@@ -349,7 +348,6 @@ alias ssh-aphrodite='ssh 192.168.1.193'
 alias ssh-artemis="ssh bryan@67.207.92.152"
 alias ssh-athena-tm='ssh-athena /home/bryan/.local/bin/tm Terminal'
 ssh-rutgers() { ssh bmb181@"${1:-less}".cs.rutgers.edu; }
-sshdev() { sshpass -p "$(pass show bbugyi@bb)" ssh "$1".bloomberg.com "${@:2}"; }
 alias su='su -p'
 alias sudo='sudo -E '  # makes aliases visible to sudo
 alias sudoers='sudo -E vim /etc/sudoers'
@@ -425,6 +423,7 @@ alias w='which'
 alias watdst='watch -n 5 dropbox-cli status'
 alias wcut='watson stop && wedit && watson restart'
 wdiff() { /usr/bin/wdiff -n -w "$(tput bold;tput setaf 1)" -x "$(tput sgr0)" -y "$(tput setaf 2)" -z "$(tput sgr0)" "$@" | less -R; }
+alias wj='vim + ~/Sync/var/notes/Journal/work_jrnl.txt'
 alias wkill='wtoggle && wdel'
 alias wm='wmctrl'
 alias wma='wmctrl -a'

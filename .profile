@@ -76,6 +76,7 @@ export DB="$HOME"/Sync
 export DBB="$DB"/bin
 export DBH="$DB"/home
 export MOV=/mnt/hercules/plex/Movies
+export MY_UUID=30634818
 export TV=/mnt/hercules/plex/TV
 
 # >>> Filesystem Paths
@@ -92,6 +93,7 @@ if [[ "$(id -u)" = 0 ]]; then
 fi
 
 # >>> Miscellaneous
+export ANSIBLE_NOCOWS=1
 export EDITOR="$(command -v vim)"  # I set this so the crontab would use vim for editing
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export FZF_DEFAULT_OPTS='--reverse --height 40% --border'
