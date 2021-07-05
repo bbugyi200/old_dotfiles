@@ -342,6 +342,22 @@ alias activate='source venv/bin/activate'
 addgroup() { sudo usermod -aG "$1" bryan; }
 alias ag='ag --hidden'
 alias anki='xspawn anki'
+auto() {
+    nohup autodemo "$@" &>/dev/null &
+    disown && clear
+}
+bar() {
+    i=0
+    while [[ $i -lt "$1" ]]; do
+        printf "*"
+        i=$((i + 1))
+    done
+    printf "\n"
+}
+bb() { (
+    source bb_proxies.sh
+    "$@"
+); }
 alias bb_docker='docker --config /home/bryan/projects/work/bloomberg/.docker'
 alias bb_pip_install='python -m pip install --index-url="http://artprod.dev.bloomberg.com/artifactory/api/pypi/bloomberg-pypi/simple" --proxy=192.168.1.198:8888 -U --trusted-host artprod.dev.bloomberg.com'
 alias bbhub='bb GITHUB_TOKEN=$(pass show bbgithub\ Personal\ Access\ Token) hub'
@@ -352,12 +368,33 @@ bc() { MASTER_BRANCH="${1:-"${MASTER_BRANCH:-master}"}" branch_changes; }
 alias bcstat='git diff --stat $(git merge-base HEAD "${REVIEW_BASE:-master}")'
 bgdb() { gdb "$1" -ex "b $2" -ex "run"; }
 alias books='vim ~/Sync/var/notes/Journal/books.txt'
+box() {
+    blen=$((4 + ${#1}))
+    bar "${blen}"
+    printf "* %s *\n" "$1"
+    bar "${blen}"
+}
 alias budget='python3 $HOME/Sync/var/projects/budget/main.py'
 alias bw='sudo bandwhich'
 alias c='cookie'
 cat() { if [[ -r "$1" ]]; then bat "$@"; else sudo -E bat "$@"; fi; }
 alias ccat='pygmentize -g'
 ccd() { cd "$HOME/.cookiecutters/$1/{{ cookiecutter.project|lower }}" &>/dev/null || return 1; }
+cd_sandbox() { # cd into sandbox directory based on today's date
+    local sb_dir
+    sb_dir="$(sandbox "$@")"
+    local ec=$?
+    if [[ "${ec}" -eq 0 ]]; then
+        cd "${sb_dir}" && itree
+
+        if [[ -d venv ]]; then
+            source venv/bin/activate
+            pip list
+        fi
+    else
+        return "${ec}"
+    fi
+}
 alias cdef='def -m COOKIE'
 alias cdow='cd "$(dow_dir $PWD)"'
 cdw() { cd "$@" && workon .; }
@@ -369,6 +406,10 @@ alias cplug='vim +PluginClean +qall'
 alias cppinit='cinit ++'
 cprof() { python -m cProfile -s "$@" | less; }
 alias crun='cargo run --'
+cval() {
+    pushd "$1" &>/dev/null || return 1 && eval "$2"
+    popd &>/dev/null || return 1
+}
 alias d.='desk .'
 alias d='docker'
 alias dayplan='cd $HOME/Sync/var/notes && vim dayplan.txt'
@@ -379,6 +420,14 @@ alias ddwrt-logs='sim /var/log/syslog-ddwrt'
 alias del_swps='find . -name "*.swp" -delete -print'
 alias delshots='confirm "find $HOME/Sync/var/aphrodite-motion -name \"*$(date +%Y%m%d)*\" -delete"'
 alias dff='sudo df -x tmpfs -x squashfs -x devtmpfs -x fuse.encfs -x overlay -h'
+dg() { {
+    box "ALIAS DEFINITIONS"
+    alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"
+    printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | ${SED} '/^$/d' | ${SED} '/^_.\+ () {/,/^}$/d' | ${SED} 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | ${SED} '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | ${SED} 's/ {$/:/g' | ${SED} '/--$/d' | ${SED} 'N;s/\:\n/: /g' | ${SED} 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"
+    printf "\n"
+    box "SCRIPT CONTENTS"
+    rg -s -C 5 -p "$@" ~/Sync/bin
+}; }
 dgw() { dg "\W$1\W"; }
 diff() { colordiff -wy -W "$(tput cols)" "$@" | less -R; }
 alias dnd='do_not_disturb'
@@ -395,7 +444,16 @@ esssh() { essh "$1" /prod/home/bbugyi/src/prod; }
 alias farmd='farm -D'
 alias farmh='farm -H'
 farmpc() { farm -H $(farm bbhost -m "$1" | sort -u | head -n 1) "${@:2}"; }
+farms() { (
+    source bb_farm.sh
+    bbsync "$@"
+); }
+alias farmsd='farms && farmd'
 alias fav='fav_clips'
+fim() {
+    file="$("$(which -a fim | tail -n 1)" "$1")"
+    if [[ -z "${file}" ]]; then return 1; else vim "${file}"; fi
+}
 alias flaggie='sudo -i flaggie'
 alias fn='noglob fn_'
 fn_() { if [[ "$1" == *"*"* ]]; then find . -iname "$@"; else find . -iname "*$**"; fi; }
@@ -409,6 +467,16 @@ alias gau='git add -v --update'
 alias gbb='git branch --sort=-committerdate | less'
 alias gbcopy='gcopy --body'
 gca() { if [[ -n "$1" ]]; then git commit -v -a -m "$1"; else git commit -v -a; fi; }
+gcB() {
+    gbD "$1" &>/dev/null
+    git checkout -b "$1" "${2:-upstream}"/"$1"
+}
+gcbb() { git checkout -b CSRE-"$1"; }
+gcbc() { git checkout -b "$@" && git commit --allow-empty; }
+gcbd() {
+    if [[ -z "$1" ]]; then return 1; fi
+    gcb "$(date +"%y.%m")"-"$1"
+}
 alias gce='git commit --allow-empty'
 alias gcignore='git add .gitignore && git commit -m "Update: .gitignore file"'
 gcl() { cd "$("$HOME"/.local/bin/gcl "$@")" || return 1; }
@@ -468,6 +536,12 @@ header() { clear && eval "$@" && echo; }
 help() { bash -c "help $*"; }
 alias htime='hyperfine'
 alias htop='sudo htop'
+info() {
+    pinfo "$@" || {
+        printf "\n===== APROPOS OUTPUT =====\n"
+        apropos "$@"
+    }
+}
 alias iotop='sudo iotop'
 alias ipdb='ipdb3'
 alias iplug='vim +PluginInstall +qall'
@@ -504,6 +578,16 @@ alias mrun='macrun'
 alias multivisor-cli='multivisor-cli --url athena:8100'
 alias mv="mv -i"
 alias myip='ip addr | grep -P -o "192.168.1.[0-9]+" | grep -v 192.168.1.255'
+no_venv() { # Wraps a command that will fail if a virtualenv is currently activated.
+    old_venv="${VIRTUAL_ENV}"
+    type deactivate &>/dev/null && deactivate
+
+    eval "$@"
+
+    if [[ -n "${old_venv}" ]]; then
+        source "${old_venv}"/bin/activate
+    fi
+}
 alias noeye='eye --purge-eye'
 alias nomirror='xrandr --output DVI-I-1-1 --auto --right-of LVDS1'
 alias notes='pushd ~/Sync/var/notes/Journal &> /dev/null && ranger && popd &> /dev/null'
@@ -537,6 +621,14 @@ alias Q='tm-kill'
 alias q='{ sleep 0.1 && tm-fix-layout; } & disown && exit'
 alias rag='cat $RECENTLY_EDITED_FILES_LOG | sudo xargs ag 2> /dev/null'
 alias reboot='sudo reboot'
+ripmov() {
+    nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &>/dev/null &
+    disown
+}
+riptv() {
+    nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &>/dev/null &
+    disown
+}
 alias Rm='command rm'
 alias rm='trash'
 alias rng='ranger'
@@ -632,6 +724,10 @@ alias w.='workon .'
 alias w='which'
 alias watdst='watch -n 5 dropbox-cli status'
 alias wcut='watson stop && wedit && watson restart'
+wdiff() { /usr/bin/wdiff -n -w "$(
+    tput bold
+    tput setaf 1
+)" -x "$(tput sgr0)" -y "$(tput setaf 2)" -z "$(tput sgr0)" "$@" | less -R; }
 alias wj='vim + ~/Sync/var/notes/Journal/work_jrnl.txt'
 alias wkill='wtoggle && wdel'
 alias wm='wmctrl'
@@ -646,104 +742,8 @@ alias xdokey='xev -event keyboard'
 alias xk='xdokey'
 alias xmonad-keycodes='vim /usr/include/X11/keysymdef.h'
 alias xs='xspawn'
-alias zath='xspawn zathura && xdotool key super+f'
-auto() {
-    nohup autodemo "$@" &>/dev/null &
-    disown && clear
-}
-bar() {
-    i=0
-    while [[ $i -lt "$1" ]]; do
-        printf "*"
-        i=$((i + 1))
-    done
-    printf "\n"
-}
-bb() { (
-    source bb_proxies.sh
-    "$@"
-); }
-box() {
-    blen=$((4 + ${#1}))
-    bar "${blen}"
-    printf "* %s *\n" "$1"
-    bar "${blen}"
-}
-cval() {
-    pushd "$1" &>/dev/null || return 1 && eval "$2"
-    popd &>/dev/null || return 1
-}
-dg() { {
-    box "ALIAS DEFINITIONS"
-    alias | grep --color=never -E "=.*$1" | grep --color=always -E "$1"
-    printf "\n" && box "FUNCTION DEFINITIONS" && typeset -f | ${SED} '/^$/d' | ${SED} '/^_.\+ () {/,/^}$/d' | ${SED} 's/^}$/}\n/g' | grep --color=never -E " \(\) |$*" | ${SED} '/--$/d' | grep --color=never -B 1 -E "$1[^\(]*$" | grep --color=never --invert-match -E "$1.*\(\)" | grep -B 1 -E "$1" --color=never | ${SED} 's/ {$/:/g' | ${SED} '/--$/d' | ${SED} 'N;s/\:\n/: /g' | ${SED} 's/ ()\:\s*/(): /g' | grep -E "(): " | grep --color=always -E "$@"
-    printf "\n"
-    box "SCRIPT CONTENTS"
-    rg -s -C 5 -p "$@" ~/Sync/bin
-}; }
-farms() { (
-    source bb_farm.sh
-    bbsync "$@"
-); }
-alias farmsd='farms && farmd'
-fim() {
-    file="$("$(which -a fim | tail -n 1)" "$1")"
-    if [[ -z "${file}" ]]; then return 1; else vim "${file}"; fi
-}
-gcB() {
-    gbD "$1" &>/dev/null
-    git checkout -b "$1" "${2:-upstream}"/"$1"
-}
-gcbb() { git checkout -b CSRE-"$1"; }
-gcbc() { git checkout -b "$@" && git commit --allow-empty; }
-gcbd() {
-    if [[ -z "$1" ]]; then return 1; fi
-    gcb "$(date +"%y.%m")"-"$1"
-}
-info() {
-    pinfo "$@" || {
-        printf "\n===== APROPOS OUTPUT =====\n"
-        apropos "$@"
-    }
-}
-ripmov() {
-    nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/Movies "$@" &>/dev/null &
-    disown
-}
-riptv() {
-    nohup torrent -dv -w /media/bryan/hercules/media/Entertainment/TV "$@" &>/dev/null &
-    disown
-}
-wdiff() { /usr/bin/wdiff -n -w "$(
-    tput bold
-    tput setaf 1
-)" -x "$(tput sgr0)" -y "$(tput setaf 2)" -z "$(tput sgr0)" "$@" | less -R; }
 ytd() {
     pushd "${HOME}"/Downloads &>/dev/null || return 1 && youtube-dl "$(xclip -sel clipboard -out)" --output "$1"
     popd &>/dev/null || return 1
 }
-cd_sandbox() { # cd into sandbox directory based on today's date
-    local sb_dir
-    sb_dir="$(sandbox "$@")"
-    local ec=$?
-    if [[ "${ec}" -eq 0 ]]; then
-        cd "${sb_dir}" && itree
-
-        if [[ -d venv ]]; then
-            source venv/bin/activate
-            pip list
-        fi
-    else
-        return "${ec}"
-    fi
-}
-no_venv() { # Wraps a command that will fail if a virtualenv is currently activated.
-    old_venv="${VIRTUAL_ENV}"
-    type deactivate &>/dev/null && deactivate
-
-    eval "$@"
-
-    if [[ -n "${old_venv}" ]]; then
-        source "${old_venv}"/bin/activate
-    fi
-}
+alias zath='xspawn zathura && xdotool key super+f'
