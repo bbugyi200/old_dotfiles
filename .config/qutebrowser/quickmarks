@@ -32,11 +32,11 @@ bhub https://hub.dx.bloomberg.com/
 bhum https://humio.prod.bloomberg.com/home?page=1&search=&tab=repos
 bi https://infr.prod.bloomberg.com/clusters
 bjaas https://bvault.jaas.dev.bloomberg.com/blue/pipelines
-bjb https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=14020&projectKey=CSRE&quickFilter=90233
-bjbl https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=14020&projectKey=CSRE&view=planning&issueLimit=100
+bjb https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=14020&projectKey=CSRE&view=planning&issueLimit=100
 bjd https://jira.prod.bloomberg.com/secure/Dashboard.jspa
 bj https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=14020&projectKey=CSRE
 bjkermit https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=8524&projectKey=EN3BVS
+bjme https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=14020&projectKey=CSRE&quickFilter=90233
 bj-old https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=9124&view=detail&selectedIssue=ENG3VLTSRE-313
 bjpi https://jira.prod.bloomberg.com/secure/RapidBoard.jspa?rapidView=12375&projectKey=EN3BVS
 bkernel https://kernel.bloomberg.com/
@@ -138,6 +138,7 @@ gft https://github.com/bbugyi200/funky/graphs/traffic
 gh https://github.com/bbugyi200
 ghi https://gitlab.pr.edgelp.net/edgelp/prod/issues
 ghn https://github.com/
+ghpr https://github.com/pulls
 ghr https://github.com/bbugyi200?tab=repositories
 G https://mail.google.com/mail/u/0/?pli=1#inbox
 g https://www.google.com/
@@ -178,6 +179,7 @@ PL http://192.168.1.2:32400/web/index.html#
 pl https://www.cs.rutgers.edu/courses/314/classes/spring_2018_zhang/
 PLI http://bbugyi.ddns.net:32400/web/index.html
 PN https://news.python.sc/
+pr https://github.com/pulls
 r https://refactoring.guru/design-patterns/visitor
 R https://www.reddit.com/login/?dest=https%3A%2F%2Fwww.reddit.com%2Fmessage%2Finbox
 rl https://rocketleague.tracker.network/profile/ps/bbugyi
@@ -232,3 +234,5 @@ zse https://www.zillow.com/homes/secaucus,-NJ_rb/
 zumc https://www.zillow.com/homes/Upper-Montclair,-Montclair,-NJ_rb/
 zwe https://www.zillow.com/homes/Weehawken,-NJ_rb/
 zwf https://www.zillow.com/westfield-nj/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%22Westfield%2C%20NJ%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.4104041010132%2C%22east%22%3A-74.27839650213625%2C%22south%22%3A40.617918185380134%2C%22north%22%3A40.68085724503117%7D%2C%22mapZoom%22%3A15%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A27896%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A400000%2C%22max%22%3A900000%7D%2C%22mp%22%3A%7B%22max%22%3A3007%2C%22min%22%3A1329%7D%2C%22ah%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%7D
+e401k https://my.vanguardplan.com/vanguard/account/login
+bsca https://certmgt.admin.bloomberg.com/

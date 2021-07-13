@@ -1,0 +1,15 @@
+# ~/.config/tmuxinator/jedi.yml
+
+root: <%= @settings['root'] %>
+name: jedi
+
+on_project_start:
+on_project_stop:
+pre_window:
+
+windows:
+  - main:
+      layout: even-horizontal
+      panes:
+        - 0:
+            - ll

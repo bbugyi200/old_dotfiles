@@ -299,8 +299,9 @@ myAdditionalKeys = [
    , ((alpha .|. beta, xK_9), swapScreens "prev")
    , ((alpha .|. chi, xK_9), spawn "xkey Up")
    , ((alpha, b), spawn "clipster_rofi_menu") -- clipmenu
-   , ((alpha .|. beta, b), spawn "clipster -s")
+   , ((alpha .|. beta, b), spawn "fav_clips")
    , ((alpha .|. chi, b), launchApp "bba" "" "my_chrome https://bba.bloomberg.net")
+   , ((alpha .|. beta .|. chi, b), spawn "clipster -s")
    , ((alpha, c), do
             spawn "wmctrl -a Calendar"
             launchApp "cal" "Calendar" "my_firefox https://calendar.google.com/calendar/u/0/r/month?pli=1 &"
@@ -365,7 +366,7 @@ myAdditionalKeys = [
    , ((alpha, x), launchApp "term" "" myTerminal)
    , ((alpha .|. beta, x), launchApp "term'" "" "alacritty -t tmux_primes -e zsh -c 'tm-init-prime tmux_primes'")
    , ((alpha, v), launchApp "mpv" "" "umpv")
-   , ((alpha .|. beta, v), launchApp "room" "" "my_chrome")
+   , ((alpha .|. beta, v), launchApp "meet" "" "my_chrome https://live.blproom.com/rooms/16bfcc2d-a152-46eb-90da-4da58ca799e7")
    , ((alpha, z), launchApp "doc" "" "zathura")
    , ((alpha .|. beta, z), launchApp "doc'" "" "zcopy")
 

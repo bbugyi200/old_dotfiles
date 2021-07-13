@@ -15,11 +15,13 @@ core
 .env
 epatch.info
 .funky
+.fuse_hidden*
 .gdbinit
 *.gz
 htmlcov
 **/.lzshrc
 *.log
+.local_gitignore
 .lvimrc
 *.o
 *.out

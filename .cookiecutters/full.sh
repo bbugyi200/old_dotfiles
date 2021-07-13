@@ -7,7 +7,11 @@ EOM
 source bugyi.sh
 
 function run() {
+    setup_traps INT TERM
+
+    local cli_args=("$@")
     parse_cli_args "$@"
+    dmsg "Command-Line Arguments: (${cli_args[*]})"
 }
 
 function parse_cli_args() {
@@ -19,7 +23,7 @@ function parse_cli_args() {
     )
 
     # shellcheck disable=SC2154
-    read -r -d '' help <<EOM
+    read -r -d '' HELP <<EOM || [[ -n "${HELP}" ]]
 $(usage)
 
 ${DOC}
@@ -36,7 +40,7 @@ EOM
     while [[ -n "$1" ]]; do
         case $1 in
         -h | --help)
-            echo "${help}"
+            echo "${HELP}"
             exit 0
             ;;
         -v | --verbose)
@@ -54,6 +58,10 @@ EOM
         PS4='$LINENO: '
         set -x
     fi
+
+    readonly DOC
+    readonly HELP
+    readonly VERBOSE
 }
 
 if [[ "${SCRIPTNAME}" == "$(basename "${BASH_SOURCE[0]}")" ]]; then

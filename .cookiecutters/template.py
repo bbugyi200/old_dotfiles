@@ -17,8 +17,8 @@ def parse_cli_args(argv: Sequence[str]) -> Arguments:
     parser = cli.ArgumentParser()
 
     args = parser.parse_args(argv[1:])
+    kwargs = vars(args)
 
-    kwargs = dict(args._get_kwargs())
     return Arguments(**kwargs)
 
 

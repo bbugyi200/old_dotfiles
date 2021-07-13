@@ -196,6 +196,7 @@ def setup_search_engines() -> None:
         "bp": "https://bbgithub.dev.bloomberg.com/pages/ComplianceSRE/{}.html",
         "btu": "https://tutti.prod.bloomberg.com/search/?q={}",
         "bte": "https://cms.prod.bloomberg.com/team/dosearchsite.action?queryString={}",
+        "bso": "https://engx.prod.bloomberg.com/search?q={}",
         "bsor": "https://sor.bdns.bloomberg.com/ui/servers/group/{}",
         "c": SE.static.stackoverflow(7, prefix="C"),
         "cc": SE.static.stackoverflow(5, prefix="C\\+\\+"),
@@ -483,7 +484,9 @@ def setup_binds() -> None:
     bind("m", "mode-enter set_mark")
     bind(";P", "hint links spawn -v pockyt put -f '{link}' -i {hint-url}")
     bind("p", "open -- {clipboard}")
+    bind(",p", 'open -- "{clipboard}"')
     bind("P", "open -t -- {clipboard}")
+    bind(",P", 'open -t -- "{clipboard}"')
     bind(
         ",q",
         "set-cmd-text :",

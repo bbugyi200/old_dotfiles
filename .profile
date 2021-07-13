@@ -101,6 +101,7 @@ M="$(printf "\u2709")"
 export LESS="${LESS}QR"
 export MAILPATH="/var/mail/bryan? ${M} ${M} ${M} NEW MAIL IN /var/mail/bryan!!! ${M} ${M} ${M}"
 export PAGER="less"
+export PYTHONBREAKPOINT="pudb.set_trace"
 export QT_QPA_PLATFORMTHEME="qt5ct"  # Fixes: missing okular icons
 export RECENTLY_EDITED_FILES_LOG="$HOME"/Sync/var/recently_edited_files.log
 export RIPGREP_CONFIG_PATH="$HOME"/.config/rgrc

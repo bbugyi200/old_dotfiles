@@ -192,6 +192,15 @@ if [[ "${PWD}" == "$HOME/projects/work/"* ]]; then
     export PATH="${PIPX_BIN_DIR}":"${PATH}"
 
     export PIP_CONFIG_FILE="${work_dir}"/pip.conf
+
+    alias hub='bb hub'
+    alias hub_pr_checkout='bb hub_pr_checkout'
+fi
+
+if [[ " $(git_branches | tr '\n' ' ') " == *" main "* ]]; then
+    export MASTER_BRANCH=main
+else
+    export MASTER_BRANCH=master
 fi
 
 if cmd_exists virtualenvwrapper_lazy.sh; then
@@ -226,6 +235,7 @@ eval "$(register-python-argcomplete pipx)"
 
 _git 2> /dev/null  # hack to make git branch completion work
 compdef _command_names wim vinfo
+compdef _git-branch bc vimbc
 compdef _git-checkout gco gnext
 compdef _git-diff gd
 compdef _git-log glg

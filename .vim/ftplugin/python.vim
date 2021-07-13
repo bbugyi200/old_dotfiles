@@ -215,7 +215,6 @@ nnoremap [om :let g:ale_fix_on_save = 0<CR>
 nnoremap ]om :let g:ale_fix_on_save = 1<CR>
 nnoremap <C-p>t :call MyBTags()<CR>
 imap <Leader>( (<CR><Esc>O
-nnoremap <buffer> <C-]> :call jedi#goto()<CR>zv
 
 " --- Alphanumeric Mappings
 nnoremap <Leader>0f :e ~/.config/flake8<CR>

@@ -799,3 +799,270 @@
 
 # 2021-05-24 13:01:42.900146
 +\q
+
+# 2021-06-02 16:10:56.158287
++\d
+
+# 2021-06-02 16:10:56.900967
++\q
+
+# 2021-06-03 12:09:52.779902
++\d
+
+# 2021-06-03 12:09:54.004969
++\q
+
+# 2021-06-03 12:16:07.611670
++\d
+
+# 2021-06-03 12:16:10.960421
++\q
+
+# 2021-06-03 12:20:54.965890
++\d
+
+# 2021-06-03 12:20:56.315929
++\q
+
+# 2021-06-04 11:34:08.643405
++\d
+
+# 2021-06-04 11:34:09.415467
++\q
+
+# 2021-06-04 15:20:15.955589
++\d
+
+# 2021-06-04 15:20:17.663955
++\q
+
+# 2021-06-04 15:29:00.673786
++\d
+
+# 2021-06-04 15:29:07.939399
++\q
+
+# 2021-06-10 11:29:32.927815
++\d
+
+# 2021-06-10 11:29:34.347340
++\q
+
+# 2021-06-10 12:58:24.738845
++\d
+
+# 2021-06-10 12:58:27.658550
++\q
+
+# 2021-06-15 11:54:44.176894
++\d
+
+# 2021-06-15 11:54:47.527227
++\d asset
+
+# 2021-06-15 12:11:55.311008
++select * from asset;
+
+# 2021-06-15 12:12:10.185421
++select * from dependency;
+
+# 2021-06-15 12:12:38.737566
++\d dependency
+
+# 2021-06-15 12:13:17.480624
++select * from dependency join assetinstance as ai on ai.assetinstanceid = dependency.assetinstanceid;
+
+# 2021-06-15 12:13:48.017696
++\q
+
+# 2021-06-15 12:14:07.499773
++\d dependency
+
+# 2021-06-15 12:14:20.060167
++select * from dependency;
+
+# 2021-06-15 12:14:28.354113
++select * from assetinstance;
+
+# 2021-06-15 12:21:55.064483
++select * from parentcluster;
+
+# 2021-06-15 12:22:02.907995
++select * from parentclusterenvironment;
+
+# 2021-06-15 12:22:33.204878
++select * from assetinstance;
+
+# 2021-06-15 12:23:19.427385
++select * from asset;
+
+# 2021-06-15 12:24:09.285266
++select a.assetname, pc.parentcluster, 
+
+# 2021-06-15 12:24:13.916024
++select * from environment;
+
+# 2021-06-15 12:26:46.873679
++select a.assetname, pc.parentcluster, e.environment from assetinstance as ai, parentclusterenvironment as pce, asset as a, parentcluster as pc, environment as e where ai.assetid = a.assetid and ai.parentclusterenvironmentid = pce.parentclusterenvironmentid;
+
+# 2021-06-16 07:09:53.079934
++\q
+
+# 2021-06-16 16:37:17.996038
++\d
+
+# 2021-06-16 16:37:20.666399
++select a.assetname, pc.parentcluster, e.environment from assetinstance as ai, parentclusterenvironment as pce, asset as a, parentcluster as pc, environment as e where ai.assetid = a.assetid and ai.parentclusterenvironmentid = pce.parentclusterenvironmentid;
+
+# 2021-06-16 16:38:21.957859
++\q
+
+# 2021-06-17 13:25:24.648224
++\d
+
+# 2021-06-17 13:25:28.248776
++\d incident
+
+# 2021-06-17 13:25:39.797029
++\q
+
+# 2021-06-20 15:09:48.238186
++\d
+
+# 2021-06-20 15:09:57.700698
++\d asset
+
+# 2021-06-20 15:10:17.220786
++\?
+
+# 2021-06-20 15:10:28.583181
++\dt
+
+# 2021-06-20 15:15:43.749586
++\d asset
+
+# 2021-06-20 15:15:46.423171
++\d assetgroup
+
+# 2021-06-20 15:15:49.092781
++\d assetinstance
+
+# 2021-06-20 15:15:51.758778
++\d assettype
+
+# 2021-06-20 15:15:54.421680
++\d cluster
+
+# 2021-06-20 15:15:57.091769
++\d dependency
+
+# 2021-06-20 15:16:00.828459
++\d parentcluster
+
+# 2021-06-20 15:16:03.515126
++\d parentclusterenvironment
+
+# 2021-06-20 15:16:06.197661
++\d sli
+
+# 2021-06-20 15:16:08.855806
++\d slo
+
+# 2021-06-20 15:16:11.535668
++\d tickettype
+
+# 2021-06-20 15:25:11.965526
++\q
+
+# 2021-06-21 19:16:01.504035
++\d
+
+# 2021-06-21 19:21:21.699739
++\d environment
+
+# 2021-06-21 19:21:30.609461
++\d parentclusterenvironment
+
+# 2021-06-21 19:22:06.604681
++\d
+
+# 2021-06-21 19:22:10.682844
++\d parentclusterenvironment
+
+# 2021-06-21 20:09:43.649943
++\d
+
+# 2021-06-21 20:14:38.497255
++\d assetinstance
+
+# 2021-06-21 20:15:50.518895
++\d
+
+# 2021-06-21 20:15:51.308037
++\q
+
+# 2021-06-21 20:17:32.523343
++\d
+
+# 2021-06-21 20:17:34.273766
++\d assetinstance
+
+# 2021-06-21 20:21:08.597223
++\d
+
+# 2021-06-21 20:21:11.830531
++\d dependency
+
+# 2021-06-21 20:28:30.320479
++\d
+
+# 2021-06-21 20:28:36.200533
++\d parentcluster
+
+# 2021-06-21 20:38:33.031775
++\d
+
+# 2021-06-21 20:38:36.059286
++\d parentcluster
+
+# 2021-06-21 20:42:03.254744
++\d incident
+
+# 2021-06-21 21:08:05.233653
++\d
+
+# 2021-06-22 12:53:34.100344
++\d assettype
+
+# 2021-06-22 12:53:38.236723
++select * from assettype;
+
+# 2021-06-22 12:53:51.275555
++select * from asset;
+
+# 2021-06-22 18:24:33.327991
++\d
+
+# 2021-06-22 18:24:49.141184
++select to_regclass('environment')
+
+# 2021-06-22 18:55:14.569175
++\d
+
+# 2021-06-22 18:55:20.787778
++select * from parentcluster;
+
+# 2021-06-22 18:55:29.252372
++\q
+
+# 2021-06-25 15:19:32.609400
++select * from incident
+
+# 2021-07-13 09:33:33.917204
++select * from incidentstatus
+
+# 2021-07-13 09:34:08.695202
++update incident set incidentstatusid=2 where incidentid=1
+
+# 2021-07-13 09:34:19.178165
++update incident set incidentstatusid=1 where incidentid=1

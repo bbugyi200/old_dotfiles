@@ -24,15 +24,15 @@ fi
 # ---------- cookie Aliases / Functions ----------
 # def marker: COOKIE
 alias ainit='cookie template.awk -D awk -x'
-alias binit='cookie minimal.sh -x'
 alias Binit='cookie full.sh -x'
+alias binit='cookie minimal.sh -x'
 cinit() { PROJECT="$1" cookie -f -t c.mk Makefile && cookie -f -t main.c src/main.c && cookie -f -t gtest.mk tests/Makefile && cookie -f -t main.gtest tests/main.cc; }
 alias co='cookie'
 hw() { mkdir -p HW"$1"/img &>/dev/null && ASSIGNMENT_NUMBER="$1" cookie hw.tex -f "${@:2}" HW"$1"/hw"$1".tex; }
 alias minit='cookie c.make -f Makefile'
 alias mtinit='cookie gtest.make -f Makefile'
-robinit() { DATE="$(date +%Y%m%d)" cookie robot.yaml -f "$HOME"/.local/share/red_robot/pending/"$1"; }
 pytinit() { SCRIPT="$1" cookie pytest_script.py -f test_"$1".py; }
+robinit() { DATE="$(date +%Y%m%d)" cookie robot.yaml -f "$HOME"/.local/share/red_robot/pending/"$1"; }
 alias texinit='cookie template.tex -f'
 alias xinit='cookie template.exp -x'
 

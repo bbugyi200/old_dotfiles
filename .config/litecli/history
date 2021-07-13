@@ -2326,3 +2326,201 @@
 
 # 2020-11-12 15:09:39.235320
 +\q
+
+# 2021-05-31 15:18:11.898417
++\d
+
+# 2021-05-31 15:18:14.881617
++\t
+
+# 2021-05-31 15:18:17.734518
++\l
+
+# 2021-05-31 15:18:20.642554
++\d main
+
+# 2021-05-31 15:18:27.386613
++\h
+
+# 2021-05-31 15:18:28.607665
++\?
+
+# 2021-05-31 15:18:33.460900
++.tables
+
+# 2021-05-31 15:18:53.715926
++\d `ConfigStore`
+
+# 2021-05-31 15:19:05.865043
++\d `NoteTable`
+
+# 2021-05-31 15:19:28.919583
++select * from `NoteTable`
+
+# 2021-05-31 15:19:45.568445
++select * from `NoteTable` where `notebookLid` == 1;
+
+# 2021-05-31 15:20:09.813442
++select * from `NoteTable` where tags like %'29th'%;
+
+# 2021-05-31 15:20:37.276148
++select * from `NoteTable` where tags like '%29th';
+
+# 2021-05-31 15:20:50.177072
++select title from `NoteTable` where tags like '%29th';
+
+# 2021-05-31 15:21:17.318387
++select * from `NoteTable` where tags like '%29th';
+
+# 2021-05-31 15:23:06.864027
++select * from `NoteTable` where tags like '%29th' and `dateDeleted`=0.0;
+
+# 2021-05-31 15:23:16.111559
++select count(*) from `NoteTable` where tags like '%29th' and `dateDeleted`=0.0;
+
+# 2021-05-31 15:23:34.580160
++select title, tags from `NoteTable` where tags like '%29th' and `dateDeleted`=0.0;
+
+# 2021-05-31 15:25:29.313763
++select title, tags from `NoteTable` where tags like '%29th%' and `dateDeleted`=0.0;
+
+# 2021-05-31 15:29:17.769013
++update `NoteTable` set tags='!-5th' where tags like '%29th%' and dateDeleted=0.0;
+
+# 2021-05-31 15:29:44.754999
++select title, tags from `NoteTable` where tags like '%29th%' and `dateDeleted`=0.0;
+
+# 2021-05-31 15:29:50.650122
++\q
+
+# 2021-05-31 15:30:10.316786
++select title, tags from `NoteTable` where tags like '%29th%' and `dateDeleted`=0.0;
+
+# 2021-05-31 15:30:48.252250
++select title, tags from `NoteTable` where tags like '%5th%' and `dateDeleted`=0.0;
+
+# 2021-05-31 15:31:23.510983
++select title, tags from `NoteTable` where tags like '%29th%' and `dateDeleted`=0.0;
+
+# 2021-05-31 15:34:12.862810
++select title, tags from `NoteTable` where tags like '%5th%' and `dateDeleted`=0.0;
+
+# 2021-05-31 15:35:04.624737
++\q
+
+# 2021-05-31 16:49:55.048880
++\d address
+
+# 2021-05-31 16:52:36.880913
++\q
+
+# 2021-05-31 16:57:52.758233
++\d user_account
+
+# 2021-05-31 16:57:56.735791
++select * from user_account;
+
+# 2021-05-31 16:58:03.730133
++\q
+
+# 2021-06-17 13:57:18.601554
++\d
+
+# 2021-06-17 13:57:21.665244
++.d
+
+# 2021-06-17 13:57:23.352550
++.
+
+# 2021-06-17 13:57:28.317672
++.databases
+
+# 2021-06-17 14:04:28.921043
++.h
+
+# 2021-06-17 14:04:30.859309
++\h
+
+# 2021-06-17 14:04:36.540183
++help
+
+# 2021-06-17 14:04:41.242153
++.databases
+
+# 2021-06-17 14:04:50.214068
++CREATE DATABASE cardb;
+
+# 2021-06-17 14:05:20.572352
++create database cardb;
+
+# 2021-06-17 14:07:27.285254
++\. db/ddl.sql
+
+# 2021-06-17 14:07:31.831779
++.databases
+
+# 2021-06-17 14:07:44.819086
++select * from asset;
+
+# 2021-06-17 14:07:50.969514
++\. db/dml.sql
+
+# 2021-06-17 14:08:23.100404
++.tables
+
+# 2021-06-17 14:08:36.880569
++\d Asset
+
+# 2021-06-17 14:19:31.874754
++\. db/dml.sql
+
+# 2021-06-17 14:19:53.521352
++\. db/ddl.sql
+
+# 2021-06-17 14:20:07.132080
++\q
+
+# 2021-06-17 14:20:29.352389
++\h
+
+# 2021-06-17 14:20:30.707612
++\?
+
+# 2021-06-17 14:20:44.867782
++.tables
+
+# 2021-06-17 14:20:52.098934
++\. db/dml.sql
+
+# 2021-06-17 14:21:51.282181
++END;
+
+# 2021-06-17 14:21:53.320621
++\. db/dml.sql
+
+# 2021-06-17 14:22:14.648778
++select * from `Environment`
+
+# 2021-06-17 14:23:13.205481
++select * from `ParentCluster`
+
+# 2021-06-17 14:33:18.704484
++\. db/dml.sql
+
+# 2021-06-17 14:33:21.483993
++END;
+
+# 2021-06-17 14:33:23.783938
++\. db/dml.sql
+
+# 2021-06-17 14:33:38.123531
++use
+
+# 2021-06-17 14:33:39.311397
++end
+
+# 2021-06-17 14:33:41.980239
++\. db/dml.sql
+
+# 2021-06-17 14:35:41.112875
++\q
